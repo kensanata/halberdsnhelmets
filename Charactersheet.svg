@@ -26,6 +26,7 @@
       }
       @font-face {
           font-family: 'Purisa';
+          src: url('/Purisa.eot'); /* For IE */
           src: local('Purisa'),
                url('/Purisa.ttf') format('truetype');
       }

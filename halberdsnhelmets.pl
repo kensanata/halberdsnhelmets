@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>.
 
-use CGI;
+use CGI qw(-utf8);
 use XML::LibXML;
 use utf8;
 
@@ -190,7 +190,7 @@ my $url = "http://campaignwiki.org/halberdsnhelmets";
 my $email = "kensanata\@gmail.com";
 my $author = "Alex Schroeder";
 my $contact = "http://www.emacswiki.org/alex/Contact";
-my $example = "http://campaignwiki.org/halberdsnhelmets?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
+my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
 
 sub T {
   my $en = shift;
@@ -200,7 +200,10 @@ sub T {
     $en = $1;
     $suffix = $2;
   }
-  $en = $Translation{$en} if $Translation{$en} and $lang eq "de";
+  if ($Translation{$en} and $lang eq "de") {
+    $en = $Translation{$en};
+  }
+  utf8::encode($en);
   for (my $i = 0; $i < scalar @_; $i++) {
     my $s = $_[$i];
     $en =~ s/%$i/$s/g;
@@ -233,7 +236,7 @@ sub error {
 }
 
 sub header {
-  print $q->header;
+  print $q->header(-charset=>"utf-8");
   print $q->start_html(T('Character Sheet Generator'));
   print $q->h1(T('Character Sheet Generator'));
 }
@@ -303,7 +306,7 @@ sub link_to {
   foreach ($q->param) {
     next if $thac0 and /^(melee|range)\d+$/;
     next if /-bonus$/;
-    next unless $q->param($_);
+    next unless defined $q->param($_);
     push(@keys, $_);
   }
 
@@ -389,7 +392,7 @@ sub equipment {
   my @property = (T('(starting gold: %0)', $money));
 
   $money -= 20;
-  push(@property, 'backpack', 'iron rations (1 week)');
+  push(@property, T('backpack'), T('iron rations (1 week)'));
   ($money, @property) = buy_armor($money, $class, @property);
   ($money, @property) = buy_weapon($money, $class, @property);
   ($money, @property) = buy_tools($money, $class, @property);
@@ -403,14 +406,14 @@ sub equipment {
 
 sub buy_tools {
   my ($money, $class, @property) = @_;
-  if ($class eq 'cleric'
+  if ($class eq T('cleric')
       and $money >= 25) {
     $money -= 25;
-    push(@property, 'holy symbol');
-  } elsif ($class eq 'thief'
+    push(@property, T('holy symbol'));
+  } elsif ($class eq T('thief')
       and $money >= 25) {
     $money -= 25;
-    push(@property, 'thieves’ tools');
+    push(@property, T('thieves’ tools'));
   }
   return ($money, @property);
 }
@@ -419,24 +422,24 @@ sub buy_light {
   my ($money, $class, @property) = @_;
   if ($money >= 12) {
     $money -= 12;
-    push(@property, 'lantern');
-    push(@property, 'flask of oil');
+    push(@property, T('lantern'));
+    push(@property, T('flask of oil'));
     if ($money >= 2) {
       $money -= 2;
-      add('flask of oil', @property);
+      add(T('flask of oil'), @property);
     }
   } elsif ($money >= 1) {
     $money -= 1;
-    push(@property, 'torches');
+    push(@property, T('torches'));
   }
   return ($money, @property);
 }
 
 sub buy_gear {
   my ($money, $class, @property) = @_;
-  %price = ('rope' => 1,
-	    'iron spikes and hammer' => 3,
-	    'wooden pole' => 1);
+  %price = (T('rope') => 1,
+	    T('iron spikes and hammer') => 3,
+	    T('wooden pole') => 1);
   my $item = one(affordable($money, %price));
 
   if ($item and $money >= $price{$item}) {
@@ -448,9 +451,9 @@ sub buy_gear {
 
 sub buy_protection {
   my ($money, $class, @property) = @_;
-  %price = ('holy water' => 25,
-	    'wolfsbane' => 10,
-	    'mirror' => 5);
+  %price = (T('holy water') => 25,
+	    T('wolfsbane') => 10,
+	    T('mirror') => 5);
   my $item = one(affordable($money, %price));
 
   if ($item and $money >= $price{$item}) {
@@ -469,38 +472,38 @@ sub buy_armor {
   my $dex = $q->param("dex");
   my $ac = 9 - bonus($dex);
 
-  if ($class ne 'magic-user'
-      and $class ne 'thief'
+  if ($class ne T('magic-user')
+      and $class ne T('thief')
       and $budget >= 60) {
     $budget -= 60;
-    push(@property, 'plate mail');
+    push(@property, T('plate mail'));
     $ac -= 6;
-  } elsif ($class ne 'magic-user'
-      and $class ne 'thief'
+  } elsif ($class ne T('magic-user')
+      and $class ne T('thief')
       and $budget >= 40) {
     $budget -= 40;
-    push(@property, 'chain mail');
+    push(@property, T('chain mail'));
     $ac -= 4
-  } elsif ($class ne 'magic-user'
+  } elsif ($class ne T('magic-user')
       and $budget >= 20) {
     $budget -= 20;
-    push(@property, 'leather armor');
+    push(@property, T('leather armor'));
     $ac -= 2;
   }
 
-  if ($class ne 'magic-user'
-      and $class ne 'thief'
+  if ($class ne T('magic-user')
+      and $class ne T('thief')
       and $budget >= 10) {
     $budget -= 10;
-    push(@property, 'shield');
+    push(@property, T('shield'));
     $ac -= 1;
   }
 
-  if ($class ne 'magic-user'
-      and $class ne 'thief'
+  if ($class ne T('magic-user')
+      and $class ne T('thief')
       and $budget >= 10) {
     $budget -= 10;
-    push(@property, 'helmet');
+    push(@property, T('helmet'));
   }
 
   $q->param("ac", $ac);
@@ -525,6 +528,13 @@ sub affordable {
   return keys %price;
 }
 
+sub member {
+  my $element = shift;
+  foreach (@_) {
+    return 1 if $element eq $_;
+  }
+}
+
 sub buy_weapon {
   my ($money, $class, @property) = @_;
   my $budget = $money / 2;
@@ -533,122 +543,122 @@ sub buy_weapon {
   my $str = $q->param("str");
   my $dex = $q->param("dex");
   my $hp  = $q->param("hp");
-  my $shield = grep(/^shield/, @property);
+  my $shield = member(T('shield'), @property);
 
-  if ($class eq 'cleric') {
+  if ($class eq T('cleric')) {
     if ($budget >= 5) {
       $budget -= 5;
-      push(@property, one('mace', 'war hammer'));
+      push(@property, one(T('mace'), T('war hammer')));
     } elsif ($budget >= 3) {
       $budget -= 3;
-      push(@property, one('club', 'staff'));
+      push(@property, one(T('club'), T('staff')));
     }
-  } elsif ($class eq 'magic-user'
+  } elsif ($class eq T('magic-user')
       and $budget >= 3) {
     $budget -= 3;
-    push(@property, 'dagger');
-  } elsif ($class eq 'fighter'
+    push(@property, T('dagger'));
+  } elsif ($class eq T('fighter')
 	   and good($str)
 	   and $hp > 6
 	   and not $shield
 	   and $budget >= 15) {
     $budget -= 15;
-    push(@property, 'two handed sword');
-  } elsif ($class eq 'fighter'
+    push(@property, T('two handed sword'));
+  } elsif ($class eq T('fighter')
 	   and good($str)
 	   and $hp > 6
 	   and not $shield
 	   and $budget >= 7) {
     $budget -= 7;
-    push(@property, 'battle axe');
-  } elsif ($class eq 'fighter'
+    push(@property, T('battle axe'));
+  } elsif ($class eq T('fighter')
 	   and average($str)
 	   and not $shield
 	   and $budget >= 7) {
     $budget -= 7;
-    push(@property, 'pole arm');
-  } elsif ($class eq 'dwarf'
+    push(@property, T('pole arm'));
+  } elsif ($class eq T('dwarf')
 	   and not $shield
 	   and $budget >= 7) {
     $budget -= 7;
-    push(@property, 'battle axe');
+    push(@property, T('battle axe'));
   } elsif ($budget >= 10
 	   and d6() > 1) {
     $budget -= 10;
-    push(@property, 'long sword');
+    push(@property, T('long sword'));
   } elsif ($budget >= 7) {
     $budget -= 7;
-    push(@property, 'short sword');
+    push(@property, T('short sword'));
   }
 
-  if (($class eq 'fighter' or $class eq 'elf')
+  if (($class eq T('fighter') or $class eq T('elf'))
       and average($dex)
       and $budget >= 45) {
     $budget -= 45;
-    push(@property, 'long bow');
-    push(@property, 'quiver of arrows');
+    push(@property, T('long bow'));
+    push(@property, T('quiver of arrows'));
     if ($budget >= 5) {
       $budget -= 5;
-      add('quiver of arrows', @property);
+      add(T('quiver of arrows'), @property);
     }
-  } elsif (($class ne 'cleric' and $class ne 'magic-user')
+  } elsif (($class ne T('cleric') and $class ne T('magic-user'))
       and average($dex)
       and $budget >= 30) {
     $budget -= 30;
-    push(@property, 'short bow');
-    push(@property, 'quiver of arrows');
+    push(@property, T('short bow'));
+    push(@property, T('quiver of arrows'));
     if ($budget >= 5) {
       $budget -= 5;
-      add('quiver of arrows', @property);
+      add(T('quiver of arrows'), @property);
     }
-  } elsif (($class ne 'cleric' and $class ne 'magic-user')
+  } elsif (($class ne T('cleric') and $class ne T('magic-user'))
       and $budget >= 40) {
     $budget -= 40;
-    push(@property, 'crossbow');
-    push(@property, 'case of bolts');
+    push(@property, T('crossbow'));
+    push(@property, T('case of bolts'));
     if ($budget >= 10) {
       $budget -= 10;
-      add('case of bolts', @property);
+      add(T('case of bolts'), @property);
     }
-  } elsif ($class ne 'magic-user'
+  } elsif ($class ne T('magic-user')
       and $budget >= 2) {
     $budget -= 2;
-    push(@property, 'sling');
-    push(@property, 'pouch of stones');
+    push(@property, T('sling'));
+    push(@property, T('pouch of stones'));
     if ($budget >= 2) {
       $budget -= 2;
-      add('pouch of stones', @property);
+      add(T('pouch of stones'), @property);
     }
   }
 
-  if (($class eq 'dwarf' or grep(/^battle axe/, @property))
+  if (($class eq T('dwarf') or member(T('battle axe'), @property))
       and $budget >= 4) {
     $budget -= 4;
-    push(@property, 'hand axe');
+    push(@property, T('hand axe'));
     if ($budget >= 4) {
       $budget -= 4;
-      add('hand axe', @property);
+      add(T('hand axe'), @property);
     }
-  } elsif ($class eq 'fighter'
+  } elsif ($class eq T('fighter')
 	   and $budget >= 3) {
     $budget -= 3;
-    push(@property, 'spear');
+    push(@property, T('spear'));
   }
 
-  if ($class ne 'cleric'
+  if ($class ne T('cleric')
       and $budget >= 30) {
     $budget -=30;
-    push(@property, 'silver dagger');
+    push(@property, T('silver dagger'));
   }
 
-  if ($class ne 'cleric'
-      and $class ne 'magic-user'
+  if ($class ne T('cleric')
+      and $class ne T('magic-user')
       and $budget >= 3) {
     $budget -=3;
-    push(@property, 'dagger');
+    push(@property, T('dagger'));
     if ($budget >= 3) {
       $budget -=3;
-      add('dagger', @property);
+      add(T('dagger'), @property);
     }
   }
 
@@ -677,22 +687,22 @@ sub saves {
   my $level = $q->param("level");
   return unless $class and $level >= 1 and $level <= 3;
   my ($breath, $poison, $petrify, $wands, $spells);
-  if ($class eq 'cleric') {
+  if ($class eq T('cleric')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (16, 11, 14, 12, 15);
-  } elsif ($class eq 'dwarf' or $class eq 'halfling') {
+  } elsif ($class eq T('dwarf') or $class eq T('halfling')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (13, 8, 10, 9, 12);
-  } elsif ($class eq 'elf') {
+  } elsif ($class eq T('elf')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (15, 12, 13, 13, 15);
-  } elsif ($class eq 'fighter') {
+  } elsif ($class eq T('fighter')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (15, 12, 14, 13, 16);
-  } elsif ($class eq 'magic-user') {
+  } elsif ($class eq T('magic-user')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (16, 13, 13, 13, 14);
-  } elsif ($class eq 'thief') {
+  } elsif ($class eq T('thief')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (16, 14, 13, 15, 13);
   }
@@ -792,28 +802,28 @@ sub random_parameters {
 
   if (not $class) {
     if (average($con) and $best eq "str") {
-      $class = 'dwarf';
+      $class = T('dwarf');
     } elsif (average($int)
 	     and good($str, $dex)
 	     and d6() > 2) {
-      $class = 'elf';
+      $class = T('elf');
     } elsif (average($str, $dex, $con) == 3
 	     and good($str, $dex, $con)
 	     and d6() > 2) {
-      $class = 'halfling';
+      $class = T('halfling');
     } elsif (average($str, $dex, $con) >= 2
 	     and ($best eq "str" or $best eq "con")
 	     or good($str, $dex, $con) >= 2) {
-      $class = 'fighter';
+      $class = T('fighter');
     } elsif ($best eq "int") {
-      $class = 'magic-user';
+      $class = T('magic-user');
     } elsif (($best eq "wis" or $best eq "cha")
 	     and d6() > 2) {
-      $class = 'cleric';
+      $class = T('cleric');
     } elsif ($best eq "dex") {
-      $class = 'thief';
+      $class = T('thief');
     } else {
-      $class = one('cleric', 'magic-user', 'fighter', 'thief');
+      $class = one(T('cleric'), T('magic-user'), T('fighter'), T('thief'));
     }
   }
 
@@ -822,9 +832,9 @@ sub random_parameters {
   my $hp = $q->param("hp");
   if (not $hp) {
 
-    if ($class eq 'fighter' or $class eq 'dwarf') {
+    if ($class eq T('fighter') or $class eq T('dwarf')) {
       $hp = d8();
-    } elsif ($class eq 'magic-user' or $class eq 'thief') {
+    } elsif ($class eq T('magic-user') or $class eq T('thief')) {
       $hp = d4();
     } else {
       $hp = d6();
@@ -842,6 +852,8 @@ sub random_parameters {
 sub characters {
   print $q->header(-type=>"text/plain",
 		   -charset=>"utf8");
+  binmode(STDOUT, ":utf8");
+
   for (my $i = 0; $i < 50; $i++) {
     $q = new CGI;
     random_parameters();
@@ -864,6 +876,8 @@ sub characters {
 sub stats {
   print $q->header(-type=>"text/plain",
 		   -charset=>"utf8");
+  binmode(STDOUT, ":utf8");
+
   my (%class, %property);
   for (my $i = 0; $i < 1000; $i++) {
     $q = new CGI;
@@ -886,6 +900,7 @@ sub stats {
   foreach (sort { $property{$b} <=> $property{$a} }
 	   keys %property) {
     next if /starting gold:/ or /gold$/;
+    next if /Startgold:/ or /Gold$/;
     printf "%25s %4d\n", $_, $property{$_};
   }
 }
@@ -945,7 +960,6 @@ sub source {
   seek DATA, 0, 0;
   undef $/;
   my $str = <DATA>;
-  utf8::decode($str);
   return $str;
 }
 
@@ -991,14 +1005,15 @@ sub more {
   print "</ul>";
   print $q->p(T('The script can also generate a %0, a %1, or %2.',
 		$q->a({-href=>"$url/random/$lang"}, T('random character')),
-		$q->a({-href=>"$url/characters"}, T('bunch of characters')),
-		$q->a({-href=>"$url/stats"}, T('some statistics'))));
+		$q->a({-href=>"$url/characters/$lang"}, T('bunch of characters')),
+		$q->a({-href=>"$url/stats/$lang"}, T('some statistics'))));
   footer();
 }
 
 sub url_encode {
   my $str = shift;
-  return '' unless $str;
+  return '' unless defined $str;
+  utf8::encode($str);
   my @letters = split(//, $str);
   my %safe = map {$_ => 1} ("a" .. "z", "A" .. "Z", "0" .. "9", "-", "_", ".", "!", "~", "*", "\"", "(", ")", "#");
   foreach my $letter (@letters) {
