@@ -21,8 +21,13 @@
      id="style3313">
       @media print {
         #link {
-	  display: none;
-	}
+          display: none;
+        }
+      }
+      @font-face {
+          font-family: 'Purisa';
+          src: local('Purisa'),
+               url('/Purisa.ttf') format('truetype');
       }
   </style>
   <defs

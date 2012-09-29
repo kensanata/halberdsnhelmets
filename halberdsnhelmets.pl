@@ -21,20 +21,28 @@ use utf8;
 # strings in sinqle quotes are translated into German if necessary
 # use %0, %1, etc. for parameters
 my %Translation = split(/\n/, <<EOT);
-(starting gold: %0)
-(Startgold: %0)
 %0 gold
 %0 Gold
+(starting gold: %0)
+(Startgold: %0)
 1d6
 1W6
 Also note that the parameters need to be UTF-8 encoded.
 Die Parameter müssen UTF-8 codiert sein.
-Character:
-Charakter:
+Bookmark
+Lesezeichen
+Bookmark the following link to your %0.
+Den Charakter kann man einfach aufbewahren, in dem man sich das %0 als Lesezeichen speichert.
 Character Sheet
 Charakterblatt
+Character Sheet Generator
+Charakterblatt Generator
+Character:
+Charakter:
 Charactersheet.svg
 Charakterblatt.svg
+Edit
+Bearbeiten
 English
 Englisch
 German
@@ -45,22 +53,28 @@ If the template contains a multiline placeholder, the parameter may also provide
 Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch doppelte Backslashes trennen.
 In addition to that, some parameters are computed unless provided:
 Zudem werden einige Parameter berechnet, sofern sie nicht angegeben wurden:
-It works by using a template (%0) and replacing some placeholders.
+The generator works by using a template (%0) and replacing some placeholders.
 Das funktioniert über eine Vorlage (%0) und dem Ersetzen von Platzhaltern.
+The template uses the %0 font.
+Die Vorlage verwendet die Schriftart %0.
 Name:
 Name:
+More
+Weitere Informationen
 Source
-Quelle
+Quellcode
+The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
+Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 The script can also generate a %0, a %1, or %2.
 Das Skript kann auch %0, %1 oder %2 generieren.
 The script can also show %0.
 Das Skript kann auch %0 zeigen.
 This is the %0 character sheet generator.
 Dies ist der %0 Charaktergenerator.
-Usage example:
-Beispiel:
-You can copy and paste the following on to a page on %0 to generate an inline character sheet.
-Das Folgende kann man auf eine Seite des %0 kopieren um ein Charakterblatt einzufügen.
+Use the following form to make changes to your character sheet.
+Mit dem folgenden Formular lassen sich leicht Änderungen am Charakter machen.
+You can also copy and paste it on to a %0 page to generate an inline character sheet.
+Man kann diesen Text auch auf einer %0 Seite verwenden, um das Charakterblatt einzufügen.
 You provide values for the placeholders by providing URL parameters (%0).
 Den Platzhaltern werden über URL Parameter Werte zugewiesen (%0).
 backpack
@@ -108,7 +122,7 @@ Feldrationen (1 Woche)
 iron spikes and hammer
 Eisenkeile und Hammer
 lantern
-Lanterne
+Laterne
 leather armor
 Lederrüstung
 long bow
@@ -199,7 +213,9 @@ sub footer {
   print $q->p($q->a({-href=>$contact}, $author),
 	      "<" . $q->a({-href=>"mailto:$email"}, $email) . ">",
 	      $q->br(),
-	      $q->a({-href=>$url . "/source"}, 'Source'),
+	      $q->a({-href=>$url . "/$lang"}, 'Character Sheet Generator'),
+	      $q->a({-href=>$url . "/more/$lang"}, T('More')),
+	      $q->a({-href=>$url . "/source"}, T('Source')),
 	      ($lang eq "en"
 	       ? $q->a({-href=>$url . "/de"}, T('German'))
 	       : $q->a({-href=>$url . "/en"}, T('English'))));
@@ -218,8 +234,8 @@ sub error {
 
 sub header {
   print $q->header;
-  print $q->start_html(T('Character Sheet'));
-  print $q->h1(T('Character Sheet'));
+  print $q->start_html(T('Character Sheet Generator'));
+  print $q->h1(T('Character Sheet Generator'));
 }
 
 sub svg_read {
@@ -412,7 +428,7 @@ sub buy_light {
   } elsif ($money >= 1) {
     $money -= 1;
     push(@property, 'torches');
-  }    
+  }
   return ($money, @property);
 }
 
@@ -422,7 +438,7 @@ sub buy_gear {
 	    'iron spikes and hammer' => 3,
 	    'wooden pole' => 1);
   my $item = one(affordable($money, %price));
-  
+
   if ($item and $money >= $price{$item}) {
     $money -= $price{$item};
     push(@property, $item);
@@ -898,11 +914,14 @@ sub translation {
 
 sub show_link {
   header();
-  print $q->p($q->a({-href=>link_to()},
-		   T('Character Sheet')));
-  print $q->h2("Campaign Wiki");
-  print $q->p(T('You can copy and paste the following on to a page on %0 to generate an inline character sheet.',
-	       $q->a({-href=>"http://campaignwiki.org/"}, "Campaign Wiki")));
+  print $q->h2(T('Bookmark'));
+  print $q->p(T('Bookmark the following link to your %0.',
+		$q->a({-href=>link_to()},
+		      T('Character Sheet'))));
+  print $q->h2(T('Edit'));
+  print $q->p(T('Use the following form to make changes to your character sheet.'),
+	      T('You can also copy and paste it on to a %0 page to generate an inline character sheet.',
+		$q->a({-href=>"http://campaignwiki.org/"}, "Campaign Wiki")));
   my $str = T('Character:') . "\n";
   my $rows;
   for my $key ($q->param) {
@@ -934,11 +953,20 @@ sub default {
   header();
   print $q->p(T('This is the %0 character sheet generator.',
 		$q->a({-href=>'http://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/'},
-		      'Halberts and Helmets')));
+		      T('Halberts and Helmets'))));
   print $q->start_form(-method=>"get", -action=>"$url/random/$lang", -accept_charset=>"UTF-8"),
-    T('Name:'), " ", $q->textfield("name"), $q->submit, $q->end_form;
-  print $q->p(T('It works by using a template (%0) and replacing some placeholders.',
+    T('Name:'), " ", $q->textfield("name"), " ", $q->submit, $q->end_form;
+  print $q->p(T('The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.'));
+  footer();
+  print $q->end_html;
+}
+
+sub more {
+  header();
+  print $q->p(T('The generator works by using a template (%0) and replacing some placeholders.',
 		$q->a({-href=>"/" . T('Charactersheet.svg')}, T('Charactersheet.svg'))),
+	      T('The template uses the %0 font.',
+		$q->a({-href=>"/Purisa.ttf"}, "Purisa")),
 	      T('You provide values for the placeholders by providing URL parameters (%0).',
 		$q->a({-href=>$example}, T('example'))),
 	      T('The script can also show %0.',
@@ -966,14 +994,13 @@ sub default {
 		$q->a({-href=>"$url/characters"}, T('bunch of characters')),
 		$q->a({-href=>"$url/stats"}, T('some statistics'))));
   footer();
-  print $q->end_html;
 }
 
 sub url_encode {
   my $str = shift;
   return '' unless $str;
   my @letters = split(//, $str);
-  my %safe = map {$_ => 1} ('a' .. 'z', 'A' .. 'Z', '0' .. '9', '-', '_', '.', '!', '~', '*', "'", '(', ')', '#');
+  my %safe = map {$_ => 1} ("a" .. "z", "A" .. "Z", "0" .. "9", "-", "_", ".", "!", "~", "*", "\"", "(", ")", "#");
   foreach my $letter (@letters) {
     $letter = sprintf("%%%02x", ord($letter)) unless $safe{$letter};
   }
@@ -985,14 +1012,14 @@ sub redirect {
   my @param;
   my $last;
   while (/^([-a-z0-9]*): *(.*?)\r$/gm) {
-    if ($1 eq $last or $1 eq '') {
-      $param[$#param] .= '\\\\' . url_encode($2);
+    if ($1 eq $last or $1 eq "") {
+      $param[$#param] .= "\\\\" . url_encode($2);
     } else {
-      push(@param, $1 . '=' . url_encode($2));
+      push(@param, $1 . "=" . url_encode($2));
       $last = $1;
     }
   }
-  print $q->redirect("$url/$lang?" . join(';', @param));
+  print $q->redirect("$url/$lang?" . join(";", @param));
 }
 
 sub main {
@@ -1015,6 +1042,8 @@ sub main {
     show_link();
   } elsif ($q->path_info =~ m!/redirect\b!) {
     redirect();
+  } elsif ($q->path_info =~ m!/more\b!) {
+    more();
   } elsif ($q->param) {
     compute_data();
     svg_write(svg_transform(svg_read()));

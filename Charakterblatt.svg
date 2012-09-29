@@ -24,6 +24,11 @@
 	  display: none;
 	}
       }
+      @font-face {
+          font-family: 'Purisa';
+          src: local('Purisa'),
+	       url('/Purisa.ttf') format('truetype');
+      }
   </style>
   <defs
      id="defs4">
