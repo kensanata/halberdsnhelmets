@@ -235,6 +235,7 @@ sub equipment {
 
   $money -= 20;
   push(@property, T('backpack'), T('iron rations (1 week)'));
+  push(@property, T('spell book')) if $class eq T('magic-user');
   ($money, @property) = buy_armor($money, $class, @property);
   ($money, @property) = buy_weapon($money, $class, @property);
   ($money, @property) = buy_tools($money, $class, @property);
@@ -688,6 +689,41 @@ sub random_parameters {
 
   $char{hp} =  $hp;
 
+  my $abilities = T('⚀ for normal tasks');
+  if ($class eq T('elf')) {
+    $abilities .= "\\\\" . T('⚁ to hear noise');
+    $abilities .= "\\\\" . T('⚁ to find secret or concealed doors');
+  } elsif ($class eq T('dwarf')) {
+    $abilities .= "\\\\" . T('⚁ to hear noise');
+    $abilities .= "\\\\" . T('⚁ to find secret constructions and traps');
+  } elsif ($class eq T('halfling')) {
+    $abilities .= "\\\\" . T('⚁ to hear noise');
+    $abilities .= "\\\\" . T('⚁ to hide and sneak');
+    $abilities .= "\\\\" . T('⚄ to hide and sneak outdoors');
+    $abilities .= "\\\\" . T('+1 bonus to ranged weapons');
+    $abilities .= "\\\\" . T('AC -2 vs. opponents larger than humans');
+  } elsif ($class eq T('thief')) {
+    $abilities .= "\\\\" . T('⚁ to hear noise');
+    $abilities .= "\\\\" . T('+4 to hit and double damage backstabbing');
+  } elsif ($class eq T('magic-user')) {
+    $abilities .= "\\\\" . T('Spells:') . " "
+      . one(T('charm person'),
+	    T('detect magic'),
+	    T('floating disc'),
+	    T('hold portal'),
+	    T('light'),
+	    T('magic missile'),
+	    T('protection from evil'),
+	    T('read languages'),
+	    T('read magic'),
+	    T('shield'),
+	    T('sleep'),
+	    T('ventriloquism'));
+  }
+  push(@property, T('spell book')) ;
+
+  $char{abilities} = $abilities;
+
   equipment();
 }
 
@@ -754,8 +790,8 @@ sub translation {
 
   my $str = source();
   my %data;
-  while ($str =~ /'([[:alnum:][:punct:] ’]+?)'/g) {
-    next if $1 eq "([[:alnum:][:punct:] ’]+?)";
+  while ($str =~ /'(.+?)'/g) {
+    next if $1 eq "(.+?)";
     $data{$1} = $Translation{$1};
   }
   foreach (sort keys %data) {
@@ -793,7 +829,7 @@ sub show_link {
   print $q->textarea(-name    => "input",
 		     -default => $str,
 		     -rows    => $rows + 3,
-		     -columns => 50);
+		     -columns => 55);
   print $q->p($q->submit);
   print $q->end_form;
   footer();
@@ -809,7 +845,7 @@ sub source {
 sub default {
   header();
   print $q->p(T('This is the %0 character sheet generator.',
-		$q->a({-href=>'http://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/'},
+		$q->a({-href=>T('http://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/')},
 		      T('Halberts and Helmets'))));
   print $q->start_form(-method=>"get", -action=>"$url/random/$lang", -accept_charset=>"UTF-8"),
     T('Name:'), " ", $q->textfield("name"), " ", $q->submit, $q->end_form;
@@ -920,8 +956,14 @@ __DATA__
 %0 Gold
 (starting gold: %0)
 (Startgold: %0)
++1 bonus to ranged weapons
++1 für Fernwaffen
++4 to hit and double damage backstabbing
++4 und Schaden ×2 für hinterhältigen Angriff
 1d6
 1W6
+AC -2 vs. opponents larger than humans
+Rüstung -2 bei Gegnern über Menschengrösse
 Also note that the parameters need to be UTF-8 encoded.
 Die Parameter müssen UTF-8 codiert sein.
 Bookmark
@@ -948,22 +990,24 @@ If the template contains a multiline placeholder, the parameter may also provide
 Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch doppelte Backslashes trennen.
 In addition to that, some parameters are computed unless provided:
 Zudem werden einige Parameter berechnet, sofern sie nicht angegeben wurden:
-The generator works by using a template (%0) and replacing some placeholders.
-Das funktioniert über eine Vorlage (%0) und dem Ersetzen von Platzhaltern.
-The template uses the %0 font.
-Die Vorlage verwendet die Schriftart %0.
-Name:
-Name:
 More
 Weitere Informationen
+Name:
+Name:
 Source
 Quellcode
+Spells:
+Zaubersprüche:
 The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
 Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
+The generator works by using a template (%0) and replacing some placeholders.
+Das funktioniert über eine Vorlage (%0) und dem Ersetzen von Platzhaltern.
 The script can also generate a %0, a %1, or %2.
 Das Skript kann auch %0, %1 oder %2 generieren.
 The script can also show %0.
 Das Skript kann auch %0 zeigen.
+The template uses the %0 font.
+Die Vorlage verwendet die Schriftart %0.
 This is the %0 character sheet generator.
 Dies ist der %0 Charaktergenerator.
 Use the following form to make changes to your character sheet.
@@ -982,6 +1026,8 @@ case of bolts
 Kiste mit Bolzen
 chain mail
 Kettenhemd
+charm person
+Person bezaubern
 cleric
 Kleriker
 club
@@ -990,6 +1036,8 @@ crossbow
 Armbrust
 dagger
 Dolch
+detect magic
+Magie entdecken
 dwarf
 Zwerg
 elf
@@ -1000,12 +1048,16 @@ fighter
 Krieger
 flask of oil
 Ölflasche
+floating disc
+Schwebende Scheibe
 halfling
 Halbling
 hand axe
 Handaxt
 helmet
 Helm
+hold portal
+Portal verschliessen
 holy symbol
 Heiliges Symbol
 holy water
@@ -1020,12 +1072,16 @@ lantern
 Laterne
 leather armor
 Lederrüstung
+light
+Licht
 long bow
 Langbogen
 long sword
 Langschwert
 mace
 Streitkeule
+magic missile
+Magisches Geschoss
 magic-user
 Magier
 mirror
@@ -1036,10 +1092,16 @@ pole arm
 Stangenwaffe
 pouch of stones
 Beutel mit Steinen
+protection from evil
+Schutz vor Bösem
 quiver of arrows
 Köcher mit Pfeilen
 random character
 einen zufälligen Charakter
+read languages
+Sprachen lesen
+read magic
+Magie lesen
 rope
 Seil
 shield
@@ -1050,12 +1112,16 @@ short sword
 Kurzschwert
 silver dagger
 Silberner Dolch
+sleep
+Schlaf
 sling
 Schleuder
 some statistics
 Statistiken
 spear
 Speer
+spell book
+Zauberbuch
 staff
 Stab
 thief
@@ -1066,6 +1132,8 @@ torches
 Fackeln
 two handed sword
 Zweihänder
+ventriloquism
+Bauchreden
 war hammer
 Kriegshammer
 which parameters go where
@@ -1074,3 +1142,16 @@ wolfsbane
 Eisenhut (sog. Wolfsbann)
 wooden pole
 Holzstab
+⚀ for normal tasks
+⚀ für normale Aufgaben
+⚁ to find secret constructions and traps
+⚁ um Geheimbauten und Fallen zu finden
+⚁ to find secret or concealed doors
+⚁ um geheime und versteckte Türen zu finden
+⚁ to hear noise
+⚁ um Geräusche zu hören
+⚁ to hide and sneak
+⚁ für Verstecken und Schleichen
+⚄ to hide and sneak outdoors
+⚄ für Verstecken und Schleichen im Freien
+
