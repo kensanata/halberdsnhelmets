@@ -25,6 +25,7 @@ my %Translation = map { chop($_); $_; } <DATA>;
 # globals
 my $q = new CGI;
 my %char = ($q->Vars);
+my @provided = $q->param;
 my ($lang) = $q->path_info =~ m!/(en|de)\b!;
 $lang = "en" unless $lang;
 my $filename = $char{charsheet} || T('Charactersheet.svg');
@@ -157,20 +158,10 @@ sub link_to {
   $link .= "/$path" if $path;
   $link .= "/$lang" if $lang;
 
-  my $thac0 = defined $char{thac0};
-
-  my @keys;
-  foreach (keys %char) {
-    next if $thac0 and /^(melee|range)\d+$/;
-    next if /-bonus$/;
-    next unless defined $char{$_};
-    push(@keys, $_);
-  }
-
   return "$link?"
     . join(";",
 	   map { "$_=" . url_encode($char{$_}) }
-	   @keys);
+	   @provided);
 }
 
 sub svg_transform {
@@ -311,7 +302,7 @@ sub equipment {
   ($money, @property) = buy_protection($money, $class,
 				       @property);
   push(@property, T('%0 gold', $money));
-  $char{property} =  join("\\\\", @property);
+  provide('property',  join("\\\\", @property));
 }
 
 sub buy_tools {
@@ -416,7 +407,7 @@ sub buy_armor {
     push(@property, T('helmet'));
   }
 
-  $char{ac} =  $ac;
+  provide('ac',  $ac);
 
   $money += $budget;
 
@@ -617,11 +608,11 @@ sub saves {
       (16, 14, 13, 15, 13);
   }
 
-  $char{breath} =  $breath;
-  $char{poison} =  $poison;
-  $char{petrify} =  $petrify;
-  $char{wands} =  $wands;
-  $char{spells} =  $spells;
+  provide('breath',  $breath);
+  provide('poison',  $poison);
+  provide('petrify',  $petrify);
+  provide('wands',  $wands);
+  provide('spells',  $spells);
 }
 
 sub svg_show_id {
@@ -691,21 +682,27 @@ sub average {
   return above(8, @_);
 }
 
+sub provide {
+  my ($key, $value) = @_;
+  $char{$key} = $value;
+  push(@provided, $key);
+}
+
 sub random_parameters {
   my ($str, $dex, $con, $int, $wis, $cha) =
     (roll_3d6(), roll_3d6(), roll_3d6(),
      roll_3d6(), roll_3d6(), roll_3d6());
 
-  $char{str} = $str;
-  $char{dex} =  $dex;
-  $char{con} =  $con;
-  $char{int} =  $int;
-  $char{wis} =  $wis;
-  $char{cha} =  $cha;
+  provide('str', $str);
+  provide('dex', $dex);
+  provide('con', $con);
+  provide('int', $int);
+  provide('wis', $wis);
+  provide('cha', $cha);
 
-  $char{level} =  "1";
-  $char{xp} =  "0";
-  $char{thac0} =  19;
+  provide('level',  "1");
+  provide('xp',  "0");
+  provide('thac0',  19);
 
   my $class = $char{class};
   my $best = best($str, $dex, $con, $int, $wis, $cha);
@@ -737,7 +734,7 @@ sub random_parameters {
     }
   }
 
-  $char{class} =  $class;
+  provide('class',  $class);
 
   my $hp = $char{hp};
   if (not $hp) {
@@ -754,7 +751,10 @@ sub random_parameters {
     $hp = 1 if $hp < 1;
   }
 
-  $char{hp} =  $hp;
+  provide('hp',  $hp);
+
+  push(@property, T('spell book')) ;
+  equipment();
 
   my $abilities = T('1/6 for normal tasks');
   if ($class eq T('elf')) {
@@ -787,11 +787,7 @@ sub random_parameters {
 	    T('sleep'),
 	    T('ventriloquism'));
   }
-  push(@property, T('spell book')) ;
-
-  $char{abilities} = $abilities;
-
-  equipment();
+  provide('abilities', $abilities);
 }
 
 sub characters {
@@ -887,7 +883,7 @@ sub show_link {
 		$q->a({-href=>"http://campaignwiki.org/"}, "Campaign Wiki")));
   my $str = T('Character:') . "\n";
   my $rows;
-  for my $key (keys %char) {
+  for my $key (@provided) {
     for my $val (split(/\\\\/, $char{$key})) {
       # utf8::decode($val);
       $str .= "$key: $val\n";
