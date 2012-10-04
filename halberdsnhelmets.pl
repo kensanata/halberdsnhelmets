@@ -16,6 +16,7 @@
 
 use CGI qw(-utf8);
 use XML::LibXML;
+use LWP::UserAgent;
 use utf8;
 
 # see __DATA__ at the end of the file
@@ -26,7 +27,7 @@ my $q = new CGI;
 my %char = ($q->Vars);
 my ($lang) = $q->path_info =~ m!/(en|de)\b!;
 $lang = "en" unless $lang;
-my $filename = T('Charactersheet.svg');
+my $filename = $char{charsheet} || T('Charactersheet.svg');
 my $url = "http://campaignwiki.org/halberdsnhelmets";
 my $email = "kensanata\@gmail.com";
 my $author = "Alex Schroeder";
@@ -77,18 +78,32 @@ sub error {
 }
 
 sub header {
+  my $header = shift;
   print $q->header(-charset=>"utf-8");
   binmode(STDOUT, ":utf8");
   print $q->start_html(T('Character Sheet Generator'));
-  print $q->h1(T('Character Sheet Generator'));
+  if ($header) {
+    print $q->h1(T($header));
+  } elsif (defined $header) {
+    # '' = no header
+  } else {
+    print $q->h1(T('Character Sheet Generator'));
+  }
 }
 
 sub svg_read {
-  undef $/;
-  open(my $fh, "<:utf8", $filename);
+  my $doc;
   my $parser = XML::LibXML->new();
-  my $doc = $parser->parse_fh($fh);
-  close($fh);
+  if (-f $filename) {
+    open(my $fh, "<:utf8", $filename);
+    $doc = $parser->parse_fh($fh);
+    close($fh);
+  } else {
+    my $ua = LWP::UserAgent->new;
+    my $response = $ua->get($filename);
+    $response->is_success or error($response->status_line, $filename);
+    $doc = $parser->parse_string($response->decoded_content);
+  }
   return $doc;
 }
 
@@ -689,21 +704,21 @@ sub random_parameters {
 
   $char{hp} =  $hp;
 
-  my $abilities = T('⚀ for normal tasks');
+  my $abilities = T('1/6 for normal tasks');
   if ($class eq T('elf')) {
-    $abilities .= "\\\\" . T('⚁ to hear noise');
-    $abilities .= "\\\\" . T('⚁ to find secret or concealed doors');
+    $abilities .= "\\\\" . T('2/6 to hear noise');
+    $abilities .= "\\\\" . T('2/6 to find secret or concealed doors');
   } elsif ($class eq T('dwarf')) {
-    $abilities .= "\\\\" . T('⚁ to hear noise');
-    $abilities .= "\\\\" . T('⚁ to find secret constructions and traps');
+    $abilities .= "\\\\" . T('2/6 to hear noise');
+    $abilities .= "\\\\" . T('2/6 to find secret constructions and traps');
   } elsif ($class eq T('halfling')) {
-    $abilities .= "\\\\" . T('⚁ to hear noise');
-    $abilities .= "\\\\" . T('⚁ to hide and sneak');
-    $abilities .= "\\\\" . T('⚄ to hide and sneak outdoors');
+    $abilities .= "\\\\" . T('2/6 to hear noise');
+    $abilities .= "\\\\" . T('2/6 to hide and sneak');
+    $abilities .= "\\\\" . T('5/6 to hide and sneak outdoors');
     $abilities .= "\\\\" . T('+1 bonus to ranged weapons');
     $abilities .= "\\\\" . T('AC -2 vs. opponents larger than humans');
   } elsif ($class eq T('thief')) {
-    $abilities .= "\\\\" . T('⚁ to hear noise');
+    $abilities .= "\\\\" . T('2/6 to hear noise');
     $abilities .= "\\\\" . T('+4 to hit and double damage backstabbing');
   } elsif ($class eq T('magic-user')) {
     $abilities .= "\\\\" . T('Spells:') . " "
@@ -728,12 +743,11 @@ sub random_parameters {
 }
 
 sub characters {
-  print $q->header(-type=>"text/plain",
-		   -charset=>"utf8");
-  binmode(STDOUT, ":utf8");
-
+  header('');
   for (my $i = 0; $i < 50; $i++) {
-    $q = new CGI;
+    $q->delete_all();
+    %char = ();
+    print $q->start_pre({-style=>'display: inline-block; padding: 0 1em; width: 25em; border-left: 1px dotted grey; vertical-align: top; font-size: 8pt; '});
     random_parameters();
     print "Str Dex Con Int Wis Cha HP AC Class\n";
     printf "%3d", $char{"str"};
@@ -748,7 +762,10 @@ sub characters {
     print "\n";
     print map { "  $_\n" }
       split(/\\\\/, $char{property});
+    print $q->end_pre();
   }
+  print $q->div({-style=>'clear: both;'});
+  footer();
 }
 
 sub stats {
