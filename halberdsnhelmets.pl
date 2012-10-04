@@ -208,7 +208,7 @@ sub bonus {
   return "+3";
 }
 
-sub compute_data {
+sub moldvay {
   for my $id (qw(str dex con int wis cha)) {
     if ($char{$id} and not $char{"$id-bonus"}) {
       $char{"$id-bonus"} =  bonus($char{$id});
@@ -231,12 +231,64 @@ sub compute_data {
   }
   if ($char{"str-bonus"} and not $char{damage}) {
     # hack alert!
-    my $damage = T('1d6');
+    my $damage = 1 . T('d6');
     $char{damage} = $damage . $char{"str-bonus"}
       . " / " . $damage;
   }
 
   saves();
+}
+
+sub complete {
+  my ($one, $two) = @_;
+  if ($char{$one} and not $char{$two}) {
+    if ($char{$one} > 20) {
+      $char{$two} = 0;
+    } else {
+      $char{$two} = 20 - $char{$one};
+    }
+  }
+}
+
+sub pendragon {
+  if ($char{str} and $char{siz} and not $char{damage}) {
+    $char{damage} = int(($char{str}+$char{siz}) / 6 + 0.5) . T('d6');
+  }
+  if ($char{con} and $char{siz} and not $char{hp}) {
+    $char{hp} = $char{con}+$char{siz};
+  }
+  if ($char{hp} and not $char{unconscious}) {
+    $char{unconscious} = int($char{hp} / 4 + 0.5);
+  }
+  my @traits = qw(chaste lustful
+		  energetic lazy
+		  forgiving vengeful
+		  generous selfish
+		  honest deceitful
+		  just arbitrary
+		  merciful cruel
+		  modest proud
+		  pious worldly
+		  prudent reckless
+		  temperate indulgent
+		  trusting suspicious
+		  valorous cowardly);
+  while (@traits) {
+    my $one = shift(@traits);
+    my $two = shift(@traits);
+    complete($one, $two);
+    complete($two, $one);
+  }
+}
+
+sub compute_data {
+  if ($char{rules} eq 'pendragon') {
+    pendragon();
+  } elsif ($char{rules} eq 'moldvay') {
+    moldvay();
+  } else {
+    moldvay();
+  }
 }
 
 sub equipment {
@@ -977,8 +1029,8 @@ __DATA__
 +1 für Fernwaffen
 +4 to hit and double damage backstabbing
 +4 und Schaden ×2 für hinterhältigen Angriff
-1d6
-1W6
+d6
+W6
 AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
 Also note that the parameters need to be UTF-8 encoded.
