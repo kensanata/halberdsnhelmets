@@ -245,6 +245,12 @@ sub pendragon {
   if ($char{str} and $char{siz} and not $char{damage}) {
     $char{damage} = int(($char{str}+$char{siz}) / 6 + 0.5) . T('d6');
   }
+  if ($char{str} and $char{con} and not $char{healing}) {
+    $char{healing} = int(($char{str}+$char{con}) / 10 + 0.5);
+  }
+  if ($char{str} and $char{dex} and not $char{move}) {
+    $char{move} = int(($char{str}+$char{dex}) / 10 + 0.5);
+  }
   if ($char{con} and $char{siz} and not $char{hp}) {
     $char{hp} = $char{con}+$char{siz};
   }
@@ -273,9 +279,9 @@ sub pendragon {
 }
 
 sub compute_data {
-  if ($char{rules} eq 'pendragon') {
+  if ($char{rules} eq "pendragon") {
     pendragon();
-  } elsif ($char{rules} eq 'moldvay') {
+  } elsif ($char{rules} eq "moldvay") {
     moldvay();
   } else {
     moldvay();
@@ -302,7 +308,7 @@ sub equipment {
   ($money, @property) = buy_protection($money, $class,
 				       @property);
   push(@property, T('%0 gold', $money));
-  provide('property',  join("\\\\", @property));
+  provide("property",  join("\\\\", @property));
 }
 
 sub buy_tools {
@@ -407,7 +413,7 @@ sub buy_armor {
     push(@property, T('helmet'));
   }
 
-  provide('ac',  $ac);
+  provide("ac",  $ac);
 
   $money += $budget;
 
@@ -608,11 +614,11 @@ sub saves {
       (16, 14, 13, 15, 13);
   }
 
-  provide('breath',  $breath);
-  provide('poison',  $poison);
-  provide('petrify',  $petrify);
-  provide('wands',  $wands);
-  provide('spells',  $spells);
+  provide("breath",  $breath);
+  provide("poison",  $poison);
+  provide("petrify",  $petrify);
+  provide("wands",  $wands);
+  provide("spells",  $spells);
 }
 
 sub svg_show_id {
@@ -693,16 +699,16 @@ sub random_parameters {
     (roll_3d6(), roll_3d6(), roll_3d6(),
      roll_3d6(), roll_3d6(), roll_3d6());
 
-  provide('str', $str);
-  provide('dex', $dex);
-  provide('con', $con);
-  provide('int', $int);
-  provide('wis', $wis);
-  provide('cha', $cha);
+  provide("str", $str);
+  provide("dex", $dex);
+  provide("con", $con);
+  provide("int", $int);
+  provide("wis", $wis);
+  provide("cha", $cha);
 
-  provide('level',  "1");
-  provide('xp',  "0");
-  provide('thac0',  19);
+  provide("level",  "1");
+  provide("xp",  "0");
+  provide("thac0",  19);
 
   my $class = $char{class};
   my $best = best($str, $dex, $con, $int, $wis, $cha);
@@ -734,7 +740,7 @@ sub random_parameters {
     }
   }
 
-  provide('class',  $class);
+  provide("class",  $class);
 
   my $hp = $char{hp};
   if (not $hp) {
@@ -751,7 +757,7 @@ sub random_parameters {
     $hp = 1 if $hp < 1;
   }
 
-  provide('hp',  $hp);
+  provide("hp",  $hp);
 
   push(@property, T('spell book')) ;
   equipment();
@@ -787,7 +793,7 @@ sub random_parameters {
 	    T('sleep'),
 	    T('ventriloquism'));
   }
-  provide('abilities', $abilities);
+  provide("abilities", $abilities);
 }
 
 sub characters {
@@ -795,7 +801,7 @@ sub characters {
   for (my $i = 0; $i < 50; $i++) {
     $q->delete_all();
     %char = ();
-    print $q->start_pre({-style=>'display: inline-block; padding: 0 1em; width: 25em; border-left: 1px dotted grey; vertical-align: top; font-size: 8pt; '});
+    print $q->start_pre({-style=>"display: inline-block; padding: 0 1em; width: 25em; border-left: 1px dotted grey; vertical-align: top; font-size: 8pt; "});
     random_parameters();
     print "Str Dex Con Int Wis Cha HP AC Class\n";
     printf "%3d", $char{"str"};
@@ -812,7 +818,7 @@ sub characters {
       split(/\\\\/, $char{property});
     print $q->end_pre();
   }
-  print $q->div({-style=>'clear: both;'});
+  print $q->div({-style=>"clear: both;"});
   footer();
 }
 
@@ -912,7 +918,8 @@ sub default {
   print $q->p(T('This is the %0 character sheet generator.',
 		$q->a({-href=>T('http://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/')},
 		      T('Halberts and Helmets'))));
-  print $q->start_form(-method=>"get", -action=>"$url/random/$lang", -accept_charset=>"UTF-8"),
+  print $q->start_form(-method=>"get", -action=>"$url/random/$lang",
+		       -accept_charset=>"UTF-8"),
     T('Name:'), " ", $q->textfield("name"), " ", $q->submit, $q->end_form;
   print $q->p(T('The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.'));
   footer();
@@ -921,10 +928,13 @@ sub default {
 
 sub more {
   header();
-  print $q->p(T('The generator works by using a template (%0) and replacing some placeholders.',
-		$q->a({-href=>"/" . T('Charactersheet.svg')}, T('Charactersheet.svg'))),
-	      T('The template uses the %0 font.',
-		$q->a({-href=>"/Purisa.ttf"}, "Purisa")),
+  print $q->p(T('The generator works by using a template and replacing some placeholders.'));
+  print $q->h2(T('Basic D&D'));
+  print $q->p(T('The default template (%0) uses the %0 font.',
+		$q->a({-href=>"/" . T('Charactersheet.svg')},
+		      T('Charactersheet.svg')),
+		$q->a({-href=>"/Purisa.ttf"},
+		      "Purisa")),
 	      T('You provide values for the placeholders by providing URL parameters (%0).',
 		$q->a({-href=>$example}, T('example'))),
 	      T('The script can also show %0.',
@@ -933,6 +943,7 @@ sub more {
 	      T('Also note that the parameters need to be UTF-8 encoded.'),
 	      T('If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.'));
   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
+  print "<ul>";
   my @doc = qw(str str-bonus
 	       dex dex-bonus
 	       con con-bonus
@@ -942,7 +953,6 @@ sub more {
 	       cha-bonus loyalty
 	       str-bonus damage
 	       thac0 melee0-9&nbsp;&amp;&nbsp;range0-9);
-  print "<ul>";
   while (@doc) {
     print $q->li(shift(@doc), "&rarr;", shift(@doc));
   }
@@ -951,6 +961,38 @@ sub more {
 		$q->a({-href=>"$url/random/$lang"}, T('random character')),
 		$q->a({-href=>"$url/characters/$lang"}, T('bunch of characters')),
 		$q->a({-href=>"$url/stats/$lang"}, T('some statistics'))));
+  print $q->h2(T('Pendragon'));
+  print $q->p(T('The script also supports Pendragon characters (but cannot generate them randomly):'),
+	      T('Get started with a %0.',
+		$q->a({-href=>"$url/link/$lang?rules=pendragon;charsheet=http%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
+		      T('Pendragon character'))));
+  print $q->p(T('In addition to that, some parameters are computed unless provided:'));
+  print "<ul>";
+  @doc = qw(str+siz damage
+	       str+con heal
+	       str+dex move
+	       siz+con hp
+	       hp unconscious);
+  while (@doc) {
+    print $q->li(shift(@doc), "&rarr;", shift(@doc));
+  }
+  @doc = qw(chaste lustful
+	    energetic lazy
+	    forgiving vengeful
+	    generous selfish
+	    honest deceitful
+	    just arbitrary
+	    merciful cruel
+	    modest proud
+	    pious worldly
+	    prudent reckless
+	    temperate indulgent
+	    trusting suspicious
+	    valorous cowardly);
+  while (@doc) {
+    print $q->li(shift(@doc), "&harr;", shift(@doc));
+  }
+  print "</ul>";
   footer();
 }
 
@@ -1025,12 +1067,24 @@ __DATA__
 +1 für Fernwaffen
 +4 to hit and double damage backstabbing
 +4 und Schaden ×2 für hinterhältigen Angriff
-d6
-W6
+1/6 for normal tasks
+1/6 für normale Aufgaben
+2/6 to find secret constructions and traps
+2/6 um Geheimbauten und Fallen zu finden
+2/6 to find secret or concealed doors
+2/6 um geheime und versteckte Türen zu finden
+2/6 to hear noise
+2/6 um Geräusche zu hören
+2/6 to hide and sneak
+2/6 für Verstecken und Schleichen
+5/6 to hide and sneak outdoors
+5/6 für Verstecken und Schleichen im Freien
 AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
 Also note that the parameters need to be UTF-8 encoded.
 Die Parameter müssen UTF-8 codiert sein.
+Basic D&D
+Basic D&D
 Bookmark
 Lesezeichen
 Bookmark the following link to your %0.
@@ -1049,6 +1103,8 @@ English
 Englisch
 German
 Deutsch
+Get started with a %0.
+%0 bearbeiten.
 Halberts and Helmets
 Hellebarden und Helme
 If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
@@ -1059,20 +1115,26 @@ More
 Weitere Informationen
 Name:
 Name:
+Pendragon
+Pendragon
+Pendragon character
+Pendragon Charakter
 Source
 Quellcode
 Spells:
 Zaubersprüche:
 The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
 Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
-The generator works by using a template (%0) and replacing some placeholders.
-Das funktioniert über eine Vorlage (%0) und dem Ersetzen von Platzhaltern.
+The default template (%0) uses the %0 font.
+Die Defaultvorlage (%0) verwendet die %0 Schrift.
+The generator works by using a template and replacing some placeholders.
+Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
+The script also supports Pendragon characters (but cannot generate them randomly):
+Das Skript kann auch Pendragon Charaktere anzeigen (aber nicht zufällig erstellen):
 The script can also generate a %0, a %1, or %2.
 Das Skript kann auch %0, %1 oder %2 generieren.
 The script can also show %0.
 Das Skript kann auch %0 zeigen.
-The template uses the %0 font.
-Die Vorlage verwendet die Schriftart %0.
 This is the %0 character sheet generator.
 Dies ist der %0 Charaktergenerator.
 Use the following form to make changes to your character sheet.
@@ -1099,6 +1161,8 @@ club
 Keule
 crossbow
 Armbrust
+d6
+W6
 dagger
 Dolch
 detect magic
@@ -1207,16 +1271,3 @@ wolfsbane
 Eisenhut (sog. Wolfsbann)
 wooden pole
 Holzstab
-⚀ for normal tasks
-⚀ für normale Aufgaben
-⚁ to find secret constructions and traps
-⚁ um Geheimbauten und Fallen zu finden
-⚁ to find secret or concealed doors
-⚁ um geheime und versteckte Türen zu finden
-⚁ to hear noise
-⚁ um Geräusche zu hören
-⚁ to hide and sneak
-⚁ für Verstecken und Schleichen
-⚄ to hide and sneak outdoors
-⚄ für Verstecken und Schleichen im Freien
-
