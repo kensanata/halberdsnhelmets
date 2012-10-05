@@ -1424,11 +1424,12 @@
          id="tspan3224">Dancing</tspan>
     </text>
     <text
-       id="text3226"
+       id="dancing"
        x="526.65308"
        y="530.07404"
        style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr;text-anchor:end;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
-       sodipodi:linespacing="125%">
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3226">
       <tspan
          style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
          x="526.65308"

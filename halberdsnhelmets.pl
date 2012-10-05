@@ -635,7 +635,7 @@ sub svg_show_id {
     $node->appendText($id);
     my $style = $node->getAttribute("style");
     $style =~ s/font-size:\d+px/font-size:8px/;
-    $style =~ s/fill:#\d+/fill:magenta/;
+    $style =~ s/fill:#\d+/fill:magenta/ or $style .= ";fill:magenta";
     $node->setAttribute("style", $style);
   }
 
