@@ -241,6 +241,81 @@ sub complete {
   }
 }
 
+sub crypt_bonus {
+  my $n = shift;
+  return "-1" if $n <=  8;
+  return "" if $n <= 12;
+  return "+1" if $n <= 15;
+  return "+2" if $n <= 17;
+  return "+3";
+}
+
+sub crypts_n_things {
+  if ($char{str} and not $char{"to-hit"}) {
+    $char{"to-hit"} = crypt_bonus($char{str});
+  }
+  if ($char{str} and not $char{"damage-bonus"}) {
+    $char{"damage-bonus"} = crypt_bonus($char{str});
+  }
+  if ($char{dex} and not $char{"missile-bonus"}) {
+    $char{"missile-bonus"} = crypt_bonus($char{dex});
+  }
+  if ($char{dex} and not $char{"ac-bonus"}) {
+    $char{"ac-bonus"} = crypt_bonus($char{dex});
+  }
+  if ($char{con} and not $char{"con-bonus"}) {
+    $char{"con-bonus"} = crypt_bonus($char{con});
+  }
+  if ($char{int} and not $char{understand}) {
+    if ($char{int} <= 7) {
+      $char{understand} = "0%";
+    } elsif ($char{int} <= 9) {
+      $char{understand} = 5 * ($char{int} - 7) . "%";
+    } elsif ($char{int} <= 16) {
+      $char{understand} = 5 * ($char{int} - 6) . "%";
+    } else {
+      $char{understand} = 15 * ($char{int} - 13) . "%";
+    }
+  }
+  if ($char{cha} and not $char{charm}) {
+    if ($char{cha} <= 4) {
+      $char{charm} = "10%";
+    } elsif ($char{cha} <= 6) {
+      $char{charm} = "20%";
+    } elsif ($char{cha} <= 8) {
+      $char{charm} = "30%";
+    } elsif ($char{cha} <= 12) {
+      $char{charm} = "40%";
+    } elsif ($char{cha} <= 15) {
+      $char{charm} = "50%";
+    } elsif ($char{cha} <= 17) {
+      $char{charm} = "60%";
+    } elsif ($char{cha} <= 18) {
+      $char{charm} = "75%";
+    }
+  }
+  if ($char{cha} and not $char{hirelings}) {
+    if ($char{cha} <= 4) {
+      $char{hirelings} = 1;
+    } elsif ($char{cha} <= 6) {
+      $char{hirelings} = 2;
+    } elsif ($char{cha} <= 8) {
+      $char{hirelings} = 3;
+    } elsif ($char{cha} <= 12) {
+      $char{hirelings} = 4;
+    } elsif ($char{cha} <= 15) {
+      $char{hirelings} = 5;
+    } elsif ($char{cha} <= 17) {
+      $char{hirelings} = 6;
+    } elsif ($char{cha} <= 18) {
+      $char{hirelings} = 7;
+    }
+  }
+  if ($char{wis} and not $char{sanity}) {
+    $char{sanity} = $char{wis};
+  }
+}
+
 sub pendragon {
   if ($char{str} and $char{siz} and not $char{damage}) {
     $char{damage} = int(($char{str}+$char{siz}) / 6 + 0.5) . T('d6');
@@ -283,6 +358,8 @@ sub compute_data {
     pendragon();
   } elsif ($char{rules} eq "moldvay") {
     moldvay();
+  } elsif ($char{rules} eq "crypts-n-things") {
+    crypts_n_things();
   } else {
     moldvay();
   }
