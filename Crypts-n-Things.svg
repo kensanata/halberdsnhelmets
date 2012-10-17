@@ -23,6 +23,11 @@
 	  display: none;
 	}
       }
+      @media screen {
+        a {
+          fill: #0000ff;
+        }
+      }
       @font-face {
           font-family: 'Purisa';
           src: url('/Purisa.eot'); /* For IE */

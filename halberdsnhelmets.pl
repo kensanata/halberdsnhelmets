@@ -34,6 +34,7 @@ my $email = "kensanata\@gmail.com";
 my $author = "Alex Schroeder";
 my $contact = "http://www.emacswiki.org/alex/Contact";
 my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
+my $parser;
 
 sub T {
   my $en = shift;
@@ -117,38 +118,54 @@ sub svg_write {
 }
 
 sub replace_text {
-  my ($nodes, $str) = @_;
-  # delete the text nodes of the tspan and add a new text node
-  for my $node ($nodes->get_nodelist) {
-    $node->removeChildNodes();
-    $node->appendText(T($str));
-  }
-}
-
-sub replace_multiline_text {
-  my ($nodes, $str) = @_;
+  my ($node, $str) = @_;
   my @line = split(/\\\\/, $str);
 
-  # determine dy
-  my $firstline = $nodes->get_node(1);
-  my $secondline = $nodes->get_node(2);
-  my $dy = $secondline->getAttribute("y") - $firstline->getAttribute("y");
+  # is this multiline in the template
+  # (ignore text nodes, go for tspans only)
+  my $dy;
+  my $tspans = $node->find(qq{svg:tspan});
+  if ($tspans->size() > 1) {
 
-  # get rid of the extra lines (tspan elements)
-  my $parent = $firstline->parentNode;
-  for (my $pos = 2; $pos <= $nodes->size(); $pos++) {
-    $parent->removeChild($nodes->get_node($pos));
+    $dy = $tspans->get_node(2)->getAttribute("y")
+      - $tspans->get_node(1)->getAttribute("y");
+  } else {
+    # mismatch, attempt readable compromise
+    @line = (join(", ", @line));
   }
 
-  $firstline->removeChildNodes();
-  $firstline->appendText(shift @line);
+  # delete the tspan nodes of the text node
+  $node->removeChildNodes();
 
-  my $tspan = $firstline;
-  foreach my $line (@line) {
-    $tspan = $tspan->cloneNode();
-    $tspan->setAttribute("y", $tspan->getAttribute("y") + $dy);
-    $tspan->appendText(T($line));
-    $parent->appendChild($tspan);
+  $parser = XML::LibXML->new() unless $parser;
+
+  my $tspan = XML::LibXML::Element->new("tspan");
+  $tspan->setAttribute("x", $node->getAttribute("x"));
+  $tspan->setAttribute("y", $node->getAttribute("y"));
+
+  while (my $line = shift(@line)) {
+    $fragment = $parser->parse_balanced_chunk(T($line));
+    foreach my $child ($fragment->childNodes) {
+      my $tag = $child->nodeName;
+      if ($tag eq "strong" or $tag eq "b") {
+	my $node = XML::LibXML::Element->new("tspan");
+	$node->setAttribute("style", "font-weight:bold");
+	$node->appendText($child->textContent);
+	$tspan->appendChild($node);
+      } elsif ($tag eq "a") {
+	$child->setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href",
+			       $child->getAttribute("href"));
+	$child->removeAttribute("href");
+	$tspan->appendChild($child);
+      } else {
+	$tspan->appendText($child->textContent);
+      }
+    }
+    $node->appendChild($tspan);
+    if (@line) {
+      $tspan = $tspan->cloneNode();
+      $tspan->setAttribute("y", $tspan->getAttribute("y") + $dy);
+    }
   }
 }
 
@@ -172,12 +189,9 @@ sub svg_transform {
 
   for my $id (keys %char) {
     next unless $id =~ /^[-a-z0-9]+$/;
-    my $nodes = $svg->find(qq{//svg:text[\@id="$id"]/svg:tspan}, $doc);
-
-    if ($nodes->size() == 1) {
-      replace_text($nodes, $char{$id});
-    } elsif ($nodes->size() > 1) {
-      replace_multiline_text($nodes, $char{$id});
+    my $nodes = $svg->find(qq{//svg:text[\@id="$id"]}, $doc);
+    for my $node ($nodes->get_nodelist) {
+      replace_text($node, $char{$id}, $doc);
     }
   }
 
@@ -977,7 +991,8 @@ sub show_link {
   print $q->textarea(-name    => "input",
 		     -default => $str,
 		     -rows    => $rows + 3,
-		     -columns => 55);
+		     -columns => 55,
+		     -style   => "width: 100%", );
   print $q->p($q->submit);
   print $q->end_form;
   footer();
@@ -1006,6 +1021,7 @@ sub default {
 sub more {
   header();
   print $q->p(T('The generator works by using a template and replacing some placeholders.'));
+
   print $q->h2(T('Basic D&D'));
   print $q->p(T('The default template (%0) uses the %0 font.',
 		$q->a({-href=>"/" . T('Charactersheet.svg')},
@@ -1038,11 +1054,15 @@ sub more {
 		$q->a({-href=>"$url/random/$lang"}, T('random character')),
 		$q->a({-href=>"$url/characters/$lang"}, T('bunch of characters')),
 		$q->a({-href=>"$url/stats/$lang"}, T('some statistics'))));
+
   print $q->h2(T('Pendragon'));
   print $q->p(T('The script also supports Pendragon characters (but cannot generate them randomly):'),
 	      T('Get started with a %0.',
 		$q->a({-href=>"$url/link/$lang?rules=pendragon;charsheet=http%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
-		      T('Pendragon character'))));
+		      T('Pendragon character'))),
+	      T('The script can also show %0.',
+		$q->a({-href=>"$url/show/$lang?rules=pendragon;charsheet=http%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
+		      T('which parameters go where'))));
   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
   print "<ul>";
   @doc = qw(str+siz damage
@@ -1070,6 +1090,32 @@ sub more {
     print $q->li(shift(@doc), "&harr;", shift(@doc));
   }
   print "</ul>";
+
+  print $q->h2(T('Crypts &amp; Things'));
+  print $q->p(T('The script also supports Crypts &amp; Things characters (but cannot generate them randomly):'),
+	      T('Get started with a %0.',
+		$q->a({-href=>"$url/link/$lang?rules=crypts-n-things;charsheet=http%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
+		      T('Crypts &amp; Things character'))),
+	      T('The script can also show %0.',
+		$q->a({-href=>"$url/show/$lang?rules=crypts-n-things;charsheet=http%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
+		      T('which parameters go where'))));
+
+  print $q->p(T('In addition to that, some parameters are computed unless provided:'));
+  print "<ul>";
+  @doc = qw(str to-hit
+	    str damage-bonus
+	    dex missile-bonus
+	    dex ac-bonus
+	    con con-bonus
+	    int understand
+	    cha charm
+	    cha hirelings
+	    wis sanity);
+  while (@doc) {
+    print $q->li(shift(@doc), "&rarr;", shift(@doc));
+  }
+  print "</ul>";
+
   footer();
 }
 
@@ -1174,6 +1220,10 @@ Character:
 Charakter:
 Charactersheet.svg
 Charakterblatt.svg
+Crypts &amp; Things
+Crypts &amp; Things
+Crypts &amp; Things character
+Crypts &amp; Things Charakter
 Edit
 Bearbeiten
 English
@@ -1206,12 +1256,14 @@ The default template (%0) uses the %0 font.
 Die Defaultvorlage (%0) verwendet die %0 Schrift.
 The generator works by using a template and replacing some placeholders.
 Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
+The script also supports Crypts &amp; Things characters (but cannot generate them randomly):
+Das Skript kann auch Charaktere für Crypts &amp; Things anzeigen (aber nicht zufällig erstellen):
 The script also supports Pendragon characters (but cannot generate them randomly):
 Das Skript kann auch Pendragon Charaktere anzeigen (aber nicht zufällig erstellen):
 The script can also generate a %0, a %1, or %2.
 Das Skript kann auch %0, %1 oder %2 generieren.
 The script can also show %0.
-Das Skript kann auch %0 zeigen.
+Das Skript kann auch zeigen %0.
 This is the %0 character sheet generator.
 Dies ist der %0 Charaktergenerator.
 Use the following form to make changes to your character sheet.
