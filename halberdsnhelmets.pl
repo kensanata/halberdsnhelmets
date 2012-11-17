@@ -921,6 +921,7 @@ sub stats {
   my (%class, %property);
   for (my $i = 0; $i < 1000; $i++) {
     $q = new CGI;
+    %char = ();
     random_parameters();
     $class{$char{class}}++;
     foreach (split(/\\\\/, $char{property})) {
