@@ -28,6 +28,9 @@
         a {
           fill: #0000ff;
         }
+        svg {
+          background: #ffffff;
+        }
       }
       @font-face {
           font-family: 'Purisa';
@@ -540,13 +543,23 @@
        height="130"
        x="390"
        y="602.36218" />
-    <rect
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:0.50222222;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect14182-9"
-       width="110"
-       height="120"
-       x="330"
-       y="52.362183" />
+    <g>
+      <image
+	 xlink:href=""
+	 id="portrait"
+	 width="120"
+	 height="120"
+	 x="320"
+	 y="52.362183" />
+      <rect
+	 style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+	 id="portrait-frame"
+	 width="120"
+	 height="120"
+	 x="320"
+	 y="52.362183">
+      </rect>
+    </g>
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"

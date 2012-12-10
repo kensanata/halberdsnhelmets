@@ -192,6 +192,13 @@ sub svg_transform {
     my $nodes = $svg->find(qq{//svg:text[\@id="$id"]}, $doc);
     for my $node ($nodes->get_nodelist) {
       replace_text($node, $char{$id}, $doc);
+      next;
+    }
+    my $nodes = $svg->find(qq{//svg:image[\@id="$id"]}, $doc);
+    for my $node ($nodes->get_nodelist) {
+      $node->setAttributeNS("http://www.w3.org/1999/xlink",
+			    "xlink:href", $char{$id});
+      next;
     }
   }
 
@@ -730,6 +737,18 @@ sub svg_show_id {
     $node->setAttribute("style", $style);
   }
 
+  for my $node ($svg->find(qq{//svg:image}, $doc)->get_nodelist) {
+    my $id = $node->getAttribute("id");
+    next if $id =~ /^text[0-9]+(-[0-9]+)*$/; # skip Inkscape default texts
+    next unless $id =~ /^[-a-z0-9]+$/;
+    my $text = XML::LibXML::Element->new("text");
+    $text->setAttribute("x", $node->getAttribute("x") + 5);
+    $text->setAttribute("y", $node->getAttribute("y") + 10);
+    $text->appendText($id);
+    $text->setAttribute("style", "font-size:8px;fill:magenta");
+    $node->addSibling($text);
+  }
+
   return $doc;
 }
 
@@ -919,7 +938,7 @@ sub stats {
   binmode(STDOUT, ":utf8");
 
   my (%class, %property);
-  for (my $i = 0; $i < 1000; $i++) {
+  for (my $i = 0; $i < 10000; $i++) {
     $q = new CGI;
     %char = ();
     random_parameters();
@@ -1024,7 +1043,7 @@ sub more {
   print $q->p(T('The generator works by using a template and replacing some placeholders.'));
 
   print $q->h2(T('Basic D&D'));
-  print $q->p(T('The default template (%0) uses the %0 font.',
+  print $q->p(T('The default template (%0) uses the %1 font.',
 		$q->a({-href=>"/" . T('Charactersheet.svg')},
 		      T('Charactersheet.svg')),
 		$q->a({-href=>"/Purisa.ttf"},
