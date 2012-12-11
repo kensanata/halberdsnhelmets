@@ -800,8 +800,8 @@ sub average {
 
 sub provide {
   my ($key, $value) = @_;
+  push(@provided, $key) unless $char{$key};
   $char{$key} = $value;
-  push(@provided, $key);
 }
 
 sub random_parameters {
