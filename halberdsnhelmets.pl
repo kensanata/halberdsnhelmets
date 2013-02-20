@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Copyright (C) 2012  Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2012-2013  Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -37,8 +37,8 @@ my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;d
 my $parser;
 
 sub T {
-  my $en = shift;
-  my $suffix;
+  my ($en, @arg) = @_;
+  my $suffix = '';
   # handle (2) suffixes
   if ($en =~ /(.*)( \(\d+\))$/) {
     $en = $1;
@@ -48,8 +48,8 @@ sub T {
     $en = $Translation{$en};
   }
   # utf8::encode($en);
-  for (my $i = 0; $i < scalar @_; $i++) {
-    my $s = $_[$i];
+  for (my $i = 0; $i < scalar @arg; $i++) {
+    my $s = $arg[$i];
     $en =~ s/%$i/$s/g;
   }
   return $en . $suffix;
@@ -194,7 +194,7 @@ sub svg_transform {
       replace_text($node, $char{$id}, $doc);
       next;
     }
-    my $nodes = $svg->find(qq{//svg:image[\@id="$id"]}, $doc);
+    $nodes = $svg->find(qq{//svg:image[\@id="$id"]}, $doc);
     for my $node ($nodes->get_nodelist) {
       $node->setAttributeNS("http://www.w3.org/1999/xlink",
 			    "xlink:href", $char{$id});
@@ -375,9 +375,13 @@ sub pendragon {
 }
 
 sub compute_data {
-  if ($char{rules} eq "pendragon") {
+  if (not exists $char{rules} or not defined $char{rules}) {
+    moldvay();
+  } elsif ($char{rules} eq "pendragon") {
     pendragon();
   } elsif ($char{rules} eq "moldvay") {
+    moldvay();
+  } elsif ($char{rules} eq "labyrinth lord") {
     moldvay();
   } elsif ($char{rules} eq "crypts-n-things") {
     crypts_n_things();
@@ -392,8 +396,15 @@ sub equipment {
   my $class = $char{class};
   return if $xp or $level > 1 or not $class;
 
-  my $money = roll_3d6() * 10;
+  my $money = 0;
+  if ($char{rules} eq "labyrinth lord") {
+    $money += roll_3d8() * 10;
+  } else {
+    $money += roll_3d6() * 10;
+  }
   my @property = (T('(starting gold: %0)', $money));
+
+  push(@property, T('spell book')) if $class eq T('magic-user');
 
   $money -= 20;
   push(@property, T('backpack'), T('iron rations (1 week)'));
@@ -477,21 +488,28 @@ sub buy_armor {
   my $dex = $char{dex};
   my $ac = 9 - bonus($dex);
 
+  my ($leather, $chain, $plate);
+  if ($char{rules} eq "labyrinth lord") {
+    ($leather, $chain, $plate) = (6, 70, 450);
+  } else {
+    ($leather, $chain, $plate) = (20, 40, 60);
+  }
+
   if ($class ne T('magic-user')
       and $class ne T('thief')
-      and $budget >= 60) {
-    $budget -= 60;
+      and $budget >= $plate) {
+    $budget -= $plate;
     push(@property, T('plate mail'));
     $ac -= 6;
   } elsif ($class ne T('magic-user')
       and $class ne T('thief')
-      and $budget >= 40) {
-    $budget -= 40;
+      and $budget >= $chain) {
+    $budget -= $chain;
     push(@property, T('chain mail'));
     $ac -= 4
   } elsif ($class ne T('magic-user')
-      and $budget >= 20) {
-    $budget -= 20;
+      and $budget >= $leather) {
+    $budget -= $leather;
     push(@property, T('leather armor'));
     $ac -= 2;
   }
@@ -550,119 +568,146 @@ sub buy_weapon {
   my $hp  = $char{hp};
   my $shield = member(T('shield'), @property);
 
+  my ($club, $mace, $warhammer, $staff, $dagger, $twohanded, $battleaxe,
+      $polearm, $longsword, $shortsword);
+
+  if ($char{rules} eq "labyrinth lord") {
+    ($club, $mace, $warhammer, $staff, $dagger, $twohanded, $battleaxe,
+     $polearm, $longsword, $shortsword) =
+       (3, 5, 7, 2, 3, 15, 6, 7, 10, 7);
+  } else {
+    ($club, $mace, $warhammer, $staff, $dagger, $twohanded, $battleaxe,
+     $polearm, $battleaxe, $longsword, $shortsword) =
+       (3, 5, 5, undef, 3, 15, 7, 7, 10, 7);
+  }
+
   if ($class eq T('cleric')) {
-    if ($budget >= 5) {
-      $budget -= 5;
+    if ($mace == $warhammer && $budget >= $mace) {
+      $budget -= $mace;
       push(@property, one(T('mace'), T('war hammer')));
-    } elsif ($budget >= 3) {
-      $budget -= 3;
+    } elsif ($budget >= $mace) {
+      $budget -= $mace;
+      push(@property, T('mace'));
+    } elsif ($staff == $club && $budget >= $club) {
+      $budget -= $club;
       push(@property, one(T('club'), T('staff')));
+    } elsif ($budget >= $club) {
+      $budget -= $club;
+      push(@property, T('staff'));
     }
   } elsif ($class eq T('magic-user')
-      and $budget >= 3) {
-    $budget -= 3;
+      and $budget >= $dagger) {
+    $budget -= $dagger;
     push(@property, T('dagger'));
   } elsif ($class eq T('fighter')
 	   and good($str)
 	   and $hp > 6
 	   and not $shield
-	   and $budget >= 15) {
-    $budget -= 15;
+	   and $budget >= $twohanded) {
+    $budget -= $twohanded;
     push(@property, T('two handed sword'));
   } elsif ($class eq T('fighter')
 	   and good($str)
 	   and $hp > 6
 	   and not $shield
-	   and $budget >= 7) {
-    $budget -= 7;
+	   and $budget >= $battleaxe) {
+    $budget -= $battleaxe;
     push(@property, T('battle axe'));
   } elsif ($class eq T('fighter')
 	   and average($str)
 	   and not $shield
-	   and $budget >= 7) {
-    $budget -= 7;
+	   and $budget >= $polearm) {
+    $budget -= $polearm;
     push(@property, T('pole arm'));
   } elsif ($class eq T('dwarf')
 	   and not $shield
-	   and $budget >= 7) {
-    $budget -= 7;
+	   and $budget >= $battleaxe) {
+    $budget -= $battleaxe;
     push(@property, T('battle axe'));
-  } elsif ($budget >= 10
+  } elsif ($budget >= $longsword
 	   and d6() > 1) {
-    $budget -= 10;
+    $budget -= $longsword;
     push(@property, T('long sword'));
-  } elsif ($budget >= 7) {
-    $budget -= 7;
+  } elsif ($budget >= $shortsword) {
+    $budget -= $shortsword;
     push(@property, T('short sword'));
+  }
+
+  my ($longbow, $arrows, $shortbow, $crossbow, $quarrels);
+  if ($char{rules} eq "labyrinth lord") {
+    ($longbow, $arrows, $shortbow, $crossbow, $quarrels, $sling)
+      = (40, 5, 25, 25, 9, 2);
+  } else {
+    ($longbow, $arrows, $shortbow, $crossbow, $quarrels, $sling)
+      = (40, 5, 25, 30, 10, 2);
   }
 
   if (($class eq T('fighter') or $class eq T('elf'))
       and average($dex)
-      and $budget >= 45) {
-    $budget -= 45;
+      and $budget >= ($longbow + $arrows)) {
+    $budget -= ($longbow + $arrows);
     push(@property, T('long bow'));
-    push(@property, T('quiver of arrows'));
-    if ($budget >= 5) {
-      $budget -= 5;
-      add(T('quiver of arrows'), @property);
+    push(@property, T('quiver with 20 arrows'));
+    if ($budget >= $arrows) {
+      $budget -= $arrows;
+      add(T('quiver with 20 arrows'), @property);
     }
   } elsif (($class ne T('cleric') and $class ne T('magic-user'))
       and average($dex)
-      and $budget >= 30) {
-    $budget -= 30;
+      and $budget >= ($shortbow + $arrows)) {
+    $budget -= ($shortbow + $arrows);
     push(@property, T('short bow'));
-    push(@property, T('quiver of arrows'));
-    if ($budget >= 5) {
-      $budget -= 5;
-      add(T('quiver of arrows'), @property);
+    push(@property, T('quiver with 20 arrows'));
+    if ($budget >= $arrows) {
+      $budget -= $arrows;
+      add(T('quiver with 20 arrows'), @property);
     }
   } elsif (($class ne T('cleric') and $class ne T('magic-user'))
-      and $budget >= 40) {
-    $budget -= 40;
+      and $budget >= ($crossbow + $bolts)) {
+    $budget -= ($crossbow + $bolts);
     push(@property, T('crossbow'));
-    push(@property, T('case of bolts'));
-    if ($budget >= 10) {
-      $budget -= 10;
-      add(T('case of bolts'), @property);
-    }
+    push(@property, T('case with 30 bolts'));
   } elsif ($class ne T('magic-user')
-      and $budget >= 2) {
-    $budget -= 2;
+      and $budget >= $sling) {
+    $budget -= $sling;
     push(@property, T('sling'));
-    push(@property, T('pouch of stones'));
-    if ($budget >= 2) {
-      $budget -= 2;
-      add(T('pouch of stones'), @property);
-    }
+    push(@property, T('pouch with 30 stones'));
+  }
+
+  my ($handaxe, $spear);
+  if ($char{rules} eq "labyrinth lord") {
+    ($handaxe, $spear) = (1, 3);
+  } else {
+    ($handaxe, $spear) = (4, 3);
   }
 
   if (($class eq T('dwarf') or member(T('battle axe'), @property))
-      and $budget >= 4) {
-    $budget -= 4;
+      and $budget >= $handaxe) {
+    $budget -= $handaxe;
     push(@property, T('hand axe'));
-    if ($budget >= 4) {
-      $budget -= 4;
+    if ($budget >= $handaxe) {
+      $budget -= $handaxe;
       add(T('hand axe'), @property);
     }
   } elsif ($class eq T('fighter')
-	   and $budget >= 3) {
-    $budget -= 3;
+	   and $budget >= $spear) {
+    $budget -= $spear;
     push(@property, T('spear'));
   }
 
   if ($class ne T('cleric')
-      and $budget >= 30) {
-    $budget -=30;
+      and $budget >= (10 * $dagger)) {
+    $budget -= (10 * $dagger);
     push(@property, T('silver dagger'));
   }
 
   if ($class ne T('cleric')
       and $class ne T('magic-user')
-      and $budget >= 3) {
-    $budget -=3;
+      and $budget >= $dagger) {
+    $budget -=$dagger;
     push(@property, T('dagger'));
-    if ($budget >= 3) {
-      $budget -=3;
+    if ($budget >= $dagger) {
+      $budget -=$dagger;
       add(T('dagger'), @property);
     }
   }
@@ -768,6 +813,10 @@ sub roll_3d6 {
   return d6() + d6() + d6();
 }
 
+sub roll_3d8 {
+  return d8() + d8() + d8();
+}
+
 sub best {
   my $best = 0;
   my $max = $_[0];
@@ -869,7 +918,6 @@ sub random_parameters {
 
   provide("hp",  $hp);
 
-  push(@property, T('spell book')) ;
   equipment();
 
   my $abilities = T('1/6 for normal tasks');
@@ -908,9 +956,10 @@ sub random_parameters {
 
 sub characters {
   header('');
+  my %init = map { $_ => $char{$_} } @provided;
   for (my $i = 0; $i < 50; $i++) {
     $q->delete_all();
-    %char = ();
+    %char = %init;
     print $q->start_pre({-style=>"display: inline-block; padding: 0 1em; width: 25em; border-left: 1px dotted grey; vertical-align: top; font-size: 8pt; "});
     random_parameters();
     print "Str Dex Con Int Wis Cha HP AC Class\n";
@@ -937,10 +986,11 @@ sub stats {
 		   -charset=>"utf8");
   binmode(STDOUT, ":utf8");
 
-  my (%class, %property);
+  my (%class, %property, %init);
+  %init = map { $_ => $char{$_} } @provided;
   for (my $i = 0; $i < 10000; $i++) {
-    $q = new CGI;
-    %char = ();
+    $q->delete_all();
+    %char = %init;
     random_parameters();
     $class{$char{class}}++;
     foreach (split(/\\\\/, $char{property})) {
@@ -1042,7 +1092,8 @@ sub more {
   header();
   print $q->p(T('The generator works by using a template and replacing some placeholders.'));
 
-  print $q->h2(T('Basic D&D'));
+  print $q->h2(T('Basic D&amp;D'));
+
   print $q->p(T('The default template (%0) uses the %1 font.',
 		$q->a({-href=>"/" . T('Charactersheet.svg')},
 		      T('Charactersheet.svg')),
@@ -1070,10 +1121,25 @@ sub more {
     print $q->li(shift(@doc), "&rarr;", shift(@doc));
   }
   print "</ul>";
+
+  my ($random, $bunch, $stats) =
+    ($q->a({-href=>"$url/random/$lang"}, T('random character')),
+     $q->a({-href=>"$url/characters/$lang"}, T('bunch of characters')),
+     $q->a({-href=>"$url/stats/$lang"}, T('some statistics')));
+
   print $q->p(T('The script can also generate a %0, a %1, or %2.',
-		$q->a({-href=>"$url/random/$lang"}, T('random character')),
-		$q->a({-href=>"$url/characters/$lang"}, T('bunch of characters')),
-		$q->a({-href=>"$url/stats/$lang"}, T('some statistics'))));
+		$random, $bunch, $stats));
+
+  ($random, $bunch, $stats) =
+    ($q->a({-href=>"$url/random/$lang?rules=labyrinth+lord"},
+	   T('random character')),
+     $q->a({-href=>"$url/characters/$lang?rules=labyrinth+lord"},
+	   T('bunch of characters')),
+     $q->a({-href=>"$url/stats/$lang?rules=labyrinth+lord"},
+	   T('some statistics')));
+
+  print $q->p(T('As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.',
+		$random, $bunch, $stats));
 
   print $q->h2(T('Pendragon'));
   print $q->p(T('The script also supports Pendragon characters (but cannot generate them randomly):'),
@@ -1226,8 +1292,10 @@ AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
 Also note that the parameters need to be UTF-8 encoded.
 Die Parameter müssen UTF-8 codiert sein.
-Basic D&D
-Basic D&D
+As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.
+Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste etwas unterscheidet, kann man auch %0, %1 oder %2 mit Labyrinth Lord Regeln generieren.
+Basic D&amp;D
+Basic D&amp;D
 Bookmark
 Lesezeichen
 Bookmark the following link to your %0.
@@ -1272,8 +1340,8 @@ Spells:
 Zaubersprüche:
 The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
 Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
-The default template (%0) uses the %0 font.
-Die Defaultvorlage (%0) verwendet die %0 Schrift.
+The default template (%0) uses the %1 font.
+Die Defaultvorlage (%0) verwendet die %1 Schrift.
 The generator works by using a template and replacing some placeholders.
 Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
 The script also supports Crypts &amp; Things characters (but cannot generate them randomly):
@@ -1298,8 +1366,8 @@ battle axe
 Streitaxt
 bunch of characters
 einige Charaktere
-case of bolts
-Kiste mit Bolzen
+case with 30 bolts
+Kiste mit 30 Bolzen
 chain mail
 Kettenhemd
 charm person
@@ -1368,12 +1436,12 @@ plate mail
 Plattenpanzer
 pole arm
 Stangenwaffe
-pouch of stones
-Beutel mit Steinen
+pouch with 30 stones
+Beutel mit 30 Steinen
 protection from evil
 Schutz vor Bösem
-quiver of arrows
-Köcher mit Pfeilen
+quiver with 20 arrows
+Köcher mit 20 Pfeilen
 random character
 einen zufälligen Charakter
 read languages
