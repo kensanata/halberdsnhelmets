@@ -220,11 +220,23 @@ sub bonus {
   return "+3";
 }
 
+sub cha_bonus {
+  my $n = shift;
+  return "-2" if $n <=  3;
+  return "-1" if $n <=  8;
+  return "" if $n <= 12;
+  return "+1" if $n <= 17;
+  return "+2";
+}
+
 sub moldvay {
   for my $id (qw(str dex con int wis cha)) {
     if ($char{$id} and not $char{"$id-bonus"}) {
-      $char{"$id-bonus"} =  bonus($char{$id});
+      $char{"$id-bonus"} = bonus($char{$id});
     }
+  }
+  if ($char{cha} and not $char{reaction}) {
+    $char{reaction} = cha_bonus($char{cha});
   }
   if (not $char{loyalty}) {
     $char{loyalty} =  7 + $char{"cha-bonus"};

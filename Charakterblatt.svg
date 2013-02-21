@@ -184,15 +184,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="258.8186"
-     inkscape:cy="831.70311"
+     inkscape:zoom="2.0000001"
+     inkscape:cx="150.0767"
+     inkscape:cy="453.22166"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3354"
      showgrid="true"
      inkscape:window-width="1024"
      inkscape:window-height="720"
-     inkscape:window-x="11"
+     inkscape:window-x="-1"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      fit-margin-top="1"
@@ -216,7 +216,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
       </cc:Work>
@@ -543,22 +543,22 @@
        height="130"
        x="390"
        y="602.36218" />
-    <g>
+    <g
+       id="g4561">
       <image
-	 xlink:href=""
-	 id="portrait"
-	 width="120"
-	 height="120"
-	 x="320"
-	 y="52.362183" />
+         xlink:href=""
+         id="portrait"
+         width="120"
+         height="120"
+         x="320"
+         y="52.362183" />
       <rect
-	 style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-	 id="portrait-frame"
-	 width="120"
-	 height="120"
-	 x="320"
-	 y="52.362183">
-      </rect>
+         style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="portrait-frame"
+         width="120"
+         height="120"
+         x="320"
+         y="52.362183" />
     </g>
     <text
        xml:space="preserve"
@@ -585,36 +585,36 @@
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="76.98555"
-       y="598.36548"
+       x="73.69664"
+       y="618.04047"
        id="text15370"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan15372"
-         x="76.98555"
-         y="598.36548">Rettungswürfe</tspan></text>
+         x="73.69664"
+         y="618.04047">Rettungswürfe</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="75.264717"
-       y="628.69049"
+       x="71.975807"
+       y="648.36548"
        id="text15374"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan15376"
-         x="75.264717"
-         y="628.69049">Drachenodem, Explosion</tspan></text>
+         x="71.975807"
+         y="648.36548">Drachenodem, Explosion</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="75.264717"
-       y="648.69049"
+       x="71.975807"
+       y="668.36548"
        id="text15378"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan15380"
-         x="75.264717"
-         y="648.69049">Lähmung, Versteinerung</tspan></text>
+         x="71.975807"
+         y="668.36548">Lähmung, Versteinerung</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -629,47 +629,47 @@
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="75.264717"
-       y="668.69049"
+       x="71.975807"
+       y="688.36548"
        id="text15378-8"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan15380-7"
-         x="75.264717"
-         y="668.69049">Tod, Gift</tspan></text>
+         x="71.975807"
+         y="688.36548">Tod, Gift</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="75.264717"
-       y="688.69049"
+       x="71.975807"
+       y="708.36548"
        id="text15378-5"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan15380-9"
-         x="75.264717"
-         y="688.69049">Strahlen, Zauberstäbe</tspan></text>
+         x="71.975807"
+         y="708.36548">Strahlen, Zauberstäbe</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="75.264717"
-       y="708.69049"
+       x="71.975807"
+       y="728.36548"
        id="text15378-6"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan15380-0"
-         x="75.264717"
-         y="708.69049">Zaubersprüche</tspan></text>
+         x="71.975807"
+         y="728.36548">Zaubersprüche</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="315.26471"
-       y="598.69049"
+       x="311.9758"
+       y="618.36548"
        id="text15016-4"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan15018-1"
-         x="315.26471"
-         y="598.69049">Wert</tspan></text>
+         x="311.9758"
+         y="618.36548">Wert</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -889,7 +889,15 @@
            id="tspan15183"
            y="482.36218"
            x="70"
-           sodipodi:role="line">Berechnung:</tspan></text>
+           sodipodi:role="line">Berechnung:</tspan><tspan
+           y="492.36218"
+           x="70"
+           sodipodi:role="line"
+           id="tspan4769" /><tspan
+           y="502.36218"
+           x="70"
+           sodipodi:role="line"
+           id="tspan4771">Reaktionsbonus:</tspan></text>
       <text
          sodipodi:linespacing="100%"
          id="text14974-50-9"
@@ -904,7 +912,11 @@
            id="tspan3210"
            y="492.36218"
            x="150"
-           sodipodi:role="line">Bonus</tspan></text>
+           sodipodi:role="line">Bonus</tspan><tspan
+           y="502.36218"
+           x="150"
+           sodipodi:role="line"
+           id="tspan4767" /></text>
       <text
          sodipodi:linespacing="100%"
          id="text14974-50-9-5"
@@ -919,7 +931,11 @@
            id="tspan3210-2"
            y="492.36218"
            x="195"
-           sodipodi:role="line">-3</tspan></text>
+           sodipodi:role="line">-3</tspan><tspan
+           y="502.36218"
+           x="195"
+           sodipodi:role="line"
+           id="tspan4773">-2</tspan></text>
       <text
          sodipodi:linespacing="100%"
          id="text14974-50-9-5-3"
@@ -934,7 +950,11 @@
            id="tspan3210-2-4"
            y="492.36218"
            x="225"
-           sodipodi:role="line">-2</tspan></text>
+           sodipodi:role="line">-2</tspan><tspan
+           y="502.36218"
+           x="225"
+           sodipodi:role="line"
+           id="tspan4775">-1</tspan></text>
       <text
          sodipodi:linespacing="100%"
          id="text14974-50-9-5-3-4"
@@ -949,7 +969,11 @@
            id="tspan3210-2-4-0"
            y="492.36218"
            x="255"
-           sodipodi:role="line">-1</tspan></text>
+           sodipodi:role="line">-1</tspan><tspan
+           y="502.36218"
+           x="255"
+           sodipodi:role="line"
+           id="tspan4777">-1</tspan></text>
       <text
          sodipodi:linespacing="100%"
          id="text14974-50-9-5-3-3"
@@ -964,7 +988,11 @@
            id="tspan3210-2-4-6"
            y="492.36218"
            x="285"
-           sodipodi:role="line">-</tspan></text>
+           sodipodi:role="line">-</tspan><tspan
+           y="502.36218"
+           x="285"
+           sodipodi:role="line"
+           id="tspan4779">-</tspan></text>
       <text
          sodipodi:linespacing="100%"
          id="text14974-50-9-5-3-9"
@@ -979,7 +1007,11 @@
            id="tspan3210-2-4-1"
            y="492.36218"
            x="320"
-           sodipodi:role="line">+1</tspan></text>
+           sodipodi:role="line">+1</tspan><tspan
+           y="502.36218"
+           x="320"
+           sodipodi:role="line"
+           id="tspan4783">+1</tspan></text>
       <text
          sodipodi:linespacing="100%"
          id="text14974-50-9-5-3-37"
@@ -994,7 +1026,11 @@
            id="tspan3210-2-4-8"
            y="492.36218"
            x="355"
-           sodipodi:role="line">+2</tspan></text>
+           sodipodi:role="line">+2</tspan><tspan
+           y="502.36218"
+           x="355"
+           sodipodi:role="line"
+           id="tspan4785">+1</tspan></text>
       <text
          sodipodi:linespacing="100%"
          id="text14974-50-9-5-3-38"
@@ -1009,7 +1045,11 @@
            id="tspan3210-2-4-5"
            y="492.36218"
            x="385"
-           sodipodi:role="line">+3</tspan></text>
+           sodipodi:role="line">+3</tspan><tspan
+           y="502.36218"
+           x="385"
+           sodipodi:role="line"
+           id="tspan4787">+2</tspan></text>
     </g>
     <text
        xml:space="preserve"
@@ -1047,17 +1087,17 @@
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="276.98557"
-       y="728.36548"
+       x="273.69666"
+       y="748.04047"
        id="text15467-8-5-4"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="276.98557"
-         y="728.36548"
+         x="273.69666"
+         y="748.04047"
          id="tspan15496-4-7">W20 muss gleich</tspan><tspan
          sodipodi:role="line"
-         x="276.98557"
-         y="738.36548"
+         x="273.69666"
+         y="758.04047"
          id="tspan3296">oder grösser sein</tspan></text>
     <text
        xml:space="preserve"
@@ -1114,50 +1154,50 @@
        sodipodi:linespacing="100%"
        id="name"
        y="43.365467"
-       x="176.98555"
+       x="166.98555"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
        xml:space="preserve"
        inkscape:label="#text3505"><tspan
          id="tspan3507"
          y="43.365467"
-         x="176.98555"
+         x="166.98555"
          sodipodi:role="line">_________</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="176.98555"
+       x="166.98555"
        y="73.365463"
        id="class"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="176.98555"
+         x="166.98555"
          y="73.365463"
          id="tspan3511">_________</tspan></text>
     <text
        sodipodi:linespacing="100%"
        id="level"
        y="103.36546"
-       x="261.98557"
+       x="296.07928"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:end;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
        xml:space="preserve"
        inkscape:label="#text3505"><tspan
          id="tspan3515"
          y="103.36546"
-         x="261.98557"
-         sodipodi:role="line">______</tspan></text>
+         x="296.07928"
+         sodipodi:role="line">_________</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:end;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="261.98557"
+       x="296.07928"
        y="133.36546"
        id="xp"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="261.98557"
+         x="296.07928"
          y="133.36546"
-         id="tspan3531">______</tspan></text>
+         id="tspan3531">_________</tspan></text>
     <text
        sodipodi:linespacing="100%"
        id="ac"
@@ -1342,61 +1382,61 @@
        inkscape:label="#text3505"
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="331.98557"
-       y="628.36548"
+       x="328.69666"
+       y="648.04047"
        id="breath"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="331.98557"
-         y="628.36548"
+         x="328.69666"
+         y="648.04047"
          id="tspan3539-55-3">___</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="331.98557"
-       y="648.36548"
+       x="328.69666"
+       y="668.04047"
        id="petrify"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="331.98557"
-         y="648.36548"
+         x="328.69666"
+         y="668.04047"
          id="tspan3539-55-4">___</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="331.98557"
-       y="668.36548"
+       x="328.69666"
+       y="688.04047"
        id="poison"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="331.98557"
-         y="668.36548"
+         x="328.69666"
+         y="688.04047"
          id="tspan3539-55-5">___</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="331.98557"
-       y="688.36548"
+       x="328.69666"
+       y="708.04047"
        id="wands"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="331.98557"
-         y="688.36548"
+         x="328.69666"
+         y="708.04047"
          id="tspan3539-55-42">___</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="331.98557"
-       y="708.36548"
+       x="328.69666"
+       y="728.04047"
        id="spells"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="331.98557"
-         y="708.36548"
+         x="328.69666"
+         y="728.04047"
          id="tspan3539-55-9">___</tspan></text>
     <text
        inkscape:label="#text3505"
@@ -1699,5 +1739,28 @@
            y="948.36548"
            id="tspan3737-9">Link</tspan></text>
     </a>
+    <text
+       sodipodi:linespacing="100%"
+       id="text3903"
+       y="563.36548"
+       x="71.9758"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
+       xml:space="preserve"><tspan
+         y="563.36548"
+         x="71.9758"
+         id="tspan3905"
+         sodipodi:role="line">Reaktionen</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="reaction"
+       y="563.36548"
+       x="251.9758"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
+       xml:space="preserve"
+       inkscape:label="#text3505"><tspan
+         id="tspan3921"
+         y="563.36548"
+         x="251.9758"
+         sodipodi:role="line">___</tspan></text>
   </g>
 </svg>
