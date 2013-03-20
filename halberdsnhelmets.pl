@@ -241,6 +241,9 @@ sub moldvay {
   if (not $char{loyalty}) {
     $char{loyalty} =  7 + $char{"cha-bonus"};
   }
+  if (not $char{hirelings}) {
+    $char{hirelings} =  4 + $char{"cha-bonus"};
+  }
   if ($char{thac0}) {
     for (my $n = 0; $n <= 9; $n++) {
       my $val = $char{thac0} - $n - $char{"str-bonus"};
