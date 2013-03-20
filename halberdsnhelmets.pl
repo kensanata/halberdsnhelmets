@@ -1094,7 +1094,7 @@ sub default {
   header();
   print $q->p(T('This is the %0 character sheet generator.',
 		$q->a({-href=>T('http://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/')},
-		      T('Halberts and Helmets'))));
+		      T('Halberds and Helmets'))));
   print $q->start_form(-method=>"get", -action=>"$url/random/$lang",
 		       -accept_charset=>"UTF-8"),
     T('Name:'), " ", $q->textfield("name"), " ", $q->submit, $q->end_form;
@@ -1335,7 +1335,7 @@ German
 Deutsch
 Get started with a %0.
 %0 bearbeiten.
-Halberts and Helmets
+Halberds and Helmets
 Hellebarden und Helme
 If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
 Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch doppelte Backslashes trennen.
