@@ -1,0 +1,1725 @@
+\documentclass{tufte-handout}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% \geometry{showframe}% for debugging purposes -- displays the margins
+
+% Provides \CheckedBox and \Square
+% \usepackage{wasysym}
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+% The following package makes prettier tables. We're all about the
+% bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better
+% spacing for units.
+\usepackage{units}
+
+% Macros for typesetting the documentation
+\newcommand{\hlred}[1]{\textcolor{Maroon}{#1}}% prints in red
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments. We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Clickable hyperlinks
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+
+\renewcommand{\labelitemi}{$-$} % use dash for items
+
+\title{Hellebarden \& Helme}
+\author{}
+\date{}
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{marginfigure}
+  \centering
+  \includegraphics{Schaller.jpg}
+\end{marginfigure}
+
+\begin{abstract}
+\noindent Dies ist das Spielerhandbuch für die Spieler in meiner
+Kampagne. Es enthält die Regeln, basierend auf
+\href{http://www.goblinoidgames.com/labyrinthlord.html}{Labyrinth
+  Lord}, sowie diverse Hausregeln. Spielleitern empfehle ich mein
+englisches
+\href{http://www.emacswiki.org/alex/Swiss_Referee_Style_Manual}{Swiss
+  Referee Style Manual}. -- \href{http://alexschroeder.ch/}{Alex
+  Schroeder}
+\end{abstract}
+
+\section{Alte Schule}
+
+\newthought{Wir spielen D\&D der alten Schule} mit
+\href{http://www.emacswiki.org/alex/2012-02-18_Ode_to_Ode_to_Black_Dougal}{Regeln
+  aus den frühen 80er Jahren}. Dies ist
+\href{http://tvtropes.org/pmwiki/pmwiki.php/Main/MontyHaul}{keine
+  Monty Haul Kampagne} und
+\href{http://tvtropes.org/pmwiki/pmwiki.php/Main/DungeonCrawling}{kein
+  stupider Dungeon Crawl}. Wenn überhaupt, dann erforschen wir eine
+albtraumartige, \href{http://www.philotomy.com/#dungeon}{mythische
+  Unterwelt}.
+
+\marginnote{Besitz der Regeln ist optional. Mit der Zeit werden wir
+  die Regeln erweitern. Mit dem Entdecken neuer Völker soll es
+  beispielsweise möglich sein, diese auch zu spielen. Neue Magier
+  können den Spielercharakteren neue Zaubersprüche beibringen.} Die
+Regeln bieten \textbf{nur wenig Mechanik}: Wenig Auswahl bei den
+Klassen, keine Talente, keine Fertigkeiten, keine Prestigeklassen und
+kaum spezielle Fähigkeiten. Zudem sind Elfen, Zwerge und andere Völker
+schlicht separate Klassen. Es gibt also keine Elfendiebe oder
+Zwergenmagier. Im Gegenzug bieten die fehlenden Regeln natürlich auch
+einen \textbf{grösseren Freiraum} für die Spieler. Der Charakter ist
+so diplomatisch, freundlich oder bedrohlich wie es der Spieler möchte.
+Es gibt hierzu keine Regeln.
+
+\marginnote{Die Spieler bestimmen, wohin es geht. Wenn
+  Spielercharaktere Hinweisen folgen und Gegenden erforschen, werde
+  ich an diesen Stellen mehr Material entwickeln. Je genauer man hin
+  schaut, um so mehr gibt es dort zu entdeckten.} Grundsätzlich
+handelt es sich um eine sogenannte
+\href{http://tvtropes.org/pmwiki/pmwiki.php/Main/WideOpenSandbox}{Sandbox}.
+Es gibt \textbf{kein geplantes Ende} der Kampagne. Die Handlungen der
+Charaktere bestimmen, wohin die Kampagne sich entwickelt.
+
+Die Gefahr ist nicht immer auf die Stärke der Gruppe abgestimmt.
+Generell wird es um so \textbf{gefährlicher}, je weiter man sich von
+der Zivilisation und den Patrouillen und Wachen der Feudalherren
+\textbf{entfernt}. So können die Spieler selber bestimmen, wie viel
+Risiko sie eingehen wollen.
+
+\marginnote{Es ist wichtig, Informationen über durchquerte Gebiete und
+  mögliche Feinde zu sammeln. Diese erhält man von Reisenden in
+  Tavernen, von Händlern auf dem Markt, von Matrosen in den Häfen, aus
+  Büchern in Bibliotheken und von Gelehrten in ihren Elfenbeintürmen.
+  Die Informationen sind nicht immer korrekt und müssen mit Vorsicht
+  genossen werden.} Mit passender Vorbereitung, Erfahrung und dem
+nötigen Wissen sollte das Überleben nie von einem Würfelwurf abhängen.
+Wenn gewürfelt wird, dann ist es schon zu spät. \textbf{Ein
+  Rettungswurf ist die allerletzte Chance}, durch Glück und Erfahrung
+das drohende Ende noch einmal abzuwenden. Idealerweise muss nicht
+gewürfelt werden, weil man entsprechend \textbf{informiert und
+  ausgerüstet} ist. Perseus muss wegen der Medusa keinen Rettungswurf
+machen, \emph{weil er vorbereitet ist}.
+
+Eine weitere Möglichkeit, sich abzusichern, ist das Anstellen von
+\textbf{Gefolgsleuten}: Fackelträger, Lastenträger, Schildknechte und
+Söldner.
+
+\marginnote{Die richtige Strategie besteht darin, die Kämpfe geschickt
+  zu wählen und durch entsprechende Vorbereitung alles zu seinen
+  eigenen Gunsten gewendet zu haben.} \textbf{Erfahrungspunkte} gibt
+es vor allem für das Ausgeben und \textbf{Verprassen von Gold},
+welches man auf Abenteuern erlangt hat. Wenn dies \textbf{ohne Kämpfe}
+gelingt, dann umso besser. Denn auch hier gilt: wenn gewürfelt wird,
+ist es eigentlich schon zu spät.
+
+\section{Charaktererschaffung}
+
+\marginnote{Der Spielleiter kann sich mit dem
+  \href{http://campaignwiki.org/halberdsnhelmets/de}{Charaktergenerator}
+  schnell ein paar Charaktere erstellen.} Beginne mit einem leeren
+Blatt oder drucke dir ein vorgefertigtes
+\href{http://campaignwiki.org/Charakterblatt.svg}{Charakterblatt}
+(\href{http://www.emacswiki.org/alex/pics/Charakterblatt.pdf}{PDF})
+aus.
+
+\newthought{Würfel 3W6 für jede Eigenschaft}, von oben nach unten:
+
+\marginnote{Im Fernkampf bleibt der Schadenswurf unverändert. Das ist
+  ein Vorteil für schwache Charaktere und ein Nachteil für starke
+  Charaktere.
+
+\bigskip\noindent
+Zu jedem Wert gibt es auch einen Bonus:
+\smallskip
+
+\begin{tabular}{cc}
+Wert & Bonus \\
+3 & -3 \\
+4--5 & -2 \\
+6--8 & -1 \\
+9--12 &  \\
+13--15 & +1 \\
+16--17 & +2 \\
+18 & +3
+\end{tabular}
+}
+\smallskip
+
+\textbf{Kraft} hilft beim Zuschlagen. Addiere den Bonus beim
+Trefferwurf und beim Schadenswurf im Nahkampf.
+
+\textbf{Geschick} hilft beim Zielen und beim Ausweichen. Addiere den
+Bonus beim Trefferwurf im Fernkampf. Ziehe den Bonus von deiner
+Rüstungsklasse ab (tiefer ist besser).
+
+\textbf{Gesundheit} gibt mehr Lebensenergie. Addiere den Bonus auf
+jeden Lebensenergie-Würfel. Trotz Abzügen kann der Wurf pro Würfel
+nicht unter 1 sinken.
+
+\textbf{Bildung} hilft bei Fremdsprachen. Für jeden Punkt über 10
+darfst du dir eine weitere Sprache aufschreiben. Diese Sprachen darfst
+du auch erst später im Spiel bestimmen.
+
+\textbf{Weisheit} zeigt, wie sehr du mit der Welt harmonierst. Addiere
+den Bonus auf jeden Rettungswurf gegen Magie (Zaubersprüche,
+Zauberstäbe und so weiter).
+
+\marginnote{Für die Reaktionswürfe verwendet der Spielleiter einen
+  kleineren Bonus:
+\smallskip
+
+\begin{tabular}{cc}
+Wert & Bonus \\
+3 & -2 \\
+4--8 & -1 \\
+9--12 &  \\
+13--17 & +1 \\
+18 & +2
+\end{tabular}
+}
+\textbf{Auftreten} bestimmt, wie Gegner auf dich
+reagieren, wieviele Gefolgsleute du um dich scharen kannst und wie
+ergeben sie dir sind.
+
+\newthought{Wähle deine Klasse}. Zur Auswahl stehen:
+
+\hyperref[sec:krieger]{Krieger}: Du kannst gut kämpfen. Diese Klasse
+spielt sich am einfachsten.
+
+\hyperref[sec:magier]{Magier}: Du lernst Zaubersprüche aus deinem
+Zauberbuch. Kämpfen ist nicht so dein Ding. Du kannst nur kleine
+Waffen wie Messer und Stäbe verwenden. Anfangs wirst du schwach sein,
+aber wenn du überlebst, wirst du sehr mächtig sein.
+
+\hyperref[sec:kleriker]{Kleriker}: Du kannst kämpfen (aber nicht so
+gut wie ein Krieger) und du kannst Wunder wirken (aber deine
+Zaubersprüche sind nicht so mächtig wie die Sprüche eines Magiers).
+
+\begin{marginfigure}
+  \centering
+  \includegraphics{Arragonien.jpg}
+\end{marginfigure}
+
+\hyperref[sec:elf]{Elf}: Du lernst Zaubersprüche aus deinem Zauberbuch
+und du kannst kämpfen. Du steigst langsamer auf als deine Mitspieler.
+Du kannst im Sternenlicht sehen und du wirst ewig leben. Du brauchst
+eine Bildung von mindestens 9.
+
+\hyperref[sec:zwerg]{Zwerg}: Du bist klein, zäh, und du kannst gut
+kämpfen. Du weisst viel über Bauten unter der Erde. Du kannst im
+Dunkeln sehen. Du brauchst eine Gesundheit von mindestens 9.
+
+\hyperref[sec:halbling]{Halbling}: Du bist noch kleiner und immer
+barfuss unterwegs. Du kannst dich gut verstecken und du kannst
+Fernkampfwaffen besonders gut einsetzen. Riesen haben Mühe, dich zu
+treffen. Du brauchst ein Geschick von mindestens 9.
+
+
+\newthought{Bestimme deine Lebensenergie} \marginnote{Steigst du eine
+  Stufe, würfelst du deine Lebensenergie neu: Einen Würfel pro Stufe,
+  jeweils plus deinen Bonus für Gesundheit (aber mindestens 1).
+  Behalte den alten Wert, falls das neue Resultat niedriger ist.} und
+vergiss nicht, deinen Bonus für Gesundheit zu addieren. Krieger und
+Zwerge verwenden einen W8, Magier einen W4, alle anderen einen W6.
+
+
+
+\section{Gesinnung}
+\label{sec:gesinnung}
+
+\newthought{Wähle ein Gesinnung}: Ordnung, Chaos oder Neutralität.
+\marginnote{Wer sich aus diesem kosmischen Kampf heraus halten will,
+  bekennt sich zur \textbf{Neutralität}. Es gibt keine Priester der
+  Neutralität.
+
+\bigskip\noindent
+Kleriker und andere religiöse Charaktere können sich einen
+\textbf{Schutzpatron} aussuchen.
+
+\textbf{Orcus}: Herr über die Untoten Untote, lässt Tote wieder
+auferstehen
+
+\textbf{Ishtar}: Eifersucht und \textit{amour fou}, Krieg, Abstieg in
+die Unterwelt auf der Suche nach dem Liebsten
+
+\textbf{Nergal}: Rache, Ungeziefer, Ratten und Seuchen, Herr der
+Unterwelt
+
+\textbf{Freya}: Ernte, Kreislauf des Lebens, Wölfe, Wildnis und freie
+Liebe
+
+\textbf{Marduk}: Kampf gegen die Monster, Kriegsfürst, Herrschaft
+
+\textbf{Mitra}: Feuer, Ehrlichkeit, Verträge und Schwüre
+
+\textbf{Set}: Schläue, Heimlichkeit und Mörder
+
+\textbf{Hekate}: Magie, Hexen, Wegkreuzungen}
+
+Die \textbf{Priester der Ordnung} sagen: ``Alleine sind wir schwach
+und das Leben ein Jammertal. Gemeinsam sind wir stark. Gemeinsam bauen
+wir unsere Häuser. Gemeinsam bestellen wir unsere Felder. Gemeinsam
+verteidigen wir unsere Städte und Dörfer. Nur gemeinsam sind wir
+stark. Wir bauen Dämme gegen die Flut. Wir bauen Aquädukte gegen die
+Dürre. Wir bauen Kanäle gegen die Seuchen. Wir legen die Sümpfe
+trocken und drängen das Fieber zurück. Wir füllen die Kornspeicher und
+besiegen den Hunger. Wir bestrafen den Verrat und belohnen die Treue.
+Wir sorgen für Recht und Gerechtigkeit. Selbst wenn das korrumpierende
+Chaos und die Anarchie um sich greift, bleibt uns immer noch die
+himmlische Ordnung von den höchsten Göttern im Himmel bis hin zu den
+schlimmsten Teufeln in der Hölle. Sie sorgen dafür, dass Strafe und
+Belohnung nicht vergessen gehen – jetzt nicht und bis in alle Ewigkeit
+nicht. In unserer Welt hat jeder seinen Platz und es hat einen Platz
+für jeden – auch für dich. Sieh diese Bücher: das Wissen der
+Altvorderen, die Gesetze und Tafeln unserer Ahnen. Es ist unser Erbe.
+Lerne soviel du kannst, arbeite hart und erhebe dein Haupt. Steige
+auf! Werde ein echtes Mitglied unserer stolzen Gesellschaft!''
+
+\begin{marginfigure}
+  \centering
+  \includegraphics{Castriota.jpg}
+\end{marginfigure}
+
+Die \textbf{Chaos Priester} sagen: ``Das Leben ist Chaos. Unkraut
+wächst im Feld. Der Obstgarten verwaldet. Die Küste wird ins Meer
+gespült. Das Chaos sind die tiefen Muster dieser Welt. Die Wolken
+gleiten jede für sich im stillen Tanz über den Himmel. Der Fluss
+fliesst in tausend Windungen zum Meer. Die Elfen leben in den Bäumen,
+ohne sie zu fällen und zu töten, sie in Bretter zersägen und diese
+dann morsch werden und faulen sehen. Nein, die Elfen beobachten die
+Muster, nach denen die Bäume wachsen, formen sie langsam, leben mit
+ihnen. Der Baum lebt. Der Elf lebt. Die Ordnung ist die Hybris zu
+glauben, dass man der Welt seinen Willen aufzwingen kann. Sie verdammt
+Mann, Frau und Kind zum Joch. Chaos ist nicht das Niederbrennen der
+Städte sondern die Einsicht, dass es eine Dummheit war, sie überhaupt
+zu bauen. Chaos ist nicht Gesetzlosigkeit, sondern die Einsicht, dass
+Menschen, wie Bäume, eine eigene Art zu leben haben. Wer Gesetze
+aufstellt, ohne dies zu bedenken, heisst Menschen töten und sie in
+Bretterkisten begraben. Komm mit! Ich weiss nicht wohin wir gehen,
+aber wir werden auf dem Weg so manches lernen.''
+
+\newpage
+
+
+
+\section{Krieger}
+\label{sec:krieger}
+
+\marginnote{
+\begin{tabular}{cc}
+Stufe & Erfahrungspunkte \\
+1 & 0\\
+2 & 2'035\\
+3 & 4'065\\
+4 & 8'125\\
+5 & 16'251
+\end{tabular}
+} Du kannst gut kämpfen. Diese Klasse spielt sich am einfachsten.
+
+\medskip
+\marginnote{Hier sieht man, was man auf dem W20 würfeln muss, um den
+  entsprechenden Rüstungsschutz des Gegners zu treffen. Im Nahkampf
+  addiert man den \textit{Kraft} Bonus, im Fernkampf den
+  \textit{Geschick} Bonus.}
+\begin{tabular}{lcccccccccc}
+Rüstungsschutz & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+Stufe 1–2 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Stufe 3   & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Stufe 4   & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Stufe 5   & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 
+\end{tabular}
+
+\medskip\noindent Die Rettungswürfe für Stufe 0 gelten für alle
+Menschen ohne Klasse und damit auch für viele Gefolgsleute.
+
+\begin{table*}
+\begin{tabular}{lcccccccccc}
+Rettungs-  & Drachenodem & Lähmung       & Tod  & Strahlen    & Zaubersprüche \\
+würfe für  & Explosion   & Versteinerung & Gift & Zauberstäbe & Wunder \\
+Stufe 0    & 17 & 16 & 14 & 15 & 18 \\
+Stufe 1--3 & 15 & 14 & 12 & 13 & 16 \\
+Stufe 4--5 & 13 & 12 & 10 & 11 & 14 \\
+\end{tabular}
+\end{table*}
+
+
+
+\section{Magier}
+\label{sec:magier}
+
+\marginnote{
+\begin{tabular}{cc}
+Stufe & Erfahrungspunkte \\
+1 & 0\\
+2 & 2'501\\
+3 & 5'001\\
+4 & 10'001\\
+5 & 20'001
+\end{tabular}
+} Du lernst Zaubersprüche aus deinem Zauberbuch. Kämpfen ist nicht so
+dein Ding. Du kannst nur kleine Waffen wie Messer und Stäbe verwenden.
+Anfangs wirst du schwach sein, aber wenn du überlebst, wirst du sehr
+mächtig sein. Du darfst weder Rüstungen noch Schilder tragen.
+
+\medskip
+\begin{tabular}{lcccccccccc}
+Rüstungsschutz & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+Stufe 1–3 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Stufe 4–5 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 
+\end{tabular}
+
+\marginnote{Wenn du dir den gesamten Text auf dem Charakterblatt
+  notierst, musst du wärend dem Spiel nicht in deinen Unterlagen
+  blättern.}
+\medskip\noindent Im Abschnitt
+\hyperref[sec:zaubersprüche]{Zaubersprüche der Magier und Elfen} gibt
+es eine Liste von Zaubersprüchen. Wähle einen Zauberspruch des
+1.~Zirkels für dein Zauberbuch.
+
+\begin{table*}
+\begin{tabular}{lcccccccccc}
+Rettungs-  & Drachenodem & Lähmung       & Tod  & Strahlen    & Zaubersprüche \\
+würfe  für & Explosion   & Versteinerung & Gift & Zauberstäbe & Wunder \\
+Stufe 1--5 & 16 & 13 & 13 & 13 & 14 \\
+\end{tabular}
+\end{table*}
+
+\newpage
+
+
+
+\section{Kleriker}
+\label{sec:kleriker}
+
+\marginnote{
+\begin{tabular}{cc}
+Stufe & Erfahrungspunkte \\
+1 & 0\\
+2 & 1'565\\
+3 & 3'125\\
+4 & 6'251\\
+5 & 12'501
+\end{tabular}
+} Du kannst kämpfen (aber nicht so gut wie ein Krieger) und du kannst
+Wunder wirken (aber deine Zaubersprüche sind nicht so mächtig wie die
+Sprüche eines Magiers). Du darfst nur stumpfe Waffen verwenden.
+
+\medskip
+\begin{tabular}{lcccccccccc}
+Rüstungsschutz & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+Stufe 1–3 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Stufe 4–5 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 
+\end{tabular}
+
+\medskip\noindent Im Abschnitt \hyperref[sec:wunder]{Wunder der
+  Kleriker} gibt es eine entsprechende Liste.
+
+\begin{table*}
+\begin{tabular}{lcccccccccc}
+Rettungs- & Drachenodem & Lähmung       & Tod  & Strahlen    & Zaubersprüche \\
+würfe für & Explosion   & Versteinerung & Gift & Zauberstäbe & Wunder \\
+Stufe 1--4 & 16 & 14 & 11 & 12 & 15 \\
+Stufe    5 & 14 & 13 &  9 & 10 & 13 \\
+\end{tabular}
+\end{table*}
+
+\newthought{Du kannst Untote vertreiben!} Jeder Runde können 2W6
+Stufen von Untoten vertrieben oder zerstört werden. Der Erfolg hängt
+von deiner Stufe und etwas Glück ab.
+\marginnote{Gewisse Kleriker favorisieren die Waffen, welche ihren
+  Göttern zugeschrieben werden. Dies ist optional. Hier ein paar
+  Beispiele:
+
+\medskip
+\begin{tabular}{ll}
+Orcus & Streitkolben \\
+Ishtar & Sichelschwert \\
+Nergal & Kriegsaxt \\
+Freya & Speer \\
+Marduk & Keule \\
+Mitra & Handaxt \\
+Set & Dolch \\
+Hekate & Peitsche 
+\end{tabular}
+}
+
+\medskip
+\begin{tabular}{ll}
+Deine Stufe ist … & Die Untote … \\
+um 5 grösser & werden zerstört! \\
+um 3 grösser & werden vertrieben \\
+um 2 grösser & vertrieben, bei 3 oder mehr mit 2W6 \\
+um 1 grösser & vertrieben, bei 5 oder mehr mit 2W6 \\
+gleich       & vertrieben, bei 7 oder mehr mit 2W6 \\
+um 1 kleiner & vertrieben, bei 9 oder mehr mit 2W6 \\
+um 2 kleiner & vertrieben, bei 11 oder mehr mit 2W6 \\
+noch kleiner & lassen sich nicht beeindrucken! \\
+\end{tabular}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{Maximilian.jpg}
+\end{figure}
+
+\newpage
+
+
+
+\section{Elf}
+\label{sec:elf}
+
+\marginnote{
+\begin{tabular}{cc}
+Stufe & Erfahrungspunkte \\
+1 & 0\\
+2 & 4'065\\
+3 & 8'125\\
+4 & 16'251\\
+5 & 65'001
+\end{tabular}
+
+\medskip\noindent Da Elfen alle Rüstungen und Waffen verwenden
+\emph{und} Zaubern können, sind sie sehr beliebt. Weil sie zum Stufe
+steigen aber mehr Erfahrungspunkte brauchen, liegen sie oft eine Stufe
+unter ihren Mitstreitern. Zudem haben sie weniger Lebensenergie als
+Kämpfer.} Du lernst Zaubersprüche aus deinem Zauberbuch und du kannst
+kämpfen. Du kannst im Dunkeln sehen und du wirst ewig leben. Du
+brauchst eine Bildung von mindestens 9.
+
+Elfen können können nicht höher als bis auf die 10. Stufe steigen.
+
+\medskip
+\begin{tabular}{lcccccccccc}
+Rüstungsschutz & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+Stufe 1–2 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Stufe 3   & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Stufe 4   & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Stufe 5   & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 
+\end{tabular}
+\medskip
+
+\noindent Elfen sprechen die gemeine Sprache und Elfisch; zudem können
+sie sich einigermassen in der Sprache der Hyänenmenschen, Hobgobline
+und Orks (Schweinemenschen) verständigen.
+
+\begin{table*}
+\begin{tabular}{lcccccccccc}
+Rettungs- & Drachenodem & Lähmung       & Tod  & Strahlen    & Zaubersprüche \\
+würfe für & Explosion   & Versteinerung & Gift & Zauberstäbe & Wunder \\
+Stufe 1--3 & 15 & 13 & 12 & 13 & 15 \\
+Stufe 4--5 & 13 & 11 & 10 & 11 & 13 \\
+\end{tabular}
+\end{table*}
+
+
+
+\section{Halbling}
+\label{sec:halbling}
+
+\marginnote{
+\begin{tabular}{cc}
+Stufe & Erfahrungspunkte \\
+1 & 0\\
+2 & 2'035\\
+3 & 4'065\\
+4 & 8'125\\
+5 & 16'251
+\end{tabular}
+
+\medskip\noindent Elfen, Halblinge und Zwerge kämpfen genau so gut wie
+Krieger.} Du bist noch kleiner und immer barfuss unterwegs. Du kannst
+dich gut verstecken und du kannst Fernkampfwaffen besonders gut
+einsetzen. Riesen haben Mühe, dich zu treffen. Du brauchst ein
+Geschick von mindestens 9.
+
+Halblinge können können nicht höher als bis auf die 8. Stufe
+steigen. Da du so klein bist, kannst du keine grossen Waffen
+verwenden.
+
+\medskip
+\begin{tabular}{lcccccccccc}
+Rüstungsschutz & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+Stufe 1–2 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Stufe 3   & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Stufe 4   & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Stufe 5   & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 
+\end{tabular}
+\medskip
+
+\noindent Als Halbling gibt es darüber hinaus noch einen +1 Bonus im
+\textbf{Fernkampf}. Selber haben Halblinge eine bessere Rüstungsklasse
+(-2) gegen \textbf{übermenschengrosse Gegner}.
+
+\begin{table*}
+\begin{tabular}{lcccccccccc}
+Rettungs- & Drachenodem & Lähmung       & Tod  & Strahlen    & Zaubersprüche \\
+würfe für & Explosion   & Versteinerung & Gift & Zauberstäbe & Wunder \\
+Stufe 1--3 & 13 & 10 &  8 &  9 & 12 \\
+Stufe 4--5 & 10 &  8 &  6 &  7 & 10 \\
+\end{tabular}
+\end{table*}
+
+\newpage
+
+
+
+\section{Zwerg}
+\label{sec:zwerg}
+
+\marginnote{
+\begin{tabular}{cc}
+Stufe & Erfahrungspunkte \\
+1 & 0\\
+2 & 2'187\\
+3 & 4'375\\
+4 & 8'751\\
+5 & 17'501
+\end{tabular}
+} Du bist klein, zäh, und du kannst gut kämpfen. Du weisst viel über
+Bauten unter der Erde. Du kannst im Dunkeln sehen. Du brauchst eine
+Gesundheit von mindestens 9.
+
+Zwerge können können nicht höher als bis auf die 12. Stufe
+steigen. Da du relativ klein bist, kannst du keine grossen Waffen
+verwenden.
+
+\medskip
+\begin{tabular}{lcccccccccc}
+Rüstungsschutz & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+Stufe 1–2 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Stufe 3   & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Stufe 4   & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Stufe 5   & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 
+\end{tabular}
+\medskip
+
+\noindent 
+Zwerge können sich mehr schlecht als recht mit Goblins, Gnomen und
+Kobolden unterhalten.
+
+\begin{table*}
+\begin{tabular}{lcccccccccc}
+Rettungs- & Drachenodem & Lähmung       & Tod  & Strahlen    & Zaubersprüche \\
+würfe für & Explosion   & Versteinerung & Gift & Zauberstäbe & Wunder \\
+Stufe 1--3 & 13 & 10 &  8 &  9 & 12 \\
+Stufe 4--5 & 10 &  8 &  6 &  7 & 10 \\
+\end{tabular}
+\end{table*}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{Beckenhaube.jpg}
+\end{figure}
+
+\newpage
+
+
+
+\section{Ausrüstung}
+\label{sec:ausrüstung}
+
+{
+\small
+\begin{fullwidth}
+\begin{minipage}[t]{0.47\linewidth}
+\begin{tabular}[t]{lcp{3.8cm}}
+Waffe & Gold & Bemerkung \\
+
+Kriegsaxt & 7 & zweihändig, Türen einschlagen \\
+
+Handaxt & 4 & kann geworfen werden \\
+
+Armbrust & 30 & kann mit wenig Training verwendet werden (Stufe 0),
+kann liegend verwendet werden \\
+
+\indent 30 Bolzen & 10 & Verbrauch mit nach dem Kampf prüfen \\
+
+Langbogen & 40 & grosse Reichweite, kann in dichter Formation
+verwendet werden \\
+
+Kurzbogen & 25 & kann vom Pferd verwendet werden \\
+
+\indent 20 Pfeile & 5 & \\
+
+Dolch & 3 & kann geworfen werden, kann versteckt werden \\
+
+Silberdolch & 30 & kann gegen Lykantrophen in Tierform verwendet
+werden \\
+
+Kurzschwert & 7 & kann in dichter Formation verwendet werden \\
+
+Langschwert & 10 & kann vom Boden gegen Berittene und umgekehrt
+verwendet werden \\
+
+Zweihänder & 15 & kann gegen mehrere Gegner gleichzeitig verwendet
+werden, benötigt viel Platz \\
+
+Keule & 3 & stumpf \\
+
+Kriegshammer & 5 & stumpf \\
+
+Streitkolben & 5 & stumpf \\
+
+Stangenwaffe & 7 & zweihändig, kann aus der zweiten Reihe und in
+dichter Formation verwendet werden \\
+
+Schleuder & 2 & benötigt viel Platz \\
+
+\indent 30 Steine & – & stumpf \\
+
+Speer & 3 & kann geworfen werden \\
+\end{tabular}
+
+\bigskip
+\begin{tabular}{lccl}
+Rüstung & Klasse & Gold & Bemerkung \\
+Leder & 7 & 20 & Schleichen und Schwimmen ist kein Problem\\
+Kette & 5 & 40 & kein Schleichen, einfaches Ertrinken \\
+Platte & 3 & 60 & kein Schleichen, einfaches Ertrinken \\
+Schild & -1 & 10 & kann geopfert werden, um einem Angriff zu entgehen \\
+Helm  & – & 10 & hilft auf der Tabelle für Verletzung und Tod \\
+\end{tabular}
+
+\medskip
+Bessere Rüstung macht langsam. Siehe
+\hyperref[sec:bewegung]{Bewegung}.
+\end{minipage}
+\begin{minipage}[t]{0.47\linewidth}
+\begin{tabular}[t]{lcp{4cm}}
+Gegenstand & Gold & Bemerkung \\
+Diebeswerkzeug & 25 & wird von Dieben für das Öffnen von Schlössern benötigt \\
+6 Fackeln & 1 & brennt eine Stunde; kann Tiere ängstigen \\
+Hammer (klein) & 2 & für Holzpflöcke und Keile \\
+Heiliges Symbol & 25 & wird von Klerikern für das Vertreiben von Untoten benötigt \\
+Heiliges Wasser & 25 & schadet Untoten wie brennendes Öl \\
+Holzpflock  & – & um Vampire zu pfählen \\
+Holzstab & 1 & billiger als eine Stangenwaffe um Dinge zu stupsen \\
+12 Keile & 1 & hält Türen offen oder geschlossen \\
+Knoblauch & 1 & eine Halskette, um Vampire fern zu halten \\
+Laterne & 10 & braucht eine Ölflasche für vier Stunden \\
+Ölflasche & 2 & brennt für zwei Runden für je 1W8 Schaden, wenn es mit einer Fackel in Brand gesetzt wird; eine brennende Öllache ängstigt Tiere \\
+Rucksack & 5 & um weitere Gegenstände zu tragen \\
+Sack (gross) & 2 & um Schätze zu schleppen \\
+Seil (50') & 1 & schweres Seil, welches nicht weiter als ein paar Schritte geworfen werden kann \\
+Spiegel & 5 & für den Nachweis von Vampiren und um Medusen zu bekämpfen \\
+Wegration & 15 & 1 Woche; kann Monster ablenken \\
+Wolfsbann & 10 & hält Werwölfe fern \\
+\end{tabular}
+\end{minipage}
+\end{fullwidth}
+}
+
+\newpage
+
+
+
+\section{Grundregeln}
+\label{sec:grundregeln}
+
+Zuerst ein paar grundsätzliche Begriffe.
+
+\textbf{Spieler}: Die Person, die am Tisch sitzt. Ich, du, unsere
+Freunde.
+
+\textbf{Charakter}: Die Person, die wir jeweils spielen. Ich heisse
+Alex und wohne in Zürich. Mein Charakter heisst Edrig und stammt aus
+Einaheim.
+
+\textbf{Erfahrungspunkte}: Gegner überlisten und überwältigen gibt
+Erfahrungspunkte. Zudem kann man für Geld, welches ohne Vorteil im
+Spiel ausgegeben wird, einen Erfahrungspunkt pro Goldmünze erhalten.
+\marginnote{Weil Geld zu Erfahrungspunkten und damit zum Stufenanstieg
+  führt, ist die Geldbeschaffung oft zentrales Element der Abenteuer.}
+Beispiele: Spenden an den Tempel, Aufstellen von Statuen, Organisieren
+von Saufgelagen, Zirkus für das gemeine Volk, Villa erbauen,
+Bedienstete anstellen und so weiter. Gegenbeispiele: Ausrüstung
+kaufen, Söldner anstellen, Pferde, Wagen, oder Schiffe kaufen. Kurz,
+was die Bekanntheit steigert aber zu nichts nutze ist, gilt. Mit genug
+Erfahrungspunkten, steigt man eine Stufe.
+
+\textbf{Stufe}: Mit der Zeit erhält der Charakter mehr Lebensenergie,
+trifft besser und erhält bessere Rettungswürfe.
+
+\textbf{Lebensenergie}: Die Lebensenergie zeigt an, wieviel Ausdauer,
+Glück und Lebenswillen der Charakter noch hat. \textit{Steigt} man um
+eine Stufe, würfelt man so viele Würfel wie man Stufen hat und behält
+das Resultat, wenn es besser als das bisherige ist. Krieger und Zwerge
+verwenden einen W8, Magier einen W4, alle anderen einen W6. Vergiss
+nicht, zu jedem Würfel den Gesundheitsbonus hinzu zu zählen.
+\textit{Verliert} man eine Stufe, so würfelt man ebenfalls so viele
+Würfel wie man Stufen hat und behält das Resultat, wenn es
+\textit{schlechter} als das bisherige ist.
+
+\marginnote{
+\begin{tabular}{lccccc}
+Stufe  & 1 & 2 & 3 & 4 & 5 \\
+Zirkel & 1 & 1 & 2 & 2 & 3 \\
+\end{tabular}
+} \textbf{Zirkel}: Die Zaubersprüche werden mit der Zeit ebenfalls
+mächtiger. Als Faustregel gilt, dass der mächtigste Zirkel, den
+Magier, Kleriker und Elfen beherrschen, der Hälfte ihrer Stufe
+entspricht (aufgerundet).
+
+\marginnote{
+\begin{tabular}{cl}
+2W6 & Reaktion \\
+2 & Feindseelig, sofortiger Angriff \\
+3–5 & Unfreundlich, Erpressung, Betrug \\
+6–8 & Neutral, unsicher, auf der Kippe \\
+9–11 & Uninteressiert, kein Risiko \\
+12 & Freundlich und hilfsbereit 
+\end{tabular}
+} \textbf{Reaktionswurf}: Der Spielleiter sollte für alle Gegner, mit
+denen man redet, einen Reaktionswurf machen. Hierfür werden 2W6
+gewürfelt und der \textit{Auftreten} Bonus des Sprechers hinzu
+gezählt. Das Spektrum reicht von sofortigem Angriff (2) bis zu grosser
+Hilfsbereitschaft (12).
+
+\textbf{Moralwurf}: Ist der erste Gegner besiegt oder ist die Hälfte
+der Gegner kampfunfähig, muss der Spielleiter einen Moralwurf machen.
+Würfelt der Spielleiter den Moralwert der Gegner oder darunter, kämpft
+der Gegner weiter. Der Gegner muss maximal zwei Moralwürfe machen.
+Spielercharaktere müssen nie einen Moralwurf machen. Söldner, welche
+die Spielercharaktere angeheuert haben, müssen bei Verlusten ebenfalls
+Moralwürfe machen. Gefolgsleute müssen bei Verlusten keine Moralwürfe
+machen.
+
+\newpage
+
+\textbf{Gefolgsleute}: Im Gegensatz zu Söldnern sind Gefolgsleute
+treu. Ihre Anzahl ist allerdings beschränkt: 4 + \textit{Auftreten}
+Bonus (1–7). Nach einem Abenteuer müssen Gefolgsleute ohne Stufe einen
+Moralwurf machen. Ihre Moral wird durch den \textit{Auftreten} Bonus
+ihres Herren bestimmt: 7 + Bonus (4–10). Grosszügige Geschenke über
+die ursprünglich getroffenen Abmachungen hinaus können die Moral
+kurzfristig um +1 erhöhen. Würfeln Gefolgsleute \textit{über} ihren
+Moralwert, so setzen sie sich zur Ruhe.
+
+Der Lohn wird am Ende des Spielabends bezahlt. Zur Höhe des Lohnes
+siehe \hyperref[sec:löhne]{Löhne}.
+
+\textbf{Erfahrungspunkte für Gegner} werden am Ende des Spielabends
+auf Spielercharaktere und Gefolgsleute verteilt. Gefolgsleute ohne
+Stufe mit 100 Erfahrungspunkten oder mehr erhalten ihre erste Stufe
+und verlangen ab sofort 1/3 Anteil an den Schätzen. Zudem würfelt man
+ihre sechs Attribute und ihre Lebensenergie aus (die Lebensenergie
+kann allerdings nicht unter den vorherigen Wert sinken). Menschen
+dürfen zudem noch ihre Klasse wählen.
+
+\textbf{Gefolgsleute mit Stufe} sammeln Erfahrungspunkte wie ein
+Spielercharakter. Geld aus Lohn und Schatzanteile können ebenfalls in
+Erfahrungspunkte umgewandelt werden. Spieler können hierfür sogar Gold
+aus ihrem Anteil an Gefolgsleute weitergeben.
+
+\textbf{Klassen}: Auf Wunsch können Spieler einen Charakter aus jedem
+bekannten Volk und aus jedem bekannten Ort spielen. In diesem Sinne
+muss man alle neuen Völker und Ortschaften ``frei spielen''.
+Entsprechend lassen sich überall auch neue Varianten finden.
+
+
+
+\section{Fertigkeiten}
+\label{sec:fertigkeiten}
+
+Die grosse 1d6 Tabelle:
+
+\medskip
+\begin{tabular}{lc}
+Bereich & 1d6 \\
+Normalerweise & 1 \\
+Überrascht & 1--2 \\
+Türe aufbrechen & 1--2 \\
+Fallen auslösen & 1--2 \\
+Fallen umgehen & 1--2 \\
+Fallen entschärfen & 1--2 \\
+Zwerge entdecken leichter geheime Bauarbeiten & 1--2 \\
+Zwerge finden leichter Fallen & 1--2 \\
+Elfen hören besser & 1--2 \\
+Elfen erkennen leichter geheime Türen & 1--2 \\
+Halblinge können besser schleichen & 1--2 \\
+Halblinge können sich im Freien gut verstecken & 1--5 \\
+\end{tabular}
+\medskip
+
+\newpage
+
+
+
+\section{Kämpfen}
+\label{sec:kämpfen}
+
+Es wird viel gekämpft…
+
+\textbf{Überraschung}: Beide Seiten prüfen zu Beginn, ob sie
+überrascht sind. Wer überrascht ist, muss eine Runde
+aussetzen.\marginnote{Im Normalfall wird 1W6 gewürfelt und bei 1 oder
+  2 ist man überrascht.}
+
+\textbf{Runden}: Zu Beginn einer Runde müssen alle Charaktere ihre
+Aktion \emph{deklarieren}: Angreifen, Sprüche zaubern, Wunder wirken,
+und so weiter. Dann wird \emph{Initiative} gewürfelt (jede Seite mit
+1W6) und wer höher ist, fängt an.\marginnote{Im schlimmsten Fall kommt
+  der Gegner also zwei mal hintereinander dran.}
+
+\textbf{Trefferwurf}: Um Anzugreifen, würfelst du mit einem
+zwanzigseitigen Würfel (W20) und schaust, ob du
+triffst.\marginnote{Bei der Beschreibung deiner Klassen gibt es eine
+  \emph{Treffertabelle}, wo du siehst, was du mindestens würfeln
+  musst.} Addiere den Kraft Bonus im Nahkampf. Addiere den Geschick
+Bonus im Fernkampf.
+
+\textbf{20}: Wer beim Angriff eine 20 würfelt, richtet automatisch den
+maximalen Schaden an.
+
+\textbf{30}: Jeder Spieler darf ein Mal pro Abend für einen beliebigen
+Wurf mit dem zwanzigseitigen Würfel den dreissigseitigen Würfel
+nehmen.
+
+\textbf{Schadenswurf}: Falls du triffst, würfelst du mit einem
+sechseitigen Würfel (W6) aus, wieviel Schaden du machst. Addiere den
+Kraft Bonus im Nahkampf. Der Schaden im Fernkampf bleibt unverändert.
+
+\textbf{Platzbedarf}: In einem breiten Gang (3 Meter oder 10 Fuss)
+können normalerweise drei Personen nebeneinander kämpfen. Der
+Platzbedarf hängt aber von den verwendeten Waffen ab:
+
+\medskip
+\begin{tabular}{lcc}
+Waffeneigenschaft & Platzbedarf & auf \unit[3]{m}\\
+dichte Formation erlaubt & ¾ & 4 Personen \\
+normale Waffe & 1 & 3 Personen \\
+viel Platz benötigt & 1½ & 2 Personen \\
+Zweihänder & 3 & 1 Person \\
+\end{tabular}
+\medskip
+
+\begin{marginfigure}
+\includegraphics{Eisenkappe.jpg}
+\end{marginfigure}
+
+\textbf{Fernkampf}: Im Nahkampf kann man keine Fernkampfwaffen
+verwenden. Wird in einen Nahkampf hinein geschossen, wird das Opfer
+durch Zufall bestimmt.
+
+\textbf{Schutz}: Wird jemand angegriffen, können daneben stehende
+Freunde sich dazwischen stellen. Intelligente Monster können dies
+auch.
+
+\textbf{Rückzug}: Wer sich mit halber Geschwindigkeit zurück zieht,
+kann normal kämpfen und normal verfolgt werden, ausser jemand deckt
+den Rückzug. Wer sich schneller davon machen will, muss fliehen.
+
+\textbf{Fliehen}: Wer davon rennt, muss noch einen letzten Angriff
+überleben, bei dem der Gegner +2 auf den Wurf bekommt und der eigene
+Schild nicht zählt.
+
+\textbf{Verfolgungsjagd}: Wer verfolgt wird, muss eine höhere
+\hyperref[sec:bewegung]{Laufgeschwindigkeit} als seine Gegner haben.
+Tiere lassen sich oft durch fallen gelassenes Essen ablenken.
+Intelligente Gegner lassen sich oft durch fallen gelassene Schätze
+ablenken.
+
+\textbf{Schilde}: Trägt man ein Schild und wird von einer Waffe oder
+magischer Gewalt wie einem Blitz oder einem Feuerball getroffen, so
+kann man den Schild opfern. Es absorbiert den gesamten Schaden und
+wird zerstört. Magier können keine Schilde tragen.
+
+\textbf{Verletzung und Tod}: Lebensenergie misst, wie viel Schmerzen
+man ertragen kann, wie viel Lebenswillen man hat. Sobald man hier null
+Punkte erreicht, und bei jedem weiteren Treffer, muss man auf der
+\textit{Todestabelle} würfeln.
+
+\marginnote{\textit{Wiederauferstehung} und \textit{Regeneration} sind
+  Wunder des 7.~Zirkels und brauchen einen Kleriker der 13.~Stufe.
+
+  \textit{Tote erwecken} ist ein Wunder des 5.~Zirkels und braucht
+  einen Kleriker der 9.~Stufe.
+
+  \textit{Heilen Schwerer Wunden} ist ein Wunder des 4.~Zirkels und
+  braucht einen Kleriker der 7.~Stufe.}
+\begin{table}
+\begin{tabular}{cp{10cm}}
+2W6 & Resultat \\
+
+2 & \textbf{Sofortiger Tod}: Kopf abgeschlagen oder ähnliches; das Opfer kann
+nur mit dem Wunder \textit{Wiederauferstehung} wieder zum Leben
+erweckt werden \\
+
+3 & \textbf{Fatale Wunde und Tod} in 1d6 Runden: Lungendurchstich,
+Wirbelsäulenbruch oder ähnliches; mit dem Wunder \textit{Regeneration}
+kann der Tod verhindert werden; das Opfer kann durch
+\textit{Wiederauferstehung} oder \textit{Tote erwecken} wiederbelebt
+werden \\
+
+4 & \textbf{Verlust eines Gliedes und Tod} in 3W6 Runden; W4: 1 –
+Schwertarm, 2 – Schildarm, 3, 4 – Bein; der Tod kann mit
+Kauterisierung durch Feuer, einem Tourniquet, oder dem Zauber
+\textit{Heilen Schwerer Wunden} verhindert werden; mit dem Wunder
+\textit{Regeneration} kann der Verlust rückgängig gemacht werden; das
+Opfer kann durch \textit{Wiederauferstehung} oder \textit{Tote
+  erwecken} wiederbelebt werden; bei der Verwendung von \textit{Tote
+  erwecken} bleibt das Glied allerdings verloren \\
+
+5, 6 & \textbf{Knochenbruch}: 1 – Schwertarm, 2 – Schildarm, 3 – Bein,
+4 – Rippe; Heilung dauert 2W4+9 Wochen; mit dem Wunder
+\textit{Regeneration} kann der Bruch vorzeitig geheilt werden \\
+
+7, 8 & \textbf{Ohnmächtig}: wehrlos für 2W6 Runden; mit Helm nur eine
+Runde lang betäubt (wehrlos für eine Runde) \\
+
+9 & \textbf{Betäubt}: wehrlos für eine Runde; mit Helm wird man
+einfach nur niedergeschlagen (weitere Feinde erhalten +4 auf ihren
+Trefferwurf) \\
+
+10 & \textbf{Niedergeschlagen}: weitere Feinde erhalten +4 auf ihren
+Trefferwurf \\
+
+11 & Knapp dem Tod entkommen! \\
+
+12 & Adrenalinschub! Für jede zwei Stufen (aufgerundet) erhält man 1W4
+Punkte Lebensenergie; nach dem Kampf verliert man allerdings alle
+Lebensenergie und fällt für 2W6 Runden in Ohnmacht \\
+\end{tabular}
+\end{table}
+
+\newpage
+
+
+
+\section{Bewegung}
+\label{sec:bewegung}
+
+\textbf{Tragkraft}: Rüstung schränkt die Laufgeschwindigkeit gemäss
+der unten stehenden Tabelle ein. Wer zudem viel Schätze auf sich
+trägt, muss die Zeile darunter verwenden.
+
+\medskip
+\begin{tabular}{lccc}
+Rüstung & Forschen & Kämpfen & Rennen \\
+keine           & 120' & 40' & 120' \\
+Lederrüstung    & 90' & 30' & 90' \\
+Kettenhemd oder\\Plattenpanzer & 60' & 20' & 60' \\
+  & 30' & 10' & 30' 
+\end{tabular}
+\medskip
+
+\noindent \textbf{Forschen}: Das langsame und vorsichtige Vorgehen in
+der Unterwelt, pro 10 Minuten (1 Phase = 1 \textit{turn}).
+
+\textbf{Kämpfen}: Vorpreschen und angreifen, pro 10 Sekunden (1 Runde
+= 1 \textit{round}).
+
+\textbf{Rennen}: Wilde Flucht, pro Runde -- dies erlaubt den Gegnern
+einen letzten Angriff mit +2. Kartenzeichnen ist beim Rennen nicht
+erlaubt.
+
+
+
+\section{Ruf}
+\label{sec:ruf}
+
+\textbf{Ruf}: Überall kann Ruhm und Ehre gewonnen werden. Selbst die
+Götter zeigen ein Interesse an den Taten der Sterblichen. Der Ruf wird
+für alle Götter, Städte und Interessengruppen separat geführt. Je
+besser der Ruf, desto schwieriger wird es, diesen noch weiter zu
+steigern.
+
+Um den Ruf zu steigern, muss man mit dem entsprechenden Würfel über
+den aktuellen Wert würfeln. Der Ausgangswert ist 0, somit ist der
+erste Wurf nicht nötig: von 0 auf 1 steigt der Ruf sehr schnell.
+
+\medskip
+\begin{tabular}{p{8cm}c}
+Tat & Würfel \\
+Gegenstände finden, zurück bringen, retten & W4 \\
+Leben retten, Entführte finden, Dienste erweisen & W6 \\
+Siedlungen retten, ganzen Gemeinschaften helfen & W8 \\
+Im Dienste der Götter Aufträge erfüllen, ein Volk, einen Stamm, eine
+Gilde, eine ganze Kultur retten & W12 \\
+\end{tabular}
+\medskip
+
+\noindent \textbf{Götter}: Der Ruf gilt in der Not auch als Prozent
+Chance für eine göttliche Intervention. Für Kleriker gilt, dass der
+Ruf auch den Zirkel der ihm gewährten Wunder begrenzt. Für das erste
+Abenteuer eines Klerikers gibt es entsprechend noch keine Wunder zu
+wirken, da ein Kleriker noch keinen Ruf hat.
+
+Für Städte und Interessengruppen bestimmt der Ruf auch die
+Hilfsbereitschaft. Würfelt man mit 2W6 über diesen Wert, gibt es keine
+Unterstützung von der Gemeinschaft.
+
+
+\section{Zaubersprüche der Magier und Elfen}
+\label{sec:zaubersprüche}
+
+\marginnote{Die folgende Tabelle zeigt, wieviele Zaubersprüche du pro
+  Tag zaubern kannst und wieviele Zaubersprüche du in deine
+  Zauberbüchern niederschreiben und meistern kannst.
+
+\medskip
+\begin{tabular}{cccc}
+Stufe & 1. Zirkel & 2. Zirkel & 3. Zirkel \\
+1 & 1 & - & - \\
+2 & 2 & - & - \\
+3 & 2 & 1 & - \\
+4 & 2 & 2 & - \\
+5 & 2 & 2 & 1 \\
+\end{tabular}
+} \newthought{Als Magier und Elfen} beginnst du deine Karriere mit
+genau \emph{einem} Zauberspruch. Dieser Zauberspruch steht in deinem
+Zauberbuch. Wenn du dich für zehn Minuten hinsetzt, kannst du die
+entsprechenden Seiten in deinem Zauberbuch studieren und die magischen
+Runen werden sich in deinen Geist hineinbrennen. Dort bleiben sie, mit
+magischer Energie geladen, bis du zauberst. Die Energie löst sich, der
+Zauber wird ausgelöst und der Zauberspruch ist aus deinem Geist wieder
+verschwunden.
+
+Leider kannst du dies nicht beliebig oft wiederholen.
+\marginnote{Idealerweise lernst du bei Tagesanbruch die Zaubersprüche,
+  welche du für einen Kampf brauchst. Die restlichen Zaubersprüche
+  studierst du erst, wenn klar ist, was du brauchst.} Zu Beginn deiner
+Karriere kann dein Geist dies nur ein Mal pro Tag ertragen. Mit der
+Zeit wirst du allerdings mehr Zaubersprüche pro Tag und Zauber
+grösserer Zirkel zaubern können.
+
+Wenn du eine Stufe steigst, kannst du von einem anderen Elfen oder
+Magier neue Zaubersprüche lernen. \marginnote{Da man neue
+  Zaubersprüche nur von einem Meister lernen kann, bleiben viele
+  Magier und Elfen in engem Kontakt mit ihren ehemaligen Meistern und
+  lernen nach und nach alle ihrer Sprüche. Im Gegenzug verpflichten
+  sie sich, ihrem Meister die unterschiedlichsten Dienste zu erweisen.
+  Mit der Zeit haben sich um besonders mächtige Magier und ihre
+  Zauberbücher richtige \textit{Schulen} entwickelt.
+
+  Zaubersprüche kann man auch von anderen magiebegabten Wesen wie Feen,
+  Drachen, Dschinn oder Nymphen lernen, sofern man ihnen einen passenden
+  Gefallen erweist.
+
+  Aus fremden Zauberbüchern können keine neuen Zaubersprüche gelernt
+  werden. Fremde Zauberbücher sind ideal für eine \textit{Bibliothek}.
+  Ab der 9.~Stufe kann man nämlich neue Zaubersprüche
+  \textit{erforschen}. Hierfür benötigt man ein eigenes Labor, jede
+  Menge Zeit, viele seltsame Zutaten und eine Bibliothek.} Wenn du dir
+von einem Meister einen neuen Spruch zeigen lässt, schreibst du ihn in
+dein Zauberbuch. Um diesen Spruch \textit{meistern} zu können, darfst
+du die Limiten für deine Stufe aber noch nicht erreicht haben.
+
+
+\subsection{1.~Zirkel}
+
+\medskip\noindent
+\textbf{Licht}
+
+\medskip\noindent
+\textbf{Magie entdecken}
+
+\medskip\noindent
+\textbf{Magie entziffern}
+
+\medskip\noindent
+\textbf{Magisches Geschoss}
+
+\medskip\noindent
+\textbf{Person bezaubern}
+
+\medskip\noindent
+\textbf{Portal halten}
+
+\medskip\noindent
+\textbf{Schild}
+
+\medskip\noindent
+\textbf{Schlaf}
+
+\medskip\noindent
+\textbf{Schutz vor Bösem}
+
+\medskip\noindent
+\textbf{Schwebende Scheibe}
+
+\medskip\noindent
+\textbf{Sprachen lesen}
+
+\medskip\noindent
+\textbf{Bauchreden}
+
+
+\subsection{2.~Zirkel}
+
+\textbf{Arkanes Schloss} versiegelt Türen, Kisten oder Portale
+\emph{für immer}.\marginnote{\emph{Arkanes Schloss} ist eine stärkere
+  Variante von \textit{Portal halten}. \textit{Gegenzauber} und
+  \textit{Klopfen} beenden den Spruch.} Der Zauberer kann die
+verzauberten Türen und Kisten weiterhin normal verwenden.
+
+\medskip\noindent
+\textbf{Böses entdecken}
+
+\medskip\noindent
+\textbf{Ewiges Licht}
+
+\medskip\noindent
+\textbf{Gedanken lesen}
+
+\medskip\noindent
+\textbf{Geisterhafte Kräfte}
+
+\medskip\noindent
+\textbf{Klopfen}
+
+\medskip\noindent
+\textbf{Netz}
+
+\medskip\noindent
+\textbf{Objekt lokalisieren}
+
+\medskip\noindent
+\textbf{Schweben}
+
+\medskip\noindent
+\textbf{Spiegelbild}
+
+\medskip\noindent
+\textbf{Unsichtbarkeit}
+
+\medskip\noindent
+\textbf{Unsichtbarkeit entdecken}
+
+
+\subsection{3.~Zirkel}
+
+\textbf{Blitz}
+
+\medskip\noindent
+\textbf{Dunkelsicht}
+
+\medskip\noindent
+\textbf{Feuerball}
+
+\medskip\noindent
+\textbf{Fliegen}
+
+\medskip\noindent
+\textbf{Gegenzauber}
+
+\medskip\noindent
+\textbf{Hast}
+
+\medskip\noindent
+\textbf{Klarsicht}
+
+\medskip\noindent
+\textbf{Person halten}
+
+\medskip\noindent
+\textbf{Schutz vor Bösem 10 Fuss}
+
+\medskip\noindent
+\textbf{Schutz vor natürlichen Geschossen}
+
+\medskip\noindent
+\textbf{Unsichtbarkeit 10 Fuss}
+
+\medskip\noindent
+\textbf{Wasseratmung}
+
+
+
+\section{Die Wunder der Kleriker}
+\label{sec:wunder}
+
+\newthought{Als Kleriker} kannst du von den Göttern \textbf{Wunder
+  erflehen}. Wenn du für zehn Minuten betest, singst oder tanzt, wird
+die das Wunder gewährt. \marginnote{Wie man sieht, bestehen zwischen
+  den Wundern der Klerikern und den Zaubersprüchen der Magier und
+  Elfen viele Gemeinsamkeiten.} Es steht zu deiner Verfügung, bis du
+es \textit{wirkst}.
+
+Leider kannst du dies nicht beliebig oft wiederholen. Zu Beginn deiner
+Karriere bist du für die Götter noch nicht wichtig genug. Mit der Zeit
+wirst du allerdings mehr Wunder pro Tag und mächtigere Wunder wirken
+können.
+
+\marginnote{Die folgende Tabelle zeigt, wieviele Wunder du pro Tag
+  wirken kannst. Zauberbuch benötigst du keines.
+
+\medskip
+\begin{tabular}{cccc}
+Stufe & 1. Zirkel & 2. Zirkel & 3. Zirkel \\
+1 & 1 & - & - \\
+2 & 2 & - & - \\
+3 & 2 & 1 & - \\
+4 & 2 & 2 & - \\
+5 & 3 & 2 & 1 
+\end{tabular}
+} Wenn du die \textbf{Götter verärgerst}, kann es sein, dass du
+weniger Wunder wirken kannst, als auf der Tabelle aufgeführt sind!
+\textit{Achte auf deine Träume und Visionen} und gelobe Besserung, um
+wieder zu der dir zustehenden Macht zu kommen.
+
+Dein \textbf{Ruf} bei den Göttern bestimmt auch den höchsten Zirkel
+der Wunder, welche dir gewährt werden. Weil du das Spiel mit einem Ruf
+von 0 beginnst, wirst du im ersten Abenteuer noch \textit{kein} Wunder
+wirken können!
+
+Die \textbf{Wunder ab dem 4. Zirkel} werden dir \textit{persönlich}
+von einem Agenten deiner Götter gewährt -- einer Valkyre, einem Engel,
+einem Teufel und so weiter.
+
+\subsection{1.~Zirkel}
+
+\textbf{Böses entdecken} zeigt dem Kleriker während
+\textit{einer Stunde}, welche der sichtbaren Wesen im Umreis von
+\textit{zwanzig Meter} ihm Übles wollen.
+
+\medskip\noindent
+\textbf{Hand auflegen} heilt 1W6+1 Schadenspunkte \textit{oder} hebt
+Lähmung auf. Das Gegenteil davon ist \textbf{Schmerz} und versursacht
+1W6+1 Schadenspunkte. In beiden Fällen muss das Ziel berührt werden
+(was allerdings keinen Trefferwurf benötigt).
+
+\medskip\noindent
+\textbf{Licht} verzaubert einen Gegenstand innerhalb von
+\textit{vierzig Metern} für \textit{zwei Stunden} so dass er schwach
+zu leuchten beginnt und ein Kugel von \textit{zehn Meter} Durchmesser
+beleuchtet. Wird das Wunder auf die Augen einer Kreatur gewirkt, so
+wird sie für zwei Stunden erblinden. In diesem Fall steht dem Opfern
+ein Rettungswurf gegen Sprüche zu.
+
+\medskip\noindent
+\textbf{Mut} erlaubt einem berührten Wesen, welches in magischer Panik
+flieht will, einen Rettungswurf mit einem Bonus, der gleich hoch ist
+wie die Stufe des Klerikers. Das Gegenteil davon ist \textbf{Panik},
+der ein berührtes Wesen in Panik fliehen lässt. \textit{Mut} und
+\textit{Panik} heben sich gegenseitig auf.
+
+\medskip\noindent
+\textbf{Schutz vor beschworenen Kreaturen} schützt ein berührtes Wesen
+während \textit{zwei Stunden} vor der Berührung \textit{beschworener}
+Kreaturen und verbessert den Rüstungsschutz um -1 (tiefer ist besser)
+und gibt einen +1 Bonus auf alle Rettungswüfe.
+
+\medskip\noindent
+\textbf{Schutz vor Kälte} erlaubt es einem Wesen in bis zu
+\textit{zehn Meter} Entfernung für \textit{eine Stunde} jeglicher
+Kälte zu trotzen und gibt einen +2 Bonus bei Rettungswürfen gegen
+Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
+Kälteangriffen um einen Punkt.
+
+\medskip\noindent
+\textbf{Zauberei entdecken} zeigt dem Kleriker während \textit{zwanzig
+  Minuten}, welche sichtbaren Dinge im Umkreis von \textit{zwanzig
+  Meter} verzaubert sind.
+
+\subsection{2.~Zirkel}
+
+\medskip\noindent
+\textbf{Fallen entdecken} warnt den Kleriker während \textit{zwanzig
+  Minuten} vor allen Fallen im Umkreis von \textit{zehn Metern}.
+
+\medskip\noindent
+\textbf{Gesinnung entdecken} zeigt dem Kleriker die Gesinnung aller
+Wesen im Umkreis von \textit{fünf Metern}, die Gesinnung aller
+magischer Gegenstände, sofern sie eine haben, und ob dies hier ein
+heiliger oder ein unheiliger Ort ist.
+
+\medskip\noindent
+\textbf{Mit Tieren sprechen} erlaubt es dem Kleriker, während
+\textit{einer Stunde} mit allen Vertretern \textit{einer Tierart} im
+Umkreis von \textit{zehn Metern} zu reden und ihre Antworten zu
+verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
+gesinnt. Es kann zu einem Reaktionswurf kommen.
+
+\medskip\noindent
+\textbf{Personen festhalten} lähmt bis zu 1W4 sichtbare Personen
+(nicht beliebige Monster!) für \textit{ein und halb Stunden} in bis zu
+\textit{sechzig Meter} Entfernung. Untote und alle, die grösser als
+ein Oger sind, können nicht gelähmt werden. Allen Opfern steht ein
+Rettungswurf gegen Sprüche zu. Soll nur eine Person gelähmt werden,
+wird ist Rettungswurf um -2 erschwert.
+
+\medskip\noindent
+\textbf{Schutz vor Feuer} erlaubt es einem Wesen in bis zu
+\textit{zehn Meter} Entfernung für \textit{eine Stunde} jeglicher
+Hitze zu trotzen und gibt einen +3 Bonus bei Rettungswürfen gegen
+Feuerangriffe und reduziert zudem jeden Schadenswürfel bei
+Feuerangriffen um einen Punkt.
+
+\medskip\noindent
+\textbf{Segen} verleiht allen Verbündeten des Klerikers im Umkreis von
+\textit{zwanzig Metern} für \textit{eine Stunde} einen +1 Bonus beim
+Trefferwurf und beim Schadenswurf und steigert die Moral um +1. Das
+Gegenteil davon ist \textbf{Verfluchen} und bewirkt das genaue
+Gegenteil auf alle Feinde.
+
+\medskip\noindent
+\textbf{Stille} formt eine unsichtbare, schallschluckende Kugel mit
+\textit{zehn Meter} Durchmesser in bis zu \textit{sechzig Meter}
+Entfernung welche für \textit{zwei Stunden} andauert. Wird das Wunder
+auf eine unwillige Kreature gewirkt, so steht ihr ein Rettungswurf
+gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf den Boden und
+die Kreatur kann den Wirkungsbereich problemlos verlassen.
+
+\subsection{3.~Zirkel}
+
+\medskip\noindent
+\textbf{Ewiges Licht} verzaubert einen Gegenstand innerhalb von
+\textit{vierzig Metern} so dass er hell wie das Sonnenlicht zu
+leuchten beginnt und ein Kugel von \textit{zwanzig Meter} Durchmesser
+erleuchtet. Wird das Wunder auf die Augen einer Kreatur gewirkt, so
+wird sie erblinden. In diesem Fall steht dem Opfern ein Rettungswurf
+gegen Sprüche zu.
+
+\medskip\noindent
+\textbf{Fluch brechen} bricht einen Fluch, der auf einem berührten
+Wesen lastet. Trägt das Wesen einen verfluchten Gegenstand, so kann
+das Wesen den Gegenstand ablegen – der Gegenstand bleibt allerdings
+verflucht. Das Gegenteil davon ist der \textbf{Fluch}. Dieser ist
+permanent. \textit{Fluch brechen} hebt einen \textit{Fluch} auf.
+Flüche werden jeweils \textit{mit dem Spielleiter verhandelt}.
+
+\medskip\noindent
+\textbf{Gegenstand finden} lässt den Kleriker die genaue Richtung
+eines bestimmten Gegenstand oder einer bestimmten Art von Gegenstand
+im Umkreis von \textit{vierzig Meter} spühren.
+
+\medskip\noindent
+\textbf{Gerechter Zorn} verzaubert eine Waffe in bis zu \textit{zehn
+  Meter} Entfernung, so dass sie für \textit{zehn Minuten} einen
+zusätzlichen W6 Schaden verursacht.
+
+\medskip\noindent
+\textbf{Krankheiten heilen} heilt bei einem Wesen in bis zu
+\textit{zehn Meter} Entfernung alle Sorten von Krankheiten inklusive
+Mummienfäule, Lykanthropie und grünen Schleim. Das Gegenteil davon ist
+\medskip\noindent
+\textbf{Siechtum} und führt zu einer schrecklichen Krankheit, welche
+das Opfer in 2W12 Tagen dahin rafft. In diesem Fall steht dem Opfern
+ein Rettungswurf gegen Sprüche zu. Ein dahin siechendes Opfer erhält
+einen -2 Abzug auf alle Trefferwürfe und kann durch weder auf
+natürliche noch magische Weise heilen.
+
+\medskip\noindent
+\textbf{Magie bannen} bannt alle Wunder und Zauber von Personen, deren
+Stufe gleich oder unter der Stufe des Klerikers liegt. Für jede Stufe
+\textit{darüber} gibt es eine 5% Chance, dass der Bann misslingt.
+
+\medskip\noindent
+\textbf{Untote erschaffen} erfüllt Leichen mit unnatürlichem Leben und
+macht sie zu Skeletten oder Zombies, welche dem Kleriker aufs Wort
+gehorchen. Die Untote können dem Kleriker folgen oder in einem
+bestimmten Gebiet bleiben und dort entwerder alle oder nur eine
+bestimmte \textit{Art} von Kreature angreifen. Es können soviele
+Stufen an Untote erschaffen werden wie der Kleriker Stufen hat. Ein
+Skelett hat soviele Stufen wie die Leiche, ein Zombie jeweils eine
+eine Stufe mehr.
+
+\section{Löhne}
+\label{sec:löhne}
+
+Nur Gefolgsleute begleiten ihre Arbeitgeber auf Abenteuer. Mehr zu Gefolgsleuten in den \hyperref[sec:grundregeln]{Grundregeln}.
+
+\medskip
+\begin{tabular}{llcl}
+Bezeichnung & Volk & Kosten & Ausrüstung \\
+Träger & Mensch & 5S/Tag & keine \\
+Krieger Stufe 0 & Mensch & 1G/Tag & siehe Tabelle \textbf{Menschen} \\
+Andere Stufe 0\\(Elfen, Zwerge, Halblinge) & Andere & 3G/Tag & siehe Tabelle \textbf{Andere} \\
+Andere mit Stufen  & & 1/3 Schatz Anteil & Speziell 
+\end{tabular}
+\medskip
+
+\noindent Söldner und Angestellte leben in den Häusern, Höhlen, Türmen und Festungen, welche ihnen zugewiesen wurden. Sie kommen nicht auf Abenteuer mit.
+
+\medskip
+\begin{tabular}{lllclc}
+Bezeichnung & Volk & Kosten & Moral & Ausrüstung & RK \\
+Diener, Köche & Mensch & 1G/Monat & 6 & keine & 9 \\
+Leichte Infanterie\\zB. Räuber & Mensch & 3G/Monat & 8 & Schwert, Schild, Lederrüstung & 6 \\
+Leichte Infanterie & Goblin & 1G/Monat & 7 & Schwert, Schild, Lederrüstung & 6 \\
+Schwere Infanterie\\zB. Stadtwachen & Mensch & 4G/Monat & 8 & Schwert, Schild, Kettenhemd & 4 
+\end{tabular}
+\medskip
+
+\noindent Meistens wird erwartet, dass der Auftraggeber die Ausrüstung auf eigene Kosten verbessert. Das verbessert die Moral um +1. 
+
+Beim \textbf{Anwerben} gilt: 5 gp kostet der Marktschreier. Für
+weitere 5 gp gibt es +1 auf die folgenden Würfe. Die Spalten werden
+separat ausgewürfelt.
+
+\medskip
+\begin{tabular}{ccl}
+1d6 & Anzahl Kandidaten & jeder Kandidat einzeln \\
+1 & 0 & Träger \\
+2 & 1 & Träger \\
+3 & 2 & Träger \\
+4 & 3 & Mensch Stufe 0 \\
+5 & 4 & Mensch Stufe 0 \\
+6 & 5 & Anderes Volk Stufe 0 \\
+7 & 6 & Anderes Volk Stufe 0 
+\end{tabular}
+\medskip
+
+\noindent Auf der Tabelle werden Lebensenergie (LE) und Ausrüstung separat ausgewürfelt.
+
+Menschen, Stufe 0
+
+\medskip
+\begin{tabular}{cclc}
+1d6 & LE & Ausrüstung & RK \\
+1 & 1 & Knüppel & 9 \\
+2 & 2 & Dolch & 9 \\
+3 & 2 & Handaxt & 9 \\
+4 & 3 & Speer (kann aus der 2. Reihe angreifen) & 9 \\
+5 & 3 & Handaxt, Lederrüstung & 7 \\
+6 & 4 & Handaxt, Schild, Lederrüstung & 6 \\
+7 & 5 & Schwert, Schild, Schuppenpanzer & 5 
+\end{tabular}
+\medskip
+
+\noindent Auf der Stufe 0 beherrschen Elfen noch keinen Zauberspruch.
+Monster verwenden ihre eigenen Trefferwürfel (TW), um die Lebensenergie (LE) zu bestimmen (für Monster verwendet man immer einen W8).
+
+Andere Völker, Stufe 0
+
+\medskip
+\begin{tabular}{cclc}
+1d6 & LE & Volk und Ausrüstung & RK \\
+1 & 1 & Halbling mit Dolch, Kurzschwert, Schleuder, Brustplatte & 6 \\
+2 & 2 & Halbling mit Dolch, Kurzbogen, Lederrüstung & 7 \\
+3 & 3 & Zwerg mit Dolch, Kriegsaxt, Kettenhemd & 5 \\
+4 & 4 & Zwerg mit Dolch, Streithammer, Armbrust, Schild, Bänderpanzer & 3 \\
+5 & 5 & Elf mit Dolch, Schwert, Schild, Kettenhemd & 4 \\
+6 & 6 & Elf mit Dolch, Kurzschwert, Langbogen, Kettenhemd & 5 \\
+7 & 6 & Monster aus der Umgebung, passend gerüstet; separater Wurf mit dem W6: \\1. Goblin: TW 1-1, RK 6, Kurzschwert (1d6)\\2. Gnom: TW 1, RK 5, Pickel (1d6)\\3. Echsenmensch: TW 2+1, RK 5, Speer (1d6+1)\\4. Froschmensch: TW 2, RK 4, zwei Klauen und Biss (je 1d6)\\5. Oger: TW 4+1, RK 5, 2H Keule (1d10)\\6. Troll: TW 6+3, RK 4, zwei Klauen (je 1d6) und Biss (1d10) 
+\end{tabular}
+\medskip
+
+\section{Bauwerke}
+\label{sec:bauwerke}
+
+Ein paar Preise für Bauwerke:
+
+\medskip
+\begin{tabular}{ll}
+Gebäude & Preis \\
+\textbf{kleine Statue} für einen Brunnen oder einen Garten & 50 G.\\
+\textbf{kleiner, öffentlicher Altar} aus Stein mit Geister Tor und kleinem Brunnen (2m×2m) & 250 G.\\
+ein \textbf{kleiner Laden} aus Holz mit Schlafgelegenheit im Hinterzimmer (5m×5m) & 300 G.\\
+\textbf{einstöckiges Geschäftshaus} wie eine Taverne, eine Galerie, eine Spielstube (15m×15m) & 700 G.\\
+\textbf{zweistöckiges Holzhaus} in einem Dorf (15m×15m) & 1500 G.\\
+\textbf{zweistöckiges Gebäude aus Stein} in einem Dorf (15m×15m) & 3000 G.\\
+\textbf{zweistöckige Villa} mit Marmorsäulen und Statuen in einer Stadt (15m×15m) & 10'000 G.\\
+\textbf{Burg} auf dem Land mit sechs Stockwerken (20m×20m) und einem ummauerten Innenhof (10m×20m) & 75'000 G.
+\end{tabular}
+\medskip
+
+\noindent Man beachte, dass alle grösseren Bauwerke Gärtner, Wächter, Handwerker, und so weiter benötigen.
+Siehe \hyperref[sec:löhne]{Löhne}.
+
+\clearpage
+
+\section{Lizenz: Open Game License Version 1.0a}
+
+\begin{fullwidth}
+
+\fontsize{6.5pt}{7pt}\selectfont
+
+\textbf{Designation of Open Game Content}: The entire document is open
+game content. \textbf{Designation of Product Identity}: The names of
+contributors, the name of the website (``Campaign Wiki'') and the name
+of this site (``Halberds and Helmets'' as well as ``Hellebarden und
+Helme'') are product identity. The following text is the property of
+Wizards of the Coast, Inc. and is Copyright 2000 Wizards of the Coast,
+Inc (``Wizards''). All Rights Reserved.
+
+\begin{enumerate}
+
+\item Definitions: (a) ``Contributors'' means the copyright and/or
+  trademark owners who have contributed Open Game Content; (b)
+  ``Derivative Material'' means copyrighted material including
+  derivative works and translations (including into other computer
+  languages), potation, modification, correction, addition, extension,
+  upgrade, improvement, compilation, abridgment or other form in which
+  an existing work may be recast, transformed or adapted; (c)
+  ``Distribute'' means to reproduce, license, rent, lease, sell,
+  broadcast, publicly display, transmit or otherwise distribute; (d)
+  ``Open Game Content'' means the game mechanic and includes the
+  methods, procedures, processes and routines to the extent such
+  content does not embody the Product Identity and is an enhancement
+  over the prior art and any additional content clearly identified as
+  Open Game Content by the Contributor, and means any work covered by
+  this License, including translations and derivative works under
+  copyright law, but specifically excludes Product Identity. (e)
+  ``Product Identity'' means product and product line names, logos and
+  identifying marks including trade dress; artifacts; creatures
+  characters; stories, storylines, plots, thematic elements, dialogue,
+  incidents, language, artwork, symbols, designs, depictions,
+  likenesses, formats, poses, concepts, themes and graphic,
+  photographic and other visual or audio representations; names and
+  descriptions of characters, spells, enchantments, personalities,
+  teams, personas, likenesses and special abilities; places,
+  locations, environments, creatures, equipment, magical or
+  supernatural abilities or effects, logos, symbols, or graphic
+  designs; and any other trademark or registered trademark clearly
+  identified as Product identity by the owner of the Product Identity,
+  and which specifically excludes the Open Game Content; (f)
+  ``Trademark'' means the logos, names, mark, sign, motto, designs
+  that are used by a Contributor to identify itself or its products or
+  the associated products contributed to the Open Game License by the
+  Contributor (g) ``Use'', ``Used'' or ``Using'' means to use,
+  Distribute, copy, edit, format, modify, translate and otherwise
+  create Derivative Material of Open Game Content. (h) ``You'' or
+  ``Your'' means the licensee in terms of this agreement.
+
+\item The License: This License applies to any Open Game Content that
+  contains a notice indicating that the Open Game Content may only be
+  Used under and in terms of this License. You must affix such a
+  notice to any Open Game Content that you Use. No terms may be added
+  to or subtracted from this License except as described by the
+  License itself. No other terms or conditions may be applied to any
+  Open Game Content distributed using this License.
+
+\item Offer and Acceptance: By Using the Open Game Content You
+  indicate Your acceptance of the terms of this License.
+
+\item Grant and Consideration: In consideration for agreeing to use
+  this License, the Contributors grant You a perpetual, worldwide,
+  royalty- free, non-exclusive license with the exact terms of this
+  License to Use, the Open Game Content.
+
+\item Representation of Authority to Contribute: If You are
+  contributing original material as Open Game Content, You represent
+  that Your Contributions are Your original creation and/or You have
+  sufficient rights to grant the rights conveyed by this License.
+
+\item Notice of License Copyright: You must update the COPYRIGHT
+  NOTICE portion of this License to include the exact text of the
+  COPYRIGHT NOTICE of any Open Game Content You are copying, modifying
+  or distributing, and You must add the title, the copy- right date,
+  and the copyright holder's name to the COPYRIGHT NOTICE of any
+  original Open Game Content you Distribute.
+
+\item Use of Product Identity: You agree not to Use any Product
+  Identity, including as an indication as to compatibility, except as
+  expressly licensed in another, independent Agreement with the owner
+  of each element of that Product Identity. You agree not to indicate
+  compatibility or co-adaptability with any Trademark or Registered
+  Trademark in conjunction with a work containing Open Game Content
+  except as expressly licensed in another, independent Agreement with
+  the owner of such Trademark or Registered Trademark. The use of any
+  Product Identity in Open Game Content does not constitute a
+  challenge to the ownership of that Product Identity. The owner of
+  any Product Identity used in Open Game Content shall retain all
+  rights, title and interest in and to that Product Identity.
+
+\item Identification: If you distribute Open Game Content You must
+  clearly indicate which portions of the work that you are distrib-
+  uting are Open Game Content.
+
+\item Updating the License: Wizards or its designated Agents may
+  publish updated versions of this License. You may use any autho-
+  rized version of this License to copy, modify and distribute any
+  Open Game Content originally distributed under any version of this
+  License.
+
+\item Copy of this License: You MUST include a copy of this License
+  with every copy of the Open Game Content You Distribute.
+
+\item Use of Contributor Credits: You may not market or advertise the
+  Open Game Content using the name of any Contributor unless You have
+  written permission from the Contributor to do so.
+
+\item Inability to Comply: If it is impossible for You to comply with
+  any of the terms of this License with respect to some or all of the
+  Open Game Content due to statute, judicial order, or governmental
+  regulation then You may not Use any Open Game Material so affected.
+
+\item Termination: This License will terminate automatically if You
+  fail to comply with all terms herein and fail to cure such breach
+  within 30 days of becoming aware of the breach. All sublicenses
+  shall survive the termination of this License.
+
+\item Reformation: If any provision of this License is held to be
+  unenforceable, such provision shall be reformed only to the extent
+  necessary to make it enforceable.
+
+\item COPYRIGHT NOTICE
+\newline
+Open Game License v 1.0 © 2000, Wizards of the Coast, Inc.
+\newline
+System Reference Document Copyright 2000, Wizards of the Coast, Inc.;
+Authors Jonathon Tweet, Monte Cook, Skip Williams, based on original
+material by E. Gary Gygax and Dave Arneson.
+\newline
+System Reference Document Copyright 2000-2003, Wizards of the Coast,
+Inc.; Authors Jonathan Tweet, Monte Cook, Skip Williams, Rich Baker,
+Andy Collins, David Noonan, Rich Redman, Bruce R. Cordell, John D.
+Rateliff, Thomas Reid, James Wyatt, based on original material by E.
+Gary Gygax and Dave Arneson.
+\newline
+Modern System Reference Document Copyright 2002-2004, Wizards of the
+Coast, Inc.; Authors Bill Slavicsek, Jeff Grubb, Rich Redman, Charles
+Ryan, Eric Cagle, David Noonan, Stan!, Christopher Perkins, Rodney
+Thompson, and JD Wiker, based on material by Jonathan Tweet, Monte
+Cook, Skip Williams, Richard Baker, Peter Adkison, Bruce R. Cordell,
+John Tynes, Andy Collins, and JD Wiker.
+\newline
+Castles \& Crusades: Players Handbook, Copyright 2004, Troll Lord
+Games; Authors Davis Chenault and Mac Golden.
+\newline
+Cave Cricket from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Authors Scott Greene and Clark Peterson, based on
+original material by Gary Gygax.
+\newline
+Crab, Monstrous from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Author Scott Greene, based on original material by Gary
+Gygax.
+\newline
+Fly, Giant from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Author Scott Greene, based on original material by Gary
+Gygax.
+\newline
+Golem, Wood from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Authors Scott Greene and Patrick Lawinger.
+\newline
+Kamadan from the Tome of Horrors, copyright 2002, Necromancer Games,
+Inc.; Author Scott Greene, based on original material by Nick Louth.
+\newline
+Rot Grub from the Tome of Horrors, Copyright 2002, Necromancer Games,
+Inc.; Authors Scott Greene and Clark Peterson, based on original
+material by Gary Gygax
+\newline
+\href{http://www.goblinoidgames.com/labyrinthlord.html}{Labyrinth
+  Lord}\textsuperscript{\texttrademark} Copyright 2007-2009, Daniel
+Proctor. Author Daniel Proctor.
+\newline
+Halberds and Helmets Copyright 2012, Alex Schroeder. Author Alex
+Schroeder.
+
+\end{enumerate}
+
+\noindent For purposes of this license, nothing is considered to be
+Product Identity in addition to anything covered in section 1, above.
+
+\end{fullwidth}
+
+\nobibliography{}
+
+\end{document}
+
+% Local Variables:
+% compile-command: "/usr/local/texlive/2012/bin/universal-darwin/pdflatex Hellebarden-und-Helme.ltx"
+% End:
