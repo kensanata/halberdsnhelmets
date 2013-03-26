@@ -874,6 +874,21 @@ sub random_parameters {
     (roll_3d6(), roll_3d6(), roll_3d6(),
      roll_3d6(), roll_3d6(), roll_3d6());
 
+  # if a class is provided, make sure minimum requirements are met
+  my $class = $char{class};
+  while ($class eq T('dwarf') and not average($con)) {
+    $con = roll_3d6();
+  }
+  while ($class eq T('elf') and not average($int)) {
+    $int = roll_3d6();
+  }
+  while ($class eq T('halfling') and not average($con)) {
+    $con = roll_3d6();
+  }
+  while ($class eq T('halfling') and not average($dex)) {
+    $dex = roll_3d6();
+  }
+
   provide("str", $str);
   provide("dex", $dex);
   provide("con", $con);
@@ -885,7 +900,6 @@ sub random_parameters {
   provide("xp",  "0");
   provide("thac0",  19);
 
-  my $class = $char{class};
   my $best = best($str, $dex, $con, $int, $wis, $cha);
 
   if (not $class) {
