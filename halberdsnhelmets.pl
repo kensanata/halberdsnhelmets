@@ -63,6 +63,7 @@ sub footer {
 	      $q->a({-href=>$url . "/$lang"}, 'Character Sheet Generator'),
 	      $q->a({-href=>$url . "/more/$lang"}, T('More')),
 	      $q->a({-href=>$url . "/source"}, T('Source')),
+	      $q->a({-href=>"https://github.com/kensanata/halberdsnhelmets"}, T('GitHub')),
 	      ($lang eq "en"
 	       ? $q->a({-href=>$url . "/de"}, T('German'))
 	       : $q->a({-href=>$url . "/en"}, T('English'))));
