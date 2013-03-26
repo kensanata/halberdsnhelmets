@@ -63,6 +63,7 @@ sub footer {
 	      $q->a({-href=>$url . "/$lang"}, 'Character Sheet Generator'),
 	      $q->a({-href=>$url . "/more/$lang"}, T('More')),
 	      $q->a({-href=>$url . "/source"}, T('Source')),
+	      $q->a({-href=>"https://github.com/kensanata/halberdsnhelmets"}, T('GitHub')),
 	      ($lang eq "en"
 	       ? $q->a({-href=>$url . "/de"}, T('German'))
 	       : $q->a({-href=>$url . "/en"}, T('English'))));
@@ -873,6 +874,21 @@ sub random_parameters {
     (roll_3d6(), roll_3d6(), roll_3d6(),
      roll_3d6(), roll_3d6(), roll_3d6());
 
+  # if a class is provided, make sure minimum requirements are met
+  my $class = $char{class};
+  while ($class eq T('dwarf') and not average($con)) {
+    $con = roll_3d6();
+  }
+  while ($class eq T('elf') and not average($int)) {
+    $int = roll_3d6();
+  }
+  while ($class eq T('halfling') and not average($con)) {
+    $con = roll_3d6();
+  }
+  while ($class eq T('halfling') and not average($dex)) {
+    $dex = roll_3d6();
+  }
+
   provide("str", $str);
   provide("dex", $dex);
   provide("con", $con);
@@ -884,7 +900,6 @@ sub random_parameters {
   provide("xp",  "0");
   provide("thac0",  19);
 
-  my $class = $char{class};
   my $best = best($str, $dex, $con, $int, $wis, $cha);
 
   if (not $class) {
@@ -969,13 +984,360 @@ sub random_parameters {
   provide("abilities", $abilities);
 }
 
+if ($lang eq 'de') {
+  # http://charaktereigenschaften.miroso.de/
+  $_ = qq{
+aalglatt abenteuerlustig abfällig abgebrüht abgehoben abgeklärt abgestumpft
+absprachefähig abwartend abweisend abwägend achtsam affektiert affig aggressiv
+agil akkurat akribisch aktiv albern altklug altruistisch ambitioniert
+anarchisch angeberisch angepasst angriffslustig angsteinflößend angstvoll
+anhänglich anmutig anpassungsfähig ansprechend anspruchslos anspruchsvoll
+anstrengend anzüglich arbeitswütig arglistig arglos argwöhnisch arrogant artig
+asketisch athletisch attraktiv aufbegehrend aufbrausend aufdringlich aufgedreht
+aufgeregt aufgeschlossen aufgeweckt aufhetzerisch aufmerksam
+aufmerksamkeitsbedürftig aufmüpfig aufopfernd aufrichtig aufschneiderisch
+aufsässig ausdauernd ausdruckslos ausdrucksstark ausfallend ausgeflippt
+ausgefuchst ausgeglichen ausländerfeindlich ausnutzbar autark authentisch
+autonom autoritär außergewöhnlich barbarisch barmherzig barsch bedacht
+bedrohlich bedrückt bedächtig bedürfnislos beeinflussbar befangen befehlerisch
+begeistert begeisterungsfähig begierig begnügsam begriffsstutzig behaglich
+beharrlich behende beherrscht beherzt behutsam behäbig beirrbar belastbar
+belebend beliebt bemüht bequem berechnend beredsam berüchtigt bescheiden
+besessen besitzergreifend besonders besonnen besorgt besserwissend
+besserwisserisch bestechend bestechlich bestialisch bestimmend bestimmerisch
+beständig betriebsam betrügerisch betörend bewandert bewusst bezaubernd bieder
+bigott bissig bitter bizarr blasiert blass blauäugig blumig blutrünstig bockig
+bodenständig borniert boshaft brav breitspurig brisant brummig brutal bärbeißig
+bösartig böse böswillig chaotisch charismatisch charmant chauvinistisch
+cholerisch clever cool couragiert damenhaft dankbar defensiv dekadent
+demagogisch demütig depressiv derb desorganisiert despotisch destruktiv
+determinativ devot dezent dezidiert diabolisch dickhäutig dickköpfig diffus
+diktatorisch diplomatisch direkt diskret distanziert distinguiert diszipliniert
+disziplinlos divenhaft dogmatisch doktrinär dominant doof dramatisch
+dramatisierend draufgängerisch dreist drängend dubios duckmäuserisch duldsam
+dumm durchblickend durcheinander durchschaubar durchschauend durchsetzungsstark
+durchtrieben dusselig dynamisch dämlich dünkelhaft dünnhäutig echt edel
+effizient egoistisch egoman egozentrisch ehrenhaft ehrenwert ehrfürchtig
+ehrgeizig ehrlich eifersüchtig eifrig eigen eigenartig eigenbestimmt
+eigenbrödlerisch eigenmächtig eigennützig eigensinnig eigenständig eigenwillig
+eilig einfach einfallslos einfallsreich einfältig einfühlsam eingebildet
+eingeschüchtert einladend einnehmend einsam einsatzbereit einschüchternd
+einseitig einsichtig einträchtig eintönig einzelgängerisch einzigartig eisern
+eiskalt eitel ekelig elastisch elefantös elegant elitär emotional empathisch
+empfindlich empfindsam empfindungsvoll emsig energetisch energiegeladen
+energievoll energisch engagiert engstirnig entgegenkommend enthaltsam enthemmt
+enthusiastisch entscheidungsfreudig entschieden entschlossen entspannt
+enttäuscht erbarmungslos erbärmlich erfinderisch erfolgsorientiert erfrischend
+ergeben erhaben erlebnisse ermutigend ernst ernsthaft erotisch erwartungsvoll
+exaltiert exorbitant experimentierfreudig extravagant extravertiert
+extrovertiert exzentrisch facettenreich fair falsch familiär fantasielos
+fantasiereich fantasievoll fantastisch fatalistisch faul feige fein feindselig
+feinfühlig feinsinnig feminin fesselnd feurig fies fixiert flatterhaft fleissig
+fleißig flexibel folgsam fordernd forsch fragil frech freiheitskämfend
+freiheitsliebend freimütig freizügig fremdbestimmend fremdbestimmt freudvoll
+freundlich friedfertig friedlich friedliebend friedlos friedselig friedvoll
+frigide frisch frohgemut frohnatur frohsinnig fromm frostig fröhlich furchtlos
+furchtsam furios fügsam fürsorglich galant gallig gamsig garstig gastfreundlich
+gebieterisch gebildet gebührend gedankenlos gediegen geduldig gefallsüchtig
+gefährlich gefällig gefügig gefühllos gefühlsbetont gefühlskalt gefühlvoll
+geheimnisvoll gehemmt gehorsam gehässig geistreich geizig geladen gelassen
+geldgierig geltungssüchtig gemein gemütvoll genauigkeitsliebend generös genial
+genügsam gepflegt geradlinig gerecht gerechtigkeitsliebend gerissen gescheit
+geschickt geschmeidig geschwätzig gesellig gesprächig gesundheitsbewusst
+gewaltsam gewalttätig gewieft gewissenhaft gewissenlos gewitzt gewöhnlich
+gierig giftig glamurös glaubensstark gleichgültig gleichmütig gläubig gnadenlos
+gottergeben gottesfürchtig grantig grausam grazil griesgrämig grimmig grob
+grotesk großherzig großkotzig großmäulig großmütig großspurig großzügig
+gräßlich größenwahnsinnig grübelnd gründlich gutgläubig gutherzig gutmütig
+gönnerhaft gütig haarspalterisch habgierig habsüchtig halsstarrig harmlos
+harmoniebedürftig harmoniesüchtig hart hartherzig hartnäckig hasenherzig
+hasserfüllt hedonistisch heimatverbunden heimtückisch heiter hektisch
+heldenhaft heldenmütig hellhörig hemmungslos herablassend herausfordernd
+heroisch herrisch herrlich herrschsüchtig herzerfrischend herzlich herzlos
+hetzerisch heuchlerisch hibbelig hilflos hilfsbereit hingebungsvoll
+hinterfotzig hintergründig hinterhältig hinterlistig hinterwäldlerisch
+hirnrissig hitzig hitzköpfig hochbegabt hochfahrend hochmütig hochnäsig
+hochtrabend humorlos humorvoll hyperkorrekt hysterisch hämisch hässlich
+häuslich höflich höflichkeitsliebend höhnisch hübsch ichbezogen idealistisch
+ideenreich idiotisch ignorant impertinent impulsiv inbrünstig individualistisch
+infam infantil initiativ inkompetent inkonsequent innovativ instinktiv integer
+intelektuell intelligent intensiv interessiert intolerant intrigant
+introvertiert intuitiv ironisch irre jovial jugendlich jung jähzornig
+kalkulierend kalt kaltblütig kaltherzig kaltschnäuzig kapriziös kasuistisch
+katzig kauzig keck kess ketzerisch keusch kinderlieb kindisch kindlich klar
+kleingeistig kleinkariert kleinlaut kleinlich kleinmütig klug knackig knallhart
+knickrig kokett komisch kommunikationsfähig kommunikativ kompetent kompliziert
+kompromissbereit konfliktfreudig konfliktscheu konkret konsequent konservativ
+konsistent konstant kontaktarm kontaktfreudig kontraproduktiv kontrareligiös
+kontrolliert konziliant kooperativ kopffrorm kopflastig kordial korrekt korrupt
+kosmopolitisch kraftvoll krank kratzbürstig kreativ kriecherisch
+kriegstreiberisch kriminell kritisch kritkfähig kräftig kulant kultiviert
+kumpelhaft kurios kämpferisch kühl kühn künstlerisch künstlich labil lachhaft
+lahm lammfromm langmütig langweilig larmoyant launisch laut lebendig
+lebensbejahend lebensfroh lebenslustig lebhaft leicht leichtfertig leichtfüssig
+leichtgläubig leichtlebig leichtsinnig leidenschaftlich leidlich leise
+leistungsbereit leistungsstark lernbereit lethargisch leutselig liberal lieb
+liebenswert liebevoll lieblich lieblos locker loyal lustlos lustvoll
+lösungsorientiert lügnerisch lüstern machtbesessen machtgierig machthaberisch
+machthungrig mager magisch manipulativ markant martialisch maskulin
+masochistisch materialistisch matriachalisch maßlos melancholisch memmenhaft
+menschenscheu menschenverachtend merkwürdig mies mild militant mimosenhaft
+minimalistisch misanthropisch missgünstig missmutig misstrauisch mitfühlend
+mitleiderregend mitleidlos mitleidslos mitteilsam modisch mollig mondän
+moralisch motivierend motiviert musikalisch mutig männerfeindlich mürrisch
+mütterlich nachdenklich nachgiebig nachlässig nachsichtig nachtragend naiv
+naturfreudig naturverbunden natürlich nebulös neckisch negativ neiderfüllt
+neidisch nervig nervös nett neugierig neurotisch neutral nichtssagend
+niedergeschlagen niederträchtig niedlich nihilistisch nonchalant normal notgeil
+nutzlos nüchtern oberflächlich objektiv obszön offen offenherzig
+opportunistisch oppositionell optimistisch ordentlich ordinär ordnungsfähig
+ordnungsliebend organisiert orientierungslos originell paranoid passiv patent
+patriarchisch patriotisch pedantisch pejorativ penibel perfektionistisch
+pervers pessimistisch pfiffig pflegeleicht pflichtbewusst pflichtversessen
+phantasievoll philanthropisch phlegmatisch phobisch pingelig planlos plump
+polarisierend politisch positiv pragmatisch prinzipientreu problembewusst
+profilierungssüchtig progressiv prollig promiskuitiv prophetisch protektiv
+provokant prüde psychotisch putzig pünktlich qualifiziert quengelig querdenkend
+querulant quicklebendig quirlig quälend rabiat rachsüchtig radikal raffiniert
+rastlos ratgebend rational ratlos ratsuchend rau reaktionsschnell reaktionär
+realistisch realitätsfremd rebellisch rechthaberisch rechtlos rechtschaffend
+redegewandt redelustig redselig reflektiert rege reif reiselustig reizbar
+reizend reizvoll religiös renitent reserviert resigniert resolut respektlos
+respektvoll reumütig rigoros risikofreudig robust romantisch routineorientiert
+ruhelos ruhig ruppig rückgratlos rücksichtslos rücksichtsvoll rüde sachlich
+sadistisch sanft sanftmütig sanguinisch sardonisch sarkastisch sauertöpfisch
+schadenfroh schamlos scheinheilig scheu schlagfertig schlampig schlau
+schmeichelhaft schneidig schnell schnippisch schnoddrig schreckhaft schrullig
+schullehrerhaft schusselig schwach schweigsam schwermütig schäbig schöngeistig
+schüchtern seicht selbstbewusst selbstdarstellerisch selbstgefällig
+selbstgerecht selbstherrlich selbstkritisch selbstlos selbstreflektierend
+selbstsicher selbstständig selbstsüchtig selbstverliebt selbstzweifelnd seltsam
+senil sensationslüstern sensibel sensitiv sentimental seriös sexistisch sexy
+sicherheitsbedürftig sinnlich skeptisch skrupellos skurril smart solidarisch
+solide sonnig sorgfältig sorglos sorgsam souverän sparsam spaßig spießig
+spirituell spitzfindig spontan sportlich sprachbegabt spritzig sprunghaft
+spröde spöttisch staatsmännisch stabil stachelig standhaft stark starr
+starrköpfig starrsinnig stereotypisch stilbewusst still stilsicher stilvoll
+stinkig stoisch stolz strahlend strategisch streberhaft strebsam streitsüchtig
+streng strikt stumpf stur sturköpfig störend störrisch stürmisch subjektiv
+subtil suchend suchtgefährdet suspekt sympathisch süchtig tadellos taff
+tagträumerisch taktisch taktlos taktvoll talentiert tatkräftig tatlos teamfähig
+temperamentlos temperamentvoll tiefgründig tierlieb tolerant toll tollkühn
+tollpatschig tough transparent traurig treu trotzig träge träumerisch
+trübsinnig tyrannisch töricht tüchtig ulkig umgänglich umsichtig umständlich
+umtriebig unabhängig unanständig unantastbar unartig unaufrichtig
+unausgeglichen unbedeutend unbeherrscht unbeirrbar unbelehrbar unberechenbar
+unbeschreiblich unbeschwert unbesonnen unbeständig unbeugsam undankbar
+undiszipliniert undurchschaubar undurchsichtig unehrlich uneigennützig uneinig
+unentschlossen unerbittlich unerreichbar unerschrocken unerschütterlich
+unerträglich unfair unfein unflätig unfolgsam unfreundlich ungeduldig
+ungehorsam ungehörig ungerecht ungeschickt ungesellig ungestüm ungewöhnlich
+ungezogen ungezügelt unglaubwürdig ungläubig unhöflich unkompliziert
+unkonventionell unkonzentriert unmenschlich unnachgiebig unnahbar unordentlich
+unparteiisch unproblematisch unpünktlich unrealistisch unreflektiert unruhig
+unsachlich unscheinbar unschlüssig unschuldig unselbständig unsensibel unsicher
+unstet unternehmungsfreudig unternehmungslustig untertänig unterwürfig untreu
+unverschämt unverwechselbar unverzagt unzufrieden unzuverlässig verachtend
+verantwortungsbewusst verantwortungslos verantwortungsvoll verbindlich
+verbissen verbittert verbrecherisch verfressen verführerisch vergebend
+vergesslich verhandlungsstark verharrend verkopft verlangend verletzbar
+verletzend verliebt verlogen verlustängstlich verlässlich vermittelnd
+vernetzend vernünftig verrucht verräterisch verrückt verschlagen verschlossen
+verschmitzt verschroben verschüchtert versiert verspielt versponnen
+verständnislos verständnisvoll verstört vertrauensvoll vertrauenswürdig
+verträumt verwahrlost verwegen verwirrt verwundert verwöhnt verzweifelt
+vielfältig vielschichtig vielseitig vital vorausschauend voreingenommen vorlaut
+vornehm vorsichtig vorwitzig väterlich wagemutig waghalsig wahnhaft wahnsinnig
+wahnwitzig wahrhaftig wahrheitsliebend wankelmütig warm warmherzig wechselhaft
+wehmütig weiblich weich weinselig weise weitsichtig weltfremd weltoffen wendig
+wichtigtuerisch widerlich widerspenstig widersprüchlich widerstandsfähig wild
+willenlos willensschwach willensstark willig willkürlich wirsch wissbegierig
+wissensdurstig witzig wohlerzogen wohlgesinnt wortkarg wählerisch würdelos
+würdevoll xanthippisch zaghaft zappelig zartbesaitet zartfühlend zauberhaft
+zaudernd zerbrechlich zerdenkend zerknautscht zerstreut zerstörerisch zickig
+zielbewusst zielführend zielorientiert zielstrebig zimperlich zufrieden
+zugeknöpft zuhörend zukunftsgläubig zupackend zurechnungsfähig zurückhaltend
+zuverlässig zuversichtlich zuvorkommend zwanghaft zweifelnd zwiegespalten
+zwingend zäh zärtlich zögerlich züchtig ängstlich ätzend öde überdreht
+überemotional überfürsorglich übergenau überheblich überkandidelt überkritisch
+überlebensfähig überlegen überlegt übermütig überragend überraschend
+überreagierend überschwenglich übersensibel überspannt überwältigent};
+} else {
+  # http://www.roleplayingtips.com/tools/1000-npc-traits/
+  $_ = qq{
+able abrasive abrupt absent minded abusive accepting accident prone
+accommodating accomplished action oriented active adaptable substance abusing
+adorable adventurous affable affected affectionate afraid uncommited
+aggressive agnostic agreeable alert alluring aloof
+altruistic always hungry always late ambiguous ambitious amiable amused
+amusing angry animated annoyed annoying anti-social anxious apathetic
+apologetic appreciative apprehensive approachable argumentative
+aristocratic arrogant artistic ashamed aspiring assertive astonished
+attentive audacious austere authoritarian authoritative available
+average awful awkward babbling babyish bad bashful beautiful
+belligerent bewildered biter blames others blasé blowhard boastful
+boisterous bold boorish bored boring bossy boundless brainy brash
+bratty brave brazen bright brilliant brotherly brutish bubbly busy
+calculating callous calm candid capable capricious carefree careful
+careless caring caustic cautious changeable charismatic charming chaste
+cheerful cheerless childish chivalrous civilised classy clean clever
+close closed clumsy coarse cocky coherent cold cold hearted combative
+comfortable committed communicative compassionate competent complacent
+compliant composed compulsive conceited concerned condescending
+confident confused congenial conscientious considerate consistent
+constricting content contented contrarian contrite controlling
+conversational cooperative coquettish courageous courteous covetous
+cowardly cowering coy crabby crafty cranky crazy creative credible
+creepy critical cross crude cruel cuddly cultured curious cutthroat
+cynical dainty dangerous daring dark dashing dauntless dazzling
+debonair deceitful deceiving decent decisive decorous deep defeated
+defective deferential defiant deliberate delicate delightful demanding
+demonic dependable dependent depressed deranged despicable despondent
+detached detailed determined devilish devious devoted dignified
+diligent direct disaffected disagreeable discerning disciplined
+discontented discouraged discreet disgusting dishonest disillusioned
+disinterested disloyal dismayed disorderly disorganized disparaging
+disrespectful dissatisfied dissolute distant distraught distressed
+disturbed dogmatic domineering dorky doubtful downtrodden draconian
+dramatic dreamer dreamy dreary dubious dull dumb dutiful dynamic
+eager easygoing eccentric educated effervescent efficient egocentric
+egotistic elated eloquent embarrassed embittered embraces change eminent
+emotional empathetic enchanting encouraging enduring energetic engaging
+enigmatic entertaining enthusiastic envious equable erratic ethical
+evasive evil exacting excellent excessive excitable excited exclusive
+expansive expert extravagant extreme exuberant fabulous facetious faded
+fair faith in self faithful faithless fake fanatical fanciful fantastic
+fatalistic fearful fearless feisty ferocious fidgety fierce fiery
+fighter filthy fine finicky flagging flakey flamboyant flashy fleeting
+flexible flighty flippant flirty flustered focused foolish forceful
+forgetful forgiving formal fortunate foul frank frantic fresh fretful
+friendly frightened frigid frugal frustrated fuddy duddy fun fun loving
+funny furious furtive fussy gabby garrulous gaudy generous genial
+gentle giddy giggly gives up easily giving glamorous gloomy glorious
+glum goal orientated good goofy graceful gracious grandiose grateful
+greedy gregarious grieving grouchy growly gruesome gruff grumpy
+guarded guilt ridden guilty gullible haggling handsome happy hard hard working
+hardy harmonious harried harsh hateful haughty healthy heart broken
+heartless heavy hearted hedonistic helpful helpless hesitant
+high high self esteem hilarious homeless honest honor bound honorable
+hopeful hopeless hormonal horrible hospitable hostile hot headed huffy
+humble humorous hurt hysterical ignorant ill ill-bred imaginative
+immaculate immature immobile immodest impartial impatient imperial
+impolite impotent impractical impudent impulsive inactive incoherent
+incompetent inconsiderate inconsistent indecisive independent indifferent
+indiscrete indiscriminate indolent indulgent industrious inefficient
+inept inflexible inimitable innocent inquisitive insecure insensitive
+insightful insincere insipid insistent insolent instinctive insulting
+intellectual intelligent intense interested interrupting intimidating
+intolerant intrepid introspective introverted intuitive inventive
+involved irresolute irresponsible irreverent irritable irritating
+jackass jaded jealous jittery joking jolly jovial joyful joyous
+judgmental keen kenderish kind hearted kittenish knowledgeable
+lackadaisical lacking languid lascivious late lazy leader lean
+lethargic level lewd liar licentious light-hearted likeable limited
+lineat lingering lively logical lonely loquacious lordly loud
+loudmouth lovable lovely loves challenge loving low confidence lowly
+loyal lucky lunatic lying macho mad malice malicious manipulative
+mannerly materialistic matronly matter-of-fact mature mean meek
+melancholy melodramatic mentally slow merciful mercurial messy
+meticulous mild mischievous miserable miserly mistrusting modern modest
+moody moping moralistic motherly motivated mysterious nagging naive
+narcissistic narrow-minded nasty naughty neat needs social approval
+needy negative negligent nervous neurotic never hungry nibbler nice
+night owl nihilistic nimble nit picker no purpose no self confidence
+noble noisy nonchalant nosy not trustworthy nuanced nuisance nurturing
+nut obedient obese obliging obnoxious obscene obsequious observant
+obstinate odd odious open open-minded opinionated opportunistic
+optimistic orcish orderly organized ornery ossified ostentatious
+outgoing outrageous outspoken overbearing overweight overwhelmed
+overwhelming paces pacifistic painstaking panicky paranoid particular
+passionate passive passive-aggressive pathetic patient patriotic
+peaceful penitent pensive perfect perfectionist performer perserverant
+perseveres persevering persistent persuasive pert perverse pessimistic
+petty petulant philanthropic picky pious pitiful placid plain playful
+pleasant pleasing plotting plucky polite pompous poor popular positive
+possessive practical precise predictable preoccupied pretentious pretty
+prim primitive productive profane professional promiscuous proper
+protective proud prudent psychotic puckish punctilious punctual
+purposeful pushy puzzled quarrelsome queer quick quick tempered quiet
+quirky quixotic rambunctious random rash rational rawboned realistic
+reasonable rebellious recalcitrant receptive reckless reclusive refined
+reflective regretful rejects change relaxed relents reliable relieved
+religious reluctant remorseful repugnant repulsive resentful reserved
+resilient resolute resourceful respectful responsible responsive
+restless retiring rhetorical rich right righteous rigid risk-taking
+romantic rough rowdy rude rugged ruthless sacrificing sad sadistic
+safe sagely saintly salient sanctimonious sanguine sarcastic sassy
+satisfied saucy savage scared scarred scary scattered scheming
+scornful scrawny scruffy secretive secure sedate seductive selective
+self-centered self-confident self-conscious self-controlling self-directed
+self-disciplined self-giving self-reliant self-serving selfish selfless
+senile sensitive sensual sentimental serene serious sexual sexy
+shallow shameless sharp sharp-tongued sharp-witted sheepish shiftless
+shifty short shrewd shy silent silky silly simian simple sincere
+sisterly skillful sleazy sloppy slovenly slow paced slutty sly
+small-minded smart smiling smooth sneaky snob sociable soft-hearted
+soft-spoken solitary sore sorry sour spendthrift spiteful splendid
+spoiled spontaneous spunky squeamish stately static steadfast sterile
+stern stimulating stingy stoical stolid straight laced strange strict
+strident strong strong willed stubborn studious stupid suave submissive
+successful succinct sulky sullen sultry supercilious superstitious
+supportive surly suspicious sweet sympathetic systematic taciturn tacky
+tactful tactless talented talkative tall tardy tasteful temperamental
+temperate tenacious tense tentative terrible terrified testy thankful
+thankless thick skinned thorough thoughtful thoughtless threatening
+thrifty thrilled tight timid tired tireless tiresome tolerant touchy
+tough trivial troubled truculent trusting trustworthy truthful typical
+ugly unappreciative unassuming unbending unbiased uncaring uncommitted
+unconcerned uncontrolled unconventional uncooperative uncoordinated
+uncouth undependable understanding undesirable undisciplined
+unenthusiastic unfeeling unfocused unforgiving unfriendly ungrateful
+unhappy unhelpful uninhibited unkind unmotivated unpredictable
+unreasonable unreceptive unreliable unresponsive unrestrained unruly
+unscrupulous unselfish unsure unsympathetic unsystematic unusual
+unwilling upbeat upset uptight useful vacant vague vain valiant
+vengeful venomous verbose versatile vigorous vindictive violent
+virtuous visual vivacious volatile voracious vulgar vulnerable warlike
+warm hearted wary wasteful weak weary weird well grounded whimsical
+wholesome wicked wild willing wise wishy washy withdrawn witty worldly
+worried worthless wretched xenophobic youthful zany zealous};
+}
+my @trait = split(/[ \r\n]+/, $_);
+
+sub traits {
+  my $description;
+  my $d = d6();
+  if ($d == 1) {
+    $description = T('young woman');
+  } elsif ($d == 2) {
+    $description = T('young man');
+  } elsif ($d == 3) {
+    $description = T('woman');
+  } elsif ($d == 4) {
+    $description = T('man');
+  } elsif ($d == 5) {
+    $description = T('elderly woman');
+  } elsif ($d == 6) {
+    $description = T('elderly man');
+  };
+  $description .= ', ';
+  my $trait = $trait[rand @trait];
+  $description .= $trait;
+  my $other = $trait[rand @trait];
+  if ($other ne $trait) {
+    $description .= ' ' . T('and') . ' ' . $other;
+  }
+
+  return $description;
+}
+
 sub characters {
   header('');
   my %init = map { $_ => $char{$_} } @provided;
   for (my $i = 0; $i < 50; $i++) {
     $q->delete_all();
     %char = %init;
-    print $q->start_pre({-style=>"display: inline-block; padding: 0 1em; width: 25em; border-left: 1px dotted grey; vertical-align: top; font-size: 8pt; "});
+    print $q->start_pre({-style=>"display: inline-block; padding: 0 1em; width: 30em; border-left: 1px dotted grey; vertical-align: top; font-size: 8pt; "});
     random_parameters();
     print "Str Dex Con Int Wis Cha HP AC Class\n";
     printf "%3d", $char{"str"};
@@ -988,6 +1350,7 @@ sub characters {
     printf " %2d", $char{ac};
     print " " . $char{class};
     print "\n";
+    print traits() . "\n";
     print map { "  $_\n" }
       split(/\\\\/, $char{property});
     print $q->end_pre();
