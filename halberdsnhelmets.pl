@@ -990,7 +990,7 @@ sub characters {
   for (my $i = 0; $i < 50; $i++) {
     $q->delete_all();
     %char = %init;
-    print $q->start_pre({-style=>"display: inline-block; padding: 0 1em; width: 25em; border-left: 1px dotted grey; vertical-align: top; font-size: 8pt; "});
+    print $q->start_pre({-style=>"display: inline-block; padding: 0 1em; width: 26em; border-left: 1px dotted grey; vertical-align: top; font-size: 8pt; "});
     random_parameters();
     print "Str Dex Con Int Wis Cha HP AC Class\n";
     printf "%3d", $char{"str"};
