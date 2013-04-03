@@ -1,6 +1,7 @@
 \documentclass{tufte-handout}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+% \usepackage{multirow}
 
 %\geometry{showframe}% for debugging purposes -- displays the margins
 
@@ -42,7 +43,6 @@
 \maketitle% this prints the handout title, author, and date
 
 \begin{marginfigure}
-  \centering
   \includegraphics{Schaller.jpg}
 \end{marginfigure}
 
@@ -207,7 +207,6 @@ gut wie ein Krieger) und du kannst Wunder wirken (aber deine
 Zaubersprüche sind nicht so mächtig wie die Sprüche eines Magiers).
 
 \begin{marginfigure}
-  \centering
   \includegraphics{Arragonien.jpg}
 \end{marginfigure}
 
@@ -287,7 +286,6 @@ Lerne soviel du kannst, arbeite hart und erhebe dein Haupt. Steige
 auf! Werde ein echtes Mitglied unserer stolzen Gesellschaft!''
 
 \begin{marginfigure}
-  \centering
   \includegraphics{Castriota.jpg}
 \end{marginfigure}
 
@@ -454,6 +452,23 @@ Hekate & Peitsche
 \end{tabular}
 }
 
+In der folgenden Tabelle sieht man, welche Zahl man mit 2W6 würfeln
+muss, um Untote zu vertreiben. V steht für ``Vertreiben'' und
+bedeutet, dass nicht gewürfelt werden muss. Es gelingt automatisch. Z
+steht für ``Zerstören'' und bedeutet, dass die Untoten automatisch
+zerstört werden.
+
+\medskip
+\begin{tabular}{lccccc}
+Klerikerstufe & 1 & 2 & 3 & 4 & 5 \\
+Skelette & 7+ & 5+ & 3+ & V & Z \\
+Zombies  & 9+ & 7+ & 5+ & 3+ & V \\
+Ghule    & 11+ & 9+ & 7+ & 5+ & 3+ \\
+Wiedergänger & – & 11+ & 9+ & 7+ & 5+ \\
+\end{tabular}
+
+\medskip\noindent Eine andere Erklärung:
+
 \medskip
 \begin{tabular}{ll}
 Deine Stufe ist … & Die Untote … \\
@@ -466,11 +481,7 @@ um 1 kleiner & vertrieben, bei 9 oder mehr mit 2W6 \\
 um 2 kleiner & vertrieben, bei 11 oder mehr mit 2W6 \\
 noch kleiner & lassen sich nicht beeindrucken! \\
 \end{tabular}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\linewidth]{Maximilian.jpg}
-\end{figure}
+\medskip
 
 \newpage
 
@@ -619,7 +630,7 @@ Stufe 4--5 & 10 &  8 &  6 &  7 & 10 \\
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\linewidth]{Beckenhaube.jpg}
+\includegraphics[width=0.5\linewidth]{Berner.jpg}
 \end{figure}
 
 \newpage
@@ -802,9 +813,9 @@ Andere mit Stufen & ½ Schatz Anteil \\
 \section{Kandidaten}
 \label{sec:Kandidaten}
 
-\marginnote{Wenn nichts anderes vermerkt ist,
-  handelt es sich hierbei um normale Menschen, die nicht kämpfen
-  wollen oder können. Im Notfall kämpfen sie wie Krieger der Stufe~0.
+\marginnote{Wenn nichts anderes vermerkt ist, handelt es sich bei den
+  Unbewaffneten um Menschen, die nicht kämpfen wollen oder können. Im
+  Notfall kämpfen sie wie Krieger der Stufe~0.
 
 \bigskip\noindent Typische Verteilung von Alter und Geschlecht der
 Kandidaten:
@@ -818,40 +829,45 @@ Kandidaten:
 5 & ältere Frau \\
 6 & älterer Frau \\
 \end{tabular}
+
+\bigskip\noindent Magier und Elfen haben ein Zauberbuch mit einem zufälligen
+Zauberspruch:
+
+\medskip
+\begin{tabular}{cl}
+1 & Magie lesen \\
+2 & Magie entdecken \\
+3 & Licht \\
+4 & Pers. bezaubern \\
+5 & mag. Geschoss \\
+6 & Schalf \\
+\end{tabular}
+
+\bigskip\noindent Mit der Zeit können auch andere Wesen angeworben
+werden: \textbf{Satyr} (TW~2), Lederrüstung, Bogen und Kurzschwert;
+\textbf{Riesenaffe} (TW~3, RK~8, 1W6/1W6), kann keine Rüstung tragen;
+\textbf{Minotaurus} (TW~2, RK~6, 1W6), kann mit Sturmangriff doppelten
+Schaden anrichten; \textbf{Troll} (TW~6+3, RK~4, 1W6/1W6/1W10),
+regeneriert 3/Runde nach 3 Runden.
+
+\includegraphics{Beckenhaube.jpg}
 }
 \begin{tabular}{cp{4.35cm}cp{4.35cm}}
-
-1. & fauler Drückeberger & 16. & Halbling mit Schleuder, Kurzschwert und Lederrüstung \\
-    
-2. & Fackelträger & 17. & Halbling mit Bogen, Kurzschwert, Schild und Kettenhemd \\
-    
-3. & Lastenträger & 18. & als Halbling verkleideter Goblin mit Schleuder, Dolch und Halbling-Lederrüstung \\
-
-4. & Wasserträger & 19. & Zwerg mit Kriegsaxt, Helm und Plattenpanzer \\
-
-5. & Jugendlicher, kennt sich mit Pferden aus & 20. & Zwerg mit Kriegshammer, Helm, Schild und Plattenpanzer \\
-
-6. & Jugendlicher, kennt sich mit Hunden uas & 21. & Elf mit Langschwert, Helm, Schild und Kettenhemd; zufälliger Zauberspruch \\
-
-7. & entlaufener Sklave, der die Umgebung kennt & 22. & Elf mit Dolch, Bogen und Kettenhemd; zufälliger Zauberspruch \\
-
-8. & ehemaliger Dieb mit Dolch und Lederrüstung & 23. & Gnom mit Pickel \\
-
-9. & ehemaliger Matrose mit zwei Handäxten & 24. &  \\
-
-10. & ehemaliger Leibwächter mit Speer und Lederrüstung & 25. &  \\
-
-11. & ehemaliger Söldner mit Hellebarde & 26. &  \\
-
-12. & ehemaliger Räuber mit Bogen, Dolch und Lederrüstung & 27. &  \\
-
-13. & ehemaliger Schäfer mit Schleuder und Keule & 28. &  \\
-
-14. & ehemaliger Jäger mit Bogen und Dolch & 29. &  \\
-
-15. & geflüchtete Stadtwache mit Speer, Streitkolben, Schild und
-Kettenhemd & 30. & Troll \\
-
+1. & fauler Drückeberger & 16. & Fackelträger \\
+2. & Wasserträger & 17. & Lastenträger \\
+3. & verschuldeter Halbling Winzer mit Bogen, Kurzschwert, Schild und Kettenhemd & 18. & leichtsinniger Halbling Abenteurer mit Schleuder, Kurzschwert und Lederrüstung \\
+4. & ehemaliger Matrose mit zwei Handäxten & 19. & ehemaliger Söldner mit Hellebarde \\
+5. & Zwerg mit Kriegshammer, Helm, Schild und Plattenpanzer & 20. & Wanderprediger, Kleriker mit Streithammer und Schild \\
+6. & Jugendlicher, kennt sich mit Hunden aus & 21. & reisender Wunderheiler, Kleriker mit Keule \\
+7. & entlaufener Sklave, der die Umgebung kennt & 22. & vertriebener Scharlatan, Magier \\
+8. & ehemaliger Dieb mit Dolch und Lederrüstung & 23. & Gelehrter auf Wanderschaft, Magier \\
+9. & ehemaliger Räuber mit Bogen, Dolch und Lederrüstung & 24. & verträumter Mondelf mit leichtem Umhang und zierlichem Langschwert \\
+10. & Pilger auf der Suche nach vergessenen Schreinen, Kleriker Mantel, Schleuder und Keule & 25. & Wanderer auf der Suche nach dem Sinn des Lebens, Elf mit Langschwert, Helm, Schild und Kettenhemd \\
+11. & verwildeter Halbling mit Lendenschurz, Schleuder und Keule & 26. & leichtfüssiger Meereself mit Dolch, Bogen und Kettenhemd \\
+12. & ehemaliger Leibwächter mit Speer und Lederrüstung & 27. & fanatischer Runenkrieger, Zwerg mit Lederschürze und Kriegsaxt \\
+13. & ehemaliger Schäfer mit Schleuder und Keule & 28. & Zwerg mit Kriegsaxt, Helm und Plattenpanzer \\
+14. & ehemaliger Jäger mit Bogen und Dolch & 29. & Jugendlicher, kennt sich mit Pferden aus \\
+15. & geflüchtete Stadtwache mit Speer, Streitkolben, Schild und Kettenhemd & 30. & Monster aus der Umgebung (Echsenmensch, Goblin, Minotaurus, Riesenaffe, Troll, Zentaur) \\
 \end{tabular}
 
 \newpage
@@ -930,6 +946,11 @@ Moralwürfe machen. Gefolgsleute müssen bei Verlusten keine Moralwürfe
 machen.
 
 \newpage
+
+
+\begin{marginfigure}
+\includegraphics{Maximilian.jpg}
+\end{marginfigure}
 
 \textbf{Gefolgsleute}\label{key:gefolgsleute}: Im Gegensatz zu
 Söldnern sind Gefolgsleute treu. Ihre Anzahl ist allerdings
