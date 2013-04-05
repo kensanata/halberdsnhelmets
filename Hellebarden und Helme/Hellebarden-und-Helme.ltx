@@ -125,19 +125,32 @@ ist es eigentlich schon zu spät.
 
 \section{Charaktererschaffung}
 
-\marginnote{Der Spielleiter kann sich mit dem
-  \href{http://campaignwiki.org/halberdsnhelmets/de}{Charaktergenerator}
-  schnell ein paar Charaktere erstellen.} Beginne mit einem leeren
-Blatt oder drucke dir ein vorgefertigtes
+\marginnote{Kurze Zusammenfassung für Spieler:
+  \begin{enumerate}
+  \item Sechs Eigenschaften auswürfeln
+  \item Klasse wählen
+  \item Lebensenergie auswürfeln
+  \item Gesinnung wählen
+  \item Angriffswerte für Stufe 1 kopieren
+  \item Rettungswürfe für Stufe 1 kopieren
+  \item Geld auswürfeln
+  \item Ausrüstung kaufen
+  \end{enumerate}
+}
+
+Beginne mit einem leeren Blatt oder drucke dir ein vorgefertigtes
 \href{http://campaignwiki.org/Charakterblatt.svg}{Charakterblatt}
 (\href{http://www.emacswiki.org/alex/pics/Charakterblatt.pdf}{PDF})
 aus.
 
 \newthought{Würfel 3W6 für jede Eigenschaft}, von oben nach unten:
 
-\marginnote{Im Fernkampf bleibt der Schadenswurf unverändert. Das ist
-  ein Vorteil für schwache Charaktere und ein Nachteil für starke
-  Charaktere.
+\textbf{Kraft} hilft beim Zuschlagen. Addiere den Bonus beim
+Trefferwurf und beim Schadenswurf im \emph{Nahkampf}.
+
+\marginnote{Im \emph{Fernkampf} bleibt der Schadenswurf unverändert.
+  Das ist ein Vorteil für schwache Charaktere und ein Nachteil für
+  starke Charaktere.
 
 \bigskip\noindent
 Zu jedem Wert gibt es auch einen Bonus:
@@ -154,13 +167,9 @@ Wert & Bonus \\
 18 & +3
 \end{tabular}
 }
-\smallskip
-
-\textbf{Kraft} hilft beim Zuschlagen. Addiere den Bonus beim
-Trefferwurf und beim Schadenswurf im Nahkampf.
 
 \textbf{Geschick} hilft beim Zielen und beim Ausweichen. Addiere den
-Bonus beim Trefferwurf im Fernkampf. Ziehe den Bonus von deiner
+Bonus beim Trefferwurf im \emph{Fernkampf}. Ziehe den Bonus von deiner
 Rüstungsklasse ab (tiefer ist besser).
 
 \textbf{Gesundheit} gibt mehr Lebensenergie. Addiere den Bonus auf
@@ -192,126 +201,46 @@ Wert & Bonus \\
 reagieren, wieviele Gefolgsleute du um dich scharen kannst und wie
 ergeben sie dir sind.
 
+\begin{marginfigure}[1cm]
+  \includegraphics{Arragonien.jpg}
+\end{marginfigure}
+
 \newthought{Wähle deine Klasse}. Zur Auswahl stehen:
 
 \hyperref[sec:krieger]{Krieger}: Du kannst gut kämpfen. Diese Klasse
 spielt sich am einfachsten.
 
-\hyperref[sec:magier]{Magier}: Du lernst Zaubersprüche aus deinem
-Zauberbuch. Kämpfen ist nicht so dein Ding. Du kannst nur kleine
-Waffen wie Messer und Stäbe verwenden. Anfangs wirst du schwach sein,
-aber wenn du überlebst, wirst du sehr mächtig sein.
+\hyperref[sec:magier]{Magier}: Du lernst
+\hyperref[sec:zaubersprüche]{Zaubersprüche} aus deinem Zauberbuch.
+Kämpfen ist nicht so dein Ding. Du kannst nur kleine Waffen wie Messer
+und Stäbe verwenden. Anfangs wirst du schwach sein, aber wenn du
+überlebst, wirst du sehr mächtig sein.
 
 \hyperref[sec:kleriker]{Kleriker}: Du kannst kämpfen (aber nicht so
-gut wie ein Krieger) und du kannst Wunder wirken (aber deine
-Zaubersprüche sind nicht so mächtig wie die Sprüche eines Magiers).
+gut wie ein Krieger) und du kannst \hyperref[sec:wunder]{Wunder}
+wirken (aber deine Zaubersprüche sind nicht so mächtig wie die Sprüche
+eines Magiers).
 
-\begin{marginfigure}
-  \includegraphics{Arragonien.jpg}
-\end{marginfigure}
-
-\hyperref[sec:elf]{Elf}: Du lernst Zaubersprüche aus deinem Zauberbuch
-und du kannst kämpfen. Du steigst langsamer auf als deine Mitspieler.
-Du kannst im Sternenlicht sehen und du wirst ewig leben. Du brauchst
-eine Bildung von mindestens 9.
-
-\hyperref[sec:zwerg]{Zwerg}: Du bist klein, zäh, und du kannst gut
-kämpfen. Du weisst viel über Bauten unter der Erde. Du kannst im
-Dunkeln sehen. Du brauchst eine Gesundheit von mindestens 9.
+\hyperref[sec:elf]{Elf}: Du lernst
+\hyperref[sec:zaubersprüche]{Zaubersprüche} aus deinem Zauberbuch und
+du kannst kämpfen. Du steigst langsamer auf als deine Mitspieler. Du
+kannst im Sternenlicht sehen und du wirst ewig leben. Du brauchst eine
+Bildung von mindestens 9.
 
 \hyperref[sec:halbling]{Halbling}: Du bist noch kleiner und immer
 barfuss unterwegs. Du kannst dich gut verstecken und du kannst
 Fernkampfwaffen besonders gut einsetzen. Riesen haben Mühe, dich zu
 treffen. Du brauchst ein Geschick von mindestens 9.
 
-
-\newthought{Bestimme deine Lebensenergie} \marginnote{Steigst du eine
-  Stufe, würfelst du deine Lebensenergie neu: Einen Würfel pro Stufe,
-  jeweils plus deinen Bonus für Gesundheit (aber mindestens 1).
-  Behalte den alten Wert, falls das neue Resultat niedriger ist.} und
-vergiss nicht, deinen Bonus für Gesundheit zu addieren. Krieger und
-Zwerge verwenden einen W8, Magier einen W4, alle anderen einen W6.
-
-
-
-\section{Gesinnung}
-\label{sec:gesinnung}
-
-\newthought{Wähle ein Gesinnung}: Ordnung, Chaos oder Neutralität.
-\marginnote{Wer sich aus diesem kosmischen Kampf heraus halten will,
-  bekennt sich zur \textbf{Neutralität}. Es gibt keine Priester der
-  Neutralität.
-
-\bigskip\noindent
-Kleriker und andere religiöse Charaktere können sich einen
-\textbf{Schutzpatron} aussuchen.
-
-\textbf{Orcus}: Herr über die Untoten Untote, lässt Tote wieder
-auferstehen
-
-\textbf{Ishtar}: Eifersucht und \textit{amour fou}, Krieg, Abstieg in
-die Unterwelt auf der Suche nach dem Liebsten
-
-\textbf{Nergal}: Rache, Ungeziefer, Ratten und Seuchen, Herr der
-Unterwelt
-
-\textbf{Freya}: Ernte, Kreislauf des Lebens, Wölfe, Wildnis und freie
-Liebe
-
-\textbf{Marduk}: Kampf gegen die Monster, Kriegsfürst, Herrschaft
-
-\textbf{Mitra}: Feuer, Ehrlichkeit, Verträge und Schwüre
-
-\textbf{Set}: Schläue, Heimlichkeit und Mörder
-
-\textbf{Hekate}: Magie, Hexen, Wegkreuzungen}
-
-Die \textbf{Priester der Ordnung} sagen: ``Alleine sind wir schwach
-und das Leben ein Jammertal. Gemeinsam sind wir stark. Gemeinsam bauen
-wir unsere Häuser. Gemeinsam bestellen wir unsere Felder. Gemeinsam
-verteidigen wir unsere Städte und Dörfer. Nur gemeinsam sind wir
-stark. Wir bauen Dämme gegen die Flut. Wir bauen Aquädukte gegen die
-Dürre. Wir bauen Kanäle gegen die Seuchen. Wir legen die Sümpfe
-trocken und drängen das Fieber zurück. Wir füllen die Kornspeicher und
-besiegen den Hunger. Wir bestrafen den Verrat und belohnen die Treue.
-Wir sorgen für Recht und Gerechtigkeit. Selbst wenn das korrumpierende
-Chaos und die Anarchie um sich greift, bleibt uns immer noch die
-himmlische Ordnung von den höchsten Göttern im Himmel bis hin zu den
-schlimmsten Teufeln in der Hölle. Sie sorgen dafür, dass Strafe und
-Belohnung nicht vergessen gehen – jetzt nicht und bis in alle Ewigkeit
-nicht. In unserer Welt hat jeder seinen Platz und es hat einen Platz
-für jeden – auch für dich. Sieh diese Bücher: das Wissen der
-Altvorderen, die Gesetze und Tafeln unserer Ahnen. Es ist unser Erbe.
-Lerne soviel du kannst, arbeite hart und erhebe dein Haupt. Steige
-auf! Werde ein echtes Mitglied unserer stolzen Gesellschaft!''
-
-\begin{marginfigure}
-  \includegraphics{Castriota.jpg}
-\end{marginfigure}
-
-Die \textbf{Chaos Priester} sagen: ``Das Leben ist Chaos. Unkraut
-wächst im Feld. Der Obstgarten verwaldet. Die Küste wird ins Meer
-gespült. Das Chaos sind die tiefen Muster dieser Welt. Die Wolken
-gleiten jede für sich im stillen Tanz über den Himmel. Der Fluss
-fliesst in tausend Windungen zum Meer. Die Elfen leben in den Bäumen,
-ohne sie zu fällen und zu töten, sie in Bretter zersägen und diese
-dann morsch werden und faulen sehen. Nein, die Elfen beobachten die
-Muster, nach denen die Bäume wachsen, formen sie langsam, leben mit
-ihnen. Der Baum lebt. Der Elf lebt. Die Ordnung ist die Hybris zu
-glauben, dass man der Welt seinen Willen aufzwingen kann. Sie verdammt
-Mann, Frau und Kind zum Joch. Chaos ist nicht das Niederbrennen der
-Städte sondern die Einsicht, dass es eine Dummheit war, sie überhaupt
-zu bauen. Chaos ist nicht Gesetzlosigkeit, sondern die Einsicht, dass
-Menschen, wie Bäume, eine eigene Art zu leben haben. Wer Gesetze
-aufstellt, ohne dies zu bedenken, heisst Menschen töten und sie in
-Bretterkisten begraben. Komm mit! Ich weiss nicht wohin wir gehen,
-aber wir werden auf dem Weg so manches lernen.''
+\hyperref[sec:zwerg]{Zwerg}: Du bist klein, zäh, und du kannst gut
+kämpfen. Du weisst viel über Bauten unter der Erde. Du kannst im
+Dunkeln sehen. Du brauchst eine Gesundheit von mindestens 9.
 
 \newpage
 
 
 
-\section{Krieger}
+\subsection{Krieger}
 \label{sec:krieger}
 
 \marginnote{
@@ -328,8 +257,8 @@ Stufe & Erfahrungspunkte \\
 \medskip
 \marginnote{Hier sieht man, was man auf dem W20 würfeln muss, um die
   entsprechende Rüstungsklasse des Gegners zu treffen. Im Nahkampf
-  addiert man den \textit{Kraft} Bonus, im Fernkampf den
-  \textit{Geschick} Bonus.}
+  addiert man den \emph{Kraft} Bonus, im Fernkampf den
+  \emph{Geschick} Bonus.}
 \begin{tabular}{lcccccccccc}
 Rüstungsklasse & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
 Stufe 1–2 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
@@ -353,7 +282,7 @@ Stufe 4--5 & 13 & 12 & 10 & 11 & 14 \\
 
 
 
-\section{Magier}
+\subsection{Magier}
 \label{sec:magier}
 
 \marginnote{
@@ -397,7 +326,7 @@ Stufe 1--5 & 16 & 13 & 13 & 13 & 14 \\
 
 
 
-\section{Kleriker}
+\subsection{Kleriker}
 \label{sec:kleriker}
 
 \marginnote{
@@ -432,9 +361,10 @@ Stufe    5 & 14 & 13 &  9 & 10 & 13 \\
 \end{tabular}
 \end{table*}
 
-\newthought{Du kannst Untote vertreiben!} Jeder Runde können 2W6
-Stufen von Untoten vertrieben oder zerstört werden. Der Erfolg hängt
-von deiner Stufe und etwas Glück ab.
+\newthought{Du kannst Untote vertreiben!} Hierfür wird den Untoten ein
+heiliges Symbol entgegen gestreckt und laut die Götter angerufen.
+Jeder Runde können so 2W6 Trefferwürfel von Untoten vertrieben oder
+zerstört werden. Der Erfolg hängt von deiner Stufe und etwas Glück ab.
 \marginnote{Gewisse Kleriker favorisieren die Waffen, welche ihren
   Göttern zugeschrieben werden. Dies ist optional. Hier ein paar
   Beispiele:
@@ -467,6 +397,10 @@ Ghule    & 11+ & 9+ & 7+ & 5+ & 3+ \\
 Wiedergänger & – & 11+ & 9+ & 7+ & 5+ \\
 \end{tabular}
 
+\begin{marginfigure}[1cm]
+  \includegraphics{Sturmhaube.jpg}
+\end{marginfigure}
+
 \medskip\noindent Eine andere Erklärung:
 
 \medskip
@@ -487,7 +421,7 @@ noch kleiner & lassen sich nicht beeindrucken! \\
 
 
 
-\section{Elf}
+\subsection{Elf}
 \label{sec:elf}
 
 \marginnote{
@@ -535,7 +469,7 @@ Stufe 4--5 & 13 & 11 & 10 & 11 & 13 \\
 
 
 
-\section{Halbling}
+\subsection{Halbling}
 \label{sec:halbling}
 
 \marginnote{
@@ -569,8 +503,8 @@ Stufe 5   & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7
 \medskip
 
 \noindent Als Halbling gibt es darüber hinaus noch einen +1 Bonus im
-\textbf{Fernkampf}. Selber haben Halblinge eine bessere Rüstungsklasse
-(-2) gegen \textbf{übermenschengrosse Gegner}.
+\emph{Fernkampf}. Selber haben Halblinge eine bessere Rüstungsklasse
+(-2) gegen Riesen.
 
 \begin{table*}
 \begin{tabular}{lcccccccccc}
@@ -585,7 +519,7 @@ Stufe 4--5 & 10 &  8 &  6 &  7 & 10 \\
 
 
 
-\section{Zwerg}
+\subsection{Zwerg}
 \label{sec:zwerg}
 
 \marginnote{
@@ -629,9 +563,42 @@ Stufe 4--5 & 10 &  8 &  6 &  7 & 10 \\
 \end{table*}
 
 \begin{figure}
-\centering
-\includegraphics[width=0.5\linewidth]{Berner.jpg}
+  \centering
+  \includegraphics[width=2.5cm]{Berner.jpg}
 \end{figure}
+
+\newthought{Bestimme deine Lebensenergie} \marginnote{Steigst du eine
+  Stufe, würfelst du deine Lebensenergie neu: Einen Würfel pro Stufe,
+  jeweils plus deinen Bonus für Gesundheit (aber mindestens 1).
+  Behalte den alten Wert, falls das neue Resultat niedriger ist.} und
+vergiss nicht, deinen Bonus für Gesundheit zu addieren. Krieger und
+Zwerge verwenden einen W8, Magier einen W4, alle anderen einen W6.
+
+
+\newthought{Würfel 3W6 \texttimes 10~Gold}. Mit diesem Gold
+kaufst du dir die passende \hyperref[sec:ausrüstung]{Ausrüstung}.
+\marginnote{Eine gute Faustregel für den Einkauf: Rucksack und
+  Wegration für eine Woche. Die Hälfte des verbleibenden Geldes für
+  die Rüstung mit Schild und Helm, wenn möglich. Mit dem Rest dann so
+  viel wie möglich kaufen: eine Nahkampfwaffe, eine Fernkampfwaffe,
+  eine Lichtquelle. Diebe brauchen Diebeswerkzeug, Kleriker brauchen
+  ein heiliges Symbol. Zum Erforschen entweder ein Seil oder einen
+  Hammer mit Keilen. Gegen Monster entweder Holzpflöcke, Spiegel,
+  Weihwasser oder Wolfsbann. Mit dem restlichen Geld dann Gefolgsleute
+  anheuern und ausrüsten.
+}
+
+\medskip
+\begin{tabular}{cl}
+Gold & Hintegrund der Eltern \\
+30 & Lumpensammler, Bettler, Leibeigene, Flüchtlinge \\
+40--50 & Ausgestossene, Alleinerziehende, Künstler \\
+60--80 & Diebe, Räuber, Betrüger \\
+90--120 & Handwerker, Gewerbetreibende, Bauern \\
+130--150 & Händler, Priester \\
+160--170 & Grossgrundbesitzer \\
+180 & Aristokraten \\
+\end{tabular}
 
 \newpage
 
@@ -713,7 +680,6 @@ Diebeswerkzeug & 25 & wird von Dieben für das Öffnen von Schlössern benötigt
 6 Fackeln & 1 & brennt \unit[1]{h}; kann Tiere ängstigen \\
 Hammer (klein) & 2 & für Holzpflöcke und Keile \\
 Heiliges Symbol & 25 & wird von Klerikern für das Vertreiben von Untoten benötigt \\
-Heiliges Wasser & 25 & schadet Untoten wie brennendes Öl \\
 Holzpflock  & – & um Vampire zu pfählen \\
 Holzstab & 1 & billiger als eine Stangenwaffe um Dinge zu stupsen \\
 12 Keile & 1 & hält Türen offen oder geschlossen \\
@@ -725,6 +691,7 @@ Sack (gross) & 2 & um Schätze zu schleppen \\
 Seil (50') & 1 & schweres Seil, welches nicht weiter als ein paar Schritte geworfen werden kann \\
 Spiegel & 5 & für den Nachweis von Vampiren und um Medusen zu bekämpfen \\
 Wegration & 15 & 1 Woche; kann Monster ablenken \\
+Weihwasser & 25 & schadet Untoten wie brennendes Öl \\
 Wolfsbann & 10 & hält Werwölfe fern \\
 \end{tabular}
 \end{minipage}
@@ -741,36 +708,45 @@ Wolfsbann & 10 & hält Werwölfe fern \\
 Ein paar Preise für Bauwerke:\marginnote{Bauwerke sind eine beliebte
   Möglichkeit, um Gold in Erfahrungspunkte umzutauschen.}
 
+\begin{marginfigure}[2cm]
+  \centering
+  \includegraphics[height=4cm]{Italienischer-Schaller.jpg}
+\end{marginfigure}
+
 \medskip
 \begin{tabular}{p{8cm}r}
-Gebäude & Preis \\
+\textbf{kleine Statue} für einen Brunnen & 50~Gold\\
 
-\textbf{kleine Statue} für einen Brunnen oder einen Garten & 50 G.\\
+\textbf{normale Statue} für einen Garten & 100~Gold\\
 
 \textbf{kleiner, öffentlicher Altar} aus Stein mit Geister Tor und
-kleinem Brunnen (2m×2m) & 250 G.\\
+kleinem Brunnen (2m×2m) & 250~Gold\\
 
 ein \textbf{kleiner Laden} aus Holz mit Schlafgelegenheit im
-Hinterzimmer (5m×5m) & 300 G.\\
+Hinterzimmer (5m×5m) & 300~Gold\\
 
-\textbf{einstöckiges Geschäftshaus} wie eine Taverne, eine Galerie,
-eine Spielstube (15m×15m) & 700 G.\\
+\textbf{einstöckiges Geschäftshaus} aus Holz wie eine Taverne, eine
+Galerie, eine Spielstube (15m×15m) & 700~Gold\\
 
-\textbf{zweistöckiges Holzhaus} in einem Dorf (15m×15m) & 1500 G.\\
+\textbf{grosse Bronzestatue} für einen Platz & 1000~Gold\\
+
+\textbf{zweistöckiges Holzhaus} in einem Dorf (15m×15m) & 1500~Gold\\
 
 \textbf{zweistöckiges Gebäude aus Stein} in einem Dorf (15m×15m) &
-3000 G.\\
+3000~Gold\\
 
 \textbf{zweistöckige Villa} mit Marmorsäulen und Statuen in einer
-Stadt (15m×15m) & 10'000 G.\\
+Stadt (15m×15m) & 10\,000~Gold\\
 
 \textbf{Burg} auf dem Land mit sechs Stockwerken (20m×20m) und einem
-ummauerten Innenhof (10m×20m) & 75'000 G. \\
+ummauerten Innenhof (10m×20m) & 75\,000~Gold \\
 \end{tabular}
 \medskip
 
 \noindent Man beachte, dass alle grösseren Bauwerke Gärtner, Wächter,
-Handwerker, und so weiter benötigen.
+Handwerker, und so weiter benötigen.\marginnote{Die Löhne für
+  Angestellte aller Art zählen als Erfahrungspunkte.}
+
 
 
 
@@ -779,17 +755,16 @@ Handwerker, und so weiter benötigen.
 
 Söldner und Angestellte leben in den Häusern, Höhlen, Türmen und
 Festungen, welche ihnen zugewiesen wurden. Sie kommen nicht auf
-Abenteuer mit. \marginnote{Die Ausgaben für Angestellte und Söldner
-  zählen als Erfahrungspunkte. Leichte Infanterie sind z.\,B.~Räuber
-  mit Schwert, Schild und Lederrüstung; schwere Infanterie sind
+Abenteuer mit. \marginnote{Leichte Infanterie sind z.\,B.~Räuber mit
+  Schwert, Schild und Lederrüstung; schwere Infanterie sind
   z.\,B.~Stadtwachen mit Schwert, Schild und Kettenhemd.}
 
 \medskip
 \begin{tabular}{llc}
 Bezeichnung & Kosten & Moral \\
-Diener, Köche & \unit[1]{Gold/Monat} & 6 \\
-Leichte Infanterie & \unit[3]{Gold/Monat} & 8 \\
-Schwere Infanterie & \unit[4]{Gold/Monat} & 8 \\
+Diener, Köche & 1~Gold/Monat & 6 \\
+Leichte Infanterie & 3~Gold/Monat & 8 \\
+Schwere Infanterie & 4~Gold/Monat & 8 \\
 \end{tabular}
 \medskip
 
@@ -799,13 +774,13 @@ Arbeitgeber auf Abenteuer.
 \medskip
 \begin{tabular}{ll}
 Bezeichnung & Kosten \\
-Träger & \unit[5]{Silber/Tag} \\
-Krieger Stufe 0 & \unit[1]{Gold/Tag} \\
+Träger & 5~Silber/Tag \\
+Krieger Stufe 0 & 1~Gold/Tag \\
 Andere mit Stufen & ½ Schatz Anteil \\
 \end{tabular}
 \medskip
 
-\noindent\textbf{Anwerben} Für \unit[10]{Gold} präsentieren sich pro Tag 1W6
+\noindent\textbf{Anwerben} Für 10~Gold präsentieren sich pro Tag 1W6
 \hyperref[sec:Kandidaten]{Kandidaten}.
 
 
@@ -835,22 +810,29 @@ Zauberspruch:
 
 \medskip
 \begin{tabular}{cl}
-1 & Magie lesen \\
+1 & Magie entziffern \\
 2 & Magie entdecken \\
 3 & Licht \\
-4 & Pers. bezaubern \\
-5 & mag. Geschoss \\
-6 & Schalf \\
+4 & Person bezaubern \\
+5 & Magisches Geschoss \\
+6 & Schlaf \\
 \end{tabular}
 
 \bigskip\noindent Mit der Zeit können auch andere Wesen angeworben
 werden: \textbf{Satyr} (TW~2), Lederrüstung, Bogen und Kurzschwert;
-\textbf{Riesenaffe} (TW~3, RK~8, 1W6/1W6), kann keine Rüstung tragen;
-\textbf{Minotaurus} (TW~2, RK~6, 1W6), kann mit Sturmangriff doppelten
-Schaden anrichten; \textbf{Troll} (TW~6+3, RK~4, 1W6/1W6/1W10),
-regeneriert 3/Runde nach 3 Runden.
+\textbf{Tengu} (TW~2, RK~9, 1W6), kann fliegen, kann keine Rüstung
+tragen; \textbf{Minotaurus} (TW~2, RK~6, 1W6), kann mit Sturmangriff
+doppelten Schaden anrichten; \textbf{Riesenaffe} (TW~3, RK~8,
+1W6/1W6), kann keine Rüstung tragen; \textbf{Troll} (TW~6+3, RK~4,
+1W6/1W6/1W10), regeneriert 3/Runde nach 3 Runden.
 
-\includegraphics{Beckenhaube.jpg}
+\medskip\noindent TW: Trefferwürfel
+
+\noindent RK: Rüstungsklasse
+
+\bigskip
+\centering
+\includegraphics[height=4cm]{Beckenhaube.jpg}
 }
 \begin{tabular}{cp{4.35cm}cp{4.35cm}}
 1. & fauler Drückeberger & 16. & Fackelträger \\
@@ -869,6 +851,83 @@ regeneriert 3/Runde nach 3 Runden.
 14. & ehemaliger Jäger mit Bogen und Dolch & 29. & Jugendlicher, kennt sich mit Pferden aus \\
 15. & geflüchtete Stadtwache mit Speer, Streitkolben, Schild und Kettenhemd & 30. & Monster aus der Umgebung (Echsenmensch, Goblin, Minotaurus, Riesenaffe, Troll, Zentaur) \\
 \end{tabular}
+
+\newpage
+
+
+
+\section{Gesinnung}
+\label{sec:gesinnung}
+
+\newthought{Wähle ein Gesinnung}: Ordnung, Chaos oder Neutralität.
+\marginnote{Wer sich aus diesem kosmischen Kampf heraus halten will,
+  bekennt sich zur \textbf{Neutralität}. Es gibt keine Priester der
+  Neutralität.
+
+\bigskip\noindent
+Kleriker und andere religiöse Charaktere können sich einen
+\textbf{Schutzpatron} aussuchen.
+
+\textbf{Orcus}: Herr über die Untoten Untote, lässt Tote wieder
+auferstehen
+
+\textbf{Ishtar}: Eifersucht und \emph{amour fou}, Krieg, Abstieg in
+die Unterwelt auf der Suche nach dem Liebsten
+
+\textbf{Nergal}: Rache, Ungeziefer, Ratten und Seuchen, Herr der
+Unterwelt
+
+\textbf{Freya}: Ernte, Kreislauf des Lebens, Wölfe, Wildnis und freie
+Liebe
+
+\textbf{Marduk}: Kampf gegen die Monster, Kriegsfürst, Herrschaft
+
+\textbf{Mitra}: Feuer, Ehrlichkeit, Verträge und Schwüre
+
+\textbf{Set}: Schläue, Heimlichkeit und Mörder
+
+\textbf{Hekate}: Magie, Hexen, Wegkreuzungen}
+
+Die \textbf{Priester der Ordnung} sagen: ``Alleine sind wir schwach
+und das Leben ein Jammertal. Gemeinsam sind wir stark. Gemeinsam bauen
+wir unsere Häuser. Gemeinsam bestellen wir unsere Felder. Gemeinsam
+verteidigen wir unsere Städte und Dörfer. Nur gemeinsam sind wir
+stark. Wir bauen Dämme gegen die Flut. Wir bauen Aquädukte gegen die
+Dürre. Wir bauen Kanäle gegen die Seuchen. Wir legen die Sümpfe
+trocken und drängen das Fieber zurück. Wir füllen die Kornspeicher und
+besiegen den Hunger. Wir bestrafen den Verrat und belohnen die Treue.
+Wir sorgen für Recht und Gerechtigkeit. Selbst wenn das korrumpierende
+Chaos und die Anarchie um sich greift, bleibt uns immer noch die
+himmlische Ordnung von den höchsten Göttern im Himmel bis hin zu den
+schlimmsten Teufeln in der Hölle. Sie sorgen dafür, dass Strafe und
+Belohnung nicht vergessen gehen – jetzt nicht und bis in alle Ewigkeit
+nicht. In unserer Welt hat jeder seinen Platz und es hat einen Platz
+für jeden – auch für dich. Sieh diese Bücher: das Wissen der
+Altvorderen, die Gesetze und Tafeln unserer Ahnen. Es ist unser Erbe.
+Lerne soviel du kannst, arbeite hart und erhebe dein Haupt. Steige
+auf! Werde ein echtes Mitglied unserer stolzen Gesellschaft!''
+
+\begin{marginfigure}[1cm]
+  \includegraphics{Castriota.jpg}
+\end{marginfigure}
+
+Die \textbf{Chaos Priester} sagen: ``Das Leben ist Chaos. Unkraut
+wächst im Feld. Der Obstgarten verwaldet. Die Küste wird ins Meer
+gespült. Das Chaos sind die tiefen Muster dieser Welt. Die Wolken
+gleiten jede für sich im stillen Tanz über den Himmel. Der Fluss
+fliesst in tausend Windungen zum Meer. Die Elfen leben in den Bäumen,
+ohne sie zu fällen und zu töten, sie in Bretter zersägen und diese
+dann morsch werden und faulen sehen. Nein, die Elfen beobachten die
+Muster, nach denen die Bäume wachsen, formen sie langsam, leben mit
+ihnen. Der Baum lebt. Der Elf lebt. Die Ordnung ist die Hybris zu
+glauben, dass man der Welt seinen Willen aufzwingen kann. Sie verdammt
+Mann, Frau und Kind zum Joch. Chaos ist nicht das Niederbrennen der
+Städte sondern die Einsicht, dass es eine Dummheit war, sie überhaupt
+zu bauen. Chaos ist nicht Gesetzlosigkeit, sondern die Einsicht, dass
+Menschen, wie Bäume, eine eigene Art zu leben haben. Wer Gesetze
+aufstellt, ohne dies zu bedenken, heisst Menschen töten und sie in
+Bretterkisten begraben. Komm mit! Ich weiss nicht wohin wir gehen,
+aber wir werden auf dem Weg so manches lernen.''
 
 \newpage
 
@@ -902,14 +961,14 @@ Erfahrungspunkten, steigt man eine Stufe.
 trifft besser und erhält bessere Rettungswürfe.
 
 \textbf{Lebensenergie}: Die Lebensenergie zeigt an, wieviel Ausdauer,
-Glück und Lebenswillen der Charakter noch hat. \textit{Steigt} man um
+Glück und Lebenswillen der Charakter noch hat. \emph{Steigt} man um
 eine Stufe, würfelt man so viele Würfel wie man Stufen hat und behält
 das Resultat, wenn es besser als das bisherige ist. Krieger und Zwerge
 verwenden einen W8, Magier einen W4, alle anderen einen W6. Vergiss
 nicht, zu jedem Würfel den Gesundheitsbonus hinzu zu zählen.
-\textit{Verliert} man eine Stufe, so würfelt man ebenfalls so viele
+\emph{Verliert} man eine Stufe, so würfelt man ebenfalls so viele
 Würfel wie man Stufen hat und behält das Resultat, wenn es
-\textit{schlechter} als das bisherige ist.
+\emph{schlechter} als das bisherige ist.
 
 \marginnote{
 \begin{tabular}{lccccc}
@@ -932,7 +991,7 @@ entspricht (aufgerundet).
 \end{tabular}
 } \textbf{Reaktionswurf}: Der Spielleiter sollte für alle Gegner, mit
 denen man redet, einen Reaktionswurf machen. Hierfür werden 2W6
-gewürfelt und der \textit{Auftreten} Bonus des Sprechers hinzu
+gewürfelt und der \emph{Auftreten} Bonus des Sprechers hinzu
 gezählt. Das Spektrum reicht von sofortigem Angriff (2) bis zu grosser
 Hilfsbereitschaft (12).
 
@@ -948,22 +1007,22 @@ machen.
 \newpage
 
 
+
+\textbf{Gefolgsleute}\label{key:gefolgsleute}: Im Gegensatz zu
+Söldnern sind Gefolgsleute treu.\marginnote{Der Lohn wird am Ende des
+  Spielabends bezahlt. Zur Höhe des Lohnes siehe
+  \hyperref[sec:löhne]{Löhne}.} Ihre Anzahl ist allerdings beschränkt:
+4 + \emph{Auftreten} Bonus (1–7). Nach einem Abenteuer müssen
+Gefolgsleute ohne Stufe einen Moralwurf machen. Ihre Moral wird durch
+den \emph{Auftreten} Bonus ihres Herren bestimmt: 7 + Bonus (4–10).
+Grosszügige Geschenke über die ursprünglich getroffenen Abmachungen
+hinaus können die Moral kurzfristig um +1 erhöhen. Würfeln
+Gefolgsleute \emph{über} ihren Moralwert, so setzen sie sich zur
+Ruhe.
+
 \begin{marginfigure}
 \includegraphics{Maximilian.jpg}
 \end{marginfigure}
-
-\textbf{Gefolgsleute}\label{key:gefolgsleute}: Im Gegensatz zu
-Söldnern sind Gefolgsleute treu. Ihre Anzahl ist allerdings
-beschränkt: 4 + \textit{Auftreten} Bonus (1–7). Nach einem Abenteuer
-müssen Gefolgsleute ohne Stufe einen Moralwurf machen. Ihre Moral wird
-durch den \textit{Auftreten} Bonus ihres Herren bestimmt: 7 + Bonus
-(4–10). Grosszügige Geschenke über die ursprünglich getroffenen
-Abmachungen hinaus können die Moral kurzfristig um +1 erhöhen. Würfeln
-Gefolgsleute \textit{über} ihren Moralwert, so setzen sie sich zur
-Ruhe.
-
-Der Lohn wird am Ende des Spielabends bezahlt. Zur Höhe des Lohnes
-siehe \hyperref[sec:löhne]{Löhne}.
 
 \textbf{Erfahrungspunkte für Gegner} werden am Ende des Spielabends
 auf Spielercharaktere und Gefolgsleute verteilt. Gefolgsleute ohne
@@ -987,6 +1046,13 @@ Entsprechend lassen sich überall auch neue Varianten finden.
 
 \section{Fertigkeiten}
 \label{sec:fertigkeiten}
+
+\marginnote{In den meisten Fällen wird kein Würfelwurf nötig sein. Ist
+  der geheime Schalter hinter der Statue und der Spieler sagt, sein
+  Charakter sucht hinter der Statue, dann wird der Schalter gefunden.
+  Wenn es allerdings alle \unit[10]{min} eine Chance gibt, dass
+  Monster auftauchen, dann soll der Zwerg auch alle \unit[10]{min}
+  würfeln, um die Türe aufzubrechen.}
 
 Die grosse 1d6 Tabelle:
 
@@ -1094,42 +1160,42 @@ wird zerstört. Magier können keine Schilde tragen.
 \textbf{Verletzung und Tod}: Lebensenergie misst, wie viel Schmerzen
 man ertragen kann, wie viel Lebenswillen man hat. Sobald man hier null
 Punkte erreicht, und bei jedem weiteren Treffer, muss man auf der
-\textit{Todestabelle} würfeln.
+\emph{Todestabelle} würfeln.
 
-\marginnote{\textit{Wiederauferstehung} und \textit{Regeneration} sind
+\marginnote{\emph{Wiederauferstehung} und \emph{Regeneration} sind
   Wunder des 7.~Zirkels und brauchen einen Kleriker der 13.~Stufe.
 
-  \textit{Tote erwecken} ist ein Wunder des 5.~Zirkels und braucht
+  \emph{Tote erwecken} ist ein Wunder des 5.~Zirkels und braucht
   einen Kleriker der 9.~Stufe.
 
-  \textit{Heilen Schwerer Wunden} ist ein Wunder des 4.~Zirkels und
+  \emph{Heilen Schwerer Wunden} ist ein Wunder des 4.~Zirkels und
   braucht einen Kleriker der 7.~Stufe.}
 \begin{table}
 \begin{tabular}{cp{9.8cm}}
 2W6 & Resultat \\
 
 2 & \textbf{Sofortiger Tod}: Kopf abgeschlagen oder ähnliches; das Opfer kann
-nur mit dem Wunder \textit{Wiederauferstehung} wieder zum Leben
+nur mit dem Wunder \emph{Wiederauferstehung} wieder zum Leben
 erweckt werden \\
 
 3 & \textbf{Fatale Wunde und Tod} in 1d6 Runden: Lungendurchstich,
-Wirbelsäulenbruch oder ähnliches; mit dem Wunder \textit{Regeneration}
+Wirbelsäulenbruch oder ähnliches; mit dem Wunder \emph{Regeneration}
 kann der Tod verhindert werden; das Opfer kann durch
-\textit{Wiederauferstehung} oder \textit{Tote erwecken} wiederbelebt
+\emph{Wiederauferstehung} oder \emph{Tote erwecken} wiederbelebt
 werden \\
 
 4 & \textbf{Verlust eines Gliedes und Tod} in 3W6 Runden; W4: 1 –
 Schwertarm, 2 – Schildarm, 3, 4 – Bein; der Tod kann mit
 Kauterisierung durch Feuer, einem Tourniquet, oder dem Zauber
-\textit{Heilen Schwerer Wunden} verhindert werden; mit dem Wunder
-\textit{Regeneration} kann der Verlust rückgängig gemacht werden; das
-Opfer kann durch \textit{Wiederauferstehung} oder \textit{Tote
-  erwecken} wiederbelebt werden; bei der Verwendung von \textit{Tote
+\emph{Heilen Schwerer Wunden} verhindert werden; mit dem Wunder
+\emph{Regeneration} kann der Verlust rückgängig gemacht werden; das
+Opfer kann durch \emph{Wiederauferstehung} oder \emph{Tote
+  erwecken} wiederbelebt werden; bei der Verwendung von \emph{Tote
   erwecken} bleibt das Glied allerdings verloren \\
 
 5, 6 & \textbf{Knochenbruch}: 1 – Schwertarm, 2 – Schildarm, 3 – Bein,
 4 – Rippe; Heilung dauert 2W4+9 Wochen; mit dem Wunder
-\textit{Regeneration} kann der Bruch vorzeitig geheilt werden \\
+\emph{Regeneration} kann der Bruch vorzeitig geheilt werden \\
 
 7, 8 & \textbf{Ohnmächtig}: wehrlos für 2W6 Runden; mit Helm nur eine
 Runde lang betäubt (wehrlos für eine Runde) \\
@@ -1170,12 +1236,12 @@ Kettenhemd oder\\Plattenpanzer & 60' & 20' & 60' \\
 \end{tabular}
 \medskip
 
-\noindent \textbf{Forschen}: Das langsame und vorsichtige Vorgehen in
+\noindent\textbf{Forschen}: Das langsame und vorsichtige Vorgehen in
 der Unterwelt, pro \unit[10]{min}.\marginnote{\unit[10]{min} = 1 Phase = 1
-  \textit{turn}}
+  \emph{turn}}
 
 \textbf{Kämpfen}: Vorpreschen und angreifen, pro 10
-Sekunden.\marginnote{10 Sekunden = 1 Runde = 1 \textit{round}}
+Sekunden.\marginnote{10 Sekunden = 1 Runde = 1 \emph{round}}
 
 \textbf{Rennen}: Wilde Flucht, pro Runde -- dies erlaubt den Gegnern
 einen letzten Angriff mit +2. Kartenzeichnen ist beim Rennen nicht
@@ -1257,35 +1323,35 @@ zaubern können.
   Zaubersprüche gelernt werden. Es braucht immer einen Meister und
   einen Schüler.} Wenn du eine Stufe steigst, kannst du von einem
 anderen Elfen oder Magier neue Zaubersprüche lernen. Diese schreibst
-du ihn in dein Zauberbuch. Um sie \textit{meistern} zu können, darfst
+du ihn in dein Zauberbuch. Um sie \emph{meistern} zu können, darfst
 du die Limiten für deine Stufe aber noch nicht erreicht haben.
 
 
 \subsection{1.~Zirkel}
 
 \medskip\noindent\textbf{Licht} verzaubert einen Gegenstand innerhalb
-von \textit{\unit[40]{m}} für \textit{\unit[1]{h} +
+von \emph{\unit[40]{m}} für \emph{\unit[1]{h} +
   \unit[10]{min/Stufe}}, so dass er schwach zu leuchten beginnt
-und ein Kugel von \textit{\unit[10]{m}} Durchmesser beleuchtet. Werden
+und ein Kugel von \emph{\unit[10]{m}} Durchmesser beleuchtet. Werden
 die Augen einer Kreatur verzaubert, so wird sie für diese Zeit
 erblinden. In diesem Fall steht dem Opfern ein Rettungswurf gegen
 Sprüche zu.
 
 \medskip\noindent\textbf{Magie entdecken} lässt verzauberte
-Gegenstände, Kreaturen und Orte innerhalb von \textit{\unit[20]{m}}
-für \textit{\unit[20]{min}} aufleuchten.\marginnote{Dieses Leuchten
+Gegenstände, Kreaturen und Orte innerhalb von \emph{\unit[20]{m}}
+für \emph{\unit[20]{min}} aufleuchten.\marginnote{Dieses Leuchten
   ist für alle sichtbar.}
 
-\medskip\noindent \textbf{Magie entziffern} erlaubt es, für
-\textit{\unit[10]{min}} alle magische Runen zu
+\medskip\noindent\textbf{Magie entziffern} erlaubt es, für
+\emph{\unit[10]{min}} alle magische Runen zu
 entziffern.\marginnote{Ohne diesen Spruch können gefundene
   Schriftrollen nicht verwendet werden.} So können Zauberbücher,
 Schriftrollen und Inschriften gelesen werden. Einmal gelesen, bleiben
 die Runen für den Zauberer verständlich.
 
-\medskip\noindent \textbf{Magisches Geschoss} trifft innerhalb von
-\textit{\unit[50]{m}} ein beliebiges Ziel und verursacht 1W6+1
-Schaden. Auf der 5. Stufe werden es \textit{drei} Geschosse, welche
+\medskip\noindent\textbf{Magisches Geschoss} trifft innerhalb von
+\emph{\unit[50]{m}} ein beliebiges Ziel und verursacht 1W6+1
+Schaden. Auf der 5. Stufe werden es \emph{drei} Geschosse, welche
 unabhängige Ziele treffen können.
 
 \marginnote[-1cm]{Untote und Riesen sind
@@ -1300,9 +1366,9 @@ Intelligenz & Zeitraum \\
 13--18 & täglich \\
 \end{tabular}
 
-\medskip\noindent Der Spruch kann durch einen \textit{Gegenzauber}
+\medskip\noindent Der Spruch kann durch einen \emph{Gegenzauber}
 gebrochen werden.}
-\medskip\noindent \textbf{Person bezaubern} macht \emph{eine}
+\medskip\noindent\textbf{Person bezaubern} macht \emph{eine}
 menschenähnliche Kreatur zu deinem treuen Freund. Dem Opfern steht ein
 Rettungswurf gegen Sprüche zu. Weitere Rettungswürfe hängen von der
 Intelligenz des Opfers ab.
@@ -1310,47 +1376,96 @@ Intelligenz des Opfers ab.
 \newpage
 
 \medskip\noindent\textbf{Portal halten} verschliesst eine Tür, ein
-Tor, ein Fenster oder einen Rolladen für \textit{2W6 $\times$
-  \unit[10]{min}}.{Mit \textit{Gegenzauber} oder \textit{Klopfen} kann
-  der Zauber beendet werden.}
+Tor, ein Fenster oder einen Rolladen für \emph{2W6 $\times$
+  \unit[10]{min}}.\marginnote{Mit \emph{Gegenzauber} oder
+  \emph{Klopfen} kann der Zauber beendet werden.}
 
-\medskip\noindent \textbf{Schild} schützt den Zauberer für
-\textit{\unit[20]{min}} vor Waffengewalt, in dem es den
+\medskip\noindent\textbf{Schild} schützt den Zauberer für
+\emph{\unit[20]{min}} vor Waffengewalt, in dem es den
 Rüstungsklasse auf 4 senkt. Gegen Geschosse sinkt die Rüstungsklasse
 sogar auf 2.
 
-\medskip\noindent \textbf{Schlaf} lässt \textit{2W8 Kreaturen}
-innerhalb von \textit{\unit[80]{m}} für \textit{4W4 $\times$
-  \unit[10]{min}} in einen magischen Schlummer versinken.
+\medskip\noindent\textbf{Schlaf} lässt \emph{2W8 Kreaturen} innerhalb
+von \emph{\unit[80]{m}} für \emph{4W4 $\times$ \unit[10]{min}} in
+einen magischen Schlummer versinken.\marginnote{Dies ist einer der
+  mächtigsten Sprüche des 1.~Zirkels. Es gibt keinen Rettungswurf!}
+Keine Kreatur darf mehr als 4+1~Trefferwürfel haben. Kreaturen mit
+weniger Trefferwürfel sind zuerst betroffen.
 
-\medskip\noindent\textbf{Schutz vor Bösem}
+\medskip\noindent\textbf{Schutz vor Bösem} schützt den Zauberer für
+\emph{\unit[2]{h}} vor Gedankenkontrolle, direkter Berührung durch
+beschworene Kreaturen (aber nicht vor ihren Waffen) und verbessert
+\emph{Rettungswürfe um +1} und die \emph{Rüstungsklasse um -1} (tiefer
+ist besser).
 
-\medskip\noindent\textbf{Schwebende Scheibe}
+\medskip\noindent\textbf{Schwebende Scheibe} beschwört eine Scheibe
+mit \emph{\unit[1]{m}} Durchmesser, die für \emph{\unit[2]{h}} im
+Abstand von \emph{\unit[2]{m}} und einer Höhe von \emph{\unit[1]{m}}
+hinter dem Zauberer her schwebt. Sie trägt \emph{\unit[250]{kg}} oder
+\emph{5000~Gold}.\marginnote{Das kann wichtig werden, um Schätze zu
+  bergen.}
 
-\medskip\noindent\textbf{Sprachen lesen}
+\medskip\noindent\textbf{Sprachen lesen} lässt den Zauberer für
+\emph{\unit[20]{min}} alle Sprachen, Zeichen, Codes, Karten und so
+weiter lesen und verstehen.\marginnote{Das gilt auch für
+  Schatzkarten.}
 
-\medskip\noindent\textbf{Bauchreden}
+\medskip\noindent\textbf{Bauchreden} lässt den Zauberer für
+\emph{\unit[20]{min}} kontrollieren, von wo im Umkreis von
+\emph{\unit[20]{m}} seine Stimmer ertönt.\marginnote{Das kann wichtig
+  werden, wenn der Zauberer nicht zu sehen ist (unsichtbar, versteckt, im
+  Dunkeln, in dichtem Nebel).}
 
 
 \subsection{2.~Zirkel}
 
 \textbf{Arkanes Schloss} versiegelt Türen, Kisten oder Portale
 \emph{für immer}.\marginnote{\emph{Arkanes Schloss} ist eine stärkere
-  Variante von \textit{Portal halten}. \textit{Gegenzauber} und
-  \textit{Klopfen} beenden den Spruch.} Der Zauberer kann die
+  Variante von \emph{Portal halten}. \emph{Gegenzauber} und
+  \emph{Klopfen} beenden den Spruch.} Der Zauberer kann die
 verzauberten Türen und Kisten weiterhin normal verwenden.
 
-\medskip\noindent\textbf{Böses entdecken}
+\medskip\noindent\textbf{Böses entdecken} zeigt dem Zauberer während
+\emph{\unit[20]{min}}, welche der sichtbaren Wesen im Umreis von
+\emph{\unit[30]{m}} ihm Übles wollen.
 
-\medskip\noindent\textbf{Ewiges Licht}
+\medskip\noindent\textbf{Ewiges Licht} verzaubert einen Gegenstand
+innerhalb von \emph{\unit[40]{m}}, so dass er \emph{für immer} schwach
+zu leuchten beginnt und ein Kugel von \emph{\unit[20]{m}} Durchmesser
+beleuchtet.\marginnote{\emph{Gegenzauber} beenden den Spruch.} Werden
+die Augen einer Kreatur verzaubert, so wird sie erblinden. In diesem
+Fall steht dem Opfern ein Rettungswurf gegen Sprüche zu.
 
-\medskip\noindent\textbf{Gedanken lesen}
+\medskip\noindent\textbf{Gedanken lesen} macht den Zauberer für
+\emph{\unit[2]{h}} für Gedanken empfänglich. Die Bedeutung der
+Gedanken kann erfasst werden, auch wenn es keine gemeinsame Sprache
+gibt. Es braucht \emph{\unit[10]{min}} Einstimmung auf \emph{eine}
+Kreatur und weitere \emph{\unit[10]{min}} Konzentration, falls mehr
+weitere Kreaturen anwesend sind und damit den Empfang stören.
+\marginnote{Blei und Gestein schützen vor diesem Spruch.}
 
-\medskip\noindent\textbf{Geisterhafte Kräfte}
+\medskip\noindent\textbf{Geisterhafte Kräfte} lässt den Zauberer eine
+Illusion erschaffen, die nicht grösser als \unit[6]{m} $\times$
+\unit[6]{m} $\times$ \unit[6]{m} ist. \marginnote{Berührungen,
+  Angriffe und ähnliche Interaktionen mit der Illusion erlauben einen
+  Rettungswurf. Die Illusion hat Rüstungsklasse 9. Wird sie getroffen,
+  verschwindet sie.} Solange der Zauberer nichts anderes tut, als sich
+auf die Illusion zu konzentrieren, kann der Zauber aufrecht erhalten
+werden.
 
-\medskip\noindent\textbf{Klopfen}
+\medskip\noindent\textbf{Klopfen} öffnet eine beliebige Türe innerhalb
+von \unit[6]{m}. Verschlossene oder verriegelte Türen lassen sich
+ebenfalls öffnen.\marginnote{Dieser Spruch beendet auch \emph{Portal
+    halten} und \emph{Arkanes Schloss}} Dies gilt auch für Tore,
+Fenster oder Rolladen; es gilt nicht für Fallgatter, Seile, und so
+weiter.
 
-\medskip\noindent\textbf{Netz}
+\medskip\noindent\textbf{Netz} verschiesst ein \unit[3]{m} weites
+Netz. Kreaturen mit menschenähnlicher Stärke können sich in
+\emph{2W4~Runden} befreien. Stärkere Kreaturen können sich in
+\emph{4~Runden} befreien. Schwächere Kreaturen bleiben für \unit[8]{h}
+gefangen. Das Netz kann weg gebrannt werden. Dies dauert
+\emph{2~Runden} und verursacht pro Runde 1W6~Schaden.
 
 \medskip\noindent\textbf{Objekt lokalisieren}
 
@@ -1399,7 +1514,7 @@ verzauberten Türen und Kisten weiterhin normal verwenden.
 die das Wunder gewährt. \marginnote{Wie man sieht, bestehen zwischen
   den Wundern der Klerikern und den Zaubersprüchen der Magier und
   Elfen viele Gemeinsamkeiten.} Es steht zu deiner Verfügung, bis du
-es \textit{wirkst}.
+es \emph{wirkst}.
 
 Leider kannst du dies nicht beliebig oft wiederholen. Zu Beginn deiner
 Karriere bist du für die Götter noch nicht wichtig genug. Mit der Zeit
@@ -1420,32 +1535,32 @@ Stufe & 1. Zirkel & 2. Zirkel & 3. Zirkel \\
 \end{tabular}
 } Wenn du die \textbf{Götter verärgerst}, kann es sein, dass du
 weniger Wunder wirken kannst, als auf der Tabelle aufgeführt sind!
-\textit{Achte auf deine Träume und Visionen} und gelobe Besserung, um
+\emph{Achte auf deine Träume und Visionen} und gelobe Besserung, um
 wieder zu der dir zustehenden Macht zu kommen.
 
 Dein \textbf{Ruf} bei den Göttern bestimmt auch den höchsten Zirkel
 der Wunder, welche dir gewährt werden. Weil du das Spiel mit einem Ruf
-von 0 beginnst, wirst du im ersten Abenteuer noch \textit{kein} Wunder
+von 0 beginnst, wirst du im ersten Abenteuer noch \emph{kein} Wunder
 wirken können!
 
-Die \textbf{Wunder ab dem 4. Zirkel} werden dir \textit{persönlich}
+Die \textbf{Wunder ab dem 4. Zirkel} werden dir \emph{persönlich}
 von einem Agenten deiner Götter gewährt -- einer Valkyre, einem Engel,
 einem Teufel und so weiter.
 
 \subsection{1.~Zirkel}
 
 \textbf{Böses entdecken} zeigt dem Kleriker während
-\textit{\unit[1]{h}}, welche der sichtbaren Wesen im Umreis von
-\textit{\unit[20]{m}} ihm Übles wollen.
+\emph{\unit[1]{h}}, welche der sichtbaren Wesen im Umreis von
+\emph{\unit[20]{m}} ihm Übles wollen.
 
-\medskip\noindent\textbf{Hand auflegen} heilt 1W6+1 Schadenspunkte \textit{oder} hebt
+\medskip\noindent\textbf{Hand auflegen} heilt 1W6+1 Schadenspunkte \emph{oder} hebt
 Lähmung auf. Das Gegenteil davon ist \textbf{Schmerz} und versursacht
 1W6+1 Schadenspunkte. In beiden Fällen muss das Ziel berührt werden
 (was allerdings keinen Trefferwurf benötigt).
 
 \medskip\noindent\textbf{Licht} verzaubert einen Gegenstand innerhalb von
-\textit{\unit[40]{m}} für \textit{\unit[2]{h}} so dass er schwach
-zu leuchten beginnt und ein Kugel von \textit{\unit[10]{m}} Durchmesser
+\emph{\unit[40]{m}} für \emph{\unit[2]{h}} so dass er schwach
+zu leuchten beginnt und ein Kugel von \emph{\unit[10]{m}} Durchmesser
 beleuchtet. Wird das Wunder auf die Augen einer Kreatur gewirkt, so
 wird sie für \unit[2]{h} erblinden. In diesem Fall steht dem Opfern
 ein Rettungswurf gegen Sprüche zu.
@@ -1453,63 +1568,63 @@ ein Rettungswurf gegen Sprüche zu.
 \medskip\noindent\textbf{Mut} erlaubt einem berührten Wesen, welches in magischer Panik
 flieht will, einen Rettungswurf mit einem Bonus, der gleich hoch ist
 wie die Stufe des Klerikers. Das Gegenteil davon ist \textbf{Panik},
-der ein berührtes Wesen in Panik fliehen lässt. \textit{Mut} und
-\textit{Panik} heben sich gegenseitig auf.
+der ein berührtes Wesen in Panik fliehen lässt. \emph{Mut} und
+\emph{Panik} heben sich gegenseitig auf.
 
 \medskip\noindent\textbf{Schutz vor beschworenen Kreaturen} schützt ein berührtes Wesen
-während \textit{\unit[2]{h}} vor der Berührung \textit{beschworener}
+während \emph{\unit[2]{h}} vor der Berührung \emph{beschworener}
 Kreaturen und verbessert die Rüstungsklasse um -1 (tiefer ist besser)
 und gibt einen +1 Bonus auf alle Rettungswüfe.
 
 \medskip\noindent\textbf{Schutz vor Kälte} erlaubt es einem Wesen in bis zu
-\textit{\unit[10]{m}} Entfernung für \textit{\unit[1]{h}} jeglicher
+\emph{\unit[10]{m}} Entfernung für \emph{\unit[1]{h}} jeglicher
 Kälte zu trotzen und gibt einen +2 Bonus bei Rettungswürfen gegen
 Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
 Kälteangriffen um einen Punkt.
 
-\medskip\noindent \textbf{Zauberei entdecken} zeigt dem Kleriker
-während \textit{\unit[20]{min}}, welche sichtbaren Dinge im Umkreis
-von \textit{\unit[20]{m}} verzaubert sind.
+\medskip\noindent\textbf{Zauberei entdecken} zeigt dem Kleriker
+während \emph{\unit[20]{min}}, welche sichtbaren Dinge im Umkreis
+von \emph{\unit[20]{m}} verzaubert sind.
 
 \subsection{2.~Zirkel}
 
-\medskip\noindent \textbf{Fallen entdecken} warnt den Kleriker während
-\textit{\unit[20]{min}} vor allen Fallen im Umkreis von
-\textit{\unit[10]{m}n}.
+\medskip\noindent\textbf{Fallen entdecken} warnt den Kleriker während
+\emph{\unit[20]{min}} vor allen Fallen im Umkreis von
+\emph{\unit[10]{m}n}.
 
-\medskip\noindent \textbf{Gesinnung entdecken} zeigt dem Kleriker die
-Gesinnung aller Wesen im Umkreis von \textit{\unit[5]{m}}, die
+\medskip\noindent\textbf{Gesinnung entdecken} zeigt dem Kleriker die
+Gesinnung aller Wesen im Umkreis von \emph{\unit[5]{m}}, die
 Gesinnung aller magischer Gegenstände, sofern sie eine haben, und ob
 dies hier ein heiliger oder ein unheiliger Ort ist.
 
 \medskip\noindent\textbf{Mit Tieren sprechen} erlaubt es dem Kleriker, während
-\textit{\unit[1]{h}} mit allen Vertretern \textit{einer Tierart} im
-Umkreis von \textit{\unit[10]{m}n} zu reden und ihre Antworten zu
+\emph{\unit[1]{h}} mit allen Vertretern \emph{einer Tierart} im
+Umkreis von \emph{\unit[10]{m}n} zu reden und ihre Antworten zu
 verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
 gesinnt. Es kann zu einem Reaktionswurf kommen.
 
-\medskip\noindent \textbf{Personen festhalten} lähmt bis zu 1W4
+\medskip\noindent\textbf{Personen festhalten} lähmt bis zu 1W4
 sichtbare Personen (nicht beliebige Monster!) für
-\textit{\unit[1½]{h}} in bis zu \textit{\unit[60]{m}} Entfernung.
+\emph{\unit[1½]{h}} in bis zu \emph{\unit[60]{m}} Entfernung.
 \marginnote{Untote und Riesen sind zwar menschenähnlich aber trotzdem
   immun.} Allen Opfern steht ein Rettungswurf gegen Sprüche zu. Soll
 nur eine Person gelähmt werden, wird ist Rettungswurf um -2 erschwert.
 
 \medskip\noindent\textbf{Schutz vor Feuer} erlaubt es einem Wesen in bis zu
-\textit{\unit[10]{m}} Entfernung für \textit{\unit[1]{h}} jeglicher
+\emph{\unit[10]{m}} Entfernung für \emph{\unit[1]{h}} jeglicher
 Hitze zu trotzen und gibt einen +3 Bonus bei Rettungswürfen gegen
 Feuerangriffe und reduziert zudem jeden Schadenswürfel bei
 Feuerangriffen um einen Punkt.
 
 \medskip\noindent\textbf{Segen} verleiht allen Verbündeten des Klerikers im Umkreis von
-\textit{\unit[20]{m}} für \textit{\unit[1]{h}} einen +1 Bonus beim
+\emph{\unit[20]{m}} für \emph{\unit[1]{h}} einen +1 Bonus beim
 Trefferwurf und beim Schadenswurf und steigert die Moral um +1. Das
 Gegenteil davon ist \textbf{Verfluchen} und bewirkt das genaue
 Gegenteil auf alle Feinde.
 
 \medskip\noindent\textbf{Stille} formt eine unsichtbare, schallschluckende Kugel mit
-\textit{\unit[10]{m}} Durchmesser in bis zu \textit{\unit[60]{m}}
-Entfernung welche für \textit{\unit[2]{h}} andauert. Wird das Wunder
+\emph{\unit[10]{m}} Durchmesser in bis zu \emph{\unit[60]{m}}
+Entfernung welche für \emph{\unit[2]{h}} andauert. Wird das Wunder
 auf eine unwillige Kreature gewirkt, so steht ihr ein Rettungswurf
 gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf den Boden und
 die Kreatur kann den Wirkungsbereich problemlos verlassen.
@@ -1517,8 +1632,8 @@ die Kreatur kann den Wirkungsbereich problemlos verlassen.
 \subsection{3.~Zirkel}
 
 \medskip\noindent\textbf{Ewiges Licht} verzaubert einen Gegenstand innerhalb von
-\textit{\unit[40]{m}} so dass er hell wie das Sonnenlicht zu
-leuchten beginnt und ein Kugel von \textit{\unit[20]{m}} Durchmesser
+\emph{\unit[40]{m}} so dass er hell wie das Sonnenlicht zu
+leuchten beginnt und ein Kugel von \emph{\unit[20]{m}} Durchmesser
 erleuchtet. Wird das Wunder auf die Augen einer Kreatur gewirkt, so
 wird sie erblinden. In diesem Fall steht dem Opfern ein Rettungswurf
 gegen Sprüche zu.
@@ -1527,20 +1642,20 @@ gegen Sprüche zu.
 einem berührten Wesen lastet. Trägt das Wesen einen verfluchten
 Gegenstand, so kann das Wesen den Gegenstand ablegen – der Gegenstand
 bleibt allerdings verflucht. Das Gegenteil davon ist der
-\textbf{Fluch}. Dieser ist permanent. \textit{Fluch brechen} hebt
-einen \textit{Fluch} auf. Flüche werden jeweils \textit{mit dem
+\textbf{Fluch}. Dieser ist permanent. \emph{Fluch brechen} hebt
+einen \emph{Fluch} auf. Flüche werden jeweils \emph{mit dem
   Spielleiter verhandelt}.
 
 \medskip\noindent\textbf{Gegenstand finden} lässt den Kleriker die
 genaue Richtung eines bestimmten Gegenstand oder einer bestimmten Art
-von Gegenstand im Umkreis von \textit{\unit[40]{m}} spühren.
+von Gegenstand im Umkreis von \emph{\unit[40]{m}} spühren.
 
 \medskip\noindent\textbf{Gerechter Zorn} verzaubert eine Waffe in bis
-zu \textit{\unit[10]{m}} Entfernung, so dass sie für
-\textit{\unit[10]{min}} einen zusätzlichen W6 Schaden verursacht.
+zu \emph{\unit[10]{m}} Entfernung, so dass sie für
+\emph{\unit[10]{min}} einen zusätzlichen W6 Schaden verursacht.
 
 \medskip\noindent\textbf{Krankheiten heilen} heilt bei einem Wesen in
-bis zu \textit{\unit[10]{m}} Entfernung alle Sorten von Krankheiten
+bis zu \emph{\unit[10]{m}} Entfernung alle Sorten von Krankheiten
 inklusive Mummienfäule, Lykanthropie und grünen Schleim. Das Gegenteil
 davon ist \textbf{Siechtum} und führt zu einer schrecklichen
 Krankheit, welche das Opfer in 2W12 Tagen dahin rafft. In diesem Fall
@@ -1550,14 +1665,14 @@ durch weder auf natürliche noch magische Weise heilen.
 
 \medskip\noindent\textbf{Magie bannen} bannt alle Wunder und Zauber
 von Personen, deren Stufe gleich oder unter der Stufe des Klerikers
-liegt. Für jede Stufe \textit{darüber} gibt es eine 5\% Chance, dass
+liegt. Für jede Stufe \emph{darüber} gibt es eine 5\% Chance, dass
 der Bann misslingt.
 
 \medskip\noindent\textbf{Untote erschaffen} erfüllt Leichen mit
 unnatürlichem Leben und macht sie zu Skeletten oder Zombies, welche
 dem Kleriker aufs Wort gehorchen. Die Untote können dem Kleriker
 folgen oder in einem bestimmten Gebiet bleiben und dort entwerder alle
-oder nur eine bestimmte \textit{Art} von Kreature angreifen. Es können
+oder nur eine bestimmte \emph{Art} von Kreature angreifen. Es können
 soviele Stufen an Untote erschaffen werden wie der Kleriker Stufen
 hat. Ein Skelett hat soviele Stufen wie die Leiche, ein Zombie jeweils
 eine eine Stufe mehr.
