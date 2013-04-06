@@ -1112,13 +1112,13 @@ nehmen.
 sechseitigen Würfel (W6) aus, wieviel Schaden du machst. Addiere den
 Kraft Bonus im Nahkampf. Der Schaden im Fernkampf bleibt unverändert.
 
-\textbf{Platzbedarf}: In einem breiten Gang (\unit[3]{m}) können
+\textbf{Platzbedarf}: In einem breiten Gang (\unit[10]{Fuss}) können
 normalerweise drei Personen nebeneinander kämpfen. Der Platzbedarf
 hängt aber von den verwendeten Waffen ab:
 
 \medskip
 \begin{tabular}{lcc}
-Waffeneigenschaft & Platzbedarf & auf \unit[3]{m}\\
+Waffeneigenschaft & Platzbedarf & auf \unit[10]{Fuss}\\
 dichte Formation erlaubt & ¾ & 4 Personen \\
 normale Waffe & 1 & 3 Personen \\
 viel Platz benötigt & 1½ & 2 Personen \\
@@ -1229,15 +1229,16 @@ trägt, muss die Zeile darunter verwenden.
 \medskip
 \begin{tabular}{lccc}
 Rüstung & Forschen & Kämpfen & Rennen \\
-keine           & 120' & 40' & 120' \\
-Lederrüstung    & 90' & 30' & 90' \\
-Kettenhemd oder\\Plattenpanzer & 60' & 20' & 60' \\
-  & 30' & 10' & 30' 
+keine           & \unit[120]{Fuss} & \unit[40]{Fuss} & \unit[120]{Fuss} \\
+Lederrüstung    & \unit[90]{Fuss} & \unit[30]{Fuss} & \unit[90]{Fuss} \\
+Kettenhemd,
+Plattenpanzer   & \unit[60]{Fuss} & \unit[20]{Fuss} & \unit[60]{Fuss} \\
++Schätze        & \unit[30]{Fuss} & \unit[10]{Fuss} & \unit[30]{Fuss} \\
 \end{tabular}
 \medskip
 
-\noindent\textbf{Forschen}: Das langsame und vorsichtige Vorgehen in
-der Unterwelt, pro \unit[10]{min}.\marginnote{\unit[10]{min} = 1 Phase = 1
+\textbf{Forschen}: Das langsame und vorsichtige Vorgehen in der
+Unterwelt, pro \unit[10]{min}.\marginnote{\unit[10]{min} = 1 Phase = 1
   \emph{turn}}
 
 \textbf{Kämpfen}: Vorpreschen und angreifen, pro 10
@@ -1330,27 +1331,27 @@ du die Limiten für deine Stufe aber noch nicht erreicht haben.
 \subsection{1.~Zirkel}
 
 \medskip\noindent\textbf{Licht} verzaubert einen Gegenstand innerhalb
-von \emph{\unit[40]{m}} für \emph{\unit[1]{h} +
+von \emph{\unit[120]{Fuss}} für \emph{\unit[1]{h} +
   \unit[10]{min/Stufe}}, so dass er schwach zu leuchten beginnt
-und ein Kugel von \emph{\unit[10]{m}} Durchmesser beleuchtet. Werden
+und ein Kugel von \emph{\unit[30]{Fuss}} Durchmesser beleuchtet. Werden
 die Augen einer Kreatur verzaubert, so wird sie für diese Zeit
 erblinden. In diesem Fall steht dem Opfern ein Rettungswurf gegen
 Sprüche zu.
 
 \medskip\noindent\textbf{Magie entdecken} lässt verzauberte
-Gegenstände, Kreaturen und Orte innerhalb von \emph{\unit[20]{m}}
+Gegenstände, Kreaturen und Orte innerhalb von \emph{\unit[60]{Fuss}}
 für \emph{\unit[20]{min}} aufleuchten.\marginnote{Dieses Leuchten
   ist für alle sichtbar.}
 
-\medskip\noindent\textbf{Magie entziffern} erlaubt es, für
+\medskip\noindent\textbf{Magie entziffern} erlaubt es dir, für
 \emph{\unit[10]{min}} alle magische Runen zu
 entziffern.\marginnote{Ohne diesen Spruch können gefundene
   Schriftrollen nicht verwendet werden.} So können Zauberbücher,
 Schriftrollen und Inschriften gelesen werden. Einmal gelesen, bleiben
-die Runen für den Zauberer verständlich.
+die Runen dir verständlich.
 
 \medskip\noindent\textbf{Magisches Geschoss} trifft innerhalb von
-\emph{\unit[50]{m}} ein beliebiges Ziel und verursacht 1W6+1
+\emph{\unit[150]{Fuss}} ein beliebiges Ziel und verursacht 1W6+1
 Schaden. Auf der 5. Stufe werden es \emph{drei} Geschosse, welche
 unabhängige Ziele treffen können.
 
@@ -1380,41 +1381,40 @@ Tor, ein Fenster oder einen Rolladen für \emph{2W6 $\times$
   \unit[10]{min}}.\marginnote{Mit \emph{Gegenzauber} oder
   \emph{Klopfen} kann der Zauber beendet werden.}
 
-\medskip\noindent\textbf{Schild} schützt den Zauberer für
-\emph{\unit[20]{min}} vor Waffengewalt, in dem es den
-Rüstungsklasse auf 4 senkt. Gegen Geschosse sinkt die Rüstungsklasse
-sogar auf 2.
+\medskip\noindent\textbf{Schild} schützt dich für
+\emph{\unit[20]{min}} vor Waffengewalt, in dem es den Rüstungsklasse
+auf 4 senkt. Gegen Geschosse sinkt die Rüstungsklasse sogar auf 2.
 
 \medskip\noindent\textbf{Schlaf} lässt \emph{2W8 Kreaturen} innerhalb
-von \emph{\unit[80]{m}} für \emph{4W4 $\times$ \unit[10]{min}} in
+von \emph{\unit[240]{Fuss}} für \emph{4W4 $\times$ \unit[10]{min}} in
 einen magischen Schlummer versinken.\marginnote{Dies ist einer der
   mächtigsten Sprüche des 1.~Zirkels. Es gibt keinen Rettungswurf!}
 Keine Kreatur darf mehr als 4+1~Trefferwürfel haben. Kreaturen mit
 weniger Trefferwürfel sind zuerst betroffen.
 
-\medskip\noindent\textbf{Schutz vor Bösem} schützt den Zauberer für
+\medskip\noindent\textbf{Schutz vor Bösem} schützt dich für
 \emph{\unit[2]{h}} vor Gedankenkontrolle, direkter Berührung durch
 beschworene Kreaturen (aber nicht vor ihren Waffen) und verbessert
-\emph{Rettungswürfe um +1} und die \emph{Rüstungsklasse um -1} (tiefer
-ist besser).
+deine \emph{Rettungswürfe um +1} und deine \emph{Rüstungsklasse um -1}
+(tiefer ist besser).
 
 \medskip\noindent\textbf{Schwebende Scheibe} beschwört eine Scheibe
-mit \emph{\unit[1]{m}} Durchmesser, die für \emph{\unit[2]{h}} im
-Abstand von \emph{\unit[2]{m}} und einer Höhe von \emph{\unit[1]{m}}
-hinter dem Zauberer her schwebt. Sie trägt \emph{\unit[250]{kg}} oder
-\emph{5000~Gold}.\marginnote{Das kann wichtig werden, um Schätze zu
-  bergen.}
+mit \emph{\unit[3]{Fuss}} Durchmesser, die für \emph{\unit[2]{h}} im
+Abstand von \emph{\unit[6]{Fuss}} und einer Höhe von
+\emph{\unit[3]{Fuss}} hinter dir her schwebt. Sie trägt
+\emph{\unit[500]{Pfund}} oder \emph{5000~Gold}.\marginnote{Das kann
+  wichtig werden, um Schätze zu bergen.}
 
-\medskip\noindent\textbf{Sprachen lesen} lässt den Zauberer für
+\medskip\noindent\textbf{Sprachen lesen} lässt dich für
 \emph{\unit[20]{min}} alle Sprachen, Zeichen, Codes, Karten und so
 weiter lesen und verstehen.\marginnote{Das gilt auch für
   Schatzkarten.}
 
-\medskip\noindent\textbf{Bauchreden} lässt den Zauberer für
+\medskip\noindent\textbf{Bauchreden} lässt dich für
 \emph{\unit[20]{min}} kontrollieren, von wo im Umkreis von
-\emph{\unit[20]{m}} seine Stimmer ertönt.\marginnote{Das kann wichtig
-  werden, wenn der Zauberer nicht zu sehen ist (unsichtbar, versteckt, im
-  Dunkeln, in dichtem Nebel).}
+\emph{\unit[60]{Fuss}} deine Stimmer ertönt.\marginnote{Das kann
+  wichtig werden, wenn du nicht zu sehen bist (unsichtbar, versteckt,
+  im Dunkeln, in dichtem Nebel).}
 
 
 \subsection{2.~Zirkel}
@@ -1422,31 +1422,31 @@ weiter lesen und verstehen.\marginnote{Das gilt auch für
 \textbf{Arkanes Schloss} versiegelt Türen, Kisten oder Portale
 \emph{für immer}.\marginnote{\emph{Arkanes Schloss} ist eine stärkere
   Variante von \emph{Portal halten}. \emph{Gegenzauber} und
-  \emph{Klopfen} beenden den Spruch.} Der Zauberer kann die
-verzauberten Türen und Kisten weiterhin normal verwenden.
+  \emph{Klopfen} beenden den Spruch.} Du kann die verzauberten Türen
+und Kisten weiterhin normal verwenden.
 
-\medskip\noindent\textbf{Böses entdecken} zeigt dem Zauberer während
+\medskip\noindent\textbf{Böses entdecken} zeigt dir während
 \emph{\unit[20]{min}}, welche der sichtbaren Wesen im Umreis von
-\emph{\unit[30]{m}} ihm Übles wollen.
+\emph{\unit[90]{Fuss}} dir Übles wollen.
 
 \medskip\noindent\textbf{Ewiges Licht} verzaubert einen Gegenstand
-innerhalb von \emph{\unit[40]{m}}, so dass er \emph{für immer} schwach
-zu leuchten beginnt und ein Kugel von \emph{\unit[20]{m}} Durchmesser
+innerhalb von \emph{\unit[120]{Fuss}}, so dass er \emph{für immer} schwach
+zu leuchten beginnt und ein Kugel von \emph{\unit[60]{Fuss}} Durchmesser
 beleuchtet.\marginnote{\emph{Gegenzauber} beenden den Spruch.} Werden
 die Augen einer Kreatur verzaubert, so wird sie erblinden. In diesem
 Fall steht dem Opfern ein Rettungswurf gegen Sprüche zu.
 
-\medskip\noindent\textbf{Gedanken lesen} macht den Zauberer für
+\medskip\noindent\textbf{Gedanken lesen} macht dich für
 \emph{\unit[2]{h}} für Gedanken empfänglich. Die Bedeutung der
 Gedanken kann erfasst werden, auch wenn es keine gemeinsame Sprache
 gibt. Es braucht \emph{\unit[10]{min}} Einstimmung auf \emph{eine}
-Kreatur und weitere \emph{\unit[10]{min}} Konzentration, falls mehr
-weitere Kreaturen anwesend sind und damit den Empfang stören.
-\marginnote{Blei und Gestein schützen vor diesem Spruch.}
+Kreatur und weitere \emph{\unit[10]{min}} Konzentration, falls weitere
+Kreaturen anwesend sind und damit den Empfang stören. \marginnote{Blei
+  und Gestein schützen vor diesem Spruch.}
 
-\medskip\noindent\textbf{Geisterhafte Kräfte} lässt den Zauberer eine
-Illusion erschaffen, die nicht grösser als \unit[6]{m} $\times$
-\unit[6]{m} $\times$ \unit[6]{m} ist. \marginnote{Berührungen,
+\medskip\noindent\textbf{Geisterhafte Kräfte} lässt dich eine Illusion
+erschaffen, die nicht grösser als \unit[20]{Fuss} $\times$
+\unit[20]{Fuss} $\times$ \unit[20]{Fuss} ist. \marginnote{Berührungen,
   Angriffe und ähnliche Interaktionen mit der Illusion erlauben einen
   Rettungswurf. Die Illusion hat Rüstungsklasse 9. Wird sie getroffen,
   verschwindet sie.} Solange der Zauberer nichts anderes tut, als sich
@@ -1454,28 +1454,51 @@ auf die Illusion zu konzentrieren, kann der Zauber aufrecht erhalten
 werden.
 
 \medskip\noindent\textbf{Klopfen} öffnet eine beliebige Türe innerhalb
-von \unit[6]{m}. Verschlossene oder verriegelte Türen lassen sich
-ebenfalls öffnen.\marginnote{Dieser Spruch beendet auch \emph{Portal
-    halten} und \emph{Arkanes Schloss}} Dies gilt auch für Tore,
-Fenster oder Rolladen; es gilt nicht für Fallgatter, Seile, und so
-weiter.
+von \emph{\unit[20]{Fuss}}. Verschlossene oder verriegelte Türen lassen
+sich ebenfalls öffnen.\marginnote{Dieser Spruch beendet auch
+  \emph{Portal halten} und \emph{Arkanes Schloss}} Dies gilt auch für
+Tore, Fenster oder Rolladen; es gilt nicht für Fallgatter, Seile, und
+so weiter.
 
-\medskip\noindent\textbf{Netz} verschiesst ein \unit[3]{m} weites
-Netz. Kreaturen mit menschenähnlicher Stärke können sich in
+\medskip\noindent\textbf{Netz} verschiesst ein \emph{\unit[10]{Fuss}}
+weites Netz. Kreaturen mit menschenähnlicher Stärke können sich in
 \emph{2W4~Runden} befreien. Stärkere Kreaturen können sich in
-\emph{4~Runden} befreien. Schwächere Kreaturen bleiben für \unit[8]{h}
-gefangen. Das Netz kann weg gebrannt werden. Dies dauert
-\emph{2~Runden} und verursacht pro Runde 1W6~Schaden.
+\emph{4~Runden} befreien. Schwächere Kreaturen bleiben für
+\emph{\unit[8]{h}} gefangen. Das Netz kann weg gebrannt werden. Dies
+dauert \emph{2~Runden} und verursacht pro Runde \emph{1W6~Schaden}.
 
-\medskip\noindent\textbf{Objekt lokalisieren}
+\medskip\noindent\textbf{Objekt lokalisieren} zeigt dir für
+\emph{\unit[20]{min}} die Richtung zu einem gesuchten
+Objekt.\marginnote{Das Objekt musst du entweder selber genauer
+  untersucht haben oder es wird einfach das nächste, ähnliche Objekt
+  lokalisiert.} Das Objekt darf nicht weiter als \emph{\unit[60]{Fuss}
+  + \unit[10]{Fuss} pro Stufe} entfernt sein.
 
-\medskip\noindent\textbf{Schweben}
+\medskip\noindent\textbf{Schweben} lässt dich für \emph{\unit[1]{h} +
+  \unit[10]{min} pro Stufe} schwerelos werden.\marginnote{Du kannst
+  nicht seitwärt schweben, aber man du kannst dich beispielsweise an
+  Wänden oder der Decke entlang hangeln.} Durch Gedankenkraft kannst
+du dich um bis zu \emph{\unit[20]{Fuss} pro Runde} nach oben oder
+unten bewegen.
 
-\medskip\noindent\textbf{Spiegelbild}
+\medskip\noindent\textbf{Spiegelbild} lässt für \emph{\unit[1]{h}}
+\emph{1W4} Spiegelbilder von dir erscheinen. Mit jedem Angriff wird
+automatisch ein Spiegelbild vernichtet.\marginnote{Das Spiegelbild
+  wird zerstört, auch wenn es nicht getroffen wurde. Solange
+  Spiegelbilder existieren, werden diese immer zuerst getroffen.}
 
-\medskip\noindent\textbf{Unsichtbarkeit}
+\medskip\noindent\textbf{Unsichtbarkeit} lässt dich \emph{für immer}
+unsichtbar werden.\marginnote{Alles, was getragen wird, ist ebenfalls
+  unsichtbar. Alles, was abgelegt wird, wird wieder sichtbar. Eine
+  getragene Lichtquelle ist unsichtbar, was sie erleuchtet, bleibt
+  aber erleuchtet. Alles, was sich weiter als \emph{\unit[10]{Fuss}}
+  erstreckt, wird sichtbar.} Der Spruch endet sofort, wenn du einen
+\emph{Angriff} führtst. Schädliche Zaubersprüche sind auch Angriffe.
 
-\medskip\noindent\textbf{Unsichtbarkeit entdecken}
+
+\medskip\noindent\textbf{Unsichtbarkeit entdecken} lässt dich für
+\emph{\unit[5]{Runden pro Stufe}} alle unsichtbaren, ätherischen und
+astralen Kreaturen innerhalb von \emph{\unit[10]{Fuss}} sehen.
 
 
 \subsection{3.~Zirkel}
@@ -1551,7 +1574,7 @@ einem Teufel und so weiter.
 
 \textbf{Böses entdecken} zeigt dem Kleriker während
 \emph{\unit[1]{h}}, welche der sichtbaren Wesen im Umreis von
-\emph{\unit[20]{m}} ihm Übles wollen.
+\emph{\unit[60]{Fuss}} ihm Übles wollen.
 
 \medskip\noindent\textbf{Hand auflegen} heilt 1W6+1 Schadenspunkte \emph{oder} hebt
 Lähmung auf. Das Gegenteil davon ist \textbf{Schmerz} und versursacht
@@ -1559,8 +1582,8 @@ Lähmung auf. Das Gegenteil davon ist \textbf{Schmerz} und versursacht
 (was allerdings keinen Trefferwurf benötigt).
 
 \medskip\noindent\textbf{Licht} verzaubert einen Gegenstand innerhalb von
-\emph{\unit[40]{m}} für \emph{\unit[2]{h}} so dass er schwach
-zu leuchten beginnt und ein Kugel von \emph{\unit[10]{m}} Durchmesser
+\emph{\unit[120]{Fuss}} für \emph{\unit[2]{h}} so dass er schwach
+zu leuchten beginnt und ein Kugel von \emph{\unit[30]{Fuss}} Durchmesser
 beleuchtet. Wird das Wunder auf die Augen einer Kreatur gewirkt, so
 wird sie für \unit[2]{h} erblinden. In diesem Fall steht dem Opfern
 ein Rettungswurf gegen Sprüche zu.
@@ -1577,53 +1600,53 @@ Kreaturen und verbessert die Rüstungsklasse um -1 (tiefer ist besser)
 und gibt einen +1 Bonus auf alle Rettungswüfe.
 
 \medskip\noindent\textbf{Schutz vor Kälte} erlaubt es einem Wesen in bis zu
-\emph{\unit[10]{m}} Entfernung für \emph{\unit[1]{h}} jeglicher
+\emph{\unit[30]{Fuss}} Entfernung für \emph{\unit[1]{h}} jeglicher
 Kälte zu trotzen und gibt einen +2 Bonus bei Rettungswürfen gegen
 Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
 Kälteangriffen um einen Punkt.
 
 \medskip\noindent\textbf{Zauberei entdecken} zeigt dem Kleriker
 während \emph{\unit[20]{min}}, welche sichtbaren Dinge im Umkreis
-von \emph{\unit[20]{m}} verzaubert sind.
+von \emph{\unit[60]{Fuss}} verzaubert sind.
 
 \subsection{2.~Zirkel}
 
 \medskip\noindent\textbf{Fallen entdecken} warnt den Kleriker während
 \emph{\unit[20]{min}} vor allen Fallen im Umkreis von
-\emph{\unit[10]{m}n}.
+\emph{\unit[30]{Fuss}n}.
 
 \medskip\noindent\textbf{Gesinnung entdecken} zeigt dem Kleriker die
-Gesinnung aller Wesen im Umkreis von \emph{\unit[5]{m}}, die
+Gesinnung aller Wesen im Umkreis von \emph{\unit[15]{Fuss}}, die
 Gesinnung aller magischer Gegenstände, sofern sie eine haben, und ob
 dies hier ein heiliger oder ein unheiliger Ort ist.
 
 \medskip\noindent\textbf{Mit Tieren sprechen} erlaubt es dem Kleriker, während
 \emph{\unit[1]{h}} mit allen Vertretern \emph{einer Tierart} im
-Umkreis von \emph{\unit[10]{m}n} zu reden und ihre Antworten zu
+Umkreis von \emph{\unit[30]{Fuss}n} zu reden und ihre Antworten zu
 verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
 gesinnt. Es kann zu einem Reaktionswurf kommen.
 
 \medskip\noindent\textbf{Personen festhalten} lähmt bis zu 1W4
 sichtbare Personen (nicht beliebige Monster!) für
-\emph{\unit[1½]{h}} in bis zu \emph{\unit[60]{m}} Entfernung.
+\emph{\unit[1½]{h}} in bis zu \emph{\unit[180]{Fuss}} Entfernung.
 \marginnote{Untote und Riesen sind zwar menschenähnlich aber trotzdem
   immun.} Allen Opfern steht ein Rettungswurf gegen Sprüche zu. Soll
 nur eine Person gelähmt werden, wird ist Rettungswurf um -2 erschwert.
 
 \medskip\noindent\textbf{Schutz vor Feuer} erlaubt es einem Wesen in bis zu
-\emph{\unit[10]{m}} Entfernung für \emph{\unit[1]{h}} jeglicher
+\emph{\unit[30]{Fuss}} Entfernung für \emph{\unit[1]{h}} jeglicher
 Hitze zu trotzen und gibt einen +3 Bonus bei Rettungswürfen gegen
 Feuerangriffe und reduziert zudem jeden Schadenswürfel bei
 Feuerangriffen um einen Punkt.
 
 \medskip\noindent\textbf{Segen} verleiht allen Verbündeten des Klerikers im Umkreis von
-\emph{\unit[20]{m}} für \emph{\unit[1]{h}} einen +1 Bonus beim
+\emph{\unit[60]{Fuss}} für \emph{\unit[1]{h}} einen +1 Bonus beim
 Trefferwurf und beim Schadenswurf und steigert die Moral um +1. Das
 Gegenteil davon ist \textbf{Verfluchen} und bewirkt das genaue
 Gegenteil auf alle Feinde.
 
 \medskip\noindent\textbf{Stille} formt eine unsichtbare, schallschluckende Kugel mit
-\emph{\unit[10]{m}} Durchmesser in bis zu \emph{\unit[60]{m}}
+\emph{\unit[30]{Fuss}} Durchmesser in bis zu \emph{\unit[180]{Fuss}}
 Entfernung welche für \emph{\unit[2]{h}} andauert. Wird das Wunder
 auf eine unwillige Kreature gewirkt, so steht ihr ein Rettungswurf
 gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf den Boden und
@@ -1632,8 +1655,8 @@ die Kreatur kann den Wirkungsbereich problemlos verlassen.
 \subsection{3.~Zirkel}
 
 \medskip\noindent\textbf{Ewiges Licht} verzaubert einen Gegenstand innerhalb von
-\emph{\unit[40]{m}} so dass er hell wie das Sonnenlicht zu
-leuchten beginnt und ein Kugel von \emph{\unit[20]{m}} Durchmesser
+\emph{\unit[120]{Fuss}} so dass er hell wie das Sonnenlicht zu
+leuchten beginnt und ein Kugel von \emph{\unit[60]{Fuss}} Durchmesser
 erleuchtet. Wird das Wunder auf die Augen einer Kreatur gewirkt, so
 wird sie erblinden. In diesem Fall steht dem Opfern ein Rettungswurf
 gegen Sprüche zu.
@@ -1648,14 +1671,14 @@ einen \emph{Fluch} auf. Flüche werden jeweils \emph{mit dem
 
 \medskip\noindent\textbf{Gegenstand finden} lässt den Kleriker die
 genaue Richtung eines bestimmten Gegenstand oder einer bestimmten Art
-von Gegenstand im Umkreis von \emph{\unit[40]{m}} spühren.
+von Gegenstand im Umkreis von \emph{\unit[120]{Fuss}} spühren.
 
 \medskip\noindent\textbf{Gerechter Zorn} verzaubert eine Waffe in bis
-zu \emph{\unit[10]{m}} Entfernung, so dass sie für
+zu \emph{\unit[30]{Fuss}} Entfernung, so dass sie für
 \emph{\unit[10]{min}} einen zusätzlichen W6 Schaden verursacht.
 
 \medskip\noindent\textbf{Krankheiten heilen} heilt bei einem Wesen in
-bis zu \emph{\unit[10]{m}} Entfernung alle Sorten von Krankheiten
+bis zu \emph{\unit[30]{Fuss}} Entfernung alle Sorten von Krankheiten
 inklusive Mummienfäule, Lykanthropie und grünen Schleim. Das Gegenteil
 davon ist \textbf{Siechtum} und führt zu einer schrecklichen
 Krankheit, welche das Opfer in 2W12 Tagen dahin rafft. In diesem Fall
