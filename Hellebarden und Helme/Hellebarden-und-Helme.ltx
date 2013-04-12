@@ -1,9 +1,9 @@
-\documentclass{tufte-handout}
+\documentclass[a4paper,twoside]{tufte-handout}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 % \usepackage{multirow}
 
-%\geometry{showframe}% for debugging purposes -- displays the margins
+% \geometry{showframe}% for debugging purposes -- displays the margins
 
 % Provides \CheckedBox and \Square
 % \usepackage{wasysym}
@@ -36,8 +36,8 @@
 \renewcommand{\labelitemi}{$-$} % use dash for items
 
 \title{Hellebarden \& Helme}
-\author{}
-\date{}
+\author{Alex Schroeder}
+% \date{}
 \begin{document}
 
 \maketitle% this prints the handout title, author, and date
@@ -123,7 +123,10 @@ welches man auf Abenteuern erlangt hat. Wenn dies \textbf{ohne Kämpfe}
 gelingt, dann umso besser. Denn auch hier gilt: wenn gewürfelt wird,
 ist es eigentlich schon zu spät.
 
+\clearpage
+
 \section{Charaktererschaffung}
+\label{sec:charaktererschaffung}
 
 \marginnote{Kurze Zusammenfassung für Spieler:
   \begin{enumerate}
@@ -365,7 +368,7 @@ Stufe    5 & 14 & 13 &  9 & 10 & 13 \\
 heiliges Symbol entgegen gestreckt und laut die Götter angerufen.
 Jeder Runde können so 2W6 Trefferwürfel von Untoten vertrieben oder
 zerstört werden. Der Erfolg hängt von deiner Stufe und etwas Glück ab.
-\marginnote{Gewisse Kleriker favorisieren die Waffen, welche ihren
+\marginnote[-1cm]{Gewisse Kleriker favorisieren die Waffen, welche ihren
   Göttern zugeschrieben werden. Dies ist optional. Hier ein paar
   Beispiele:
 
@@ -567,7 +570,7 @@ Stufe 4--5 & 10 &  8 &  6 &  7 & 10 \\
   \includegraphics[width=2.5cm]{Berner.jpg}
 \end{figure}
 
-\newthought{Bestimme deine Lebensenergie} \marginnote{Steigst du eine
+\newthought{Bestimme deine Lebensenergie}\marginnote{Steigst du eine
   Stufe, würfelst du deine Lebensenergie neu: Einen Würfel pro Stufe,
   jeweils plus deinen Bonus für Gesundheit (aber mindestens 1).
   Behalte den alten Wert, falls das neue Resultat niedriger ist.} und
@@ -612,7 +615,7 @@ Gold & Hintegrund der Eltern \\
 \begin{fullwidth}
 \begin{minipage}[t]{0.47\linewidth}
 \begin{tabular}[t]{lcp{3.8cm}}
-Waffe & Gold & Bemerkung \\
+\textbf{Waffe} & Gold & Bemerkung \\
 
 Kriegsaxt & 7 & zweihändig, Türen einschlagen \\
 
@@ -661,7 +664,7 @@ Speer & 3 & kann geworfen werden \\
 
 \bigskip
 \begin{tabular}{lccl}
-Rüstung & Klasse & Gold & Bemerkung \\
+\textbf{Rüstung} & Klasse & Gold & Bemerkung \\
 Leder & 7 & 20 & Schleichen und Schwimmen ist kein Problem\\
 Kette & 5 & 40 & kein Schleichen, einfaches Ertrinken \\
 Platte & 3 & 60 & kein Schleichen, einfaches Ertrinken \\
@@ -670,12 +673,11 @@ Helm  & – & 10 & hilft auf der Tabelle für Verletzung und Tod \\
 \end{tabular}
 
 \medskip
-Bessere Rüstung macht langsam. Siehe
-\hyperref[sec:bewegung]{Bewegung}.
+Bessere Rüstung macht \hyperref[sec:bewegung]{langsam}.
 \end{minipage}
 \begin{minipage}[t]{0.47\linewidth}
 \begin{tabular}[t]{lcp{4cm}}
-Gegenstand & Gold & Bemerkung \\
+\textbf{Gegenstand} & Gold & Bemerkung \\
 Diebeswerkzeug & 25 & wird von Dieben für das Öffnen von Schlössern benötigt \\
 6 Fackeln & 1 & brennt \unit[1]{h}; kann Tiere ängstigen \\
 Hammer (klein) & 2 & für Holzpflöcke und Keile \\
@@ -753,11 +755,13 @@ Handwerker, und so weiter benötigen.\marginnote{Die Löhne für
 \section{Löhne}
 \label{sec:löhne}
 
-Söldner und Angestellte leben in den Häusern, Höhlen, Türmen und
-Festungen, welche ihnen zugewiesen wurden. Sie kommen nicht auf
-Abenteuer mit. \marginnote{Leichte Infanterie sind z.\,B.~Räuber mit
-  Schwert, Schild und Lederrüstung; schwere Infanterie sind
-  z.\,B.~Stadtwachen mit Schwert, Schild und Kettenhemd.}
+\newthought{Söldner und Angestellte} leben in den Häusern, Höhlen,
+Türmen und Festungen, welche ihnen zugewiesen wurden. Sie kommen nicht
+auf Abenteuer mit. \marginnote{Leichte Infanterie sind z.\,B.~Räuber
+  mit Schwert, Schild und Lederrüstung; schwere Infanterie sind
+  z.\,B.~Stadtwachen mit Schwert, Schild und Kettenhemd. Sie müssen
+  unter Umständen im Kampf einen \hyperref[key:moralwurf]{Moralwurf}
+  machen.}
 
 \medskip
 \begin{tabular}{llc}
@@ -768,8 +772,10 @@ Schwere Infanterie & 4~Gold/Monat & 8 \\
 \end{tabular}
 \medskip
 
-\noindent Nur \hyperref[key:gefolgsleute]{Gefolgsleute} begleiten ihre
-Arbeitgeber auf Abenteuer.
+\newthought{Gefolgsleute} begleiten ihre Arbeitgeber auf Abenteuer.
+\marginnote{\hyperref[key:gefolgsleute]{Gefolgsleute} sind treu und
+  müssen nur \emph{zwischen} den Abenteuern einen
+  \hyperref[key:moralwurf]{Moralwurf} machen.}
 
 \medskip
 \begin{tabular}{ll}
@@ -818,13 +824,17 @@ Zauberspruch:
 6 & Schlaf \\
 \end{tabular}
 
-\bigskip\noindent Mit der Zeit können auch andere Wesen angeworben
-werden: \textbf{Satyr} (TW~2), Lederrüstung, Bogen und Kurzschwert;
-\textbf{Tengu} (TW~2, RK~9, 1W6), kann fliegen, kann keine Rüstung
-tragen; \textbf{Minotaurus} (TW~2, RK~6, 1W6), kann mit Sturmangriff
-doppelten Schaden anrichten; \textbf{Riesenaffe} (TW~3, RK~8,
-1W6/1W6), kann keine Rüstung tragen; \textbf{Troll} (TW~6+3, RK~4,
-1W6/1W6/1W10), regeneriert 3/Runde nach 3 Runden.
+\bigskip\noindent Moster aus der Umgebung könnten beispielsweise sein:
+\textbf{Goblin} (wie Halbling), \textbf{Echsenmensch} (TW~2),
+Lederrüstung, Zweihänder, kann schwimmen; \textbf{Satyr} (TW~2),
+Lederrüstung, Bogen und Kurzschwert; \textbf{Tengu} (TW~2, RK~9, 1W6),
+kann fliegen, kann keine Rüstung tragen; \textbf{Minotaurus} (TW~2,
+RK~6, 1W6), kann mit Sturmangriff doppelten Schaden anrichten;
+\textbf{Riesenaffe} (TW~3, RK~8, 1W6/1W6), kann keine Rüstung tragen;
+\textbf{Zentaur} (TW~3, RK~8, 1W6/1W6), kann keine Rüstung tragen,
+kann mit Sturmangriff doppelten Schaden anrichten, kann galoppieren;
+\textbf{Troll} (TW~6+3, RK~4, 1W6/1W6/1W10), regeneriert 3/Runde nach
+3 Runden.
 
 \medskip\noindent TW: Trefferwürfel
 
@@ -838,18 +848,18 @@ doppelten Schaden anrichten; \textbf{Riesenaffe} (TW~3, RK~8,
 1. & fauler Drückeberger & 16. & Fackelträger \\
 2. & Wasserträger & 17. & Lastenträger \\
 3. & verschuldeter Halbling Winzer mit Bogen, Kurzschwert, Schild und Kettenhemd & 18. & leichtsinniger Halbling Abenteurer mit Schleuder, Kurzschwert und Lederrüstung \\
-4. & ehemaliger Matrose mit zwei Handäxten & 19. & ehemaliger Söldner mit Hellebarde \\
-5. & Zwerg mit Kriegshammer, Helm, Schild und Plattenpanzer & 20. & Wanderprediger, Kleriker mit Streithammer und Schild \\
-6. & Jugendlicher, kennt sich mit Hunden aus & 21. & reisender Wunderheiler, Kleriker mit Keule \\
-7. & entlaufener Sklave, der die Umgebung kennt & 22. & vertriebener Scharlatan, Magier \\
-8. & ehemaliger Dieb mit Dolch und Lederrüstung & 23. & Gelehrter auf Wanderschaft, Magier \\
-9. & ehemaliger Räuber mit Bogen, Dolch und Lederrüstung & 24. & verträumter Mondelf mit leichtem Umhang und zierlichem Langschwert \\
+4. & ehemaliger Pirat mit zwei Handäxten & 19. & verwahrloster Söldner mit Hellebarde \\
+5. & harter Zwerg mit Kriegshammer, Helm, Schild und Plattenpanzer & 20. & Wanderprediger, Kleriker mit Streithammer und Schild \\
+6. & unschuldiger Träumer, kennt sich mit Hunden aus & 21. & reisender Wunderheiler, Kleriker mit Keule \\
+7. & entlaufener Sklave, kennt die Umgebung & 22. & vertriebener Scharlatan, Magier \\
+8. & verschuldeter Dieb mit Dolch und Lederrüstung & 23. & Gelehrter auf Wanderschaft, Magier \\
+9. & hungriger Räuber mit Bogen, Dolch und Lederrüstung & 24. & verträumter Mondelf mit leichtem Umhang und zierlichem Langschwert \\
 10. & Pilger auf der Suche nach vergessenen Schreinen, Kleriker Mantel, Schleuder und Keule & 25. & Wanderer auf der Suche nach dem Sinn des Lebens, Elf mit Langschwert, Helm, Schild und Kettenhemd \\
 11. & verwildeter Halbling mit Lendenschurz, Schleuder und Keule & 26. & leichtfüssiger Meereself mit Dolch, Bogen und Kettenhemd \\
-12. & ehemaliger Leibwächter mit Speer und Lederrüstung & 27. & fanatischer Runenkrieger, Zwerg mit Lederschürze und Kriegsaxt \\
-13. & ehemaliger Schäfer mit Schleuder und Keule & 28. & Zwerg mit Kriegsaxt, Helm und Plattenpanzer \\
-14. & ehemaliger Jäger mit Bogen und Dolch & 29. & Jugendlicher, kennt sich mit Pferden aus \\
-15. & geflüchtete Stadtwache mit Speer, Streitkolben, Schild und Kettenhemd & 30. & Monster aus der Umgebung (Echsenmensch, Goblin, Minotaurus, Riesenaffe, Troll, Zentaur) \\
+12. & grimmiger, einäugiger Leibwächter mit Speer und Lederrüstung & 27. & fanatischer Runenkrieger, Zwerg mit Lederschürze und Kriegsaxt \\
+13. & verarmter Schäfer mit Schleuder und Keule & 28. & Zwerg mit Kriegsaxt, Helm und Plattenpanzer \\
+14. & rachsüchtiger Jäger mit Bogen und Dolch & 29. & Jugendlicher, kennt sich mit Pferden aus \\
+15. & desertierte Stadtwache mit Speer, Streitkolben, Schild und Kettenhemd & 30. & Monster aus der Umgebung (Echsenmensch, Goblin, Minotaurus, Riesenaffe, Troll, Zentaur) \\
 \end{tabular}
 
 \newpage
@@ -860,12 +870,7 @@ doppelten Schaden anrichten; \textbf{Riesenaffe} (TW~3, RK~8,
 \label{sec:gesinnung}
 
 \newthought{Wähle ein Gesinnung}: Ordnung, Chaos oder Neutralität.
-\marginnote{Wer sich aus diesem kosmischen Kampf heraus halten will,
-  bekennt sich zur \textbf{Neutralität}. Es gibt keine Priester der
-  Neutralität.
-
-\bigskip\noindent
-Kleriker und andere religiöse Charaktere können sich einen
+\marginnote{Kleriker und andere religiöse Charaktere können sich einen
 \textbf{Schutzpatron} aussuchen.
 
 \textbf{Orcus}: Herr über die Untoten Untote, lässt Tote wieder
@@ -888,6 +893,7 @@ Liebe
 
 \textbf{Hekate}: Magie, Hexen, Wegkreuzungen}
 
+\bigskip
 Die \textbf{Priester der Ordnung} sagen: ``Alleine sind wir schwach
 und das Leben ein Jammertal. Gemeinsam sind wir stark. Gemeinsam bauen
 wir unsere Häuser. Gemeinsam bestellen wir unsere Felder. Gemeinsam
@@ -911,6 +917,7 @@ auf! Werde ein echtes Mitglied unserer stolzen Gesellschaft!''
   \includegraphics{Castriota.jpg}
 \end{marginfigure}
 
+\bigskip
 Die \textbf{Chaos Priester} sagen: ``Das Leben ist Chaos. Unkraut
 wächst im Feld. Der Obstgarten verwaldet. Die Küste wird ins Meer
 gespült. Das Chaos sind die tiefen Muster dieser Welt. Die Wolken
@@ -929,6 +936,10 @@ aufstellt, ohne dies zu bedenken, heisst Menschen töten und sie in
 Bretterkisten begraben. Komm mit! Ich weiss nicht wohin wir gehen,
 aber wir werden auf dem Weg so manches lernen.''
 
+\bigskip
+Wer sich aus diesem kosmischen Kampf heraus halten will, bekennt sich
+zur \textbf{Neutralität}. Es gibt keine Priester der Neutralität.
+
 \newpage
 
 
@@ -945,20 +956,21 @@ Freunde.
 Alex und wohne in Zürich. Mein Charakter heisst Edrig und stammt aus
 Einaheim.
 
-\textbf{Erfahrungspunkte}: Gegner überlisten und überwältigen gibt
-Erfahrungspunkte. Zudem kann man für Geld, welches ohne Vorteil im
-Spiel ausgegeben wird, einen Erfahrungspunkt pro Goldmünze erhalten.
 \marginnote{Weil Geld zu Erfahrungspunkten und damit zum Stufenanstieg
-  führt, ist die Geldbeschaffung oft zentrales Element der Abenteuer.}
-Beispiele: Spenden an den Tempel, Aufstellen von Statuen, Organisieren
-von Saufgelagen, Zirkus für das gemeine Volk, Villa erbauen,
-Bedienstete anstellen und so weiter. Gegenbeispiele: Ausrüstung
-kaufen, Söldner anstellen, Pferde, Wagen, oder Schiffe kaufen. Kurz,
-was die Bekanntheit steigert aber zu nichts nutze ist, gilt. Mit genug
-Erfahrungspunkten, steigt man eine Stufe.
+  führt, ist die Geldbeschaffung oft zentrales Element der Abenteuer.
+  Das Bergen eines gefundenen Hortes kann ebenfalls zu einem Problem
+  werden, wenn man sich geschwächt und schwer beladen auf den Rückweg
+  macht.} \textbf{Erfahrungspunkte}: Gegner überlisten und
+überwältigen gibt Erfahrungspunkte. Zudem kann man für ausgegebenes
+Geld \emph{einen Erfahrungspunkt pro Goldmünze} erhalten. Beispiele:
+Spenden an den Tempel, Aufstellen von Statuen, Organisieren von
+Saufgelagen, Zirkus für das gemeine Volk, Villa erbauen, Bedienstete
+anstellen und so weiter. Mit genug Erfahrungspunkten, steigt man eine
+Stufe.
 
 \textbf{Stufe}: Mit der Zeit erhält der Charakter mehr Lebensenergie,
-trifft besser und erhält bessere Rettungswürfe.
+trifft besser und erhält bessere Rettungswürfe. Er \emph{steigt eine
+  Stufe}.
 
 \begin{marginfigure}[1cm]
   \includegraphics{Lucchesischer-Schaller.jpg}
@@ -975,17 +987,24 @@ nicht, zu jedem Würfel den Gesundheitsbonus hinzu zu zählen.
 Würfel wie man Stufen hat und behält das Resultat, wenn es
 \emph{schlechter} als das bisherige ist.
 
-\marginnote{
-\begin{tabular}{lccccc}
-Stufe  & 1 & 2 & 3 & 4 & 5 \\
-Zirkel & 1 & 1 & 2 & 2 & 3 \\
-\end{tabular}
-} \textbf{Zirkel}: Die Zaubersprüche werden mit der Zeit ebenfalls
+\textbf{Zirkel}: Die Zaubersprüche werden mit der Zeit ebenfalls
 mächtiger. Als Faustregel gilt, dass der mächtigste Zirkel, den
 Magier, Kleriker und Elfen beherrschen, der Hälfte ihrer Stufe
 entspricht (aufgerundet).
 
-\marginnote{
+\medskip
+\begin{tabular}{lccccc}
+Stufe  & 1 & 2 & 3 & 4 & 5 \\
+Zirkel & 1 & 1 & 2 & 2 & 3 \\
+\end{tabular}
+
+\medskip\noindent
+\textbf{Reaktionswurf}: Der Spielleiter sollte für alle Gegner, mit
+denen man redet, einen Reaktionswurf machen. Hierfür werden 2W6
+gewürfelt und der \emph{Auftreten} Bonus des Sprechers hinzu
+gezählt.
+
+\medskip
 \begin{tabular}{cl}
 2W6 & Reaktion \\
 2 & Feindseelig, sofortiger Angriff \\
@@ -994,20 +1013,16 @@ entspricht (aufgerundet).
 9–11 & Uninteressiert, kein Risiko \\
 12 & Freundlich und hilfsbereit 
 \end{tabular}
-} \textbf{Reaktionswurf}: Der Spielleiter sollte für alle Gegner, mit
-denen man redet, einen Reaktionswurf machen. Hierfür werden 2W6
-gewürfelt und der \emph{Auftreten} Bonus des Sprechers hinzu
-gezählt. Das Spektrum reicht von sofortigem Angriff (2) bis zu grosser
-Hilfsbereitschaft (12).
 
-\textbf{Moralwurf}: Ist der erste Gegner besiegt oder ist die Hälfte
-der Gegner kampfunfähig, sollte der Spielleiter einen Moralwurf machen.
-Würfelt der Spielleiter den Moralwert der Gegner oder darunter, kämpft
-der Gegner weiter. Der Gegner muss maximal zwei Moralwürfe machen.
-Spielercharaktere müssen nie einen Moralwurf machen. Söldner, welche
-die Spielercharaktere angeheuert haben, müssen bei Verlusten ebenfalls
-Moralwürfe machen. Gefolgsleute müssen bei Verlusten keine Moralwürfe
-machen.
+\medskip\noindent
+\textbf{Moralwurf}\label{key:moralwurf}: Ist der erste Gegner besiegt
+oder ist die Hälfte der Gegner kampfunfähig, sollte der Spielleiter
+einen Moralwurf machen. Würfelt der Spielleiter den Moralwert der
+Gegner oder darunter, kämpft der Gegner weiter. Der Gegner muss
+maximal zwei Moralwürfe machen. Spielercharaktere müssen nie einen
+Moralwurf machen. Söldner, welche die Spielercharaktere angeheuert
+haben, müssen bei Verlusten ebenfalls Moralwürfe machen. Gefolgsleute
+müssen bei Verlusten keine Moralwürfe machen.
 
 \newpage
 
@@ -1025,22 +1040,25 @@ hinaus können die Moral kurzfristig um +1 erhöhen. Würfeln
 Gefolgsleute \emph{über} ihren Moralwert, so setzen sie sich zur
 Ruhe.
 
-\begin{marginfigure}[1cm]
+\textbf{Erfahrungspunkte für Gegner} werden am Ende des Spielabends
+auf Spielercharaktere und Gefolgsleute verteilt. Gefolgsleute ohne
+Stufe mit 100 Erfahrungspunkten oder mehr
+\hyperref[sec:charaktererschaffung]{erhalten ihre erste Stufe} und
+verlangen ab sofort einen halben Anteil an den Schätzen. Zudem würfelt
+man ihre sechs Attribute und ihre Lebensenergie aus. Die Lebensenergie
+kann allerdings nicht unter den vorherigen Wert sinken. Menschen
+dürfen zudem noch ihre Klasse wählen.
+
+\begin{marginfigure}
 \includegraphics{Maximilian.jpg}
 \end{marginfigure}
 
-\textbf{Erfahrungspunkte für Gegner} werden am Ende des Spielabends
-auf Spielercharaktere und Gefolgsleute verteilt. Gefolgsleute ohne
-Stufe mit 100 Erfahrungspunkten oder mehr erhalten ihre erste Stufe
-und verlangen ab sofort \unit[½]{Anteil} an den Schätzen. Zudem
-würfelt man ihre sechs Attribute und ihre Lebensenergie aus (die
-Lebensenergie kann allerdings nicht unter den vorherigen Wert sinken).
-Menschen dürfen zudem noch ihre Klasse wählen.
-
-\textbf{Gefolgsleute mit Stufe} sammeln Erfahrungspunkte wie ein
+\textbf{Gefolgsleute} sammeln Erfahrungspunkte wie ein
 Spielercharakter. Geld aus Lohn und Schatzanteile können ebenfalls in
-Erfahrungspunkte umgewandelt werden. Spieler können hierfür sogar Gold
-aus ihrem Anteil an Gefolgsleute weitergeben.
+Erfahrungspunkte umgewandelt werden. Charaktere und Gefolgsleute
+können sich hierfür auch gegenseitig Gold leihen oder schenken. Man
+kann keine Geschenke von Gefolgsleuten und Charakteren mit tieferer Stufe
+annehmen und man kann von ihnen auch nichts leihen.
 
 \textbf{Klassen}: Auf Wunsch können Spieler einen Charakter aus jedem
 bekannten Volk und aus jedem bekannten Ort spielen. In diesem Sinne
@@ -1056,8 +1074,8 @@ Entsprechend lassen sich überall auch neue Varianten finden.
   der geheime Schalter hinter der Statue und der Spieler sagt, sein
   Charakter sucht hinter der Statue, dann wird der Schalter gefunden.
   Wenn es allerdings alle \unit[10]{min} eine Chance gibt, dass
-  Monster auftauchen, dann soll der Zwerg auch alle \unit[10]{min}
-  würfeln, um die Türe aufzubrechen.}
+  Monster auftauchen, dann soll man auch alle \unit[10]{min} würfeln,
+  um die Türe aufzubrechen.}
 
 Die grosse 1d6 Tabelle:
 
@@ -1089,15 +1107,15 @@ Halblinge können sich im Freien gut verstecken & 1--5 \\
 Es wird viel gekämpft…
 
 \textbf{Überraschung}: Beide Seiten prüfen zu Beginn, ob sie
-überrascht sind. Wer überrascht ist, muss eine Runde
-aussetzen.\marginnote{Im Normalfall wird 1W6 gewürfelt und bei 1 oder
-  2 ist man überrascht.}
+überrascht sind. \marginnote{Im Normalfall wird 1W6 gewürfelt und bei
+  1 oder 2 ist man überrascht.} Wer überrascht ist, muss eine Runde
+aussetzen.
 
 \textbf{Runden}: Zu Beginn einer Runde müssen alle Charaktere ihre
 Aktion \emph{deklarieren}: Angreifen, Sprüche zaubern, Wunder wirken,
-und so weiter. Dann wird \emph{Initiative} gewürfelt (jede Seite mit
-1W6) und wer höher ist, fängt an.\marginnote{Im schlimmsten Fall kommt
-  der Gegner also zwei mal hintereinander dran.}
+und so weiter. \marginnote{Im schlimmsten Fall kommt der Gegner
+  also zwei mal hintereinander dran.} Dann wird \emph{Initiative}
+gewürfelt (jede Seite mit 1W6) und wer höher ist, fängt an.
 
 \textbf{Trefferwurf}: Um Anzugreifen, würfelst du mit einem
 zwanzigseitigen Würfel (W20) und schaust, ob du
@@ -1121,6 +1139,10 @@ Kraft Bonus im Nahkampf. Der Schaden im Fernkampf bleibt unverändert.
 normalerweise drei Personen nebeneinander kämpfen. Der Platzbedarf
 hängt aber von den verwendeten Waffen ab:
 
+\begin{marginfigure}
+\includegraphics{Eisenkappe.jpg}
+\end{marginfigure}
+
 \medskip
 \begin{tabular}{lcc}
 Waffeneigenschaft & Platzbedarf & auf \unit[10]{Fuss}\\
@@ -1131,21 +1153,18 @@ Zweihänder & 3 & 1 Person \\
 \end{tabular}
 \medskip
 
-\begin{marginfigure}
-\includegraphics{Eisenkappe.jpg}
-\end{marginfigure}
-
 \textbf{Fernkampf}: Im Nahkampf kann man keine Fernkampfwaffen
 verwenden. Wird in einen Nahkampf hinein geschossen, wird das Opfer
 durch Zufall bestimmt.
 
 \textbf{Schutz}: Wird jemand angegriffen, können daneben stehende
-Freunde sich dazwischen stellen. Intelligente Monster können dies
-auch.
+Freunde sich dazwischen stellen. \marginnote{Intelligente Monster
+  können dies auch.}
 
 \textbf{Rückzug}: Wer sich mit halber Geschwindigkeit zurück zieht,
-kann normal kämpfen und normal verfolgt werden, ausser jemand deckt
-den Rückzug. Wer sich schneller davon machen will, muss fliehen.
+kann zuschlagen und sich bewegen, doch seine Gegner können sich
+natürlich sofort nachrücken und weiterhin zuschlagen, wenn niemand den
+Rückzug deckt. Wer sich schneller davon machen will, muss fliehen.
 
 \textbf{Fliehen}: Wer davon rennt, muss noch einen letzten Angriff
 überleben, bei dem der Gegner +2 auf den Wurf bekommt und der eigene
@@ -1157,17 +1176,17 @@ Tiere lassen sich oft durch fallen gelassenes Essen ablenken.
 Intelligente Gegner lassen sich oft durch fallen gelassene Schätze
 ablenken.
 
-\textbf{Schilde}: Trägt man ein Schild und wird von einer Waffe oder
-magischer Gewalt wie einem Blitz oder einem Feuerball getroffen, so
-kann man den Schild opfern. Es absorbiert den gesamten Schaden und
-wird zerstört. Magier können keine Schilde tragen.
+\textbf{Schilde}: Trägt man ein Schild und wird im Nahkampf von einer
+Waffe getroffen, so kann man den Schild opfern. \marginnote{Magier
+  können keine Schilde tragen.} Es absorbiert den gesamten Schaden und
+wird zerstört.
 
 \textbf{Verletzung und Tod}: Lebensenergie misst, wie viel Schmerzen
-man ertragen kann, wie viel Lebenswillen man hat. Sobald man hier null
-Punkte erreicht, und bei jedem weiteren Treffer, muss man auf der
-\emph{Todestabelle} würfeln.
+man ertragen kann, wie viel Lebenswillen man hat. Sobald man die
+Lebensenergie auf null Punkte sink, und bei jedem weiteren Treffer,
+muss man auf der \emph{Todestabelle} würfeln.
 
-\marginnote{\emph{Wiederauferstehung} und \emph{Regeneration} sind
+\marginnote[1cm]{\emph{Wiederauferstehung} und \emph{Regeneration} sind
   Wunder des 7.~Zirkels und brauchen einen Kleriker der 13.~Stufe.
 
   \emph{Tote erwecken} ist ein Wunder des 5.~Zirkels und braucht
@@ -1232,8 +1251,8 @@ allerdings alle Lebensenergie und fällt für 2W6 Runden in Ohnmacht \\
 \section{Bewegung}
 \label{sec:bewegung}
 
-\textbf{Tragkraft}: Rüstung schränkt die Bewegungsrate gemäss
-der unten stehenden Tabelle ein. Wer zudem viel Schätze auf sich
+\textbf{Tragkraft}: Rüstung schränkt die Bewegungsrate gemäss der
+unten stehenden Tabelle ein. Wer zudem mehr als 100 Münzen auf sich
 trägt, muss die Zeile darunter verwenden.
 
 \medskip
@@ -1269,10 +1288,6 @@ für alle Götter, Städte und Interessengruppen separat geführt. Je
 besser der Ruf, desto schwieriger wird es, diesen noch weiter zu
 steigern.
 
-\marginnote{Für Städte und Interessengruppen bestimmt der Ruf auch
-  ihre Hilfsbereitschaft. Würfelt man mit 2W6 über diesen Wert, gibt
-  es keine Unterstützung von der Gemeinschaft.}
-
 Um den Ruf zu steigern, muss man mit dem entsprechenden Würfel über
 den aktuellen Wert würfeln. Der Ausgangswert ist 0, somit ist der
 erste Wurf nicht nötig: von 0 auf 1 steigt der Ruf sehr schnell.
@@ -1286,14 +1301,20 @@ Siedlungen retten, ganzen Gemeinschaften helfen & W8 \\
 Im Dienste der Götter Aufträge erfüllen, ein Volk, einen Stamm, eine
 Gilde, eine ganze Kultur retten & W12 \\
 \end{tabular}
-\medskip
 
-\noindent
-\textbf{Götter}: Der Ruf gilt in der Not auch als Prozent Chance für
-eine göttliche Intervention. Für Kleriker gilt, dass der Ruf auch den
-Zirkel der ihm gewährten Wunder begrenzt. Für das erste Abenteuer
-eines Klerikers gibt es entsprechend noch keine Wunder zu wirken, da
-ein Kleriker noch keinen Ruf hat.
+\medskip\noindent Für Städte und Interessengruppen bestimmt der Ruf
+auch ihre Hilfsbereitschaft. Würfelt man mit 2W6 über diesen Wert,
+gibt es keine Unterstützung von der Gemeinschaft.
+
+\textbf{Eingreifen der Götter}: Der Ruf gilt in der Not auch als
+Prozent Chance für eine göttliche Intervention.
+
+\textbf{Wunder}\label{key:wunder}: Für Kleriker gilt, dass der Ruf auch den Zirkel der
+ihm gewährten Wunder begrenzt. Für das erste Abenteuer eines Klerikers
+gibt es entsprechend noch keine Wunder zu wirken, da ein Kleriker noch
+keinen Ruf hat.
+
+\clearpage
 
 
 
@@ -1313,7 +1334,7 @@ Stufe & 1. Zirkel & 2. Zirkel & 3. Zirkel \\
 4 & 2 & 2 & - \\
 5 & 2 & 2 & 1 \\
 \end{tabular}
-} \newthought{Als Magier und Elfen} beginnst du deine Karriere mit
+} \newthought{Als Magier oder Elf} beginnst du deine Karriere mit
 genau \emph{einem} Zauberspruch. Dieser Zauberspruch steht in deinem
 Zauberbuch. Wenn du dich für \unit[10]{min} hinsetzt, kannst du die
 entsprechenden Seiten in deinem Zauberbuch studieren. Die magischen
@@ -1345,7 +1366,9 @@ von \emph{\unit[120]{Fuss}} für \emph{\unit[1]{h} +
   \unit[10]{min/Stufe}}, so dass er schwach zu leuchten beginnt und
 ein Kugel von \emph{\unit[30]{Fuss}} Durchmesser beleuchtet. Werden
 die Augen einer Kreatur verzaubert, so erblindet sie für diese Zeit.
-In diesem Fall steht dem Opfern ein Rettungswurf gegen Sprüche zu.
+In diesem Fall steht dem Opfern ein Rettungswurf gegen Sprüche zu. Das
+Gegenteil ist \textbf{Dunkelheit}. \marginnote{\emph{Licht} und
+  \emph{Dunkelheit} heben sich gegenseitig auf.}
 
 \medskip\noindent\textbf{Magie entdecken} lässt verzauberte
 Gegenstände, Kreaturen und Orte innerhalb von \emph{\unit[60]{Fuss}}
@@ -1374,10 +1397,7 @@ Intelligenz & Zeitraum \\
 3--8 & monatlich \\
 9--12 & wöchentlich \\
 13--18 & täglich \\
-\end{tabular}
-
-\medskip\noindent Der Zauber kann durch einen \emph{Gegenzauber}
-gebrochen werden.}
+\end{tabular}}
 \medskip\noindent\textbf{Person bezaubern} macht \emph{eine}
 menschenähnliche Kreatur zu deinem treuen Freund. Dem Opfern steht ein
 Rettungswurf gegen Sprüche zu. Weitere Rettungswürfe hängen von der
@@ -1392,12 +1412,17 @@ Tor, ein Fenster oder einen Rolladen für \emph{2W6 $\times$
 \emph{\unit[20]{min}} vor Waffengewalt, in dem es den Rüstungsklasse
 auf 4 senkt. Gegen Geschosse sinkt die Rüstungsklasse sogar auf 2.
 
-\medskip\noindent\textbf{Schlaf} lässt \emph{2W8 Kreaturen} innerhalb
-von \emph{\unit[240]{Fuss}} für \emph{4W4 $\times$ \unit[10]{min}} in
-einen magischen Schlummer versinken.\marginnote{Dies ist einer der
-  mächtigsten Sprüche des 1.~Zirkels. Es gibt keinen Rettungswurf!}
-Keine Kreatur darf mehr als 4+1~Trefferwürfel haben. Kreaturen mit
-weniger Trefferwürfel sind zuerst betroffen.
+\clearpage
+
+
+
+\medskip\noindent\textbf{Schlaf} lässt \emph{2W8 Trefferwürfel} von
+Kreaturen innerhalb von \emph{\unit[240]{Fuss}} für \emph{4W4 $\times$
+  \unit[10]{min}} in einen magischen Schlummer
+versinken.\marginnote{Dies ist einer der mächtigsten Sprüche des
+  1.~Zirkels. Es gibt keinen Rettungswurf!} Keine Kreatur darf mehr
+als 4+1~Trefferwürfel haben. Kreaturen mit weniger Trefferwürfel sind
+zuerst betroffen.
 
 \medskip\noindent\textbf{Schutz vor Bösem} schützt dich für
 \emph{\unit[2]{h}} vor Gedankenkontrolle, direkter Berührung durch
@@ -1417,20 +1442,20 @@ Abstand von \emph{\unit[6]{Fuss}} und einer Höhe von
 weiter lesen und verstehen.\marginnote{Das gilt auch für
   Schatzkarten!}
 
-\medskip\noindent\textbf{Bauchreden} lässt dich für
-\emph{\unit[20]{min}} kontrollieren, von wo im Umkreis von
-\emph{\unit[60]{Fuss}} deine Stimmer ertönt.\marginnote{Das kann
-  wichtig werden, wenn du nicht zu sehen bist (unsichtbar, versteckt,
-  im Dunkeln, in dichtem Nebel).}
+\medskip\noindent\textbf{Bauchreden}\marginnote{Das kann wichtig
+  werden, wenn du nicht zu sehen bist (unsichtbar, versteckt, im
+  Dunkeln, in dichtem Nebel).} lässt dich für \emph{\unit[20]{min}}
+kontrollieren, von wo im Umkreis von \emph{\unit[60]{Fuss}} deine
+Stimmer ertönt.
 
 
 \subsection{2.~Zirkel}
 
-\textbf{Arkanes Schloss} versiegelt Türen, Kisten oder Portale
-\emph{für immer}.\marginnote{\emph{Arkanes Schloss} ist eine stärkere
-  Variante von \emph{Portal halten}. \emph{Gegenzauber} und
-  \emph{Klopfen} beenden den Zauber.} Du kann die verzauberten Türen
-und Kisten weiterhin normal verwenden.
+\textbf{Arkanes Schloss}\marginnote{\emph{Arkanes Schloss} ist eine
+  stärkere Variante von \emph{Portal halten}. \emph{Gegenzauber} und
+  \emph{Klopfen} beenden den Zauber.} versiegelt Türen, Kisten oder
+Portale \emph{für immer}. Du kann die verzauberten Türen und Kisten
+weiterhin normal verwenden.
 
 \medskip\noindent\textbf{Böses entdecken} zeigt dir während
 \emph{\unit[20]{min}}, welche der sichtbaren Wesen im Umreis von
@@ -1440,37 +1465,39 @@ und Kisten weiterhin normal verwenden.
 innerhalb von \emph{\unit[120]{Fuss}}, so dass er \emph{für immer}
 hell wie die Sonne zu leuchten beginnt und ein Kugel von
 \emph{\unit[60]{Fuss}} Durchmesser erleuchtet.
-\marginnote{\emph{Gegenzauber} beendet den Zauber.} Werden die Augen
-einer Kreatur verzaubert, so erblindet sie. In diesem Fall steht dem
-Opfern ein Rettungswurf gegen Sprüche zu. Das Gegenteil ist
-\textbf{Ewige Dunkelheit}. \emph{Ewiges Licht} und \emph{Ewige
-  Dunkelheit} heben sich gegenseitig auf.
+\marginnote{\emph{Gegenzauber} beendet den Zauber. \emph{Ewiges Licht}
+  und \emph{Ewige Dunkelheit} heben sich gegenseitig auf.} Werden die
+Augen einer Kreatur verzaubert, so erblindet sie. In diesem Fall steht
+dem Opfern ein Rettungswurf gegen Sprüche zu. Das Gegenteil ist
+\textbf{Ewige Dunkelheit}.
 
-\medskip\noindent\textbf{Gedanken lesen} macht dich für
-\emph{\unit[2]{h}} für Gedanken empfänglich. Die Bedeutung der
-Gedanken kann erfasst werden, auch wenn es keine gemeinsame Sprache
-gibt. Es braucht \emph{\unit[10]{min}} Einstimmung auf \emph{eine}
-Kreatur und weitere \emph{\unit[10]{min}} Konzentration, falls weitere
-Kreaturen anwesend sind und damit den Empfang stören. \marginnote{Blei
-  und Gestein schützen vor diesem Zauber.}
+\medskip\noindent\textbf{Gedanken lesen}\marginnote{Blei und Gestein
+  schützen vor diesem Zauber.} macht dich für \emph{\unit[2]{h}} für
+Gedanken empfänglich. Die Bedeutung der Gedanken kann erfasst werden,
+auch wenn es keine gemeinsame Sprache gibt. Es braucht
+\emph{\unit[10]{min}} Einstimmung auf \emph{eine} Kreatur und weitere
+\emph{\unit[10]{min}} Konzentration, falls weitere Kreaturen anwesend
+sind und damit den Empfang stören.
 
-\medskip\noindent\textbf{Geisterhafte Kräfte} lässt dich eine Illusion
+\medskip\noindent\textbf{Geisterhafte Kräfte}\marginnote{Berührungen,
+  Angriffe und ähnliche Interaktionen mit der Illusion erlauben einen
+  Rettungswurf gegen Sprüche. Die Illusion hat Rüstungsklasse 9. Wird
+  sie getroffen, verschwindet sie.} lässt dich eine Illusion
 erschaffen, die nicht grösser als \emph{\unit[20]{Fuss} $\times$
-  \unit[20]{Fuss} $\times$ \unit[20]{Fuss}} ist.
-\marginnote{Berührungen, Angriffe und ähnliche Interaktionen mit der
-  Illusion erlauben einen Rettungswurf gegen Sprüche. Die Illusion hat
-  Rüstungsklasse 9. Wird sie getroffen, verschwindet sie.} Solange der
-Zauberer nichts anderes tut, als sich auf die Illusion zu
-konzentrieren, kann der Zauber aufrecht erhalten werden.
+  \unit[20]{Fuss} $\times$ \unit[20]{Fuss}} ist. Solange der Zauberer
+nichts anderes tut, als sich auf die Illusion zu konzentrieren, kann
+der Zauber aufrecht erhalten werden.
 
-\hfill
+\medskip\noindent\textbf{Klopfen}\marginnote{Dieser Zauber beendet
+  auch \emph{Portal halten} und \emph{Arkanes Schloss}} öffnet eine
+beliebige Türe innerhalb von \emph{\unit[20]{Fuss}}. Verschlossene
+oder verriegelte Türen lassen sich ebenfalls öffnen. Dies gilt auch
+für Tore, Fenster oder Rolladen; es gilt nicht für Fallgatter, Seile,
+und so weiter.
 
-\medskip\noindent\textbf{Klopfen} öffnet eine beliebige Türe innerhalb
-von \emph{\unit[20]{Fuss}}. Verschlossene oder verriegelte Türen lassen
-sich ebenfalls öffnen.\marginnote{Dieser Zauber beendet auch
-  \emph{Portal halten} und \emph{Arkanes Schloss}} Dies gilt auch für
-Tore, Fenster oder Rolladen; es gilt nicht für Fallgatter, Seile, und
-so weiter.
+\clearpage
+
+
 
 \medskip\noindent\textbf{Netz} verschiesst ein \emph{\unit[10]{Fuss}}
 weites Netz. Kreaturen mit menschenähnlicher Stärke können sich in
@@ -1479,103 +1506,107 @@ weites Netz. Kreaturen mit menschenähnlicher Stärke können sich in
 \emph{\unit[8]{h}} gefangen. Das Netz kann weg gebrannt werden. Dies
 dauert \emph{2~Runden} und verursacht pro Runde \emph{1W6~Schaden}.
 
-\medskip\noindent\textbf{Objekt lokalisieren} zeigt dir für
-\emph{\unit[20]{min}} die Richtung zu einem gesuchten Objekt.
-\marginnote{Das Objekt musst du entweder selber genauer untersucht
-  haben oder es wird einfach das nächste, ähnliche Objekt
-  lokalisiert.} Das Objekt darf nicht weiter als \emph{\unit[60]{Fuss}
-  + \unit[10]{Fuss} pro Stufe} entfernt sein.
+\medskip\noindent\textbf{Objekt lokalisieren}\marginnote{Das Objekt
+  musst du entweder selber genauer untersucht haben oder der Zauber
+  wird einfach das nächste, ähnliche Objekt lokalisiert.} zeigt dir
+für \emph{\unit[20]{min}} die Richtung zu einem gesuchten Objekt. Das
+Objekt darf nicht weiter als \emph{\unit[60]{Fuss} + \unit[10]{Fuss}
+  pro Stufe} entfernt sein.
 
-\medskip\noindent\textbf{Schweben} lässt dich für \emph{\unit[1]{h} +
-  \unit[10]{min} pro Stufe} schwerelos werden. \marginnote{Du kannst
-  nicht seitwärt schweben, aber man du kannst dich beispielsweise an
-  Wänden oder der Decke entlang hangeln.} Durch Gedankenkraft kannst
-du dich um bis zu \emph{\unit[20]{Fuss} pro Runde} nach oben oder
-unten bewegen.
+\medskip\noindent\textbf{Schweben}\marginnote{Du kannst nicht
+  seitwärt schweben, aber man du kannst dich beispielsweise an Wänden
+  oder der Decke entlang hangeln.} lässt dich für \emph{\unit[1]{h} +
+  \unit[10]{min} pro Stufe} schwerelos werden. Durch Gedankenkraft
+kannst du dich um bis zu \emph{\unit[20]{Fuss} pro Runde} nach oben
+oder unten bewegen.
 
-\medskip\noindent\textbf{Spiegelbild} lässt für \emph{\unit[1]{h}}
-\emph{1W4} Spiegelbilder von dir erscheinen. \marginnote{Das
-  Spiegelbild wird zerstört, auch wenn es nicht getroffen wurde.
-  Solange Spiegelbilder existieren, werden diese immer zuerst
-  getroffen.} Mit jedem Angriff wird automatisch ein Spiegelbild
-vernichtet.
+\medskip\noindent\textbf{Spiegelbild}\marginnote{Das Spiegelbild wird
+  zerstört, auch wenn es nicht getroffen wurde. Solange Spiegelbilder
+  existieren, werden diese immer zuerst getroffen.} lässt für
+\emph{\unit[1]{h}} \emph{1W4} Spiegelbilder von dir erscheinen. Mit
+jedem Angriff wird automatisch ein Spiegelbild vernichtet.
 
-\medskip\noindent\textbf{Unsichtbarkeit} lässt dich \emph{für immer}
-unsichtbar werden. \marginnote{Alles, was getragen wird, ist ebenfalls
-  unsichtbar. Alles, was abgelegt wird, wird wieder sichtbar. Eine
-  getragene Lichtquelle ist unsichtbar; was sie erleuchtet, bleibt
-  aber erleuchtet. Alles, was sich weiter als \emph{\unit[10]{Fuss}}
-  erstreckt, wird sichtbar. \emph{Gegenzauber} beendet den Zauber.}
-Der Zauber endet sofort, wenn du \emph{jemanden angreifst}. Schädliche
-Zaubersprüche sind auch Angriffe.
+\medskip\noindent\textbf{Unsichtbarkeit}\marginnote{Alles, was
+  getragen wird, ist ebenfalls unsichtbar. Alles, was abgelegt wird,
+  wird wieder sichtbar. Eine getragene Lichtquelle ist unsichtbar; was
+  sie erleuchtet, bleibt aber erleuchtet. Alles, was sich weiter als
+  \emph{\unit[10]{Fuss}} erstreckt, wird sichtbar. Unsichtbare
+  hinterlassen Fussabdrücke, machen Lärm, so weiter.
+  \emph{Gegenzauber} beendet den Zauber.} lässt dich \emph{für immer}
+unsichtbar werden. Der Zauber endet sofort, wenn du \emph{jemanden
+  angreifst}. Schädliche Zaubersprüche sind auch Angriffe.
 
 \medskip\noindent\textbf{Unsichtbarkeit entdecken} lässt dich für
 \emph{\unit[5]{Runden pro Stufe}} alle unsichtbaren, ätherischen und
 astralen Kreaturen innerhalb von \emph{\unit[10]{Fuss}} sehen.
-\marginnote{Unsichtbare hinterlassen weiterhin Fussabdrücke, machen
-  Lärm, so weiter.}
 
 
 \subsection{3.~Zirkel}
 
-\textbf{Blitz} führt innerhalb von \emph{\unit[180]{Fuss}} zu einem
+\textbf{Blitz}\marginnote{Der Blitzschlag wird von Wänden und Boden
+  reflektiert. Mit etwas Glück kannst du einen Gegner zwei Mal
+  treffen. Hast du die Entfernung falsch geschätzt, kannst du dich
+  selber treffen! Der Blitz durchschlägt Holzwände, Schilde und
+  dergleichen.} führt innerhalb von \emph{\unit[180]{Fuss}} zu einem
 \emph{\unit[60]{Fuss}} langem und \emph{\unit[5]{Fuss}} breiten
 Blitzschlag, der alles auf seinem Weg erfasst und \emph{1W6 Schaden
-  pro Stufe} anrichtet. \marginnote{Der Blitzschlag wird von Wänden
-  und Boden reflektiert. Mit etwas Glück kannst du einen Gegner zwei
-  Mal treffen. Hast du die Entfernung falsch geschätzt, kannst du dich
-  selber treffen! Der Blitz durchschlägt Holzwände, Schilde und
-  dergleichen.} Ein erfolgreicher Rettungswurf gegen Sprüche
+  pro Stufe} anrichtet. Ein erfolgreicher Rettungswurf gegen Sprüche
 \emph{halbiert} den Schaden.
 
 \medskip\noindent\textbf{Dunkelsicht} erlaubt es, im Dunkeln
 \emph{\unit[60]{Fuss}} weit zu sehen.
 
-\medskip\noindent\textbf{Fernsicht} lässt dich während
-\emph{\unit[2]{h}} durch die Augen einer anderen Kreatur innerhalb von
+\medskip\noindent\textbf{Fernsicht}\marginnote{Blei und Gestein
+  schützen vor diesem Zauber.} lässt dich während \emph{\unit[2]{h}}
+durch die Augen einer anderen Kreatur innerhalb von
 \emph{\unit[60]{Fuss}} sehen. Die Einstimmung auf eine Kreatur braucht
-\emph{\unit[10]{min}}. \marginnote{Blei und Gestein schützen vor
-  diesem Zauber.}
+\emph{\unit[10]{min}}.
 
-\medskip\noindent\textbf{Feuerball} führt zu einem Feuerball, der bis
-zu \emph{\unit[240]{Fuss}} weit fliegt und bei Kontakt explodiert. Die
-Explosion hat einen Radius von \emph{\unit[20]{Fuss}} und verursacht
-\emph{1W6 Schaden pro Stufe}. \marginnote{Blitz und Feuerball
+\medskip\noindent\textbf{Feuerball}\marginnote{Blitz und Feuerball
   entzünden brennbares Material und lassen gewisse Metalle wie Blei,
-  Gold, Silber, Kupfer und Bronze schmelzen.} Ein erfolgreicher
-Rettungswurf gegen Sprüche \emph{halbiert} den Schaden.
+  Gold, Silber, Kupfer und Bronze schmelzen.} führt zu einem
+Feuerball, der bis zu \emph{\unit[240]{Fuss}} weit fliegt und bei
+Kontakt explodiert. Die Explosion hat einen Radius von
+\emph{\unit[20]{Fuss}} und verursacht \emph{1W6 Schaden pro Stufe}.
+Ein erfolgreicher Rettungswurf gegen Sprüche \emph{halbiert} den
+Schaden.
 
-\medskip\noindent\textbf{Fliegen} lässt dich für deine \emph{Stufe +
-  1d6 $\times$ \unit[10]{min} Runden} fliegen. \marginnote{Endet der
-  Zauber von alleine, sinkt man langsam zu Boden. Endet der Zauber
-  durch einen \emph{Gegenzauber}, so stürzt du ab: 1d6 Schaden pro
-  \unit[10]{Fuss} Höhe.} Durch Gedankenkraft kannst du dich um bis zu
-\emph{\unit[120]{Fuss} pro Runde} bewegen.
+\medskip\noindent\textbf{Fliegen}\marginnote{Endet der Zauber von
+  alleine, sinkt man langsam zu Boden. Endet der Zauber durch einen
+  \emph{Gegenzauber}, so stürzt du ab: 1d6 Schaden pro \unit[10]{Fuss}
+  Höhe.} lässt dich für deine \emph{Stufe + 1d6 $\times$
+  \unit[10]{min} Runden} fliegen. Durch Gedankenkraft kannst du dich
+um bis zu \emph{\unit[120]{Fuss} pro Runde} bewegen.
 
-\medskip\noindent\textbf{Gegenzauber} beendet im Umkreis von
+\medskip\noindent\textbf{Gegenzauber}\marginnote{Das ist \emph{der}
+  Gegenzauber! Einzig gegen sofort wirkende Sprüche kann der
+  Gegenzauber nicht gewirk werden.} beendet im Umkreis von
 \emph{\unit[20]{Fuss}} um ein Ziel innerhalb von
-\emph{\unit[120]{Fuss}} alle \emph{andauernden} Zauber.\marginnote{Das
-  ist \emph{der} Gegenzauber! Einzig gegen sofort wirkende Sprüche
-  kann der Gegenzauber nicht gewirk werden. Das geht zu schnell.}
-Hatte der gegnerische Zauberer eine höhere Stufe als du, gibt es pro
-Stufe Differenz eine 5\% Chance, dass dein Gegenzauber misslingt.
+\emph{\unit[120]{Fuss}} alle \emph{andauernden} Zauber. Hatte der
+gegnerische Zauberer eine höhere Stufe als du, gibt es pro Stufe
+Differenz eine 5\% Chance, dass dein Gegenzauber misslingt.
 
-\medskip\noindent\textbf{Hast} beschleunigt bis zu \emph{24} Kreaturen
-im Umkreis von \emph{\unit[60]{Fuss}} für \emph{\unit[30]{min}}. Die
-Anzahl der Angriffe verdoppelt sich.\marginnote{Man kann auch
-  weiterhin nur ein Mal pro Runde zaubern. Man kann nicht mehrfach
-  beschleunigt werden.} Alle Bewegungsraten verdoppeln sich. Das
+\clearpage
+
+
+
+\medskip\noindent\textbf{Hast}\marginnote{Man kann auch weiterhin nur
+  ein Mal pro Runde zaubern. Man kann nicht mehrfach beschleunigt
+  werden. \emph{Hast} und \emph{Langsamkeit} heben sich gegenseitig
+  auf.} beschleunigt bis zu \emph{24} Kreaturen im Umkreis von
+\emph{\unit[60]{Fuss}} für \emph{\unit[30]{min}}. Die Anzahl der
+Angriffe verdoppelt sich. Alle Bewegungsraten verdoppeln sich. Das
 Gegenteil ist \textbf{Langsamkeit}. Alle Bewegungsraten halbieren
 sich; die Anzahl der Angriffe halbiert sich; man kann nur noch jede
-zweite Runde zaubern. \emph{Hast} und \emph{Langsamkeit} heben sich
-gegenseitig auf.
+zweite Runde zaubern.
 
+\marginnote[1ex]{Untote und Riesen sind zwar menschenähnlich aber trotzdem
+  immun.}
 \medskip\noindent\textbf{Personen festhalten} lähmt bis zu 1W4
 sichtbare Personen (nicht beliebige Monster!) für \emph{\unit[10]{min}
-  pro Stufe} in bis zu \emph{\unit[120]{Fuss}} Entfernung.
-\marginnote{Untote und Riesen sind zwar menschenähnlich aber trotzdem
-  immun.} Allen Opfern steht ein Rettungswurf gegen Sprüche zu. Soll
-nur eine Person gelähmt werden, wird ist Rettungswurf um -2 erschwert.
+  pro Stufe} in bis zu \emph{\unit[120]{Fuss}} Entfernung. Allen
+Opfern steht ein Rettungswurf gegen Sprüche zu. Soll nur eine Person
+gelähmt werden, ist der Rettungswurf um -2 erschwert.
 
 \medskip\noindent\textbf{Schutz vor Bösem 10 Fuss} schützt dich und
 deine Begleiter innerhalb von \emph{\unit[10]{Fuss}} für
@@ -1594,6 +1625,7 @@ dich für \emph{\unit[2]{h}} vor Geschossen.
   was abgelegt wird, wird wieder sichtbar. Eine getragene Lichtquelle
   ist unsichtbar; was sie erleuchtet, bleibt aber erleuchtet. Alles,
   was sich weiter als \emph{\unit[10]{Fuss}} erstreckt, wird sichtbar.
+  Unsichtbare hinterlassen Fussabdrücke, machen Lärm, so weiter.
   \emph{Gegenzauber} beendet den Zauber.}
 \medskip\noindent\textbf{Unsichtbarkeit 10 Fuss} lässt dich und alle
 anderen Kreaturen innerhalb von \emph{\unit[10]{Fuss}} \emph{für
@@ -1606,12 +1638,12 @@ Schädliche Zaubersprüche sind auch Angriffe.
   dass man ohne Wasser erstickt! Ebensowenig kann man nun besser
   schwimmen.}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=2.5cm]{Berner.jpg}
-\end{figure}
+%% \begin{figure}
+%%   \centering
+%%   \includegraphics[width=2.5cm]{Berner.jpg}
+%% \end{figure}
 
-\clearpage
+%% \clearpage
 
 
 
@@ -1648,9 +1680,9 @@ weniger Wunder wirken kannst, als auf der Tabelle aufgeführt sind!
 wieder zu der dir zustehenden Macht zu kommen.
 
 Dein \textbf{Ruf} bei den Göttern bestimmt auch den höchsten Zirkel
-der Wunder, welche dir gewährt werden. Weil du das Spiel mit einem Ruf
-von 0 beginnst, wirst du im ersten Abenteuer noch \emph{kein} Wunder
-wirken können!
+der Wunder, welche dir \hyperref[key:wunder]{gewährt werden}. Weil du
+das Spiel mit einem Ruf von 0 beginnst, wirst du im ersten Abenteuer
+noch \emph{kein} Wunder wirken können!
 
 Die \textbf{Wunder ab dem 4. Zirkel} werden dir \emph{persönlich}
 von einem Agenten deiner Götter gewährt -- einer Valkyre, einem Engel,
@@ -1673,16 +1705,19 @@ zu leuchten beginnt und ein Kugel von \emph{\unit[30]{Fuss}}
 Durchmesser beleuchtet. Wird das Wunder auf die Augen einer Kreatur
 gewirkt, so erblindet sie für \emph{\unit[2]{h}}. In diesem Fall steht
 dem Opfern ein Rettungswurf gegen Sprüche zu. Das Gegenteil ist
-\textbf{Dunkelheit}. \emph{Licht} und \emph{Dunkelheit} heben sich
-gegenseitig auf.
+\textbf{Dunkelheit}. \marginnote{\emph{Licht} und \emph{Dunkelheit}
+  heben sich gegenseitig auf.}
+
+\medskip\noindent\textbf{Magie entdecken} lässt verzauberte
+Gegenstände, Kreaturen und Orte innerhalb von \emph{\unit[60]{Fuss}}
+für \emph{\unit[20]{min}} aufleuchten.\marginnote{Dieses Leuchten
+  ist für alle sichtbar.}
 
 \medskip\noindent\textbf{Mut} erlaubt einem berührten Wesen, welches
 in magischer Panik flieht will, einen Rettungswurf mit einem Bonus,
 der gleich hoch ist wie die Stufe des Klerikers. Das Gegenteil davon
 ist \textbf{Panik}, der ein berührtes Wesen in Panik fliehen lässt.
-\emph{Mut} und \emph{Panik} heben sich gegenseitig auf.
-
-\clearpage
+\marginnote{\emph{Mut} und \emph{Panik} heben sich gegenseitig auf.}
 
 \medskip\noindent\textbf{Schutz vor beschworenen Kreaturen} schützt
 ein berührtes Wesen während \emph{\unit[2]{h}} vor der Berührung
@@ -1691,19 +1726,16 @@ ein berührtes Wesen während \emph{\unit[2]{h}} vor der Berührung
 
 \medskip\noindent\textbf{Schutz vor Kälte} erlaubt es einem Wesen in
 bis zu \emph{\unit[30]{Fuss}} Entfernung für \emph{\unit[1]{h}}
-jeglicher Kälte zu trotzen und gibt einen +2 Bonus bei Rettungswürfen
+jeglicher Kälte zu trotzen, gibt einen +2 Bonus bei Rettungswürfen
 gegen Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
 Kälteangriffen um einen Punkt.
 
-\medskip\noindent\textbf{Zauberei entdecken} zeigt dem Kleriker
-während \emph{\unit[20]{min}}, welche sichtbaren Dinge im Umkreis von
-\emph{\unit[60]{Fuss}} verzaubert sind.
 
 \subsection{2.~Zirkel}
 
 \medskip\noindent\textbf{Fallen entdecken} warnt den Kleriker während
 \emph{\unit[20]{min}} vor allen Fallen im Umkreis von
-\emph{\unit[30]{Fuss}n}.
+\emph{\unit[30]{Fuss}}.
 
 \medskip\noindent\textbf{Gesinnung entdecken} zeigt dem Kleriker die
 Gesinnung aller Wesen im Umkreis von \emph{\unit[15]{Fuss}}, die
@@ -1712,16 +1744,17 @@ dies hier ein heiliger oder ein unheiliger Ort ist.
 
 \medskip\noindent\textbf{Mit Tieren sprechen} erlaubt es dem Kleriker,
 während \emph{\unit[1]{h}} mit allen Vertretern \emph{einer Tierart}
-im Umkreis von \emph{\unit[30]{Fuss}n} zu reden und ihre Antworten zu
+im Umkreis von \emph{\unit[30]{Fuss}} zu reden und ihre Antworten zu
 verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
 gesinnt. Es kann zu einem Reaktionswurf kommen.
 
 \medskip\noindent\textbf{Personen festhalten} lähmt bis zu 1W4
-sichtbare Personen (nicht beliebige Monster!) für \emph{\unit[1½]{h}}
-in bis zu \emph{\unit[180]{Fuss}} Entfernung. \marginnote{Untote und
-  Riesen sind zwar menschenähnlich aber trotzdem immun.} Allen Opfern
-steht ein Rettungswurf gegen Sprüche zu. Soll nur eine Person gelähmt
-werden, wird ist Rettungswurf um -2 erschwert.
+sichtbare Personen für \emph{\unit[1½]{h}} in bis zu
+\emph{\unit[180]{Fuss}} Entfernung. \marginnote{Untote und Riesen sind
+  gegen den Zauber immun, obwohl sie menschenähnlich sind. Dieser
+  Zauber wirkt nicht gegen beliebige Monster.} Allen Opfern steht ein
+Rettungswurf gegen Sprüche zu. Soll nur eine Person gelähmt werden,
+ist der Rettungswurf um -2 erschwert.
 
 \medskip\noindent\textbf{Schutz vor Feuer} erlaubt es einem Wesen in bis zu
 \emph{\unit[30]{Fuss}} Entfernung für \emph{\unit[1]{h}} jeglicher
@@ -1733,8 +1766,8 @@ Feuerangriffen um einen Punkt.
 Klerikers im Umkreis von \emph{\unit[60]{Fuss}} für \emph{\unit[1]{h}}
 einen +1 Bonus beim Trefferwurf und beim Schadenswurf und steigert die
 Moral um +1. Das Gegenteil davon ist \textbf{Verfluchen} und bewirkt
-das genaue Gegenteil auf alle Feinde. \emph{Segen} und
-\emph{Verfluchen} heben sich gegenseitig auf.
+das genaue Gegenteil auf alle Feinde. \marginnote{\emph{Segen} und
+  \emph{Verfluchen} heben sich gegenseitig auf.}
 
 \medskip\noindent\textbf{Stille} formt eine unsichtbare,
 schallschluckende Kugel mit \emph{\unit[30]{Fuss}} Durchmesser in bis
@@ -1749,20 +1782,21 @@ problemlos verlassen.
 \medskip\noindent\textbf{Ewiges Licht} verzaubert einen Gegenstand
 innerhalb von \emph{\unit[120]{Fuss}}, so dass er \emph{für immer}
 hell wie die Sonne zu leuchten beginnt und ein Kugel von
-\emph{\unit[60]{Fuss}} Durchmesser
-erleuchtet.\marginnote{\emph{Gegenzauber} beendet den Zauber.} Wird
-das Wunder auf die Augen einer Kreatur gewirkt, so erblindet sie. In
+\emph{\unit[60]{Fuss}} Durchmesser erleuchtet.
+\marginnote{\emph{Gegenzauber} beendet den Zauber. \emph{Ewiges Licht}
+  und \emph{Ewige Dunkelheit} heben sich gegenseitig auf.} Wird das
+Wunder auf die Augen einer Kreatur gewirkt, so erblindet sie. In
 diesem Fall steht dem Opfern ein Rettungswurf gegen Sprüche zu. Das
-Gegenteil ist \textbf{Ewige Dunkelheit}. \emph{Ewiges Licht} und
-\emph{Ewige Dunkelheit} heben sich gegenseitig auf.
+Gegenteil ist \textbf{Ewige Dunkelheit}.
 
 \medskip\noindent\textbf{Fluch brechen} bricht einen Fluch, der auf
 einem berührten Wesen lastet. Trägt das Wesen einen verfluchten
 Gegenstand, so kann das Wesen den Gegenstand ablegen – der Gegenstand
 bleibt allerdings verflucht. Das Gegenteil davon ist der
-\textbf{Fluch}. Dieser ist permanent. \emph{Fluch brechen} hebt einen
-\emph{Fluch} auf. Flüche werden jeweils \emph{mit dem Spielleiter
-  verhandelt}.
+\textbf{Fluch}.\marginnote{Ein Fluch gilt \emph{für immer}.
+  \emph{Fluch brechen} hebt einen \emph{Fluch} auf. \emph{Gegenzauber}
+  ist gegen einen Fluch wirkungslos. Flüche werden \emph{mit dem
+    Spielleiter verhandelt}.}
 
 \medskip\noindent\textbf{Gegenstand finden} lässt den Kleriker die
 genaue Richtung eines bestimmten Gegenstand oder einer bestimmten Art
@@ -1780,7 +1814,7 @@ Krankheit, welche das Opfer in 2W12 Tagen dahin rafft. In diesem Fall
 steht dem Opfern ein Rettungswurf gegen Sprüche zu. Ein dahin
 siechendes Opfer erhält einen -2 Abzug auf alle Trefferwürfe und kann
 durch weder auf natürliche noch magische Weise heilen.
-\emph{Krankheiten heilen} beendet \emph{Siechtum}.
+\marginnote{\emph{Krankheiten heilen} beendet \emph{Siechtum}.}
 
 \medskip\noindent\textbf{Magie bannen} bannt alle Wunder und Zauber
 von Personen, deren Stufe gleich oder unter der Stufe des Klerikers
@@ -1988,6 +2022,5 @@ Product Identity in addition to anything covered in section 1, above.
 \end{document}
 
 % Local Variables:
-% compile-command: "/usr/local/texlive/2012/bin/universal-darwin/pdflatex Hellebarden-und-Helme.ltx"
 % ispell-local-dictionary: "swiss"
 % End:
