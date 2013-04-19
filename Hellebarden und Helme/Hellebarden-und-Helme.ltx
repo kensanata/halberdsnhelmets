@@ -1,4 +1,4 @@
-\documentclass[a4paper,twoside]{tufte-handout}
+\documentclass[a4paper,twoside,notitlepage,openany]{tufte-book}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 % \usepackage{multirow}
@@ -7,6 +7,10 @@
 
 % Provides \CheckedBox and \Square
 % \usepackage{wasysym}
+
+% Set up index
+\usepackage{makeidx}
+\makeindex
 
 % Set up the images/graphics package
 \usepackage{graphicx}
@@ -23,6 +27,11 @@
 
 % Macros for typesetting the documentation
 \newcommand{\hlred}[1]{\textcolor{Maroon}{#1}}% prints in red
+
+% Bold and index keywords
+\newcommand{\key}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}
+  {\textbf{\index{#2}#2}}
+  {\textbf{\index{#1}#2}}}
 
 % The fancyvrb package lets us customize the formatting of verbatim
 % environments. We use a slightly smaller font.
@@ -46,8 +55,9 @@
   \includegraphics{Schaller.jpg}
 \end{marginfigure}
 
-\begin{abstract}
-\noindent Dies ist das Spielerhandbuch für die Spieler in meiner
+% \begin{abstract}
+% \noindent
+\newthought{Dies ist das Spielerhandbuch} für die Spieler in meiner
 Kampagne. Es enthält die Regeln, basierend auf
 \href{http://www.goblinoidgames.com/labyrinthlord.html}{Labyrinth
   Lord}, sowie diverse Hausregeln. Spielleitern empfehle ich mein
@@ -55,7 +65,7 @@ englisches
 \href{http://www.emacswiki.org/alex/Swiss_Referee_Style_Manual}{Swiss
   Referee Style Manual}. -- \href{http://alexschroeder.ch/}{Alex
   Schroeder}
-\end{abstract}
+% \end{abstract}
 
 \section{Alte Schule}
 
@@ -125,17 +135,17 @@ ist es eigentlich schon zu spät.
 
 \clearpage
 
-\section{Charaktererschaffung}
+\section{\index{Charaktererschaffung}Charaktererschaffung}
 \label{sec:charaktererschaffung}
 
 \marginnote{Kurze Zusammenfassung für Spieler:
   \begin{enumerate}
   \item Sechs Eigenschaften auswürfeln
   \item Klasse wählen
-  \item Lebensenergie auswürfeln
-  \item Gesinnung wählen
   \item Angriffswerte für Stufe 1 kopieren
   \item Rettungswürfe für Stufe 1 kopieren
+  \item Lebensenergie auswürfeln
+  \item Gesinnung wählen
   \item Geld auswürfeln
   \item Ausrüstung kaufen
   \end{enumerate}
@@ -148,15 +158,14 @@ aus.
 
 \newthought{Würfel 3W6 für jede Eigenschaft}, von oben nach unten:
 
-\textbf{Kraft} hilft beim Zuschlagen. Addiere den Bonus beim
-Trefferwurf und beim Schadenswurf im \emph{Nahkampf}.
+\key{Kraft} hilft beim Zuschlagen. Addiere den Bonus beim Trefferwurf
+und beim Schadenswurf im \emph{Nahkampf}.
 
 \marginnote{Im \emph{Fernkampf} bleibt der Schadenswurf unverändert.
   Das ist ein Vorteil für schwache Charaktere und ein Nachteil für
   starke Charaktere.
 
-\bigskip\noindent
-Zu jedem Wert gibt es auch einen Bonus:
+\bigskip\noindent Zu jedem Wert gibt es auch einen \index{Bonus}Bonus:
 \smallskip
 
 \begin{tabular}{cc}
@@ -171,26 +180,26 @@ Wert & Bonus \\
 \end{tabular}
 }
 
-\textbf{Geschick} hilft beim Zielen und beim Ausweichen. Addiere den
-Bonus beim Trefferwurf im \emph{Fernkampf}. Ziehe den Bonus von deiner
-Rüstungsklasse ab (tiefer ist besser).
+\key{Geschick} hilft beim Zielen und beim
+Ausweichen. Addiere den Bonus beim Trefferwurf im \emph{Fernkampf}.
+Ziehe den Bonus von deiner Rüstungsklasse ab (tiefer ist besser).
 
-\textbf{Gesundheit} gibt mehr Lebensenergie. Addiere den Bonus auf
-jeden Lebensenergie-Würfel. Trotz Abzügen kann der Wurf pro Würfel
-nicht unter 1 sinken.
+\key{Gesundheit} gibt mehr Lebensenergie. Addiere
+den Bonus auf jeden Lebensenergie-Würfel. Trotz Abzügen kann der Wurf
+pro Würfel nicht unter 1 sinken.
 
-\textbf{Bildung} hilft bei Fremdsprachen. Für jeden Punkt über 10
-darfst du dir eine weitere Sprache aufschreiben. Diese Sprachen darfst
-du auch erst später im Spiel bestimmen.
+\key{Bildung} hilft bei Fremdsprachen. Für jeden
+Punkt über 10 darfst du dir eine weitere Sprache aufschreiben. Diese
+Sprachen darfst du auch erst später im Spiel bestimmen.
 
-\textbf{Weisheit} zeigt, wie sehr du mit der Welt harmonierst. Addiere
-den Bonus auf jeden Rettungswurf gegen Magie (Zaubersprüche,
-Zauberstäbe und so weiter).
+\key{Weisheit} zeigt, wie sehr du mit der Welt
+harmonierst. Addiere den Bonus auf jeden Rettungswurf gegen Magie
+(Zaubersprüche, Zauberstäbe und so weiter).
 
-\marginnote{Für die Reaktionswürfe verwendet der Spielleiter einen
+\key{Auftreten}\marginnote{Für die
+  \index{Reaktionsbonus}Reaktionswürfe verwendet der Spielleiter einen
   kleineren Bonus:
 \smallskip
-
 \begin{tabular}{cc}
 Wert & Bonus \\
 3 & -2 \\
@@ -199,8 +208,7 @@ Wert & Bonus \\
 13--17 & +1 \\
 18 & +2
 \end{tabular}
-}
-\textbf{Auftreten} bestimmt, wie Gegner auf dich
+} bestimmt, wie Gegner auf dich
 reagieren, wieviele Gefolgsleute du um dich scharen kannst und wie
 ergeben sie dir sind.
 
@@ -208,7 +216,7 @@ ergeben sie dir sind.
   \includegraphics{Arragonien.jpg}
 \end{marginfigure}
 
-\newthought{Wähle deine Klasse}. Zur Auswahl stehen:
+\newthought{Wähle deine \index{Klasse}Klasse}. Zur Auswahl stehen:
 
 \hyperref[sec:krieger]{Krieger}: Du kannst gut kämpfen. Diese Klasse
 spielt sich am einfachsten.
@@ -243,7 +251,7 @@ Dunkeln sehen. Du brauchst eine Gesundheit von mindestens 9.
 
 
 
-\subsection{Krieger}
+\subsection{\index{Krieger}Krieger}
 \label{sec:krieger}
 
 \marginnote{
@@ -258,20 +266,22 @@ Stufe & Erfahrungspunkte \\
 } Du kannst gut kämpfen. Diese Klasse spielt sich am einfachsten.
 
 \medskip
-\marginnote{Hier sieht man, was man auf dem W20 würfeln muss, um die
-  entsprechende Rüstungsklasse des Gegners zu treffen. Im Nahkampf
-  addiert man den \emph{Kraft} Bonus, im Fernkampf den
-  \emph{Geschick} Bonus.}
+\marginnote{\index{Angriffswerte}Hier sieht man, was man auf dem W20
+  würfeln muss, um die entsprechende Rüstungsklasse des Gegners zu
+  treffen. Im Nahkampf addiert man den \emph{Kraft} Bonus, im
+  Fernkampf den \emph{Geschick} Bonus.}
 \begin{tabular}{lcccccccccc}
 Rüstungsklasse & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+Stufe 0   & 20 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 \\
 Stufe 1–2 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
 Stufe 3   & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
 Stufe 4   & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
 Stufe 5   & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 
 \end{tabular}
 
-\medskip\noindent Die Rettungswürfe für Stufe 0 gelten für alle
-Menschen ohne Klasse und damit auch für viele Gefolgsleute.
+\medskip\noindent Die Angriffswerte und Rettungswürfe für \index{Stufe
+  0} Stufe 0 gelten für alle Menschen ohne Klasse und damit auch für
+viele Gefolgsleute.
 
 \begin{table*}
 \begin{tabular}{lcccccccccc}
@@ -285,7 +295,7 @@ Stufe 4--5 & 13 & 12 & 10 & 11 & 14 \\
 
 
 
-\subsection{Magier}
+\subsection{\index{Magier}Magier}
 \label{sec:magier}
 
 \marginnote{
@@ -329,7 +339,7 @@ Stufe 1--5 & 16 & 13 & 13 & 13 & 14 \\
 
 
 
-\subsection{Kleriker}
+\subsection{\index{Kleriker}Kleriker}
 \label{sec:kleriker}
 
 \marginnote{
@@ -365,23 +375,23 @@ Stufe    5 & 14 & 13 &  9 & 10 & 13 \\
 \end{table*}
 
 \newthought{Du kannst Untote vertreiben!} Hierfür wird den Untoten ein
-heiliges Symbol entgegen gestreckt und laut die Götter angerufen.
-Jeder Runde können so 2W6 Trefferwürfel von Untoten vertrieben oder
-zerstört werden. Der Erfolg hängt von deiner Stufe und etwas Glück ab.
-\marginnote[-1cm]{Gewisse Kleriker favorisieren die Waffen, welche ihren
-  Göttern zugeschrieben werden. Dies ist optional. Hier ein paar
-  Beispiele:
+heiliges Symbol entgegen gestreckt und laut die
+\index{Goetter@Götter!Waffen}Götter angerufen. Jeder Runde können so 2W6
+Trefferwürfel von Untoten vertrieben oder zerstört werden. Der Erfolg
+hängt von deiner Stufe und etwas Glück ab. \marginnote[-1cm]{Gewisse
+  Kleriker favorisieren die Waffen, welche ihren Göttern zugeschrieben
+  werden. Dies ist optional. Hier ein paar Beispiele:
 
 \medskip
 \begin{tabular}{ll}
-Orcus & Streitkolben \\
-Ishtar & Sichelschwert \\
-Nergal & Kriegsaxt \\
-Freya & Speer \\
-Marduk & Keule \\
-Mitra & Handaxt \\
-Set & Dolch \\
-Hekate & Peitsche 
+\index{Orcus}Orcus & Streitkolben \\
+\index{Ishtar}Ishtar & Sichelschwert \\
+\index{Nergal}Nergal & Kriegsaxt \\
+\index{Freya}Freya & Speer \\
+\index{Marduk}Marduk & Keule \\
+\index{Mitra}Mitra & Handaxt \\
+\index{Set}Set & Dolch \\
+\index{Hekate}Hekate & Peitsche 
 \end{tabular}
 }
 
@@ -424,7 +434,7 @@ noch kleiner & lassen sich nicht beeindrucken! \\
 
 
 
-\subsection{Elf}
+\subsection{\index{Elf}Elf}
 \label{sec:elf}
 
 \marginnote{
@@ -472,7 +482,7 @@ Stufe 4--5 & 13 & 11 & 10 & 11 & 13 \\
 
 
 
-\subsection{Halbling}
+\subsection{\index{Halbling}Halbling}
 \label{sec:halbling}
 
 \marginnote{
@@ -522,7 +532,7 @@ Stufe 4--5 & 10 &  8 &  6 &  7 & 10 \\
 
 
 
-\subsection{Zwerg}
+\subsection{\index{Zwerg}Zwerg}
 \label{sec:zwerg}
 
 \marginnote{
@@ -570,7 +580,8 @@ Stufe 4--5 & 10 &  8 &  6 &  7 & 10 \\
   \includegraphics[width=2.5cm]{Berner.jpg}
 \end{figure}
 
-\newthought{Bestimme deine Lebensenergie}\marginnote{Steigst du eine
+\newthought{Bestimme deine
+  \index{Lebensenergie}Lebensenergie}\marginnote{Steigst du eine
   Stufe, würfelst du deine Lebensenergie neu: Einen Würfel pro Stufe,
   jeweils plus deinen Bonus für Gesundheit (aber mindestens 1).
   Behalte den alten Wert, falls das neue Resultat niedriger ist.} und
@@ -578,22 +589,21 @@ vergiss nicht, deinen Bonus für Gesundheit zu addieren. Krieger und
 Zwerge verwenden einen W8, Magier einen W4, alle anderen einen W6.
 
 
-\newthought{Würfel 3W6 \texttimes 10~Gold}. Mit diesem Gold
-kaufst du dir die passende \hyperref[sec:ausrüstung]{Ausrüstung}.
-\marginnote{Eine gute Faustregel für den Einkauf: Rucksack und
-  Wegration für eine Woche. Die Hälfte des verbleibenden Geldes für
-  die Rüstung mit Schild und Helm, wenn möglich. Mit dem Rest dann so
-  viel wie möglich kaufen: eine Nahkampfwaffe, eine Fernkampfwaffe,
-  eine Lichtquelle. Diebe brauchen Diebeswerkzeug, Kleriker brauchen
-  ein heiliges Symbol. Zum Erforschen entweder ein Seil oder einen
-  Hammer mit Keilen. Gegen Monster entweder Holzpflöcke, Spiegel,
-  Weihwasser oder Wolfsbann. Mit dem restlichen Geld dann Gefolgsleute
-  anheuern und ausrüsten.
-}
+\newthought{Würfel 3W6 \texttimes 10~Gold}. Mit diesem \index{Gold zum
+  Start}Gold kaufst du dir die passende
+\hyperref[sec:ausrüstung]{Ausrüstung}. \marginnote{Eine gute
+  Faustregel für den Einkauf: Rucksack und Wegration für eine Woche.
+  Die Hälfte des verbleibenden Geldes für die Rüstung mit Schild und
+  Helm, wenn möglich. Mit dem Rest dann so viel wie möglich kaufen:
+  eine Nahkampfwaffe, eine Fernkampfwaffe, eine Lichtquelle. Diebe
+  brauchen Diebeswerkzeug, Kleriker brauchen ein heiliges Symbol. Zum
+  Erforschen entweder ein Seil oder einen Hammer mit Keilen. Gegen
+  Monster entweder Holzpflöcke, Spiegel, Weihwasser oder Wolfsbann.
+  Mit dem restlichen Geld dann Gefolgsleute anheuern und ausrüsten. }
 
 \medskip
 \begin{tabular}{cl}
-Gold & Hintegrund der Eltern \\
+Gold & \index{Hintegrund}Hintegrund der Eltern \\
 30 & Lumpensammler, Bettler, Leibeigene, Flüchtlinge \\
 40--50 & Ausgestossene, Alleinerziehende, Künstler \\
 60--80 & Diebe, Räuber, Betrüger \\
@@ -607,7 +617,7 @@ Gold & Hintegrund der Eltern \\
 
 
 
-\section{Ausrüstung}
+\section{\index{Ausrüstung}Ausrüstung}
 \label{sec:ausrüstung}
 
 {
@@ -615,7 +625,7 @@ Gold & Hintegrund der Eltern \\
 \begin{fullwidth}
 \begin{minipage}[t]{0.47\linewidth}
 \begin{tabular}[t]{lcp{3.8cm}}
-\textbf{Waffe} & Gold & Bemerkung \\
+\key{Waffe} & Gold & Bemerkung \\
 
 Kriegsaxt & 7 & zweihändig, Türen einschlagen \\
 
@@ -664,7 +674,7 @@ Speer & 3 & kann geworfen werden \\
 
 \bigskip
 \begin{tabular}{lccl}
-\textbf{Rüstung} & Klasse & Gold & Bemerkung \\
+\key[Ruestung@Rüstung]{Rüstung} & Klasse & Gold & Bemerkung \\
 Leder & 7 & 20 & Schleichen und Schwimmen ist kein Problem\\
 Kette & 5 & 40 & kein Schleichen, einfaches Ertrinken \\
 Platte & 3 & 60 & kein Schleichen, einfaches Ertrinken \\
@@ -677,7 +687,7 @@ Bessere Rüstung macht \hyperref[sec:bewegung]{langsam}.
 \end{minipage}
 \begin{minipage}[t]{0.47\linewidth}
 \begin{tabular}[t]{lcp{4cm}}
-\textbf{Gegenstand} & Gold & Bemerkung \\
+\key{Gegenstand} & Gold & Bemerkung \\
 Diebeswerkzeug & 25 & wird von Dieben für das Öffnen von Schlössern benötigt \\
 6 Fackeln & 1 & brennt \unit[1]{h}; kann Tiere ängstigen \\
 Hammer (klein) & 2 & für Holzpflöcke und Keile \\
@@ -704,7 +714,7 @@ Wolfsbann & 10 & hält Werwölfe fern \\
 
 
 
-\section{Bauwerke}
+\section{\index{Bauwerke}Bauwerke}
 \label{sec:bauwerke}
 
 Ein paar Preise für Bauwerke:\marginnote{Bauwerke sind eine beliebte
@@ -717,31 +727,32 @@ Ein paar Preise für Bauwerke:\marginnote{Bauwerke sind eine beliebte
 
 \medskip
 \begin{tabular}{p{8cm}r}
-\textbf{kleine Statue} für einen Brunnen & 50~Gold\\
+\textbf{kleine \index{Statue}Statue} für einen Brunnen & 50~Gold\\
 
 \textbf{normale Statue} für einen Garten & 100~Gold\\
 
-\textbf{kleiner, öffentlicher Altar} aus Stein mit Geister Tor und
-kleinem Brunnen (2m×2m) & 250~Gold\\
+\textbf{kleiner, öffentlicher \index{Altar}Altar} aus Stein mit
+Geister Tor und kleinem Brunnen (2m×2m) & 250~Gold\\
 
-ein \textbf{kleiner Laden} aus Holz mit Schlafgelegenheit im
-Hinterzimmer (5m×5m) & 300~Gold\\
+ein \textbf{kleiner \index{Laden}Laden} aus Holz mit Schlafgelegenheit
+im Hinterzimmer (5m×5m) & 300~Gold\\
 
-\textbf{einstöckiges Geschäftshaus} aus Holz wie eine Taverne, eine
-Galerie, eine Spielstube (15m×15m) & 700~Gold\\
+\textbf{einstöckiges \index{Geschäftshaus}Geschäftshaus} aus Holz wie
+eine Taverne, eine Galerie, eine Spielstube (15m×15m) & 700~Gold\\
 
 \textbf{grosse Bronzestatue} für einen Platz & 1000~Gold\\
 
-\textbf{zweistöckiges Holzhaus} in einem Dorf (15m×15m) & 1500~Gold\\
+\textbf{zweistöckiges \index{Holzhaus}Holzhaus} in einem Dorf
+(15m×15m) & 1500~Gold\\
 
-\textbf{zweistöckiges Gebäude aus Stein} in einem Dorf (15m×15m) &
-3000~Gold\\
+\textbf{zweistöckiges \index{Gebäude}Gebäude aus Stein} in einem Dorf
+(15m×15m) & 3000~Gold\\
 
-\textbf{zweistöckige Villa} mit Marmorsäulen und Statuen in einer
-Stadt (15m×15m) & 10\,000~Gold\\
+\textbf{zweistöckige \index{Villa}Villa} mit Marmorsäulen und Statuen
+in einer Stadt (15m×15m) & 10\,000~Gold\\
 
-\textbf{Burg} auf dem Land mit sechs Stockwerken (20m×20m) und einem
-ummauerten Innenhof (10m×20m) & 75\,000~Gold \\
+\key{Burg} auf dem Land mit sechs Stockwerken (20m×20m)
+und einem ummauerten Innenhof (10m×20m) & 75\,000~Gold \\
 \end{tabular}
 \medskip
 
@@ -752,13 +763,14 @@ Handwerker, und so weiter benötigen.\marginnote{Die Löhne für
 
 
 
-\section{Löhne}
+\section{\index{Lohn}Löhne}
 \label{sec:löhne}
 
-\newthought{Söldner und Angestellte} leben in den Häusern, Höhlen,
-Türmen und Festungen, welche ihnen zugewiesen wurden. Sie kommen nicht
-auf Abenteuer mit. \marginnote{Leichte Infanterie sind z.\,B.~Räuber
-  mit Schwert, Schild und Lederrüstung; schwere Infanterie sind
+\newthought{\index{Soeldner@Söldner}Söldner und
+  \index{Angestellte}Angestellte} leben in den Häusern, Höhlen, Türmen
+und Festungen, welche ihnen zugewiesen wurden. Sie kommen nicht auf
+Abenteuer mit. \marginnote{Leichte Infanterie sind z.\,B.~Räuber mit
+  Schwert, Schild und Lederrüstung; schwere Infanterie sind
   z.\,B.~Stadtwachen mit Schwert, Schild und Kettenhemd. Sie müssen
   unter Umständen im Kampf einen \hyperref[key:moralwurf]{Moralwurf}
   machen.}
@@ -772,7 +784,8 @@ Schwere Infanterie & 4~Gold/Monat & 8 \\
 \end{tabular}
 \medskip
 
-\newthought{Gefolgsleute} begleiten ihre Arbeitgeber auf Abenteuer.
+\newthought{\index{Gefolgsleute}Gefolgsleute} begleiten ihre
+Arbeitgeber auf Abenteuer.
 \marginnote{\hyperref[key:gefolgsleute]{Gefolgsleute} sind treu und
   müssen nur \emph{zwischen} den Abenteuern einen
   \hyperref[key:moralwurf]{Moralwurf} machen.}
@@ -786,12 +799,12 @@ Andere mit Stufen & ½ Schatz Anteil \\
 \end{tabular}
 \medskip
 
-\noindent\textbf{Anwerben} Für 10~Gold präsentieren sich pro Tag 1W6
-\hyperref[sec:Kandidaten]{Kandidaten}.
+\noindent\key{Anwerben} Für 10~Gold präsentieren
+sich pro Tag 1W6 \hyperref[sec:Kandidaten]{Kandidaten}.
 
 
 
-\section{Kandidaten}
+\section{\index{Kandidaten}Kandidaten}
 \label{sec:Kandidaten}
 
 \marginnote{Wenn nichts anderes vermerkt ist, handelt es sich bei den
@@ -811,8 +824,8 @@ Kandidaten:
 6 & älterer Frau \\
 \end{tabular}
 
-\bigskip\noindent Magier und Elfen haben ein Zauberbuch mit einem zufälligen
-Zauberspruch:
+\bigskip\noindent Magier und Elfen haben ein Zauberbuch mit einem
+zufälligen Zauberspruch:
 
 \medskip
 \begin{tabular}{cl}
@@ -824,17 +837,17 @@ Zauberspruch:
 6 & Schlaf \\
 \end{tabular}
 
-\bigskip\noindent Moster aus der Umgebung könnten beispielsweise sein:
-\textbf{Goblin} (wie Halbling), \textbf{Echsenmensch} (TW~2),
-Lederrüstung, Zweihänder, kann schwimmen; \textbf{Satyr} (TW~2),
-Lederrüstung, Bogen und Kurzschwert; \textbf{Tengu} (TW~2, RK~9, 1W6),
-kann fliegen, kann keine Rüstung tragen; \textbf{Minotaurus} (TW~2,
-RK~6, 1W6), kann mit Sturmangriff doppelten Schaden anrichten;
-\textbf{Riesenaffe} (TW~3, RK~8, 1W6/1W6), kann keine Rüstung tragen;
-\textbf{Zentaur} (TW~3, RK~8, 1W6/1W6), kann keine Rüstung tragen,
-kann mit Sturmangriff doppelten Schaden anrichten, kann galoppieren;
-\textbf{Troll} (TW~6+3, RK~4, 1W6/1W6/1W10), regeneriert 3/Runde nach
-3 Runden.
+\bigskip\noindent \index{Moster}Moster aus der Umgebung könnten
+beispielsweise sein: \textbf{Goblin} (wie Halbling),
+\textbf{Echsenmensch} (TW~2), Lederrüstung, Zweihänder, kann
+schwimmen; \textbf{Satyr} (TW~2), Lederrüstung, Bogen und Kurzschwert;
+\textbf{Tengu} (TW~2, RK~9, 1W6), kann fliegen, kann keine Rüstung
+tragen; \textbf{Minotaurus} (TW~2, RK~6, 1W6), kann mit Sturmangriff
+doppelten Schaden anrichten; \textbf{Riesenaffe} (TW~3, RK~8,
+1W6/1W6), kann keine Rüstung tragen; \textbf{Zentaur} (TW~3, RK~8,
+1W6/1W6), kann keine Rüstung tragen, kann mit Sturmangriff doppelten
+Schaden anrichten, kann galoppieren; \textbf{Troll} (TW~6+3, RK~4,
+1W6/1W6/1W10), regeneriert 3/Runde nach 3 Runden.
 
 \medskip\noindent TW: Trefferwürfel
 
@@ -866,61 +879,63 @@ kann mit Sturmangriff doppelten Schaden anrichten, kann galoppieren;
 
 
 
-\section{Gesinnung}
+\section{\index{Gesinnung}Gesinnung}
 \label{sec:gesinnung}
 
 \newthought{Wähle ein Gesinnung}: Ordnung, Chaos oder Neutralität.
 \marginnote{Kleriker und andere religiöse Charaktere können sich einen
-\textbf{Schutzpatron} aussuchen.
+  \key{Schutzpatron}\index{Goetter@Götter} aussuchen.
 
-\textbf{Orcus}: Herr über die Untoten Untote, lässt Tote wieder
+\key{Orcus}: Herr über die Untoten Untote, lässt Tote wieder
 auferstehen
 
-\textbf{Ishtar}: Eifersucht und \emph{amour fou}, Krieg, Abstieg in
-die Unterwelt auf der Suche nach dem Liebsten
+\key{Ishtar}: Eifersucht und \emph{amour fou}, Krieg,
+Abstieg in die Unterwelt auf der Suche nach dem Liebsten
 
-\textbf{Nergal}: Rache, Ungeziefer, Ratten und Seuchen, Herr der
-Unterwelt
+\key{Nergal}: Rache, Ungeziefer, Ratten und Seuchen,
+Herr der Unterwelt
 
-\textbf{Freya}: Ernte, Kreislauf des Lebens, Wölfe, Wildnis und freie
-Liebe
+\key{Freya}: Ernte, Kreislauf des Lebens, Wölfe,
+Wildnis und freie Liebe
 
-\textbf{Marduk}: Kampf gegen die Monster, Kriegsfürst, Herrschaft
+\key{Marduk}: Kampf gegen die Monster, Kriegsfürst,
+Herrschaft
 
-\textbf{Mitra}: Feuer, Ehrlichkeit, Verträge und Schwüre
+\key{Mitra}: Feuer, Ehrlichkeit, Verträge und Schwüre
 
-\textbf{Set}: Schläue, Heimlichkeit und Mörder
+\key{Set}: Schläue, Heimlichkeit und Mörder
 
-\textbf{Hekate}: Magie, Hexen, Wegkreuzungen}
+\key{Hekate}: Magie, Hexen, Wegkreuzungen}
 
 \bigskip
-Die \textbf{Priester der Ordnung} sagen: ``Alleine sind wir schwach
-und das Leben ein Jammertal. Gemeinsam sind wir stark. Gemeinsam bauen
-wir unsere Häuser. Gemeinsam bestellen wir unsere Felder. Gemeinsam
-verteidigen wir unsere Städte und Dörfer. Nur gemeinsam sind wir
-stark. Wir bauen Dämme gegen die Flut. Wir bauen Aquädukte gegen die
-Dürre. Wir bauen Kanäle gegen die Seuchen. Wir legen die Sümpfe
-trocken und drängen das Fieber zurück. Wir füllen die Kornspeicher und
-besiegen den Hunger. Wir bestrafen den Verrat und belohnen die Treue.
-Wir sorgen für Recht und Gerechtigkeit. Selbst wenn das korrumpierende
-Chaos und die Anarchie um sich greift, bleibt uns immer noch die
-himmlische Ordnung von den höchsten Göttern im Himmel bis hin zu den
-schlimmsten Teufeln in der Hölle. Sie sorgen dafür, dass Strafe und
-Belohnung nicht vergessen gehen – jetzt nicht und bis in alle Ewigkeit
-nicht. In unserer Welt hat jeder seinen Platz und es hat einen Platz
-für jeden – auch für dich. Sieh diese Bücher: das Wissen der
-Altvorderen, die Gesetze und Tafeln unserer Ahnen. Es ist unser Erbe.
-Lerne soviel du kannst, arbeite hart und erhebe dein Haupt. Steige
-auf! Werde ein echtes Mitglied unserer stolzen Gesellschaft!''
+Die \textbf{Priester der \index{Ordnung}Ordnung} sagen: ``Alleine sind
+wir schwach und das Leben ein Jammertal. Gemeinsam sind wir stark.
+Gemeinsam bauen wir unsere Häuser. Gemeinsam bestellen wir unsere
+Felder. Gemeinsam verteidigen wir unsere Städte und Dörfer. Nur
+gemeinsam sind wir stark. Wir bauen Dämme gegen die Flut. Wir bauen
+Aquädukte gegen die Dürre. Wir bauen Kanäle gegen die Seuchen. Wir
+legen die Sümpfe trocken und drängen das Fieber zurück. Wir füllen die
+Kornspeicher und besiegen den Hunger. Wir bestrafen den Verrat und
+belohnen die Treue. Wir sorgen für Recht und Gerechtigkeit. Selbst
+wenn das korrumpierende Chaos und die Anarchie um sich greift, bleibt
+uns immer noch die himmlische Ordnung von den höchsten Göttern im
+Himmel bis hin zu den schlimmsten Teufeln in der Hölle. Sie sorgen
+dafür, dass Strafe und Belohnung nicht vergessen gehen – jetzt nicht
+und bis in alle Ewigkeit nicht. In unserer Welt hat jeder seinen Platz
+und es hat einen Platz für jeden – auch für dich. Sieh diese Bücher:
+das Wissen der Altvorderen, die Gesetze und Tafeln unserer Ahnen. Es
+ist unser Erbe. Lerne soviel du kannst, arbeite hart und erhebe dein
+Haupt. Steige auf! Werde ein echtes Mitglied unserer stolzen
+Gesellschaft!''
 
 \begin{marginfigure}[1cm]
   \includegraphics{Castriota.jpg}
 \end{marginfigure}
 
 \bigskip
-Die \textbf{Chaos Priester} sagen: ``Das Leben ist Chaos. Unkraut
-wächst im Feld. Der Obstgarten verwaldet. Die Küste wird ins Meer
-gespült. Das Chaos sind die tiefen Muster dieser Welt. Die Wolken
+Die \key[Chaos]{Chaos Priester} sagen: ``Das Leben ist Chaos.
+Unkraut wächst im Feld. Der Obstgarten verwaldet. Die Küste wird ins
+Meer gespült. Das Chaos sind die tiefen Muster dieser Welt. Die Wolken
 gleiten jede für sich im stillen Tanz über den Himmel. Der Fluss
 fliesst in tausend Windungen zum Meer. Die Elfen leben in den Bäumen,
 ohne sie zu fällen und zu töten, sie in Bretter zersägen und diese
@@ -938,7 +953,8 @@ aber wir werden auf dem Weg so manches lernen.''
 
 \bigskip
 Wer sich aus diesem kosmischen Kampf heraus halten will, bekennt sich
-zur \textbf{Neutralität}. Es gibt keine Priester der Neutralität.
+zur \key{Neutralität}. Es gibt keine Priester
+der Neutralität.
 
 \newpage
 
@@ -949,35 +965,35 @@ zur \textbf{Neutralität}. Es gibt keine Priester der Neutralität.
 
 Zuerst ein paar grundsätzliche Begriffe.
 
-\textbf{Spieler}: Die Person, die am Tisch sitzt. Ich, du, unsere
-Freunde.
+\key{Spieler}: Die Person, die am Tisch sitzt. Ich,
+du, unsere Freunde.
 
-\textbf{Charakter}: Die Person, die wir jeweils spielen. Ich heisse
-Alex und wohne in Zürich. Mein Charakter heisst Edrig und stammt aus
-Einaheim.
+\key{Charakter}: Die Person, die wir jeweils
+spielen. Ich heisse Alex und wohne in Zürich. Mein Charakter heisst
+Edrig und stammt aus Einaheim.
 
 \marginnote{Weil Geld zu Erfahrungspunkten und damit zum Stufenanstieg
   führt, ist die Geldbeschaffung oft zentrales Element der Abenteuer.
   Das Bergen eines gefundenen Hortes kann ebenfalls zu einem Problem
   werden, wenn man sich geschwächt und schwer beladen auf den Rückweg
-  macht.} \textbf{Erfahrungspunkte}: Gegner überlisten und
-überwältigen gibt Erfahrungspunkte. Zudem kann man für ausgegebenes
-Geld \emph{einen Erfahrungspunkt pro Goldmünze} erhalten. Beispiele:
-Spenden an den Tempel, Aufstellen von Statuen, Organisieren von
-Saufgelagen, Zirkus für das gemeine Volk, Villa erbauen, Bedienstete
-anstellen und so weiter. Mit genug Erfahrungspunkten, steigt man eine
-Stufe.
+  macht.} \key{Erfahrungspunkte}: Gegner
+überlisten und überwältigen gibt Erfahrungspunkte. Zudem kann man für
+ausgegebenes Geld \emph{einen Erfahrungspunkt pro Goldmünze} erhalten.
+Beispiele: Spenden an den Tempel, Aufstellen von Statuen, Organisieren
+von Saufgelagen, Zirkus für das gemeine Volk, Villa erbauen,
+Bedienstete anstellen und so weiter. Mit genug Erfahrungspunkten,
+steigt man eine Stufe.
 
-\textbf{Stufe}: Mit der Zeit erhält der Charakter mehr Lebensenergie,
-trifft besser und erhält bessere Rettungswürfe. Er \emph{steigt eine
-  Stufe}.
+\key{Stufe}: Mit der Zeit erhält der Charakter mehr
+Lebensenergie, trifft besser und erhält bessere Rettungswürfe. Er
+\emph{steigt eine Stufe}.
 
 \begin{marginfigure}[1cm]
   \includegraphics{Lucchesischer-Schaller.jpg}
 \end{marginfigure}
 
 
-\textbf{Lebensenergie}: Die Lebensenergie zeigt an, wieviel Ausdauer,
+\key{Lebensenergie}: Die Lebensenergie zeigt an, wieviel Ausdauer,
 Glück und Lebenswillen der Charakter noch hat. \emph{Steigt} man um
 eine Stufe, würfelt man so viele Würfel wie man Stufen hat und behält
 das Resultat, wenn es besser als das bisherige ist. Krieger und Zwerge
@@ -987,9 +1003,9 @@ nicht, zu jedem Würfel den Gesundheitsbonus hinzu zu zählen.
 Würfel wie man Stufen hat und behält das Resultat, wenn es
 \emph{schlechter} als das bisherige ist.
 
-\textbf{Zirkel}: Die Zaubersprüche werden mit der Zeit ebenfalls
-mächtiger. Als Faustregel gilt, dass der mächtigste Zirkel, den
-Magier, Kleriker und Elfen beherrschen, der Hälfte ihrer Stufe
+\key{Zirkel}: Die Zaubersprüche werden mit der Zeit
+ebenfalls mächtiger. Als Faustregel gilt, dass der mächtigste Zirkel,
+den Magier, Kleriker und Elfen beherrschen, der Hälfte ihrer Stufe
 entspricht (aufgerundet).
 
 \medskip
@@ -998,11 +1014,10 @@ Stufe  & 1 & 2 & 3 & 4 & 5 \\
 Zirkel & 1 & 1 & 2 & 2 & 3 \\
 \end{tabular}
 
-\medskip\noindent
-\textbf{Reaktionswurf}: Der Spielleiter sollte für alle Gegner, mit
-denen man redet, einen Reaktionswurf machen. Hierfür werden 2W6
-gewürfelt und der \emph{Auftreten} Bonus des Sprechers hinzu
-gezählt.
+\medskip\noindent \key{Reaktionswurf}: Der
+Spielleiter sollte für alle Gegner, mit denen man redet, einen
+Reaktionswurf machen. Hierfür werden 2W6 gewürfelt und der
+\emph{Reaktionsbonus} des Sprechers hinzu gezählt.
 
 \medskip
 \begin{tabular}{cl}
@@ -1015,34 +1030,34 @@ gezählt.
 \end{tabular}
 
 \medskip\noindent
-\textbf{Moralwurf}\label{key:moralwurf}: Ist der erste Gegner besiegt
-oder ist die Hälfte der Gegner kampfunfähig, sollte der Spielleiter
-einen Moralwurf machen. Würfelt der Spielleiter den Moralwert der
-Gegner oder darunter, kämpft der Gegner weiter. Der Gegner muss
-maximal zwei Moralwürfe machen. Spielercharaktere müssen nie einen
-Moralwurf machen. Söldner, welche die Spielercharaktere angeheuert
-haben, müssen bei Verlusten ebenfalls Moralwürfe machen. Gefolgsleute
-müssen bei Verlusten keine Moralwürfe machen.
+\key[Moralwurf]{Moral}\label{key:moralwurf}: Ist der erste
+Gegner besiegt oder ist die Hälfte der Gegner kampfunfähig, sollte der
+Spielleiter einen Moralwurf machen. Würfelt der Spielleiter den
+Moralwert der Gegner oder darunter, kämpft der Gegner weiter. Der
+Gegner muss maximal zwei Moralwürfe machen. Spielercharaktere müssen
+nie einen Moralwurf machen. Söldner, welche die Spielercharaktere
+angeheuert haben, müssen bei Verlusten ebenfalls Moralwürfe machen.
+Gefolgsleute müssen bei Verlusten keine Moralwürfe machen.
 
 \newpage
 
 
 
-\textbf{Gefolgsleute}\label{key:gefolgsleute}: Im Gegensatz zu
-Söldnern sind Gefolgsleute treu.\marginnote{Der Lohn wird am Ende des
-  Spielabends bezahlt. Zur Höhe des Lohnes siehe
+\key{Gefolgsleute}\label{key:gefolgsleute}: Im
+Gegensatz zu Söldnern sind Gefolgsleute treu.\marginnote{Der Lohn wird
+  am Ende des Spielabends bezahlt. Zur Höhe des Lohnes siehe
   \hyperref[sec:löhne]{Löhne}.} Ihre Anzahl ist allerdings beschränkt:
 4 + \emph{Auftreten} Bonus (1–7). Nach einem Abenteuer müssen
 Gefolgsleute ohne Stufe einen Moralwurf machen. Ihre Moral wird durch
 den \emph{Auftreten} Bonus ihres Herren bestimmt: 7 + Bonus (4–10).
 Grosszügige Geschenke über die ursprünglich getroffenen Abmachungen
 hinaus können die Moral kurzfristig um +1 erhöhen. Würfeln
-Gefolgsleute \emph{über} ihren Moralwert, so setzen sie sich zur
-Ruhe.
+Gefolgsleute \emph{über} ihren Moralwert, so setzen sie sich zur Ruhe.
 
-\textbf{Erfahrungspunkte für Gegner} werden am Ende des Spielabends
-auf Spielercharaktere und Gefolgsleute verteilt. Gefolgsleute ohne
-Stufe mit 100 Erfahrungspunkten oder mehr
+\textbf{\index{Erfahrungspunkte!Gefolgsleute}Erfahrungspunkte für
+  Gegner} werden am Ende des Spielabends auf Spielercharaktere und
+Gefolgsleute verteilt. Gefolgsleute ohne Stufe mit 100
+Erfahrungspunkten oder mehr
 \hyperref[sec:charaktererschaffung]{erhalten ihre erste Stufe} und
 verlangen ab sofort einen halben Anteil an den Schätzen. Zudem würfelt
 man ihre sechs Attribute und ihre Lebensenergie aus. Die Lebensenergie
@@ -1053,12 +1068,12 @@ dürfen zudem noch ihre Klasse wählen.
 \includegraphics{Maximilian.jpg}
 \end{marginfigure}
 
-\textbf{Gefolgsleute} sammeln Erfahrungspunkte wie ein
-Spielercharakter. Geld aus Lohn und Schatzanteile können ebenfalls in
-Erfahrungspunkte umgewandelt werden. Charaktere und Gefolgsleute
-können sich hierfür auch gegenseitig Gold leihen oder schenken. Man
-kann keine Geschenke von Gefolgsleuten und Charakteren mit tieferer Stufe
-annehmen und man kann von ihnen auch nichts leihen.
+Gefolgsleute sammeln Erfahrungspunkte wie ein Spielercharakter. Geld
+aus Lohn und Schatzanteile können ebenfalls in Erfahrungspunkte
+umgewandelt werden. Charaktere und Gefolgsleute können sich hierfür
+auch gegenseitig \index{Gold!Gefolgsleute}Gold leihen oder schenken.
+Man kann keine Geschenke von Gefolgsleuten und Charakteren mit
+tieferer Stufe annehmen und man kann von ihnen auch nichts leihen.
 
 \textbf{Klassen}: Auf Wunsch können Spieler einen Charakter aus jedem
 bekannten Volk und aus jedem bekannten Ort spielen. In diesem Sinne
@@ -1067,7 +1082,7 @@ Entsprechend lassen sich überall auch neue Varianten finden.
 
 
 
-\section{Fertigkeiten}
+\section{\index{Fertigkeiten}Fertigkeiten}
 \label{sec:fertigkeiten}
 
 \marginnote{In den meisten Fällen wird kein Würfelwurf nötig sein. Ist
@@ -1083,17 +1098,18 @@ Die grosse 1d6 Tabelle:
 \begin{tabular}{lc}
 Bereich & 1d6 \\
 Normalerweise & 1 \\
-Überrascht & 1--2 \\
-Türe aufbrechen & 1--2 \\
-Fallen auslösen & 1--2 \\
-Fallen umgehen & 1--2 \\
-Fallen entschärfen & 1--2 \\
-Zwerge entdecken leichter geheime Bauarbeiten & 1--2 \\
+\index{Tür}Türe aufbrechen & 1--2 \\
+\index{Falle}Fallen auslösen, umgehen, entschärfen & 1--2 \\
+\index{Zwerg!Fertigkeiten}Zwerge entdecken leichter geheime Bauarbeiten & 1--2 \\
 Zwerge finden leichter Fallen & 1--2 \\
-Elfen hören besser & 1--2 \\
+\index{Elf!Fertigkeiten}Elfen hören besser & 1--2 \\
 Elfen erkennen leichter geheime Türen & 1--2 \\
-Halblinge können besser schleichen & 1--2 \\
+\index{Halbling!Fertigkeiten}Halblinge können besser schleichen & 1--2 \\
 Halblinge können sich im Freien gut verstecken & 1--5 \\
+\index{Dieb!Fertigkeiten}Diebe können alles etwas besser & 1--2 \\
+Diebe ab der 3.~Stufe & 1--3 \\
+Diebe ab der 6.~Stufe & 1--4 \\
+Diebe ab der 10.~Stufe & 1--5 \\
 \end{tabular}
 \medskip
 
@@ -1101,41 +1117,42 @@ Halblinge können sich im Freien gut verstecken & 1--5 \\
 
 
 
-\section{Kämpfen}
+\section{\index{Kampf}Kämpfen}
 \label{sec:kämpfen}
 
 Es wird viel gekämpft…
 
-\textbf{Überraschung}: Beide Seiten prüfen zu Beginn, ob sie
-überrascht sind. \marginnote{Im Normalfall wird 1W6 gewürfelt und bei
-  1 oder 2 ist man überrascht.} Wer überrascht ist, muss eine Runde
-aussetzen.
+\key[Ueberraschung@Überraschung]{Überraschung}: Beide Seiten prüfen zu
+Beginn, ob sie überrascht sind. \marginnote{Im Normalfall wird 1W6
+  gewürfelt und bei 1 oder 2 ist man überrascht.} Wer überrascht ist,
+muss eine Runde aussetzen.
 
-\textbf{Runden}: Zu Beginn einer Runde müssen alle Charaktere ihre
+\key[Runde]{Runden}: Zu Beginn einer Runde müssen alle Charaktere ihre
 Aktion \emph{deklarieren}: Angreifen, Sprüche zaubern, Wunder wirken,
-und so weiter. \marginnote{Im schlimmsten Fall kommt der Gegner
-  also zwei mal hintereinander dran.} Dann wird \emph{Initiative}
-gewürfelt (jede Seite mit 1W6) und wer höher ist, fängt an.
+und so weiter. \marginnote{Im schlimmsten Fall kommt der Gegner also
+  zwei mal hintereinander dran.} Dann wird \emph{Initiative} gewürfelt
+(jede Seite mit 1W6) und wer höher ist, fängt an.
 
-\textbf{Trefferwurf}: Um Anzugreifen, würfelst du mit einem
+\key{Trefferwurf}: Um Anzugreifen, würfelst du mit einem
 zwanzigseitigen Würfel (W20) und schaust, ob du
 triffst.\marginnote{Bei der Beschreibung deiner Klassen gibt es eine
-  \emph{Treffertabelle} mit Rüstungsklasse des Gegners und deiner
-  Stufe, wo du siehst, was du mindestens würfeln musst.} Addiere den
-Kraft Bonus im Nahkampf. Addiere den Geschick Bonus im Fernkampf.
+  Tabelle mit den \emph{Angriffswerten}, wo du siehst, was du
+  mindestens würfeln musst.} Addiere den Kraft Bonus im
+\index{Nahkampf}Nahkampf. Addiere den Geschick Bonus im
+\index{Fernkampf}Fernkampf.
 
-\textbf{20}: Wer beim Angriff eine 20 würfelt, richtet automatisch den
-maximalen Schaden an.
+\key[20 beim Angriff]{20}: Wer beim Angriff eine 20 würfelt, richtet
+automatisch den maximalen Schaden an.
 
-\textbf{30}: Jeder Spieler darf ein Mal pro Abend für einen beliebigen
-Wurf mit dem zwanzigseitigen Würfel den dreissigseitigen Würfel
-nehmen.
+\key[30 seitiger Würfel]{30}: Jeder Spieler darf ein Mal pro Abend für
+einen beliebigen Wurf mit dem zwanzigseitigen Würfel den
+dreissigseitigen Würfel nehmen.
 
-\textbf{Schadenswurf}: Falls du triffst, würfelst du mit einem
+\key{Schadenswurf}: Falls du triffst, würfelst du mit einem
 sechseitigen Würfel (W6) aus, wieviel Schaden du machst. Addiere den
 Kraft Bonus im Nahkampf. Der Schaden im Fernkampf bleibt unverändert.
 
-\textbf{Platzbedarf}: In einem breiten Gang (\unit[10]{Fuss}) können
+\key{Platzbedarf}: In einem breiten Gang (\unit[10]{Fuss}) können
 normalerweise drei Personen nebeneinander kämpfen. Der Platzbedarf
 hängt aber von den verwendeten Waffen ab:
 
@@ -1157,34 +1174,34 @@ Zweihänder & 3 & 1 Person \\
 verwenden. Wird in einen Nahkampf hinein geschossen, wird das Opfer
 durch Zufall bestimmt.
 
-\textbf{Schutz}: Wird jemand angegriffen, können daneben stehende
-Freunde sich dazwischen stellen. \marginnote{Intelligente Monster
-  können dies auch.}
+\key{Schutz}: Wird jemand angegriffen, können daneben stehende Freunde
+sich dazwischen stellen. \marginnote{Intelligente Monster können dies
+  auch.}
 
-\textbf{Rückzug}: Wer sich mit halber Geschwindigkeit zurück zieht,
-kann zuschlagen und sich bewegen, doch seine Gegner können sich
-natürlich sofort nachrücken und weiterhin zuschlagen, wenn niemand den
-Rückzug deckt. Wer sich schneller davon machen will, muss fliehen.
+\key[Rueckzug@Rückzug]{Rückzug}: Wer sich mit halber Geschwindigkeit
+zurück zieht, kann zuschlagen und sich bewegen, doch seine Gegner
+können sich natürlich sofort nachrücken und weiterhin zuschlagen, wenn
+niemand den Rückzug deckt. Wer sich schneller davon machen will, muss
+fliehen.
 
-\textbf{Fliehen}: Wer davon rennt, muss noch einen letzten Angriff
+\key{Fliehen}: Wer davon rennt, muss noch einen letzten Angriff
 überleben, bei dem der Gegner +2 auf den Wurf bekommt und der eigene
 Schild nicht zählt.
 
-\textbf{Verfolgungsjagd}: Wer verfolgt wird, muss eine höhere
-\hyperref[sec:bewegung]{Bewegungsrate} als seine Gegner haben.
-Tiere lassen sich oft durch fallen gelassenes Essen ablenken.
-Intelligente Gegner lassen sich oft durch fallen gelassene Schätze
-ablenken.
+\key{Verfolgungsjagd}: Wer verfolgt wird, muss eine höhere
+\hyperref[sec:bewegung]{Bewegungsrate} als seine Gegner haben. Tiere
+lassen sich oft durch fallen gelassenes Essen ablenken. Intelligente
+Gegner lassen sich oft durch fallen gelassene Schätze ablenken.
 
-\textbf{Schilde}: Trägt man ein Schild und wird im Nahkampf von einer
+\key{Schilde}: Trägt man ein Schild und wird im Nahkampf von einer
 Waffe getroffen, so kann man den Schild opfern. \marginnote{Magier
   können keine Schilde tragen.} Es absorbiert den gesamten Schaden und
 wird zerstört.
 
-\textbf{Verletzung und Tod}: Lebensenergie misst, wie viel Schmerzen
+\key[Tod]{Verletzung und Tod}: Lebensenergie misst, wie viel Schmerzen
 man ertragen kann, wie viel Lebenswillen man hat. Sobald man die
-Lebensenergie auf null Punkte sink, und bei jedem weiteren Treffer,
-muss man auf der \emph{Todestabelle} würfeln.
+Lebensenergie auf \index{Lebensenergie!null}null Punkte sink, und bei
+jedem weiteren Treffer, muss man auf der \emph{Todestabelle} würfeln.
 
 \marginnote[1cm]{\emph{Wiederauferstehung} und \emph{Regeneration} sind
   Wunder des 7.~Zirkels und brauchen einen Kleriker der 13.~Stufe.
@@ -1207,40 +1224,40 @@ muss man auf der \emph{Todestabelle} würfeln.
 nur mit dem Wunder \emph{Wiederauferstehung} wieder zum Leben
 erweckt werden \\
 
-3 & \textbf{Fatale Wunde und Tod} in 1d6 Runden: Lungendurchstich,
+3 & \key[Wunde]{Fatale Wunde und Tod} in 1d6 Runden: Lungendurchstich,
 Wirbelsäulenbruch oder ähnliches; mit dem Wunder \emph{Regeneration}
 kann der Tod verhindert werden; das Opfer kann durch
 \emph{Wiederauferstehung} oder \emph{Tote erwecken} wiederbelebt
 werden \\
 
-4 & \textbf{Verlust eines Gliedes und Tod} in 3W6 Runden; W4: 1 –
-Schwertarm, 2 – Schildarm, 3, 4 – Bein; der Tod kann mit
+4 & \key[Amputation]{Verlust eines Gliedes und Tod} in 3W6 Runden; W4:
+1 – Schwertarm, 2 – Schildarm, 3, 4 – Bein; der Tod kann mit
 Kauterisierung durch Feuer, einem Tourniquet, oder dem Zauber
 \emph{Heilen Schwerer Wunden} verhindert werden; mit dem Wunder
 \emph{Regeneration} kann der Verlust rückgängig gemacht werden; das
-Opfer kann durch \emph{Wiederauferstehung} oder \emph{Tote
-  erwecken} wiederbelebt werden; bei der Verwendung von \emph{Tote
-  erwecken} bleibt das Glied allerdings verloren \\
+Opfer kann durch \emph{Wiederauferstehung} oder \emph{Tote erwecken}
+wiederbelebt werden; bei der Verwendung von \emph{Tote erwecken}
+bleibt das Glied allerdings verloren \\
 
-5, 6 & \textbf{Knochenbruch}: 1 – Schwertarm, 2 – Schildarm, 3 – Bein,
-4 – Rippe; Heilung dauert 2W4+9 Wochen; mit dem Wunder
+5, 6 & \key{Knochenbruch}: 1 – Schwertarm, 2 – Schildarm, 3 – Bein, 4
+– Rippe; Heilung dauert 2W4+9 Wochen; mit dem Wunder
 \emph{Regeneration} kann der Bruch vorzeitig geheilt werden \\
 
-7, 8 & \textbf{Ohnmächtig}: wehrlos für 2W6 Runden; mit Helm nur eine
+7, 8 & \key{Ohnmächtig}: wehrlos für 2W6 Runden; mit Helm nur eine
 Runde lang betäubt (wehrlos für eine Runde) \\
 
-9 & \textbf{Betäubt}: wehrlos für eine Runde; mit Helm wird man
-einfach nur niedergeschlagen (weitere Feinde erhalten +4 auf ihren
+9 & \key{Betäubt}: wehrlos für eine Runde; mit Helm wird man einfach
+nur niedergeschlagen (weitere Feinde erhalten +4 auf ihren
 Trefferwurf) \\
 
-10 & \textbf{Niedergeschlagen}: weitere Feinde erhalten +4 auf ihren
+10 & \key{Niedergeschlagen}: weitere Feinde erhalten +4 auf ihren
 Trefferwurf \\
 
 11 & Knapp dem Tod entkommen! \\
 
-12 & \textbf{Adrenalinschub}! Für jede zwei Stufen (aufgerundet)
-erhält man 1W4 Punkte Lebensenergie; nach dem Kampf verliert man
-allerdings alle Lebensenergie und fällt für 2W6 Runden in Ohnmacht \\
+12 & \key{Adrenalinschub}! Für jede zwei Stufen (aufgerundet) erhält
+man 1W4 Punkte Lebensenergie; nach dem Kampf verliert man allerdings
+alle Lebensenergie und fällt für 2W6 Runden in Ohnmacht \\
 \end{tabular}
 \end{table}
 
@@ -1248,12 +1265,12 @@ allerdings alle Lebensenergie und fällt für 2W6 Runden in Ohnmacht \\
 
 
 
-\section{Bewegung}
+\section{\index{Bewegung}Bewegung}
 \label{sec:bewegung}
 
-\textbf{Tragkraft}: Rüstung schränkt die Bewegungsrate gemäss der
-unten stehenden Tabelle ein. Wer zudem mehr als 100 Münzen auf sich
-trägt, muss die Zeile darunter verwenden.
+\key{Tragkraft}: Rüstung schränkt die Bewegungsrate gemäss der unten
+stehenden Tabelle ein. Wer zudem mehr als 100 Münzen auf sich trägt,
+muss die Zeile darunter verwenden.
 
 \medskip
 \begin{tabular}{lccc}
@@ -1266,14 +1283,14 @@ Plattenpanzer   & \unit[60]{Fuss} & \unit[20]{Fuss} & \unit[60]{Fuss} \\
 \end{tabular}
 \medskip
 
-\textbf{Forschen}: Das langsame und vorsichtige Vorgehen in der
+\key{Forschen}: Das langsame und vorsichtige Vorgehen in der
 Unterwelt, pro \unit[10]{min}.\marginnote{\unit[10]{min} = 1 Phase = 1
   \emph{turn}}
 
-\textbf{Kämpfen}: Vorpreschen und angreifen, pro 10
+\key[Kampf!Bewegung]{Kämpfen}: Vorpreschen und angreifen, pro 10
 Sekunden.\marginnote{10 Sekunden = 1 Runde = 1 \emph{round}}
 
-\textbf{Rennen}: Wilde Flucht, pro Runde -- dies erlaubt den Gegnern
+\key{Rennen}: Wilde Flucht, pro Runde -- dies erlaubt den Gegnern
 einen letzten Angriff mit +2. Kartenzeichnen ist beim Rennen nicht
 erlaubt.
 
@@ -1282,11 +1299,11 @@ erlaubt.
 \section{Ruf}
 \label{sec:ruf}
 
-\textbf{Ruf}: Überall kann Ruhm und Ehre gewonnen werden. Selbst die
-Götter zeigen ein Interesse an den Taten der Sterblichen. Der Ruf wird
-für alle Götter, Städte und Interessengruppen separat geführt. Je
-besser der Ruf, desto schwieriger wird es, diesen noch weiter zu
-steigern.
+\key{Ruf}: Überall kann Ruhm und Ehre gewonnen werden. Selbst die
+\index{Goetter@Götter!Ruf}Götter zeigen ein Interesse an den Taten der
+Sterblichen. Der Ruf wird für alle Götter, Städte und
+Interessengruppen separat geführt. Je besser der Ruf, desto
+schwieriger wird es, diesen noch weiter zu steigern.
 
 Um den Ruf zu steigern, muss man mit dem entsprechenden Würfel über
 den aktuellen Wert würfeln. Der Ausgangswert ist 0, somit ist der
@@ -1306,10 +1323,10 @@ Gilde, eine ganze Kultur retten & W12 \\
 auch ihre Hilfsbereitschaft. Würfelt man mit 2W6 über diesen Wert,
 gibt es keine Unterstützung von der Gemeinschaft.
 
-\textbf{Eingreifen der Götter}: Der Ruf gilt in der Not auch als
+\key[Intervention]{Eingreifen der Götter}: Der Ruf gilt in der Not auch als
 Prozent Chance für eine göttliche Intervention.
 
-\textbf{Wunder}\label{key:wunder}: Für Kleriker gilt, dass der Ruf auch den Zirkel der
+\textbf{Wunder}: Für Kleriker gilt, dass der Ruf auch den Zirkel der
 ihm gewährten Wunder begrenzt. Für das erste Abenteuer eines Klerikers
 gibt es entsprechend noch keine Wunder zu wirken, da ein Kleriker noch
 keinen Ruf hat.
@@ -1318,7 +1335,7 @@ keinen Ruf hat.
 
 
 
-\section{Zaubersprüche der Magier und Elfen}
+\section{\index{Zaubersprüche}Zaubersprüche der Magier und Elfen}
 \label{sec:zaubersprüche}
 
 \marginnote{Die folgende Tabelle zeigt, wieviele Zaubersprüche du pro
@@ -1647,7 +1664,7 @@ Schädliche Zaubersprüche sind auch Angriffe.
 
 
 
-\section{Die Wunder der Kleriker}
+\section{Die \index{Wunder}Wunder der Kleriker}
 \label{sec:wunder}
 
 \newthought{Als Kleriker} kannst du von den Göttern \textbf{Wunder
@@ -1680,9 +1697,9 @@ weniger Wunder wirken kannst, als auf der Tabelle aufgeführt sind!
 wieder zu der dir zustehenden Macht zu kommen.
 
 Dein \textbf{Ruf} bei den Göttern bestimmt auch den höchsten Zirkel
-der Wunder, welche dir \hyperref[key:wunder]{gewährt werden}. Weil du
-das Spiel mit einem Ruf von 0 beginnst, wirst du im ersten Abenteuer
-noch \emph{kein} Wunder wirken können!
+der Wunder, welche dir gewährt werden. Weil du das Spiel mit einem Ruf
+von 0 beginnst, wirst du im ersten Abenteuer noch \emph{kein} Wunder
+wirken können!
 
 Die \textbf{Wunder ab dem 4. Zirkel} werden dir \emph{persönlich}
 von einem Agenten deiner Götter gewährt -- einer Valkyre, einem Engel,
@@ -1830,9 +1847,11 @@ soviele Stufen an Untote erschaffen werden wie der Kleriker Stufen
 hat. Ein Skelett hat soviele Stufen wie die Leiche, ein Zombie jeweils
 eine eine Stufe mehr.
 
+\printindex
+
 \clearpage
 
-\section{Lizenz: Open Game License Version 1.0a}
+\section*{Lizenz: Open Game License Version 1.0a}
 
 \begin{fullwidth}
 
@@ -2017,7 +2036,6 @@ Product Identity in addition to anything covered in section 1, above.
 
 \end{fullwidth}
 
-\nobibliography{}
 
 \end{document}
 

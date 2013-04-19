@@ -1,10 +1,17 @@
 GRAPHICS=$(wildcard graphics/*.jpg)
-LATEX=/usr/local/texlive/2012/bin/universal-darwin/pdflatex
+LATEX=pdflatex
+MAKEINDEX=makeindex
 
 all: Hellebarden-und-Helme.pdf
 
 %.pdf: %.ltx ${GRAPHICS}
 	${LATEX} $<
+	${MAKEINDEX} $<
+	${LATEX} $<
+
+force: Hellebarden-und-Helme.ltx
+	${LATEX} $<
+	${MAKEINDEX} `basename "$<" ".ltx"`
 	${LATEX} $<
 
 upload: Hellebarden-und-Helme.pdf
