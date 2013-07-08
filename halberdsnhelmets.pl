@@ -390,6 +390,20 @@ sub pendragon {
   }
 }
 
+sub acks {
+  for my $id (qw(str dex con int wis cha)) {
+    if ($char{$id} and not $char{"$id-bonus"}) {
+      $char{"$id-bonus"} = bonus($char{$id});
+    }
+  }
+  if ($char{attack} and not $char{melee}) {
+    $char{melee} =  $char{attack} + $char{"str-bonux"};
+  }
+  if ($char{attack} and not $char{missile}) {
+    $char{missile} =  $char{attack} + $char{"dex-bonus"};
+  }
+}
+
 sub compute_data {
   if (not exists $char{rules} or not defined $char{rules}) {
     moldvay();
@@ -401,6 +415,8 @@ sub compute_data {
     moldvay();
   } elsif ($char{rules} eq "crypts-n-things") {
     crypts_n_things();
+  } elsif ($char{rules} eq "acks") {
+    acks();
   } else {
     moldvay();
   }
@@ -1575,6 +1591,30 @@ sub more {
 	    cha charm
 	    cha hirelings
 	    wis sanity);
+  while (@doc) {
+    print $q->li(shift(@doc), "&rarr;", shift(@doc));
+  }
+  print "</ul>";
+
+  print $q->h2(T('Adventure Conqueror King'));
+  print $q->p(T('The script also supports Adventure Conqueror King characters (but cannot generate them randomly):'),
+	      T('Get started with an %0.',
+		$q->a({-href=>"$url/link/$lang?rules=acks;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
+		      T('Adventure Conqueror King character'))),
+	      T('The script can also show %0.',
+		$q->a({-href=>"$url/show/$lang?rules=crypts-n-things;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
+		      T('which parameters go where'))));
+
+  print $q->p(T('In addition to that, some parameters are computed unless provided:'));
+  print "<ul>";
+  @doc = qw(str str-bonus
+	    int int-bonus
+	    wis wis-bonus
+	    dex dex-bonus
+	    con con-bonus
+	    cha cha-bonus
+	    attack+str melee
+	    attack+dex missile);
   while (@doc) {
     print $q->li(shift(@doc), "&rarr;", shift(@doc));
   }

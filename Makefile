@@ -1,4 +1,4 @@
-FILES=.htaccess Charactersheet.svg Charakterblatt.svg Pendragon.svg Crypts-n-Things.svg Purisa.ttf Purisa.eot halberdsnhelmets.pl
+FILES=.htaccess Charactersheet.svg Charakterblatt.svg Pendragon.svg Crypts-n-Things.svg ACKS.svg Purisa.ttf Purisa.eot halberdsnhelmets.pl
 
 all: ${FILES}
 
