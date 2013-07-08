@@ -61,7 +61,7 @@ sub footer {
 	      "<" . $q->a({-href=>"mailto:$email"}, $email) . ">",
 	      $q->br(),
 	      $q->a({-href=>$url . "/$lang"}, 'Character Sheet Generator'),
-	      $q->a({-href=>$url . "/more/$lang"}, T('More')),
+	      $q->a({-href=>$url . "/help/$lang"}, T('Help')),
 	      $q->a({-href=>$url . "/source"}, T('Source')),
 	      $q->a({-href=>"https://github.com/kensanata/halberdsnhelmets"}, T('GitHub')),
 	      ($lang eq "en"
@@ -1482,7 +1482,7 @@ sub default {
   print $q->end_html;
 }
 
-sub more {
+sub help {
   header();
   print $q->p(T('The generator works by using a template and replacing some placeholders.'));
 
@@ -1670,8 +1670,8 @@ sub main {
     show_link();
   } elsif ($q->path_info =~ m!/redirect\b!) {
     redirect();
-  } elsif ($q->path_info =~ m!/more\b!) {
-    more();
+  } elsif ($q->path_info =~ m!/help\b!) {
+    help();
   } elsif (%char) {
     compute_data();
     svg_write(svg_transform(svg_read()));
@@ -1740,12 +1740,12 @@ Get started with a %0.
 %0 bearbeiten.
 Halberds and Helmets
 Hellebarden und Helme
+Help
+Hilfe
 If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
 Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch doppelte Backslashes trennen.
 In addition to that, some parameters are computed unless provided:
 Zudem werden einige Parameter berechnet, sofern sie nicht angegeben wurden:
-More
-Weitere Informationen
 Name:
 Name:
 Pendragon
