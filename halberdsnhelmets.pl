@@ -63,7 +63,7 @@ sub footer {
 	      $q->a({-href=>$url . "/$lang"}, 'Character Sheet Generator'),
 	      $q->a({-href=>$url . "/help/$lang"}, T('Help')),
 	      $q->a({-href=>$url . "/source"}, T('Source')),
-	      $q->a({-href=>"https://github.com/kensanata/halberdsnhelmets"}, T('GitHub')),
+	      $q->a({-href=>"https://github.com/kensanata/halberdsnhelmets"}, T("GitHub")),
 	      ($lang eq "en"
 	       ? $q->a({-href=>$url . "/de"}, T('German'))
 	       : $q->a({-href=>$url . "/en"}, T('English'))));
@@ -1000,7 +1000,7 @@ sub random_parameters {
   provide("abilities", $abilities);
 }
 
-if ($lang eq 'de') {
+if ($lang eq "de") {
   # http://charaktereigenschaften.miroso.de/
   $_ = qq{
 aalglatt abenteuerlustig abfällig abgebrüht abgehoben abgeklärt abgestumpft
@@ -1336,12 +1336,12 @@ sub traits {
   } elsif ($d == 6) {
     $description = T('elderly man');
   };
-  $description .= ', ';
+  $description .= ", ";
   my $trait = $trait[rand @trait];
   $description .= $trait;
   my $other = $trait[rand @trait];
   if ($other ne $trait) {
-    $description .= ' ' . T('and') . ' ' . $other;
+    $description .= " " . T('and') . " " . $other;
   }
 
   return $description;
@@ -1708,6 +1708,10 @@ __DATA__
 5/6 für Verstecken und Schleichen im Freien
 AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
+Adventure Conqueror King
+Adventure Conqueror King
+Adventure Conqueror King character
+Adventure Conqueror King Charakter
 Also note that the parameters need to be UTF-8 encoded.
 Die Parameter müssen UTF-8 codiert sein.
 As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.
@@ -1738,6 +1742,8 @@ German
 Deutsch
 Get started with a %0.
 %0 bearbeiten.
+Get started with an %0.
+%0 bearbeiten.
 Halberds and Helmets
 Hellebarden und Helme
 Help
@@ -1762,6 +1768,8 @@ The default template (%0) uses the %1 font.
 Die Defaultvorlage (%0) verwendet die %1 Schrift.
 The generator works by using a template and replacing some placeholders.
 Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
+The script also supports Adventure Conqueror King characters (but cannot generate them randomly):
+Das Skript kann auch Charaktere für Adventure Conqueror King anzeigen (aber nicht zufällig erstellen):
 The script also supports Crypts &amp; Things characters (but cannot generate them randomly):
 Das Skript kann auch Charaktere für Crypts &amp; Things anzeigen (aber nicht zufällig erstellen):
 The script also supports Pendragon characters (but cannot generate them randomly):
@@ -1778,6 +1786,8 @@ You can also copy and paste it on to a %0 page to generate an inline character s
 Man kann diesen Text auch auf einer %0 Seite verwenden, um das Charakterblatt einzufügen.
 You provide values for the placeholders by providing URL parameters (%0).
 Den Platzhaltern werden über URL Parameter Werte zugewiesen (%0).
+and
+und
 backpack
 Rucksack
 battle axe
@@ -1804,6 +1814,10 @@ detect magic
 Magie entdecken
 dwarf
 Zwerg
+elderly man
+älterer Mann
+elderly woman
+ältere Frau
 elf
 Elf
 example
@@ -1848,6 +1862,8 @@ magic missile
 Magisches Geschoss
 magic-user
 Magier
+man
+Mann
 mirror
 Spiegel
 plate mail
@@ -1904,5 +1920,11 @@ which parameters go where
 welche Parameter wo erscheinen
 wolfsbane
 Eisenhut (sog. Wolfsbann)
+woman
+Frau
 wooden pole
 Holzstab
+young man
+junger Mann
+young woman
+junge Frau
