@@ -1602,7 +1602,7 @@ sub help {
 		$q->a({-href=>"$url/link/$lang?rules=acks;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
 		      T('Adventure Conqueror King character'))),
 	      T('The script can also show %0.',
-		$q->a({-href=>"$url/show/$lang?rules=crypts-n-things;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
+		$q->a({-href=>"$url/show/$lang?rules=acks;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
 		      T('which parameters go where'))));
 
   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
