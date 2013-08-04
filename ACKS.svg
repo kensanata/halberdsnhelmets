@@ -226,9 +226,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.6864196"
-     inkscape:cx="-4.9096274"
-     inkscape:cy="283.91564"
+     inkscape:zoom="1.6568995"
+     inkscape:cx="313.21615"
+     inkscape:cy="827.96489"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -497,17 +497,6 @@
          id="tspan15339"
          x="330"
          y="42.362183" /></text>
-    <text
-       xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="281.9758"
-       y="43.365467"
-       id="text14974-5-7"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         x="281.9758"
-         y="43.365467"
-         id="tspan14982-1-8">Colors or Portrait</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -1275,5 +1264,11 @@
          x="301.9758"
          id="tspan3220"
          sodipodi:role="line">+</tspan></text>
+    <image
+       y="23.365465"
+       x="271.9758"
+       height="145"
+       width="150"
+       id="portrait" />
   </g>
 </svg>
