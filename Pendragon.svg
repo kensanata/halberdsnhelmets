@@ -127,17 +127,21 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="457.3661"
-     inkscape:cy="329.60201"
+     inkscape:zoom="1.979899"
+     inkscape:cx="664.48287"
+     inkscape:cy="269.45704"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      inkscape:window-width="1024"
      inkscape:window-height="720"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4645" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -965,35 +969,24 @@
          sodipodi:role="line"
          id="tspan5663" /></text>
     <text
-       id="text3618"
+       id="armor"
        x="557.38861"
        y="788.15088"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3618">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
          x="557.38861"
          y="788.15088"
          sodipodi:role="line"
-         id="tspan3620">_________________ [ ] pts.</tspan>
+         id="tspan3626">Norman mail (10)</tspan>
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
          x="557.38861"
-         y="803.06055"
+         y="806.90088"
          sodipodi:role="line"
-         id="tspan3622">_________________ [ ] pts.</tspan>
-      <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="557.38861"
-         y="817.97028"
-         sodipodi:role="line"
-         id="tspan3624">_________________ [ ] pts.</tspan>
-      <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="557.38861"
-         y="832.87994"
-         sodipodi:role="line"
-         id="tspan3626">_________________ [ ] pts.</tspan>
+         id="tspan5077">Shield (6)</tspan>
     </text>
     <text
        id="text3628"
@@ -1009,17 +1002,18 @@
          id="tspan3630">Armor Reduction</tspan>
     </text>
     <text
-       id="text3632"
+       id="armortotal"
        x="675.99402"
        y="861.45691"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3632">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
          x="675.99402"
          y="861.45691"
          sodipodi:role="line"
-         id="tspan3634">_______</tspan>
+         id="tspan3634">16</tspan>
     </text>
     <text
        id="text4336"
@@ -1048,17 +1042,18 @@
          id="tspan3480">Battle</tspan>
     </text>
     <text
-       id="text3482"
-       x="599.29858"
+       id="battle"
+       x="715.29858"
        y="503.62537"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3482">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="599.29858"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="715.29858"
          y="503.62537"
          sodipodi:role="line"
-         id="tspan3484">( )______________</tspan>
+         id="tspan3484">________</tspan>
     </text>
     <text
        id="text3490"
@@ -1074,17 +1069,18 @@
          id="tspan3492">Siege</tspan>
     </text>
     <text
-       id="text3494"
-       x="594.74493"
+       id="siege"
+       x="715.29858"
        y="519.77753"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3494">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="594.74493"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="715.29858"
          y="519.77753"
          sodipodi:role="line"
-         id="tspan3496">( )_______________</tspan>
+         id="tspan3496">________</tspan>
     </text>
     <text
        id="text3502"
@@ -1100,17 +1096,18 @@
          id="tspan3504">Horsemanship</tspan>
     </text>
     <text
-       id="text3506"
-       x="650.09595"
+       id="horsemanship"
+       x="715.29858"
        y="535.92969"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3506">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="650.09595"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="715.29858"
          y="535.92969"
          sodipodi:role="line"
-         id="tspan3508">( )______</tspan>
+         id="tspan3508">________</tspan>
     </text>
     <text
        id="text3514"
@@ -1126,17 +1123,18 @@
          id="tspan3516">Sword</tspan>
     </text>
     <text
-       id="text3518"
-       x="606.17194"
+       id="sword"
+       x="715.29858"
        y="552.08191"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3518">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="606.17194"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="715.29858"
          y="552.08191"
          sodipodi:role="line"
-         id="tspan3520">( )_____________</tspan>
+         id="tspan3520">________</tspan>
     </text>
     <text
        id="text3526"
@@ -1152,17 +1150,18 @@
          id="tspan3528">Lance</tspan>
     </text>
     <text
-       id="text3530"
-       x="600.18573"
+       id="lance"
+       x="715.29858"
        y="568.23407"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3530">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="600.18573"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="715.29858"
          y="568.23407"
          sodipodi:role="line"
-         id="tspan3532">( )______________</tspan>
+         id="tspan3532">________</tspan>
     </text>
     <text
        id="text3538"
@@ -1178,17 +1177,18 @@
          id="tspan3540">Spear</tspan>
     </text>
     <text
-       id="text3542"
-       x="595.72772"
+       id="spear"
+       x="715.29858"
        y="584.38623"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3542">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="595.72772"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="715.29858"
          y="584.38623"
          sodipodi:role="line"
-         id="tspan3544">( )_______________</tspan>
+         id="tspan3544">________</tspan>
     </text>
     <text
        id="text3550"
@@ -1204,95 +1204,18 @@
          id="tspan3552">Dagger</tspan>
     </text>
     <text
-       id="text3554"
-       x="606.45648"
+       id="dagger"
+       x="715.29858"
        y="600.53839"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3554">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="606.45648"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="715.29858"
          y="600.53839"
          sodipodi:role="line"
-         id="tspan3556">( )_____________</tspan>
-    </text>
-    <text
-       id="text3562"
-       x="555.31372"
-       y="616.69061"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
-      <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="555.31372"
-         y="616.69061"
-         sodipodi:role="line"
-         id="tspan3564">_________________________</tspan>
-    </text>
-    <text
-       id="text3570"
-       x="555.31372"
-       y="632.84277"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
-      <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="555.31372"
-         y="632.84277"
-         sodipodi:role="line"
-         id="tspan3572">_________________________</tspan>
-    </text>
-    <text
-       id="text3578"
-       x="555.31372"
-       y="648.99493"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
-      <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="555.31372"
-         y="648.99493"
-         sodipodi:role="line"
-         id="tspan3580">_________________________</tspan>
-    </text>
-    <text
-       id="text3586"
-       x="555.31372"
-       y="665.14709"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
-      <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="555.31372"
-         y="665.14709"
-         sodipodi:role="line"
-         id="tspan3588">_________________________</tspan>
-    </text>
-    <text
-       id="text3594"
-       x="555.31372"
-       y="681.29926"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
-      <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="555.31372"
-         y="681.29926"
-         sodipodi:role="line"
-         id="tspan3596">_________________________</tspan>
-    </text>
-    <text
-       id="text3602"
-       x="555.31372"
-       y="697.45148"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
-      <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="555.31372"
-         y="697.45148"
-         sodipodi:role="line"
-         id="tspan3604">_________________________</tspan>
+         id="tspan3556">________</tspan>
     </text>
     <text
        id="text4320"
@@ -1892,17 +1815,18 @@
          id="tspan3974">Loyalty (Lord)</tspan>
     </text>
     <text
-       id="text3976"
+       id="loyaltylord"
        x="137.20714"
        y="717.64075"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3976">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
          x="137.20714"
          y="717.64075"
          sodipodi:role="line"
-         id="tspan3978">( )________________________</tspan>
+         id="tspan3978">________</tspan>
     </text>
     <text
        id="text3984"
@@ -1918,17 +1842,18 @@
          id="tspan3986">Love (Family)</tspan>
     </text>
     <text
-       id="text3988"
-       x="129.82312"
+       id="lovefamily"
+       x="137.20714"
        y="732.55042"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3988">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="129.82312"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="137.20714"
          y="732.55042"
          sodipodi:role="line"
-         id="tspan3990">( )_________________________</tspan>
+         id="tspan3990">________</tspan>
     </text>
     <text
        id="text3996"
@@ -1944,17 +1869,18 @@
          id="tspan3998">Hospitality</tspan>
     </text>
     <text
-       id="text4000"
-       x="121.79549"
+       id="hospitality"
+       x="137.20714"
        y="747.46014"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text4000">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="121.79549"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="137.20714"
          y="747.46014"
          sodipodi:role="line"
-         id="tspan4002">( )__________________________</tspan>
+         id="tspan4002">________</tspan>
     </text>
     <text
        id="text4008"
@@ -1970,95 +1896,102 @@
          id="tspan4010">Honor</tspan>
     </text>
     <text
-       id="text4012"
-       x="89.593018"
+       id="honor"
+       x="137.20714"
        y="762.36981"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text4012">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="89.593018"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="137.20714"
          y="762.36981"
          sodipodi:role="line"
-         id="tspan4014">( )_______________________________</tspan>
+         id="tspan4014">________</tspan>
     </text>
     <text
-       id="text4020"
-       x="39.998383"
+       id="hatesaxons"
+       x="137.20714"
        y="777.27954"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text4020">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="39.998383"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond Bold"
+         x="137.20714"
          y="777.27954"
          sodipodi:role="line"
-         id="tspan4022">___________________________________________</tspan>
+         id="tspan4022">________</tspan>
     </text>
     <text
-       id="text4028"
+       id="passion1"
        x="39.998383"
        y="792.18921"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text4028">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
          x="39.998383"
          y="792.18921"
          sodipodi:role="line"
-         id="tspan4030">___________________________________________</tspan>
+         id="tspan4030">_____________________</tspan>
     </text>
     <text
-       id="text4036"
+       id="passion2"
        x="39.998383"
        y="807.09894"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text4036">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
          x="39.998383"
          y="807.09894"
          sodipodi:role="line"
-         id="tspan4038">___________________________________________</tspan>
+         id="tspan4038">_____________________</tspan>
     </text>
     <text
-       id="text4044"
+       id="passion3"
        x="39.998383"
        y="822.00861"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text4044">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
          x="39.998383"
          y="822.00861"
          sodipodi:role="line"
-         id="tspan4046">___________________________________________</tspan>
+         id="tspan4046">_____________________</tspan>
     </text>
     <text
-       id="text4052"
+       id="passion4"
        x="39.998383"
        y="836.91833"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text4052">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
          x="39.998383"
          y="836.91833"
          sodipodi:role="line"
-         id="tspan4054">___________________________________________</tspan>
+         id="tspan4054">_____________________</tspan>
     </text>
     <text
-       id="text4060"
+       id="passion5"
        x="39.998383"
        y="851.82806"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text4060">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
          x="39.998383"
          y="851.82806"
          sodipodi:role="line"
-         id="tspan4062">___________________________________________</tspan>
+         id="tspan4062">_____________________</tspan>
     </text>
     <text
        id="text4272"
@@ -2192,17 +2125,17 @@
     </text>
     <text
        id="chivalry"
-       x="307.91833"
+       x="317.25964"
        y="319.22037"
        style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
        sodipodi:linespacing="125%"
        inkscape:label="#text3668">
       <tspan
          style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
-         x="307.91833"
+         x="317.25964"
          y="319.22037"
          sodipodi:role="line"
-         id="tspan3670">____</tspan>
+         id="tspan3670">__</tspan>
     </text>
     <text
        id="text3672"
@@ -2219,17 +2152,17 @@
     </text>
     <text
        id="religious"
-       x="315.25964"
+       x="317.25964"
        y="338.19662"
        style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
        sodipodi:linespacing="125%"
        inkscape:label="#text3676">
       <tspan
          style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
-         x="315.25964"
+         x="317.25964"
          y="338.19662"
          sodipodi:role="line"
-         id="tspan3678">___</tspan>
+         id="tspan3678">__</tspan>
     </text>
     <text
        id="text3684"
@@ -2751,17 +2684,18 @@
          id="tspan3942">Directed Trait</tspan>
     </text>
     <text
-       id="text3944"
-       x="106.77332"
+       id="trait1"
+       x="167.25964"
        y="616.12476"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3944">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="106.77332"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
+         x="167.25964"
          y="616.12476"
          sodipodi:role="line"
-         id="tspan3946">________________________________</tspan>
+         id="tspan3946">______________________</tspan>
     </text>
     <text
        id="text3952"
@@ -2777,17 +2711,18 @@
          id="tspan3954">Directed Trait</tspan>
     </text>
     <text
-       id="text3956"
-       x="106.77332"
+       id="trait2"
+       x="167.25964"
        y="635.64398"
-       style="font-size:15px;-inkscape-font-specification:Garamond;font-family:Garamond;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%"
-       sodipodi:linespacing="125%">
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
+       sodipodi:linespacing="125%"
+       inkscape:label="#text3956">
       <tspan
-         style="font-size:15px;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond;font-style:normal;text-anchor:start;text-align:start;line-height:125%"
-         x="106.77332"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"
+         x="167.25964"
          y="635.64398"
          sodipodi:role="line"
-         id="tspan3958">________________________________</tspan>
+         id="tspan3958">______________________</tspan>
     </text>
     <text
        id="text4256"
@@ -3847,6 +3782,19 @@
          y="850.96539"
          x="361.91953"
          style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond"> </tspan>
+    </text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Garamond;-inkscape-font-specification:Garamond"
+       y="776.36981"
+       x="39.998383"
+       id="text5068">
+      <tspan
+         id="tspan5070"
+         sodipodi:role="line"
+         y="776.36981"
+         x="39.998383"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;font-family:Garamond;-inkscape-font-specification:Garamond">Hate (Saxons)</tspan>
     </text>
   </g>
   <a
