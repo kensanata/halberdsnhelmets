@@ -55,7 +55,26 @@ sub T {
   return $en . $suffix;
 }
 
+sub header {
+  my $header = shift;
+  print $q->header(-charset=>"utf-8");
+  binmode(STDOUT, ":utf8");
+  print $q->start_html(-title => T('Character Sheet Generator'),
+		       -style => {
+				  -code =>
+				  '@media print { .footer { display: none }}'
+				 });
+  if ($header) {
+    print $q->h1(T($header));
+  } elsif (defined $header) {
+    # '' = no header
+  } else {
+    print $q->h1(T('Character Sheet Generator'));
+  }
+}
+
 sub footer {
+  print '<div class="footer">';
   print $q->hr();
   print $q->p($q->a({-href=>$contact}, $author),
 	      "<" . $q->a({-href=>"mailto:$email"}, $email) . ">",
@@ -67,6 +86,7 @@ sub footer {
 	      ($lang eq "en"
 	       ? $q->a({-href=>$url . "/de"}, T('German'))
 	       : $q->a({-href=>$url . "/en"}, T('English'))));
+  print '</div>';
 }
 
 sub error {
@@ -78,20 +98,6 @@ sub error {
   footer();
   print $q->end_html;
   exit;
-}
-
-sub header {
-  my $header = shift;
-  print $q->header(-charset=>"utf-8");
-  binmode(STDOUT, ":utf8");
-  print $q->start_html(T('Character Sheet Generator'));
-  if ($header) {
-    print $q->h1(T($header));
-  } elsif (defined $header) {
-    # '' = no header
-  } else {
-    print $q->h1(T('Character Sheet Generator'));
-  }
 }
 
 sub svg_read {
@@ -1353,7 +1359,7 @@ sub characters {
   for (my $i = 0; $i < 50; $i++) {
     $q->delete_all();
     %char = %init;
-    print $q->start_pre({-style=>"display: inline-block; padding: 0 1em; width: 30em; border-left: 1px dotted grey; vertical-align: top; font-size: 8pt; "});
+    print $q->start_pre({-style=>"display: block; float: left; height: 25em; width: 30em; font-size: 6pt; "});
     random_parameters();
     print "Str Dex Con Int Wis Cha HP AC Class\n";
     printf "%3d", $char{"str"};
@@ -1602,7 +1608,7 @@ sub help {
 		$q->a({-href=>"$url/link/$lang?rules=acks;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
 		      T('Adventure Conqueror King character'))),
 	      T('The script can also show %0.',
-		$q->a({-href=>"$url/show/$lang?rules=crypts-n-things;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
+		$q->a({-href=>"$url/show/$lang?rules=acks;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
 		      T('which parameters go where'))));
 
   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
