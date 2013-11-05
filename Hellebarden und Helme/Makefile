@@ -14,5 +14,8 @@ force: Hellebarden-und-Helme.ltx
 	${MAKEINDEX} `basename "$<" ".ltx"`
 	${LATEX} $<
 
+once: Hellebarden-und-Helme.ltx
+	${LATEX} $<
+
 upload: Hellebarden-und-Helme.pdf
 	scp $< epfarms.org:alexschroeder.ch/pdfs/
