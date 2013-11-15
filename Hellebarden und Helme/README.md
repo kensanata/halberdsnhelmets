@@ -17,5 +17,5 @@ set](http://www.flickr.com/photos/kensanata/sets/72157629238437674/)
 erhältlich.
 
 Einen [online
-Charaktergenerator](http://campaignwiki.org/halberdsnhelmets) gibt es
-auch.
+Charaktergenerator](http://campaignwiki.org/halberdsnhelmets/de) gibt
+es auch.
