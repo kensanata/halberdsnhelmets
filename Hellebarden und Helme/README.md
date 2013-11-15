@@ -15,3 +15,7 @@ von Wendelin Boeheim (1890) verwendet. Diese sind mittlerweilen
 gemeinfrei. Die Bilder sind auch separat als [Flickr
 set](http://www.flickr.com/photos/kensanata/sets/72157629238437674/)
 erhältlich.
+
+Einen [online
+Charaktergenerator](http://campaignwiki.org/halberdsnhelmets) gibt es
+auch.
