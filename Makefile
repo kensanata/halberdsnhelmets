@@ -5,4 +5,4 @@ all: ${FILES}
 .PHONY: ${FILES}
 
 *: 
-	scp "alex@epfarms.org:campaignwiki.org/$@" .
+	scp "alex@psithyrus.epfarms.org:campaignwiki.org/$@" .
