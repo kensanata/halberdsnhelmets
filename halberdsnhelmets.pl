@@ -403,10 +403,10 @@ sub acks {
     }
   }
   if ($char{attack} and not $char{melee}) {
-    $char{melee} =  $char{attack} + $char{"str-bonus"};
+    $char{melee} =  $char{attack} - $char{"str-bonus"};
   }
   if ($char{attack} and not $char{missile}) {
-    $char{missile} =  $char{attack} + $char{"dex-bonus"};
+    $char{missile} =  $char{attack} - $char{"dex-bonus"};
   }
 }
 
