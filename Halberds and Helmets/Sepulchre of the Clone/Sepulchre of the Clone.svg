@@ -26,7 +26,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.6133459"
      inkscape:cx="166.59596"
-     inkscape:cy="188.49637"
+     inkscape:cy="269.54481"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -58,7 +58,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -356,7 +356,7 @@
          id="tspan3101"
          y="502.81555"
          x="44.704712"
-         sodipodi:role="line">5. devolition, divide mind, insect plague, regeneration</tspan><tspan
+         sodipodi:role="line">5. devolution, divide mind, insect plague, regeneration</tspan><tspan
          id="tspan3103"
          y="515.31555"
          x="44.704712"
@@ -661,7 +661,7 @@
          sodipodi:role="line"
          x="164.70471"
          y="797.19055"
-         id="tspan3148">but it works for demihumns, too!</tspan></text>
+         id="tspan3148">but it works for demihumans, too!</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Gentium Plus;-inkscape-font-specification:Gentium Plus"
