@@ -628,7 +628,7 @@ sub one {
 sub two {
   my $i = int(rand(scalar @_));
   my $j = int(rand(scalar @_));
-  $j = int(rand(scalar @_)) until $i != $i;
+  $j = int(rand(scalar @_)) until $i != $j;
   return ($_[$i], $_[$j]);
 }
 
