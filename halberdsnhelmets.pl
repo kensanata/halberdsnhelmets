@@ -62,7 +62,7 @@ sub header {
   print $q->start_html(-title => T('Character Sheet Generator'),
 		       -style => {
 				  -code =>
-				  '@media print { .footer { display: none }}'
+				  "\@media print { .footer { display: none }}"
 				 });
   if ($header) {
     print $q->h1(T($header));
@@ -74,7 +74,7 @@ sub header {
 }
 
 sub footer {
-  print '<div class="footer">';
+  print "<div class=\"footer\">";
   print $q->hr();
   print $q->p($q->a({-href=>$contact}, $author),
 	      "<" . $q->a({-href=>"mailto:$email"}, $email) . ">",
@@ -86,7 +86,7 @@ sub footer {
 	      ($lang eq "en"
 	       ? $q->a({-href=>$url . "/de"}, T('German'))
 	       : $q->a({-href=>$url . "/en"}, T('English'))));
-  print '</div>';
+  print "</div>";
 }
 
 sub error {
@@ -574,9 +574,62 @@ sub buy_armor {
   return ($money, @property);
 }
 
+sub spellbook {
+  if ($char{rules} eq "labyrinth lord") {
+    return T('First level spells:') . " "
+    . join(", ",
+	   two(T('charm person'),
+	       T('detect magic'),
+	       T('floating disc'),
+	       T('hold portal'),
+	       T('light'),
+	       T('magic missile'),
+	       T('protection from evil'),
+	       T('read languages'),
+	       T('read magic'),
+	       T('shield'),
+	       T('sleep'),
+	       T('ventriloquism')),
+	   T('second level spells:' . " "
+	     . one(T('arcane lock'),
+		   T('continual light'),
+		   T('detect evil'),
+		   T('detect invisible'),
+		   T('ESP'),
+		   T('invisibility'),
+		   T('knock'),
+		   T('levitate'),
+		   T('locate object'),
+		   T('minor image'),
+		   T('phantasmal force'),
+		   T('web'))));
+  } else {
+    return T('Spells:') . " "
+      . one(T('charm person'),
+	    T('detect magic'),
+	    T('floating disc'),
+	    T('hold portal'),
+	    T('light'),
+	    T('magic missile'),
+	    T('protection from evil'),
+	    T('read languages'),
+	    T('read magic'),
+	    T('shield'),
+	    T('sleep'),
+	    T('ventriloquism'));
+  }
+}
+
 sub one {
   my $i = int(rand(scalar @_));
   return $_[$i];
+}
+
+sub two {
+  my $i = int(rand(scalar @_));
+  my $j = int(rand(scalar @_));
+  $j = int(rand(scalar @_)) until $i != $i;
+  return ($_[$i], $_[$j]);
 }
 
 sub affordable {
@@ -988,20 +1041,10 @@ sub random_parameters {
   } elsif ($class eq T('thief')) {
     $abilities .= "\\\\" . T('2/6 to hear noise');
     $abilities .= "\\\\" . T('+4 to hit and double damage backstabbing');
-  } elsif ($class eq T('magic-user')) {
-    $abilities .= "\\\\" . T('Spells:') . " "
-      . one(T('charm person'),
-	    T('detect magic'),
-	    T('floating disc'),
-	    T('hold portal'),
-	    T('light'),
-	    T('magic missile'),
-	    T('protection from evil'),
-	    T('read languages'),
-	    T('read magic'),
-	    T('shield'),
-	    T('sleep'),
-	    T('ventriloquism'));
+  }
+  # spellbook
+  if ($class eq T('magic-user') or $class eq T('elf')) {
+    $abilities .= "\\\\" . spellbook();
   }
   provide("abilities", $abilities);
 }
@@ -1740,10 +1783,14 @@ Crypts &amp; Things
 Crypts &amp; Things
 Crypts &amp; Things character
 Crypts &amp; Things Charakter
+ESP
+Gedankenlesen
 Edit
 Bearbeiten
 English
 Englisch
+First level spells:
+Sprüche der ersten Stufe:
 German
 Deutsch
 Get started with a %0.
@@ -1794,6 +1841,8 @@ You provide values for the placeholders by providing URL parameters (%0).
 Den Platzhaltern werden über URL Parameter Werte zugewiesen (%0).
 and
 und
+arcane lock
+Arkanes Schloss
 backpack
 Rucksack
 battle axe
@@ -1810,12 +1859,18 @@ cleric
 Kleriker
 club
 Keule
+continual light
+Ewiges Licht
 crossbow
 Armbrust
 d6
 W6
 dagger
 Dolch
+detect evil
+Böses entdecken
+detect invisible
+Unsichtbares entdecken
 detect magic
 Magie entdecken
 dwarf
@@ -1848,16 +1903,24 @@ holy water
 Weihwasser
 http://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/
 http://campaignwiki.org/wiki/Hellebarden%C2%A0und%C2%A0Helme/
+invisibility
+Unsichtbarkeit
 iron rations (1 week)
 Feldrationen (1 Woche)
 iron spikes and hammer
 Eisenkeile und Hammer
+knock
+Klopfen
 lantern
 Laterne
 leather armor
 Lederrüstung
+levitate
+Schweben
 light
 Licht
+locate object
+Objekt lokalisieren
 long bow
 Langbogen
 long sword
@@ -1870,8 +1933,12 @@ magic-user
 Magier
 man
 Mann
+minor image
+kleines Ebenbild
 mirror
 Spiegel
+phantasmal force
+phantastische Kraft
 plate mail
 Plattenpanzer
 pole arm
@@ -1890,6 +1957,8 @@ read magic
 Magie lesen
 rope
 Seil
+second level spells:
+Sprüche der zweiten Stufe:
 shield
 Schild
 short bow
@@ -1922,6 +1991,8 @@ ventriloquism
 Bauchreden
 war hammer
 Kriegshammer
+web
+Netz
 which parameters go where
 welche Parameter wo erscheinen
 wolfsbane
