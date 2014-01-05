@@ -1197,10 +1197,14 @@ Diebe ab der 10.~Stufe & 1--5 \\
 
 Es wird viel gekämpft…
 
-\key[Ueberraschung@Überraschung]{Überraschung}: Beide Seiten prüfen zu
-Beginn, ob sie überrascht sind. \marginnote{Im Normalfall wird 1W6
-  gewürfelt und bei 1 oder 2 ist man überrascht.} Wer überrascht ist,
-muss eine Runde aussetzen.
+\key[Ueberraschung@Überraschung]{Überraschung}: Beide Seiten würfeln
+1W6\marginnote{Die \hyperref[sec:bewegung]{Bewegungsrate} bestimmt so,
+  ob überraschten Gegner noch in der ersten Runde angegriffen werden
+  können.} und bei 1 oder 2 ist man überrascht. Wer überrascht ist,
+muss die erste Runde aussetzen. Falls die \index{Distanz}Distanz
+zwischen den beiden Seiten nicht sowieso klar ist, addiert man die
+beiden Überraschungswürfe und multipliziert mit 10 Fuss. Das ergibt
+eine Distanz von 20--120 Fuss.
 
 \key[Runde]{Runden}: Zu Beginn einer Runde müssen alle Charaktere ihre
 Aktion \emph{deklarieren}: Angreifen, Sprüche zaubern, Wunder wirken,
@@ -1275,13 +1279,14 @@ Gegner +2 auf den Wurf bekommt und der eigene Schild nicht zählt.
 \key{Verfolgungsjagd}: Wer verfolgt wird, muss 2W6
 würfeln.\marginnote{Optionale Modifikatoren: Je +1 für die Gejagten,
   falls es doppelt so viele Verfolger gibt, für eine höhere
-  \hyperref[sec:bewegung]{Bewegungsrate}, für Schilder fallen lassen,
-  für Rücksäcke fallen lassen, wenn ein Dieb dabei ist, bei Regen, bei
-  Dunkelheit. Je -1 für die Gejagten, falls die ein Elf oder ein Jäger
-  bei den Häschern ist, mit Verwundeten, bei Schnee.} Bei 2 haben die
-Häscher euch überrascht. Bei 3--6 kommt es zum Kampf. Bei 7--9 wähle
-zwei Punkte, bei 10--11 wähle einen Punkte aus der nachfolgenden
-Liste. Bei 12 seid ihr ohne Wenn und Aber entkommen.
+  \hyperref[sec:bewegung]{Bewegungsrate}, für Nahrung fallen lassen,
+  wenn man von Tieren verfolgt wird, für Gold fallen lassen, wenn man
+  von zivilisierten Wesen verfolgt wird, wenn ein Dieb dabei ist, bei
+  Regen, bei Dunkelheit. Je -1 für die Gejagten, falls ein Elf oder
+  ein Jäger bei den Häschern ist, mit Verwundeten, bei Schnee.} Bei 2
+haben die Häscher euch überrascht. Bei 3--6 kommt es zum Kampf. Bei
+7--9 wähle zwei Punkte, bei 10--11 wähle einen Punkte aus der
+nachfolgenden Liste. Bei 12 seid ihr ohne Wenn und Aber entkommen.
 
 \begin{itemize}
 \item ihr wurdet getrennt
@@ -1360,35 +1365,41 @@ alle Lebensenergie und fällt für 2W6 Runden in Ohnmacht \\
 \section{\index{Bewegung}Bewegung}
 \label{sec:bewegung}
 
-\key{Tragkraft}: Rüstung schränkt die Bewegungsrate gemäss der
-unten stehenden Tabelle ein. Wer zudem mehr als 200 Münzen auf sich
-trägt, wird langsamer.
+\key{Tragkraft}: Rüstung\marginnote{Eine typische Ausrüstung mit
+  Rucksack, Wegrationen, Fackeln und solchen Dingen ist schon mit
+  eingerechnet.} schränkt die Bewegungsrate gemäss der unten stehenden
+Tabelle ein. Wer zudem mehr als 200 Münzen auf sich trägt, wird
+langsamer.
 
-\marginnote{Eine typische Ausrüstung mit Rucksack, Wegrationen,
-  Fackeln und solchen Dingen ist schon mit eingerechnet.}
+\marginnote[0.5cm]{Für Monster wird der Spielleiter die Bewegungsrate oft um
+  den Faktor 10 kleiner notiert finden. Ein normaler Mensch hat also
+  eine 12 statt \unit[120]{Fuss} pro Runde.}
 
 \medskip
-\begin{tabular}{lccc}
-Rüstung & Forschen & Kämpfen & Rennen \\
-keine           & \unit[120]{Fuss} & \unit[40]{Fuss} & \unit[120]{Fuss} \\
-Lederrüstung    & \unit[90]{Fuss} & \unit[30]{Fuss} & \unit[90]{Fuss} \\
-Kettenhemd,
-Plattenpanzer   & \unit[60]{Fuss} & \unit[20]{Fuss} & \unit[60]{Fuss} \\
-Mehr als 200 Münzen & \unit[-30]{Fuss} & \unit[-10]{Fuss} & \unit[-30]{Fuss} \\
+\begin{tabular}{lcc}
+Rüstung               & Normal & Schwierig \\
+keine                      & 120 &  40 \\
+Lederrüstung               &  90 &  30 \\
+Kettenhemd, Plattenpanzer  &  60 &  20 \\
+Mehr als 200 Münzen        & -30 & -10 \\
 \end{tabular}
 \medskip
 
-\key{Forschen}: Das langsame und vorsichtige Vorgehen in der
-Unterwelt, pro \unit[10]{min}.\marginnote{\unit[10]{min} = 1 Phase = 1
-  \emph{turn}}
+\key{Forschen}:\marginnote{\unit[10]{min} = 1 Phase = 1 \emph{turn}}
+Das langsame und vorsichtige Vorgehen in der Unterwelt. Es gilt die
+normale Bewegungsrate in Fuss pro \unit[10]{min}.
 
-\key[Kampf!Bewegung]{Kämpfen}: Vorpreschen und angreifen, pro 10
-Sekunden.\marginnote{10 Sekunden = 1 Runde = 1 \emph{round}}
+\key{Rennen}:\marginnote{\unit[10]{s} = 1 Runde = 1 \emph{round}}
+Wilde Flucht erlaubt den Gegnern einen letzten Angriff mit +2.
+Kartenzeichnen ist beim Rennen nicht erlaubt. Es gilt die normale
+Bewegungsrate in Fuss pro \unit[10]{s}.
 
-\key{Rennen}: Wilde Flucht, pro Runde -- dies erlaubt den Gegnern
-einen letzten Angriff mit +2. Kartenzeichnen ist beim Rennen nicht
-erlaubt.
-
+\key[Kampf!Bewegung]{Kämpfen}:\marginnote[-0.5cm]{Bei einer Begegnung startet
+  man oft in einer Distanz von 20--120 Fuss. Wer schwer gerüstet in
+  den Nahkampf will, muss sich also möglicherweise mehrere Runden
+  beschiessen lassen, bevor die Feinde erreicht sind.} Das Angreifen
+und Manövrieren im Getümmel ist schwierig. Es gilt die reduzierte
+Bewegungsrate in Fuss pro \unit[10]{s}.
 
 
 \section{Ruf}
@@ -1396,7 +1407,7 @@ erlaubt.
 
 \key{Ruf}: Überall kann Ruhm und Ehre gewonnen werden.\marginnote{Der
   Spielleiter führt eine Liste der Götter, Städte und
-  Interessengruppen für die der Ruf jeweils geführt wird.} Selbst die
+  Interessengruppen, für die der Ruf jeweils geführt wird.} Selbst die
 \index{Goetter@Götter!Ruf}Götter zeigen ein Interesse an den Taten der
 Sterblichen. Der Ruf kann gut oder schlecht sein. Die Götter
 interessieren sich auch für die Frevler! \marginnote{Je höher der Ruf,
