@@ -576,8 +576,8 @@ sub buy_armor {
 
 sub spellbook {
   if ($char{rules} eq "labyrinth lord") {
-    return T('First level spells:') . " "
-    . join(", ",
+    return T('First level spells:') . "\\\\"
+    . join("\\\\",
 	   two(T('charm person'),
 	       T('detect magic'),
 	       T('floating disc'),
@@ -590,19 +590,19 @@ sub spellbook {
 	       T('shield'),
 	       T('sleep'),
 	       T('ventriloquism')),
-	   T('second level spells:' . " "
-	     . one(T('arcane lock'),
-		   T('continual light'),
-		   T('detect evil'),
-		   T('detect invisible'),
-		   T('ESP'),
-		   T('invisibility'),
-		   T('knock'),
-		   T('levitate'),
-		   T('locate object'),
-		   T('minor image'),
-		   T('phantasmal force'),
-		   T('web'))));
+	   T('second level spells:'),
+	   one(T('arcane lock'),
+	       T('continual light'),
+	       T('detect evil'),
+	       T('detect invisible'),
+	       T('ESP'),
+	       T('invisibility'),
+	       T('knock'),
+	       T('levitate'),
+	       T('locate object'),
+	       T('minor image'),
+	       T('phantasmal force'),
+	       T('web')));
   } else {
     return T('Spells:') . " "
       . one(T('charm person'),
