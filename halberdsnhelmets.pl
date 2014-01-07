@@ -1199,7 +1199,7 @@ Melissa Melitta Mellitus Melvin Meret Merle Merula Methodius Mia
 Michael Michaela Michele Miguel Mike Milburga Mirco Miriam Mirijam
 Mirjam Mirko Miroslav Miroslava Miroslaw Miroslawa Modwen Mona Monika
 Moninne Mono Mother Muno Nadine Nadja Nadjeschda Name Naomi Narcisa
-Natalie Natascha Naum Nectan]] Nehemia Neot Neriman Nicephorus
+Natalie Natascha Naum Nectan Nehemia Neot Neriman Nicephorus
 Nicholas Nicolai Nicole Nicolette Niels Niklas Nikola Nikolai Nikolaus
 Nil Nils Nilus Nimattullah Noël Noemi Norbert Norman Nothelm Nuno
 Odile Odo Offo Olaf Olga Oliver Opportuna Orestes Oskar Oswald Osyth
