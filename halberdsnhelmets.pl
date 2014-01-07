@@ -945,7 +945,7 @@ sub provide {
 }
 
 sub random_parameters {
-  provide('name', name());
+  provide('name', name()) unless $char{name};
 
   my ($str, $dex, $con, $int, $wis, $cha) =
     (roll_3d6(), roll_3d6(), roll_3d6(),
