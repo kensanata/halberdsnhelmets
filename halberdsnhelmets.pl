@@ -945,6 +945,8 @@ sub provide {
 }
 
 sub random_parameters {
+  provide('name', name());
+
   my ($str, $dex, $con, $int, $wis, $cha) =
     (roll_3d6(), roll_3d6(), roll_3d6(),
      roll_3d6(), roll_3d6(), roll_3d6());
@@ -1047,6 +1049,204 @@ sub random_parameters {
     $abilities .= "\\\\" . spellbook();
   }
   provide("abilities", $abilities);
+}
+
+# http://www.heiligenlexikon.de/
+# http://charaktereigenschaften.miroso.de/
+$_ = qq{Ägidius Ämiliana Ämilianus Æthelberht Íte Aaron Abāmūn Abadiu
+Abakuh Abanoub Abaskhayroun Abban Abbo Abdas Abel Abelina Abelka Abib
+Abo Abraam Abraham Absalom Absalon Abuna Abundius Acacius Acca
+Achatius Achaz Achille Achilles Achilleus Achim Achmed Ada Adalar
+Adalbald Adalberga Adalbero Adalbert Adalberta Adalbod Adalbrand
+Adalburg Adaldag Adalfried Adalgar Adalgard Adalger Adalgot Adalgott
+Adalhard Adalmann Adalmar Adalrich Adalsind Adaltraud Adalwin Adam
+Adamo Adauktus Adelaide Adelbert Adele Adelgund Adelgunde Adelheid
+Adelhelm Adelin Adelinde Adeline Adelmar Adelmut Adelphos Adelphus
+Adeltraud Adeltrud Adeodatus Adina Ado Adolf Adomnán Adonis Adrian
+Adriana Adrianus Adula Aemiliana Aemilianus Afan Afer Afra Agape
+Agapetus Agapitus Agatha Agathe Agatho Agilof Aglaia Agnellus Agnes
+Agricola Agrippa Agrippina Agrippinus Agritius Aida Aidan Aileen
+Aischa Aischylos Akazius Akim Alain Alan Alanus Alarich Alba Alban
+Alberic Alberich Albert Alberta Alberto Albertus Albin Albinus
+Albrecht Albrun Albuin Alchmund Alcuin Alda Aldebrand Aldegund Aldemar
+Alderich Aldhelm Aldowin Aldric Alec Alexa Alexander Alexandra
+Alexandre Alexandrine Alexei Alexis Alexius Aleydis Alfons Alfred
+Alfwold Ali Alice Alicia Alida Alina Aline Alipy Alix Aljoscha Alkuin
+Allegra Almut Alnoth Alois Aloisius Alonso Aloysius Alphege Alphio
+Alphonsa Alphonse Altfrid Althea Altmann Alto Alva Alwin Alypius
+Amabella Amadea Amadeus Amalberga Amalia Amalie Amaltrud Amand Amanda
+Amandus Amarin Amata Amatus Ambrose Ambrosius Ammerentie Ammon Amor
+Amos Amphilochius Anastasia Anastasius Anatolia André Andrea Andreas
+Andrei Andrew Andronicus Anenkletos Angela Angelika Angelikus Angelina
+Angelus Angilibert Angus Anianus Anicetus Anika Anita Anja Anjo Anka
+Anke Anna Anne Annemarie Annette Annika Anno Ansbald Ansbert Anschar
+Ansegisus Anselm Anselma Ansgar Ansoalda Answald Answer Answin Anterus
+Anthelm Anthimos Anthony Antje Antoine Anton Antonia Antonino Antonio
+Antonius Aonio Aper Aphianus Aphrodisius Apollinaris Apollo Apollonia
+Apollonius Apollos Aprax Aquila Aquilinus Arabella Arbeo Arbogast
+Archangela Ardalion Argula Ariadne Arialdo Ariana Ariane Arianus
+Ariella Aristus Arkadios Arlette Armin Arn Arno Arnoald Arnold Arnulf
+Arsacius Arsenius Arthold Arthur Asclepiades Asella Ashley Asia Asja
+Asta Asteria Astrid Atanasij Athanasia Athanasios Athanasius Athena
+Athene Attala Attila Atto Attracta Attroban Auctor Aude Audomar August
+Augustina Augustine Augustinus Augustus Aurea Aurelia Aurelius Aurora
+Autbert Auxentios Ava Avia Avilius Avitus Axel Aya Bärbel Babette
+Bacchus Balbina Balderich Baldo Baldomerus Baldred Balduin Balko
+Balthasar Balthild Baltram Baptist Barachisus Barbara Barbatus Bardo
+Barnabas Barnard Barsanuphius Barthel Bartholomäa Bartholomäus Baruch
+Basil Basilissa Basilius Bastian Bathilde Beata Beate Beatrice Beatrix
+Beatus Beda Begga Bela Ben Benedetta Benedetto Benedict Benedicta
+Benedikt Benigna Benignus Benito Benjamin Benno Berard Berengar
+Berlind Berlinda Bermund Bernadette Bernard Bernardino Bernardo Bernd
+Bernhard Bernharda Bernhardin Berno Bernold Bernulf Bernward Bert
+Berta Bertger Bertha Bertharius Bertheid Berthild Berthold Bertin
+Bertold Bertram Bertrand Bertuin Bertulf Bertwald Bettina Bianca
+Bibiana Bibianus Bilhildis Birger Birgit Birgitta Birinus Birte Birthe
+Björn Blaise Blanca Blanche Blandina Blasius Bodard Bodo Bona
+Bonaventura Bonaventure Boniface Bonifatius Bonosus Boris Botho
+Botolph Botulph Brendan Bridget Brigid Brigitta Brigitte Brioc
+Bronislawa Brun Bruno Brynolf Budoc Burchard Burkhard Cäcilia Cäcilius
+Cäsar Caesar Caesarius Caius Cajetan Callistus Camilla Camillus Can
+Candida Candidus Canice Canute Carantoc Carl Carla Carlo Carmen Carola
+Carolin Casimir Caspar Catald Catherine Cathrin Cedd Celadion
+Celestine Celina Cettin Chad Chantal Charbel Charleen Charles Charline
+Charlotte Chiara Christa Christel Christian Christiana Christiane
+Christina Christine Christof Christoph Christopher Christophorus
+Chrysanthus Ciarán Cinderella Cindi Cindy Clara Clare Clarissa Claude
+Claudia Claudine Claudius Claudus Claus Clemens Clement Clementine
+Cleopatra Clodoald Clothilde Clotilde Coelestin Coelina Coleta Colette
+Colomba Columba Columbanus Comgall Concordia Congar Conrad Constantin
+Constantine Constanze Cora Cordula Cornelia Cornelius Corsin Cosima
+Cosimo Cosmas Crescentia Cristóbal Cristobal Cunigunde Cuthbert Cynllo
+Cynthia Cyriacus Cyril Cyrill Cyrillus Cyrus Dénis Désirée Dafne
+Dagmar Dagobert Daisy Damaris Damasus Damian Damien Dan Danax Daniel
+Daniela Danielle Danilo Danuta Daphne Daria Darius Dasya Dave David
+Dawn Daydara Dean Debora Deborah Declan Degenhard Deikola Delia
+Delphina Demetrios Demetrius Demiana Denise Deocaruis Deochar Deodatus
+Derek Desideratus Desideria Desiderius Detlef Detlev Deusdedit Devota
+Diana Didactus Didatus Didier Didymus Diego Diemut Dieter Dietger
+Diethard Diethelm Diether Diethild Dietlind Dietlinde Dietmar Dietrich
+Dietwolf Dimitri Dimitrij Dimitry Dina Dinah Dionysia Dionysios
+Dionysius Dioscorus Diotima Dirk Disibod Dodo Dolf Dolly Dolores
+Domenica Domenicus Dometios Domingo Dominic Dominica Dominicus
+Dominika Dominikus Domitian Domitilla Donald Donata Donatus Donewald
+Dora Doreen Dorian Dorin Doris Dorkas Dorle Dorothea Dorotheus Douai
+Douglas Dragan Drago Drees Dries Drogo Druthmar Duncan Dunja Dunstan
+Dustin Dwight Dymphna Eanflæd Ebba Eberhard Eberwin Ebrulf Eckard
+Eckart Eckehard Eckhard Eckhart Edbert Edberta Edburga Edda Eddo
+Edelburg Edeltraud Edgar Edigna Edistus Edith Editha Edmar Edmund
+Eduard Edward Edwin Edwine Effi Efraim Egbert Eileen Eirene Eleonora
+Elfriede Elias Eligius Elin Elisabeth Elizabeth Elke Elvira Elysee
+Elysia Emanuel Emanuela Emerentia Emerentiana Emeric Emilia Emilie
+Emma Emmanuel Emmanuela Emmelia Emmeram Emmerich Enda Engelbert
+Enrique Enya Ephraem Ephraim Ephrem Erbin Erentrude Erich Erik Erika
+Ermengol Ermenilda Ermin Erwin Esther Ethelburga Etheldreda Etienne
+Eudokia Eugene Eulogius Eumenes Euphemia Euphrosyne Eustochia
+Euthymius Eva Evangelos Eysteinn Fabian Fabianus Fabien Fabienne
+Fabrizio Fachanan Faro Faustina Faustus Feichin Felicitas Felix
+Ferdinand Ferréol Fiacre Fidelis Filan Filippo Finbarr Finn Fiona
+Florentina Franca Frances Francesca Francis Frank Franka Franklin
+Franz Franziska Franziskus Frauke Fraw Frei Frideswide Frieda Frieder
+Friederike Friedrich Fritz Fructuosus Fulgentius Fynn Günter Günther
+Géraud Gönül Gabriel Gabriela Gabriele Gaetano Gaius Gal Gall
+Gallicanus Gaspar Gaudentius Gelasius Gelert Gemma Genesius Genevieve
+Georg George Georges Georgette Georgia Georgina Georgine Georgios
+Georgius Gerald Gerard Gerardus Gerasimus Gereon Gerhard Gerhardus
+Gerhild Gerlinde Gertraud Gertrud Gertrude Gerulfus Gesa Gesina Gesine
+Ghislain Gianna Gilbert Giorgia Giorgio Giovanni Gisela Giselbert Goar
+Godehard Godric Gonsalo Gottfried Gratus Gregorio Gregory Grellan
+Gudrun Guinefort Gunter Gunther Hagen Hallvard Ham Hanna Hannah Hanne
+Hannelore Harald Harold Hartmut Hartwig Hechard Hedwig Heike Heinrich
+Heinrike Heinz Helena Helene Helga Helier Helmstan Helmut Henning
+Henriette Henrik Henrika Henrike Henry Herbert Heribert Herman Hermann
+Herta Hertha Hertula Hervé Herwig Hieronymus Hilarius Hilda Hilde
+Hildebrand Hildegard Hildegund Horestes Hormisdas Horst Hubert
+Hubertus Hugh Hyacinth Hyacintha Ibrahim Ida Idesbald Iduna Ignatios
+Ignatius Igor Ildefons Ildiko Ilga Ilja Ilka Ilona Ilse Imanuel Imelda
+Imma Immanuel Immo Imre Ines Ingbert Inge Ingeborg Ingenium Ingmar
+Ingo Ingobald Ingobert Ingolf Ingomar Ingrid Ingwar Inka Inken
+Innocencio Innocent Innocentius Innozenz Ioann Irenäus Irene Irina
+Iris Irma Irmengard Irmgard Irmhild Irmina Irmintrud Irmtraut Irmtrud
+Irmund Isaac Isaak Isabel Isabella Isebel Isfrid Isfried Isidor
+Isidora Isidore Ismael Iso Isolde István Italo Ithamar Ivo Ivonne Iwan
+Józef Jürgen Jérôme Jacobo Jacqueline Jadwiga Jakob Jakobine James Jan
+Jana Jane Janet Janette Janina Jannes Jannik Japhet Jaqueline Jarno
+Jaromir Jasmin Jean Jeanette Jeanne Jennifer Jeremia Jeremias Jerome
+Jessika Jette Jirina Joachim Joan Joaquina Job Joel Johann Johanna
+Johannes John Jolanda Jona Jonas José Josaphat Josef Josefa Josefine
+Josemaría Joseph Josepha Josephine Josse Jostein Juan Judith Judoc
+Julia Julian Juliana Julianus Julie Julius Jurgis Justin Jutta Kai Kaj
+Kamil Karin Karina Karl Karolina Karoline Kaspar Kassia Katharina
+Katharine Kathrin Katja Katrin Kea Kenneth Kerstin Kessog Kevin Kilian
+Kim Kimball Kimberley Kimi King Kinga Kirill Klara Klaus Kolonat
+Konrad Konstantia Konstantin Konstanze Kora Kreszentia Kristin
+Kunibert Kunigunde Kuno Léon Léonard Ladislaus Lambert Lamprecht Lana
+Landelin Landfried Landoald Landrada Landricus Lanfranc Lantpert Lara
+Larissa Lars Laura Laurentius Laurus Lavinia Lazar Lea Leander Lena
+Leo Leodegar Leona Leonardo Leonhard Leonie Leonor Leonore Leontia
+Leopold Lia Liana Liane Lidwina Lilith Linda Linnea Lisa Livinus
+Lorcán Lore Lorenzo Louis Louisa Louise Luana Luca Lucy Ludolph Ludwig
+Luigi Luis Luisa Luise Lukas Lupus Lutgardis Lutz Machar Magdalen
+Magdalena Magdalene Maik Maike Maja Malachy Malo Malte Malvine Malwin
+Malwine Mandy Manfred Manuel Manuela Maraike Marcellin Marco Marcouf
+Mareike Margaret Margareta Margarete Margaretha Margarethe Margit
+Margo Margot Margret Margrit Marguerite Maria Mariamne Marianita
+Marianna Marianne Marie Marie-Eugénie Marijke Marika Marina Marinus
+Marit Marita Mark Marko Markus Marlon Marlow Martha Martin Martyr
+Martyrs Marvin Mary Mathilde Mattea Matthäus Matthew Matthias
+Maurontius Maximilian Maximillian Maximus Melania Melanie Melina
+Melissa Melitta Mellitus Melvin Meret Merle Merula Methodius Mia
+Michael Michaela Michele Miguel Mike Milburga Mirco Miriam Mirijam
+Mirjam Mirko Miroslav Miroslava Miroslaw Miroslawa Modwen Mona Monika
+Moninne Mono Mother Muno Nadine Nadja Nadjeschda Name Naomi Narcisa
+Natalie Natascha Naum Nectan]] Nehemia Neot Neriman Nicephorus
+Nicholas Nicolai Nicole Nicolette Niels Niklas Nikola Nikolai Nikolaus
+Nil Nils Nilus Nimattullah Noël Noemi Norbert Norman Nothelm Nuno
+Odile Odo Offo Olaf Olga Oliver Opportuna Orestes Oskar Oswald Osyth
+Otbert Otto Ouen Paavo Pamela Paola Paolo Paraskeva Pascal Paschal
+Paschalis Patricia Patricius Patrick Paul Paula Paulina Paulinus
+Paulus Pavel Pedro Peregrine Peter Petra Petroc Petrus Philip Philipp
+Philippa Philippine Philippus Philothei Photios Pierre Pio Piran Pius
+Prætextatus Praejectus Pyr Quentin Quinidius Quintian Quintinius
+Quiriacus Quirinus Rüdiger Rabanus Rabea Radulf Rafqa Raimund
+Rainerius Ralf Ralph Ramon Ramona Raphael Raphaela Raymond Rebecca
+Rebekka Recep Regina Reginald Reginbald Reginbert Reginhard Regintrud
+Regula Reinhard Remigius René Renée Renata Renate Renatus Renzo
+Ricarda Richard Richarda Richardis Rictrude Rimbert Rina Rita Robert
+Roberta Roberto Robin Roch Roger Rognvald Roland Rolf Roman Romana
+Romanos Romanus Romuald Ronja Roque Rosa Rosalia Rosalinde Rosamunde
+Rose Rosemarie Rosi Rosina Roswitha Roxana Rudger Rudi Rudolf Rut Ruth
+Ruthy Sabbas Sabina Sabine Sabinus Sacharja Sachso Sadalberga
+Saethryth Salome Salonius Salvius Samson Sandra Sara Sarah Sascha
+Saskia Sava Scholastica Seaxburh Sebastian Selina Selma Sem Seraphim
+Seraphina Sergei Sergej Sergius Severinus Sharbel Sidonius Siegfried
+Siegrun Sigeberht Sigfried Sigrun Silke Silverius Silvia Simeon Simon
+Simone Simplicius Sina Sofia Sofie Sonja Sophia Sophie Sophronius
+Stefan Stefanie Steffen Stella Stephan Stephana Stephanie Stephanos
+Stephanus Stephen Stylianos Susanna Susanne Sven Svenja Swithun Sylvia
+Symeon Symmachus Tabea Tabitha Tamar Tamara Tanja Tarasios Tarek
+Tari-sayi Tarik Tariq Taris Tarisai Tarishi Tathan Tatiana Tatjana
+Tekle Teresa Théodore Thérèse Thamar The Theodegar Theodor Theodora
+Theodore Theodoros Theodorus Theodosius Theophan Theophanes Theresa
+Therese Theresia Thilo Thirza Thomas Thorlak Thorsten Thyra Tiara
+Tikhon Tilo Tim Timo Timotheus Torsten Traudel Tristan Trude Trudi
+Tsar Tuncay Turibius Tydfil Ubald Udalfried Udo Uffo Ulfrid Ulrich
+Ulrika Ulrike Urban Urbicius Urs Ursicinus Ursmar Ursula Ursus Urte
+Utto Uwe Valentin Valentina Vanessa Varghese Varvara Vavrinec
+Venantius Veranus Verena Vergilius Veronica Veronika Vicelinus Vicente
+Victor Victoria Vietnamese Viktor Viktoria Vincent Viola Violetta
+Virginia Vitalian Vitalis Vitonus Viviana Viviane Vivianus Vladimir
+Walburga Waningus Wenceslaus Werburgh Werner Wiborada Wiebke Wigbert
+Wigfrid Wigger Wilfrid Wilhelm Willehad Willi William Willibrord Wim
+Wolfeius Wolfgang Wolfhelm Wolfried Wulfram Xaver Xena Xenia Xenophon
+Yannic Yaropolk Yegor Yehudi Yolanda Yrieix Yves Yvette Yvonne Zachäus
+Zacharias Zachary Zarah Zdenko Zdislava Zena Zeno Zenobia Zenobius
+Zenzi Zephyrinus Zeus Zilla Zilly Zita Zoë Zofia Zosimas Zosimus
+Zoticus Zygmunt};
+my @names = split(/[ \r\n]+/, $_);
+
+sub name {
+  return one(@names);
 }
 
 if ($lang eq "de") {
