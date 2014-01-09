@@ -1738,7 +1738,13 @@ sub characters {
     printf " %2d", $char{ac};
     print " " . $char{class};
     print "\n";
-    print traits() . "\n";
+    my $traits = traits();
+    # The max length of the traits is based on the width given by the
+    # CSS above!
+    while (length $traits > 45) {
+      $traits = traits();
+    }
+    print "$traits\n";
     print map { "  $_\n" }
       split(/\\\\/, $char{property});
     print $q->end_pre();
