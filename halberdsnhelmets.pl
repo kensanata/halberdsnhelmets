@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Copyright (C) 2012-2013  Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2012-2014  Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -1052,7 +1052,7 @@ sub random_parameters {
 }
 
 # http://www.heiligenlexikon.de/
-# http://charaktereigenschaften.miroso.de/
+# http://en.wikipedia.org/wiki/List_of_saints
 $_ = qq{Ägidius Ämiliana Ämilianus Æthelberht Íte Aaron Abāmūn Abadiu
 Abakuh Abanoub Abaskhayroun Abban Abbo Abdas Abel Abelina Abelka Abib
 Abo Abraam Abraham Absalom Absalon Abuna Abundius Acacius Acca
