@@ -1,0 +1,12 @@
+wiki
+*.aux
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+*.toc
+*~
+sample-*
+/Halberds and Helmets/To Rob A Witch/To Rob A Witch.pdf
+.DS_Store
