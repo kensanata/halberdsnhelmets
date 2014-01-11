@@ -159,6 +159,11 @@ sub replace_text {
 	$node->setAttribute("style", "font-weight:bold");
 	$node->appendText($child->textContent);
 	$tspan->appendChild($node);
+      if ($tag eq "em" or $tag eq "i") {
+	my $node = XML::LibXML::Element->new("tspan");
+	$node->setAttribute("style", "font-style:italic");
+	$node->appendText($child->textContent);
+	$tspan->appendChild($node);
       } elsif ($tag eq "a") {
 	$child->setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href",
 			       $child->getAttribute("href"));
