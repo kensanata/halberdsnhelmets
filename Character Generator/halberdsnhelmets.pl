@@ -159,7 +159,7 @@ sub replace_text {
 	$node->setAttribute("style", "font-weight:bold");
 	$node->appendText($child->textContent);
 	$tspan->appendChild($node);
-      if ($tag eq "em" or $tag eq "i") {
+      } elsif ($tag eq "em" or $tag eq "i") {
 	my $node = XML::LibXML::Element->new("tspan");
 	$node->setAttribute("style", "font-style:italic");
 	$node->appendText($child->textContent);
