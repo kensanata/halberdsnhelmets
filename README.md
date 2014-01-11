@@ -1,6 +1,13 @@
 Halberds & Helmets
 ==================
 
-A character generator for Halberds & Helmets; a character sheet
-generator for some role-playing games. It's currently [installed on
-Campaign Wiki](http://campaignwiki.org/halberdsnhelmets).
+This is the repository for my role-playing game house rules.
+The German translation of these is
+[Hellebarden und Helme](Hellebarden%20und%20Helme/).
+
+I also have a very small number of adventures in the
+[English section](Halberds%20and%20Helmets/).
+
+The [Character Generator](Character%20Generator/) for Hellebarden &
+Helme, Basic D&D and Labyrinth Lord is currently
+[installed on Campaign Wiki](http://campaignwiki.org/halberdsnhelmets).
