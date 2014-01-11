@@ -34,9 +34,31 @@
       }
       @font-face {
           font-family: 'Purisa';
-          src: url('/Purisa.eot'); /* For IE */
           src: local('Purisa'),
 	       url('/Purisa.ttf') format('truetype');
+	  font-weight: normal;
+	  font-style: normal;
+      }
+      @font-face {
+          font-family: 'Purisa';
+          src: local('Purisa-Oblique'),
+	       url('/Purisa-Oblique.ttf') format('truetype');
+	  font-weight: normal;
+	  font-style: italic;
+      }
+      @font-face {
+          font-family: 'Purisa';
+          src: local('Purisa-Bold'),
+	       url('/Purisa-Bold.ttf') format('truetype');
+	  font-weight: bold;
+	  font-style: normal;
+      }
+      @font-face {
+          font-family: 'Purisa';
+          src: local('Purisa-BoldOblique'),
+	       url('/Purisa-BoldOblique.ttf') format('truetype');
+	  font-weight: bold;
+	  font-style: italic;
       }
   </style>
   <defs
