@@ -25,7 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -414,8 +414,8 @@
      id="namedview16790"
      showgrid="true"
      inkscape:zoom="1.4621799"
-     inkscape:cx="1006.6002"
-     inkscape:cy="260.64162"
+     inkscape:cx="409.10415"
+     inkscape:cy="395.30019"
      inkscape:window-x="36"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
@@ -10439,17 +10439,19 @@
          sodipodi:role="line"
          id="tspan26400"
          x="598"
-         y="232.74666">The front room is a fake taylor’s </tspan><tspan
+         y="232.74666">The front room is a taylor’s shop </tspan><tspan
          sodipodi:role="line"
          x="598"
          y="247.74666"
-         id="tspan26406">shop with an <tspan
+         id="tspan26406">with an <tspan
    style="font-weight:bold"
    id="tspan5470">old </tspan><tspan
    style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Noticia Text;-inkscape-font-specification:Noticia Text"
    id="tspan26416"><tspan
    style="font-weight:bold"
-   id="tspan5472">man </tspan>doing </tspan></tspan><tspan
+   id="tspan5472">man <tspan
+   style="font-weight:normal;-inkscape-font-specification:Noticia Text"
+   id="tspan5210">ineptly </tspan></tspan>doing  </tspan></tspan><tspan
          sodipodi:role="line"
          x="598"
          y="262.74664"
@@ -10463,9 +10465,9 @@
          sodipodi:role="line"
          x="598"
          y="292.74664"
-         id="tspan5486">the trapped room: <tspan
+         id="tspan5486">the trapped room: many<tspan
    style="font-weight:bold"
-   id="tspan5490">one big pit</tspan> (1d6).</tspan><tspan
+   id="tspan5490"> pits</tspan> (1d6)!</tspan><tspan
          sodipodi:role="line"
          x="598"
          y="307.74664"
@@ -10489,7 +10491,7 @@
          y="367.74664"
          id="tspan5414">with 500 gp. <tspan
    style="font-weight:bold"
-   id="tspan5440">10 thieves</tspan> hang</tspan><tspan
+   id="tspan5440">10 thieves</tspan> (T1) hang</tspan><tspan
          sodipodi:role="line"
          x="598"
          y="382.74664"
@@ -10529,7 +10531,7 @@
          sodipodi:role="line"
          x="338"
          y="263.94653"
-         id="tspan26481">guarded by 5 animated objects (2 HD) at</tspan><tspan
+         id="tspan26481">guarded by 5 animated objects (HD 2) at</tspan><tspan
          sodipodi:role="line"
          x="338"
          y="278.94653"
@@ -10537,15 +10539,13 @@
          sodipodi:role="line"
          x="338"
          y="293.94653"
-         id="tspan5502">floor also houses a talking, mean <tspan
+         id="tspan5508">floor also houses a talking, mean <tspan
    style="font-weight:bold"
-   id="tspan5504"></tspan></tspan><tspan
+   id="tspan5510">crocodile</tspan> </tspan><tspan
          sodipodi:role="line"
          x="338"
          y="308.94653"
-         id="tspan5508"><tspan
-   style="font-weight:bold"
-   id="tspan5510">crocodile</tspan>.</tspan></text>
+         id="tspan5294">(HD 4, two                                   attacks).</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Noticia Text;-inkscape-font-specification:Noticia Text"
@@ -10575,7 +10575,7 @@
          sodipodi:role="line"
          x="312"
          y="119.09449"
-         id="tspan5897">– three leaders with trais &amp; goals</tspan><tspan
+         id="tspan5897">– three leaders with traits &amp; goals</tspan><tspan
          sodipodi:role="line"
          x="312"
          y="131.59448"
@@ -10783,7 +10783,7 @@
          sodipodi:role="line"
          x="52"
          y="498.8692"
-         id="tspan5123">    of summoning a bone devil (6HD)</tspan><tspan
+         id="tspan5123">    of summoning a bone devil (HD 6)</tspan><tspan
          sodipodi:role="line"
          x="52"
          y="513.8692"
@@ -10823,7 +10823,7 @@
          y="603.8692"
          id="tspan5173"><tspan
    style="font-style:italic"
-   id="tspan5183">    summon fish</tspan> 1×/day, eg. 3 sharks (4 HD)</tspan><tspan
+   id="tspan5183">    summon fish</tspan> 1×/day, eg. 3 sharks (HD 4)</tspan><tspan
          sodipodi:role="line"
          x="52"
          y="618.8692"
@@ -10857,7 +10857,7 @@
          sodipodi:role="line"
          x="52"
          y="708.8692"
-         id="tspan5229">    within one mile</tspan><tspan
+         id="tspan5229">    within one mile (evil clerics, assassins)</tspan><tspan
          sodipodi:role="line"
          x="52"
          y="723.8692"
@@ -11889,6 +11889,166 @@
          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAAaCAIAAAB3vOj6AAAAdElEQVR42u2XIRLAMAgE8x5sLJbPxcZieWere61MZ7bTnFvDrAk5WoPnWJQ3pl3GmRlXTrD3zpUTdHeunGBEcOXu+CW5MQZXTnDOyZUTzEyunGBVceUep225LfebB8FaJawljP6+dmVilk1WTUcfOLjTEJsTzGA37a/CG9UAAAAASUVORK5CYII="
          id="image22374"
          style="fill:#000000;stroke:none" />
+    </g>
+    <g
+       style="fill:none;stroke:none;display:inline"
+       id="g5212"
+       transform="translate(-519.99998,153.76116)">
+      <path
+         style="fill:#000000;fill-opacity:0;fill-rule:nonzero"
+         inkscape:connector-curvature="0"
+         id="path5214"
+         d="m 1170,382.33333 26,0 0,26 -26,0 z" />
+      <g
+         id="g5216"
+         transform="translate(1170,382.33334)">
+        <clipPath
+           id="clipPath5218">
+          <path
+             inkscape:connector-curvature="0"
+             id="path5220"
+             clip-rule="nonzero"
+             d="M 0,0 26,0 26,26 0,26 z" />
+        </clipPath>
+        <image
+           style="fill:#000000"
+           id="image5222"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAIAAAAmKNuZAAAArUlEQVR42q3VwQ2AIAwFUFfw5IHhGYxhtBEiWNrfUu2JkPAC5Sfdtt8rpZRzPj8UHSekcaWUL2K1CGkcbYXFx6J152LiaHFuVWSWwPnF2ZI5jyhaKodFzUKcJgLL4GYRWzY3iqbl4qq434UtL0f3Ou4y02Nzzxs9eTQ41i9TRJzYeyyqHPhHIMqcmQlNFDhPvjSRc05LE1/ckiWKnQtYs9i4sMXEPhjD1ij+P7Iv8GT06ObUtxoAAAAASUVORK5CYII="
+           preserveAspectRatio="none"
+           y="0"
+           x="0"
+           height="26"
+           width="26"
+           clip-path="url(#p.32)" />
+      </g>
+    </g>
+    <g
+       transform="translate(-493.99999,153.76117)"
+       id="g5230"
+       style="fill:none;stroke:none;display:inline">
+      <path
+         d="m 1170,382.33333 26,0 0,26 -26,0 z"
+         id="path5232"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-opacity:0;fill-rule:nonzero" />
+      <g
+         transform="translate(1170,382.33334)"
+         id="g5234">
+        <clipPath
+           id="clipPath5236">
+          <path
+             d="M 0,0 26,0 26,26 0,26 z"
+             clip-rule="nonzero"
+             id="path5238"
+             inkscape:connector-curvature="0" />
+        </clipPath>
+        <image
+           clip-path="url(#p.32)"
+           width="26"
+           height="26"
+           x="0"
+           y="0"
+           preserveAspectRatio="none"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAIAAAAmKNuZAAAArUlEQVR42q3VwQ2AIAwFUFfw5IHhGYxhtBEiWNrfUu2JkPAC5Sfdtt8rpZRzPj8UHSekcaWUL2K1CGkcbYXFx6J152LiaHFuVWSWwPnF2ZI5jyhaKodFzUKcJgLL4GYRWzY3iqbl4qq434UtL0f3Ou4y02Nzzxs9eTQ41i9TRJzYeyyqHPhHIMqcmQlNFDhPvjSRc05LE1/ckiWKnQtYs9i4sMXEPhjD1ij+P7Iv8GT06ObUtxoAAAAASUVORK5CYII="
+           id="image5240"
+           style="fill:#000000" />
+      </g>
+    </g>
+    <g
+       style="fill:none;stroke:none;display:inline"
+       id="g5242"
+       transform="translate(-493.99999,127.76117)">
+      <path
+         style="fill:#000000;fill-opacity:0;fill-rule:nonzero"
+         inkscape:connector-curvature="0"
+         id="path5244"
+         d="m 1170,382.33333 26,0 0,26 -26,0 z" />
+      <g
+         id="g5246"
+         transform="translate(1170,382.33334)">
+        <clipPath
+           id="clipPath5248">
+          <path
+             inkscape:connector-curvature="0"
+             id="path5250"
+             clip-rule="nonzero"
+             d="M 0,0 26,0 26,26 0,26 z" />
+        </clipPath>
+        <image
+           style="fill:#000000"
+           id="image5252"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAIAAAAmKNuZAAAArUlEQVR42q3VwQ2AIAwFUFfw5IHhGYxhtBEiWNrfUu2JkPAC5Sfdtt8rpZRzPj8UHSekcaWUL2K1CGkcbYXFx6J152LiaHFuVWSWwPnF2ZI5jyhaKodFzUKcJgLL4GYRWzY3iqbl4qq434UtL0f3Ou4y02Nzzxs9eTQ41i9TRJzYeyyqHPhHIMqcmQlNFDhPvjSRc05LE1/ckiWKnQtYs9i4sMXEPhjD1ij+P7Iv8GT06ObUtxoAAAAASUVORK5CYII="
+           preserveAspectRatio="none"
+           y="0"
+           x="0"
+           height="26"
+           width="26"
+           clip-path="url(#p.32)" />
+      </g>
+    </g>
+    <g
+       transform="translate(-545.99999,127.76117)"
+       id="g5254"
+       style="fill:none;stroke:none;display:inline">
+      <path
+         d="m 1170,382.33333 26,0 0,26 -26,0 z"
+         id="path5256"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-opacity:0;fill-rule:nonzero" />
+      <g
+         transform="translate(1170,382.33334)"
+         id="g5258">
+        <clipPath
+           id="clipPath5260">
+          <path
+             d="M 0,0 26,0 26,26 0,26 z"
+             clip-rule="nonzero"
+             id="path5262"
+             inkscape:connector-curvature="0" />
+        </clipPath>
+        <image
+           clip-path="url(#p.32)"
+           width="26"
+           height="26"
+           x="0"
+           y="0"
+           preserveAspectRatio="none"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAIAAAAmKNuZAAAArUlEQVR42q3VwQ2AIAwFUFfw5IHhGYxhtBEiWNrfUu2JkPAC5Sfdtt8rpZRzPj8UHSekcaWUL2K1CGkcbYXFx6J152LiaHFuVWSWwPnF2ZI5jyhaKodFzUKcJgLL4GYRWzY3iqbl4qq434UtL0f3Ou4y02Nzzxs9eTQ41i9TRJzYeyyqHPhHIMqcmQlNFDhPvjSRc05LE1/ckiWKnQtYs9i4sMXEPhjD1ij+P7Iv8GT06ObUtxoAAAAASUVORK5CYII="
+           id="image5264"
+           style="fill:#000000" />
+      </g>
+    </g>
+    <g
+       style="fill:none;stroke:none;display:inline"
+       id="g5266"
+       transform="translate(-545.99999,153.76116)">
+      <path
+         style="fill:#000000;fill-opacity:0;fill-rule:nonzero"
+         inkscape:connector-curvature="0"
+         id="path5268"
+         d="m 1170,382.33333 26,0 0,26 -26,0 z" />
+      <g
+         id="g5270"
+         transform="translate(1170,382.33334)">
+        <clipPath
+           id="clipPath5272">
+          <path
+             inkscape:connector-curvature="0"
+             id="path5274"
+             clip-rule="nonzero"
+             d="M 0,0 26,0 26,26 0,26 z" />
+        </clipPath>
+        <image
+           style="fill:#000000"
+           id="image5276"
+           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAIAAAAmKNuZAAAArUlEQVR42q3VwQ2AIAwFUFfw5IHhGYxhtBEiWNrfUu2JkPAC5Sfdtt8rpZRzPj8UHSekcaWUL2K1CGkcbYXFx6J152LiaHFuVWSWwPnF2ZI5jyhaKodFzUKcJgLL4GYRWzY3iqbl4qq434UtL0f3Ou4y02Nzzxs9eTQ41i9TRJzYeyyqHPhHIMqcmQlNFDhPvjSRc05LE1/ckiWKnQtYs9i4sMXEPhjD1ij+P7Iv8GT06ObUtxoAAAAASUVORK5CYII="
+           preserveAspectRatio="none"
+           y="0"
+           x="0"
+           height="26"
+           width="26"
+           clip-path="url(#p.32)" />
+      </g>
     </g>
   </g>
 </svg>
