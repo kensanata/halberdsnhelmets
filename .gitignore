@@ -1,0 +1,12 @@
+.DS_Store
+Halberds and Helmets/wiki/
+Hellebarden und Helme/wiki/
+*.aux
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+*.toc
+sample-*
+*~
