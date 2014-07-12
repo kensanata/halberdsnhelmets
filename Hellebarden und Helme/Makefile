@@ -16,6 +16,3 @@ force: Hellebarden-und-Helme.ltx
 
 once: Hellebarden-und-Helme.ltx
 	${LATEX} $<
-
-upload: Hellebarden-und-Helme.pdf
-	scp $< epfarms.org:alexschroeder.ch/pdfs/
