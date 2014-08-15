@@ -1,4 +1,7 @@
 wiki
+.DS_Store
+Halberds and Helmets/wiki/
+Hellebarden und Helme/wiki/
 *.aux
 *.idx
 *.ilg
@@ -8,6 +11,6 @@ wiki
 *.toc
 *~
 sample-*
-/Halberds and Helmets/To Rob A Witch/To Rob A Witch.pdf
+Halberds and Helmets/To Rob A Witch/To Rob A Witch.pdf
 .DS_Store
-/Hellebarden und Helme/Logo.png
+Hellebarden und Helme/Logo.png
