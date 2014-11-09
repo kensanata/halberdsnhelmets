@@ -29,10 +29,10 @@ my @provided = $q->param;
 my ($lang) = $q->path_info =~ m!/(en|de)\b!;
 $lang = "en" unless $lang;
 my $filename = $char{charsheet} || T('Charactersheet.svg');
-my $url = "http://campaignwiki.org/halberdsnhelmets";
+my $url = "https://campaignwiki.org/halberdsnhelmets";
 my $email = "kensanata\@gmail.com";
 my $author = "Alex Schroeder";
-my $contact = "http://www.emacswiki.org/alex/Contact";
+my $contact = "https://alexschroeder.ch/wiki/Contact";
 my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
 my $parser;
 
@@ -1824,7 +1824,7 @@ sub show_link {
   print $q->h2(T('Edit'));
   print $q->p(T('Use the following form to make changes to your character sheet.'),
 	      T('You can also copy and paste it on to a %0 page to generate an inline character sheet.',
-		$q->a({-href=>"http://campaignwiki.org/"}, "Campaign Wiki")));
+		$q->a({-href=>"https://campaignwiki.org/"}, "Campaign Wiki")));
   my $str = T('Character:') . "\n";
   my $rows;
   for my $key (@provided) {
@@ -1855,7 +1855,7 @@ sub source {
 sub default {
   header();
   print $q->p(T('This is the %0 character sheet generator.',
-		$q->a({-href=>T('http://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/')},
+		$q->a({-href=>T('https://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/')},
 		      T('Halberds and Helmets'))));
   print $q->start_form(-method=>"get", -action=>"$url/random/$lang",
 		       -accept_charset=>"UTF-8"),
@@ -2235,8 +2235,8 @@ holy symbol
 Heiliges Symbol
 holy water
 Weihwasser
-http://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/
-http://campaignwiki.org/wiki/Hellebarden%C2%A0und%C2%A0Helme/
+https://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/
+https://campaignwiki.org/wiki/Hellebarden%C2%A0und%C2%A0Helme/
 invisibility
 Unsichtbarkeit
 iron rations (1 week)
