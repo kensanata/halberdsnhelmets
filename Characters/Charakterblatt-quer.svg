@@ -7,7 +7,6 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1052.3622"
@@ -207,8 +206,8 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284273"
-     inkscape:cx="519.81059"
-     inkscape:cy="450.37284"
+     inkscape:cx="913.78027"
+     inkscape:cy="56.403168"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -239,7 +238,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
       </cc:Work>
@@ -1242,6 +1241,18 @@
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#0000ff;fill-opacity:1;font-family:Purisa;-inkscape-font-specification:Purisa Light"
+       x="891.92505"
+       y="875.44202"
+       id="link-text"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         x="659.98553"
+         y="948.36548"
+         id="tspan3737-9">Link</tspan></text>
+    <text
+       inkscape:label="#text3505"
+       xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
        x="946.92505"
        y="775.44202"
@@ -1583,24 +1594,6 @@
          x="697.29077"
          y="532.53864"
          id="tspan5750" /></text>
-    <a
-       id="link"
-       xlink:href="http://campaignwiki.org/halberdsnhelmets"
-       transform="translate(2,6)"
-       style="fill:#0000ff;display:none">
-      <text
-         inkscape:label="#text3505"
-         xml:space="preserve"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#0000ff;fill-opacity:1;stroke:none;display:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="891.92505"
-       y="900"
-         id="link-text"
-         sodipodi:linespacing="100%"><tspan
-           sodipodi:role="line"
-           x="659.98553"
-           y="948.36548"
-           id="tspan3737-9">Link</tspan></text>
-    </a>
     <text
        sodipodi:linespacing="100%"
        id="text3903"
@@ -1808,7 +1801,7 @@
          x="459.54272"
          id="tspan4873"
          sodipodi:role="line"
-         style="font-size:10px">Sprachen</tspan></text>
+         style="font-size:12px">Sprachen</tspan></text>
     <rect
        y="526.08197"
        x="459.54272"
@@ -1880,5 +1873,55 @@
          x="466.9758"
          sodipodi:role="line"
          id="tspan5786" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
+       x="459.54272"
+       y="624.99536"
+       id="misc-title"
+       sodipodi:linespacing="100%"
+       inkscape:label="#text8211"><tspan
+         style="font-size:12px"
+         sodipodi:role="line"
+         id="tspan8213"
+         x="459.54272"
+         y="624.99536">Sonstiges</tspan></text>
+    <rect
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect8215"
+       width="202.0269"
+       height="77.952766"
+       x="459.54272"
+       y="632.08197" />
+    <text
+       inkscape:label="#text3505"
+       xml:space="preserve"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
+       x="466.9758"
+       y="646.55438"
+       id="misc"
+       sodipodi:linespacing="100%"><tspan
+         id="tspan8219"
+         sodipodi:role="line"
+         x="466.9758"
+         y="646.55438" /><tspan
+         id="tspan8221"
+         sodipodi:role="line"
+         x="466.9758"
+         y="656.55438" /></text>
+    <a
+       id="a5964">
+      <text
+         sodipodi:linespacing="100%"
+         id="text5960"
+         y="922.93237"
+         x="991.38525"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
+         xml:space="preserve"><tspan
+           y="922.93237"
+           x="991.38525"
+           id="tspan5962"
+           sodipodi:role="line">Link</tspan></text>
+    </a>
   </g>
 </svg>
