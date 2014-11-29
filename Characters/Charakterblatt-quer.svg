@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1052.3622"
@@ -1238,18 +1239,6 @@
          x="891.92505"
          y="885.44202"
          id="tspan3296">oder grösser sein</tspan></text>
-    <text
-       inkscape:label="#text3505"
-       xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#0000ff;fill-opacity:1;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="891.92505"
-       y="875.44202"
-       id="link-text"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         x="659.98553"
-         y="948.36548"
-         id="tspan3737-9">Link</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
