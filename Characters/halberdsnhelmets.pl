@@ -857,11 +857,11 @@ sub saves {
       (16, 14, 13, 15, 13);
   }
 
-  provide("breath",  $breath);
-  provide("poison",  $poison);
-  provide("petrify",  $petrify);
-  provide("wands",  $wands);
-  provide("spells",  $spells);
+  provide("breath",  $breath) unless $char{breath};
+  provide("poison",  $poison) unless $char{poison};
+  provide("petrify",  $petrify) unless $char{petrify};
+  provide("wands",  $wands) unless $char{wands};
+  provide("spells",  $spells) unless $char{spells};
 }
 
 sub svg_show_id {
