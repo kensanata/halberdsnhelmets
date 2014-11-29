@@ -1899,10 +1899,11 @@
          x="466.9758"
          y="656.55438" /></text>
     <a
-       id="a5964">
+       id="link"
+       xlink:href="https://campaignwiki.org/halberdsnhelmets">
       <text
          sodipodi:linespacing="100%"
-         id="text5960"
+         id="link-text"
          y="922.93237"
          x="991.38525"
          style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#0000ff;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
