@@ -262,7 +262,7 @@ sub moldvay {
   if ($char{thac0} and not $char{"range-thac0"}) {
     $char{"range-thac0"} = $char{thac0} - $char{"dex-bonus"};
   }
-  for my $type ("melee", "ranged") {
+  for my $type ("melee", "range") {
     for (my $n = 0; $n <= 9; $n++) {
       my $val = $char{"$type-thac0"} - $n;
       $val = 20 if $val > 20;
