@@ -256,25 +256,29 @@ sub moldvay {
   if (not $char{hirelings}) {
     $char{hirelings} =  4 + $char{"cha-bonus"};
   }
-  if ($char{thac0}) {
+  if ($char{thac0} and not $char{"melee-thac0"}) {
+    $char{"melee-thac0"} = $char{thac0} - $char{"str-bonus"};
+  }
+  if ($char{thac0} and not $char{"range-thac0"}) {
+    $char{"range-thac0"} = $char{thac0} - $char{"dex-bonus"};
+  }
+  for my $type ("melee", "ranged") {
     for (my $n = 0; $n <= 9; $n++) {
-      my $val = $char{thac0} - $n - $char{"str-bonus"};
+      my $val = $char{"$type-thac0"} - $n;
       $val = 20 if $val > 20;
       $val =  1 if $val <  1;
-      $char{"melee$n"} =  $val unless $char{"melee$n"};
-      $val = $char{thac0} - $n - $char{"dex-bonus"};
-      $val = 20 if $val > 20;
-      $val =  1 if $val <  1;
-      $char{"range$n"} =  $val unless $char{"range$n"};
+      $char{"$type$n"} = $val unless $char{"$type$n"};
     }
   }
-  if ($char{"str-bonus"} and not $char{damage}) {
-    # hack alert!
-    my $damage = 1 . T('d6');
-    $char{damage} = $damage . $char{"str-bonus"}
-      . " / " . $damage;
+  if (not $char{damage}) {
+    $char{damage} = 1 . T('d6');
   }
-
+  if (not $char{"melee-damage"}) {
+    $char{"melee-damage"} = $char{damage} . $char{"str-bonus"};
+  }
+  if (not $char{"range-damage"}) {
+    $char{"range-damage"} = $char{damage};
+  }
   saves();
 }
 
