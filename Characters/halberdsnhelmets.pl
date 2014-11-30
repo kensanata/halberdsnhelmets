@@ -29,11 +29,12 @@ my @provided = $q->param;
 my ($lang) = $q->path_info =~ m!/(en|de)\b!;
 $lang = "en" unless $lang;
 my $filename = $char{charsheet} || T('Charactersheet.svg');
-my $url = "https://campaignwiki.org/halberdsnhelmets";
+our $url ||= "https://campaignwiki.org/halberdsnhelmets";
 my $email = "kensanata\@gmail.com";
 my $author = "Alex Schroeder";
 my $contact = "https://alexschroeder.ch/wiki/Contact";
 my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
+my $alternative = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg";
 my $parser;
 
 sub T {
@@ -958,7 +959,7 @@ sub provide {
 }
 
 sub random_parameters {
-  provide('name', name()) unless $char{name};
+  provide("name", name()) unless $char{name};
 
   my ($str, $dex, $con, $int, $wis, $cha) =
     (roll_3d6(), roll_3d6(), roll_3d6(),
@@ -1691,16 +1692,16 @@ xenophobic youthful zany zealous};
 my @trait = split(/[ \r\n]+/, $_);
 
 # one way to test this on the command-line:
-# perl halberdsnhelmets.pl '/characters?' | tail -n +3 | w3m -T text/html
+# perl halberdsnhelmets.pl "/characters?" | tail -n +3 | w3m -T text/html
 
 sub traits {
   my $name = name();
   my $gender = $names{$name};
   my $description = "$name, ";
   my $d;
-  if ($gender eq 'F') {
+  if ($gender eq "F") {
     $d = d3();
-  } elsif ($gender eq 'M') {
+  } elsif ($gender eq "M") {
     $d = 3 + d3();
   } else {
     $d = d6();
@@ -1881,7 +1882,8 @@ sub help {
 		$q->a({-href=>"/Purisa.ttf"},
 		      "Purisa")),
 	      T('You provide values for the placeholders by providing URL parameters (%0).',
-		$q->a({-href=>$example}, T('example'))),
+		$q->a({-href=>$example}, T('example')) . ", "
+		. $q->a({-href=>$alternative}, T('alternative'))),
 	      T('The script can also show %0.',
 		$q->a({-href=>"$url/show/$lang"},
 		      T('which parameters go where'))),
@@ -2182,6 +2184,8 @@ You can also copy and paste it on to a %0 page to generate an inline character s
 Man kann diesen Text auch auf einer %0 Seite verwenden, um das Charakterblatt einzufügen.
 You provide values for the placeholders by providing URL parameters (%0).
 Den Platzhaltern werden über URL Parameter Werte zugewiesen (%0).
+alternative
+Alternative
 and
 und
 arcane lock
