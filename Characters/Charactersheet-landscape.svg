@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r"
-   sodipodi:docname="Charakterblatt-quer.svg">
+   sodipodi:docname="Charactersheet-landscape.svg">
   <style
      type="text/css"
      id="style3313">
@@ -207,8 +207,8 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284273"
-     inkscape:cx="821.79805"
-     inkscape:cy="616.51507"
+     inkscape:cx="454.10255"
+     inkscape:cy="676.93137"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -292,7 +292,7 @@
          id="tspan14954"
          x="690.20416"
          y="295.767"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light">Besitz</tspan></text>
+         style="font-size:12px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light">Property</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -314,7 +314,7 @@
          sodipodi:role="line"
          id="tspan14986"
          x="87.841942"
-         y="469.38904">Kraft</tspan></text>
+         y="469.38904">Strength</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -325,7 +325,7 @@
          sodipodi:role="line"
          id="tspan14990"
          x="87.841942"
-         y="494.1922">Geschick</tspan></text>
+         y="494.1922">Dexterity</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -336,7 +336,7 @@
          sodipodi:role="line"
          id="tspan14994"
          x="87.841942"
-         y="518.99536">Gesundheit</tspan></text>
+         y="518.99536">Constitution</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -347,7 +347,7 @@
          sodipodi:role="line"
          id="tspan14998"
          x="87.841942"
-         y="543.79852">Bildung</tspan></text>
+         y="543.79852">Education</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -358,7 +358,7 @@
          sodipodi:role="line"
          id="tspan15002"
          x="87.841942"
-         y="568.60162">Weisheit</tspan></text>
+         y="568.60162">Wisdom</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -369,29 +369,29 @@
          sodipodi:role="line"
          id="tspan15006"
          x="87.841942"
-         y="593.40479">Auftreten</tspan></text>
+         y="593.40479">Charisma</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="231.85768"
-       y="445.68826"
+       x="226.03091"
+       y="444.58591"
        id="text15016"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan15018"
-         x="231.85768"
-         y="445.68826">Wert</tspan></text>
+         x="226.03091"
+         y="444.58591">Value</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="285.00729"
-       y="445.68826"
+       x="279.18051"
+       y="444.58591"
        id="text15020"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
          id="tspan15022"
-         x="285.00729"
-         y="445.68826">Bonus</tspan></text>
+         x="279.18051"
+         y="444.58591">Bonus</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -402,7 +402,7 @@
          sodipodi:role="line"
          x="87.841942"
          y="444.58591"
-         id="tspan14982-1">Erschaffung: jeweils 3w6</tspan></text>
+         id="tspan14982-1">Roll 3d6 in order</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -451,15 +451,15 @@
          y="-24.133915" /></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:380;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
-       x="311.07028"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
+       x="311.35376"
        y="295.767"
        id="text14974-5-7"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="311.07028"
+         x="311.35376"
          y="295.767"
-         id="tspan14982-1-8">Wappen oder Bild</tspan></text>
+         id="tspan14982-1-8">Shield or Portrait</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -481,11 +481,11 @@
          sodipodi:role="line"
          id="tspan15469"
          x="87.841942"
-         y="781.20007">Rüstung des</tspan><tspan
+         y="781.20007">Opponent’s</tspan><tspan
          sodipodi:role="line"
          x="87.841942"
          y="797.20007"
-         id="tspan3947">Gegners:</tspan></text>
+         id="tspan3947">Armor:</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:26px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -606,7 +606,7 @@
          sodipodi:role="line"
          x="573.27502"
          y="798.91663"
-         id="tspan15702">Schaden</tspan></text>
+         id="tspan15702">Damage</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:24px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -631,7 +631,7 @@
            id="tspan15183-0"
            y="343.36548"
            x="396.9758"
-           sodipodi:role="line">Wert</tspan><tspan
+           sodipodi:role="line">Value</tspan><tspan
            id="tspan4412"
            y="353.36548"
            x="396.9758"
@@ -715,7 +715,7 @@
          sodipodi:role="line"
          id="tspan15469-9"
          x="87.841942"
-         y="834.34967">Nahkampf</tspan></text>
+         y="834.34967">Melee</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -727,7 +727,7 @@
          sodipodi:role="line"
          id="tspan15469-9-2"
          x="87.841942"
-         y="869.78271">Fernkampf</tspan></text>
+         y="869.78271">Ranged</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -738,7 +738,7 @@
          sodipodi:role="line"
          x="353.58997"
          y="887.49927"
-         id="tspan3296-8">W20 muss gleich oder grösser sein</tspan></text>
+         id="tspan3296-8">d20 must be larger or equal</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -760,7 +760,7 @@
          sodipodi:role="line"
          id="tspan14142"
          x="87.841942"
-         y="366.63315">EP</tspan></text>
+         y="366.63315">XP</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -771,7 +771,7 @@
          sodipodi:role="line"
          id="tspan14146"
          x="87.841942"
-         y="345.37329">Stufe</tspan></text>
+         y="345.37329">Level</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -782,7 +782,7 @@
          sodipodi:role="line"
          id="tspan14150"
          x="87.841942"
-         y="324.11346">Klasse</tspan></text>
+         y="324.11346">Class</tspan></text>
     <text
        sodipodi:linespacing="100%"
        id="name"
@@ -841,7 +841,7 @@
          sodipodi:role="line"
          id="tspan14130"
          x="87.841942"
-         y="391.43628">Rüstung</tspan></text>
+         y="391.43628">Armor</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -852,15 +852,15 @@
          id="tspan3888"
          sodipodi:role="line"
          x="87.841942"
-         y="405.60953">Berechnung: Keine = 9, Leder = 7,</tspan><tspan
+         y="405.60953">How to: none = 9, leather = 7,</tspan><tspan
          sodipodi:role="line"
          x="87.841942"
          y="415.60953"
-         id="tspan14982">Kette = 5, Platte = 3, Schild = -1,</tspan><tspan
+         id="tspan14982">chain = 5, plate = 3, shield = -1,</tspan><tspan
          id="tspan3896"
          sodipodi:role="line"
          x="87.841942"
-         y="425.60953">abzgl. Geschick Bonus</tspan></text>
+         y="425.60953">minus Dex Bonus</tspan></text>
     <text
        sodipodi:linespacing="100%"
        id="ac"
@@ -884,7 +884,7 @@
          sodipodi:role="line"
          id="tspan14161"
          x="442.17264"
-         y="295.767">Lebensenergie</tspan></text>
+         y="295.767">Hit Points</tspan></text>
     <rect
        style="color:#000000;fill:none;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect14182"
@@ -902,7 +902,7 @@
          sodipodi:role="line"
          x="449.25925"
          y="348.9166"
-         id="tspan14982-1-6">Maximum</tspan></text>
+         id="tspan14982-1-6">Max</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:end;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -913,23 +913,23 @@
          sodipodi:role="line"
          x="656.52826"
          y="318.22696"
-         id="tspan14982-1-6-3"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light">Krieger &amp; Zwerge: W8</tspan><tspan
+         style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
+         id="tspan4329">Magic Users &amp; Thieves: W4</tspan><tspan
          sodipodi:role="line"
          x="656.52826"
          y="328.22696"
-         id="tspan3373"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light">Magier &amp; Diebe: W4</tspan><tspan
+         id="tspan3375"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light">Fighters &amp; Dwarves: W8</tspan><tspan
          sodipodi:role="line"
          x="656.52826"
          y="338.22696"
-         id="tspan3375"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light">Alle anderen: W6</tspan><tspan
+         style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
+         id="tspan4331">Everbody else: W6</tspan><tspan
          sodipodi:role="line"
          x="656.52826"
          y="348.22696"
          id="tspan3377"
-         style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light">+ Gesundheit Bonus</tspan></text>
+         style="font-size:10px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light">+ Con Bonus</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
@@ -1096,7 +1096,7 @@
          sodipodi:role="line"
          x="300.11566"
          y="676.86938"
-         id="tspan4281">4 + Auftreten</tspan><tspan
+         id="tspan4281">4 + Charisma</tspan><tspan
          sodipodi:role="line"
          x="300.11566"
          y="686.86938"
@@ -1111,7 +1111,7 @@
          sodipodi:role="line"
          id="tspan15010"
          x="90.115654"
-         y="681.86938">Gefolgsleute</tspan></text>
+         y="681.86938">Henchmen</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
@@ -1122,7 +1122,7 @@
          sodipodi:role="line"
          x="300.11566"
          y="641.86938"
-         id="tspan4520">7 + Auftreten</tspan><tspan
+         id="tspan4520">7 + Charisma</tspan><tspan
          sodipodi:role="line"
          x="300.11566"
          y="651.86938"
@@ -1150,7 +1150,7 @@
          id="tspan15281"
          x="690.20416"
          y="501.27881"
-         style="font-size:12px">Fähigkeiten, Sprüche</tspan></text>
+         style="font-size:12px">Abilities, Spells</tspan></text>
     <rect
        style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect14182-0"
@@ -1168,7 +1168,7 @@
          sodipodi:role="line"
          id="tspan15372"
          x="690.20416"
-         y="738.68036">Rettungswürfe</tspan></text>
+         y="738.68036">Saving Throws</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:18px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
@@ -1179,7 +1179,7 @@
          sodipodi:role="line"
          id="tspan15376"
          x="690.20416"
-         y="770.57013">Drachenodem, Explosion</tspan></text>
+         y="770.57013">Dragon Breath, Explosions</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:18px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
@@ -1190,7 +1190,7 @@
          sodipodi:role="line"
          id="tspan15380"
          x="690.20416"
-         y="795.37329">Lähmung, Versteinerung</tspan></text>
+         y="795.37329">Paralyzation, Petrification</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:18px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
@@ -1201,7 +1201,7 @@
          sodipodi:role="line"
          id="tspan15380-7"
          x="690.20416"
-         y="820.17645">Tod, Gift</tspan></text>
+         y="820.17645">Death, Poison</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:18px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
@@ -1212,7 +1212,7 @@
          sodipodi:role="line"
          id="tspan15380-9"
          x="690.20416"
-         y="844.97961">Strahlen, Zauberstäbe</tspan></text>
+         y="844.97961">Rays, Wands</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:18px;font-style:normal;font-variant:normal;font-weight:380;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
@@ -1223,18 +1223,18 @@
          sodipodi:role="line"
          id="tspan15380-0"
          x="690.20416"
-         y="869.78271">Zaubersprüche</tspan></text>
+         y="869.78271">Spells</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="803.58997"
+       x="829.58997"
        y="887.49927"
        id="text15467-8-5-4"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="803.58997"
+         x="829.58997"
          y="887.49927"
-         id="tspan3296">W20 muss gleich oder grösser sein</tspan></text>
+         id="tspan3296">d20 must be larger or equal</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
@@ -1546,7 +1546,7 @@
          id="tspan3581"
          y="834.34967"
          x="573.27502"
-         sodipodi:role="line">1W6</tspan></text>
+         sodipodi:role="line">1d6</tspan></text>
     <text
        sodipodi:linespacing="100%"
        id="property"
@@ -1589,7 +1589,7 @@
          y="711.86938"
          x="90.115654"
          id="tspan3905"
-         sodipodi:role="line">Reaktionen</tspan></text>
+         sodipodi:role="line">Reactions</tspan></text>
     <text
        sodipodi:linespacing="100%"
        id="reaction"
@@ -1612,7 +1612,7 @@
          sodipodi:role="line"
          id="tspan4261"
          x="90.115654"
-         y="651.86938">Loyalität</tspan></text>
+         y="651.86938">Loyalty</tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
@@ -1638,7 +1638,7 @@
            sodipodi:role="line"
            x="397.0976"
            y="488.36548"
-           id="tspan4305">Wert</tspan><tspan
+           id="tspan4305">Value</tspan><tspan
            sodipodi:role="line"
            x="397.0976"
            y="498.36548"
@@ -1717,7 +1717,7 @@
          sodipodi:role="line"
          x="573.27502"
          y="869.78271"
-         id="tspan3975">1W6</tspan></text>
+         id="tspan3975">1d6</tspan></text>
     <rect
        y="444.58591"
        x="442.17264"
@@ -1755,7 +1755,7 @@
          sodipodi:role="line"
          id="tspan4863"
          x="520.12543"
-         y="437.49927">Edelsteine</tspan></text>
+         y="437.49927">Gems</tspan></text>
     <rect
        y="444.58591"
        x="598.07812"
@@ -1774,7 +1774,7 @@
          x="598.07819"
          id="tspan4869"
          sodipodi:role="line"
-         style="font-size:12px">Juwelen</tspan></text>
+         style="font-size:12px">Jewelry</tspan></text>
     <text
        sodipodi:linespacing="100%"
        id="text4871"
@@ -1786,7 +1786,7 @@
          x="442.17264"
          id="tspan4873"
          sodipodi:role="line"
-         style="font-size:12px">Sprachen</tspan></text>
+         style="font-size:12px">Languages</tspan></text>
     <rect
        y="526.08197"
        x="442.17264"
@@ -1870,7 +1870,7 @@
          sodipodi:role="line"
          id="tspan8213"
          x="442.17264"
-         y="625.29456">Sonstiges</tspan></text>
+         y="625.29456">Miscellaneous</tspan></text>
     <rect
        style="color:#000000;fill:none;stroke:#000000;stroke-width:0.99921262;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="rect8215"
