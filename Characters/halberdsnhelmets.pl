@@ -1897,7 +1897,12 @@ sub help {
 	       cha cha-bonus
 	       cha-bonus loyalty
 	       str-bonus damage
-	       thac0 melee0-9&nbsp;&amp;&nbsp;range0-9);
+               thac0 melee-thac0
+               melee-thac0 melee0-9
+               damage melee-damage
+	       thac0 range-thac0
+               range-thac0 range0-9
+               damage range-damage);
   while (@doc) {
     print $q->li(shift(@doc), "&rarr;", shift(@doc));
   }
