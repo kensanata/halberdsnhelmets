@@ -207,8 +207,8 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284273"
-     inkscape:cx="821.79805"
-     inkscape:cy="616.51507"
+     inkscape:cx="307.73145"
+     inkscape:cy="602.37294"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -423,7 +423,7 @@
        y="302.85361" />
     <g
        id="g4561"
-       transform="matrix(0.85393701,0,0,0.94488188,38.093908,253.37753)">
+       transform="matrix(0.9448819,0,0,0.94488188,-1.9218453,253.37753)">
       <image
          id="portrait"
          width="120"
@@ -431,7 +431,7 @@
          x="320"
          y="52.362183" />
       <rect
-         style="color:#000000;fill:none;stroke:#000000;stroke-width:1.11326444;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         style="color:#000000;fill:none;stroke:#000000;stroke-width:1.0583334;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          id="portrait-frame"
          width="120"
          height="120"
@@ -451,13 +451,13 @@
          y="-24.133915" /></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:380;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
-       x="311.07028"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Semi-Light"
+       x="300.44037"
        y="295.767"
        id="text14974-5-7"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="311.07028"
+         x="300.44037"
          y="295.767"
          id="tspan14982-1-8">Wappen oder Bild</tspan></text>
     <text
