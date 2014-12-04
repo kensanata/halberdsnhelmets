@@ -958,7 +958,7 @@ sub provide {
   $char{$key} = $value;
 }
 
-sub random_parameters {
+sub random_moldvay {
   provide("name", name()) unless $char{name};
 
   my ($str, $dex, $con, $int, $wis, $cha) =
@@ -1063,6 +1063,108 @@ sub random_parameters {
     $abilities .= "\\\\" . spellbook();
   }
   provide("abilities", $abilities);
+}
+
+sub random_acks {
+  provide("name", name()) unless $char{name};
+
+  my ($str, $dex, $con, $int, $wis, $cha) =
+    (roll_3d6(), roll_3d6(), roll_3d6(),
+     roll_3d6(), roll_3d6(), roll_3d6());
+
+  # if a class is provided, make sure minimum requirements are met
+  my $class = $char{class};
+  while (member($class, T('dwarven vaultguard'), T('dwarven craftpriest'))
+	 and not average($con)) {
+    $con = roll_3d6();
+  }
+
+  provide("str", $str);
+  provide("dex", $dex);
+  provide("con", $con);
+  provide("int", $int);
+  provide("wis", $wis);
+  provide("cha", $cha);
+
+  provide("level",  "1");
+  provide("xp",  "0");
+  provide("attack",  10);
+
+  my $best = best($str, $dex, $con, $int, $wis, $cha);
+
+  if (not $class) {
+    if (average($con) and $best eq "str" and d6() > 2) {
+      $class = T('dwarven vaultguard');
+    } elsif (average($con) and $best eq "wis" and d6() > 2) {
+      $class = T('dwarven craftpriest');
+    } elsif (average($int) and $best eq "str") {
+      $class = T('elven spellsword');
+    } elsif (average($int) and $best eq "dex" and d6() > 2) {
+      $class = T('elven nightblade');
+    } elsif (average($wis) and $best eq "dex") {
+      $class = T('bladedancer');
+    } elsif (average($str, $dex) >= 2 and good($str, $dex) >= 1) {
+      if (d6() > 3) {
+	$class = T('explorer');
+      } else {
+	$class = T('assassin');
+      }
+    } elsif (average($str, $con) >= 2 and good($str, $con) >= 1) {
+      $class = T('fighter');
+    } elsif ($best eq "wis") {
+      $class = T('cleric');
+    } elsif ($best eq "int" and d6() > 2) {
+      $class = T('mage');
+    } elsif (average($dex)) {
+      if ($best eq "cha") {
+	$class = T('bard');
+      } else {
+	$class = T('thief');
+      }
+    } else {
+      $class = one(T('cleric'), T('mage'), T('fighter'), T('thief'));
+    }
+  }
+
+  provide("class",  $class);
+
+  my $hp = $char{hp};
+  if (not $hp) {
+    if ($class eq T('fighter') or $class eq T('dwarven vaultguard')) {
+      $hp = d8();
+    } elsif ($class eq T('mage') or $class eq T('thief')) {
+      $hp = d4();
+    } else {
+      $hp = d6();
+    }
+
+    $hp += bonus($con);
+    $hp = 1 if $hp < 1;
+  }
+
+  provide("hp",  $hp);
+
+  # equipment
+  # abilities
+  # spells
+}
+
+sub random_parameters {
+  if (not exists $char{rules} or not defined $char{rules}) {
+    random_moldvay();
+  } elsif ($char{rules} eq "pendragon") {
+    random_pendragon();
+  } elsif ($char{rules} eq "moldvay") {
+    random_moldvay();
+  } elsif ($char{rules} eq "labyrinth lord") {
+    random_moldvay();
+  } elsif ($char{rules} eq "crypts-n-things") {
+    random_crypts_n_things();
+  } elsif ($char{rules} eq "acks") {
+    random_acks();
+  } else {
+    random_moldvay();
+  }
 }
 
 # http://www.stadt-zuerich.ch/content/prd/de/index/statistik/publikationsdatenbank/Vornamen-Verzeichnis/VVZ_2012.html
@@ -2013,6 +2115,14 @@ sub help {
     print $q->li(shift(@doc), "&rarr;", shift(@doc));
   }
   print "</ul>";
+
+  ($random, $bunch, $stats) =
+      ($q->a({-href=>"$url/random/$lang?rules=acks;charsheet=ACKS.svg"}, T('random character')),
+       $q->a({-href=>"$url/characters/$lang?rules=acks;charsheet=ACKS.svg"}, T('bunch of characters')),
+       $q->a({-href=>"$url/stats/$lang?rules=acks;charsheet=ACKS.svg"}, T('some statistics')));
+
+  print $q->p(T('The script can also generate a %0, a %1, or %2.',
+		$random, $bunch, $stats));
 
   footer();
 }
