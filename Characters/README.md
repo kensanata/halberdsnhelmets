@@ -45,3 +45,5 @@ The images are from public domain works:
 * [Hildreth's "Japan as it was and is": a handbook of old Japan](https://www.flickr.com/photos/internetarchivebookimages/tags/bookidhildrethsjapanas02hild)
 
 * [Fra morgenrodens rige; fortaellinger fra Japan, samlede og indledede ved Johanne Münter](https://www.flickr.com/photos/internetarchivebookimages/tags/bookidframorgenrodensr00mn)
+
+* [Public Domain Images – 1920′s Vintage Mugshots NSWPD Special Photographs](http://publicdomainarchive.com/public-domain-images-1920%E2%80%B2s-vintage-mugshots-nswpd-special-photographs/)
