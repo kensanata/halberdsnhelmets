@@ -47,3 +47,5 @@ The images are from public domain works:
 * [Fra morgenrodens rige; fortaellinger fra Japan, samlede og indledede ved Johanne Münter](https://www.flickr.com/photos/internetarchivebookimages/tags/bookidframorgenrodensr00mn)
 
 * [Public Domain Images – 1920′s Vintage Mugshots NSWPD Special Photographs](http://publicdomainarchive.com/public-domain-images-1920%E2%80%B2s-vintage-mugshots-nswpd-special-photographs/)
+
+* [Pennsylvanian](https://archive.org/details/pennsylvanian191920penn)
