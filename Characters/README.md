@@ -49,3 +49,10 @@ The images are from public domain works:
 * [Public Domain Images – 1920′s Vintage Mugshots NSWPD Special Photographs](http://publicdomainarchive.com/public-domain-images-1920%E2%80%B2s-vintage-mugshots-nswpd-special-photographs/)
 
 * [Pennsylvanian](https://archive.org/details/pennsylvanian191920penn)
+
+Stripping EXIF Data
+===================
+
+Example:
+
+    exiftool -all= -overwrite_original *.jpg
