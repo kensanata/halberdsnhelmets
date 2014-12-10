@@ -50,6 +50,8 @@ The images are from public domain works:
 
 * [Pennsylvanian](https://archive.org/details/pennsylvanian191920penn)
 
+* [Bain Collection](https://www.flickr.com/photos/library_of_congress/sets/72157603624867509/)
+
 Stripping EXIF Data
 ===================
 
