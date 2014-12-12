@@ -499,6 +499,11 @@ sub get_price_cache {
       T('holy water') => 25,
       T('wolfsbane') => 10,
       T('mirror') => [5, 10, 5]->[$i],
+      T('leather armor') => [20, 6, 20]->[$i],
+      T('chain mail') => [40, 70, 40]->[$i],
+      T('plate mail') => [60, 450, 60]->[$i],
+      T('shield') => 10,
+      T('helmet') => 10,
 	);
   }
   return \%price_cache;
@@ -507,20 +512,10 @@ sub get_price_cache {
 sub price {
   my $item = shift;
   my $price = get_price_cache()->{$item};
-  if (!$price) {
+  if (not defined $price) {
     error(T('Unknown Price'), T('%0: How much does this cost?', $item));
   }
   return $price;
-}
-
-sub affordable {
-  my ($money, %price) = @_;
-  foreach my $item (keys %price) {
-    if ($price{$item} > $money) {
-      delete $price{$item};
-    }
-  }
-  return keys %price;
 }
 
 # Use array references to buy one of several alternatives.
@@ -575,7 +570,7 @@ sub buy_tools {
   if (member($class, T('cleric'), T('dwarven craftpriest'), T('bladedancer'))) {
     ($money, @property) = buy(T('holy symbol'), $money, @property);
   } elsif ($class eq T('thief')) {
-    ($money, @property) = buy(T('holy symbol'), $money, @property);
+    ($money, @property) = buy(T('thieves’ tools'), $money, @property);
   }
   return ($money, @property);
 }
@@ -607,57 +602,48 @@ sub buy_protection {
 
 sub buy_armor {
   my ($money, $class, @property) = @_;
+
+  # a budget with which to buy armor
   my $budget = $money / 2;
   $budget = int($budget / 10) * 10;
   $money -= $budget;
 
+  if (member($class, T('magic-user'), T('mage'))) {
+    # no armor
+  } elsif (member($class, T('thief'), T('assassin'), T('bard'),
+		  T('bladedancer'), T('elven nightblade'))) {
+    # leather, no shield, no helmet
+    ($budget, @property) = buy(T('leather armor'), $budget, @property);
+  } elsif (member($class, T('explorer'))) {
+    # chain and shield
+    ($budget, @property) = buy([T('chain mail'),
+			       T('leather armor')], $budget, @property);
+    ($budget, @property) = buy(T('shield'), $budget, @property);
+    ($budget, @property) = buy(T('helmet'), $budget, @property);
+  } else {
+    # any armor
+    ($budget, @property) = buy([T('plate mail'),
+				T('chain mail'),
+				T('leather armor')], $budget, @property);
+    ($budget, @property) = buy(T('shield'), $budget, @property);
+    ($budget, @property) = buy(T('helmet'), $budget, @property);
+  }
+
+  # return unspent money
+  $money += $budget;
+  
+  # compute AC
   my $dex = $char{dex};
   my $ac = 9 - bonus($dex);
+  
+  if(member(T('plate mail'), @property)) { $ac -= 6; }
+  elsif(member(T('chain mail'), @property)) { $ac -= 4; }
+  elsif(member(T('leather armor'), @property)) { $ac -= 2; }
 
-  my ($leather, $chain, $plate);
-  if ($char{rules} eq "labyrinth lord") {
-    ($leather, $chain, $plate) = (6, 70, 450);
-  } else {
-    ($leather, $chain, $plate) = (20, 40, 60);
-  }
-
-  if ($class ne T('magic-user')
-      and $class ne T('thief')
-      and $budget >= $plate) {
-    $budget -= $plate;
-    push(@property, T('plate mail'));
-    $ac -= 6;
-  } elsif ($class ne T('magic-user')
-      and $class ne T('thief')
-      and $budget >= $chain) {
-    $budget -= $chain;
-    push(@property, T('chain mail'));
-    $ac -= 4
-  } elsif ($class ne T('magic-user')
-      and $budget >= $leather) {
-    $budget -= $leather;
-    push(@property, T('leather armor'));
-    $ac -= 2;
-  }
-
-  if ($class ne T('magic-user')
-      and $class ne T('thief')
-      and $budget >= 10) {
-    $budget -= 10;
-    push(@property, T('shield'));
-    $ac -= 1;
-  }
-
-  if ($class ne T('magic-user')
-      and $class ne T('thief')
-      and $budget >= 10) {
-    $budget -= 10;
-    push(@property, T('helmet'));
-  }
+  if(member(T('shield'), @property)) { $ac -= 1; }
+  if ($class eq T('bladedancer')) { $ac -= $char{level}; }
 
   provide("ac",  $ac);
-
-  $money += $budget;
 
   return ($money, @property);
 }
