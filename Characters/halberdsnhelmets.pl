@@ -17,6 +17,7 @@
 use CGI qw(-utf8);
 use XML::LibXML;
 use LWP::UserAgent;
+use List::Util 'shuffle';
 use utf8;
 
 # see __DATA__ at the end of the file
@@ -280,7 +281,7 @@ sub moldvay {
   if (not $char{"range-damage"}) {
     $char{"range-damage"} = $char{damage};
   }
-  saves();
+  moldvay_saves();
 }
 
 sub complete {
@@ -418,6 +419,8 @@ sub acks {
   if ($char{attack} and not $char{missile}) {
     $char{missile} =  $char{attack} - $char{"dex-bonus"};
   }
+
+  acks_saves();
 }
 
 sub compute_data {
@@ -438,25 +441,29 @@ sub compute_data {
   }
 }
 
+sub starting_gold {
+  if ($char{rules} eq "labyrinth lord") {
+    return roll_3d8() * 10;
+  }
+  return roll_3d6() * 10;
+}
+
 sub equipment {
   my $xp = $char{xp};
   my $level = $char{level};
   my $class = $char{class};
   return if $xp or $level > 1 or not $class;
 
-  my $money = 0;
-  if ($char{rules} eq "labyrinth lord") {
-    $money += roll_3d8() * 10;
-  } else {
-    $money += roll_3d6() * 10;
-  }
+  my $money = starting_gold();
   my @property = (T('(starting gold: %0)', $money));
 
-  push(@property, T('spell book')) if $class eq T('magic-user');
+  # free spellbook for arcane casters
+  if (member($class, T('magic-user'), T('elf'), T('mage'),
+	     T('elven spellsword'), T('elven nightblade'))) {
+    push(@property, T('spell book'));
+  }
 
-  $money -= 20;
-  push(@property, T('backpack'), T('iron rations (1 week)'));
-  push(@property, T('spell book')) if $class eq T('magic-user');
+  ($money, @property) = buy_basics($money, $class, @property);
   ($money, @property) = buy_armor($money, $class, @property);
   ($money, @property) = buy_weapon($money, $class, @property);
   ($money, @property) = buy_tools($money, $class, @property);
@@ -468,63 +475,134 @@ sub equipment {
   provide("property",  join("\\\\", @property));
 }
 
+my %price_cache;
+
+sub get_price_cache {
+  if (!%price_cache) {
+    
+    my $i = 0; # the default is B/X
+    if ($char{rules} eq "ACKS") { $i = 2; }
+    elsif ($char{rules} eq "labyrinth lord") { $i = 1; }
+  
+    %price_cache = (
+      T('backpack') => [5, 2, 2]->[$i],
+      # ACKS: 1-6gp for one week, LL: 5sp/day, B/X: 15gp
+      T('iron rations (1 week)') => [15, 3.5, 1]->[$i],
+      T('holy symbol') => 25,
+      T('thieves’ tools') => 25,
+      T('lantern') => [10, 9, 10]->[$i],
+      T('flask of oil') => [2, 0.1, 2]->[$i],
+      T('torches') => [1, 0.3, 0.1]->[$i],
+      T('rope') => 1,
+      T('iron spikes and hammer') => [3, 1.5, 3]->[$i],
+      T('wooden pole') => [1, 0.2, 0.1]->[$i],
+      T('holy water') => 25,
+      T('wolfsbane') => 10,
+      T('mirror') => [5, 10, 5]->[$i],
+	);
+  }
+  return \%price_cache;
+}
+
+sub price {
+  my $item = shift;
+  my $price = get_price_cache()->{$item};
+  if (!$price) {
+    error(T('Unknown Price'), T('%0: How much does this cost?', $item));
+  }
+  return $price;
+}
+
+sub affordable {
+  my ($money, %price) = @_;
+  foreach my $item (keys %price) {
+    if ($price{$item} > $money) {
+      delete $price{$item};
+    }
+  }
+  return keys %price;
+}
+
+# Use array references to buy one of several alternatives.
+# Buy a and b, or buy c instead:
+# ($money, @property) = buy([[a, b], c], $money, @property)
+sub buy {
+  my ($item, $money, @property) = @_;
+  if (ref $item eq 'ARRAY') {
+    for my $elem (@$item) {
+      if (ref $elem eq 'ARRAY') {
+	my $price = 0;
+	for my $thing (@$elem) {
+	  $price += price($thing);
+	}
+	if ($money >= $price) {
+	  $money -= $price;
+	  for my $thing (@$elem) {
+	    push(@property, $thing);
+	  }
+	  last;
+	}
+      } else {
+	my $price = price($elem);
+	if ($money >= $price) {
+	  $money -= $price;
+	  push(@property, $elem);
+	  last;
+	}
+      }
+    }
+  } else {
+    my $price = price($item);
+    if ($money >= $price) {
+      $money -= $price;
+      push(@property, $item);
+    }
+  }
+  return ($money, @property);
+}
+
+sub buy_basics {
+  my ($money, $class, @property) = @_;
+
+  ($money, @property) = buy(T('backpack'), $money, @property);
+  ($money, @property) = buy(T('iron rations (1 week)'), $money, @property);
+  
+  return ($money, @property);
+}
+
 sub buy_tools {
   my ($money, $class, @property) = @_;
-  if ($class eq T('cleric')
-      and $money >= 25) {
-    $money -= 25;
-    push(@property, T('holy symbol'));
-  } elsif ($class eq T('thief')
-      and $money >= 25) {
-    $money -= 25;
-    push(@property, T('thieves’ tools'));
+  if (member($class, T('cleric'), T('dwarven craftpriest'), T('bladedancer'))) {
+    ($money, @property) = buy(T('holy symbol'), $money, @property);
+  } elsif ($class eq T('thief')) {
+    ($money, @property) = buy(T('holy symbol'), $money, @property);
   }
   return ($money, @property);
 }
 
 sub buy_light {
   my ($money, $class, @property) = @_;
-  if ($money >= 12) {
-    $money -= 12;
-    push(@property, T('lantern'));
-    push(@property, T('flask of oil'));
-    if ($money >= 2) {
-      $money -= 2;
-      add(T('flask of oil'), @property);
-    }
-  } elsif ($money >= 1) {
-    $money -= 1;
-    push(@property, T('torches'));
-  }
-  return ($money, @property);
+  return buy([[T('lantern'), T('flask of oil')],
+	      T('torches')],
+	     $money, @property);
 }
 
 sub buy_gear {
   my ($money, $class, @property) = @_;
-  %price = (T('rope') => 1,
-	    T('iron spikes and hammer') => 3,
-	    T('wooden pole') => 1);
-  my $item = one(affordable($money, %price));
-
-  if ($item and $money >= $price{$item}) {
-    $money -= $price{$item};
-    push(@property, $item);
-  }
-  return ($money, @property);
+  my @preferences = shuffle(
+    T('rope'),
+    T('iron spikes and hammer'),
+    T('wooden pole'));
+  return buy(\@preferences, $money, @property);
 }
 
 sub buy_protection {
   my ($money, $class, @property) = @_;
-  %price = (T('holy water') => 25,
-	    T('wolfsbane') => 10,
-	    T('mirror') => 5);
-  my $item = one(affordable($money, %price));
-
-  if ($item and $money >= $price{$item}) {
-    $money -= $price{$item};
-    push(@property, $item);
-  }
-  return ($money, @property);
+  my @preferences = shuffle(
+    T('holy water'),
+    T('wolfsbane'),
+    T('mirror'));
+  return buy(\@preferences, $money, @property);
 }
 
 sub buy_armor {
@@ -640,16 +718,6 @@ sub two {
   my $j = int(rand(scalar @_));
   $j = int(rand(scalar @_)) until $i != $j;
   return ($_[$i], $_[$j]);
-}
-
-sub affordable {
-  my ($money, %price) = @_;
-  foreach my $item (keys %price) {
-    if ($price{$item} > $money) {
-      delete $price{$item};
-    }
-  }
-  return keys %price;
 }
 
 sub member {
@@ -833,7 +901,7 @@ sub add {
   }
 }
 
-sub saves {
+sub moldvay_saves {
   my $class = $char{class};
   my $level = $char{level};
   return unless $class and $level >= 1 and $level <= 3;
@@ -856,6 +924,47 @@ sub saves {
   } elsif ($class eq T('thief')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (16, 14, 13, 15, 13);
+  }
+
+  provide("breath",  $breath) unless $char{breath};
+  provide("poison",  $poison) unless $char{poison};
+  provide("petrify",  $petrify) unless $char{petrify};
+  provide("wands",  $wands) unless $char{wands};
+  provide("spells",  $spells) unless $char{spells};
+}
+
+sub acks_saves {
+  my $class = $char{class};
+  my $level = $char{level};
+  return unless $class and $level == 1;
+  my ($petrify, $poison, $breath, $wands, $spells);
+  if ($class eq T('fighter')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (15, 14, 16, 16, 17);
+  } elsif ($class eq T('mage')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (13, 13, 15, 11, 12);
+  } elsif (member($class, T('cleric'), T('bladedancer'))) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (13, 10, 16, 13, 15);
+  } elsif (member($class, T('thief'),  T('bard'))) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (13, 13, 16, 14, 15);
+  } elsif ($class eq T('assassin')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (15, 14, 16, 16, 17);
+  } elsif ($class eq T('dwarven vaultguard')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (11, 10, 13, 12, 13);
+  } elsif ($class eq T('dwarven craftpriest')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (9, 6, 13, 9, 11);
+  } elsif ($class eq T('elven spellsword')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (14, 14, 16, 16, 16);
+  } elsif ($class eq T('elven nightblade')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (12, 13, 16, 14, 14);
   }
 
   provide("breath",  $breath) unless $char{breath};
@@ -1079,6 +1188,8 @@ sub random_acks {
     $con = roll_3d6();
   }
 
+  my $title = $char{title};
+
   provide("str", $str);
   provide("dex", $dex);
   provide("con", $con);
@@ -1095,38 +1206,50 @@ sub random_acks {
   if (not $class) {
     if (average($con) and $best eq "str" and d6() > 2) {
       $class = T('dwarven vaultguard');
+      $title = 'Sentry';
     } elsif (average($con) and $best eq "wis" and d6() > 2) {
       $class = T('dwarven craftpriest');
+      $title = T('Dwarven Craft-Catechist');
     } elsif (average($int) and $best eq "str") {
       $class = T('elven spellsword');
-    } elsif (average($int) and $best eq "dex" and d6() > 2) {
+      $title = T('Arcanist-Guardian');
+    } elsif (average($int) and $best eq "dex" and d6() > 3) {
       $class = T('elven nightblade');
+      $title = T('Arcanist-Avenger');
     } elsif (average($wis) and $best eq "dex") {
       $class = T('bladedancer');
+      $title = T('Blade-Initiate');
     } elsif (average($str, $dex) >= 2 and good($str, $dex) >= 1) {
       if (d6() > 3) {
 	$class = T('explorer');
+	$title = T('Scout');
       } else {
 	$class = T('assassin');
+	$title = T('Thug');
       }
-    } elsif (average($str, $con) >= 2 and good($str, $con) >= 1) {
+    } elsif (good($str, $con) >= 2) {
       $class = T('fighter');
-    } elsif ($best eq "wis") {
+      $title = T('Man-at-Arms');
+    } elsif (good($wis)) {
       $class = T('cleric');
+      $title = T('Catechist');
     } elsif ($best eq "int" and d6() > 2) {
       $class = T('mage');
-    } elsif (average($dex)) {
-      if ($best eq "cha") {
+      $title = T('Arcanist');
+    } elsif (average($dex) and good($cha)) {
 	$class = T('bard');
-      } else {
-	$class = T('thief');
-      }
+	$title = T('Reciter');
+    } elsif (average($dex)) {
+      $class = T('thief');
+      $title = T('Footpad');
     } else {
-      $class = one(T('cleric'), T('mage'), T('fighter'), T('thief'));
+      $class = T('fighter');
+      $title = T('Man-at-Arms');
     }
   }
 
   provide("class",  $class);
+  provide("title",  $title);
 
   my $hp = $char{hp};
   if (not $hp) {
@@ -1144,7 +1267,8 @@ sub random_acks {
 
   provide("hp",  $hp);
 
-  # equipment
+  equipment();
+
   # abilities
   # spells
 }
@@ -1866,13 +1990,14 @@ sub characters {
 }
 
 sub stats {
+  my $n = shift;
   print $q->header(-type=>"text/plain",
 		   -charset=>"utf8");
   binmode(STDOUT, ":utf8");
 
   my (%class, %property, %init);
   %init = map { $_ => $char{$_} } @provided;
-  for (my $i = 0; $i < 10000; $i++) {
+  for (my $i = 0; $i < $n; $i++) {
     $q->delete_all();
     %char = %init;
     random_parameters();
@@ -2168,8 +2293,8 @@ sub main {
     characters();
   } elsif ($q->path_info =~ m!/translation\b!) {
     translation();
-  } elsif ($q->path_info =~ m!/stats\b!) {
-    stats();
+  } elsif ($q->path_info =~ m!/stats\b/?(\d+)!) {
+    stats($1 || 10000);
   } elsif ($q->path_info =~ m!/link\b!) {
     show_link();
   } elsif ($q->path_info =~ m!/redirect\b!) {
