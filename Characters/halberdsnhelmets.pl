@@ -17,7 +17,8 @@
 use CGI qw(-utf8);
 use XML::LibXML;
 use LWP::UserAgent;
-use List::Util 'shuffle';
+use List::Util qw(shuffle);
+use POSIX qw(floor ceil);
 use utf8;
 
 # see __DATA__ at the end of the file
@@ -220,6 +221,39 @@ sub svg_transform {
   for my $node ($nodes->get_nodelist) {
     $node->setValue(link_to("link"));
   }
+  return $doc;
+}
+
+sub svg_show_id {
+  my $doc = shift;
+
+  my $svg = XML::LibXML::XPathContext->new;
+  $svg->registerNs("svg", "http://www.w3.org/2000/svg");
+
+  for my $node ($svg->find(qq{//svg:text/svg:tspan/..}, $doc)->get_nodelist) {
+    my $id = $node->getAttribute("id");
+    next if $id =~ /^text[0-9]+(-[0-9]+)*$/; # skip Inkscape default texts
+    next unless $id =~ /^[-a-z0-9]+$/;
+    $node->removeChildNodes();
+    $node->appendText($id);
+    my $style = $node->getAttribute("style");
+    $style =~ s/font-size:\d+px/font-size:8px/;
+    $style =~ s/fill:#\d+/fill:magenta/ or $style .= ";fill:magenta";
+    $node->setAttribute("style", $style);
+  }
+
+  for my $node ($svg->find(qq{//svg:image}, $doc)->get_nodelist) {
+    my $id = $node->getAttribute("id");
+    next if $id =~ /^text[0-9]+(-[0-9]+)*$/; # skip Inkscape default texts
+    next unless $id =~ /^[-a-z0-9]+$/;
+    my $text = XML::LibXML::Element->new("text");
+    $text->setAttribute("x", $node->getAttribute("x") + 5);
+    $text->setAttribute("y", $node->getAttribute("y") + 10);
+    $text->appendText($id);
+    $text->setAttribute("style", "font-size:8px;fill:magenta");
+    $node->addSibling($text);
+  }
+
   return $doc;
 }
 
@@ -455,7 +489,7 @@ sub equipment {
   return if $xp or $level > 1 or not $class;
 
   my $money = starting_gold();
-  my @property = (T('(starting gold: %0)', $money));
+  my @property;
 
   # free spellbook for arcane casters
   if (member($class, T('magic-user'), T('elf'), T('mage'),
@@ -469,9 +503,11 @@ sub equipment {
   ($money, @property) = buy_tools($money, $class, @property);
   ($money, @property) = buy_light($money, $class, @property);
   ($money, @property) = buy_gear($money, $class, @property);
-  ($money, @property) = buy_protection($money, $class,
-				       @property);
-  push(@property, T('%0 gold', $money));
+  ($money, @property) = buy_protection($money, $class, @property);
+  my $gold = int($money);
+  my $silver = int(10 * ($money - $gold) + 0.5);;
+  push(@property, T('%0 gold', $gold)) if $gold;
+  push(@property, T('%0 silver', $silver)) if $silver;
   provide("property",  join("\\\\", @property));
 }
 
@@ -504,6 +540,26 @@ sub get_price_cache {
       T('plate mail') => [60, 450, 60]->[$i],
       T('shield') => 10,
       T('helmet') => 10,
+      T('club') => [3, 3, 1]->[$i],
+      T('mace') => 5,
+      T('war hammer') => [5, 7, 5]->[$i],
+      T('staff') => [2, 2, 1]->[$i],
+      T('dagger') => 3,
+      T('silver dagger') => 30,
+      T('two handed sword') => 15,
+      T('battle axe') => [7, 6, 7]->[$i],
+      T('pole arm') => 7,
+      T('long sword') => 10,
+      T('short sword') => 7,
+      T('long bow') => [40, 40, 7]->[$i],
+      T('quiver with 20 arrows') => [5, 5, 1]->[$i],
+      T('short bow') => [25, 25, 3]->[$i],
+      T('crossbow') => [30, 25, 30]->[$i],
+      T('case with 30 bolts') => [10, 9, 3]->[$i],
+      T('sling') => 2,
+      T('pouch with 30 stones') => 0,
+      T('hand axe') => [4, 1, 4]->[$i],
+      T('spear') => 3,
 	);
   }
   return \%price_cache;
@@ -518,22 +574,43 @@ sub price {
   return $price;
 }
 
+# add($item, \@property) modifies @property directly
+sub add {
+  my ($item, $property) = @_;
+  foreach (@$property) {
+    if ($_ eq $item) {
+      if (/\(\d+\)$/) {
+	my $n = $1++;
+	s/\(\d+\)$/($n)/;
+      } else {
+	$_ .= " (2)";
+      }
+      $item = undef;
+      last;
+    }
+  }
+  if ($item) {
+    push(@$property, $item);
+  }
+}
+
 # Use array references to buy one of several alternatives.
 # Buy a and b, or buy c instead:
 # ($money, @property) = buy([[a, b], c], $money, @property)
 sub buy {
   my ($item, $money, @property) = @_;
-  if (ref $item eq 'ARRAY') {
+  if (ref $item eq "ARRAY") {
     for my $elem (@$item) {
-      if (ref $elem eq 'ARRAY') {
+      if (ref $elem eq "ARRAY") {
 	my $price = 0;
 	for my $thing (@$elem) {
 	  $price += price($thing);
 	}
 	if ($money >= $price) {
 	  $money -= $price;
-	  for my $thing (@$elem) {
-	    push(@property, $thing);
+	  $elem->[-1] .= " (${price}gp)" if $char{debug};
+	  foreach (@$elem) {
+	    add($_, \@property);
 	  }
 	  last;
 	}
@@ -541,7 +618,8 @@ sub buy {
 	my $price = price($elem);
 	if ($money >= $price) {
 	  $money -= $price;
-	  push(@property, $elem);
+	  $elem .= " (${price}gp)" if $char{debug};
+	  add($elem, \@property);
 	  last;
 	}
       }
@@ -550,7 +628,8 @@ sub buy {
     my $price = price($item);
     if ($money >= $price) {
       $money -= $price;
-      push(@property, $item);
+      $item .= " (${price}gp)" if $char{debug};
+      add($item, \@property);
     }
   }
   return ($money, @property);
@@ -558,7 +637,7 @@ sub buy {
 
 sub buy_basics {
   my ($money, $class, @property) = @_;
-
+  push(@property, "- $money gp -") if $char{debug};
   ($money, @property) = buy(T('backpack'), $money, @property);
   ($money, @property) = buy(T('iron rations (1 week)'), $money, @property);
   
@@ -567,6 +646,7 @@ sub buy_basics {
 
 sub buy_tools {
   my ($money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char{debug};
   if (member($class, T('cleric'), T('dwarven craftpriest'), T('bladedancer'))) {
     ($money, @property) = buy(T('holy symbol'), $money, @property);
   } elsif ($class eq T('thief')) {
@@ -577,6 +657,7 @@ sub buy_tools {
 
 sub buy_light {
   my ($money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char{debug};
   return buy([[T('lantern'), T('flask of oil')],
 	      T('torches')],
 	     $money, @property);
@@ -584,6 +665,7 @@ sub buy_light {
 
 sub buy_gear {
   my ($money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char{debug};
   my @preferences = shuffle(
     T('rope'),
     T('iron spikes and hammer'),
@@ -593,6 +675,7 @@ sub buy_gear {
 
 sub buy_protection {
   my ($money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char{debug};
   my @preferences = shuffle(
     T('holy water'),
     T('wolfsbane'),
@@ -602,10 +685,8 @@ sub buy_protection {
 
 sub buy_armor {
   my ($money, $class, @property) = @_;
-
-  # a budget with which to buy armor
+  push(@property, "- $money gp -") if $char{debug};
   my $budget = $money / 2;
-  $budget = int($budget / 10) * 10;
   $money -= $budget;
 
   if (member($class, T('magic-user'), T('mage'))) {
@@ -628,9 +709,6 @@ sub buy_armor {
     ($budget, @property) = buy(T('shield'), $budget, @property);
     ($budget, @property) = buy(T('helmet'), $budget, @property);
   }
-
-  # return unspent money
-  $money += $budget;
   
   # compute AC
   my $dex = $char{dex};
@@ -645,7 +723,111 @@ sub buy_armor {
 
   provide("ac",  $ac);
 
-  return ($money, @property);
+  return ($money + $budget, @property);
+}
+
+sub buy_melee_weapon {
+  my ($money, $class, @property) = @_;
+  my $str = $char{str};
+  my $hp  = $char{hp};
+  my $shield = member(T('shield'), @property);
+  my @preferences;
+  
+  if ($class eq T('cleric')) {
+    @preferences = shuffle(
+      T('mace'),
+      T('war hammer'),
+      T('club'),
+      T('staff'));
+  } elsif (member($class, T('magic-user'), T('mage'))) {
+    @preferences = shuffle(
+      T('dagger'),
+      T('staff'));
+  } else {
+    if ($class eq T('fighter')
+	and good($str)
+	and $hp > 6
+	and not $shield) {
+      @preferences = (T('two handed sword'), T('battle axe'), T('pole arm'));
+    }
+    elsif (member($class, T('dwarf'), T('dwarven vaultguard'),
+		  T('dwarven craftpriest'))
+	   and not $shield) {
+      @preferences = (T('battle axe'));
+    }
+    push(@preferences, T('long sword'), T('short sword'));
+  }
+  return buy(\@preferences, $money, @property);
+}
+
+sub buy_throwing_weapon {
+  my ($money, $class, @property) = @_;
+  if (member($class, T('dwarf'), T('dwarven vaultguard'), T('dwarven craftpriest'))
+      or member(T('battle axe'), @property)) {
+    push(@preferences, T('hand axe'));
+    push(@preferences, T('hand axe'));
+  }
+  if ($class eq T('fighter')) {
+    push(@preferences, T('spear'));
+  }
+  return buy(\@preferences, $money, @property);
+}
+
+sub buy_ranged_weapon {
+  my ($money, $class, @property) = @_;
+  my $dex = $char{dex};
+  my @preferences;
+  if (($class eq T('fighter') or $class eq T('elf'))
+      and average($dex)) {
+    push(@preferences,
+	 [T('long bow'),
+	  T('quiver with 20 arrows'),
+	  T('quiver with 20 arrows')],
+	 [T('long bow'),
+	  T('quiver with 20 arrows')]);
+  }
+  if (not(member($class, T('magic-user'), T('mage'), T('bladedancer'),
+		 T('dwarven craftpriest')))) {
+    if (not(member($class, T('cleric')))) {
+      if (average($dex)) {
+	push(@preferences,
+	     [T('short bow'),
+	      T('quiver with 20 arrows'),
+	      T('quiver with 20 arrows')],
+	     [T('short bow'),
+	      T('quiver with 20 arrows')]);
+      }
+      push(@preferences,
+	   [T('crossbow'),
+	    T('case with 30 bolts')]);
+    }
+    push(@preferences,
+	 [T('sling'),
+	  T('pouch with 30 stones')]);
+  }
+  return buy(\@preferences, $money, @property);
+}
+
+sub buy_weapon {
+  my ($money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char{debug};
+  my $budget = $money / 2;
+  $money -= $budget;
+  
+  ($budget, @property) = buy_melee_weapon($budget, $class, @property);
+  ($budget, @property) = buy_throwing_weapon($budget, $class, @property);
+  ($budget, @property) = buy_ranged_weapon($budget, $class, @property);
+
+  if ($class ne T('cleric')) {
+    ($budget, @property) = buy(T('silver dagger'), $budget, @property);
+  }
+
+  if ($class ne T('cleric') and $class ne T('magic-user')) {
+    ($budget, @property) = buy(T('dagger'), $budget, @property);
+    ($budget, @property) = buy(T('dagger'), $budget, @property);
+  }
+
+  return ($money + $budget, @property);
 }
 
 sub spellbook {
@@ -691,199 +873,6 @@ sub spellbook {
 	    T('shield'),
 	    T('sleep'),
 	    T('ventriloquism'));
-  }
-}
-
-sub one {
-  my $i = int(rand(scalar @_));
-  return $_[$i];
-}
-
-sub two {
-  my $i = int(rand(scalar @_));
-  my $j = int(rand(scalar @_));
-  $j = int(rand(scalar @_)) until $i != $j;
-  return ($_[$i], $_[$j]);
-}
-
-sub member {
-  my $element = shift;
-  foreach (@_) {
-    return 1 if $element eq $_;
-  }
-}
-
-sub buy_weapon {
-  my ($money, $class, @property) = @_;
-  my $budget = $money / 2;
-  $money -= $budget;
-
-  my $str = $char{str};
-  my $dex = $char{dex};
-  my $hp  = $char{hp};
-  my $shield = member(T('shield'), @property);
-
-  my ($club, $mace, $warhammer, $staff, $dagger, $twohanded, $battleaxe,
-      $polearm, $longsword, $shortsword);
-
-  if ($char{rules} eq "labyrinth lord") {
-    ($club, $mace, $warhammer, $staff, $dagger, $twohanded, $battleaxe,
-     $polearm, $longsword, $shortsword) =
-       (3, 5, 7, 2, 3, 15, 6, 7, 10, 7);
-  } else {
-    ($club, $mace, $warhammer, $staff, $dagger, $twohanded, $battleaxe,
-     $polearm, $battleaxe, $longsword, $shortsword) =
-       (3, 5, 5, undef, 3, 15, 7, 7, 10, 7);
-  }
-
-  if ($class eq T('cleric')) {
-    if ($mace == $warhammer && $budget >= $mace) {
-      $budget -= $mace;
-      push(@property, one(T('mace'), T('war hammer')));
-    } elsif ($budget >= $mace) {
-      $budget -= $mace;
-      push(@property, T('mace'));
-    } elsif ($staff == $club && $budget >= $club) {
-      $budget -= $club;
-      push(@property, one(T('club'), T('staff')));
-    } elsif ($budget >= $club) {
-      $budget -= $club;
-      push(@property, T('staff'));
-    }
-  } elsif ($class eq T('magic-user')
-      and $budget >= $dagger) {
-    $budget -= $dagger;
-    push(@property, T('dagger'));
-  } elsif ($class eq T('fighter')
-	   and good($str)
-	   and $hp > 6
-	   and not $shield
-	   and $budget >= $twohanded) {
-    $budget -= $twohanded;
-    push(@property, T('two handed sword'));
-  } elsif ($class eq T('fighter')
-	   and good($str)
-	   and $hp > 6
-	   and not $shield
-	   and $budget >= $battleaxe) {
-    $budget -= $battleaxe;
-    push(@property, T('battle axe'));
-  } elsif ($class eq T('fighter')
-	   and average($str)
-	   and not $shield
-	   and $budget >= $polearm) {
-    $budget -= $polearm;
-    push(@property, T('pole arm'));
-  } elsif ($class eq T('dwarf')
-	   and not $shield
-	   and $budget >= $battleaxe) {
-    $budget -= $battleaxe;
-    push(@property, T('battle axe'));
-  } elsif ($budget >= $longsword
-	   and d6() > 1) {
-    $budget -= $longsword;
-    push(@property, T('long sword'));
-  } elsif ($budget >= $shortsword) {
-    $budget -= $shortsword;
-    push(@property, T('short sword'));
-  }
-
-  my ($longbow, $arrows, $shortbow, $crossbow, $quarrels);
-  if ($char{rules} eq "labyrinth lord") {
-    ($longbow, $arrows, $shortbow, $crossbow, $quarrels, $sling)
-      = (40, 5, 25, 25, 9, 2);
-  } else {
-    ($longbow, $arrows, $shortbow, $crossbow, $quarrels, $sling)
-      = (40, 5, 25, 30, 10, 2);
-  }
-
-  if (($class eq T('fighter') or $class eq T('elf'))
-      and average($dex)
-      and $budget >= ($longbow + $arrows)) {
-    $budget -= ($longbow + $arrows);
-    push(@property, T('long bow'));
-    push(@property, T('quiver with 20 arrows'));
-    if ($budget >= $arrows) {
-      $budget -= $arrows;
-      add(T('quiver with 20 arrows'), @property);
-    }
-  } elsif (($class ne T('cleric') and $class ne T('magic-user'))
-      and average($dex)
-      and $budget >= ($shortbow + $arrows)) {
-    $budget -= ($shortbow + $arrows);
-    push(@property, T('short bow'));
-    push(@property, T('quiver with 20 arrows'));
-    if ($budget >= $arrows) {
-      $budget -= $arrows;
-      add(T('quiver with 20 arrows'), @property);
-    }
-  } elsif (($class ne T('cleric') and $class ne T('magic-user'))
-      and $budget >= ($crossbow + $bolts)) {
-    $budget -= ($crossbow + $bolts);
-    push(@property, T('crossbow'));
-    push(@property, T('case with 30 bolts'));
-  } elsif ($class ne T('magic-user')
-      and $budget >= $sling) {
-    $budget -= $sling;
-    push(@property, T('sling'));
-    push(@property, T('pouch with 30 stones'));
-  }
-
-  my ($handaxe, $spear);
-  if ($char{rules} eq "labyrinth lord") {
-    ($handaxe, $spear) = (1, 3);
-  } else {
-    ($handaxe, $spear) = (4, 3);
-  }
-
-  if (($class eq T('dwarf') or member(T('battle axe'), @property))
-      and $budget >= $handaxe) {
-    $budget -= $handaxe;
-    push(@property, T('hand axe'));
-    if ($budget >= $handaxe) {
-      $budget -= $handaxe;
-      add(T('hand axe'), @property);
-    }
-  } elsif ($class eq T('fighter')
-	   and $budget >= $spear) {
-    $budget -= $spear;
-    push(@property, T('spear'));
-  }
-
-  if ($class ne T('cleric')
-      and $budget >= (10 * $dagger)) {
-    $budget -= (10 * $dagger);
-    push(@property, T('silver dagger'));
-  }
-
-  if ($class ne T('cleric')
-      and $class ne T('magic-user')
-      and $budget >= $dagger) {
-    $budget -=$dagger;
-    push(@property, T('dagger'));
-    if ($budget >= $dagger) {
-      $budget -=$dagger;
-      add(T('dagger'), @property);
-    }
-  }
-
-  $money += $budget;
-
-  return ($money, @property);
-}
-
-sub add {
-  my $item = shift;
-  foreach (@_) {
-    if ($_ eq $item) {
-      if (/\(\d+\)$/) {
-	my $n = $1++;
-	s/\(\d+\)$/($n)/;
-      } else {
-	$_ .= " (2)";
-      }
-      last;
-    }
   }
 }
 
@@ -960,39 +949,6 @@ sub acks_saves {
   provide("spells",  $spells) unless $char{spells};
 }
 
-sub svg_show_id {
-  my $doc = shift;
-
-  my $svg = XML::LibXML::XPathContext->new;
-  $svg->registerNs("svg", "http://www.w3.org/2000/svg");
-
-  for my $node ($svg->find(qq{//svg:text/svg:tspan/..}, $doc)->get_nodelist) {
-    my $id = $node->getAttribute("id");
-    next if $id =~ /^text[0-9]+(-[0-9]+)*$/; # skip Inkscape default texts
-    next unless $id =~ /^[-a-z0-9]+$/;
-    $node->removeChildNodes();
-    $node->appendText($id);
-    my $style = $node->getAttribute("style");
-    $style =~ s/font-size:\d+px/font-size:8px/;
-    $style =~ s/fill:#\d+/fill:magenta/ or $style .= ";fill:magenta";
-    $node->setAttribute("style", $style);
-  }
-
-  for my $node ($svg->find(qq{//svg:image}, $doc)->get_nodelist) {
-    my $id = $node->getAttribute("id");
-    next if $id =~ /^text[0-9]+(-[0-9]+)*$/; # skip Inkscape default texts
-    next unless $id =~ /^[-a-z0-9]+$/;
-    my $text = XML::LibXML::Element->new("text");
-    $text->setAttribute("x", $node->getAttribute("x") + 5);
-    $text->setAttribute("y", $node->getAttribute("y") + 10);
-    $text->appendText($id);
-    $text->setAttribute("style", "font-size:8px;fill:magenta");
-    $node->addSibling($text);
-  }
-
-  return $doc;
-}
-
 sub d3 {
   return 1 + int(rand(3));
 }
@@ -1051,6 +1007,25 @@ sub provide {
   my ($key, $value) = @_;
   push(@provided, $key) unless $char{$key};
   $char{$key} = $value;
+}
+
+sub one {
+  my $i = int(rand(scalar @_));
+  return $_[$i];
+}
+
+sub two {
+  my $i = int(rand(scalar @_));
+  my $j = int(rand(scalar @_));
+  $j = int(rand(scalar @_)) until $i != $j;
+  return ($_[$i], $_[$j]);
+}
+
+sub member {
+  my $element = shift;
+  foreach (@_) {
+    return 1 if $element eq $_;
+  }
 }
 
 sub random_moldvay {
@@ -2303,6 +2278,10 @@ main();
 __DATA__
 %0 gold
 %0 Gold
+%0 silver
+%0 Silber
+%0: How much does this cost?
+%0: Wieviel kostet das?
 (starting gold: %0)
 (Startgold: %0)
 +1 bonus to ranged weapons
@@ -2329,14 +2308,24 @@ Adventure Conqueror King character
 Adventure Conqueror King Charakter
 Also note that the parameters need to be UTF-8 encoded.
 Die Parameter müssen UTF-8 codiert sein.
+Arcanist
+Arkanist
+Arcanist-Avenger
+Arkaner Rächer
+Arcanist-Guardian
+Arkaner Wächter
 As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.
 Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste etwas unterscheidet, kann man auch %0, %1 oder %2 mit Labyrinth Lord Regeln generieren.
 Basic D&amp;D
 Basic D&amp;D
+Blade-Initiate
+Klingenkenner
 Bookmark
 Lesezeichen
 Bookmark the following link to your %0.
 Den Charakter kann man einfach aufbewahren, in dem man sich das %0 als Lesezeichen speichert.
+Catechist
+Katechet
 Character Sheet
 Charakterblatt
 Character Sheet Generator
@@ -2349,6 +2338,8 @@ Crypts &amp; Things
 Crypts &amp; Things
 Crypts &amp; Things character
 Crypts &amp; Things Charakter
+Dwarven Craft-Catechist
+Zwergischer Werk-Katechet
 ESP
 Gedankenlesen
 Edit
@@ -2357,6 +2348,8 @@ English
 Englisch
 First level spells:
 Sprüche der ersten Stufe:
+Footpad
+Strassenräuber
 German
 Deutsch
 Get started with a %0.
@@ -2371,12 +2364,20 @@ If the template contains a multiline placeholder, the parameter may also provide
 Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch doppelte Backslashes trennen.
 In addition to that, some parameters are computed unless provided:
 Zudem werden einige Parameter berechnet, sofern sie nicht angegeben wurden:
+Man-at-Arms
+Landsknecht
 Name:
 Name:
 Pendragon
 Pendragon
 Pendragon character
 Pendragon Charakter
+Reciter
+Rezitierer
+Scout
+Späher
+Sentry
+Wächter
 Source
 Quellcode
 Spells:
@@ -2399,6 +2400,10 @@ The script can also show %0.
 Das Skript kann auch zeigen %0.
 This is the %0 character sheet generator.
 Dies ist der %0 Charaktergenerator.
+Thug
+Schläger
+Unknown Price
+Unbekannter Preis
 Use the following form to make changes to your character sheet.
 Mit dem folgenden Formular lassen sich leicht Änderungen am Charakter machen.
 You can also copy and paste it on to a %0 page to generate an inline character sheet.
@@ -2411,10 +2416,16 @@ and
 und
 arcane lock
 Arkanes Schloss
+assassin
+Assassine
 backpack
 Rucksack
+bard
+Barde
 battle axe
 Streitaxt
+bladedancer
+Klingentänzer
 bunch of characters
 einige Charaktere
 case with 30 bolts
@@ -2443,14 +2454,24 @@ detect magic
 Magie entdecken
 dwarf
 Zwerg
+dwarven craftpriest
+Zwergischer Werkpriester
+dwarven vaultguard
+Zwergischer Schatzwächter
 elderly man
 älterer Mann
 elderly woman
 ältere Frau
 elf
 Elf
+elven nightblade
+Elfische Nachtklinge
+elven spellsword
+Elfische Zauberklinge
 example
 Beispiel
+explorer
+Forscher
 fighter
 Krieger
 flask of oil
@@ -2495,6 +2516,8 @@ long sword
 Langschwert
 mace
 Streitkeule
+mage
+Magier
 magic missile
 Magisches Geschoss
 magic-user
