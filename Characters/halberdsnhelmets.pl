@@ -1248,7 +1248,7 @@ sub random_parameters {
   } elsif ($char{rules} eq "acks") {
     random_acks();
   } else {
-    random_moldvay();
+    error(T('Unknown Rules'), T('%0 is unknown.', $char{rules}));
   }
 }
 
@@ -2254,7 +2254,7 @@ sub main {
     characters();
   } elsif ($q->path_info =~ m!/translation\b!) {
     translation();
-  } elsif ($q->path_info =~ m!/stats\b/?(\d+)!) {
+  } elsif ($q->path_info =~ m!/stats(?:/(\d+))!) {
     stats($1 || 10000);
   } elsif ($q->path_info =~ m!/link\b!) {
     show_link();
