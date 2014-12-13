@@ -2203,9 +2203,9 @@ sub help {
   print "</ul>";
 
   ($random, $bunch, $stats) =
-      ($q->a({-href=>"$url/random/$lang?rules=acks;charsheet=ACKS.svg"}, T('random character')),
-       $q->a({-href=>"$url/characters/$lang?rules=acks;charsheet=ACKS.svg"}, T('bunch of characters')),
-       $q->a({-href=>"$url/stats/$lang?rules=acks;charsheet=ACKS.svg"}, T('some statistics')));
+      ($q->a({-href=>"$url/random/$lang?rules=acks"}, T('random character')),
+       $q->a({-href=>"$url/characters/$lang?rules=acks"}, T('bunch of characters')),
+       $q->a({-href=>"$url/stats/$lang?rules=acks"}, T('some statistics')));
 
   print $q->p(T('The script can also generate a %0, a %1, or %2.',
 		$random, $bunch, $stats));
