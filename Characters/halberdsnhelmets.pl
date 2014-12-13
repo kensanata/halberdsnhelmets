@@ -1960,6 +1960,7 @@ sub stats {
   %init = map { $_ => $char{$_} } @provided;
   for (my $i = 0; $i < $n; $i++) {
     $q->delete_all();
+    %property = ();
     %char = %init;
     random_parameters();
     $class{$char{class}}++;
