@@ -764,7 +764,7 @@ sub buy_throwing_weapon {
   my ($money, $class, @property) = @_;
   if (member($class, T('dwarf'), T('dwarven vaultguard'), T('dwarven craftpriest'))
       or member(T('battle axe'), @property)) {
-    push(@preferences, T('hand axe'));
+    push(@preferences, [T('hand axe'), T('hand axe')]);
     push(@preferences, T('hand axe'));
   }
   if ($class eq T('fighter')) {
