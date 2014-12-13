@@ -1167,7 +1167,7 @@ sub random_acks {
   if (not $class) {
     if (average($con) and $best eq "str" and d6() > 2) {
       $class = T('dwarven vaultguard');
-      $title = 'Sentry';
+      $title = T('Sentry');
     } elsif (average($con) and $best eq "wis" and d6() > 2) {
       $class = T('dwarven craftpriest');
       $title = T('Dwarven Craft-Catechist');
@@ -2120,10 +2120,10 @@ sub help {
   print $q->h2(T('Pendragon'));
   print $q->p(T('The script also supports Pendragon characters (but cannot generate them randomly):'),
 	      T('Get started with a %0.',
-		$q->a({-href=>"$url/link/$lang?rules=pendragon;charsheet=http%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
+		$q->a({-href=>"$url/link/$lang?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
 		      T('Pendragon character'))),
 	      T('The script can also show %0.',
-		$q->a({-href=>"$url/show/$lang?rules=pendragon;charsheet=http%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
+		$q->a({-href=>"$url/show/$lang?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
 		      T('which parameters go where'))));
   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
   print "<ul>";
@@ -2156,10 +2156,10 @@ sub help {
   print $q->h2(T('Crypts &amp; Things'));
   print $q->p(T('The script also supports Crypts &amp; Things characters (but cannot generate them randomly):'),
 	      T('Get started with a %0.',
-		$q->a({-href=>"$url/link/$lang?rules=crypts-n-things;charsheet=http%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
+		$q->a({-href=>"$url/link/$lang?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
 		      T('Crypts &amp; Things character'))),
 	      T('The script can also show %0.',
-		$q->a({-href=>"$url/show/$lang?rules=crypts-n-things;charsheet=http%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
+		$q->a({-href=>"$url/show/$lang?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
 		      T('which parameters go where'))));
 
   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
@@ -2181,10 +2181,10 @@ sub help {
   print $q->h2(T('Adventure Conqueror King'));
   print $q->p(T('The script also supports Adventure Conqueror King characters (but cannot generate them randomly):'),
 	      T('Get started with an %0.',
-		$q->a({-href=>"$url/link/$lang?rules=acks;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
+		$q->a({-href=>"$url/link/$lang?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
 		      T('Adventure Conqueror King character'))),
 	      T('The script can also show %0.',
-		$q->a({-href=>"$url/show/$lang?rules=acks;charsheet=http%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
+		$q->a({-href=>"$url/show/$lang?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
 		      T('which parameters go where'))));
 
   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
