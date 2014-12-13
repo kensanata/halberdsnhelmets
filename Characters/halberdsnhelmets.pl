@@ -762,6 +762,7 @@ sub buy_melee_weapon {
 
 sub buy_throwing_weapon {
   my ($money, $class, @property) = @_;
+  my @preferences;
   if (member($class, T('dwarf'), T('dwarven vaultguard'), T('dwarven craftpriest'))
       or member(T('battle axe'), @property)) {
     push(@preferences, [T('hand axe'), T('hand axe')]);
@@ -775,8 +776,8 @@ sub buy_throwing_weapon {
 
 sub buy_ranged_weapon {
   my ($money, $class, @property) = @_;
-  my $dex = $char{dex};
   my @preferences;
+  my $dex = $char{dex};
   if (($class eq T('fighter') or $class eq T('elf'))
       and average($dex)) {
     push(@preferences,
