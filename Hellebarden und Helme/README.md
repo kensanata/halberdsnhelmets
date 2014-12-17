@@ -19,3 +19,11 @@ erhältlich.
 Einen [online
 Charaktergenerator](http://campaignwiki.org/halberdsnhelmets/de) gibt
 es auch.
+
+MOBI generieren
+---------------
+
+Die Quelldatei verwendet das [Org Mode](http://orgmode.org/) Format
+von Emacs. Um das PDF zu generieren, benötigt man
+[Emacs](http://www.gnu.org/software/emacs/) und
+[Calibre](http://calibre-ebook.com/).

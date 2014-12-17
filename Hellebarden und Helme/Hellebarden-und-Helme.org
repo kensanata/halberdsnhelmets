@@ -1,0 +1,2098 @@
+#+TITLE:     Hellebarden und Helme
+#+AUTHOR:    Alex Schroeder
+#+EMAIL:     kensanata@gmail.com
+#+DATE:      %Y-%m-%d
+#+DESCRIPTION: Ein Spielerhandbuch für die Spieler der Fünf Winde Kampagne.
+#+KEYWORDS:  Hausregeln, Rollenspiel
+#+LANGUAGE:  de
+#+OPTIONS:   H:3 num:nil toc:t @:t ::t |:t ^:nil -:t f:nil *:t <:nil
+#+OPTIONS:   TeX:nil LaTeX:nil skip:nil d:nil todo:nil pri:nil tags:off
+#+LINK_HOME: https://alexschroeder.ch/wiki/Hellebarden_%26_Helme
+
+Dies ist das Spielerhandbuch für die Spieler in meiner Kampagne. Es
+enthält die Regeln, basierend auf [[http://www.goblinoidgames.com/labyrinthlord.html][Labyrinth Lord]], sowie diverse
+Hausregeln. Spielleitern empfehle ich mein englisches [[http://www.emacswiki.org/alex/Swiss_Referee_Style_Manual][Swiss Referee
+Style Manual]]. -- [[http://alexschroeder.ch/][Alex Schroeder]]
+
+* Alte Schule
+
+Wir spielen D&D der alten Schule mit [[http://www.emacswiki.org/alex/2012-02-18_Ode_to_Ode_to_Black_Dougal][Regeln aus den frühen 80er
+Jahren]]. Dies ist [[http://tvtropes.org/pmwiki/pmwiki.php/Main/MontyHaul][keine Monty Haul Kampagne]] und kein stupider [[http://tvtropes.org/pmwiki/pmwiki.php/Main/DungeonCrawling][Dungeon
+Crawl]]. Wenn überhaupt, dann erforschen wir eine albtraumartige,
+[[http://www.philotomy.com/#dungeon][mythische Unterwelt]].
+
+Besitz der Regeln ist optional. Die Regeln bieten *nur wenig
+Mechanik*: Wenig Auswahl bei den Klassen, keine Talente, keine
+Fertigkeiten, keine Prestigeklassen und kaum spezielle Fähigkeiten.
+Zudem sind Elfen, Zwerge und andere Völker schlicht separate Klassen.
+Es gibt also keine Elfendiebe oder Zwergenmagier. Im Gegenzug bieten
+die fehlenden Regeln natürlich auch einen *grösseren Freiraum* für die
+Spieler. Der Charakter ist so diplomatisch, freundlich oder bedrohlich
+wie es der Spieler möchte. Mit der Zeit werden wir die Regeln
+erweitern. Mit dem Entdecken neuer Völker soll es beispielsweise
+möglich sein, diese auch zu spielen. Neue Magier können den
+Spielercharakteren neue Zaubersprüche beibringen.
+
+Die Spieler bestimmen, wohin es geht. Wenn Spielercharaktere Hinweisen
+folgen und Gegenden erforschen, werde ich an diesen Stellen mehr
+Material entwickeln. Je genauer man hinschaut, um so mehr gibt es dort
+zu entdeckten. Bei der Spielwelt handelt es sich um eine sogenannte
+[[http://tvtropes.org/pmwiki/pmwiki.php/Main/WideOpenSandbox][Sandbox]]. Es gibt *kein geplantes Ende* der Kampagne. Die Handlungen
+der Charaktere bestimmen, wohin die Kampagne sich entwickelt.
+
+Die Gefahr ist nicht immer auf die Stärke der Gruppe abgestimmt.
+Generell wird es um so *gefährlicher*, je weiter man sich von der
+Zivilisation und den Patrouillen und Wachen der
+Feudalherren *entfernt*. So können die Spieler selber bestimmen, wie
+viel Risiko sie eingehen wollen.
+
+Es ist wichtig, Informationen über durchquerte Gebiete und mögliche
+Feinde zu sammeln. Diese erhält man von Reisenden in Tavernen, von
+Händlern auf dem Markt, von Matrosen in den Häfen, aus Büchern in
+Bibliotheken und von Gelehrten in ihren Elfenbeintürmen. Die
+Informationen sind nicht immer korrekt und müssen mit Vorsicht
+genossen werden. Passende Vorbereitung, Erfahrung und Wissen sind
+wichtig, sonst hängt das Überleben schnell einmal von einem Würfelwurf
+ab. Wenn gewürfelt wird, ist es oft schon zu spät. *Ein Rettungswurf
+ist die allerletzte Chance*, durch Glück und Erfahrung das drohende
+Ende noch einmal abzuwenden. Idealerweise muss nicht gewürfelt werden,
+weil man entsprechend *informiert und ausgerüstet* ist. Perseus muss
+wegen der Medusa keinen Rettungswurf machen, /weil er vorbereitet
+ist/.
+
+Eine weitere Möglichkeit, sich abzusichern, ist das Anstellen von
+*Gefolgsleuten*: Fackelträger, Lastenträger, Schildknechte und Söldner.
+
+*Erfahrungspunkte* gibt es vor allem für das *Ausgeben von Gold*,
+welches man auf Abenteuern erlangt hat. Wenn dies *ohne Kämpfe*
+gelingt, dann umso besser. Denn auch hier gilt: wenn gewürfelt wird,
+ist es eigentlich schon zu spät. Die richtige Strategie besteht darin,
+die Kämpfe geschickt zu wählen und durch entsprechende Vorbereitung
+alles zu seinen eigenen Gunsten gewendet zu haben.
+
+* Charaktererschaffung
+
+Kurze Zusammenfassung für Spieler:
+
+1. Sechs Eigenschaften auswürfeln
+2. Klasse wählen
+3. Angriffswerte für Stufe 1 kopieren
+4. Rettungswürfe für Stufe 1 kopieren
+5. Lebensenergie auswürfeln
+6. Gesinnung wählen
+7. Geld auswürfeln
+8. Ausrüstung kaufen
+
+Beginne mit einem leeren Blatt oder drucke dir ein vorgefertigtes
+[[http://campaignwiki.org/Charakterblatt.svg][Charakterblatt]] ([[http://www.emacswiki.org/alex/pics/Charakterblatt.pdf][PDF]]) aus.
+
+Würfel 3W6 für jede Eigenschaft, von oben nach unten:
+
+# <<Kraft>>
+#+INDEX: Kraft
+*Kraft* hilft beim Zuschlagen. Addiere den Bonus beim Trefferwurf
+und beim Schadenswurf im /Nahkampf/.
+
+Im /Fernkampf/ bleibt der Schadenswurf unverändert. Das ist ein
+Vorteil für schwache Charaktere und ein Nachteil für starke
+Charaktere.
+
+Zu jedem Wert gibt es auch einen Bonus:
+
+| <l>   | <c> | <c>  | <c>  | <c>   | <c>    | <c>    | <c> |
+| Wert  | 3   | 4--5 | 6--8 | 9--12 | 13--15 | 16--17 | 18  |
+| Bonus | -3  | -2   | -1   |       | +1     | +2     | +3  |
+
+# <<Geschick>>
+#+INDEX: Geschick
+*Geschick* hilft beim Zielen und beim Ausweichen. Addiere den Bonus
+beim Trefferwurf im /Fernkampf/. Ziehe den Bonus von deiner
+Rüstungsklasse ab (tiefer ist besser).
+
+# <<Gesundheit>>
+#+INDEX: Gesundheit
+*Gesundheit* gibt mehr Lebensenergie. Addiere den
+Bonus auf jeden Lebensenergie-Würfel. Trotz Abzügen kann der Wurf pro
+Würfel nicht unter 1 sinken.
+
+# <<Bildung>>
+#+INDEX: Bildung
+*Bildung* hilft bei Fremdsprachen. Für jeden Punkt
+über 10 darfst du dir eine weitere Sprache aufschreiben. Diese Sprachen
+darfst du auch erst später im Spiel bestimmen.
+
+# <<Weisheit>>
+#+INDEX: Weisheit
+*Weisheit* zeigt, wie sehr du mit der Welt
+harmonierst. Addiere den Bonus auf jeden Rettungswurf gegen Magie
+(Zaubersprüche, Zauberstäbe und so weiter).
+
+# <<Auftreten>>
+#+INDEX: Auftreten
+*Auftreten* bestimmt, wie Gegner auf dich
+reagieren, wieviele Gefolgsleute du um dich scharen kannst und wie
+ergeben sie dir sind.
+
+# <<Klasse>>
+#+INDEX: Klasse
+Wähle deine Klasse. Zur Auswahl stehen:
+
+[[Krieger]]: Du kannst gut kämpfen. Diese Klasse spielt sich am
+einfachsten. /Welches Gemetzel verfolgt dich in deinen Träumen? Wen
+hoffst du in der Hölle wieder zu treffen?/
+
+[[Magier]]: Du lernst [[Zaubersprüche]] aus deinem Zauberbuch. Kämpfen ist
+nicht so dein Ding. Du kannst nur kleine Waffen wie Messer und Stäbe
+verwenden. Anfangs wirst du schwach sein, aber wenn du überlebst,
+wirst du sehr mächtig sein. /Wer oder was hat dir das Zaubern
+beigebracht? Warum verdammt dich deine Zauberei?/
+
+[[Dieb]]: Deine [[Fertigkeiten]] werden mit der Zeit immer besser. Überraschten Gegnern
+fügst du doppelten Schaden zu. /Was liebst du am Abenteuer? Wer hat
+dir deine Tricks beigebracht?/
+
+[[Kleriker]]: Du kannst kämpfen (aber nicht so gut wie ein Krieger) und du
+kannst [[Die%20Wunder%20der%20Kleriker][Wunder]] wirken (aber deine Zaubersprüche sind nicht so mächtig wie die
+Sprüche eines Magiers). /Welche Häresie ärgert dich besonders? Wann
+hast du die Götterboten erstmals gehört?/
+
+[[Elf]]: Du lernst [[Zaubersprüche]] aus deinem Zauberbuch und du kannst kämpfen. Du steigst
+langsamer auf als deine Mitspieler. Du kannst im Sternenlicht sehen
+und du wirst ewig leben. Du brauchst eine Bildung von mindestens 9.
+/Was liebst und hasst du an den Menschen? Was für eine unmenschliche
+Sache tust oder lässt du immmer wieder?/
+
+[[Halbling]]: Du bist noch kleiner und immer barfuss unterwegs. Du kannst
+dich gut verstecken und du kannst Fernkampfwaffen besonders gut
+einsetzen. Riesen haben Mühe, dich zu treffen. Du brauchst ein
+Geschick von mindestens 9. /Warum haben deine Eltern dich ziehen
+lassen? Womit tröstest du dich über das Fehlen von Heim und Familie
+hinweg?/
+
+[[Zwerg]]: Du bist klein, zäh, und du kannst gut kämpfen. Du weisst viel
+über Bauten unter der Erde. Du kannst im Dunkeln sehen. Du brauchst
+eine Gesundheit von mindestens 9. /Welche Fehde verfolgt deine
+Familie? Wie kam es, dass deine Eltern ein Kind auf die Welt setzen
+wollten?/
+
+# <<Angriffswerte>>
+#+INDEX: Angriffswerte
+Für jede Klasse gibt es eine Tabelle mit den Angriffswerten. Hier
+sieht man, was man auf dem W20 würfeln muss, um die entsprechende
+Rüstungsklasse des Gegners zu treffen. Im Nahkampf addiert man den
+/Kraft/ Bonus, im Fernkampf den /Geschick/ Bonus. Spielt man
+beispielsweise einen Krieger der 1. Stufe, der einen Ork mit
+Rüstungsklasse 6 treffen will, so muss man eine 13 würfeln. Hat man
+eine Stärke von 13, so gibt es einen Bonus von +1, so muss man nur
+eine 12 würfeln.
+
+** Krieger
+
+| <c>   |              <r> |
+| Stufe | Erfahrungspunkte |
+|-------+------------------|
+| 1     |                0 |
+| 2     |             2035 |
+| 3     |             4065 |
+| 4     |             8125 |
+| 5     |            16250 |
+| 6     |            32500 |
+| 7     |            65000 |
+| 8     |           120000 |
+| 9     |           240000 |
+| 10    |           360000 |
+
+Du kannst gut kämpfen. Diese Klasse spielt sich am einfachsten.
+
+| <c>            | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> |
+| Rüstungsklasse | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   |
+|----------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| Stufe 0        | 20  | 19  | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  |
+| Stufe 1--2     | 19  | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  |
+| Stufe 3        | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   |
+| Stufe 4        | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   |
+| Stufe 5        | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   |
+| Stufe 6        | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   |
+| Stufe 7--8     | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   |
+| Stufe 9        | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   |
+| Stufe 10       | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   | 3   |
+
+# <<Stufe 0>>
+#+INDEX: Stufe 0
+Die Angriffswerte und Rettungswürfe für Stufe 0 gelten für alle
+Menschen ohne Klasse und damit auch für viele Gefolgsleute.
+
+| <l10>      | <c10>      | <c10>      | <c10>      | <c10>      | <c10>      |
+| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+|------------+------------+------------+------------+------------+------------|
+| Stufe 0    | 17         | 16         | 14         | 15         | 18         |
+| Stufe 1--3 | 15         | 14         | 12         | 13         | 16         |
+| Stufe 4--6 | 13         | 12         | 10         | 11         | 14         |
+| Stufe 7--9 | 9          | 10         | 8          | 9          | 12         |
+| Stufe 10   | 7          | 8          | 6          | 7          | 10         |
+
+** Magier
+
+| <c>   |              <r> |
+| Stufe | Erfahrungspunkte |
+|-------+------------------|
+| 1     |                0 |
+| 2     |             2501 |
+| 3     |             5001 |
+| 4     |            10001 |
+| 5     |            20001 |
+| 6     |            40001 |
+| 7     |            80001 |
+| 8     |           160001 |
+| 9     |           310001 |
+| 10    |           460001 |
+
+Du lernst Zaubersprüche aus deinem Zauberbuch. Kämpfen ist nicht so dein
+Ding. Du kannst nur kleine Waffen wie Messer und Stäbe verwenden.
+Anfangs wirst du schwach sein, aber wenn du überlebst, wirst du sehr
+mächtig sein. Du darfst weder Rüstungen noch Schilder tragen.
+
+| <l>            | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> |
+| Rüstungsklasse | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   |
+|----------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| Stufe 1--3     | 19  | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  |
+| Stufe 4--7     | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   |
+| Stufe 8--10    | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   |
+
+
+Im Abschnitt [[Zaubersprüche der Magier und Elfen]] gibt es eine Liste von
+Zaubersprüchen. Wähle einen Zauberspruch des 1. Zirkels für dein
+Zauberbuch. Wenn du dir den gesamten Text auf dem Charakterblatt
+notierst, musst du wärend dem Spiel nicht in deinen Unterlagen
+blättern.
+
+| <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
+| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+|------------+------------+------------+------------+------------+------------|
+| Stufe 1--5 |         16 |         13 |         13 |         13 |         14 |
+| Stufe 6--10 |         14 |         11 |         11 |         11 |         12 |
+
+** Dieb
+
+| <c>   |              <r> |
+| Stufe | Erfahrungspunkte |
+|-------+------------------|
+| 1     |                0 |
+| 2     |             1251 |
+| 3     |             2501 |
+| 4     |             5001 |
+| 5     |            10001 |
+| 6     |            20001 |
+| 7     |            40001 |
+| 8     |            80001 |
+| 9     |           160001 |
+| 10    |           280001 |
+
+Du bist Alleskönner: Deine [[Fertigkeiten]] werden immer besser. Du
+darfst ausser einer Lederrüstung keine Rüstung und weder Schild noch
+Helm tragen.
+
+| <l>            | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> |
+| Rüstungsklasse | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   |
+|----------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| Stufe 1--3     | 19  | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  |
+| Stufe 4--5     | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   |
+| Stufe 6--8     | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   |
+| Stufe 9--10    | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   |
+
+#+INDEX: Schaden!doppelter
+In der Überraschungsrunde fügst du deinen Gegnern *doppelten Schaden*
+(2× würfeln) zu. Dies aber nur, falls deine Gegner überrascht sind!
+
+| <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
+| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+|------------+------------+------------+------------+------------+------------|
+| Stufe 1--4 |         16 |         13 |         14 |         15 |         14 |
+| Stufe 5--8 |         14 |         11 |         12 |         13 |         12 |
+| Stufe 9--10 |         12 |          9 |         10 |         11 |         10 |
+
+** Kleriker
+
+| <c>   |              <r> |
+| Stufe | Erfahrungspunkte |
+|-------+------------------|
+| 1     |                0 |
+| 2     |             1565 |
+| 3     |             3125 |
+| 4     |             6251 |
+| 5     |            12501 |
+| 6     |            25001 |
+| 7     |            50001 |
+| 8     |           100001 |
+| 9     |           200001 |
+| 10    |           300001 |
+
+Du kannst kämpfen (aber nicht so gut wie ein Krieger) und du kannst
+Wunder wirken (aber deine Zaubersprüche sind nicht so mächtig wie die
+Sprüche eines Magiers). Im Abschnitt [[Die Wunder der Kleriker]] gibt es
+eine entsprechende Liste.
+
+| <l>            | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> |
+| Rüstungsklasse | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   |
+|----------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| Stufe 1--3     | 19  | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  |
+| Stufe 4--5     | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   |
+| Stufe 6--8     | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   |
+| Stufe 9--10    | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   |
+
+| <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
+| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+|------------+------------+------------+------------+------------+------------|
+| Stufe 1--4 |         16 |         14 |         11 |         12 |         15 |
+| Stufe 5--8 |         14 |         12 |          9 |         10 |         12 |
+| Stufe 9--10 |         12 |         10 |          7 |          8 |          9 |
+
+#+INDEX: Götter!Waffen
+Du darfst nur einfache, stumpfe Waffen verwenden -- oder die Waffe,
+welche deinem Gott zugeschrieben wird. Hier ein paar Beispiele:
+
+| Orcus  | Streitkolben  |
+| Ishtar | Sichelschwert |
+| Nergal | Kriegsaxt     |
+| Freya  | Speer         |
+| Marduk | Keule         |
+| Mitra  | Handaxt       |
+| Set    | Dolch         |
+| Hekate | Peitsche      |
+
+# <<Untote vertreiben>>
+#+INDEX: Untote vertreiben
+Du kannst *Untote vertreiben*! Hierfür wird den Untoten ein heiliges
+Symbol entgegen gestreckt und laut die Götter angerufen. Jede Runde
+können so 2W6 Trefferwürfel von Untoten vertrieben oder zerstört
+werden. Der Erfolg hängt von deiner Stufe und etwas Glück ab.
+
+In der folgenden Tabelle sieht man, welche Zahl man mit 2W6 würfeln
+muss, um Untote zu vertreiben. "Z" steht für "Zerstören" und bedeutet,
+dass die Untoten automatisch zerstört werden.
+
+| <l>           | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> |
+| Klerikerstufe | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
+|---------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| Skelette      | 7+  | 5+  | 3+  | Z   | Z   | Z   | Z   | Z   | Z   | Z   |
+| Zombies       | 9+  | 7+  | 5+  | 3+  | Z   | Z   | Z   | Z   | Z   | Z   |
+| Ghule         | 11+ | 9+  | 7+  | 5+  | 3+  | Z   | Z   | Z   | Z   | Z   |
+| Draugr        | --  | 11+ | 9+  | 7+  | 5+  | 3+  | Z   | Z   | Z   | Z   |
+| Todesalb      | --  | --  | 11+ | 9+  | 7+  | 5+  | 3+  | Z   | Z   | Z   |
+| Mumie         | --  | --  | --  | 11+ | 9+  | 7+  | 5+  | 3+  | Z   | Z   |
+| Ringgeist     | --  | --  | --  | --  | 11+ | 9+  | 7+  | 5+  | 3+  | Z   |
+| Vampir        | --  | --  | --  | --  | --  | 11+ | 9+  | 7+  | 5+  | 3+  |
+
+Kleriker sind die militanten Anhänger eines Gottes.
+
+# <<Priester>>
+#+INDEX: Priester
+*Priester* sind diejenigen, welche den Tempeln dienen.
+# <<Paladine>>
+#+INDEX: Paladine
+*Paladine* sind Leute, die sich einem Gott verschworen haben. Ihr Eid
+bindet sie, und im Gegenzug gewähren die Götter ihren Paladinen
+Fähigkeiten, je nach dem Ruf, den diese geniessen.
+
+Beispiele:
+
+1. [[Paladin der Freya]]
+2. [[Paladin des Arden]]
+3. [[Paladin des Loki]]
+
+** Elf
+
+| <c>   |              <r> |
+| Stufe | Erfahrungspunkte |
+|-------+------------------|
+| 1     |                0 |
+| 2     |             4065 |
+| 3     |             8125 |
+| 4     |            16251 |
+| 5     |            32501 |
+| 6     |            65001 |
+| 7     |           130001 |
+| 8     |           200001 |
+| 9     |           400001 |
+| 10    |           600001 |
+
+Du lernst Zaubersprüche aus deinem Zauberbuch und du kannst kämpfen.
+Du kannst im Sternenlicht sehen und du wirst ewig leben. Du brauchst
+eine Bildung von mindestens 9.
+
+Da Elfen alle Rüstungen und Waffen verwenden /und/ Zaubern können,
+sind sie sehr reliebt. Weil sie zum Stufe steigen aber mehr
+Erfahrungspunkte brauchen, liegen sie oft eine Stufe unter ihren
+Mitstreitern. Zudem haben sie weniger Lebensenergie als Krieger. 
+Elfen können nicht höher als bis auf die 10. Stufe steigen.
+
+| <l>            | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> |
+| Rüstungsklasse | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   |
+|----------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| Stufe 1--2     | 19  | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  |
+| Stufe 3        | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   |
+| Stufe 4        | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   |
+| Stufe 5        | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   |
+| Stufe 6        | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   |
+| Stufe 7--8     | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   |
+| Stufe 9        | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   |
+| Stufe 10       | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   | 3   |
+
+Elfen sprechen die gemeine Sprache und Elfisch; zudem können sie sich
+einigermassen in der Sprache der Hyänenmenschen, Hobgobline und Orks
+(Schweinemenschen) verständigen.
+
+| <l10>      | <c10>      | <c10>      | <c10>      | <c10>      | <c10>      |
+| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+|------------+------------+------------+------------+------------+------------|
+| Rettungs-  | Drachenodem | Lähmung    | Tod        | Strahlen   | Zaubersprüche |
+| würfe für  | Explosion  | Versteinerung | Gift       | Zauberstäbe | Wunder     |
+| Stufe 1--3 | 15         | 13         | 12         | 13         | 15         |
+| Stufe 4--5 | 13         | 11         | 10         | 11         | 13         |
+
+** Halbling
+
+| <c>   | <c>              |
+| Stufe | Erfahrungspunkte |
+|-------+------------------|
+| 1     | 0                |
+| 2     | 2035             |
+| 3     | 4065             |
+| 4     | 8125             |
+| 5     | 16251            |
+| 6     | 32501            |
+| 7     | 65001            |
+| 8     | 130001           |
+
+Elfen, Halblinge und Zwerge kämpfen genau so gut wie Krieger.
+
+Du bist noch kleiner und immer barfuss unterwegs. Du kannst dich gut
+verstecken und du kannst Fernkampfwaffen besonders gut einsetzen.
+Riesen haben Mühe, dich zu treffen. Du brauchst ein Geschick von
+mindestens 9.
+
+Halblinge können nicht höher als bis auf die 8. Stufe steigen. Da du
+so klein bist, kannst du keine grossen Waffen verwenden.
+
+| <l>            | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> |
+| Rüstungsklasse | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   |
+|----------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| Stufe 1--2     | 19  | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  |
+| Stufe 3        | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   |
+| Stufe 4        | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   |
+| Stufe 5        | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   |
+| Stufe 6        | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   |
+| Stufe 7--8     | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   |
+
+Als Halbling gibt es darüber hinaus noch einen +1 Bonus im /Fernkampf/.
+Selber haben Halblinge eine bessere Rüstungsklasse (-2) gegen Riesen.
+
+| <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
+| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+|------------+------------+------------+------------+------------+------------|
+| Stufe 1--3 |         13 |         10 |          8 |          9 |         12 |
+| Stufe 4--5 |         10 |          8 |          6 |          7 |         10 |
+| Stufe 6--8 |          7 |          6 |          4 |          5 |          8 |
+
+** Zwerg
+
+| <c>   | <c>              |
+| Stufe | Erfahrungspunkte |
+|-------+------------------|
+| 1     | 0                |
+| 2     | 2187             |
+| 3     | 4375             |
+| 4     | 8751             |
+| 5     | 17501            |
+| 6     | 35001            |
+| 7     | 70001            |
+| 8     | 140001           |
+| 9     | 280001           |
+| 10    | 400001           |
+
+Du bist klein, zäh und du kannst gut kämpfen. Du weisst viel über
+Bauten unter der Erde. Du kannst im Dunkeln sehen. Du brauchst eine
+Gesundheit von mindestens 9.
+
+Zwerge können nicht höher als bis auf die 12. Stufe steigen. Da du
+relativ klein bist, kannst du keine grossen Waffen verwenden.
+
+| <l>            | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> |
+| Rüstungsklasse | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   |
+|----------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----|
+| Stufe 1--2     | 19  | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  |
+| Stufe 3        | 18  | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   |
+| Stufe 4        | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   |
+| Stufe 5        | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   |
+| Stufe 6        | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   |
+| Stufe 7--8     | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   |
+| Stufe 9        | 13  | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   |
+| Stufe 10       | 12  | 11  | 10  | 9   | 8   | 7   | 6   | 5   | 4   | 3   |
+
+Zwerge können sich mehr schlecht als recht mit Goblins, Gnomen und
+Kobolden unterhalten.
+
+| <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
+| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+|------------+------------+------------+------------+------------+------------|
+| Stufe 1--3 |         13 |         10 |          8 |          9 |         12 |
+| Stufe 4--5 |         10 |          8 |          6 |          7 |         10 |
+| Stufe 6--8 |          7 |          6 |          4 |          5 |          8 |
+
+** Lebensenergie
+
+Bestimme deine Lebensenergie und vergiss nicht, deinen Bonus für
+Gesundheit zu addieren. Krieger und Zwerge verwenden einen W8, Diebe
+und Magier einen W4, alle anderen einen W6.
+
+Steigst du eine Stufe, würfelst du deine Lebensenergie neu: Einen
+Würfel pro Stufe, jeweils plus deinen Bonus für Gesundheit (aber
+mindestens 1). Behalte den alten Wert, falls das neue Resultat
+niedriger ist.
+
+** Gold
+
+Würfel 3W6×10 Gold. Mit diesem Gold kaufst du dir die passende
+[[Ausrüstung]].
+
+|     Gold | Hintergrund der Eltern                          |
+|----------+-------------------------------------------------|
+|       30 | Lumpensammler, Bettler, Leibeigene, Flüchtlinge |
+|   40--50 | Ausgestossene, Alleinerziehende, Künstler       |
+|   60--80 | Diebe, Räuber, Betrüger                         |
+|  90--120 | Handwerker, Gewerbetreibende, Bauern            |
+| 130--150 | Händler, Priester                               |
+| 160--170 | Grossgrundbesitzer                              |
+|      180 | Aristokraten                                    |
+
+Eine gute Faustregel für den Einkauf: Rucksack und Wegration für eine
+Woche. Die Hälfte des verbleibenden Geldes für die Rüstung mit Schild
+und Helm, wenn möglich. Mit dem Rest dann so viel wie möglich kaufen:
+eine Nahkampfwaffe, eine Fernkampfwaffe, eine Lichtquelle. Diebe
+brauchen Diebeswerkzeug, Kleriker brauchen ein heiliges Symbol. Zum
+Erforschen entweder ein Seil oder einen Hammer mit Keilen. Gegen
+Monster entweder Holzpflöcke, Spiegel, Weihwasser oder Wolfsbann. Mit
+dem restlichen Geld dann Gefolgsleute anheuern und ausrüsten.
+
+* Ausrüstung
+
+#+INDEX: Waffen
+** Waffen
+
+| Waffe        | Gold | Bemerkung                                                                         |
+|--------------+------+-----------------------------------------------------------------------------------|
+| Kriegsaxt    |    7 | zweihändig, Türen einschlagen                                                     |
+| Handaxt      |    4 | kann geworfen werden                                                              |
+| Armbrust     |   30 | kann mit wenig Training verwendet werden (Stufe 0), kann liegend verwendet werden |
+|   30 Bolzen  |   10 |                                                                                   |
+| Langbogen    |   40 | grosse Reichweite, kann in dichter Formation verwendet werden                     |
+| Kurzbogen    |   25 | kann vom Pferd verwendet werden                                                   |
+|   20 Pfeile  |    5 |                                                                                   |
+| Dolch        |    3 | kann geworfen werden, kann versteckt werden                                       |
+| Silberdolch  |   30 | kann gegen Lykantrophen in Tierform verwendet werden                              |
+| Kurzschwert  |    7 | kann in dichter Formation verwendet werden                                        |
+| Langschwert  |   10 | kann vom Boden gegen Berittene und umgekehrt verwendet werden                     |
+| Zweihänder   |   15 | kann gegen mehrere Gegner gleichzeitig verwendet werden, benötigt viel Platz      |
+| Keule        |    3 | stumpf                                                                            |
+| Kriegshammer |    5 | stumpf                                                                            |
+| Streitkolben |    5 | stumpf                                                                            |
+| Stangenwaffe |    7 | zweihändig, kann aus der zweiten Reihe und in dichter Formation verwendet werden  |
+| Schleuder    |    2 | benötigt viel Platz                                                               |
+|   30 Steine  |   -- | stumpf                                                                            |
+| Speer        |    3 | kann geworfen werden                                                              |
+
+#+INDEX: Rüstung
+#+INDEX: Leder
+#+INDEX: Kette
+#+INDEX: Platte
+#+INDEX: Schild
+#+INDEX: Helm
+** Rüstung
+
+Ohne Rüstung hast du Rüstungsklasse 9 - /Geschick/ Bonus (tiefer ist
+besser). Bessere Rüstung macht [[Bewegung][langsam]].
+
+| <l>     | <c>    | <r>  | <l>                                                |
+| Rüstung | Klasse | Gold | Bemerkung                                          |
+|---------+--------+------+----------------------------------------------------|
+| Leder   | 7      | 20   | Schleichen und Schwimmen ist kein Problem          |
+| Kette   | 5      | 40   | kein Schleichen, einfaches Ertrinken               |
+| Platte  | 3      | 60   | kein Schleichen, einfaches Ertrinken               |
+| Schild  | -1     | 10   | kann geopfert werden, um einem Angriff zu entgehen |
+| Helm    | --     | 10   | hilft auf der [[Todestabelle]]                         |
+
+** Gegenstände
+
+| <15>            | <3> | <52>                                                 |
+| Gegenstand      | Gold | Bemerkung                                            |
+|-----------------+-----+------------------------------------------------------|
+| Diebeswerkzeug  |  25 | wird von Dieben für das Öffnen von Schlössern benötigt |
+| 6 Fackeln       |   1 | brennt 1h; kann Tiere ängstigen                      |
+| Hammer (klein)  |   2 | für Holzpflöcke und Keile                            |
+| Heiliges Symbol |  25 | wird von Klerikern für das Vertreiben von Untoten benötigt |
+| Holzpflock      |   1 | um Vampire zu pfählen; braucht einen Hammer          |
+| Holzstab        |   1 | billiger als eine Stangenwaffe um Dinge zu stupsen   |
+| 12 Keile        |   1 | hält Türen offen oder geschlossen; braucht einen Hammer |
+| Knoblauch       |   1 | eine Halskette, um Vampire fern zu halten            |
+| Laterne         |  10 | braucht eine Ölflasche für 4h Licht                  |
+| Ölflasche       |   2 | Öl brennt für zwei Runden für je 1W8 Schaden, wenn es mit einer Fackel in Brand gesetzt wird; eine brennende Öllache ängstigt Tiere |
+| Rucksack        |   5 | um weitere Gegenstände zu tragen                     |
+| Sack (gross)    |   2 | um Schätze zu schleppen                              |
+| Seil (50')      |   1 | schweres Seil, welches nicht weiter als ein paar Schritte geworfen werden kann |
+| Spiegel         |   5 | für den Nachweis von Vampiren und um Medusen zu bekämpfen |
+| Wegration       |  15 | 1 Woche; kann Monster ablenken                       |
+| Weihwasser      |  25 | schadet Untoten wie brennendes Öl                    |
+| Wolfsbann       |  10 | hält Werwölfe fern                                   |
+
+* Bauwerke
+
+Bauwerke sind eine beliebte Möglichkeit, um Gold in [[Erfahrungspunkte]]
+umzutauschen.
+
+Ein paar Preise für Bauwerke:
+
+| <l63>                                                           |      <r10> |
+| Bauwerk                                                         |      Preis |
+|-----------------------------------------------------------------+------------|
+| *kleine Statue* für einen Brunnen                               |    50 Gold |
+| *normale Statue* für einen Garten                               |   100 Gold |
+| *kleiner, öffentlicher Altar* aus Stein mit Geister Tor und kleinem Brunnen (2m×2m) |   250 Gold |
+| *kleiner Laden* aus Holz mit Schlafgelegenheit im Hinterzimmer (5m×5m) |   300 Gold |
+| *einstöckiges Geschäftshaus* aus Holz wie eine Taverne, eine Galerie, eine Spielstube (15m×15m) |   700 Gold |
+| *grosse Bronzestatue* für einen Platz                           |  1000 Gold |
+| *zweistöckiges Holzhaus* in einem Dorf (15m×15m)                |  1500 Gold |
+| *zweistöckiges Gebäude aus Stein* in einem Dorf (15m×15m)       |  3000 Gold |
+| *zweistöckige Villa* mit Marmorsäulen und Statuen in einer Stadt (15m×15m) | 10000 Gold |
+| *Burg* auf dem Land mit sechs Stockwerken (20m×20m) und einem ummauerten Innenhof (10m×20m) | 75000 Gold |
+
+Man beachte, dass alle grösseren Bauwerke Gärtner, Wächter,
+Handwerker, und so weiter benötigen. Die [[Löhne]] für Angestellte aller
+Art zählen ebenfalls als [[Erfahrungspunkte]].
+
+* Löhne
+
+Söldner und Angestellte leben in den Häusern, Höhlen, Türmen und
+Festungen, welche ihnen zugewiesen wurden. Sie kommen nicht auf
+Abenteuer mit.
+
+| <l>                |          <r> | <c>   |
+| Bezeichnung        |       Kosten | Moral |
+|--------------------+--------------+-------|
+| Diener, Köche      | 1 Gold/Monat | 6     |
+| Leichte Infanterie | 3 Gold/Monat | 8     |
+| Schwere Infanterie | 4 Gold/Monat | 8     |
+
+Leichte Infanterie sind z.B. Räuber mit Schwert, Schild und
+Lederrüstung; schwere Infanterie sind z.B. Stadtwachen mit Schwert,
+Schild und Kettenhemd. Sie müssen unter Umständen im Kampf einen
+[[Moralwurf]] machen.
+
+[[Gefolgsleute]] begleiten ihre Arbeitgeber auf Abenteuer. Sind sind treu
+und müssen nur /zwischen/ den Abenteuern einen [[Moralwurf]] machen.
+
+Die maximale Anzahl Gefolgsleute eines Charakters ergibt sich aus dem
+/Auftreten/ Bonus.
+
+Wie viele Gefolgsleute an einem Abenteuer teilnehmen, müssen die Spieler
+unter sich ausmachen. Wenn es zu viele werden, dauern Kämpfe länger und
+die Schatzanteile werden kleiner.
+
+| <l>               |             <r> |
+| Bezeichnung       |          Kosten |
+|-------------------+-----------------|
+| Träger            |    5 Silber/Tag |
+| Krieger Stufe 0   |      1 Gold/Tag |
+| Andere mit Stufen | ½ Schatz Anteil |
+
+# <<Anwerben>>
+#+INDEX: Anwerben
+*Anwerben* Für 10 Gold präsentieren sich pro Tag 1W6 [[Kandidaten]].
+
+* Kandidaten
+
+Typische Verteilung von Alter und Geschlecht der Kandidaten:
+
+| <c> | <l>           |
+| 1W6 | Kandidat      |
+|-----+---------------|
+| 1   | jüngere Frau  |
+| 2   | jüngerer Mann |
+| 3   | Frau          |
+| 4   | Mann          |
+| 5   | ältere Frau   |
+| 6   | älterer Mann  |
+
+Magier und Elfen haben ein Zauberbuch mit einem zufälligen [[Zauberspr%C3%BCche][Zauberspruch]]:
+
+| <c> | <l>                |
+| 1W6 | Zauberspruch       |
+|-----+--------------------|
+| 1   | Magie entziffern   |
+| 2   | Magie entdecken    |
+| 3   | Licht              |
+| 4   | Person bezaubern   |
+| 5   | Magisches Geschoss |
+| 6   | Schlaf             |
+
+# <<Monster>>
+#+INDEX: Monster
+Monster aus der Umgebung könnten beispielsweise sein: *Goblin* (wie
+Halbling), *Echsenmensch* (TW 2), Lederrüstung, Zweihänder, kann
+schwimmen; *Satyr* (TW 2), Lederrüstung, Bogen und
+Kurzschwert; *Tengu* (TW 2, RK 9, 1W6), kann fliegen, kann keine
+Rüstung tragen; *Minotaurus* (TW 2, RK 6, 1W6), kann mit Sturmangriff
+doppelten Schaden anrichten; *Riesenaffe* (TW 3, RK 8, 1W6/1W6), kann
+keine Rüstung tragen; *Zentaur* (TW 3, RK 8, 1W6/1W6), kann keine
+Rüstung tragen, kann mit Sturmangriff doppelten Schaden anrichten,
+kann galoppieren; *Troll* (TW 6+3, RK 4, 1W6/1W6/1W10), regeneriert
+3/Runde nach 3 Runden.
+
+| <c>  | <l68>                                                                |
+| Abk. | Bedeutung                                                            |
+|------+----------------------------------------------------------------------|
+| TW   | Trefferwürfel: Je höher diese ist, um so besser treffen die Monster und um so mehr Lebensenergie haben sie |
+| RK   | Rüstungsklasse: Je tiefer diese ist, um so schwerer ist man zu treffen. |
+
+Wenn nichts anderes vermerkt ist, handelt es sich bei den
+Unbewaffneten um Menschen, die nicht kämpfen wollen oder können. Im
+Notfall kämpfen sie wie Krieger der Stufe 0.
+
+| <r3> | <l30>                          | <r3> | <l30>                          |
+|  1. | fauler Drückeberger            | 16. | Fackelträger                   |
+|  2. | Wasserträger                   | 17. | Lastenträger                   |
+|  3. | verschuldeter Halbling Winzer mit Bogen, Kurzschwert, Schild und Kettenhemd | 18. | leichtsinniger Halbling Abenteurer mit Schleuder, Kurzschwert und Lederrüstung |
+|  4. | ehemaliger Pirat mit zwei Handäxten | 19. | verwahrloster Söldner mit Hellebarde |
+|  5. | harter Zwerg mit Kriegshammer, Helm, Schild und Plattenpanzer | 20. | Wanderprediger, Kleriker mit Streithammer und Schild |
+|  6. | unschuldiger Träumer, kennt sich mit Hunden aus | 21. | reisender Wunderheiler, Kleriker mit Keule |
+|  7. | entlaufener Sklave, kennt die Umgebung | 22. | vertriebener Scharlatan, Magier |
+|  8. | verschuldeter Dieb mit Dolch und Lederrüstung | 23. | Gelehrter auf Wanderschaft, Magier |
+|  9. | hungriger Räuber mit Bogen, Dolch und Lederrüstung | 24. | verträumter Mondelf mit leichtem Umhang und zierlichem Langschwert |
+| 10. | Pilger auf der Suche nach vergessenen Schreinen, Kleriker Mantel, Schleuder und Keule | 25. | Wanderer auf der Suche nach dem Sinn des Lebens, Elf mit Langschwert, Helm, Schild und Kettenhemd |
+| 11. | verwildeter Halbling mit Lendenschurz, Schleuder und Keule | 26. | leichtfüssiger Meereself mit Dolch, Bogen und Kettenhemd |
+| 12. | grimmiger, einäugiger Leibwächter mit Speer und Lederrüstung | 27. | fanatischer Runenkrieger, Zwerg mit Lederschürze und Kriegsaxt |
+| 13. | verarmter Schäfer mit Schleuder und Keule | 28. | Zwerg mit Kriegsaxt, Helm und Plattenpanzer |
+| 14. | rachsüchtiger Jäger mit Bogen und Dolch | 29. | Jugendlicher, kennt sich mit Pferden aus |
+| 15. | desertierte Stadtwache mit Speer, Streitkolben, Schild und Kettenhemd | 30. | Monster aus der Umgebung (Echsenmensch, Goblin, Minotaurus, Riesenaffe, Troll, Zentaur) |
+
+* Gesinnung
+
+Wähle eine Gesinnung: Ordnung, Chaos oder Neutralität.
+
+# <<Ordnung>>
+#+INDEX: Ordnung
+Die *Priester der Ordnung* sagen: "Alleine sind wir schwach und das
+Leben ein Jammertal. Gemeinsam sind wir stark. Gemeinsam bauen wir
+unsere Häuser. Gemeinsam bestellen wir unsere Felder. Gemeinsam
+verteidigen wir unsere Städte und Dörfer. Nur gemeinsam sind wir stark.
+Wir bauen Dämme gegen die Flut. Wir bauen Aquädukte gegen die Dürre. Wir
+bauen Kanäle gegen die Seuchen. Wir legen die Sümpfe trocken und drängen
+das Fieber zurück. Wir füllen die Kornspeicher und besiegen den Hunger.
+Wir bestrafen den Verrat und belohnen die Treue. Wir sorgen für Recht
+und Gerechtigkeit. Selbst wenn das korrumpierende Chaos und die Anarchie
+um sich greift, bleibt uns immer noch die himmlische Ordnung von den
+höchsten Göttern im Himmel bis hin zu den schlimmsten Teufeln in der
+Hölle. Sie sorgen dafür, dass Strafe und Belohnung nicht vergessen gehen
+-- jetzt nicht und bis in alle Ewigkeit nicht. In unserer Welt hat jeder
+seinen Platz und es hat einen Platz für jeden -- auch für dich. Sieh
+diese Bücher: das Wissen der Altvorderen, die Gesetze und Tafeln unserer
+Ahnen. Es ist unser Erbe. Lerne soviel du kannst, arbeite hart und
+erhebe dein Haupt. Steige auf! Werde ein echtes Mitglied unserer stolzen
+Gesellschaft!"
+
+# <<Chaos>>
+#+INDEX: Chaos
+Die *Chaos* Priester sagen: "Das Leben ist Chaos. Unkraut wächst im
+Feld. Der Obstgarten verwaldet. Die Küste wird ins Meer gespült. Das
+Chaos sind die tiefen Muster dieser Welt. Die Wolken gleiten jede für
+sich im stillen Tanz über den Himmel. Der Fluss fliesst in tausend
+Windungen zum Meer. Die Elfen leben in den Bäumen, ohne sie zu fällen
+und zu töten, sie in Bretter zersägen und diese dann morsch werden und
+faulen sehen. Nein, die Elfen beobachten die Muster, nach denen die
+Bäume wachsen, formen sie langsam, leben mit ihnen. Der Baum lebt. Der
+Elf lebt. Die Ordnung ist die Hybris zu glauben, dass man der Welt
+seinen Willen aufzwingen kann. Sie verdammt Mann, Frau und Kind zum
+Joch. Chaos ist nicht das Niederbrennen der Städte sondern die
+Einsicht, dass es eine Dummheit war, sie überhaupt zu bauen. Chaos ist
+nicht Gesetzlosigkeit, sondern die Einsicht, dass Menschen, wie Bäume,
+eine eigene Art zu leben haben. Wer Gesetze aufstellt, ohne dies zu
+bedenken, heisst Menschen töten und sie in Bretterkisten begraben.
+Komm mit! Ich weiss nicht wohin wir gehen, aber wir werden auf dem Weg
+so manches lernen."
+
+# <<Neutralität>>
+#+INDEX: Neutralität
+Wer sich aus diesem kosmischen Kampf heraus halten will, bekennt sich
+zur *Neutralität*. Es gibt keine Priester der Neutralität.
+
+# <<Schutzpatron>>
+#+INDEX: Götter!Liste
+#+INDEX: Schutzpatron
+Kleriker und andere religiöse Charaktere können sich
+einen *Schutzpatron* aussuchen.
+
+# <<Orcus>>
+#+INDEX: Orcus
+*Orcus*: Herr über die Untoten, lässt Tote wieder auferstehen
+
+# <<Ishtar>>
+#+INDEX: Ishtar
+*Ishtar*: Eifersucht und /amour fou/, Krieg, Abstieg in die Unterwelt
+auf der Suche nach dem Liebsten
+
+# <<Nergal>>
+#+INDEX: Nergal
+*Nergal*: Rache, Ungeziefer, Ratten und Seuchen, Herr der Unterwelt
+
+# <<Freya>>
+#+INDEX: Freya
+*Freya*: Ernte, Kreislauf des Lebens, Wölfe, Wildnis und freie Liebe
+
+# <<Marduk>>
+#+INDEX: Marduk
+*Marduk*: Kampf gegen die Monster, Kriegsfürst, Herrschaft
+
+# <<Mitra>>
+#+INDEX: Mitra
+*Mitra*: Feuer, Ehrlichkeit, Verträge und Schwüre
+
+# <<Set>>
+#+INDEX: Set
+*Set*: Schläue, Heimlichkeit und Mörder
+
+# <<Hekate>>
+#+INDEX: Hekate
+*Hekate*: Magie, Hexen, Wegkreuzungen
+
+* Grundregeln
+
+Zuerst ein paar grundsätzliche Begriffe.
+
+# <<Spieler>>
+#+INDEX: Spieler
+*Spieler*: Die Person, die am Tisch sitzt. Ich, du, unsere Freunde.
+
+# <<Charakter>>
+#+INDEX: Charakter
+*Charakter*: Die Person, die wir jeweils spielen. Ich heisse Alex und
+wohne in Zürich. Mein Charakter heisst Edrig und stammt aus Einaheim.
+
+Weil Geld zu Erfahrungspunkten und damit zum Stufenanstieg führt, ist
+die Geldbeschaffung oft zentrales Element der Abenteuer. Das Bergen
+eines gefundenen Hortes kann ebenfalls zu einem Problem werden, wenn
+man sich geschwächt und schwer beladen auf den Rückweg macht.
+
+# <<Erfahrungspunkte>>
+#+INDEX: Erfahrungspunkte
+*Erfahrungspunkte*: Gegner überlisten und überwältigen gibt
+Erfahrungspunkte. Zudem kann man für ausgegebenes Geld /einen
+Erfahrungspunkt pro Goldmünze/ erhalten. Beispiele: Spenden an den
+Tempel, Aufstellen von Statuen, Organisieren von Saufgelagen, Zirkus
+für das gemeine Volk, Villa erbauen, Bedienstete anstellen und so
+weiter. Mit genug Erfahrungspunkten steigt man eine Stufe.
+
+# <<Stufe>>
+#+INDEX: Stufe
+*Stufe*: Mit der Zeit erhält der Charakter mehr Lebensenergie, trifft
+besser und erhält bessere Rettungswürfe. Er /steigt eine Stufe/.
+
+# <<Lebensenergie>>
+#+INDEX: Lebensenergie
+*Lebensenergie*: Die Lebensenergie zeigt an,
+wieviel Ausdauer, Glück und Lebenswillen der Charakter noch hat.
+/Steigt/ man um eine Stufe, würfelt man so viele Würfel wie man Stufen
+hat und behält das Resultat, wenn es besser als das bisherige ist.
+Krieger und Zwerge verwenden einen W8, Diebe und Magier einen W4, alle
+anderen einen W6. Vergiss nicht, zu jedem Würfel den Gesundheitsbonus
+hinzu zu zählen. /Verliert/ man eine Stufe, so würfelt man ebenfalls so
+viele Würfel wie man Stufen hat und behält das Resultat, wenn es
+/schlechter/ als das bisherige ist.
+
+# <<Zirkel>>
+#+INDEX: Zirkel
+*Zirkel*: Die Zaubersprüche werden mit der Zeit
+ebenfalls mächtiger. Als Faustregel gilt, dass der mächtigste Zirkel,
+den Magier, Kleriker und Elfen beherrschen, der Hälfte ihrer Stufe
+entspricht (aufgerundet).
+
+| <l>    | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> | <c> |
+| Stufe  | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
+| Zirkel | 1   | 1   | 2   | 2   | 3   | 3   | 4   | 4   | 5   | 5   |
+
+# <<Reaktionswurf>>
+#+INDEX: Reaktionswurf
+*Reaktionswurf*: Der Spielleiter sollte für alle Gegner, mit denen
+man redet, einen Reaktionswurf machen. Hierfür werden 2W6 gewürfelt
+und der /Reaktionsbonus/ des Sprechers hinzu gezählt.
+
+| <c> | <l>            |
+| 2W6 | Reaktion       |
+|-----+----------------|
+| 3   | Raub           |
+| 4   | Drohen         |
+| 5   | Unwirrsch      |
+| 6   | Verwirrt       |
+| 7   | Unsicher       |
+| 8   | Auf der Kippe  |
+| 9   | Kein Risiko    |
+| 10  | Zusammenarbeit |
+| 11  | Freundlich     |
+| 12  | Hilfsbereit    |
+
+Für die Reaktionswürfe verwendet der Spielleiter einen kleineren
+Bonus als den üblichen /Auftreten/ Bonus:
+
+| <c>       | <c>   |
+| Auftreten | Bonus |
+|-----------+-------|
+| 3         | -2    |
+| 4--8      | -1    |
+| 9--12     |       |
+| 13--17    | +1    |
+| 18        | +2    |
+
+# <<Moralwurf>>
+#+INDEX: Moralwurf
+*Moralwurf*: Ist der erste Gegner besiegt oder ist die Hälfte der
+Gegner kampfunfähig, sollte der Spielleiter einen Moralwurf machen.
+Würfelt der Spielleiter den Moralwert der Gegner oder darunter, kämpft
+der Gegner weiter. Der Gegner muss maximal zwei Moralwürfe machen.
+Spielercharaktere müssen nie einen Moralwurf machen. Söldner, welche
+die Spielercharaktere angeheuert haben, müssen bei Verlusten ebenfalls
+Moralwürfe machen. Gefolgsleute müssen bei Verlusten keine Moralwürfe
+machen.
+
+# <<Gefolgsleute>>
+#+INDEX: Gefolgsleute
+*Gefolgsleute*: Im Gegensatz zu Söldnern sind Gefolgsleute treu. Ihre
+Anzahl ist allerdings beschränkt: 4 + /Auftreten/ Bonus (1--7). Der
+Lohn wird am Ende des Spielabends bezahlt. Zur Höhe des Lohnes siehe
+[[Löhne]].
+
+Nach einem Abenteuer müssen Gefolgsleute ohne Stufe einen Moralwurf
+machen. Ihre Moral wird durch den /Auftreten/ Bonus ihres Herren
+bestimmt: 7 + Bonus (4--10). Grosszügige Geschenke über die
+ursprünglich getroffenen Abmachungen hinaus können die Moral
+kurzfristig um +1 erhöhen. Würfeln Gefolgsleute /über/ ihren
+Moralwert, so setzen sie sich zur Ruhe. Haben Gefolgsleute die erste
+Stufe erreicht, so müssen sie zwischen den Abenteuern keinen Moralwurf
+mehr machen.
+
+#+INDEX: Erfahrungspunkte!Gefolgsleute
+*Erfahrungspunkte* für Gegner werden am Ende des Spielabends auf
+Spielercharaktere und Gefolgsleute verteilt. Gefolgsleute ohne Stufe
+mit 100 Erfahrungspunkten oder mehr [[Charaktererschaffung][erhalten
+ihre erste Stufe]] und verlangen ab sofort einen halben Anteil an den
+Schätzen. Zudem würfelt man ihre sechs Attribute und ihre
+Lebensenergie aus. Die Lebensenergie kann allerdings nicht unter den
+vorherigen Wert sinken. Menschen dürfen zudem noch ihre Klasse wählen.
+
+Gefolgsleute sammeln Erfahrungspunkte wie ein Spielercharakter. Geld
+aus Lohn und Schatzanteile können ebenfalls in Erfahrungspunkte
+umgewandelt werden. Charaktere und Gefolgsleute können sich hierfür
+auch gegenseitig Gold leihen oder schenken. Man kann keine Geschenke
+von Gefolgsleuten und Charakteren mit tieferer Stufe annehmen und man
+kann von ihnen auch nichts leihen.
+
+*Klassen*: Auf Wunsch können Spieler einen Charakter aus jedem bekannten
+Volk und aus jedem bekannten Ort spielen. In diesem Sinne muss man alle
+neuen Völker und Ortschaften "frei spielen". Entsprechend lassen sich
+überall auch neue Varianten finden.
+
+* Fertigkeiten
+
+In den meisten Fällen wird kein Würfelwurf nötig sein. Ist der geheime
+Schalter hinter der Statue und der Spieler sagt, sein Charakter sucht
+hinter der Statue, dann wird der Schalter gefunden. Wenn es allerdings
+alle 10min eine Chance gibt, dass Monster auftauchen, dann soll man
+auch alle 10min würfeln, um die Türe aufzubrechen.
+
+Die grosse 1d6 Tabelle:
+
+| <l>                                            | <c>  |
+| Bereich                                        | 1d6  |
+|------------------------------------------------+------|
+| Normalerweise                                  | 1    |
+| Türe aufbrechen                                | 1--2 |
+| Fallen auslösen, umgehen, entschärfen          | 1--2 |
+| Zwerge entdecken leichter geheime Bauarbeiten  | 1--2 |
+| Zwerge finden leichter Fallen                  | 1--2 |
+| Elfen hören besser                             | 1--2 |
+| Elfen erkennen leichter geheime Türen          | 1--2 |
+| Halblinge können besser schleichen             | 1--2 |
+| Halblinge können sich im Freien gut verstecken | 1--5 |
+| Diebe können alles etwas besser                | 1--2 |
+| Diebe ab der 3. Stufe                          | 1--3 |
+| Diebe ab der 6. Stufe                          | 1--4 |
+| Diebe ab der 10. Stufe                         | 1--5 |
+
+Diebe werden mit der Zeit immer besser: Sie können Schlösser schneller
+knacken, Fallen schneller entschärfen, geheime Türen leichter finden,
+leiser schleichen, sich besser verstecken, Geräusche besser hören und
+so weiter.
+
+* Kämpfen
+
+Es wird viel gekämpft...
+
+# <<Überraschung>>
+#+INDEX: Überraschung
+*Überraschung*: Beide Seiten würfeln 1W6 und bei 1 oder 2 ist man
+überrascht. Wer überrascht ist, muss die erste Runde aussetzen. Falls
+die Distanz zwischen den beiden Seiten nicht sowieso klar ist, addiert
+man die beiden Überraschungswürfe und multipliziert mit 10 Fuss. Das
+ergibt eine Distanz von /20--120 Fuss/. Die [[Bewegungsrate]] bestimmt
+damit, ob überraschte Gegner noch in der ersten Runde angegriffen
+werden können.
+
+# <<Runde>>
+#+INDEX: Runde
+*Runden*: Zuerst wird /Initiative/ gewürfelt (jede Seite mit 1W6) und
+wer höher ist, fängt an. Sind die Spieler dran, ist die genaue
+Reihenfolge egal. Es bietet sich an, nach der Sitzordnung zu gehen.
+
+# <<Trefferwurf>>
+#+INDEX: Trefferwurf
+*Trefferwurf*: Um Anzugreifen, würfelst du mit einem zwanzigseitigen
+Würfel (W20) und schaust, ob du triffst. Addiere den /Kraft/ Bonus im
+Nahkampf. Addiere den /Geschick/ Bonus im Fernkampf. Bei der
+Beschreibung deiner Klassen gibt es eine Tabelle mit den
+/Angriffswerten/, wo du siehst, was du mindestens würfeln musst.
+
+#+INDEX: 20 beim Angriff
+*20 beim Angriff*: Wer beim Angriff eine 20 würfelt, richtet
+automatisch den maximalen Schaden an.
+
+#+INDEX: 30 seitiger Würfel
+*30 seitiger Würfel*: Jeder Spieler darf ein Mal pro Abend für einen
+beliebigen Wurf mit dem zwanzigseitigen Würfel den dreissigseitigen
+Würfel nehmen.
+
+# <<Schaden>>
+#+INDEX: Schaden
+*Schadenswurf*: Falls du triffst, würfelst du mit einem sechsseitigen
+Würfel (W6) aus, wieviel Schaden du machst. Addiere den /Kraft/ Bonus
+im Nahkampf. Der Schaden im Fernkampf bleibt unverändert.
+
+Um Zeit zu sparen, würfelst du günstigerweise Treffer- und
+Schadenswurf /gleichzeitig/.
+
+# <<Schild>>
+#+INDEX: Schilde
+*Schilde*: Trägst du ein Schild und wirst im Nahkampf von einer Waffe
+getroffen, so kannst du den Schild opfern. Es absorbiert den gesamten
+Schaden und wird zerstört. Diebe und Magier können leider keine
+Schilde tragen.
+
+# <<Platzbedarf>>
+#+INDEX: Platzbedarf
+*Platzbedarf*: In einem breiten Gang (/10_Fuss/) können normalerweise
+drei Personen nebeneinander kämpfen. Der Platzbedarf hängt aber von
+den verwendeten Waffen ab:
+
+| <l>                      | <c>         |         <r> |
+| Waffeneigenschaft        | Platzbedarf | auf 10 Fuss |
+|--------------------------+-------------+-------------|
+| dichte Formation erlaubt | ¾           |  4 Personen |
+| normale Waffe            | 1           |  3 Personen |
+| viel Platz benötigt      | 1½          |  2 Personen |
+| Zweihänder               | 3           |    1 Person |
+
+# <<Fernkampf>>
+#+INDEX: Fernkampf
+*Fernkampf*: Im Nahkampf kannst du keine Fernkampfwaffen verwenden.
+Wurdest du mit einer Nahkampfwaffe angegriffen, befindest du dich im
+Nahkampf.
+
+# <<Schutz>>
+#+INDEX: Schutz
+*Schutz*: Wirst du angegriffen, können neben dir stehende Freunde sich
+dazwischen stellen. Intelligente Monster können sich ebenfalls
+gegenseitig schützen. Jede Person kann höchstens /einen/ anderen Angriff
+pro Runde auf sich nehmen.
+
+# <<Rückzug>>
+#+INDEX: Rückzug
+*Rückzug*: Wer sich mit halber Geschwindigkeit zurück zieht, kann
+zuschlagen und sich bewegen, doch seine Gegner können natürlich
+nachrücken und weiterhin zuschlagen, wenn niemand den Rückzug deckt. Wer
+sich schneller davon machen will, muss [[Fliehen][fliehen]].
+
+# <<Fliehen>>
+#+INDEX: Fliehen
+*Fliehen*: Wer davon rennt, muss noch einen letzten Angriff überleben,
+bei dem der Gegner +2 auf den Wurf bekommt und der eigene Schild nicht
+zählt. Jeder Gegner im Nahkampf darf genau /einen/ zusätzlichen Angriff
+gegen Fliehenden ausführen.
+
+# <<Verfolgungsjagd>>
+#+INDEX: Verfolgungsjagd
+*Verfolgungsjagd*: Wer verfolgt wird, muss 2W6 würfeln. Bei 2 haben die
+Häscher euch überrascht. Bei 3--6 kommt es zum Kampf. Bei 7--9 wähle
+zwei Punkte, bei 10--11 wähle einen Punkte aus der nachfolgenden Liste.
+Bei 12 seid ihr ohne Wenn und Aber entkommen.
+
+- ihr wurdet getrennt
+- es hat lange gedauert
+- ihr habt euch verirrt
+- ihr musstet Schilder und Rucksäcke fallen lassen
+
+Optionale Modifikatoren: Je +1 für die Gejagten, falls es doppelt so
+viele Verfolger gibt, für eine höhere [[Bewegungsrate]], für Nahrung
+fallen lassen, wenn man von Tieren verfolgt wird, für Gold fallen
+lassen, wenn man von zivilisierten Wesen verfolgt wird, wenn ein Dieb
+dabei ist, bei Regen, bei Dunkelheit. Je -1 für die Gejagten, falls
+ein Elf oder ein Jäger bei den Häschern ist, mit Verwundeten, bei
+Schnee.
+
+# <<Todestabelle>>
+#+INDEX: Tod
+#+INDEX: Verletzung
+*Verletzung und Tod*: Lebensenergie misst, wie viel Schmerzen man
+ertragen kann, wie viel Lebenswillen man hat. Sobald man die
+Lebensenergie auf null Punkte sink, und bei jedem weiteren Treffer muss
+man auf der /Todestabelle/ würfeln.
+
+#+INDEX: Wunde
+#+INDEX: Amputation
+#+INDEX: Knochenbruch
+#+INDEX: Ohnmächtig
+#+INDEX: Betäubt
+#+INDEX: Niedergeschlagen
+#+INDEX: Adrenalinschub
+#+INDEX: Helm
+|  <4> | <68>                                                                 |
+|  2W6 | Resultat                                                             |
+|------+----------------------------------------------------------------------|
+|    2 | *Sofortiger Tod*: Kopf abgeschlagen oder ähnliches; das Opfer kann nur mit dem Wunder /Wiederauferstehung/ wieder zum Leben erweckt werden |
+|    3 | *Wunde*: Fatale Wunde und Tod in 1d6 Runden: Lungendurchstich, Wirbelsäulenbruch oder ähnliches; mit dem Wunder /Regeneration/ kann der Tod verhindert werden; das Opfer kann durch /Wiederauferstehung/ oder /Tote erwecken/ wiederbelebt werden |
+|    4 | *Amputation*: Verlust eines Gliedes und Tod in 3W6 Runden; W4: 1 -- Schwertarm, 2 -- Schildarm, 3, 4 -- Bein; der Tod kann mit Kauterisierung durch Feuer, einem Tourniquet, oder dem Wunder /Heilen Schwerer Wunden/ verhindert werden; mit dem Wunder /Regeneration/ kann der Verlust rückgängig gemacht werden; das Opfer kann durch /Wiederauferstehung/ oder /Tote erwecken/ wiederbelebt werden; bei der Verwendung von /Tote erwecken/ bleibt das Glied allerdings verloren |
+|    5 | *Schmerzlicher Verlust*: 1 -- Nase, 2 -- Auge, 3 -- Ohr, 4 -- Finger, 5 -- 1W6 Zähne, 6 -- fieser Schnitt, fette Narbe |
+|    6 | *Knochenbruch*: 1 -- Schwertarm, 2 -- Schildarm, 3 -- Bein, 4 -- Rippe; Heilung dauert 2W4+9 Wochen; mit dem Wunder /Regeneration/ kann der Bruch vorzeitig geheilt werden |
+| 7, 8 | *Ohnmächtig*: wehrlos für 2W6 Runden; mit Helm nur eine Runde lang betäubt (wehrlos für eine Runde) |
+|    9 | *Betäubt*: wehrlos für eine Runde; mit Helm wird man einfach nur niedergeschlagen (weitere Feinde erhalten +4) |
+|   10 | *Niedergeschlagen*: weitere Feinde erhalten +4 auf ihren Trefferwurf |
+|   11 | Knapp dem Tod entkommen!                                             |
+|   12 | *Adrenalinschub*! Für jede zwei Stufen (aufgerundet) erhält man 1W4 Punkte Lebensenergie; nach dem Kampf verliert man allerdings alle Lebensenergie und fällt für 2W6 Runden in Ohnmacht |
+
+/Wiederauferstehung/ und /Regeneration/ sind Wunder des 7. Zirkels und
+brauchen einen Kleriker der 13. Stufe.
+
+/Tote erwecken/ ist ein Wunder des 5. Zirkels und braucht einen Kleriker
+der 9. Stufe.
+
+/Heilen Schwerer Wunden/ ist ein Wunder des 4. Zirkels und braucht einen
+Kleriker der 7. Stufe.
+
+* Bewegung
+
+# <<Tragkraft>>
+#+INDEX: Tragkraft
+*Tragkraft*: Rüstung schränkt die Bewegungsrate gemäss der unten
+stehenden Tabelle ein. Wer zudem mehr als 200 Münzen auf sich trägt,
+wird langsamer. Eine typische Ausrüstung mit Rucksack, Wegrationen,
+Fackeln und solchen Dingen ist schon mit eingerechnet.
+
+# <<Bewegungsrate>>
+Für Monster wird der Spielleiter die Bewegungsrate oft um den Faktor
+10 kleiner notiert finden. Ein normaler Mensch hat also eine 12 statt
+120 Fuss pro Runde.
+
+| <l>                       | <c>    | <c>       |
+| Rüstung                   | Normal | Schwierig |
+|---------------------------+--------+-----------|
+| keine                     | 120    | 40        |
+| Lederrüstung              | 90     | 30        |
+| Kettenhemd, Plattenpanzer | 60     | 20        |
+| Mehr als 200 Münzen       | -30    | -10       |
+
+#+INDEX: Forschen
+*Forschen*: Das langsame und vorsichtige Vorgehen in der Unterwelt. Es
+gilt die normale Bewegungsrate in Fuss pro 10min.
+
+#+INDEX: Rennen
+*Rennen*: Wilde Flucht erlaubt den Gegnern einen letzten Angriff mit
++2. Kartenzeichnen ist beim Rennen nicht erlaubt. Es gilt die normale
+Bewegungsrate in Fuss pro Runde (10s).
+
+#+INDEX: Kampf!Bewegung
+*Kämpfen*: Bei einer Begegnung startet man oft in einer Distanz von
+/20--120 Fuss/. Wer schwer gerüstet in den Nahkampf will, muss sich
+also möglicherweise mehrere Runden beschiessen lassen, bevor die
+Feinde erreicht sind. Das Angreifen und Manövrieren im Getümmel ist
+schwierig. Es gilt die reduzierte Bewegungsrate in Fuss pro Runde
+(10s).
+
+#+INDEX: Gegenstände!Anzahl
+*Anzahl Gegenstände*: Für jeden Punkt /Kraft/ kann man einen
+signifikanten Gegenstand ohne Malus tragen (eine Rüstung, eine Waffe,
+ein Buch, einen Trank, eine Fackel, einen Köcher, einen Stab, eine
+Schriftrolle). Trägt man mehr signifikante Gegenstände, gibt jeder
+weitere Gegenstand -1 auf Angriff und Rettungswürfe. Insignifikante
+Gegenstände sind Kleider, Ringe, Anhänger, Edelsteine, Gürteltaschen,
+Rucksäcke, Münzen.
+
+#+INDEX: Ruf
+* Ruf
+
+*Ruf*: Überall kann Ruhm und Ehre gewonnen werden. Selbst die Götter
+zeigen ein Interesse an den Taten der Sterblichen. Der Ruf kann gut
+oder schlecht sein. Die Götter interessieren sich auch für die
+Frevler! Der Spielleiter führt eine Liste der Götter, Städte und
+Interessengruppen, für die der Ruf jeweils geführt wird.
+
+-  bis 4 :: Religiöse Gegenstände Dinge finden, zurück bringen, Tiere
+   retten oder opfern, Altäre weihen oder entweihen
+
+-  bis 6 :: Menschenleben retten oder opfern, Tempel weihen oder
+   entweihen
+
+-  bis 8 :: Siedlungen und Gemeinschaften retten oder opfern, einen Kult
+   gründen oder eine Häresie ausmerzen
+
+-  bis 10 :: Völker und Stämme bekehren, retten oder opfern
+
+-  über 10 :: Taten im Auftrag der Götter
+
+Je höher der Ruf, desto schwieriger wird es, diesen noch weiter zu
+steigern. Normalerweise ändert sich der Ruf um höchstens ±1 pro
+Spielabend.
+
+#+INDEX: Götter!Hilfe
+*Hilfe*: Für Städte und Interessengruppen bestimmt der Ruf auch ihre
+Hilfsbereitschaft. Würfelt man mit 2W6 über diesen Wert, gibt es keine
+Unterstützung von der Gemeinschaft.
+
+#+INDEX: Intervention
+*Eingreifen der Götter*: Der Ruf gilt in der Not auch als Prozent
+Chance für eine göttliche Intervention.
+
+Eine göttliche Intervention könnte beispielsweise das Erscheinen eines
+Engels, eines Teufels oder eines Dämons sein.
+
+#+INDEX: Wunder!Begrenzung
+*Wunder*: Für Kleriker gilt, dass der Ruf auch den Zirkel der ihm
+gewährten Wunder begrenzt. Für das erste Abenteuer eines Klerikers
+gibt es entsprechend noch keine Wunder zu wirken, da ein Kleriker noch
+keinen Ruf hat.
+
+# <<Zaubersprüche>>
+* Zaubersprüche der Magier und Elfen
+
+Als Magier oder Elf beginnst du deine Karriere mit genau /einem/
+Zauberspruch. Dieser Zauberspruch steht in deinem Zauberbuch. Wenn du
+eine Stufe steigst, kannst du von anderen Elfen oder Magiern neue
+Zaubersprüche lernen. Achtung: Aus fremden Zauberbüchern können keine
+neuen Zaubersprüche gelernt werden. Es braucht immer einen Lehrer!
+Deswegen bleiben viele Magier und Elfen in engem Kontakt mit ihren
+Lehreren, Gilden und Schulen. Der Spielleiter sollte mindestens einen
+Lehrer ausgearbeitet haben, so dass Du weisst, welche Sprüche deine
+Charaktere lernen werden können.
+
+#+INDEX: Repertoire!Magier und Elfen
+*Magier und Elfen*: Die Liste der Sprüche in deinem Zauberbuch bildet
+dein Repertoire. Wenn du zauberst, wählst du einen Zauberspruch aus
+deinem Repertoire. (Du musst keine Sprüche /memorisieren/.) Dein
+Repertoire wird von deiner Stufe bestimmt:
+
+| <c>   | <c>       | <c>       | <c>       | <c>       | <c>       |
+| Stufe | 1. Zirkel | 2. Zirkel | 3. Zirkel | 4. Zirkel | 5. Zirkel |
+|-------+-----------+-----------+-----------+-----------+-----------|
+| 1     | 1         | -         | -         | -         | -         |
+| 2     | 2         | -         | -         | -         | -         |
+| 3     | 2         | 1         | -         | -         | -         |
+| 4     | 2         | 2         | -         | -         | -         |
+| 5     | 2         | 2         | 1         | -         | -         |
+| 6     | 2         | 2         | 2         | -         | -         |
+| 7     | 3         | 2         | 2         | 1         | -         |
+| 8     | 3         | 3         | 2         | 2         | -         |
+| 9     | 3         | 3         | 3         | 2         | 1         |
+| 10    | 3         | 3         | 3         | 3         | 2         |
+
+Die Tabelle bestimmt sowohl die Anzahl Zaubersprüche, die du pro Tag
+zaubern kannst, als auch die Anzahl Zaubersprüche in deinem
+Repertoire.
+
+Auf der ersten Stufe startest du mit einem Spruch aus dem Buch deines
+Meisters. Typische Sprüche des 1. Zirkels für [[Gefolgsleute]]:
+
+*Licht* verzaubert einen Gegenstand innerhalb von /120 Fuss/ für /1h +
+10min/Stufe/, so dass er schwach zu leuchten beginnt und eine Kugel
+von /30Fuss/ Durchmesser beleuchtet. Werden die Augen einer Kreatur
+verzaubert, so erblindet sie für diese Zeit. In diesem Fall steht dem
+Opfer ein Rettungswurf gegen Sprüche zu.
+
+*Magie entdecken* lässt verzauberte Gegenstände, Kreaturen und Orte
+innerhalb von /60 Fuss/ für /20min/ aufleuchten. Dieses Leuchten ist
+für alle sichtbar.
+
+*Magie entziffern* erlaubt es, für /10min/ alle magische Runen zu
+entziffern. So können Zauberbücher, Schriftrollen und Inschriften
+gelesen werden.
+
+*Magisches Geschoss* trifft innerhalb von /150 Fuss/ ein beliebiges
+Ziel und verursacht 1W6+1 Schaden. Auf der 5. Stufe werden es /drei/
+Geschosse, welche unabhängige Ziele treffen können.
+
+*Person bezaubern* macht /eine/ menschenähnliche Kreatur zu deinem
+treuen Freund. 
+
+Untote und Riesen sind zwar menschenähnlich aber trotzdem immun gegen
+Bezauberung. Mit der Zeit stehen dem Opfer weitere Rettungswürfe zu:
+
+| <c>     | <l>         |
+| Bildung | Zeitraum    |
+|---------+-------------|
+| 3--8    | monatlich   |
+| 9--12   | wöchentlich |
+| 13--18  | täglich     |
+
+Dem Opfer steht ein Rettungswurf gegen Sprüche zu.
+
+*Schlaf* lässt /2W8 Trefferwürfel/ von Kreaturen innerhalb von
+/240 Fuss/ für /4W4 × 10min/ in einen magischen Schlummer versinken.
+Keine Kreatur darf mehr als 4+1~Trefferwürfel haben. Kreaturen mit
+weniger Trefferwürfel sind zuerst betroffen. Es gibt keinen
+Rettungswurf!
+
+* Das Buch der Meereskönigin
+
+Dies sind die Zaubersprüche der Lady Gerdana, der elfischen Königin von
+Lagnabadalë.
+
+** 1. Zirkel
+
+
+*Das Einschläferndes Rauschen der Brandung* lässt /2W8 Trefferwürfel/
+von Kreaturen innerhalb von /240 Fuss/ für /4W4 × 10min/ in einen
+magischen Schlummer versinken. Keine Kreatur darf mehr als
+4+1~Trefferwürfel haben. Kreaturen mit weniger Trefferwürfel sind
+zuerst betroffen. Im Zweifelsfall darfst du wählen, wer zuerst
+betroffen sein soll. Die Opfer erhalten keinen Rettungswurf.
+
+*Die Manipulative Macht der Elfenstimmen* macht /eine/
+menschenähnliche Kreatur zu deinem treuen Freund.
+
+Untote und Riesen sind zwar menschenähnlich aber trotzdem immun gegen
+Bezauberung. Mit der Zeit stehen dem Opfer weitere Rettungswürfe zu:
+
+| <c>     | <l>         |
+| Bildung | Zeitraum    |
+|---------+-------------|
+| 3--8    | monatlich   |
+| 9--12   | wöchentlich |
+| 13--18  | täglich     |
+
+Dem Opfer steht ein Rettungswurf gegen Sprüche zu.
+
+*Runenkunde der Altvorderen* erlaubt es dir, für /10min/ alle magische
+Runen der Magier und Elfen zu entziffern. So können Zauberbücher,
+Schriftrollen und Inschriften gelesen werden. Der Zauber, der auf
+einer Schriftrolle steht, kann nur von jemandem ausgelöst werden, der
+diese zuvor entziffert hat.
+
+** 2. Zirkel
+
+*Direkte Verbindung der Seelen* macht dich während /2h/ für die
+Gedanken der näheren Umgebung empfänglich. Es braucht allerdings
+/10min/, um sich auf die Gedanken einer Kreatur einstimmen zu können
+und es braucht weitere /10min/, um sich zu konzentrieren, falls
+weitere Kreaturen anwesend sind, da diese die zarte Verbindung stören.
+Eine gemeinsame Sprache ist nicht nötig. Es gibt keinen Rettungswurf
+für die Opfer.
+
+*Empfindsamkeit* erlaubt es dir, während /20min/ zu erahnen, welche
+der /sichtbaren/ Wesen im Umkreis von /90 Fuss/ dir Übles wollen.
+
+*Ewiges Sternenlicht* verzaubert einen Gegenstand innerhalb von
+/120 Fuss/, so dass er für immer hell wie die Sterne zu leuchten
+beginnt und eine Kugel von /60 Fuss/ Durchmesser erleuchtet. Der Segen
+der Sterne sorgt dafür, dass dieses Licht wie Sonnenlicht auf
+diejenigen wirkt, welche darauf anfällig sind. Werden die Augen einer
+Kreatur verzaubert, so erblindet sie. In diesem Fall steht dem Opfer
+ein Rettungswurf gegen Sprüche zu. Eine blinde Kreatur hat einen Abzug
+von -4 auf ihre Angriffe. /Gegenzauber/ beendet den Zauber.
+
+/Ewiges Licht/ und /Ewige Dunkelheit/ heben sich gegenseitig auf. Wird
+das Sternenlicht zur Beleuchtung von Bauten verwendet, so pulsiert es
+mit dem Leben in der Umgebung, leuchtet auf, wenn Kreaturen in der
+Nähe sind, wird schwächer, wenn man sich entfernt.
+
+FIXME: HERE!
+
+** 3. Zirkel
+
+*Donnerkeil* führt zu einem bis zu /240 Fuss/ langen, geraden,
+gleissenden Blitzschlag, der an deinen Fingerspitzen beginnt, alles
+auf seinem Weg erfasst und 1W6 Schaden pro Stufe des Zaubernden
+anrichtet (also mindestens 5W6). Der darauf folgende Donnerschlag ist
+ohrenbetäubend. Wer ausweichen kann, darf mit einem erfolgreichen
+Rettungswurf gegen Sprüche den Schaden halbieren.
+
+Trifft der Blitz auf Wasser, so erleiden Kreaturen im Wasser bis
+/30 Fuss/ vom Einschlag den vollen Schaden. Ein Ausweichen ist im
+Wasser nicht möglich. Eine Steinwand oder eine Metalltüre absorbiert
+den Blitz. Eine Holzwand oder Holztüre wird zerschmettert. Alles
+brennbare Material fängt Feuer.
+
+*Stürmische Barriere gegen Luftgeschosse* wehrt mit einem gut
+sichtbaren und hörbaren magischem Wind für /2h/ alle natürlichen
+Geschosse wie Pfeile, Bolzen oder Schleudersteine von dir ab. Gegen
+magische Pfeile, magische Geschosse, von Riesen geschleuderte
+Steinbrocken oder Geschosse von Belagerungsmaschinen nützt der Zauber
+leider nicht.
+
+*Atemkraft der Wale* erlaubt /einer Kreatur/, /einen Tag/ lang unter
+Wasser atmen. Die Luft kommt dabei wahrscheinlich aus der
+Elementarebene der Luft. Dieser Zauber bringt einem nicht das
+Schwimmen bei.
+
+** 4. Zirkel
+
+*Ephemere Vielgestalten* -- für eine Stunde + /10min/ pro Stufe (also
+für mindestens /2½h/) kannst du deine Gestalt verwandeln. Wenn du dich
+in ein Monster verwandelst, so darf es nicht mehr Trefferwürfel haben.
+Du erhältst alle natürlichen Fähigkeiten deiner neuen Gestalt:
+Bewegungsarten wie Schwimmen der Fliegen, Angriffe mit Klauen und
+Biss, Rüstung, aber keine magischen Fähigkeiten wie einen
+versteinernden Blick, einen Feueratem oder eine Immunität gegen Feuer.
+Dein Angriffswert und deine Lebensenergie bleibt unverändert. Deine
+ursprüngliche Stärke und deine ursprüngliche Geschicklichkeit haben
+keinen Einfluss auf deine Angriffe, deinen Schaden und deine
+Rüstungsklasse.
+
+Gerdana favorisiert die Gestalt eines roten Drachens:
+
+| <l>          | <c> | <c> | <l>                  | <c>  |
+| Drachenfarbe | TW  | RK  | Angriffe             | BW   |
+| Blau         | 9   | 0   | 1W6+1 / 1W6+1 / 3W10 | 9/24 |
+| Rot          | 10  | -1  | 1W8 / 1W8 / 4W8      | 9/24 |
+| Gold         | 11  | -2  | 2W4 / 2W4 / 6W6      | 9/24 |
+
+*Bann gegen allerlei Hexenflüche* hebt Flüche auf. Verfluchte
+Gegenstände bleiben allerdings verflucht. Wer sie trägt, kann aber von
+ihnen lassen. Dieser Spruch lässt sich umkehren, das Opfer kann
+den *Fluch* mit einem Rettungswurf gegen Sprüche allerdings umgehen.
+Ein Fluch ist permanent, seine Wirkung individuell. Beispiele:
+Blindheit (-4 auf Angriffe), Lahm (BW 1), die Liebe verloren, die
+Heimat vergessen, die Sprache verschlagen (kann nicht mehr zaubern),
+usw.
+
+** 5. Zirkel
+
+*Macht des Willens über die physische Welt* erlaubt dir, /20 Pfund/
+pro Stufe (also mindestens 90kg) innerhalb von /120 Fuss/ mit
+Geisteskräften für 6 Runden für /20 Fuss/ pro Runde (also höchstens
+/120 Fuss/ weit) zu bewegen. Willst du Kreaturen bewegen, so ist ihnen
+ein Rettungswurf gegen Sprüche erlaubt. Drückst du Kreaturen gegen
+eine Wand oder den Boden, so erleiden sie 2W6 Schaden pro Runde. Lässt
+du grosse Gegenstände wie Schränke oder Felsen auf andere
+herunterstürzen, so gilt dies wie ein Fall in eine entsprechend tiefe
+Grube. Pro 10 Fuss Fallhöhe gibt es 1W6 Schaden. Die genaue Grösse des
+Gegenstandes ist egal. Ein grösserer Gegenstand könnte einfach mehrere
+Opfer gleichzeitig treffen. Wer ausweichen kann, darf mit einem
+erfolgreichen Rettungswurf gegen Sprüche den Schaden halbieren.
+
+* Das Buch der Ursomantik
+
+Dies sind die Sprüche der elfischen Bibliothekarin aus dem zerstörten
+Susrael, Lady Chrysalis.
+
+** 1. Zirkel
+
+*Aussergewöhnliches Wachstum der Haare* sorgt für eine Kreatur während
+//<<< = >>> für Rüstungsschutz 6. Du siehst aus wie ein Yeti. Der Pelz
+schützt dich auch vor arktischen Temperaturen (aber nicht vor magischen
+Kälteangriffen).
+
+*Die Nase eines Honigschleckers*<<<Willst du gegen sie kämpfen, giltst
+du immer noch als /blind/ und hast einen Abzug von -4 auf deine
+Angriffe.>>> erlaubt es dir, für // kürzliche Anwesenheit unsichtbarer
+Kreaturen, ihre Art und -- falls möglich -- ihr Geschlecht zu wittern.
+
+** 2. Zirkel
+
+*Schreckliche Standkraft der Bergbären* verleiht dir ein Drittel deiner
+maximalen Lebensenergie oben drauf. Nach // sinkt deine Lebensenergie
+wieder auf dein Maximum, falls sie durch diesen Zauber über dein Maximum
+gestiegen ist.
+
+** 3. Zirkel
+
+*Glühende Augen der Bärenhölle* lässt dich // lang Laserstrahlen aus den
+Augen schiessen: ein Ziel pro Runde muss einen Rettungswurf gegen
+Strahlen bestehen oder 1W6 Schaden nehmen (dies hindert dich nicht
+daran, jede Runde normal zu handeln)
+
+*Bärengestalt*<<<Verfällst du gleichzeitig der /Ursinen Blutlust/, so
+wird 1W3+1W6 zu 1W8+1 vereinfacht und du verursachst 1W8+1 / 1W8+1 / 2W6
+Schaden; wer in Bärengestalt mit beiden Pranken triffst, umarmt das
+Opfer und verursacht weiterhin nur 2W8 zusätzlichen Schaden.>>>
+verwandelt dich für // in einen Bären. Je höher deine Stufe, desto
+grösser der Bär. In Bärenform kannst du nicht zaubern und nicht reden.
+Deine Lebensenergie, Angriffswerte und Rettungswürfe bleiben gleich.
+Dein Rüstungsschutz sinkt auf 6 und du erhältst drei Angriffe: 1W3 / 1W3
+/ 1W6. Wenn du mit beiden Pranken triffst, umarmst du das Opfer und
+verursachst /zusätzliche 2W8 Schaden/.
+
+** 4. Zirkel
+
+*Verräterischer Missbrauch der Bärenbrüderschaft* beschwört einen
+unwilligen Panzerbären mit Stahlklauen und zwingt ihn, für dich einen
+Kampf zu bestehen: TW 6 RK 5 1W6 / 1W6 / 2d6 K6 BW 9 ML 12; wenn der
+Panzerbär mit beiden Pranken trifft, umarmt er das Opfer und verursacht
+/zusätzliche 2W8 Schaden/.
+
+** 5. Zirkel
+
+*Ursine Blutlust*<<<Für Menschen und ähnliche Kreaturen ohne natürliche
+Waffen ist dieser Spruch unnütz.>>> lässt eine Kreatur für // jede Klaue
+und jeden Biss 1W6 zusätzlichen Schaden machen. Mit Bärenklauen kann man
+keine Waffen führen.
+
+** 6. Zirkel
+
+Da Lady Crysalis als Elfe nicht höher als bis auf die 10. Stufe steigen
+kann, ist es ihr nicht möglich, Sprüche des 6. Zirkels zu zaubern. Um
+diese Sprüche zu lernen, müssen die Spieler also Lady Chrysalis' Lehrer
+ausfindig machen.
+
+*Fliegende Bärenbande* beschwört 1W6+2 verwirrte und zornige, fliegende
+Bären: TW 8 RK 6 2W6/1W6/1W6 K8 BW 12 fliegen ML 12; wenn der Bär mit
+beiden Pranken trifft, umarmt er das Opfer und verursacht /zusätzliche
+2W8 Schaden/.
+
+* Die Wunder der Kleriker
+
+Als Kleriker kannst du von den Göttern *Wunder erflehen*.<<<Wie man
+sieht, bestehen zwischen den Wundern der Klerikern und den
+Zaubersprüchen der Magier und Elfen viele #+INDEX: Repertoire!Kleriker
+Gemeinsamkeiten. Das *Repertoire!Kleriker*Repertoire der Kleriker wird
+allerdings von den verehrten Götter bestimmt.>>>
+
+Die folgende Tabelle zeigt, wie viele Wunder du pro Tag wirken kannst.
+Zauberbuch benötigst du keines.
+
+| <c>   | <c>       | <c>       | <c>       | <c>       | <c>       |
+| Stufe | 1. Zirkel | 2. Zirkel | 3. Zirkel | 4. Zirkel | 5. Zirkel |
+|-------+-----------+-----------+-----------+-----------+-----------|
+| 1     | 1         | -         | -         | -         | -         |
+| 2     | 2         | -         | -         | -         | -         |
+| 3     | 2         | 1         | -         | -         | -         |
+| 4     | 3         | 2         | -         | -         | -         |
+| 5     | 3         | 2         | 1         | -         | -         |
+| 6     | 3         | 3         | 2         | -         | -         |
+| 7     | 4         | 3         | 2         | 1         | -         |
+| 8     | 4         | 3         | 3         | 2         | -         |
+| 9     | 4         | 4         | 3         | 2         | 1         |
+| 10    | 5         | 4         | 3         | 3         | 2         |
+
+<<<Wenn du die *Götter verärgerst*, kann es sein, dass du weniger Wunder
+wirken kannst, als auf der Tabelle aufgeführt sind! /Achte auf deine
+Träume und Visionen/ und gelobe Besserung, um wieder zu der dir
+zustehenden Macht zu kommen.>>>
+
+Dein *Ruf* bei den Göttern bestimmt auch den höchsten Zirkel der Wunder,
+welche dir gewährt werden. Weil du das Spiel mit einem Ruf von 0
+beginnst, wirst du im ersten Abenteuer noch /kein/ Wunder wirken können!
+
+Die *Wunder ab dem 4. Zirkel* werden dir /persönlich/ von einem Agenten
+deiner Götter gewährt -- einer Valkyre, einem Engel, einem Teufel und so
+weiter.
+
+Typische Wunder des 1. Zirkels wären beispielsweise:
+
+*Böses entdecken* zeigt dem Kleriker während //, welche der sichtbaren
+Wesen im Umreis von // ihm Übles wollen.<<<Eine Falle ist beispielsweise
+kein Wesen und kann nichts Übles /wollen/.>>>
+
+*Hand auflegen* heilt 1W6+1 Schadenspunkte /oder/ hebt Lähmung auf. Das
+Gegenteil davon ist *Schmerz* und verursacht 1W6+1 Schadenspunkte. In
+beiden Fällen muss das Ziel berührt werden (was allerdings keinen
+Trefferwurf benötigt).
+
+*Magie entdecken* lässt verzauberte Gegenstände, Kreaturen und Orte
+innerhalb von // für // aufleuchten.<<<Dieses Leuchten ist für alle
+sichtbar.>>>
+
+# <<Paladin der Freya>>
+* Paladin der Freya: Weg des Wolfes
+
+Freya ist eine Göttin der Fruchtbarkeit, der freien Liebe, der Ernte,
+des Haushaltes und des Goldes. Gewisse Themen überschneiden sich mit
+Ishtar.
+
+Samhain steht für den Beginn des Winters, Beltane steht für den Beginn
+des Sommers. Und so wie Samhain ein Fest des Todes und der Toten ist,
+ist Beltane ein Fest des wiedererwachten Lebens und des Sieges der Sonne
+und des Sommers über den Winter und den Tod. Beide Feste finden zur Ehre
+der Freya statt und symbolisieren den ewigen Kreis des Lebens.
+
+In ihrem kriegerischen Aspekt ist Freya die Schutzherrin der Valkyren
+und wer nicht in Walhalla endet, der endet bei ihr, in Sessrúmnir.
+
+Falken, Hirsche, Winterwölfe, Eber, Wildkatzen, sie alle sind treue
+Gefährten der Freya. Einem Paladin gewährt Freya gerne einen
+Wolfsgefährten: TW 2+1 RK 7 1W6 K1 BW 18.
+
+cp9cm
+
+Ruf & Fähigkeit
+
+2 & Adoptiert man einen Wolf als Gefolgsmann, so versteht man sich auf
+Anhieb. Es ist keine spezielle Dressur nötig.
+
+4 & Ein adoptierter Wolf teilt automatisch alle vorteilhaften Zauber,
+die man empfängt (Schutz, Heilung, Teleportation, Verwandlung).
+
+6 & Ein adoptierter Wolf wird automatisch von Freya gesegnet und wird zu
+einem Winterwolf der dritten Stufe: TW 3+1 RK 4 Biss 1W10 (1--4/6) oder
+3W4 Eisatem bis 5m (5--6/6) K4 BW 15
+
+7 & Winterwolf der vierten Stufe: TW 4+1 RK 4 Biss 1W10 (1--4/6) oder
+4W4 Eisatem bis 5m (5--6/6) K5 BW 15
+
+8 & Winterwolf der fünften Stufe: TW 5+1 RK 4 Biss 1W10 (1--4/6) oder
+5W4 Eisatem bis 5m (5--6/6) K6 BW 15
+
+Wölfe, die sich einem Paladin der Freya anschliessen, können mit der
+#+INDEX: WinterwolfZeit zu einem *Winterwolf* werden. Mit der Zeiten
+werden Winterwölfe immer grösser, bis sie schliesslich die Grösse eines
+Ponys erreichen. Winterwölfe sind immun gegen Kälte. Von magischen
+Kälteangriffen erleiden sie nur halben Schaden. Im Gegenzug sind sie
+gegen Feuer sehr empfindlich und erleiden für jeden Schadenswürfel +1
+Schaden.
+
+Falls Winterwölfe nicht einem Paladin der Freya folgen, haben sie eine
+Moral von 10.
+
+Winterwölfe sind und bleiben Kreaturen des Chaos und der Zerstörung.
+Wölfe sind keine Haustiere! Winterwölfe erst recht nicht.
+
+* Wunder der Freya
+
+** 1. Zirkel
+
+*Böses entdecken* zeigt dem Kleriker während //, welche der sichtbaren
+Wesen im Umreis von // ihm Übles wollen.
+
+*Hand auflegen* heilt 1W6+1 Schadenspunkte /oder/ hebt Lähmung auf. Das
+Gegenteil davon ist *Schmerz* und verursacht 1W6+1 Schadenspunkte. In
+beiden Fällen muss das Ziel berührt werden (was allerdings keinen
+Trefferwurf benötigt).
+
+*Licht* verzaubert einen Gegenstand innerhalb von // für //, so dass er
+schwach zu leuchten beginnt und eine Kugel von // Durchmesser
+beleuchtet. Wird das Wunder auf die Augen einer Kreatur gewirkt, so
+erblindet sie für //. In diesem Fall steht dem Opfer ein Rettungswurf
+gegen Sprüche zu.<<</Licht/ und /Dunkelheit/ heben sich gegenseitig
+auf.>>> Das Gegenteil ist *Dunkelheit*.
+
+*Magie entdecken* lässt verzauberte Gegenstände, Kreaturen und Orte
+innerhalb von // für // aufleuchten.<<<Dieses Leuchten ist für alle
+sichtbar.>>>
+
+*Mut* erlaubt einem berührten Wesen, welches in magischer Panik fliehen
+will, einen Rettungswurf mit einem Bonus, der gleich hoch ist wie die
+Stufe des Klerikers.<<</Mut/ und /Panik/ heben sich gegenseitig auf.>>>
+Das Gegenteil davon ist *Panik*: Das berührte Wesen flieht in Panik.
+
+*Schutz vor beschworenen Kreaturen* schützt ein berührtes Wesen während
+// vor der Berührung /beschworener/ Kreaturen und verbessert die
+Rüstungsklasse um -1 (tiefer ist besser) und gibt einen +1 Bonus auf
+alle Rettungswüfe.
+
+*Schutz vor Kälte* erlaubt es einem Wesen in bis zu // Entfernung für //
+jeglicher Kälte zu trotzen, gibt einen +2 Bonus bei Rettungswürfen gegen
+Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
+Kälteangriffen um einen Punkt.
+
+** 2. Zirkel
+
+*Fallen entdecken* warnt den Kleriker während // vor allen Fallen im
+Umkreis von //.
+
+*Gesinnung entdecken* zeigt dem Kleriker die Gesinnung aller Wesen im
+Umkreis von //, die Gesinnung aller magischer Gegenstände, sofern sie
+eine haben, und ob dies hier ein heiliger oder ein unheiliger Ort ist.
+
+*Mit Tieren sprechen* erlaubt es dem Kleriker, während // mit allen
+Vertretern /einer Tierart/ im Umkreis von // zu reden und ihre Antworten
+zu verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
+gesinnt. Es kann zu einem kommen.
+
+*Personen festhalten* lähmt bis zu 1W4 sichtbare Personen für // in
+bis zu // Entfernung. Allen Opfern steht ein Rettungswurf gegen
+Sprüche zu. Soll nur eine Person gelähmt werden, ist der Rettungswurf
+um -2 erschwert. Dieses Wunder wirkt nur gegen menschenähnliche
+Kreaturen. Untote und Riesen sind gegen das Wunder immun, obwohl sie
+menschenähnlich sind.
+
+*Schutz vor Feuer* erlaubt es einem Wesen, in bis zu // Entfernung für
+// jeglicher Hitze zu trotzen, gibt einen +3 Bonus bei Rettungswürfen
+gegen Feuerangriffe und reduziert zudem jeden Schadenswürfel bei
+Feuerangriffen um einen Punkt.
+
+*Segen* verleiht allen Verbündeten des Klerikers im Umkreis von // für
+// einen +1 Bonus beim Trefferwurf und beim Schadenswurf und steigert
+die Moral um +1.<<</Segen/ und /Verfluchen/ heben sich gegenseitig
+auf.>>>
+
+*Stille* formt eine unsichtbare, schallschluckende Kugel mit //
+Durchmesser in bis zu // Entfernung welche für // andauert. Wird das
+Wunder auf eine unwillige Kreature gewirkt, so steht ihr ein
+Rettungswurf gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf den
+Boden und die Kreatur kann den Wirkungsbereich problemlos verlassen.
+
+** 3. Zirkel
+
+*Ewiges Licht* verzaubert einen Gegenstand innerhalb von //, so dass er
+/für immer/ hell wie die Sonne zu leuchten beginnt und eine Kugel von //
+Durchmesser erleuchtet.<<</Gegenzauber/ beendet das Wunder. /Ewiges
+Licht/ und /Ewige Dunkelheit/ heben sich gegenseitig auf.>>> Wird das
+Wunder auf die Augen einer Kreatur gewirkt, so erblindet sie. In diesem
+Fall steht dem Opfer ein Rettungswurf gegen Sprüche zu.
+
+*Fluch brechen* bricht einen Fluch, der auf einem berührten Wesen
+lastet. Trägt das Wesen einen verfluchten Gegenstand, so kann das Wesen
+den Gegenstand ablegen -- der Gegenstand bleibt allerdings
+verflucht.<<</Fluch brechen/ hebt einen /Fluch/ auf.>>>
+
+*Gerechter Zorn* verzaubert eine Waffe in bis zu // Entfernung, so dass
+sie für // einen zusätzlichen W6 Schaden verursacht.
+
+*Krankheiten heilen* heilt bei einem Wesen in bis zu // Entfernung alle
+Sorten von Krankheiten inklusive Mumienfäule, Lykanthropie und grünen
+Schleim.<<</Krankheiten heilen/ beendet /Siechtum/.>>>
+
+*Magie bannen* bannt alle Wunder und Zauber von Personen, deren Stufe
+gleich oder unter der Stufe des Klerikers liegt. Für jede Stufe
+/darüber/ gibt es eine 5% Chance, dass der Bann misslingt.
+
+* Wunder des Tsathoggua
+
+** 1. Zirkel
+
+*Beklemmung* füllt das Herz mit Kälte und verursacht 1W6+1
+Schadenspunkte. Das Ziel muss berührt werden, was allerdings keinen
+Trefferwurf benötigt.
+
+*Dunkelheit* beschwört innerhalb von // für // einen lebendig und böse
+wirkenden Schatten mit // Durchmesser, der alles Licht schluckt.<<<Wer
+im Schatten kämpft, gilt als /blind/ und hat einen Abzug von -4 auf alle
+Angriffe.>>> Wird das Wunder auf die Augen einer Kreatur gewirkt, so
+erblindet sie für //. In diesem Fall steht dem Opfer ein Rettungswurf
+gegen Sprüche zu.<<</Licht/ und /Dunkelheit/ heben sich gegenseitig
+auf.>>>
+
+*Gutmenschen entdecken* zeigt dem Kleriker während //, welche der
+sichtbaren Wesen im Umreis von // besserwisserische, selbstgerechte und
+moralisierende Dummköpfe sind.
+
+*Kröten schlecken* heilt 1W6+1 Schadenspunkte. Benötigt eine lebende
+Kröte. Wen die Kröte selber schleckt, wird von aller Lähmung geheilt.
+
+*Fratze* zwingt ein Wesen, in Panik zu fliehen. Das Opfer darf nicht
+weiter als einen Schritt vom Opfer entfernt sein, wenn dieses Wunder
+gewirkt wird. Das Opfer flieht für so viele Runden wie der Kleriker
+Stufen hat. Dem Opfer steht ein Rettungswurf gegen Sprüche zu.
+
+*Wärme des Verfalls* erlaubt es einem Wesen in bis zu // Entfernung für
+// jeglicher Kälte zu trotzen, gibt einen +2 Bonus bei Rettungswürfen
+gegen Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
+Kälteangriffen um einen Punkt.
+
+** 2. Zirkel
+
+*Korruption*<<<Das heisst nicht, dass man seinen sündigen Gedanken auch
+ausgeliefert ist. Selbstdisziplin, Aufrichtigleit, Standfestigkeit: Das
+sind die Gegenmittel, die jedem zur Verfügung stehen.>>> lässt den
+Wunderwirkenden // lang erkennen, was diejenigen, innerhalb von //
+reden, sich wünschen. Für jede Person ist dieser Wunsch immer etwas, was
+sie vom rechten Weg abbringen würde, eine Sünde, eine Schwäche, eine
+Bestechungsmöglichkeit, eine Erpressungsmöglichkeit.
+
+*Krötenfreund* macht Tieren zu treuen Freunden.<<<Beispielsweise ein
+Teich voll Kröten, ein Korb voller Schlangen, bis zu sechs Wölfe, bis zu
+vier Riesenkröten, eine Riesenschlange.>>> Die genaue Anzahl hängt von
+der Grösse der Tiere ab. Die Tiere verhalten sich wie gut dressierte
+Hunde, sofern sie können. Der Zauber endet erst, wenn den Tieren ein
+misslingt.
+
+*Schlangenzunge* erlaubt es dem Kleriker, während // mit allen
+Vertretern /einer Tierart/ im Umkreis von // zu reden und ihre Antworten
+zu verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
+gesinnt. Es kann zu einem kommen.
+
+*Sprungangriff* verzaubert eine Person, so dass sie // lang unglaubliche
+Sprünge vollbringen kann, ohne Schaden zu erleiden. Die Sprünge können
+bis zu // hoch und // weit sein.<<<Darf man mehrmals angreifen, so gilt
+der Bonus nur für einen dieser Angriffe.>>> Im Kampf kann man so, sofern
+man auch hoch springen kann, +2 auf einen Schadenswurf addieren.
+
+*Stille* formt eine unsichtbare, schallschluckende Kugel mit //
+Durchmesser in bis zu // Entfernung welche für // andauert. Wird das
+Wunder auf eine unwillige Kreature gewirkt, so steht ihr ein
+Rettungswurf gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf den
+Boden und die Kreatur kann den Wirkungsbereich problemlos verlassen.
+
+*Totenstarre*<<<Das kann auch von Vorteil sein, wenn es gilt, Sterbende
+zu stabilisieren oder andere durch Flüssigkeiten oder giftige Gase zu
+transportieren.>>> lässt eine Person ohnmächtig werden. Diese sieht aus
+wie eine Leiche, atmet nicht, blutet nicht. Der Zauber hält für so viele
+Tage, wie der Kleriker Stufen hat. Dem Opfer steht ein Rettungswurf
+gegen Sprüche zu.
+
+** 3. Zirkel
+
+*Ewige Dunkelheit*<<</Gegenzauber/ beendet das Wunder. /Ewiges Licht/
+und /Ewige Dunkelheit/ heben sich gegenseitig auf.>>> verzaubert einen
+Gegenstand innerhalb von //, so dass dieser /für immer/ ein dunkles
+Miasma verströhmt, welches im Umkreis von // alles Licht verschluckt.
+Hier herrscht absolute Dunkelheit. Wird das Wunder auf eine Kreatur
+gewirkt, so steht dem Opfer ein Rettungswurf gegen Sprüche zu.
+
+*Fluch*<<</Fluch brechen/ hebt einen /Fluch/ auf. /Gegenzauber/ ist
+gegen einen Fluch wirkungslos.>>> wirkt auf eine Kreatur innerhalb von
+//. Der Fluch gilt /für immer/. Typische Flüche wären: Blindheit,
+Taubheit, Stimmverlust, verkrüppelte Beine, ein hässliches Gesicht, ein
+fürchterlicher Gestank, Unfruchtbarkeit, Fehlgeburt, Krankheit, Gift,
+aus der Haut schlüpfende Kröten, eine Zungenlänge von , eine Krötenhaut,
+die jede Nacht feucht gehalten werden muss, und so weiter. Dem Opfer
+steht ein Rettungswurf gegen Sprüche zu.
+
+*Hypnose der 1000 Kröten*<<<Den Betroffenen steht alle // ein weiterer
+Rettungwurf zu. Nehmen die Betroffenen Gewalt wahr, endet die Wirkung
+der Hypnose sofort.>>> zwingt alle Kreaturen innerhalb von //, welche
+den Wunderwirkenden hören können, seinen Einflüsterungen zuzuhören. Den
+Betroffenen steht ein Rettungswurf gegen Sprüche zu. Solange der
+Wunderwirkende weiter säuselt, hält die Wirkung an. Die Betroffenen
+können nichts anderes tun, als dem Wunderwirkenden langsam nach zu
+schlurfen.
+
+*Kiemen*<<<Dieser Zauber bringt einem nicht das Schwimmen bei.>>> lässt
+/einer Kreatur/ für /einen Tag/ Kiemen wachsen, so dass diese unter
+Wasser atmen kann.
+
+*Knochenmänner*<<<Skelette: TW 1 RK 7 1W6 K1 BW 6. Diese Skelette können
+mit Waffengewalt und Magie zerstört werden, sie können durch andere
+Kleriker vertrieben oder zerstört werden, und sie können durch /Magie
+bannen/ zerstört werden.>>> macht aus den Leichen innerhalb von //
+einfache Skelette. Pro Stufe kann der Kleriker eine Leiche in ein
+Skelett verwandeln. Die Skelette sind nicht intelligent, befolgen aber
+einfache Befehle (bewache diesen Raum, töte diese Leute, folge mir, und
+so weiter).
+
+*Magie bannen* bannt alle Wunder und Zauber von Personen, deren Stufe
+gleich oder unter der Stufe des Klerikers liegt. Für jede Stufe
+/darüber/ gibt es eine 5% Chance, dass der Bann misslingt.
+
+*Riesenkröte*<<<Riesenkröten: TW 2+2 RK 7 1W4+1 K1 BW 9; können Zwerge
+und kleiner mit ihrer Zunge von bis zu // zu sich heranziehen und
+beissen; können bei einer 20 Halblinge und kleiner verschlucken;
+verschluckte Kreaturen nehmen jede Runde 1W6 Schaden.>>> verwandelt bis
+zu /vier/ normale Kröten für // in Riesenkröten verwandeln. Diese
+Riesenkröten befolgen treu /jegliche/ Befehle.
+
+*Siechtum*/Krankheiten heilen/ beendet /Siechtum/. wirkt auf
+eine Kreatur innerhalb von //. Dies führt zu einer schrecklichen
+Krankheit, welche das Opfer in 2W12 Tagen dahinrafft. In diesem Fall
+steht dem Opfer ein Rettungswurf gegen Sprüche zu. Ein dahinsiechendes
+Opfer erhält einen -2 Abzug auf alle Trefferwürfe und kann weder auf
+natürliche noch auf magische Weise heilen.
+
+* Paladin des Arden
+
+Arden ist ein elfischer Gott des Lichts. Den Paladinen Ardens sind im
+Moment nur wenige Gaben gegeben, weil Arden erster kurzem überhaupt ein
+Lebenszeichen von sich gegeben hat.
+
+| <c> | <l>                                                                    |
+| Ruf | Fähigkeit                                                              |
+|-----+------------------------------------------------------------------------|
+| 3   | Wasser mit Sternenlicht füllen                                         |
+| 5   | Hell leuchtende Augen                                                  |
+| 8   | Freundschaft eines Lanternenarchons, eine Art intelligenter Lichtfleck |
+
+* Paladin des Loki
+
+Loki ist einer der nordischen Götter. Ein listiger, schlauer,
+heimtückischer Gott, dessen Mundwerk sowohl im Guten wie im Schlechten
+unübertroffen ist. Er sieht sich als weniger borniert als seine
+nordischen Kollegen und pflegt gute Kontakte zu den Jötun Riesen und
+anderen Kreaturen.
+
+Loki ist der Schutzherr aller Gestaltwandler und Diebe, aller falsch
+verstandenen, es eigentlich gut meinenden, unschuldig Angeklagten,
+versetzten, hingehaltenen und unterschätzten Menschen. Ihnen hilft er,
+rettet sie aus der Patsche, gibt ihnen Hoffnung. Doch wenn die Rechnung
+dann nicht aufgeht, dann ist Loki vielleicht auch einfach mal nicht da,
+konnte leider nicht rechtzeitig kommen, war aufgehalten worden,
+Entschuldigungen, Erklärungen, Rechtfertigungen, Ausreden, Ausreden,
+Ausreden.
+
+Viele Spione, Händler und Diplomaten erhoffen sich ebenfalls Hilfe von
+Loki, da er so listenreich und redegewandt ist.
+
+| <c3> | <l70>                                                                  |
+| Ruf | Fähigkeit                                                              |
+|-----+------------------------------------------------------------------------|
+| 1   | *Silberzunge*: Reaktionen +1                                           |
+| 2   | *Verkleiden*: 2/6 statt 1/6                                            |
+| 3   | *Schattengesicht*: im Dunkel kann man Silhouette und Stimmen nachahmen |
+| 4   | *Lügen* decken: Das Aussprechen einer Anklage gegen einen Lügner wird verhindert, so dass es sehr schwierig wird, Lügen aufzudecken |
+| 4   | *Chamäleonhaut*: Hautfarbe und -struktur kann verändert werden (z.B. Schlangenhaut) |
+| 5   | *Tiergestalt*: Verwandlung in ein bestimmtes Tier (z.B. Seehund); das gewählte Tier kann nicht geändert werden, die Fähigkeit kann allerdings mehrfach genommen werden |
+
+* Lizenz: Open Game License Version 1.0a
+
+*Designation of Open Game Content*: The entire document is open game
+content. *Designation of Product Identity*: The names of contributors,
+the name of the website ("Campaign Wiki") and the name of this site
+("Halberds and Helmets" as well as "Hellebarden und Helme") are product
+identity. The following text is the property of Wizards of the Coast,
+Inc. and is Copyright 2000 Wizards of the Coast, Inc ("Wizards"). All
+Rights Reserved.
+
+1.  Definitions: (a) "Contributors" means the copyright and/or trademark
+    owners who have contributed Open Game Content; (b) "Derivative
+    Material" means copyrighted material including derivative works and
+    translations (including into other computer languages), potation,
+    modification, correction, addition, extension, upgrade, improvement,
+    compilation, abridgment or other form in which an existing work may
+    be recast, transformed or adapted; (c) "Distribute" means to
+    reproduce, license, rent, lease, sell, broadcast, publicly display,
+    transmit or otherwise distribute; (d) "Open Game Content" means the
+    game mechanic and includes the methods, procedures, processes and
+    routines to the extent such content does not embody the Product
+    Identity and is an enhancement over the prior art and any additional
+    content clearly identified as Open Game Content by the Contributor,
+    and means any work covered by this License, including translations
+    and derivative works under copyright law, but specifically excludes
+    Product Identity. (e) "Product Identity" means product and product
+    line names, logos and identifying marks including trade dress;
+    artifacts; creatures characters; stories, storylines, plots,
+    thematic elements, dialogue, incidents, language, artwork, symbols,
+    designs, depictions, likenesses, formats, poses, concepts, themes
+    and graphic, photographic and other visual or audio representations;
+    names and descriptions of characters, spells, enchantments,
+    personalities, teams, personas, likenesses and special abilities;
+    places, locations, environments, creatures, equipment, magical or
+    supernatural abilities or effects, logos, symbols, or graphic
+    designs; and any other trademark or registered trademark clearly
+    identified as Product identity by the owner of the Product Identity,
+    and which specifically excludes the Open Game Content; (f)
+    "Trademark" means the logos, names, mark, sign, motto, designs that
+    are used by a Contributor to identify itself or its products or the
+    associated products contributed to the Open Game License by the
+    Contributor (g) "Use", "Used" or "Using" means to use, Distribute,
+    copy, edit, format, modify, translate and otherwise create
+    Derivative Material of Open Game Content. (h) "You" or "Your" means
+    the licensee in terms of this agreement.
+
+2.  The License: This License applies to any Open Game Content that
+    contains a notice indicating that the Open Game Content may only be
+    Used under and in terms of this License. You must affix such a
+    notice to any Open Game Content that you Use. No terms may be added
+    to or subtracted from this License except as described by the
+    License itself. No other terms or conditions may be applied to any
+    Open Game Content distributed using this License.
+
+3.  Offer and Acceptance: By Using the Open Game Content You indicate
+    Your acceptance of the terms of this License.
+
+4.  Grant and Consideration: In consideration for agreeing to use this
+    License, the Contributors grant You a perpetual, worldwide,
+    royalty-free, non-exclusive license with the exact terms of this
+    License to Use, the Open Game Content.
+
+5.  Representation of Authority to Contribute: If You are contributing
+    original material as Open Game Content, You represent that Your
+    Contributions are Your original creation and/or You have sufficient
+    rights to grant the rights conveyed by this License.
+
+6.  Notice of License Copyright: You must update the COPYRIGHT NOTICE
+    portion of this License to include the exact text of the COPYRIGHT
+    NOTICE of any Open Game Content You are copying, modifying or
+    distributing, and You must add the title, the copyright date, and
+    the copyright holder's name to the COPYRIGHT NOTICE of any original
+    Open Game Content you Distribute.
+
+7.  Use of Product Identity: You agree not to Use any Product Identity,
+    including as an indication as to compatibility, except as expressly
+    licensed in another, independent Agreement with the owner of each
+    element of that Product Identity. You agree not to indicate
+    compatibility or co-adaptability with any Trademark or Registered
+    Trademark in conjunction with a work containing Open Game Content
+    except as expressly licensed in another, independent Agreement with
+    the owner of such Trademark or Registered Trademark. The use of any
+    Product Identity in Open Game Content does not constitute a
+    challenge to the ownership of that Product Identity. The owner of
+    any Product Identity used in Open Game Content shall retain all
+    rights, title and interest in and to that Product Identity.
+
+8.  Identification: If you distribute Open Game Content You must clearly
+    indicate which portions of the work that you are distributing are
+    Open Game Content.
+
+9.  Updating the License: Wizards or its designated Agents may publish
+    updated versions of this License. You may use any authorized version
+    of this License to copy, modify and distribute any Open Game Content
+    originally distributed under any version of this License.
+
+10. Copy of this License: You MUST include a copy of this License with
+    every copy of the Open Game Content You Distribute.
+
+11. Use of Contributor Credits: You may not market or advertise the Open
+    Game Content using the name of any Contributor unless You have
+    written permission from the Contributor to do so.
+
+12. Inability to Comply: If it is impossible for You to comply with any
+    of the terms of this License with respect to some or all of the Open
+    Game Content due to statute, judicial order, or governmental
+    regulation then You may not Use any Open Game Material so affected.
+
+13. Termination: This License will terminate automatically if You fail
+    to comply with all terms herein and fail to cure such breach within
+    30 days of becoming aware of the breach. All sublicenses shall
+    survive the termination of this License.
+
+14. Reformation: If any provision of this License is held to be
+    unenforceable, such provision shall be reformed only to the extent
+    necessary to make it enforceable.
+
+15. COPYRIGHT NOTICE Open Game License v 1.0 © 2000, Wizards of the
+    Coast, Inc. System Reference Document Copyright 2000, Wizards of
+    the Coast, Inc.; Authors Jonathon Tweet, Monte Cook, Skip
+    Williams, based on original material by E. Gary Gygax and Dave
+    Arneson. System Reference Document Copyright 2000-2003, Wizards of
+    the Coast, Inc.; Authors Jonathan Tweet, Monte Cook, Skip
+    Williams, Rich Baker, Andy Collins, David Noonan, Rich Redman,
+    Bruce R. Cordell, John D. Rateliff, Thomas Reid, James Wyatt,
+    based on original material by E. Gary Gygax and Dave Arneson.
+    Modern System Reference Document Copyright 2002-2004, Wizards of
+    the Coast, Inc.; Authors Bill Slavicsek, Jeff Grubb, Rich Redman,
+    Charles Ryan, Eric Cagle, David Noonan, Stan!, Christopher
+    Perkins, Rodney Thompson, and JD Wiker, based on material by
+    Jonathan Tweet, Monte Cook, Skip Williams, Richard Baker, Peter
+    Adkison, Bruce R. Cordell, John Tynes, Andy Collins, and JD Wiker.
+    Castles & Crusades: Players Handbook, Copyright 2004, Troll Lord
+    Games; Authors Davis Chenault and Mac Golden. Cave Cricket from
+    the Tome of Horrors, copyright 2002, Necromancer Games, Inc.;
+    Authors Scott Greene and Clark Peterson, based on original
+    material by Gary Gygax. Crab, Monstrous from the Tome of Horrors,
+    copyright 2002, Necromancer Games, Inc.; Author Scott Greene,
+    based on original material by Gary Gygax. Fly, Giant from the Tome
+    of Horrors, copyright 2002, Necromancer Games, Inc.; Author Scott
+    Greene, based on original material by Gary Gygax. Golem, Wood from
+    the Tome of Horrors, copyright 2002, Necromancer Games, Inc.;
+    Authors Scott Greene and Patrick Lawinger. Kamadan from the Tome
+    of Horrors, copyright 2002, Necromancer Games, Inc.; Author Scott
+    Greene, based on original material by Nick Louth. Rot Grub from
+    the Tome of Horrors, Copyright 2002, Necromancer Games, Inc.;
+    Authors Scott Greene and Clark Peterson, based on original
+    material by Gary Gygax. [[http://www.goblinoidgames.com/labyrinthlord.html][Labyrinth Lord]]™ Copyright 2007-2009,
+    Daniel Proctor; Author Daniel Proctor. [[https://github.com/kensanata/halberdsnhelmets/tree/master/Hellebarden%20und%20Helme][Hellebarden und Helme]]
+    Copyright 2012--2014, Alex Schroeder; Author Alex Schroeder.
+
+For purposes of this license, nothing is considered to be Product
+Identity in addition to anything covered in section 1, above.
