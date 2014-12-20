@@ -1500,54 +1500,56 @@ Susrael, Lady Chrysalis.
 ** 1. Zirkel
 
 *Aussergewöhnliches Wachstum der Haare* sorgt für eine Kreatur während
-//<<< = >>> für Rüstungsschutz 6. Du siehst aus wie ein Yeti. Der Pelz
-schützt dich auch vor arktischen Temperaturen (aber nicht vor magischen
-Kälteangriffen).
+/20min/ für Rüstungsschutz 6. Du siehst aus wie ein Yeti. Der Pelz
+schützt dich auch vor arktischen Temperaturen (aber nicht vor
+magischen Kälteangriffen).
 
-*Die Nase eines Honigschleckers*<<<Willst du gegen sie kämpfen, giltst
-du immer noch als /blind/ und hast einen Abzug von -4 auf deine
-Angriffe.>>> erlaubt es dir, für // kürzliche Anwesenheit unsichtbarer
-Kreaturen, ihre Art und -- falls möglich -- ihr Geschlecht zu wittern.
+*Die Nase eines Honigschleckers* erlaubt es dir, für /20Minuten/
+kürzliche Anwesenheit unsichtbarer Kreaturen, ihre Art und -- falls
+möglich -- ihr Geschlecht zu wittern. Willst du gegen sie kämpfen,
+giltst du immer noch als /blind/ und hast einen Abzug von -4 auf deine
+Angriffe.
 
 ** 2. Zirkel
 
-*Schreckliche Standkraft der Bergbären* verleiht dir ein Drittel deiner
-maximalen Lebensenergie oben drauf. Nach // sinkt deine Lebensenergie
-wieder auf dein Maximum, falls sie durch diesen Zauber über dein Maximum
-gestiegen ist.
+*Schreckliche Standkraft der Bergbären* verleiht dir ein Drittel
+deiner maximalen Lebensenergie oben drauf. Nach /20min/ sinkt deine
+Lebensenergie wieder auf dein Maximum, falls sie durch diesen Zauber
+über dein Maximum gestiegen ist.
 
 ** 3. Zirkel
 
-*Glühende Augen der Bärenhölle* lässt dich // lang Laserstrahlen aus den
-Augen schiessen: ein Ziel pro Runde muss einen Rettungswurf gegen
-Strahlen bestehen oder 1W6 Schaden nehmen (dies hindert dich nicht
-daran, jede Runde normal zu handeln)
+*Glühende Augen der Bärenhölle* lässt dich /20min/ lang Laserstrahlen
+aus den Augen schiessen: ein Ziel pro Runde muss einen Rettungswurf
+gegen Strahlen bestehen oder 1W6 Schaden nehmen (dies hindert dich
+nicht daran, jede Runde normal zu handeln)
 
-*Bärengestalt*<<<Verfällst du gleichzeitig der /Ursinen Blutlust/, so
-wird 1W3+1W6 zu 1W8+1 vereinfacht und du verursachst 1W8+1 / 1W8+1 / 2W6
-Schaden; wer in Bärengestalt mit beiden Pranken triffst, umarmt das
-Opfer und verursacht weiterhin nur 2W8 zusätzlichen Schaden.>>>
-verwandelt dich für // in einen Bären. Je höher deine Stufe, desto
-grösser der Bär. In Bärenform kannst du nicht zaubern und nicht reden.
-Deine Lebensenergie, Angriffswerte und Rettungswürfe bleiben gleich.
-Dein Rüstungsschutz sinkt auf 6 und du erhältst drei Angriffe: 1W3 / 1W3
-/ 1W6. Wenn du mit beiden Pranken triffst, umarmst du das Opfer und
-verursachst /zusätzliche 2W8 Schaden/.
+*Bärengestalt* verwandelt dich für /2h/ in einen Bären. Je höher deine
+Stufe, desto grösser der Bär. In Bärenform kannst du nicht zaubern und
+nicht reden. Deine Lebensenergie, Angriffswerte und Rettungswürfe
+bleiben gleich. Dein Rüstungsschutz sinkt auf 6 und du erhältst drei
+Angriffe: 1W3 / 1W3 / 1W6. Wenn du mit beiden Pranken triffst, umarmst
+du das Opfer und verursachst /zusätzliche 2W8 Schaden/.
+
+Verfällst du gleichzeitig der /Ursinen Blutlust/, so wird 1W3+1W6 zu
+1W8+1 vereinfacht und du verursachst 1W8+1 / 1W8+1 / 2W6 Schaden; wer
+in Bärengestalt mit beiden Pranken triffst, umarmt das Opfer und
+verursacht weiterhin nur 2W8 zusätzlichen Schaden.
 
 ** 4. Zirkel
 
-*Verräterischer Missbrauch der Bärenbrüderschaft* beschwört einen
-unwilligen Panzerbären mit Stahlklauen und zwingt ihn, für dich einen
-Kampf zu bestehen: TW 6 RK 5 1W6 / 1W6 / 2d6 K6 BW 9 ML 12; wenn der
-Panzerbär mit beiden Pranken trifft, umarmt er das Opfer und verursacht
-/zusätzliche 2W8 Schaden/.
+*Verräterischer Missbrauch der Bärenbrüderschaft* beschwört
+einen unwilligen Panzerbären mit Stahlklauen und zwingt ihn, für dich
+einen Kampf zu bestehen: TW 6 RK 5 1W6 / 1W6 / 2d6 K6 BW 9 ML 12; wenn
+der Panzerbär mit beiden Pranken trifft, umarmt er das Opfer und
+verursacht /zusätzliche 2W8 Schaden/.
 
 ** 5. Zirkel
 
-*Ursine Blutlust*<<<Für Menschen und ähnliche Kreaturen ohne natürliche
-Waffen ist dieser Spruch unnütz.>>> lässt eine Kreatur für // jede Klaue
-und jeden Biss 1W6 zusätzlichen Schaden machen. Mit Bärenklauen kann man
-keine Waffen führen.
+*Ursine Blutlust* lässt eine Kreatur für /20min/ jede Klaue und jeden
+Biss 1W6 zusätzlichen Schaden machen. Mit Bärenklauen kann man keine
+Waffen führen. Für Menschen und ähnliche Kreaturen ohne /natürliche/
+Waffen ist dieser Spruch unnütz.
 
 ** 6. Zirkel
 
@@ -1556,21 +1558,16 @@ kann, ist es ihr nicht möglich, Sprüche des 6. Zirkels zu zaubern. Um
 diese Sprüche zu lernen, müssen die Spieler also Lady Chrysalis' Lehrer
 ausfindig machen.
 
-*Fliegende Bärenbande* beschwört 1W6+2 verwirrte und zornige, fliegende
-Bären: TW 8 RK 6 2W6/1W6/1W6 K8 BW 12 fliegen ML 12; wenn der Bär mit
-beiden Pranken trifft, umarmt er das Opfer und verursacht /zusätzliche
-2W8 Schaden/.
+*Fliegende Bärenbande* beschwört 1W6+2 verwirrte und zornige,
+fliegende Bären: TW 8 RK 6 2W6/1W6/1W6 K8 BW 12 fliegen ML 12; wenn
+der Bär mit beiden Pranken trifft, umarmt er das Opfer und verursacht
+/zusätzliche 2W8 Schaden/.
 
 * Die Wunder der Kleriker
 
-Als Kleriker kannst du von den Göttern *Wunder erflehen*.<<<Wie man
-sieht, bestehen zwischen den Wundern der Klerikern und den
-Zaubersprüchen der Magier und Elfen viele #+INDEX: Repertoire!Kleriker
-Gemeinsamkeiten. Das *Repertoire!Kleriker*Repertoire der Kleriker wird
-allerdings von den verehrten Götter bestimmt.>>>
-
-Die folgende Tabelle zeigt, wie viele Wunder du pro Tag wirken kannst.
-Zauberbuch benötigst du keines.
+Als Kleriker kannst du von den Göttern *Wunder erflehen*. Die folgende
+Tabelle zeigt, wie viele Wunder du pro Tag wirken kannst. Zauberbuch
+benötigst du keines.
 
 | <c>   | <c>       | <c>       | <c>       | <c>       | <c>       |
 | Stufe | 1. Zirkel | 2. Zirkel | 3. Zirkel | 4. Zirkel | 5. Zirkel |
@@ -1586,10 +1583,10 @@ Zauberbuch benötigst du keines.
 | 9     | 4         | 4         | 3         | 2         | 1         |
 | 10    | 5         | 4         | 3         | 3         | 2         |
 
-<<<Wenn du die *Götter verärgerst*, kann es sein, dass du weniger Wunder
+Wenn du die *Götter verärgerst*, kann es sein, dass du weniger Wunder
 wirken kannst, als auf der Tabelle aufgeführt sind! /Achte auf deine
 Träume und Visionen/ und gelobe Besserung, um wieder zu der dir
-zustehenden Macht zu kommen.>>>
+zustehenden Macht zu kommen.
 
 Dein *Ruf* bei den Göttern bestimmt auch den höchsten Zirkel der Wunder,
 welche dir gewährt werden. Weil du das Spiel mit einem Ruf von 0
@@ -1601,18 +1598,18 @@ weiter.
 
 Typische Wunder des 1. Zirkels wären beispielsweise:
 
-*Böses entdecken* zeigt dem Kleriker während //, welche der sichtbaren
-Wesen im Umreis von // ihm Übles wollen.<<<Eine Falle ist beispielsweise
-kein Wesen und kann nichts Übles /wollen/.>>>
+*Böses entdecken* zeigt dem Kleriker während /1h/, welche der
+sichtbaren Wesen im Umreis von /60 Fuss/ ihm Übles wollen. Eine Falle
+ist beispielsweise kein Wesen und kann nichts Übles /wollen/.
 
-*Hand auflegen* heilt 1W6+1 Schadenspunkte /oder/ hebt Lähmung auf. Das
-Gegenteil davon ist *Schmerz* und verursacht 1W6+1 Schadenspunkte. In
-beiden Fällen muss das Ziel berührt werden (was allerdings keinen
+*Hand auflegen* heilt 1W6+1 Schadenspunkte /oder/ hebt Lähmung auf.
+Das Gegenteil davon ist *Schmerz* und verursacht 1W6+1 Schadenspunkte.
+In beiden Fällen muss das Ziel berührt werden (was allerdings keinen
 Trefferwurf benötigt).
 
 *Magie entdecken* lässt verzauberte Gegenstände, Kreaturen und Orte
-innerhalb von // für // aufleuchten.<<<Dieses Leuchten ist für alle
-sichtbar.>>>
+innerhalb von /60 Fuss/ für /20min/ aufleuchten. Dieses Leuchten ist
+für alle sichtbar.
 
 # <<Paladin der Freya>>
 * Paladin der Freya: Weg des Wolfes
@@ -1634,33 +1631,22 @@ Falken, Hirsche, Winterwölfe, Eber, Wildkatzen, sie alle sind treue
 Gefährten der Freya. Einem Paladin gewährt Freya gerne einen
 Wolfsgefährten: TW 2+1 RK 7 1W6 K1 BW 18.
 
-cp9cm
+| <3> | <70>                                                                   |
+| Ruf | Fähigkeit                                                              |
+|-----+------------------------------------------------------------------------|
+|   2 | Adoptiert man einen Wolf als Gefolgsmann, so versteht man sich auf Anhieb. Es ist keine spezielle Dressur nötig. |
+|   4 | Ein adoptierter Wolf teilt automatisch alle vorteilhaften Zauber, die man empfängt (Schutz, Heilung, Teleportation, Verwandlung). |
+|   6 | Ein adoptierter Wolf wird automatisch von Freya gesegnet und wird zu einem Winterwolf der dritten Stufe: TW 3+1 RK 4 Biss 1W10 (1--4/6) oder 3W4 Eisatem bis 5m (5--6/6) K4 BW 15 |
+|   7 | Winterwolf der vierten Stufe: TW 4+1 RK 4 Biss 1W10 (1--4/6) oder 4W4 Eisatem bis 5m (5--6/6) K5 BW 15 |
+|   8 | Winterwolf der fünften Stufe: TW 5+1 RK 4 Biss 1W10 (1--4/6) oder 5W4 Eisatem bis 5m (5--6/6) K6 BW 15 |
 
-Ruf & Fähigkeit
-
-2 & Adoptiert man einen Wolf als Gefolgsmann, so versteht man sich auf
-Anhieb. Es ist keine spezielle Dressur nötig.
-
-4 & Ein adoptierter Wolf teilt automatisch alle vorteilhaften Zauber,
-die man empfängt (Schutz, Heilung, Teleportation, Verwandlung).
-
-6 & Ein adoptierter Wolf wird automatisch von Freya gesegnet und wird zu
-einem Winterwolf der dritten Stufe: TW 3+1 RK 4 Biss 1W10 (1--4/6) oder
-3W4 Eisatem bis 5m (5--6/6) K4 BW 15
-
-7 & Winterwolf der vierten Stufe: TW 4+1 RK 4 Biss 1W10 (1--4/6) oder
-4W4 Eisatem bis 5m (5--6/6) K5 BW 15
-
-8 & Winterwolf der fünften Stufe: TW 5+1 RK 4 Biss 1W10 (1--4/6) oder
-5W4 Eisatem bis 5m (5--6/6) K6 BW 15
-
+#+INDEX: Winterwolf
 Wölfe, die sich einem Paladin der Freya anschliessen, können mit der
-#+INDEX: WinterwolfZeit zu einem *Winterwolf* werden. Mit der Zeiten
-werden Winterwölfe immer grösser, bis sie schliesslich die Grösse eines
-Ponys erreichen. Winterwölfe sind immun gegen Kälte. Von magischen
-Kälteangriffen erleiden sie nur halben Schaden. Im Gegenzug sind sie
-gegen Feuer sehr empfindlich und erleiden für jeden Schadenswürfel +1
-Schaden.
+Zeit zu einem *Winterwolf* werden. Mit der Zeiten werden Winterwölfe
+immer grösser, bis sie schliesslich die Grösse eines Ponys erreichen.
+Winterwölfe sind immun gegen Kälte. Von magischen Kälteangriffen
+erleiden sie nur halben Schaden. Im Gegenzug sind sie gegen Feuer sehr
+empfindlich und erleiden für jeden Schadenswürfel +1 Schaden.
 
 Falls Winterwölfe nicht einem Paladin der Freya folgen, haben sie eine
 Moral von 10.
