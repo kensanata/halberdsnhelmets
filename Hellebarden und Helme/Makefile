@@ -1,9 +1,13 @@
 GRAPHICS=$(wildcard graphics/*.jpg)
 PANDOC=pandoc
 CONVERT=ebook-convert
+# CONVERT=/Applications/calibre.app/Contents/MacOS/ebook-convert
 VIEW=ebook-viewer
+# VIEW=/Applications/calibre.app/Contents/MacOS/ebook-viewer
 LATEX=pdflatex
 MAKEINDEX=makeindex
+EMACS=emacs
+# EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
 
 all: Hellebarden-und-Helme.mobi
 
@@ -25,14 +29,14 @@ clean:
 	--level2-toc=//h:h2 \
 	--authors="Alex Schroeder" \
 	--language=de \
-	--cover=graphics/Schaller.jpg \
+	--cover=graphics/cover.jpg \
 	--output-profile=kindle \
 	--smarten-punctuation
 
 .PRECIOUS: %.html
 
 %.html: %.org
-	emacs -q -Q $< --batch -l project.el --kill
+	${EMACS} -q -Q $< --batch -l project.el --kill
 
 %.pdf: %.org
 	pandoc $< -o $@

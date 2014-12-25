@@ -55,7 +55,11 @@
 	   (delete-char -1))
 	  ((looking-at "times")
 	   (delete-region (- (match-beginning 0) 2) (+ (match-end 0) 1))
-	   (insert "×"))))
+	   (insert "×"))
+	  ((looking-at "%")
+	   (delete-char -1))
+	  (t
+	   (forward-char 1))))
   (goto-char start)
   (while (search-forward "~" end t)
     (replace-match " ")))

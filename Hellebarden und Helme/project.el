@@ -3,6 +3,7 @@
 	`(("Hellebarden und Helme"
 	   :base-directory ,dir
 	   :publishing-directory ,dir
+	   :publishing-function org-html-publish-to-html
 	   :exclude "-source\\.org"
 	   :section-numbers nil
 	   :html-postamble nil
