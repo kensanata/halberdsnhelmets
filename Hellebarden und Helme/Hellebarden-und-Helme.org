@@ -907,6 +907,15 @@ hinzu zu zählen. /Verliert/ man eine Stufe, so würfelt man ebenfalls so
 viele Würfel wie man Stufen hat und behält das Resultat, wenn es
 /schlechter/ als das bisherige ist.
 
+# <<Rettungswurf>>
+#+INDEX: Rettungswurf
+*Rettungswürfe* stehen den Opfern von Zaubersprüchen manchmal zu, um
+negative Effekte zu vermeiden oder Schaden zu halbieren. Den Opfern
+steht so ein Rettungswurf nur zu, wenn dies in der Spruchbeschreibung
+auch so beschrieben wird. Deine Rettungswürfe sind abhängig von deiner
+Stufe. Um den Wurf zu schaffen, musst du mit einem W20 würfeln und die
+angegebene Zahl erreichen oder übertreffen.
+
 # <<Zirkel>>
 #+INDEX: Zirkel
 *Zirkel*: Die Zaubersprüche werden mit der Zeit
@@ -1601,9 +1610,8 @@ sichtbaren Wesen im Umreis von /60 Fuss/ ihm Übles wollen. Eine Falle
 ist beispielsweise kein Wesen und kann nichts Übles /wollen/.
 
 *Hand auflegen* heilt 1W6+1 Schadenspunkte /oder/ hebt Lähmung auf.
-Das Gegenteil davon ist *Schmerz* und verursacht 1W6+1 Schadenspunkte.
-In beiden Fällen muss das Ziel berührt werden (was allerdings keinen
-Trefferwurf benötigt).
+Hierfür muss das Ziel berührt werden, was allerdings keinen
+Trefferwurf benötigt.
 
 *Magie entdecken* lässt verzauberte Gegenstände, Kreaturen und Orte
 innerhalb von /60 Fuss/ für /20min/ aufleuchten. Dieses Leuchten ist
@@ -1660,16 +1668,15 @@ Wölfe sind keine Haustiere! Winterwölfe erst recht nicht.
 sichtbaren Wesen im Umreis von /60 Fuss/ ihm Übles wollen.
 
 *Hand auflegen* heilt 1W6+1 Schadenspunkte /oder/ hebt Lähmung auf.
-Das Gegenteil davon ist *Schmerz* und verursacht 1W6+1 Schadenspunkte.
-In beiden Fällen muss das Ziel berührt werden (was allerdings keinen
-Trefferwurf benötigt).
+Das Ziel muss berührt werden, was allerdings keinen Trefferwurf
+benötigt.
 
 *Licht* verzaubert einen Gegenstand innerhalb von /120 Fuss/ für /2h/,
 so dass er schwach zu leuchten beginnt und eine Kugel von /30 Fuss/
 Durchmesser beleuchtet. Wird das Wunder auf die Augen einer Kreatur
 gewirkt, so erblindet sie für /2h/. In diesem Fall steht dem Opfer ein
-Rettungswurf gegen Sprüche zu. Das Gegenteil ist *Dunkelheit*. /Licht/
-und /Dunkelheit/ heben sich gegenseitig auf.
+Rettungswurf gegen Sprüche zu. /Licht/ und /Dunkelheit/ heben sich
+gegenseitig auf.
 
 *Magie entdecken* lässt verzauberte Gegenstände, Kreaturen und Orte
 innerhalb von /60 Fuss/ für /20min/ aufleuchten. Dieses Leuchten ist
@@ -1677,9 +1684,8 @@ für alle sichtbar.
 
 *Mut* erlaubt einem berührten Wesen, welches in magischer Panik
 fliehen will, einen Rettungswurf mit einem Bonus, der gleich hoch ist
-wie die Stufe des Klerikers. Das Gegenteil davon ist *Panik*: Das
-berührte Wesen flieht in Panik. /Mut/ und /Panik/ heben sich
-gegenseitig auf.
+wie die Stufe des Klerikers. /Mut/ und /Panik/ heben sich gegenseitig
+auf.
 
 *Schutz vor beschworenen Kreaturen* schützt ein berührtes Wesen
 während /2h/ vor der Berührung /beschworener/ Kreaturen und verbessert
@@ -1693,61 +1699,66 @@ Schadenswürfel bei Kälteangriffen um einen Punkt.
 
 ** 2. Zirkel
 
-*Fallen entdecken* warnt den Kleriker während // vor allen Fallen im
-Umkreis von //.
+
+*Fallen entdecken* warnt den Kleriker während /20min/ vor allen Fallen
+im Umkreis von /30 Fuss/.
 
 *Gesinnung entdecken* zeigt dem Kleriker die Gesinnung aller Wesen im
-Umkreis von //, die Gesinnung aller magischer Gegenstände, sofern sie
-eine haben, und ob dies hier ein heiliger oder ein unheiliger Ort ist.
+Umkreis von /15 Fuss/, die Gesinnung aller magischer Gegenstände,
+sofern sie eine haben, und ob dies hier ein heiliger oder ein
+unheiliger Ort ist.
 
-*Mit Tieren sprechen* erlaubt es dem Kleriker, während // mit allen
-Vertretern /einer Tierart/ im Umkreis von // zu reden und ihre Antworten
-zu verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
-gesinnt. Es kann zu einem kommen.
+*Mit Tieren sprechen* erlaubt es dem Kleriker, während /1h/ mit allen
+Vertretern /einer Tierart/ im Umkreis von /30 Fuss/ zu reden und ihre
+Antworten zu verstehen. Die Tiere sind dem Kleriker nicht automatisch
+freundlich gesinnt. Es kann zu einem Reaktionswurf kommen.
 
-*Personen festhalten* lähmt bis zu 1W4 sichtbare Personen für // in
-bis zu // Entfernung. Allen Opfern steht ein Rettungswurf gegen
-Sprüche zu. Soll nur eine Person gelähmt werden, ist der Rettungswurf
-um -2 erschwert. Dieses Wunder wirkt nur gegen menschenähnliche
-Kreaturen. Untote und Riesen sind gegen das Wunder immun, obwohl sie
-menschenähnlich sind.
+*Personen festhalten* lähmt bis zu 1W4 sichtbare Personen für /1½h/ in
+bis zu /180 Fuss/ Entfernung. Allen Opfern steht ein Rettungswurf
+gegen Sprüche zu. Soll nur eine Person gelähmt werden, ist der
+Rettungswurf um -2 erschwert. Dieses Wunder wirkt nur gegen
+menschenähnliche Kreaturen. Untote und Riesen sind gegen das Wunder
+immun, obwohl sie menschenähnlich sind.
 
-*Schutz vor Feuer* erlaubt es einem Wesen, in bis zu // Entfernung für
-// jeglicher Hitze zu trotzen, gibt einen +3 Bonus bei Rettungswürfen
-gegen Feuerangriffe und reduziert zudem jeden Schadenswürfel bei
-Feuerangriffen um einen Punkt.
+*Schutz vor Feuer* erlaubt es einem Wesen, in bis zu /30 Fuss/
+Entfernung für /1h/ jeglicher Hitze zu trotzen, gibt einen +3 Bonus
+bei Rettungswürfen gegen Feuerangriffe und reduziert zudem jeden
+Schadenswürfel bei Feuerangriffen um einen Punkt.
 
-*Segen* verleiht allen Verbündeten des Klerikers im Umkreis von // für
-// einen +1 Bonus beim Trefferwurf und beim Schadenswurf und steigert
-die Moral um +1.<<</Segen/ und /Verfluchen/ heben sich gegenseitig
-auf.>>>
+*Segen* verleiht allen Verbündeten des Klerikers im Umkreis von
+/60 Fuss/ für /1h/ einen +1 Bonus beim Trefferwurf und beim
+Schadenswurf und steigert die Moral um +1. /Segen/ und /Verfluchen/
+heben sich gegenseitig auf.
 
-*Stille* formt eine unsichtbare, schallschluckende Kugel mit //
-Durchmesser in bis zu // Entfernung welche für // andauert. Wird das
-Wunder auf eine unwillige Kreature gewirkt, so steht ihr ein
-Rettungswurf gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf den
-Boden und die Kreatur kann den Wirkungsbereich problemlos verlassen.
+*Stille* formt eine unsichtbare, schallschluckende Kugel mit /30 Fuss/
+Durchmesser in bis zu /180 Fuss/ Entfernung welche für /2h/ andauert.
+Wird das Wunder auf eine unwillige Kreature gewirkt, so steht ihr ein
+Rettungswurf gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf
+den Boden und die Kreatur kann den Wirkungsbereich problemlos
+verlassen.
 
 ** 3. Zirkel
 
-*Ewiges Licht* verzaubert einen Gegenstand innerhalb von //, so dass er
-/für immer/ hell wie die Sonne zu leuchten beginnt und eine Kugel von //
-Durchmesser erleuchtet.<<</Gegenzauber/ beendet das Wunder. /Ewiges
-Licht/ und /Ewige Dunkelheit/ heben sich gegenseitig auf.>>> Wird das
-Wunder auf die Augen einer Kreatur gewirkt, so erblindet sie. In diesem
-Fall steht dem Opfer ein Rettungswurf gegen Sprüche zu.
+*Ewiges Licht* verzaubert einen Gegenstand innerhalb von /120 Fuss/,
+so dass er /für immer/ hell wie die Sonne zu leuchten beginnt und eine
+Kugel von /60 Fuss/ Durchmesser erleuchtet. Wird das Wunder auf die
+Augen einer Kreatur gewirkt, so erblindet sie. In diesem Fall steht
+dem Opfer ein Rettungswurf gegen Sprüche zu. /Gegenzauber/ beendet das
+Wunder. /Ewiges Licht/ und /Ewige Dunkelheit/ heben sich gegenseitig
+auf.
 
 *Fluch brechen* bricht einen Fluch, der auf einem berührten Wesen
-lastet. Trägt das Wesen einen verfluchten Gegenstand, so kann das Wesen
-den Gegenstand ablegen -- der Gegenstand bleibt allerdings
-verflucht.<<</Fluch brechen/ hebt einen /Fluch/ auf.>>>
+lastet. Trägt das Wesen einen verfluchten Gegenstand, so kann das
+Wesen den Gegenstand ablegen – der Gegenstand bleibt allerdings
+verflucht. /Fluch brechen/ hebt einen /Fluch/ auf.
 
-*Gerechter Zorn* verzaubert eine Waffe in bis zu // Entfernung, so dass
-sie für // einen zusätzlichen W6 Schaden verursacht.
+*Gerechter Zorn* verzaubert eine Waffe in bis zu /30 Fuss/ Entfernung,
+so dass sie für /10min/ einen zusätzlichen W6 Schaden verursacht.
 
-*Krankheiten heilen* heilt bei einem Wesen in bis zu // Entfernung alle
-Sorten von Krankheiten inklusive Mumienfäule, Lykanthropie und grünen
-Schleim.<<</Krankheiten heilen/ beendet /Siechtum/.>>>
+*Krankheiten heilen* heilt bei einem Wesen in bis zu /30 Fuss/
+Entfernung alle Sorten von Krankheiten inklusive Mumienfäule,
+Lykanthropie und grünen Schleim. /Krankheiten heilen/ beendet
+/Siechtum/.
 
 *Magie bannen* bannt alle Wunder und Zauber von Personen, deren Stufe
 gleich oder unter der Stufe des Klerikers liegt. Für jede Stufe
@@ -1761,17 +1772,17 @@ gleich oder unter der Stufe des Klerikers liegt. Für jede Stufe
 Schadenspunkte. Das Ziel muss berührt werden, was allerdings keinen
 Trefferwurf benötigt.
 
-*Dunkelheit* beschwört innerhalb von // für // einen lebendig und böse
-wirkenden Schatten mit // Durchmesser, der alles Licht schluckt.<<<Wer
-im Schatten kämpft, gilt als /blind/ und hat einen Abzug von -4 auf alle
-Angriffe.>>> Wird das Wunder auf die Augen einer Kreatur gewirkt, so
-erblindet sie für //. In diesem Fall steht dem Opfer ein Rettungswurf
-gegen Sprüche zu.<<</Licht/ und /Dunkelheit/ heben sich gegenseitig
-auf.>>>
+*Dunkelheit* beschwört innerhalb von /120 Fuss/ für /2h/ einen
+lebendig und böse wirkenden Schatten mit /30 Fuss/ Durchmesser, der
+alles Licht schluckt. Wer im Schatten kämpft, gilt als /blind/ und hat
+einen Abzug von -4 auf alle Angriffe. Wird das Wunder auf die Augen
+einer Kreatur gewirkt, so erblindet sie für /2h/. In diesem Fall steht
+dem Opfer ein Rettungswurf gegen Sprüche zu. /Licht/ und /Dunkelheit/
+heben sich gegenseitig auf.
 
-*Gutmenschen entdecken* zeigt dem Kleriker während //, welche der
-sichtbaren Wesen im Umreis von // besserwisserische, selbstgerechte und
-moralisierende Dummköpfe sind.
+*Gutmenschen entdecken* zeigt dem Kleriker während /1h/, welche der
+sichtbaren Wesen im Umreis von /60 Fuss/ besserwisserische,
+selbstgerechte und moralisierende Dummköpfe sind.
 
 *Kröten schlecken* heilt 1W6+1 Schadenspunkte. Benötigt eine lebende
 Kröte. Wen die Kröte selber schleckt, wird von aller Lähmung geheilt.
@@ -1781,115 +1792,120 @@ weiter als einen Schritt vom Opfer entfernt sein, wenn dieses Wunder
 gewirkt wird. Das Opfer flieht für so viele Runden wie der Kleriker
 Stufen hat. Dem Opfer steht ein Rettungswurf gegen Sprüche zu.
 
-*Wärme des Verfalls* erlaubt es einem Wesen in bis zu // Entfernung für
-// jeglicher Kälte zu trotzen, gibt einen +2 Bonus bei Rettungswürfen
-gegen Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
-Kälteangriffen um einen Punkt.
+*Wärme des Verfalls* erlaubt es einem Wesen in bis zu /30 Fuss/
+Entfernung für /1h/ jeglicher Kälte zu trotzen, gibt einen +2 Bonus
+bei Rettungswürfen gegen Kälteangriffe und reduziert zudem jeden
+Schadenswürfel bei Kälteangriffen um einen Punkt.
 
 ** 2. Zirkel
 
-*Korruption*<<<Das heisst nicht, dass man seinen sündigen Gedanken auch
-ausgeliefert ist. Selbstdisziplin, Aufrichtigleit, Standfestigkeit: Das
-sind die Gegenmittel, die jedem zur Verfügung stehen.>>> lässt den
-Wunderwirkenden // lang erkennen, was diejenigen, innerhalb von //
-reden, sich wünschen. Für jede Person ist dieser Wunsch immer etwas, was
-sie vom rechten Weg abbringen würde, eine Sünde, eine Schwäche, eine
-Bestechungsmöglichkeit, eine Erpressungsmöglichkeit.
+*Korruption* lässt den Wunderwirkenden /1h/ lang erkennen, was
+diejenigen, innerhalb von /30 Fuss/ reden, sich wünschen. Für jede
+Person ist dieser Wunsch immer etwas, was sie vom rechten Weg
+abbringen würde, eine Sünde, eine Schwäche, eine
+Bestechungsmöglichkeit, eine Erpressungsmöglichkeit. Das heisst nicht,
+dass man seinen sündigen Gedanken auch ausgeliefert ist.
+Selbstdisziplin, Aufrichtigleit, Standfestigkeit: Das sind die
+Gegenmittel, die jedem zur Verfügung stehen.
 
-*Krötenfreund* macht Tieren zu treuen Freunden.<<<Beispielsweise ein
-Teich voll Kröten, ein Korb voller Schlangen, bis zu sechs Wölfe, bis zu
-vier Riesenkröten, eine Riesenschlange.>>> Die genaue Anzahl hängt von
-der Grösse der Tiere ab. Die Tiere verhalten sich wie gut dressierte
-Hunde, sofern sie können. Der Zauber endet erst, wenn den Tieren ein
-misslingt.
+*Krötenfreund* macht Tieren zu treuen Freunden. Die Tiere verhalten
+sich wie gut dressierte Hunde, sofern sie können. Der Zauber endet
+erst, wenn den Tieren ein Moralwurf misslingt. Die genaue Anzahl hängt
+von der Grösse der Tiere ab. Beispielsweise ein Teich voll Kröten, ein
+Korb voller Schlangen, bis zu sechs Wölfe, bis zu vier Riesenkröten,
+eine Riesenschlange.
 
-*Schlangenzunge* erlaubt es dem Kleriker, während // mit allen
-Vertretern /einer Tierart/ im Umkreis von // zu reden und ihre Antworten
-zu verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
-gesinnt. Es kann zu einem kommen.
+*Schlangenzunge* erlaubt es dem Kleriker, während /1h/ mit allen
+Vertretern /einer Tierart/ im Umkreis von /30 Fuss/ zu reden und ihre
+Antworten zu verstehen. Die Tiere sind dem Kleriker nicht automatisch
+freundlich gesinnt. Es kann zu einem Reaktionswurf kommen.
 
-*Sprungangriff* verzaubert eine Person, so dass sie // lang unglaubliche
-Sprünge vollbringen kann, ohne Schaden zu erleiden. Die Sprünge können
-bis zu // hoch und // weit sein.<<<Darf man mehrmals angreifen, so gilt
-der Bonus nur für einen dieser Angriffe.>>> Im Kampf kann man so, sofern
-man auch hoch springen kann, +2 auf einen Schadenswurf addieren.
+*Sprungangriff* verzaubert eine Person, so dass sie /10min/ lang
+unglaubliche Sprünge vollbringen kann, ohne Schaden zu erleiden. Die
+Sprünge können bis zu /5m/ hoch und /10m/ weit sein. Im Kampf kann man
+so, sofern man auch 5m hoch springen kann, +2 auf einen Schadenswurf
+addieren. Darf man mehrmals angreifen, so gilt der Bonus nur für einen
+dieser Angriffe.
 
-*Stille* formt eine unsichtbare, schallschluckende Kugel mit //
-Durchmesser in bis zu // Entfernung welche für // andauert. Wird das
-Wunder auf eine unwillige Kreature gewirkt, so steht ihr ein
-Rettungswurf gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf den
-Boden und die Kreatur kann den Wirkungsbereich problemlos verlassen.
+*Stille* formt eine unsichtbare, schallschluckende Kugel mit /30 Fuss/
+Durchmesser in bis zu /180 Fuss/ Entfernung, welche für /2h/ andauert.
+Wird das Wunder auf eine unwillige Kreature gewirkt, so steht ihr ein
+Rettungswurf gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf
+den Boden und die Kreatur kann den Wirkungsbereich problemlos
+verlassen.
 
-*Totenstarre*<<<Das kann auch von Vorteil sein, wenn es gilt, Sterbende
-zu stabilisieren oder andere durch Flüssigkeiten oder giftige Gase zu
-transportieren.>>> lässt eine Person ohnmächtig werden. Diese sieht aus
-wie eine Leiche, atmet nicht, blutet nicht. Der Zauber hält für so viele
-Tage, wie der Kleriker Stufen hat. Dem Opfer steht ein Rettungswurf
-gegen Sprüche zu.
+*Totenstarre* lässt eine Person ohnmächtig werden. Diese sieht aus wie
+eine Leiche, atmet nicht und blutet nicht. Das kann auch von Vorteil
+sein, wenn es gilt, Sterbende zu stabilisieren oder andere durch
+Flüssigkeiten oder giftige Gase zu transportieren. Der Zauber hält für
+so viele Tage, wie der Kleriker Stufen hat. Dem Opfer steht ein
+Rettungswurf gegen Sprüche zu.
 
 ** 3. Zirkel
 
-*Ewige Dunkelheit*<<</Gegenzauber/ beendet das Wunder. /Ewiges Licht/
-und /Ewige Dunkelheit/ heben sich gegenseitig auf.>>> verzaubert einen
-Gegenstand innerhalb von //, so dass dieser /für immer/ ein dunkles
-Miasma verströhmt, welches im Umkreis von // alles Licht verschluckt.
-Hier herrscht absolute Dunkelheit. Wird das Wunder auf eine Kreatur
+*Ewige Dunkelheit* verzaubert einen Gegenstand innerhalb von
+/120 Fuss/, so dass dieser /für immer/ ein dunkles Miasma verströhmt,
+welches im Umkreis von /60 Fuss/ alles Licht verschluckt. Hier
+herrscht absolute Dunkelheit. Wird das Wunder auf eine Kreatur
 gewirkt, so steht dem Opfer ein Rettungswurf gegen Sprüche zu.
+/Gegenzauber/ beendet das Wunder. /Ewiges Licht/ und /Ewige
+Dunkelheit/ heben sich gegenseitig auf.
 
-*Fluch*<<</Fluch brechen/ hebt einen /Fluch/ auf. /Gegenzauber/ ist
-gegen einen Fluch wirkungslos.>>> wirkt auf eine Kreatur innerhalb von
-//. Der Fluch gilt /für immer/. Typische Flüche wären: Blindheit,
-Taubheit, Stimmverlust, verkrüppelte Beine, ein hässliches Gesicht, ein
-fürchterlicher Gestank, Unfruchtbarkeit, Fehlgeburt, Krankheit, Gift,
-aus der Haut schlüpfende Kröten, eine Zungenlänge von , eine Krötenhaut,
-die jede Nacht feucht gehalten werden muss, und so weiter. Dem Opfer
-steht ein Rettungswurf gegen Sprüche zu.
+*Fluch* wirkt auf eine Kreatur innerhalb von /30 Fuss/. Der Fluch gilt
+/für immer/. Typische Flüche wären: Blindheit, Taubheit, Stimmverlust,
+verkrüppelte Beine, ein hässliches Gesicht, ein fürchterlicher
+Gestank, Unfruchtbarkeit, Fehlgeburt, Krankheit, Gift, aus der Haut
+schlüpfende Kröten, eine Zungenlänge von 1m, eine Krötenhaut, die jede
+Nacht feucht gehalten werden muss, und so weiter. Dem Opfer steht ein
+Rettungswurf gegen Sprüche zu. /Fluch brechen/ hebt einen /Fluch/ auf.
+/Gegenzauber/ ist gegen einen Fluch wirkungslos.
 
-*Hypnose der 1000 Kröten*<<<Den Betroffenen steht alle // ein weiterer
-Rettungwurf zu. Nehmen die Betroffenen Gewalt wahr, endet die Wirkung
-der Hypnose sofort.>>> zwingt alle Kreaturen innerhalb von //, welche
-den Wunderwirkenden hören können, seinen Einflüsterungen zuzuhören. Den
-Betroffenen steht ein Rettungswurf gegen Sprüche zu. Solange der
-Wunderwirkende weiter säuselt, hält die Wirkung an. Die Betroffenen
-können nichts anderes tun, als dem Wunderwirkenden langsam nach zu
-schlurfen.
+*Hypnose der 1000 Kröten* zwingt alle Kreaturen innerhalb von
+/60 Fuss/, welche den Wunderwirkenden hören können, seinen
+Einflüsterungen zuzuhören. Den Betroffenen steht ein Rettungswurf
+gegen Sprüche zu. Solange der Wunderwirkende weiter säuselt, hält die
+Wirkung an. Die Betroffenen können nichts anderes tun, als dem
+Wunderwirkenden langsam nach zu schlurfen. Den Betroffenen steht alle
+/10min/ ein weiterer Rettungwurf zu. Sehen oder hören die Betroffenen
+Gewalt -- zum Beispiel einen Kampf -- so endet die Wirkung der Hypnose
+sofort.
 
-*Kiemen*<<<Dieser Zauber bringt einem nicht das Schwimmen bei.>>> lässt
-/einer Kreatur/ für /einen Tag/ Kiemen wachsen, so dass diese unter
-Wasser atmen kann.
+*Kiemen* lässt /einer Kreatur/ für /einen Tag/ Kiemen wachsen, so dass
+diese unter Wasser atmen kann. Dieser Zauber bringt einem nicht das
+Schwimmen bei.
 
-*Knochenmänner*<<<Skelette: TW 1 RK 7 1W6 K1 BW 6. Diese Skelette können
-mit Waffengewalt und Magie zerstört werden, sie können durch andere
-Kleriker vertrieben oder zerstört werden, und sie können durch /Magie
-bannen/ zerstört werden.>>> macht aus den Leichen innerhalb von //
-einfache Skelette. Pro Stufe kann der Kleriker eine Leiche in ein
-Skelett verwandeln. Die Skelette sind nicht intelligent, befolgen aber
-einfache Befehle (bewache diesen Raum, töte diese Leute, folge mir, und
-so weiter).
+*Knochenmänner* macht aus den Leichen innerhalb von /60 Fuss/ einfache
+Skelette. Pro Stufe kann der Kleriker eine Leiche in ein Skelett
+verwandeln. Die Skelette sind nicht intelligent, befolgen aber
+einfache Befehle (bewache diesen Raum, töte diese Leute, folge mir,
+und so weiter). Werte für Skelette: TW 1 RK 7 1W6 K1 BW 6. Diese
+Skelette können mit Waffengewalt und Magie zerstört werden, sie können
+durch andere Kleriker vertrieben oder zerstört werden, und sie können
+durch /Magie bannen/ zerstört werden.
 
 *Magie bannen* bannt alle Wunder und Zauber von Personen, deren Stufe
 gleich oder unter der Stufe des Klerikers liegt. Für jede Stufe
 /darüber/ gibt es eine 5% Chance, dass der Bann misslingt.
 
-*Riesenkröte*<<<Riesenkröten: TW 2+2 RK 7 1W4+1 K1 BW 9; können Zwerge
-und kleiner mit ihrer Zunge von bis zu // zu sich heranziehen und
-beissen; können bei einer 20 Halblinge und kleiner verschlucken;
-verschluckte Kreaturen nehmen jede Runde 1W6 Schaden.>>> verwandelt bis
-zu /vier/ normale Kröten für // in Riesenkröten verwandeln. Diese
-Riesenkröten befolgen treu /jegliche/ Befehle.
+*Riesenkröte* verwandelt bis zu /vier/ normale Kröten für /2h/ in
+Riesenkröten. Diese Riesenkröten befolgen treu /jegliche/ Befehle.
+Werte für Riesenkröten: TW 2+2 RK 7 1W4+1 K1 BW 9; sie können Zwerge
+und kleiner mit ihrer Zunge von bis zu /15 Fuss/ zu sich heranziehen
+und beissen; sie können bei einer 20 Halblinge und kleiner
+verschlucken; verschluckte Kreaturen nehmen jede Runde 1W6 Schaden.
 
-*Siechtum*/Krankheiten heilen/ beendet /Siechtum/. wirkt auf
-eine Kreatur innerhalb von //. Dies führt zu einer schrecklichen
-Krankheit, welche das Opfer in 2W12 Tagen dahinrafft. In diesem Fall
-steht dem Opfer ein Rettungswurf gegen Sprüche zu. Ein dahinsiechendes
-Opfer erhält einen -2 Abzug auf alle Trefferwürfe und kann weder auf
-natürliche noch auf magische Weise heilen.
+*Siechtum* wirkt auf eine Kreatur innerhalb von /30 Fuss/. Dies führt
+zu einer schrecklichen Krankheit, welche das Opfer in 2W12 Tagen
+dahinrafft. Dem Opfer steht ein Rettungswurf gegen Sprüche zu. Ein
+dahinsiechendes Opfer erhält einen -2 Abzug auf alle Trefferwürfe und
+kann weder auf natürliche noch auf magische Weise heilen. /Krankheiten
+heilen/ beendet /Siechtum/.
 
 * Paladin des Arden
 
 Arden ist ein elfischer Gott des Lichts. Den Paladinen Ardens sind im
-Moment nur wenige Gaben gegeben, weil Arden erster kurzem überhaupt ein
-Lebenszeichen von sich gegeben hat.
+Moment nur wenige Gaben gegeben, weil Arden erster kurzem überhaupt
+ein Lebenszeichen von sich gegeben hat.
 
 | <c> | <l>                                                                    |
 | Ruf | Fähigkeit                                                              |
@@ -1909,11 +1925,11 @@ anderen Kreaturen.
 Loki ist der Schutzherr aller Gestaltwandler und Diebe, aller falsch
 verstandenen, es eigentlich gut meinenden, unschuldig Angeklagten,
 versetzten, hingehaltenen und unterschätzten Menschen. Ihnen hilft er,
-rettet sie aus der Patsche, gibt ihnen Hoffnung. Doch wenn die Rechnung
-dann nicht aufgeht, dann ist Loki vielleicht auch einfach mal nicht da,
-konnte leider nicht rechtzeitig kommen, war aufgehalten worden,
-Entschuldigungen, Erklärungen, Rechtfertigungen, Ausreden, Ausreden,
-Ausreden.
+rettet sie aus der Patsche, gibt ihnen Hoffnung. Doch wenn die
+Rechnung dann nicht aufgeht, dann ist Loki vielleicht auch einfach mal
+nicht da, konnte leider nicht rechtzeitig kommen, war aufgehalten
+worden, Entschuldigungen, Erklärungen, Rechtfertigungen, Ausreden,
+Ausreden, Ausreden.
 
 Viele Spione, Händler und Diplomaten erhoffen sich ebenfalls Hilfe von
 Loki, da er so listenreich und redegewandt ist.
