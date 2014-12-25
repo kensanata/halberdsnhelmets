@@ -1094,7 +1094,7 @@ Schilde tragen.
 
 # <<Platzbedarf>>
 #+INDEX: Platzbedarf
-*Platzbedarf*: In einem breiten Gang (/10_Fuss/) können normalerweise
+*Platzbedarf*: In einem breiten Gang (/10 Fuss/) können normalerweise
 drei Personen nebeneinander kämpfen. Der Platzbedarf hängt aber von
 den verwendeten Waffen ab:
 
@@ -1773,12 +1773,18 @@ Schadenspunkte. Das Ziel muss berührt werden, was allerdings keinen
 Trefferwurf benötigt.
 
 *Dunkelheit* beschwört innerhalb von /120 Fuss/ für /2h/ einen
-lebendig und böse wirkenden Schatten mit /30 Fuss/ Durchmesser, der
-alles Licht schluckt. Wer im Schatten kämpft, gilt als /blind/ und hat
-einen Abzug von -4 auf alle Angriffe. Wird das Wunder auf die Augen
-einer Kreatur gewirkt, so erblindet sie für /2h/. In diesem Fall steht
-dem Opfer ein Rettungswurf gegen Sprüche zu. /Licht/ und /Dunkelheit/
-heben sich gegenseitig auf.
+lebendig und böse wirkende Schattenwolke mit /30 Fuss/ Durchmesser,
+die alles Licht schluckt. Wer im Schatten kämpft, kann nicht gesehen
+werden und gilt als /blind/: das gibt einen Abzug von -4 auf alle
+Angriffe. Wird das Wunder auf eine Kreatur gewirkt, so steht ihr ein
+Rettungswurf gegen Sprüche zu. Gelingt dieser, wirkt das Wunder auf
+den Boden und die Kreatur kann den Wirkungsbereich problemlos
+verlassen. /Licht/ und /Dunkelheit/ heben sich gegenseitig auf.
+
+*Fratze* zwingt ein Wesen, in Panik zu fliehen. Das Opfer darf nicht
+weiter als einen Schritt vom Opfer entfernt sein, wenn dieses Wunder
+gewirkt wird. Das Opfer flieht für so viele Runden wie der Kleriker
+Stufen hat. Dem Opfer steht ein Rettungswurf gegen Sprüche zu.
 
 *Gutmenschen entdecken* zeigt dem Kleriker während /1h/, welche der
 sichtbaren Wesen im Umreis von /60 Fuss/ besserwisserische,
@@ -1787,10 +1793,25 @@ selbstgerechte und moralisierende Dummköpfe sind.
 *Kröten schlecken* heilt 1W6+1 Schadenspunkte. Benötigt eine lebende
 Kröte. Wen die Kröte selber schleckt, wird von aller Lähmung geheilt.
 
-*Fratze* zwingt ein Wesen, in Panik zu fliehen. Das Opfer darf nicht
-weiter als einen Schritt vom Opfer entfernt sein, wenn dieses Wunder
-gewirkt wird. Das Opfer flieht für so viele Runden wie der Kleriker
-Stufen hat. Dem Opfer steht ein Rettungswurf gegen Sprüche zu.
+*Magie entdecken* lässt verzauberte Gegenstände, Kreaturen und Orte
+innerhalb von /60 Fuss/ für /20min/ aufleuchten. Dieses Leuchten ist
+für alle sichtbar.
+
+*Myceliums Wonne* lässt Pflanzen und Pilze auf fruchtbarem Boden in
+/5min/ wie in 5 Monaten wachsen. Der Boden ist danach jedoch
+ausgelaugt. Weiteres Pflanzenwachstum ist für Monate verlangsamt.
+
+*Pilzbefall* lässt im Körper von Gegnern im Umkreis von /60 Fuss/ für
+/1h/ grosse Pilze wachsen. Diese behindern ihren Wirt und verursachen
+einen Abzug von -1 beim Trefferwurf und beim Schadenswurf, und sie
+reduzieren die Moral um -1.
+
+Wird daraufhin /Myceliums Wonne/ gezaubert, so steht den schon
+befallenen Opfern ein weiterer Rettungswurf zu. Gelingt dieser nicht,
+so führt das starke Wachstum zur vollständigen Bewegungsunfähigkeit.
+Das einzig Positive dabei: Die Opfer werden von riesigen Pilzen auch
+vor Angriffen geschützt. Man muss erst /5 Runden/ auf die Pilze
+einhacken, um die Opfer zu befreien oder anzugreifen.
 
 *Wärme des Verfalls* erlaubt es einem Wesen in bis zu /30 Fuss/
 Entfernung für /1h/ jeglicher Kälte zu trotzen, gibt einen +2 Bonus
@@ -1799,23 +1820,23 @@ Schadenswürfel bei Kälteangriffen um einen Punkt.
 
 ** 2. Zirkel
 
-*Korruption* lässt den Wunderwirkenden /1h/ lang erkennen, was
-diejenigen, innerhalb von /30 Fuss/ reden, sich wünschen. Für jede
-Person ist dieser Wunsch immer etwas, was sie vom rechten Weg
+*Korruption* lässt den Wunderwirkenden /1h/ lang die Wünsche erkennen,
+welche diejenigen, die innerhalb von /30 Fuss/ reden, mit sich tragen.
+Für jede Person ist dieser Wunsch immer etwas, was sie vom rechten Weg
 abbringen würde, eine Sünde, eine Schwäche, eine
 Bestechungsmöglichkeit, eine Erpressungsmöglichkeit. Das heisst nicht,
 dass man seinen sündigen Gedanken auch ausgeliefert ist.
 Selbstdisziplin, Aufrichtigleit, Standfestigkeit: Das sind die
 Gegenmittel, die jedem zur Verfügung stehen.
 
-*Krötenfreund* macht Tieren zu treuen Freunden. Die Tiere verhalten
-sich wie gut dressierte Hunde, sofern sie können. Der Zauber endet
-erst, wenn den Tieren ein Moralwurf misslingt. Die genaue Anzahl hängt
-von der Grösse der Tiere ab. Beispielsweise ein Teich voll Kröten, ein
+*Tierfreund* macht Tieren zu treuen Freunden. Die Tiere verhalten sich
+wie gut dressierte Hunde, sofern sie können. Der Zauber endet erst,
+wenn den Tieren ein Moralwurf misslingt. Die genaue Anzahl hängt von
+der Grösse der Tiere ab. Beispielsweise ein Teich voll Kröten, ein
 Korb voller Schlangen, bis zu sechs Wölfe, bis zu vier Riesenkröten,
 eine Riesenschlange.
 
-*Schlangenzunge* erlaubt es dem Kleriker, während /1h/ mit allen
+*Mit Tieren sprechen* erlaubt es dem Kleriker, während /1h/ mit allen
 Vertretern /einer Tierart/ im Umkreis von /30 Fuss/ zu reden und ihre
 Antworten zu verstehen. Die Tiere sind dem Kleriker nicht automatisch
 freundlich gesinnt. Es kann zu einem Reaktionswurf kommen.
@@ -1900,6 +1921,41 @@ dahinrafft. Dem Opfer steht ein Rettungswurf gegen Sprüche zu. Ein
 dahinsiechendes Opfer erhält einen -2 Abzug auf alle Trefferwürfe und
 kann weder auf natürliche noch auf magische Weise heilen. /Krankheiten
 heilen/ beendet /Siechtum/.
+
+** 4. Zirkel
+
+*Faulheit* macht eine berührte Kreatur /für immer/ träge und
+antriebslos. Sie versucht im Rahmen ihrer Möglichkeiten einfachere und
+bequemere Lösungen zu finden oder faule Kompromisse einzugehen. Die
+grundsätzlichen Ziele und Wünsche bleiben erhalten. Das Opfer ist
+einfach zu faul, um diese Ziele zur verfolgen. Dem Opfer steht ein
+Rettungswurf gegen Sprüche zu. /Gegenzauber/ beendet das Wunder.
+
+Die Veränderung ist langsam und schleichend. Der Zauber wirkt selbst
+auf Freunde und Verwandte. Diese erkennen die Veränderung im Charakter
+des Opfers einfach nicht. Den Freunden und Verwandten steht kein
+Rettungswurf zu.
+
+*Stinkende Fäulnis* lässt den Boden oder ein Gegenstand oder eine
+Kreatur innerhalb von /120 Fuss/ schrecklich nach faulen Eier,
+Schwefel und Verwesung stinken. Kreaturen, die sich diesem Gestankt
+auf /30 Fuss/ nähern, steht ein Rettungswurf gegen Sprüche zu.
+Schaffen sie diesen nicht, wird ihnen so schlecht, dass sie nichts
+weiter tun könne, als auf allen Vieren herum zu kriechen. Was sie in
+den Händen tragen, müssen sie fallen lassen.
+
+Wird das Wunder auf eine Kreatur gewirkt, so steht ihr ein
+Rettungswurf zu. Schafft sie diesen, so wirkt der Zauber auf den
+Boden. Das Ziel ist von diesem Gestank nicht betroffen.
+
+Das Wunder wirkt nicht gegen Kreaturen ohne Geruchsinn oder gegen
+Kreaturen, deren natürlicher Lebensraum ähnlich stinkt.
+
+*Schwarzer Schleim* lässt aus feuchtem Boden in /30 Fuss/ Entfernung
+einen schwarzen Schleim aufsteigen. Dieser greift alles lebendige an.
+Werte für schwarzen Schleim: TW 10 RK 6 3W8 K5 BW 6; kann nur durch
+Feuer beschädigt werden. Alle anderen Angriffe erzeugen nur weiteren
+Schleim: TW 2 RK 6 1W8 K1 BW 6.
 
 * Paladin des Arden
 
@@ -2093,7 +2149,8 @@ Rights Reserved.
     Authors Scott Greene and Clark Peterson, based on original
     material by Gary Gygax. [[http://www.goblinoidgames.com/labyrinthlord.html][Labyrinth Lord]]™ Copyright 2007-2009,
     Daniel Proctor; Author Daniel Proctor. [[https://github.com/kensanata/halberdsnhelmets/tree/master/Hellebarden%20und%20Helme][Hellebarden und Helme]]
-    Copyright 2012--2014, Alex Schroeder; Author Alex Schroeder.
+    Copyright 2012--2014, Alex Schroeder; Author Alex Schroeder,
+    Samuel Dennler.
 
 For purposes of this license, nothing is considered to be Product
 Identity in addition to anything covered in section 1, above.
