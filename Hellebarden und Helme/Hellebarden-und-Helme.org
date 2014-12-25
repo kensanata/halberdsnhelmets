@@ -1417,8 +1417,6 @@ das Sternenlicht zur Beleuchtung von Bauten verwendet, so pulsiert es
 mit dem Leben in der Umgebung, leuchtet auf, wenn Kreaturen in der
 Nähe sind, wird schwächer, wenn man sich entfernt.
 
-FIXME: HERE!
-
 ** 3. Zirkel
 
 *Donnerkeil* führt zu einem bis zu /240 Fuss/ langen, geraden,
@@ -1504,7 +1502,7 @@ Susrael, Lady Chrysalis.
 schützt dich auch vor arktischen Temperaturen (aber nicht vor
 magischen Kälteangriffen).
 
-*Die Nase eines Honigschleckers* erlaubt es dir, für /20Minuten/
+*Die Nase eines Honigschleckers* erlaubt es dir, für /20 min/
 kürzliche Anwesenheit unsichtbarer Kreaturen, ihre Art und -- falls
 möglich -- ihr Geschlecht zu wittern. Willst du gegen sie kämpfen,
 giltst du immer noch als /blind/ und hast einen Abzug von -4 auf deine
@@ -1642,11 +1640,11 @@ Wolfsgefährten: TW 2+1 RK 7 1W6 K1 BW 18.
 
 #+INDEX: Winterwolf
 Wölfe, die sich einem Paladin der Freya anschliessen, können mit der
-Zeit zu einem *Winterwolf* werden. Mit der Zeiten werden Winterwölfe
-immer grösser, bis sie schliesslich die Grösse eines Ponys erreichen.
-Winterwölfe sind immun gegen Kälte. Von magischen Kälteangriffen
-erleiden sie nur halben Schaden. Im Gegenzug sind sie gegen Feuer sehr
-empfindlich und erleiden für jeden Schadenswürfel +1 Schaden.
+Zeit zu einem *Winterwolf* werden. Winterwölfe werden immer grösser,
+bis sie schliesslich die Grösse eines Ponys erreichen. Winterwölfe
+sind immun gegen Kälte. Von magischen Kälteangriffen erleiden sie nur
+halben Schaden. Im Gegenzug sind sie gegen Feuer sehr empfindlich und
+erleiden für jeden Schadenswürfel +1 Schaden.
 
 Falls Winterwölfe nicht einem Paladin der Freya folgen, haben sie eine
 Moral von 10.
@@ -1658,39 +1656,40 @@ Wölfe sind keine Haustiere! Winterwölfe erst recht nicht.
 
 ** 1. Zirkel
 
-*Böses entdecken* zeigt dem Kleriker während //, welche der sichtbaren
-Wesen im Umreis von // ihm Übles wollen.
+*Böses entdecken* zeigt dem Kleriker während /1h/, welche der
+sichtbaren Wesen im Umreis von /60 Fuss/ ihm Übles wollen.
 
-*Hand auflegen* heilt 1W6+1 Schadenspunkte /oder/ hebt Lähmung auf. Das
-Gegenteil davon ist *Schmerz* und verursacht 1W6+1 Schadenspunkte. In
-beiden Fällen muss das Ziel berührt werden (was allerdings keinen
+*Hand auflegen* heilt 1W6+1 Schadenspunkte /oder/ hebt Lähmung auf.
+Das Gegenteil davon ist *Schmerz* und verursacht 1W6+1 Schadenspunkte.
+In beiden Fällen muss das Ziel berührt werden (was allerdings keinen
 Trefferwurf benötigt).
 
-*Licht* verzaubert einen Gegenstand innerhalb von // für //, so dass er
-schwach zu leuchten beginnt und eine Kugel von // Durchmesser
-beleuchtet. Wird das Wunder auf die Augen einer Kreatur gewirkt, so
-erblindet sie für //. In diesem Fall steht dem Opfer ein Rettungswurf
-gegen Sprüche zu.<<</Licht/ und /Dunkelheit/ heben sich gegenseitig
-auf.>>> Das Gegenteil ist *Dunkelheit*.
+*Licht* verzaubert einen Gegenstand innerhalb von /120 Fuss/ für /2h/,
+so dass er schwach zu leuchten beginnt und eine Kugel von /30 Fuss/
+Durchmesser beleuchtet. Wird das Wunder auf die Augen einer Kreatur
+gewirkt, so erblindet sie für /2h/. In diesem Fall steht dem Opfer ein
+Rettungswurf gegen Sprüche zu. Das Gegenteil ist *Dunkelheit*. /Licht/
+und /Dunkelheit/ heben sich gegenseitig auf.
 
 *Magie entdecken* lässt verzauberte Gegenstände, Kreaturen und Orte
-innerhalb von // für // aufleuchten.<<<Dieses Leuchten ist für alle
-sichtbar.>>>
+innerhalb von /60 Fuss/ für /20min/ aufleuchten. Dieses Leuchten ist
+für alle sichtbar.
 
-*Mut* erlaubt einem berührten Wesen, welches in magischer Panik fliehen
-will, einen Rettungswurf mit einem Bonus, der gleich hoch ist wie die
-Stufe des Klerikers.<<</Mut/ und /Panik/ heben sich gegenseitig auf.>>>
-Das Gegenteil davon ist *Panik*: Das berührte Wesen flieht in Panik.
+*Mut* erlaubt einem berührten Wesen, welches in magischer Panik
+fliehen will, einen Rettungswurf mit einem Bonus, der gleich hoch ist
+wie die Stufe des Klerikers. Das Gegenteil davon ist *Panik*: Das
+berührte Wesen flieht in Panik. /Mut/ und /Panik/ heben sich
+gegenseitig auf.
 
-*Schutz vor beschworenen Kreaturen* schützt ein berührtes Wesen während
-// vor der Berührung /beschworener/ Kreaturen und verbessert die
-Rüstungsklasse um -1 (tiefer ist besser) und gibt einen +1 Bonus auf
-alle Rettungswüfe.
+*Schutz vor beschworenen Kreaturen* schützt ein berührtes Wesen
+während /2h/ vor der Berührung /beschworener/ Kreaturen und verbessert
+die Rüstungsklasse um -1 (tiefer ist besser) und gibt einen +1 Bonus
+auf alle Rettungswüfe.
 
-*Schutz vor Kälte* erlaubt es einem Wesen in bis zu // Entfernung für //
-jeglicher Kälte zu trotzen, gibt einen +2 Bonus bei Rettungswürfen gegen
-Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
-Kälteangriffen um einen Punkt.
+*Schutz vor Kälte* erlaubt es einem Wesen in bis zu /30 Fuss/
+Entfernung für /1h/ jeglicher Kälte zu trotzen, gibt einen +2 Bonus
+bei Rettungswürfen gegen Kälteangriffe und reduziert zudem jeden
+Schadenswürfel bei Kälteangriffen um einen Punkt.
 
 ** 2. Zirkel
 
