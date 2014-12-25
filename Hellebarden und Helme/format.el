@@ -49,6 +49,8 @@
 	   (delete-char -2)
 	   (when (looking-at "Fuss\\|Pfund")
 	     (insert " "))
+	   (when (looking-at "Minuten")
+	     (replace-match "min" t))
 	   (search-forward "}")
 	   (delete-char -1))
 	  ((looking-at "times")
