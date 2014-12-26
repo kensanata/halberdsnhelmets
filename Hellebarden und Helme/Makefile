@@ -21,8 +21,8 @@ clean:
 	rm -f .*.orgx
 	rm -f *.aux *.log *.out
 
-%.mobi: %.html
-	${CONVERT} $< $@ \
+%.mobi: %.html theindex.html
+	${CONVERT} $^ $@ \
 	--chapter=//h:h1 \
 	--chapter-mark=pagebreak \
 	--level1-toc=//h:h1 \

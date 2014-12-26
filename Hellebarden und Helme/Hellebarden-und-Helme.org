@@ -223,7 +223,7 @@ Die Angriffswerte und Rettungswürfe für Stufe 0 gelten für alle
 Menschen ohne Klasse und damit auch für viele Gefolgsleute.
 
 | <l10>      | <c10>      | <c10>      | <c10>      | <c10>      | <c10>      |
-| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 0    | 17         | 16         | 14         | 15         | 18         |
 | Stufe 1--3 | 15         | 14         | 12         | 13         | 16         |
@@ -267,7 +267,7 @@ notierst, musst du wärend dem Spiel nicht in deinen Unterlagen
 blättern.
 
 | <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 1--5 |         16 |         13 |         13 |         13 |         14 |
 | Stufe 6--10 |         14 |         11 |         11 |         11 |         12 |
@@ -305,7 +305,7 @@ In der Überraschungsrunde fügst du deinen Gegnern *doppelten Schaden*
 (2× würfeln) zu. Dies aber nur, falls deine Gegner überrascht sind!
 
 | <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 1--4 |         16 |         13 |         14 |         15 |         14 |
 | Stufe 5--8 |         14 |         11 |         12 |         13 |         12 |
@@ -341,7 +341,7 @@ eine entsprechende Liste.
 | Stufe 9--10    | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   |
 
 | <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 1--4 |         16 |         14 |         11 |         12 |         15 |
 | Stufe 5--8 |         14 |         12 |          9 |         10 |         12 |
@@ -443,7 +443,7 @@ einigermassen in der Sprache der Hyänenmenschen, Hobgobline und Orks
 (Schweinemenschen) verständigen.
 
 | <l10>      | <c10>      | <c10>      | <c10>      | <c10>      | <c10>      |
-| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Rettungs-  | Drachenodem | Lähmung    | Tod        | Strahlen   | Zaubersprüche |
 | würfe für  | Explosion  | Versteinerung | Gift       | Zauberstäbe | Wunder     |
@@ -488,7 +488,7 @@ Als Halbling gibt es darüber hinaus noch einen +1 Bonus im /Fernkampf/.
 Selber haben Halblinge eine bessere Rüstungsklasse (-2) gegen Riesen.
 
 | <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 1--3 |         13 |         10 |          8 |          9 |         12 |
 | Stufe 4--5 |         10 |          8 |          6 |          7 |         10 |
@@ -533,7 +533,7 @@ Zwerge können sich mehr schlecht als recht mit Goblins, Gnomen und
 Kobolden unterhalten.
 
 | <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@<br/>würfe für | Drachenodem@<br/>& Explosionen | Versteinerung@<br/>& Lähmung | Gift@<br/>& Tod | Zauberstäbe@<br/>& Strahlen | Zaubersprüche@<br/>& Wunder |
+| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 1--3 |         13 |         10 |          8 |          9 |         12 |
 | Stufe 4--5 |         10 |          8 |          6 |          7 |         10 |
