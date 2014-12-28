@@ -734,25 +734,6 @@ Magier und Elfen haben ein Zauberbuch mit einem zufälligen [[Zauberspr%C3%BCche
 | 5   | Magisches Geschoss |
 | 6   | Schlaf             |
 
-# <<Monster>>
-#+INDEX: Monster
-Monster aus der Umgebung könnten beispielsweise sein: *Goblin* (wie
-Halbling), *Echsenmensch* (TW 2), Lederrüstung, Zweihänder, kann
-schwimmen; *Satyr* (TW 2), Lederrüstung, Bogen und
-Kurzschwert; *Tengu* (TW 2, RK 9, 1W6), kann fliegen, kann keine
-Rüstung tragen; *Minotaurus* (TW 2, RK 6, 1W6), kann mit Sturmangriff
-doppelten Schaden anrichten; *Riesenaffe* (TW 3, RK 8, 1W6/1W6), kann
-keine Rüstung tragen; *Zentaur* (TW 3, RK 8, 1W6/1W6), kann keine
-Rüstung tragen, kann mit Sturmangriff doppelten Schaden anrichten,
-kann galoppieren; *Troll* (TW 6+3, RK 4, 1W6/1W6/1W10), regeneriert
-3/Runde nach 3 Runden.
-
-| <c>  | <l68>                                                                |
-| Abk. | Bedeutung                                                            |
-|------+----------------------------------------------------------------------|
-| TW   | Trefferwürfel: Je höher diese ist, um so besser treffen die Monster und um so mehr Lebensenergie haben sie |
-| RK   | Rüstungsklasse: Je tiefer diese ist, um so schwerer ist man zu treffen. |
-
 Wenn nichts anderes vermerkt ist, handelt es sich bei den
 Unbewaffneten um Menschen, die nicht kämpfen wollen oder können. Im
 Notfall kämpfen sie wie Krieger der Stufe 0.
@@ -773,6 +754,37 @@ Notfall kämpfen sie wie Krieger der Stufe 0.
 | 13. | verarmter Schäfer mit Schleuder und Keule | 28. | Zwerg mit Kriegsaxt, Helm und Plattenpanzer |
 | 14. | rachsüchtiger Jäger mit Bogen und Dolch | 29. | Jugendlicher, kennt sich mit Pferden aus |
 | 15. | desertierte Stadtwache mit Speer, Streitkolben, Schild und Kettenhemd | 30. | Monster aus der Umgebung (Echsenmensch, Goblin, Minotaurus, Riesenaffe, Troll, Zentaur) |
+
+# <<Monster>>
+#+INDEX: Monster
+Monster aus der Umgebung könnten beispielsweise sein: *Goblin* (wie
+Halbling), *Echsenmensch* (TW 2), Lederrüstung, Zweihänder, kann
+schwimmen; *Satyr* (TW 2), Lederrüstung, Bogen und
+Kurzschwert; *Tengu* (TW 2, RK 9, 1W6), kann fliegen, kann keine
+Rüstung tragen; *Minotaurus* (TW 2, RK 6, 1W6), kann mit Sturmangriff
+doppelten Schaden anrichten; *Riesenaffe* (TW 3, RK 8, 1W6/1W6), kann
+keine Rüstung tragen; *Zentaur* (TW 3, RK 8, 1W6/1W6), kann keine
+Rüstung tragen, kann mit Sturmangriff doppelten Schaden anrichten,
+kann galoppieren; *Troll* (TW 6+3, RK 4, 1W6/1W6/1W10), regeneriert
+3/Runde nach 3 Runden.
+
+Die Liste der üblichen Abkürzungen für Monsterbeschreibungen:
+
+#+INDEX: TW
+#+INDEX: RK
+#+INDEX: BW
+#+INDEX: ML
+#+INDEX: EP
+#+INDEX: K
+| <c>  | <l68>                                                                |
+| Abk. | Bedeutung                                                            |
+|------+----------------------------------------------------------------------|
+| TW   | Trefferwürfel: Je höher diese ist, um so besser treffen die Monster und um so mehr Lebensenergie haben sie. |
+| RK   | Rüstungsklasse: Je tiefer diese ist, um so schwerer ist man zu treffen. |
+| BW   | Bewegungsrate: Je höher diese ist, um so schneller ist man.          |
+| ML   | Moral: Je tiefer diese ist, um so schneller fliehen Monster.         |
+| EP   | Erfahrungspunkte: Das Erschlagen von Monstern gibt auch ein paar Erfahrungspunkte. |
+| Kx   | Rettungswurf wie ein Krieger der Stufe x.                            |
 
 * Gesinnung
 
