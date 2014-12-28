@@ -1194,51 +1194,31 @@ Kleriker der 7. Stufe.
 
 * Bewegung
 
+# <<Bewegungsrate>>
+#+INDEX: Bewegungsrate
+*Bewegungsrate*: Menschen und ähnliche Kreaturen haben eine
+Bewegungsrate (BW) von 12 -- das entspricht 120 Fuss pro pro Runde
+(10s) beim /Rennen/ oder /Kämpfen/. 
+
+#+INDEX: Karten zeichnen
+Das langsame und vorsichtige Vorgehen in der Unterwelt verlangsamt die
+Bewegung dramatisch. BW 12 entspricht nun 120 Fuss pro 10min. Nur so
+bleibt Zeit, um beispielsweise eine Karte zu zeichnen.
+
 # <<Tragkraft>>
 #+INDEX: Tragkraft
-*Tragkraft*: Rüstung schränkt die Bewegungsrate gemäss der unten
-stehenden Tabelle ein. Wer zudem mehr als 200 Münzen auf sich trägt,
-wird langsamer. Eine typische Ausrüstung mit Rucksack, Wegrationen,
-Fackeln und solchen Dingen ist schon mit eingerechnet.
-
-# <<Bewegungsrate>>
-Für Monster wird der Spielleiter die Bewegungsrate oft um den Faktor
-10 kleiner notiert finden. Ein normaler Mensch hat also eine 12 statt
-120 Fuss pro Runde.
-
-| <l>                       | <c>    | <c>       |
-| Rüstung                   | Normal | Schwierig |
-|---------------------------+--------+-----------|
-| keine                     | 120    | 40        |
-| Lederrüstung              | 90     | 30        |
-| Kettenhemd, Plattenpanzer | 60     | 20        |
-| Mehr als 200 Münzen       | -30    | -10       |
-
-#+INDEX: Forschen
-*Forschen*: Das langsame und vorsichtige Vorgehen in der Unterwelt. Es
-gilt die normale Bewegungsrate in Fuss pro 10min.
-
-#+INDEX: Rennen
-*Rennen*: Wilde Flucht erlaubt den Gegnern einen letzten Angriff mit
-+2. Kartenzeichnen ist beim Rennen nicht erlaubt. Es gilt die normale
-Bewegungsrate in Fuss pro Runde (10s).
-
-#+INDEX: Kampf!Bewegung
-*Kämpfen*: Bei einer Begegnung startet man oft in einer Distanz von
-/20--120 Fuss/. Wer schwer gerüstet in den Nahkampf will, muss sich
-also möglicherweise mehrere Runden beschiessen lassen, bevor die
-Feinde erreicht sind. Das Angreifen und Manövrieren im Getümmel ist
-schwierig. Es gilt die reduzierte Bewegungsrate in Fuss pro Runde
-(10s).
-
+#+INDEX: Stärke!Tragkraft
 #+INDEX: Gegenstände!Anzahl
-*Anzahl Gegenstände*: Für jeden Punkt /Kraft/ kann man einen
-signifikanten Gegenstand ohne Malus tragen (eine Rüstung, eine Waffe,
-ein Buch, einen Trank, eine Fackel, einen Köcher, einen Stab, eine
-Schriftrolle). Trägt man mehr signifikante Gegenstände, gibt jeder
-weitere Gegenstand -1 auf Angriff und Rettungswürfe. Insignifikante
-Gegenstände sind Kleider, Ringe, Anhänger, Edelsteine, Gürteltaschen,
-Rucksäcke, Münzen.
+*Tragkraft*: Man kann so viele Gegenstände tragen, wie man /Stärke/
+hat (eine Rüstung, eine Waffe, ein Buch, einen Trank, eine Fackel,
+einen Köcher, einen Stab, eine Schriftrolle). Trägt man mehr, so gibt
+jeder weitere Gegenstand -1 auf Angriff und Rettungswürfe. Der
+Einfachheit halber wird kein Unteschied zwischen leichten und schweren
+Gegenständen gemacht. Kleider, Säcke oder Rucksäcke werden nicht
+gezählt.
+
+*Kleinkram*: Je hundert kleine Dinge wie Goldmünzen, Edelsteine, Ringe
+oder Anhänger zählen als ein Gegenstand.
 
 #+INDEX: Ruf
 * Ruf
