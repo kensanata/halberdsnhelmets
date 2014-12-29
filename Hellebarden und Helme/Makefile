@@ -1,13 +1,13 @@
 GRAPHICS=$(wildcard graphics/*.jpg)
 PANDOC=pandoc
 CONVERT=ebook-convert
-# CONVERT=/Applications/calibre.app/Contents/MacOS/ebook-convert
+CONVERT=/Applications/calibre.app/Contents/MacOS/ebook-convert
 VIEW=ebook-viewer
-# VIEW=/Applications/calibre.app/Contents/MacOS/ebook-viewer
+VIEW=/Applications/calibre.app/Contents/MacOS/ebook-viewer
 LATEX=pdflatex
 MAKEINDEX=makeindex
 EMACS=emacs
-# EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
 
 all: Hellebarden-und-Helme.mobi
 
@@ -21,8 +21,8 @@ clean:
 	rm -f .*.orgx
 	rm -f *.aux *.log *.out
 
-%.mobi: %.html theindex.html
-	${CONVERT} $^ $@ \
+%.mobi: merged.html
+	${CONVERT} $< $@ \
 	--chapter=//h:h1 \
 	--chapter-mark=pagebreak \
 	--level1-toc=//h:h1 \
@@ -32,6 +32,9 @@ clean:
 	--cover=graphics/cover.jpg \
 	--output-profile=kindle \
 	--smarten-punctuation
+
+merged.html: Hellebarden-und-Helme.html theindex.html
+	cat $^ | perl -e 'undef $$/; $$_ = <STDIN>; s!</body>.*<div id="content">!<div id="index">!s; print $$_;' > $@
 
 .PRECIOUS: %.html
 
