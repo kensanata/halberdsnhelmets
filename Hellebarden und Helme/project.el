@@ -1,11 +1,11 @@
 ;; do need the latest org-mode for @<br/> to work?
-;; (add-to-list 'load-path "~/src/org-mode")
+(add-to-list 'load-path "~/src/org-mode/lisp")
+(add-to-list 'Info-default-directory-list "~/src/org-mode/doc")
 (let ((dir (file-name-directory (buffer-file-name))))
   (setq org-publish-project-alist
 	`(("Hellebarden und Helme"
 	   :base-directory ,dir
 	   :publishing-directory ,dir
-	   :publishing-function org-html-publish-to-html
 	   :exclude "-source\\.org"
 	   :section-numbers nil
 	   :html-postamble nil

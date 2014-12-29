@@ -1,13 +1,14 @@
 GRAPHICS=$(wildcard graphics/*.jpg)
 PANDOC=pandoc
 CONVERT=ebook-convert
-CONVERT=/Applications/calibre.app/Contents/MacOS/ebook-convert
 VIEW=ebook-viewer
-VIEW=/Applications/calibre.app/Contents/MacOS/ebook-viewer
 LATEX=pdflatex
 MAKEINDEX=makeindex
 EMACS=emacs
-EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+
+# CONVERT=/Applications/calibre.app/Contents/MacOS/ebook-convert
+# VIEW=/Applications/calibre.app/Contents/MacOS/ebook-viewer
+# EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
 
 all: Hellebarden-und-Helme.mobi
 
@@ -17,24 +18,22 @@ preview: Hellebarden-und-Helme.mobi
 clean:
 	rm -f Hellebarden-und-Helme.mobi
 	rm -f Hellebarden-und-Helme.html
-	rm -f theindex.html
+	rm -f theindex.html merged.html
 	rm -f .*.orgx
 	rm -f *.aux *.log *.out
 
 %.mobi: merged.html
 	${CONVERT} $< $@ \
-	--chapter=//h:h1 \
-	--chapter-mark=pagebreak \
 	--level1-toc=//h:h1 \
 	--level2-toc=//h:h2 \
 	--authors="Alex Schroeder" \
-	--language=de \
+	--language=DE \
 	--cover=graphics/cover.jpg \
 	--output-profile=kindle \
 	--smarten-punctuation
 
 merged.html: Hellebarden-und-Helme.html theindex.html
-	cat $^ | perl -e 'undef $$/; $$_ = <STDIN>; s!</body>.*<div id="content">!<div id="index">!s; print $$_;' > $@
+	perl merge-index.pl
 
 .PRECIOUS: %.html
 

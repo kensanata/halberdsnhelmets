@@ -27,3 +27,7 @@ Die Quelldatei verwendet das [Org Mode](http://orgmode.org/) Format
 von Emacs. Um das PDF zu generieren, benötigt man
 [Emacs](http://www.gnu.org/software/emacs/) und
 [Calibre](http://calibre-ebook.com/).
+
+Falls die Tabellen mit den Rettungswürfen so Zeug wie "@@html:<br/>@@"
+enthalten, so muss man leider eine neuere Version von Org Mode
+installieren.
