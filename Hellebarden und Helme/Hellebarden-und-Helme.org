@@ -5,7 +5,7 @@
 #+DESCRIPTION: Ein Spielerhandbuch für die Spieler der Fünf Winde Kampagne.
 #+KEYWORDS:  Hausregeln, Rollenspiel
 #+LANGUAGE:  de
-#+OPTIONS:   H:3 num:nil toc:t @:t ::t |:t ^:nil -:t f:nil *:t <:nil
+#+OPTIONS:   H:3 num:nil toc:nil @:t ::t |:t ^:nil -:t f:nil *:t <:nil
 #+OPTIONS:   TeX:nil LaTeX:nil skip:nil d:nil todo:nil pri:nil tags:off
 #+LINK_HOME: https://alexschroeder.ch/wiki/Hellebarden_%26_Helme
 

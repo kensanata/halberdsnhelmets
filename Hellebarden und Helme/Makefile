@@ -6,9 +6,9 @@ LATEX=pdflatex
 MAKEINDEX=makeindex
 EMACS=emacs
 
-# CONVERT=/Applications/calibre.app/Contents/MacOS/ebook-convert
-# VIEW=/Applications/calibre.app/Contents/MacOS/ebook-viewer
-# EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+CONVERT=/Applications/calibre.app/Contents/MacOS/ebook-convert
+VIEW=/Applications/calibre.app/Contents/MacOS/ebook-viewer
+EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
 
 all: Hellebarden-und-Helme.mobi
 
@@ -23,7 +23,7 @@ clean:
 	rm -f *.aux *.log *.out
 
 %.mobi: merged.html
-	${CONVERT} $< $@ \
+	${CONVERT} merged.html $@ \
 	--level1-toc=//h:h1 \
 	--level2-toc=//h:h2 \
 	--authors="Alex Schroeder" \
@@ -31,6 +31,9 @@ clean:
 	--cover=graphics/cover.jpg \
 	--output-profile=kindle \
 	--smarten-punctuation
+
+# could be useful; look for output in the debug directory
+# --debug-pipeline debug
 
 merged.html: Hellebarden-und-Helme.html theindex.html
 	perl merge-index.pl
