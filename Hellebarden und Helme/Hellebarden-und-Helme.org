@@ -1,13 +1,37 @@
 #+TITLE:     Hellebarden und Helme
 #+AUTHOR:    Alex Schroeder
+#+DATE:      
 #+EMAIL:     kensanata@gmail.com
-#+DATE:      %Y-%m-%d
 #+DESCRIPTION: Ein Spielerhandbuch für die Spieler der Fünf Winde Kampagne.
 #+KEYWORDS:  Hausregeln, Rollenspiel
 #+LANGUAGE:  de
 #+OPTIONS:   H:3 num:nil toc:nil @:t ::t |:t ^:nil -:t f:nil *:t <:nil
 #+OPTIONS:   TeX:nil LaTeX:nil skip:nil d:nil todo:nil pri:nil tags:off
 #+LINK_HOME: https://alexschroeder.ch/wiki/Hellebarden_%26_Helme
+
+#+LATEX_CLASS: tufte-book
+#+LATEX_CLASS_OPTIONS: [a4paper,twoside,notitlepage,openany]
+#+LATEX_HEADER: \usepackage[ngerman]{babel}
+
+# ;; The tufte-book class requires the folling in your .emacs:
+# (add-to-list 'org-latex-classes
+# 	     '("tufte-book" "\\documentclass{tufte-book}"
+# 	       ("\\section{%s}" . "\\section*{%s}")
+# 	       ("\\subsection{%s}" . "\\subsection*{%s}")
+# 	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+# 	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+# 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+# The license at the end needs to save space.
+#+LATEX_HEADER: \usepackage{enumitem}
+
+# Clickable hyperlinks
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \hypersetup{colorlinks}
+
+# We want an index.
+#+LATEX_HEADER: \usepackage{makeidx}
+#+LATEX_HEADER: \makeindex
 
 Dies ist das Spielerhandbuch für die Spieler in meiner Kampagne. Es
 enthält die Regeln, basierend auf [[http://www.goblinoidgames.com/labyrinthlord.html][Labyrinth Lord]], sowie diverse
@@ -165,15 +189,15 @@ Sache tust oder lässt du immmer wieder?/
 [[Halbling]]: Du bist noch kleiner und immer barfuss unterwegs. Du kannst
 dich gut verstecken und du kannst Fernkampfwaffen besonders gut
 einsetzen. Riesen haben Mühe, dich zu treffen. Du brauchst ein
-Geschick von mindestens 9. /Warum haben deine Eltern dich ziehen
-lassen? Womit tröstest du dich über das Fehlen von Heim und Familie
-hinweg?/
+Geschick von mindestens 9.
+/Warum haben deine Eltern dich ziehen lassen? Womit tröstest du dich
+über das Fehlen von Heim und Familie hinweg?/
 
 [[Zwerg]]: Du bist klein, zäh, und du kannst gut kämpfen. Du weisst viel
 über Bauten unter der Erde. Du kannst im Dunkeln sehen. Du brauchst
-eine Gesundheit von mindestens 9. /Welche Fehde verfolgt deine
-Familie? Wie kam es, dass deine Eltern ein Kind auf die Welt setzen
-wollten?/
+eine Gesundheit von mindestens 9.
+/Welche Fehde verfolgt deine Familie? Wie kam es, dass deine Eltern
+ein Kind auf die Welt setzen wollten?/
 
 # <<Angriffswerte>>
 #+INDEX: Angriffswerte
@@ -222,8 +246,9 @@ Du kannst gut kämpfen. Diese Klasse spielt sich am einfachsten.
 Die Angriffswerte und Rettungswürfe für Stufe 0 gelten für alle
 Menschen ohne Klasse und damit auch für viele Gefolgsleute.
 
+#+ATTR_LATEX: :font \small :align p{1.8cm}p{2.3cm}p{2.2cm}p{1.0cm}p{2.1cm}p{2.3cm}
 | <l10>      | <c10>      | <c10>      | <c10>      | <c10>      | <c10>      |
-| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
+| Rettungs@@latex:­@@@@html:-<br/>@@würfe für | Drachenodem @@html:<br/>@@& Explosionen | Versteinerung @@html:<br/>@@& Lähmung | Gift @@html:<br/>@@& Tod | Zauberstäbe @@html:<br/>@@& Strahlen | Zaubersprüche @@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 0    | 17         | 16         | 14         | 15         | 18         |
 | Stufe 1--3 | 15         | 14         | 12         | 13         | 16         |
@@ -266,11 +291,12 @@ Zauberbuch. Wenn du dir den gesamten Text auf dem Charakterblatt
 notierst, musst du wärend dem Spiel nicht in deinen Unterlagen
 blättern.
 
-| <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
+#+ATTR_LATEX: :font \small :align p{1.8cm}p{2.3cm}p{2.2cm}p{1.0cm}p{2.1cm}p{2.3cm}
+| <l10>      | <c10>      | <c10>      | <c10>      | <c10>      | <c10>      |
+| Rettungs@@latex:­@@@@html:-<br/>@@würfe für | Drachenodem @@html:<br/>@@& Explosionen | Versteinerung @@html:<br/>@@& Lähmung | Gift @@html:<br/>@@& Tod | Zauberstäbe @@html:<br/>@@& Strahlen | Zaubersprüche @@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
-| Stufe 1--5 |         16 |         13 |         13 |         13 |         14 |
-| Stufe 6--10 |         14 |         11 |         11 |         11 |         12 |
+| Stufe 1--5 | 16         | 13         | 13         | 13         | 14         |
+| Stufe 6--10 | 14         | 11         | 11         | 11         | 12         |
 
 ** Dieb
 
@@ -304,8 +330,9 @@ Helm tragen.
 In der Überraschungsrunde fügst du deinen Gegnern *doppelten Schaden*
 (2× würfeln) zu. Dies aber nur, falls deine Gegner überrascht sind!
 
+#+ATTR_LATEX: :font \small :align p{1.8cm}p{2.3cm}p{2.2cm}p{1.0cm}p{2.1cm}p{2.3cm}
 | <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
+| Rettungs@@latex:­@@@@html:-<br/>@@würfe für | Drachenodem @@html:<br/>@@& Explosionen | Versteinerung @@html:<br/>@@& Lähmung | Gift @@html:<br/>@@& Tod | Zauberstäbe @@html:<br/>@@& Strahlen | Zaubersprüche @@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 1--4 |         16 |         13 |         14 |         15 |         14 |
 | Stufe 5--8 |         14 |         11 |         12 |         13 |         12 |
@@ -340,8 +367,9 @@ eine entsprechende Liste.
 | Stufe 6--8     | 17  | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   |
 | Stufe 9--10    | 16  | 15  | 14  | 13  | 12  | 11  | 10  | 9   | 8   | 7   |
 
+#+ATTR_LATEX: :font \small :align p{1.8cm}p{2.3cm}p{2.2cm}p{1.0cm}p{2.1cm}p{2.3cm}
 | <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
+| Rettungs@@latex:­@@@@html:-<br/>@@würfe für | Drachenodem @@html:<br/>@@& Explosionen | Versteinerung @@html:<br/>@@& Lähmung | Gift @@html:<br/>@@& Tod | Zauberstäbe @@html:<br/>@@& Strahlen | Zaubersprüche @@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 1--4 |         16 |         14 |         11 |         12 |         15 |
 | Stufe 5--8 |         14 |         12 |          9 |         10 |         12 |
@@ -442,11 +470,10 @@ Elfen sprechen die gemeine Sprache und Elfisch; zudem können sie sich
 einigermassen in der Sprache der Hyänenmenschen, Hobgobline und Orks
 (Schweinemenschen) verständigen.
 
+#+ATTR_LATEX: :font \small :align p{1.8cm}p{2.3cm}p{2.2cm}p{1.0cm}p{2.1cm}p{2.3cm}
 | <l10>      | <c10>      | <c10>      | <c10>      | <c10>      | <c10>      |
-| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
+| Rettungs@@latex:­@@@@html:-<br/>@@würfe für | Drachenodem @@html:<br/>@@& Explosionen | Versteinerung @@html:<br/>@@& Lähmung | Gift @@html:<br/>@@& Tod | Zauberstäbe @@html:<br/>@@& Strahlen | Zaubersprüche @@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
-| Rettungs-  | Drachenodem | Lähmung    | Tod        | Strahlen   | Zaubersprüche |
-| würfe für  | Explosion  | Versteinerung | Gift       | Zauberstäbe | Wunder     |
 | Stufe 1--3 | 15         | 13         | 12         | 13         | 15         |
 | Stufe 4--5 | 13         | 11         | 10         | 11         | 13         |
 
@@ -487,8 +514,9 @@ so klein bist, kannst du keine grossen Waffen verwenden.
 Als Halbling gibt es darüber hinaus noch einen +1 Bonus im /Fernkampf/.
 Selber haben Halblinge eine bessere Rüstungsklasse (-2) gegen Riesen.
 
+#+ATTR_LATEX: :font \small :align p{1.8cm}p{2.3cm}p{2.2cm}p{1.0cm}p{2.1cm}p{2.3cm}
 | <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
+| Rettungs@@latex:­@@@@html:-<br/>@@würfe für | Drachenodem @@html:<br/>@@& Explosionen | Versteinerung @@html:<br/>@@& Lähmung | Gift @@html:<br/>@@& Tod | Zauberstäbe @@html:<br/>@@& Strahlen | Zaubersprüche @@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 1--3 |         13 |         10 |          8 |          9 |         12 |
 | Stufe 4--5 |         10 |          8 |          6 |          7 |         10 |
@@ -532,8 +560,9 @@ relativ klein bist, kannst du keine grossen Waffen verwenden.
 Zwerge können sich mehr schlecht als recht mit Goblins, Gnomen und
 Kobolden unterhalten.
 
+#+ATTR_LATEX: :font \small :align p{1.8cm}p{2.3cm}p{2.2cm}p{1.0cm}p{2.1cm}p{2.3cm}
 | <l10>      |       <c10> |       <c10> |       <c10> |       <c10> |       <c10> |
-| Rettungs-@@html:<br/>@@würfe für | Drachenodem@@html:<br/>@@& Explosionen | Versteinerung@@html:<br/>@@& Lähmung | Gift@@html:<br/>@@& Tod | Zauberstäbe@@html:<br/>@@& Strahlen | Zaubersprüche@@html:<br/>@@& Wunder |
+| Rettungs@@latex:­@@@@html:-<br/>@@würfe für | Drachenodem @@html:<br/>@@& Explosionen | Versteinerung @@html:<br/>@@& Lähmung | Gift @@html:<br/>@@& Tod | Zauberstäbe @@html:<br/>@@& Strahlen | Zaubersprüche @@html:<br/>@@& Wunder |
 |------------+------------+------------+------------+------------+------------|
 | Stufe 1--3 |         13 |         10 |          8 |          9 |         12 |
 | Stufe 4--5 |         10 |          8 |          6 |          7 |         10 |
@@ -579,6 +608,7 @@ dem restlichen Geld dann Gefolgsleute anheuern und ausrüsten.
 #+INDEX: Waffen
 ** Waffen
 
+#+ATTR_LATEX: :align llp{8cm}
 | Waffe        | Gold | Bemerkung                                                                         |
 |--------------+------+-----------------------------------------------------------------------------------|
 | Kriegsaxt    |    7 | zweihändig, Türen einschlagen                                                     |
@@ -1992,7 +2022,18 @@ Loki, da er so listenreich und redegewandt ist.
 | 4   | *Chamäleonhaut*: Hautfarbe und -struktur kann verändert werden (z.B. Schlangenhaut) |
 | 5   | *Tiergestalt*: Verwandlung in ein bestimmtes Tier (z.B. Seehund); das gewählte Tier kann nicht geändert werden, die Fähigkeit kann allerdings mehrfach genommen werden |
 
+
+#+BEGIN_LATEX
+\printindex
+\clearpage
+#+END_LATEX
+
+
 * Lizenz: Open Game License Version 1.0a
+
+#+BEGIN_LATEX
+\fontsize{6pt}{7pt}\selectfont
+#+END_LATEX
 
 *Designation of Open Game Content*: The entire document is open game
 content. *Designation of Product Identity*: The names of contributors,
@@ -2002,6 +2043,7 @@ identity. The following text is the property of Wizards of the Coast,
 Inc. and is Copyright 2000 Wizards of the Coast, Inc ("Wizards"). All
 Rights Reserved.
 
+#+ATTR_LATEX: :options [noitemsep,leftmargin=3ex]
 1.  Definitions: (a) "Contributors" means the copyright and/or trademark
     owners who have contributed Open Game Content; (b) "Derivative
     Material" means copyrighted material including derivative works and
