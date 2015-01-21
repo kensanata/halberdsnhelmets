@@ -608,7 +608,7 @@ dem restlichen Geld dann Gefolgsleute anheuern und ausrüsten.
 #+INDEX: Waffen
 ** Waffen
 
-#+ATTR_LATEX: :align llp{8cm}
+#+ATTR_LATEX: :align lrp{8cm}
 | Waffe        | Gold | Bemerkung                                                                         |
 |--------------+------+-----------------------------------------------------------------------------------|
 | Kriegsaxt    |    7 | zweihändig, Türen einschlagen                                                     |

@@ -973,6 +973,14 @@ sich pro Tag 1W6 \hyperref[sec:Kandidaten]{Kandidaten}.
   \medskip\noindent TW: Trefferwürfel
 
   \noindent RK: Rüstungsklasse
+
+  \noindent BW: Bewegungsrate
+
+  \noindent ML: Moral
+
+  \noindent EP: Erfahrungspunkte
+
+  \noindent Kx: Rettungswurf wie ein Krieger der Stufe x
 }
 \begin{tabular}{cp{4.35cm}cp{4.35cm}}
 1. & fauler Drückeberger & 16. & Fackelträger \\
@@ -1088,17 +1096,17 @@ Freunde.
 und wohne in Zürich. Mein Charakter heisst Edrig und stammt aus
 Einaheim.
 
-\marginnote{Weil Geld zu Erfahrungspunkten und damit zum Stufenanstieg
-  führt, ist die Geldbeschaffung oft zentrales Element der Abenteuer.
-  Das Bergen eines gefundenen Hortes kann ebenfalls zu einem Problem
-  werden, wenn man sich geschwächt und schwer beladen auf den Rückweg
-  macht.} \key{Erfahrungspunkte}: Gegner überlisten und überwältigen
-gibt Erfahrungspunkte. Zudem kann man für ausgegebenes Geld
-\emph{einen Erfahrungspunkt pro Goldmünze} erhalten. Beispiele:
-Spenden an den Tempel, Aufstellen von Statuen, Organisieren von
-Saufgelagen, Zirkus für das gemeine Volk, Villa erbauen, Bedienstete
-anstellen und so weiter. Mit genug Erfahrungspunkten steigt man eine
-Stufe.
+\key{Erfahrungspunkte}: Gegner überlisten und überwältigen gibt
+Erfahrungspunkte. Zudem kann man für ausgegebenes Geld \emph{einen
+  Erfahrungspunkt pro Goldmünze} erhalten. Beispiele: Spenden an den
+Tempel, Aufstellen von Statuen, Organisieren von Saufgelagen, Zirkus
+für das gemeine Volk, Villa erbauen, Bedienstete anstellen und so
+weiter. Mit genug Erfahrungspunkten steigt man eine Stufe.
+\marginnote[-3em]{Weil Geld zu Erfahrungspunkten und damit zum
+  Stufenanstieg führt, ist die Geldbeschaffung oft zentrales Element
+  der Abenteuer. Das Bergen eines gefundenen Hortes kann ebenfalls zu
+  einem Problem werden, wenn man sich geschwächt und schwer beladen
+  auf den Rückweg macht.}
 
 \key{Stufe}: Mit der Zeit erhält der Charakter mehr Lebensenergie,
 trifft besser und erhält bessere Rettungswürfe. Er \emph{steigt eine
@@ -1107,7 +1115,6 @@ trifft besser und erhält bessere Rettungswürfe. Er \emph{steigt eine
 \begin{marginfigure}[1cm]
   \includegraphics{Lucchesischer-Schaller.jpg}
 \end{marginfigure}
-
 
 \key{Lebensenergie}: Die Lebensenergie zeigt an, wieviel Ausdauer,
 Glück und Lebenswillen der Charakter noch hat. \emph{Steigt} man um
@@ -1118,6 +1125,13 @@ Vergiss nicht, zu jedem Würfel den Gesundheitsbonus hinzu zu zählen.
 \emph{Verliert} man eine Stufe, so würfelt man ebenfalls so viele
 Würfel wie man Stufen hat und behält das Resultat, wenn es
 \emph{schlechter} als das bisherige ist.
+
+\key{Rettungswurf}: Den Opfern von Zaubersprüchen und Wundern steht
+manchmal ein Rettungswurf zu, um negative Effekte zu vermeiden oder
+Schaden zu halbieren. Dies aber nur, wenn dies auch ausdrücklich so
+erwähnt wird. Deine Rettungswürfe sind abhängig von deiner Stufe. Um
+den Wurf zu schaffen, musst du mit einem W20 würfeln und die
+angegebene Zahl erreichen oder übertreffen.
 
 \key{Zirkel}: Die Zaubersprüche werden mit der Zeit ebenfalls
 mächtiger. Als Faustregel gilt, dass der mächtigste Zirkel, den
@@ -1130,7 +1144,7 @@ Stufe  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
 Zirkel & 1 & 1 & 2 & 2 & 3 & 3 & 4 & 4 & 5 &  5 \\
 \end{tabular}
 
-\marginnote[-1cm]{Für die
+\marginnote[-3cm]{Für die
   \index{Reaktionsbonus}Reaktionswürfe verwendet der Spielleiter einen
   kleineren Bonus:
 
@@ -1146,18 +1160,21 @@ Zirkel & 1 & 1 & 2 & 2 & 3 & 3 & 4 & 4 & 5 &  5 \\
 
   \medskip
   \begin{tabular}{cl}
-  2W6 & Reaktion \\
-  2 & Angriff \\
-  3 & Raub \\
-  4 & Drohen \\
-  5 & Unwirrsch \\
-  6 & Verwirrt \\
-  7 & Unsicher \\
-  8 & Auf der Kippe \\
-  9 & Kein Risiko \\
-  10 & Zusammenarbeit \\
-  11 & Freundlich \\
-  12 & Hilfsbereit 
+    2W6 & Reaktion \\
+     \multicolumn{2}{c}{\textit{negativ}} \\
+    2 & Angriff \\
+    3 & Raub \\
+    4 & Drohen \\
+    5 & Unwirrsch \\
+    \multicolumn{2}{c}{\textit{neutral}} \\
+    6 & Verwirrt \\
+    7 & Unsicher \\
+    8 & Auf der Kippe \\
+    \multicolumn{2}{c}{\textit{positiv}} \\
+    9 & Kein Risiko \\
+    10 & Zusammenarbeit \\
+    11 & Freundlich \\
+    12 & Hilfsbereit 
   \end{tabular}
 }
 
@@ -1179,15 +1196,17 @@ Gefolgsleute müssen bei Verlusten keine Moralwürfe machen.
 
 
 \key{Gefolgsleute}\label{key:gefolgsleute}: Im Gegensatz zu Söldnern
-sind Gefolgsleute treu.\marginnote{Der Lohn wird am Ende des
-  Spielabends bezahlt. Zur Höhe des Lohnes siehe
-  \hyperref[sec:löhne]{Löhne}.} Ihre Anzahl ist allerdings beschränkt:
-4 + \emph{Auftreten} Bonus (1--7). Nach einem Abenteuer müssen
+sind Gefolgsleute treu. Ihre Anzahl ist allerdings beschränkt: 4 +
+\emph{Auftreten} Bonus (1--7). Nach einem Abenteuer müssen
 Gefolgsleute ohne Stufe einen Moralwurf machen. Ihre Moral wird durch
 den \emph{Auftreten} Bonus ihres Herren bestimmt: 7 + Bonus (4--10).
 Grosszügige Geschenke über die ursprünglich getroffenen Abmachungen
 hinaus können die Moral kurzfristig um +1 erhöhen. Würfeln
 Gefolgsleute \emph{über} ihren Moralwert, so setzen sie sich zur Ruhe.
+Haben Gefolgsleute die erste Stufe erreicht, so müssen sie zwischen
+den Abenteuern keinen Moralwurf mehr machen. \marginnote[-3em]{Der
+  Lohn wird am Ende des Spielabends bezahlt. Zur Höhe des Lohnes siehe
+  \hyperref[sec:löhne]{Löhne}.}
 
 \key[Erfahrungspunkte!Gefolgsleute]{Erfahrungspunkte für Gegner}
 werden am Ende des Spielabends auf Spielercharaktere und Gefolgsleute
@@ -1262,13 +1281,13 @@ Diebe ab der 10.~Stufe & 1--5 \\
 Es wird viel gekämpft…
 
 \key[Ueberraschung@Überraschung]{Überraschung}: Beide Seiten würfeln
-1W6\marginnote{Die \hyperref[sec:bewegung]{Bewegungsrate} bestimmt so,
-  ob überraschten Gegner noch in der ersten Runde angegriffen werden
-  können.} und bei 1 oder 2 ist man überrascht. Wer überrascht ist,
-muss die erste Runde aussetzen. Falls die \index{Distanz}Distanz
-zwischen den beiden Seiten nicht sowieso klar ist, addiert man die
-beiden Überraschungswürfe und multipliziert mit 10 Fuss. Das ergibt
-eine Distanz von 20--\emph{\unit[120]{Fuss}}.
+1W6 und bei 1 oder 2 ist man überrascht. Wer überrascht ist, muss die
+erste Runde aussetzen. Falls die \index{Distanz}Distanz zwischen den
+beiden Seiten nicht sowieso klar ist, addiert man die beiden
+Überraschungswürfe und multipliziert mit 10 Fuss. Das ergibt eine
+Distanz von 20--\emph{\unit[120]{Fuss}}. \marginnote[-3em]{Die
+  \hyperref[sec:bewegung]{Bewegungsrate} bestimmt so, ob überraschten
+  Gegner noch in der ersten Runde angegriffen werden können.}
 
 \key[Runde]{Runden}: Zu Beginn einer Runde müssen alle Charaktere ihre
 Aktion \emph{deklarieren}: Angreifen, Sprüche zaubern, Wunder wirken,

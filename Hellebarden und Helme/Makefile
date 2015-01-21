@@ -12,6 +12,9 @@ EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
 
 all: Hellebarden-und-Helme.mobi
 
+upload: Hellebarden-und-Helme.mobi Hellebarden-und-Helme.org Hellebarden-und-Helme.html
+	scp $^ alex@alexschroeder.ch:alexschroeder.ch/pdfs/
+
 preview: Hellebarden-und-Helme.mobi
 	${VIEW} $<
 
@@ -20,7 +23,7 @@ clean:
 	rm -f Hellebarden-und-Helme.html
 	rm -f theindex.html merged.html
 	rm -f .*.orgx
-	rm -f *.aux *.log *.out
+	rm -f *.aux *.bbl *.blg *.idx *.ilg *.ind *.log *.out
 
 %.mobi: merged.html
 	${CONVERT} merged.html $@ \
