@@ -1,6 +1,0 @@
-# -*- coding: utf-8 -*-
-#+TITLE:     Index
-#+LANGUAGE:  de
-#+OPTIONS:   num:nil toc:nil
-#+LINK_HOME: https://alexschroeder.ch/wiki/Hellebarden_%26_Helme
-#+INCLUDE: "theindex.inc"
