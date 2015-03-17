@@ -777,14 +777,11 @@ Speer & 3 & kann geworfen werden \\
 \begin{tabular}{lccl}
   \key[Ruestung@Rüstung]{Rüstung} & Klasse & Gold & Bemerkung \\
   \index{Leder}  Leder & 7 & 20 & Schleichen und Schwimmen ist kein Problem\\
-  \index{Kette } Kette & 5 & 40 & kein Schleichen, einfaches Ertrinken \\
-  \index{Platte} Platte & 3 & 60 & kein Schleichen, einfaches Ertrinken \\
+  \index{Kette } Kette & 5 & 40 & kein Schleichen, kein Schwimmern \\
+  \index{Platte} Platte & 3 & 60 & kein Schleichen, kein Schwimmern \\
   \index{Schild} Schild & -1 & 10 & kann geopfert werden, um einem Angriff zu entgehen \\
   \index{Helm}   Helm  & -- & 10 & hilft auf der Tabelle für \hyperref[key:Tod]{Verletzung und Tod} \\
 \end{tabular}
-
-\medskip
-Bessere Rüstung macht \hyperref[sec:bewegung]{langsam}.
 \end{minipage}
 \begin{minipage}[t]{0.47\linewidth}
 \begin{tabular}[t]{lcp{4cm}}
@@ -1264,23 +1261,26 @@ Diebe ab der 10.~Stufe & 1--5 \\
 \section{\index{Kampf}Kämpfen}
 \label{sec:kämpfen}
 
-Es wird viel gekämpft…
-
 \key[Ueberraschung@Überraschung]{Überraschung}: Beide Seiten würfeln
 1W6 und bei 1 oder 2 ist man überrascht. Wer überrascht ist, muss die
 erste Runde aussetzen. Falls die \index{Distanz}Distanz zwischen den
 beiden Seiten nicht sowieso klar ist, addiert man die beiden
 Überraschungswürfe und multipliziert mit 10 Fuss. Das ergibt eine
-Distanz von 20--\emph{\unit[120]{Fuss}}. \marginnote[-3em]{Die
+Distanz von 20--\emph{\unit[120]{Fuss}}. \marginnote[-4em]{Die
   \hyperref[sec:bewegung]{Bewegungsrate} bestimmt so, ob überraschten
   Gegner noch in der ersten Runde angegriffen werden können.}
 
-\key[Runde]{Runden}: Zu Beginn einer Runde müssen alle Charaktere ihre
-Aktion \emph{deklarieren}: Angreifen, Sprüche zaubern, Wunder wirken,
-und so weiter. \marginnote{Im schlimmsten Fall kommt der Gegner also
-  zwei mal hintereinander dran.} Dann wird
-\emph{\index{Initiative}Initiative} gewürfelt (jede Seite mit 1W6) und
-wer höher ist, fängt an.
+\key{Initiative}: Zu Beginn einer Runde würfelt jede Seite 1W6 und wer
+höher ist, fängt an. Bei Gleichstand fangen die Spieler an.
+\marginnote[-1em]{Im schlimmsten Fall kommt der Gegner also zwei mal
+  hintereinander dran.}
+
+\key{Runde}: In jeder Runde kannst du dich mit halber Bewegungsrate
+bewegen und vorher oder nachher Angreifen, einen Spruche zaubern, ein
+Wunder wirken, eine Spruchrolle lesen, einen Zaubertrank trinken und
+so weiter. \marginnote[-3em]{Alles kann \textit{versucht} werden, aber
+  Erfolgschancen und Dauer einer Aktion werden am Tisch den Umständen
+  entsprechend entschieden.}
 
 \key{Trefferwurf}: Um Anzugreifen, würfelst du mit einem
 zwanzigseitigen Würfel (W20) und schaust, ob du
@@ -1331,17 +1331,17 @@ keine Fernkampfwaffen verwenden.
 \key{Schutz}: Wirst du angegriffen, können neben dir stehende Freunde
 sich dazwischen stellen.\marginnote{Intelligente Monster können sich
   ebenfalls gegenseitig schützen.} Jede Person kann höchstens
-\emph{einen} anderen Angriff pro Runde auf sich nehmen.
+\emph{einen} zusätzlichen Angriff pro Runde auf sich nehmen.
 
 \key[Rueckzug@Rückzug]{Rückzug}: Wer sich mit halber Geschwindigkeit
 zurück zieht, kann zuschlagen und sich bewegen, doch seine Gegner
 können natürlich nachrücken und weiterhin zuschlagen, wenn niemand den
 Rückzug deckt. Wer sich schneller davon machen will, muss fliehen.
 
-\key{Fliehen}: Wer davon rennt,\marginnote{Jeder Gegner im Nahkampf
-  darf genau \emph{einen} zusätzlichen Angriff gegen Fliehenden
-  ausführen.} muss noch einen letzten Angriff überleben, bei dem der
-Gegner +2 auf den Wurf bekommt und der eigene Schild nicht zählt.
+\key{Fliehen}: Wer davon rennt, muss noch einen letzten Angriff
+überleben, bei dem alle Gegner im Nahkampf +2 auf den Wurf
+bekommen.\marginnote[-3em]{Jeder Gegner im Nahkampf darf genau
+  \emph{einen} zusätzlichen Angriff gegen Fliehenden ausführen.}
 
 \newpage
 
@@ -1439,6 +1439,10 @@ alle Lebensenergie und fällt für 2W6 Runden in Ohnmacht \\
 \key{Bewegungsrate}: Menschen und ähnliche Kreaturen haben eine
 Bewegungsrate (BW) von 12 -- das entspricht \unit[120]{Fuss} pro Runde
 (10s) beim \textit{Rennen} oder \textit{Kämpfen}.
+\marginnote[-1em]{Typische Bewegungsraten anderer Wesen: Zwerg 6,
+  Halbling 9, Elf 12, Riesenwiesel 15, Wolf 18, Panther 21,
+  galoppierendes Reitpferd 24, fliegender Hippogryph 36, fliegender
+  Pegasus 48.}
 
 Das langsame und vorsichtige Vorgehen in der Unterwelt verlangsamt die
 Bewegung dramatisch. BW~12 entspricht nun \unit[120]{Fuss} pro
