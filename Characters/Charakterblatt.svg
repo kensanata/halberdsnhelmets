@@ -356,35 +356,25 @@
     <text
        sodipodi:linespacing="100%"
        id="property"
-       y="238.36546"
-       x="466.98557"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
+       y="178.36546"
+       x="486.98557"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
        xml:space="preserve"
        inkscape:label="#text3505"><tspan
-         id="tspan3587"
-         y="238.36546"
-         x="466.98557"
-         sodipodi:role="line" /><tspan
-         y="248.36546"
-         x="466.98557"
          sodipodi:role="line"
-         id="tspan3601" /></text>
+         id="tspan3645"></tspan></text>
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
-       x="396.98557"
-       y="618.36548"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Purisa Light"
+       x="412.98557"
+       y="564.36548"
        id="abilities"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         x="396.98557"
-         y="618.36548"
-         id="tspan3591" /><tspan
+         id="tspan3651"></tspan><tspan
          sodipodi:role="line"
-         x="396.98557"
-         y="628.36548"
-         id="tspan3603" /></text>
+         id="tspan3653"></tspan></text>
     <a
        id="link"
        xlink:href="http://campaignwiki.org/halberdsnhelmets"
