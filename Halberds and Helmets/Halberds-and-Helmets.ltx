@@ -122,41 +122,37 @@ rolling dice, it's already too late.
 
 \clearpage
 
-\section{\index{Charaktererschaffung}Charaktererschaffung}
-\label{sec:charaktererschaffung}
+\section{\index{Character Creation}Character Creation}
+\label{sec:charactercreation}
 
-\marginnote{Kurze Zusammenfassung für Spieler:
+\marginnote{A short summary for players:
   \begin{enumerate}
-  \item Sechs Eigenschaften auswürfeln
-  \item Klasse wählen
-  \item Angriffswerte für Stufe 1 kopieren
-  \item Rettungswürfe für Stufe 1 kopieren
-  \item Lebensenergie auswürfeln
-  \item Gesinnung wählen
-  \item Geld auswürfeln
-  \item Ausrüstung kaufen
+  \item roll for your six attributes
+  \item choose your class
+  \item copy your attack values for level 1
+  \item copy your saving throws for level 1
+  \item roll for hit points
+  \item choose alignment
+  \item roll for money
+  \item buy equipment
   \end{enumerate}
 }
 
-Beginne mit einem leeren Blatt oder drucke dir ein vorgefertigtes
-\href{http://campaignwiki.org/Charakterblatt.svg}{Charakterblatt}
-(\href{http://www.emacswiki.org/alex/pics/Charakterblatt.pdf}{PDF})
-aus.
+Start with an empty sheet of paper or print a
+\href{http://campaignwiki.org/Charactersheet.svg}{character sheet}
+(\href{http://campaignwiki.org/Charactersheet.pdf}{PDF}).
 
-\newthought{Würfel 3W6 für jede Eigenschaft}, von oben nach unten:
+\newthought{Roll 3d6 in order} for your \index{attributes}attributes.
 
-\key{Kraft} hilft beim Zuschlagen. Addiere den Bonus beim Trefferwurf
-und beim Schadenswurf im \emph{Nahkampf}.
+\marginnote{When using \emph{ranged weapons}, the damage you roll
+  remains unchanged. This is good for weak characters and bad for
+  strong characters.
 
-\marginnote{Im \emph{Fernkampf} bleibt der Schadenswurf unverändert.
-  Das ist ein Vorteil für schwache Charaktere und ein Nachteil für
-  starke Charaktere.
-
-\bigskip\noindent Zu jedem Wert gibt es auch einen \index{Bonus}Bonus:
+\bigskip\noindent Each score comes with a \index{bonus}bonus:
 \smallskip
 
 \begin{tabular}{cc}
-Wert & Bonus \\
+Score & Bonus \\
 3 & -3 \\
 4--5 & -2 \\
 6--8 & -1 \\
@@ -167,99 +163,81 @@ Wert & Bonus \\
 \end{tabular}
 }
 
-\key{Geschick} hilft beim Zielen und beim
-Ausweichen. Addiere den Bonus beim Trefferwurf im \emph{Fernkampf}.
-Ziehe den Bonus von deiner Rüstungsklasse ab (tiefer ist besser).
+\key[strength]{Strength} allows you to hit harder. Add the bonus to
+your to-hit rolls and to your damage rolls when using \textit{melee
+  weapons}.
 
-\key{Gesundheit} gibt mehr Lebensenergie. Addiere
-den Bonus auf jeden Lebensenergie-Würfel. Trotz Abzügen kann der Wurf
-pro Würfel nicht unter 1 sinken.
+\key[dexterity]{Dexterity} allows you to aim better and to better
+avoid attacks. Add the bonus to your to-hit roll when using
+\textit{ranged weapons} (but not to your damage rolls) and subtract
+the bonus from your \textit{armor class} (lower is better).
 
-\key{Bildung} hilft bei Fremdsprachen. Für jeden
-Punkt über 10 darfst du dir eine weitere Sprache aufschreiben. Diese
-Sprachen darfst du auch erst später im Spiel bestimmen.
+\key[constitution]{Constitution} determines your health. Add the bonus
+to every \textit{hit die} (but never reduce a hit die below 1).
 
-\key{Weisheit} zeigt, wie sehr du mit der Welt
-harmonierst. Addiere den Bonus auf jeden Rettungswurf gegen Magie
-(Zaubersprüche, Zauberstäbe und so weiter).
+\key[intelligence]{Intelligence} determines your education. If you
+have a positive bonus, it indicates how many \textit{extra languages}
+you speak.
 
-\key{Auftreten} bestimmt, wie Gegner auf dich reagieren, wieviele
-Gefolgsleute du um dich scharen kannst und wie ergeben sie dir sind.
+\key[wisdom]{Wisdom} determines how much in tune with the world you
+are. Add the bonus to your \textit{saving throws against magic}
+(spells, wands and the like).
 
-\newthought{Wähle deine \index{Klasse}Klasse}. Zur Auswahl stehen:
+\key[charisma]{Charisma} determines how well others react to you and
+how many trustworthy people you can hire.
 
-%% \marginnote[-1cm]{Mit der Zeit können
-%%   \hyperref[key:monster]{Monster} auch zu
-%%   \hyperref[key:gefolgsleute]{Gefolgsleuten} werden und
-%%   Gefolgsleute können bald einmal auch zu Charakteren werden. In
-%%   diesem Fall wird der Spielleiter weitere Klassen bereit stellen.}
+\newthought{Choose your \index{class}class}.
 
-\hyperref[sec:krieger]{Krieger}: Du kannst gut kämpfen. Diese Klasse
-spielt sich am einfachsten. \marginnote[-2em]{\emph{Welches Gemetzel
-    verfolgt dich in deinen Träumen? Wen hoffst du in der Hölle wieder
-    zu treffen?}}
+\hyperref[sec:fighter]{Fighter}: you can fight well; you will be able
+to use magic swords; this is the simplest character to play
+\marginnote[-2em]{\emph{What slaughter haunts your dreams? Whom do you
+    hope to meet again in hell?}}
 
-\hyperref[sec:magier]{Magier}: Du lernst
-\hyperref[sec:zaubersprüche]{Zaubersprüche} aus deinem Zauberbuch.
-Kämpfen ist nicht so dein Ding. Du kannst nur kleine Waffen wie Messer
-und Stäbe verwenden. Anfangs wirst du schwach sein, aber wenn du
-überlebst, wirst du sehr mächtig sein. \marginnote[-4em]{\emph{Wer
-    oder was hat dir das Zaubern beigebracht? Warum verdammt dich
-    deine Zauberei?}}
+\hyperref[sec:magicuser]{Magic User}: you can memorize the spells in
+your spell book but you cannot fight very well; you may be weak at
+first but if you survive, you will be very powerful
+\marginnote[-2em]{\emph{Who or what taught you sorcery? Why does it
+    damn you?}}
 
-\hyperref[sec:dieb]{Dieb}: Deine
-\hyperref[sec:fertigkeiten]{Fertigkeiten} werden mit der Zeit immer
-besser. Überraschten Gegnern fügst du doppelten Schaden zu.
-\marginnote[-2em]{\emph{Was liebst du am Abenteuer? Wer hat dir deine
-    Tricks beigebracht?}}
+\hyperref[sec:thief]{Thief}: You \hyperref[sec:skills]{skills} will
+improve with time; surprise your enemies and deal double damage
+\marginnote[-2em]{\emph{What do you love about adventure? Who taught
+    you your tricks?}}
 
-\hyperref[sec:kleriker]{Kleriker}: Du kannst kämpfen (aber nicht so
-gut wie ein Krieger) und du kannst \hyperref[sec:wunder]{Wunder}
-wirken (aber deine Zaubersprüche sind nicht so mächtig wie die Sprüche
-eines Magiers). \marginnote[-3em]{\emph{Welche Häresie ärgert dich
-    besonders? Wann hast du die Götterboten erstmals gehört?}}
+\hyperref[sec:cleric]{Cleric}: you can fight (but not as well as a
+fighter) and you can work miracles granted to you by the gods (but
+your spells are not as powerful as a wizard’s spells)
+\marginnote[-3em]{\emph{What heresy infuriates you the most? When did
+    you first hear the divine messengers?}}
 
-\hyperref[sec:elf]{Elf}: Du lernst
-\hyperref[sec:zaubersprüche]{Zaubersprüche} aus deinem Zauberbuch und
-du kannst kämpfen. Du steigst langsamer auf als deine Mitspieler. Du
-kannst im Sternenlicht sehen und du wirst ewig leben. Du brauchst eine
-Bildung von mindestens 9. \marginnote[-4em]{\emph{Was liebst und hasst du an
-    den Menschen? Was für eine unmenschliche Sache tust oder lässt du
-    immmer wieder?}}
+\hyperref[sec:elf]{Elf}: you can memorize the spells in your spell
+book and you can fight well but you will advance very slowly; you can
+see in the dark; elves can live for ever; you need a minimum
+intelligence of 9 \marginnote[-2em]{\emph{What do you love and hate
+    about humans? What inhuman thing will you do or refrain from
+    doing, again and again?}}
 
-\hyperref[sec:halbling]{Halbling}: Du bist noch kleiner und immer
-barfuss unterwegs. Du kannst dich gut verstecken und du kannst
-Fernkampfwaffen besonders gut einsetzen. Riesen haben Mühe, dich zu
-treffen. Du brauchst ein Geschick von mindestens 9.
-\marginnote[-4em]{\emph{Warum haben deine Eltern dich ziehen lassen?
-    Womit tröstest du dich über das Fehlen von Heim und Familie
-    hinweg?}}
+\hyperref[sec:dwarf]{Dwarf}: you are small but hardy and you can fight
+well; you sometimes know things about underground constructions; you
+can see in the dark; dwarves are hardy; you need a minimum
+constitution of 9 \marginnote[-3em]{\emph{What feud curses your
+    family? How come your parents wanted a child?}}
 
-\hyperref[sec:zwerg]{Zwerg}: Du bist klein, zäh, und du kannst gut
-kämpfen. Du weisst viel über Bauten unter der Erde. Du kannst im
-Dunkeln sehen. Du brauchst eine Gesundheit von mindestens 9.
-\marginnote[-3em]{\emph{Welche Fehde verfolgt deine Familie? Wie kam
-    es, dass deine Eltern ein Kind auf die Welt setzen wollten?}}
-
-%% \newthought{Für jede Klasse} gibt es eine Tabelle mit den
-%% \key{Angriffswerten}. Hier sieht man, was man auf dem W20 würfeln
-%% muss, um die entsprechende Rüstungsklasse des Gegners zu treffen. Im
-%% Nahkampf addiert man den \emph{Kraft} Bonus, im Fernkampf den
-%% \emph{Geschick} Bonus. Spielt man beispielsweise einen Krieger der
-%% 1.~Stufe, der einen Ork mit Rüstungsklasse~6 treffen will, so muss man
-%% eine 13 würfeln. Hat man eine Stärke von 13, so gibt es einen Bonus
-%% von +1, so muss man nur eine 12 würfeln.
+\hyperref[sec:halfling]{Halfling}: you are even smaller and you are
+always barefoot; you can hide well and you are good at throwing and
+shooting things; you are harder to hit by giants; halflings are
+nimble; you need a minimum dexterity of 9 \marginnote[-4em]{\emph{Why
+    did your parents let you? What consoles you for the lack of home
+    and family?}}
 
 \newpage
 
-
-
-\subsection{\index{Krieger}Krieger}
-\label{sec:krieger}
+\subsection{\index{fighter}Fighter}
+\label{sec:fighter}
 
 \marginnote{
 \begin{tabular}{cc}
-Stufe & Erfahrungspunkte \\
+Level & Experience Points \\
 1 & 0\\
 2 & 2'035\\
 3 & 4'065\\
@@ -1584,233 +1562,6 @@ zuerst betroffen.\marginnote{Es gibt keinen Rettungswurf!}
 \newpage
 
 
-\section{Das Buch der Meereskönigin}
-
-Dies sind die Zaubersprüche der Lady Gerdana, der elfischen Königin
-von Lagnabadalë.
-
-\subsection{1. Zirkel}
-
-\textbf{Das Einschläferndes Rauschen der Brandung} lässt \emph{2W8
-  Trefferwürfel} von Kreaturen innerhalb von \emph{\unit[240]{Fuss}}
-für \emph{4W4 $\times$ \unit[10]{min}} in einen magischen Schlummer
-versinken. Keine Kreatur darf mehr als 4+1~Trefferwürfel haben.
-Kreaturen mit weniger Trefferwürfel sind zuerst betroffen. Im
-Zweifelsfall darfst du wählen, wer zuerst betroffen sein soll.
-\marginnote[-6em]{Die Opfer erhalten keinen Rettungswurf.}
-
-\textbf{Die Manipulative Macht der Elfenstimmen} macht \emph{eine}
-menschenähnliche Kreatur zu deinem treuen Freund. Dem Opfer steht ein
-Rettungswurf gegen Sprüche zu. \marginnote[-8em]{Untote und Riesen
-  sind zwar menschenähnlich aber trotzdem immun gegen Bezauberung. Mit
-  der Zeit stehen dem Opfer weitere Rettungswürfe zu:
-
-\medskip
-\begin{tabular}{cl}
-Bildung & Zeitraum \\
-3--8 & monatlich \\
-9--12 & wöchentlich \\
-13--18 & täglich \\
-\end{tabular}}
-
-\textbf{Runenkunde der Altvorderen} erlaubt es dir, für
-\emph{\unit[10]{min}} alle magische Runen der Magier und Elfen zu
-entziffern. So können Zauberbücher, Schriftrollen und magische Glyphen
-gelesen werden. \marginnote[-3em]{Der Zauber, der auf einer Schriftrolle
-  steht, kann nur von jemandem ausgelöst werden, der diese zuvor
-  entziffert hat. Nur magische Texte können so entziffert werden.
-  Texte in unbekannten Sprachen bleiben unverständlich.}
-
-\subsection{2. Zirkel}
-
-\textbf{Direkte Verbindung der Seelen} macht dich während
-\emph{\unit[2]{h}} für die Gedanken der näheren Umgebung empfänglich.
-Es braucht allerdings \emph{\unit[10]{min}}, um sich auf die Gedanken
-einer Kreatur einstimmen zu können.\marginnote[-3em]{Eine gemeinsame Sprache
-  ist nicht nötig. Es gibt keinen Rettungswurf für die Opfer.}
-
-\textbf{Empfindsamkeit} erlaubt es dir, während \emph{\unit[20]{min}}
-zu erahnen, welche der \emph{sichtbaren} Wesen im Umkreis von
-\emph{\unit[90]{Fuss}} dir Übles wollen.
-
-\textbf{Ewiges Sternenlicht} verzaubert einen Gegenstand innerhalb von
-\emph{\unit[120]{Fuss}}, so dass er für immer hell wie die Sterne zu
-leuchten beginnt und eine Kugel von \emph{\unit[60]{Fuss}} Durchmesser
-erleuchtet. Der Segen der Sterne sorgt dafür, dass dieses Licht wie
-Sonnenlicht auf diejenigen wirkt, welche darauf anfällig sind. Werden
-die Augen einer Kreatur verzaubert, so erblindet sie. In diesem Fall
-steht dem Opfer ein Rettungswurf gegen Sprüche zu. Eine blinde Kreatur
-hat einen Abzug von -4 auf ihre Angriffe. \marginnote[-8em]{\emph{Ewiges
-    Licht} und \emph{Ewige Dunkelheit} heben sich gegenseitig auf.
-  Wird das Sternenlicht zur Beleuchtung von Bauten verwendet, so
-  pulsiert es mit dem Leben in der Umgebung, leuchtet auf, wenn
-  Kreaturen in der Nähe sind, wird schwächer, wenn man sich entfernt.
-  \emph{Gegenzauber} beendet den Zauber.}
-
-\subsection{3. Zirkel}
-
-\textbf{Donnerkeil} führt zu einem bis zu \emph{\unit[240]{Fuss}}
-langen, geraden, gleissenden Blitzschlag, der an deinen Fingerspitzen
-beginnt, alles auf seinem Weg erfasst und 1W6 Schaden pro Stufe des
-Zaubernden anrichtet (also mindestens 5W6). Der darauf folgende
-Donnerschlag ist ohrenbetäubend. Wer ausweichen kann, darf mit einem
-erfolgreichen Rettungswurf gegen Sprüche den Schaden halbieren.
-\marginnote[-8em]{Trifft der Blitz auf Wasser, so erleiden Kreaturen im
-  Wasser bis \emph{\unit[30]{Fuss}} vom Einschlag den vollen Schaden.
-  Ein Ausweichen ist im Wasser nicht möglich. Eine Steinwand oder eine
-  Metalltüre absorbiert den Blitz. Eine Holzwand oder Holztüre wird
-  zerschmettert. Alles brennbare Material fängt Feuer.}
-
-\newpage
-
-\textbf{Stürmische Barriere gegen Luftgeschosse} wehrt mit einem gut
-sichtbaren und hörbaren magischem Wind für \emph{\unit[2]{h}} alle
-natürlichen Geschosse wie Pfeile, Bolzen oder Schleudersteine von dir
-ab. \marginnote[-3em]{Gegen magische Pfeile, magische Geschosse, von Riesen
-  geschleuderte Steinbrocken oder Geschosse von Belagerungsmaschinen
-  nützt der Zauber leider nicht.}
-
-\textbf{Atemkraft der Wale} erlaubt \emph{einer Kreatur}, \emph{einen
-  Tag} lang unter Wasser atmen. Die Luft kommt dabei aus der
-Elementarebene der Luft. \marginnote[-1em]{Dieser Zauber bringt einem
-  nicht das Schwimmen bei. Schwimmen mit Rüstung bleibt unmöglich.}
-Mit diesem Zauber beherrscht man automatisch die Sprache der Wale.
-
-\subsection{4. Zirkel}
-
-\textbf{Ephemere Vielgestalten} -- für eine Stunde +
-\emph{\unit[10]{min}} pro Stufe (also für mindestens
-\emph{\unit[2½]{h}}) kannst du deine Gestalt verwandeln. Wenn du dich
-in ein Monster verwandelst, so darf es nicht mehr Trefferwürfel als du
-selber haben. Du erhältst alle natürlichen Fähigkeiten deiner neuen
-Gestalt: Bewegungsarten wie Schwimmen der Fliegen, Angriffe mit Klauen
-und Biss, Rüstung, aber keine magischen Fähigkeiten wie einen
-versteinernden Blick, einen Feueratem oder eine Immunität gegen Feuer.
-Dein Angriffswert und deine Lebensenergie bleibt unverändert. Deine
-ursprüngliche Stärke und deine ursprüngliche Geschicklichkeit haben
-keinen Einfluss auf deine Angriffe, deinen Schaden und deine
-Rüstungsklasse.
-
-Gerdana favorisiert die Gestalt eines roten Drachens:
-
-\medskip
-\begin{tabular}{lcccc}
-Drachenfarbe & TW & RK & Angriffe & BW \\
-Blau &  9 &  0 & 1W6+1 / 1W6+1 / 3W10 & 9/24 \\
-Rot  & 10 & -1 & 1W8 / 1W8 / 4W8 & 9/24 \\
-Gold & 11 & -2 & 2W4 / 2W4 / 6W6 & 9/24 \\
-\end{tabular}
-
-\medskip
-\textbf{Bann gegen allerlei Hexenflüche} hebt Flüche auf. Verfluchte
-Gegenstände bleiben allerdings verflucht. Wer sie trägt, kann aber von
-ihnen lassen. Dieser Spruch lässt sich umkehren, das Opfer kann den
-\textbf{Fluch} mit einem Rettungswurf gegen Sprüche allerdings
-umgehen. Ein Fluch ist permanent, seine Wirkung individuell.
-\marginnote[-3em]{Beispiele: Blindheit (-4 auf Angriffe), Lahm (BW~1), die
-  Liebe verloren, die Heimat vergessen, die Sprache verschlagen (kann
-  nicht mehr zaubern), usw.}
-
-\subsection{5. Zirkel}
-
-\textbf{Macht des Willens über die physische Welt} erlaubt dir,
-\emph{\unit[20]{Pfund}} pro Stufe\marginnote{Das sind mindestens
-  hundert Kilo.} innerhalb von \emph{\unit[120]{Fuss}} mit
-Geisteskräften für 6~Runden für \emph{\unit[20]{Fuss}} pro Runde
-\marginnote{Das ist höchstens \emph{\unit[120]{Fuss}} weit.} zu
-bewegen. Willst du Kreaturen bewegen, so ist ihnen ein Rettungswurf
-gegen Sprüche erlaubt. Drückst du Kreaturen gegen eine Wand oder den
-Boden, so erleiden sie 2W6 Schaden pro Runde. Lässt du grosse
-Gegenstände wie Schränke oder Felsen auf andere herunterstürzen, so
-gilt dies wie ein Fall in eine entsprechend tiefe Grube.
-\marginnote{Pro 10 Fuss Fallhöhe gibt es 1W6 Schaden. Die genaue
-  Grösse des Gegenstandes ist egal. Ein grösserer Gegenstand könnte
-  einfach mehrere Opfer gleichzeitig treffen.} Wer ausweichen kann,
-darf mit einem erfolgreichen Rettungswurf gegen Sprüche den Schaden
-halbieren.
-
-
-
-\newpage
-
-\section{Das Buch der Ursomantik}
-
-Dies sind die Sprüche der elfischen Bibliothekarin aus dem zerstörten
-Susrael, Lady Chrysalis. \marginnote[-2em]{Da Lady Crysalis als Elfe
-  nicht höher als bis auf die 10.~Stufe steigen kann, ist es ihr nicht
-  möglich, Sprüche des 6.~Zirkels zu zaubern. Um diese Sprüche zu
-  lernen, müssen die Spieler also Lady Chrysalis' Lehrer ausfindig
-  machen.}
-
-\subsection{1. Zirkel}
-
-\textbf{Aussergewöhnliches Wachstum der Haare} sorgt für eine Kreatur
-während \emph{\unit[20]{Minuten}} für Rüstungsschutz 6. Du siehst aus
-wie ein Yeti. Der Pelz schützt dich auch vor arktischen
-Temperaturen.\marginnote[-1em]{Der Sprüch schützt nicht vor magischen
-  Kälteangriffen.}
-
-\textbf{Die Nase eines Honigschleckers} erlaubt es dir, für
-\emph{\unit[20]{Minuten}} kürzliche Anwesenheit unsichtbarer
-Kreaturen, ihre Art und -- falls möglich -- ihr Geschlecht zu wittern.
-\marginnote[-2em]{Willst du gegen sie kämpfen, giltst du immer noch
-  als \emph{blind} und hast einen Abzug von -4 auf deine Angriffe.}
-
-\subsection{2. Zirkel}
-
-\textbf{Schreckliche Standkraft der Bergbären} verleiht dir ein
-Drittel deiner maximalen Lebensenergie oben drauf. Nach
-\emph{\unit[20]{Minuten}} sinkt deine Lebensenergie wieder auf dein
-Maximum, falls sie durch diesen Zauber über dein Maximum gestiegen
-ist.
-
-\subsection{3. Zirkel}
-
-\textbf{Glühende Augen der Bärenhölle} lässt dich
-\emph{\unit[20]{Minuten}} lang Laserstrahlen aus den Augen schiessen:
-ein Ziel pro Runde muss einen Rettungswurf gegen Strahlen bestehen
-oder 1W6 Schaden nehmen (dies hindert dich nicht daran, jede Runde
-normal zu handeln)
-
-\textbf{Bärengestalt} verwandelt dich für \emph{\unit[2]{h}} in einen
-Bären. Je höher deine Stufe, desto grösser der Bär. In Bärenform
-kannst du nicht zaubern und nicht reden. Deine Lebensenergie,
-Angriffswerte und Rettungswürfe bleiben gleich. Dein Rüstungsschutz
-sinkt auf 6 und du erhältst drei Angriffe: 1W3 / 1W3 / 1W6. Wenn du
-mit beiden Pranken triffst, umarmst du das Opfer und verursachst
-\emph{zusätzliche 2W8 Schaden}.\marginnote[-7em]{Verfällst du
-  gleichzeitig der \emph{Ursinen Blutlust}, so wird 1W3+1W6 zu 1W8+1
-  vereinfacht und du verursachst 1W8+1 / 1W8+1 / 2W6 Schaden; wer in
-  Bärengestalt mit beiden Pranken trifft, umarmt das Opfer und
-  verursacht \emph{zusätzliche 2W8 Schaden}.}
-
-\subsection{4. Zirkel}
-
-\textbf{Verräterischer Missbrauch der Bärenbrüderschaft} beschwört
-einen unwilligen Panzerbären mit Stahlklauen und zwingt ihn, für dich
-einen Kampf zu bestehen.\marginnote[-3em]{Panzerbären: TW~6 RK~5 1W6 / 1W6 /
-  2d6 K6 BW~9 ML~12; wenn der Panzerbär mit beiden Pranken trifft,
-  umarmt er das Opfer und verursacht \emph{zusätzliche 2W8 Schaden}.}
-
-\subsection{5. Zirkel}
-
-\textbf{Ursine Blutlust} lässt eine Kreatur für
-\emph{\unit[20]{Minuten}} jede Klaue und jeden Biss 1W6 zusätzlichen
-Schaden machen. Mit Bärenklauen kann man keine Waffen
-führen.\marginnote[-3em]{Für Menschen und ähnliche Kreaturen ohne
-  natürliche Waffen ist dieser Spruch unnütz.}
-
-\subsection{6. Zirkel}
-
-\textbf{Fliegende Bärenbande} beschwört 1W6+2 verwirrte und zornige,
-fliegende Bären.\marginnote[-2em]{Fliegende Bären: TW~8 RK~6 1W6 / 1W6
-  / 2W6 K8 BW~12 fliegen ML~12; wenn der Bär mit beiden Pranken
-  trifft, umarmt er das Opfer und verursacht \emph{zusätzliche 2W8
-    Schaden}.}
-
-\newpage
-
-
 
 \section{Die \index{Wunder}Wunder der Kleriker}
 \label{sec:wunder}
@@ -1868,548 +1619,11 @@ Lähmung auf. Das Gegenteil davon ist \textbf{Schmerz} und verursacht
 Orte innerhalb von \emph{\unit[60]{Fuss}} für \emph{\unit[20]{min}}
 aufleuchten.\marginnote{Dieses Leuchten ist für alle sichtbar.}
 
-\newpage
-
-\section{Wunder der Freya}
-\label{sec:wunder:freya}
-
-\subsection{1.~Zirkel}
-
-\textbf{Böses entdecken} zeigt dem Kleriker während
-\emph{\unit[1]{h}}, welche der sichtbaren Wesen im Umreis von
-\emph{\unit[60]{Fuss}} ihm Übles wollen.
-
-\textbf{Hand auflegen} heilt 1W6+1 Schadenspunkte \emph{oder} hebt
-Lähmung auf. Das Ziel muss berührt werden.
-
-\textbf{Licht} verzaubert einen Gegenstand innerhalb von
-\emph{\unit[120]{Fuss}} für \emph{\unit[2]{h}}, so dass er schwach zu
-leuchten beginnt und eine Kugel von \emph{\unit[30]{Fuss}} Durchmesser
-beleuchtet. Wird das Wunder auf die Augen einer Kreatur gewirkt, so
-erblindet sie für \emph{\unit[2]{h}}. In diesem Fall steht dem Opfer
-ein Rettungswurf gegen Sprüche zu.\marginnote{\emph{Licht} und
-  \emph{Dunkelheit} heben sich gegenseitig auf.}
-
-\textbf{Magie entdecken} lässt verzauberte Gegenstände, Kreaturen und
-Orte innerhalb von \emph{\unit[60]{Fuss}} für \emph{\unit[20]{min}}
-aufleuchten.\marginnote{Dieses Leuchten ist für alle sichtbar.}
-
-\textbf{Mut} erlaubt einem berührten Wesen, welches
-in magischer Panik fliehen will, einen Rettungswurf mit einem Bonus,
-der gleich hoch ist wie die Stufe des Klerikers.\marginnote{\emph{Mut}
-  und \emph{Panik} heben sich gegenseitig auf.}
-
-\textbf{Schutz vor beschworenen Kreaturen} schützt
-ein berührtes Wesen während \emph{\unit[2]{h}} vor der Berührung
-\emph{beschworener} Kreaturen und verbessert die Rüstungsklasse um -1
-(tiefer ist besser) und gibt einen +1 Bonus auf alle Rettungswüfe.
-
-\textbf{Schutz vor Kälte} erlaubt es einem Wesen in
-bis zu \emph{\unit[30]{Fuss}} Entfernung für \emph{\unit[1]{h}}
-jeglicher Kälte zu trotzen, gibt einen +2 Bonus bei Rettungswürfen
-gegen Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
-Kälteangriffen um einen Punkt.
-
-
-\subsection{2.~Zirkel}
-
-\begin{marginfigure}[1cm]
-  \includegraphics{Arragonien.jpg}
-\end{marginfigure}
-
-\textbf{Fallen entdecken} warnt den Kleriker während
-\emph{\unit[20]{min}} vor allen Fallen im Umkreis von
-\emph{\unit[30]{Fuss}}.
-
-\textbf{Gesinnung entdecken} zeigt dem Kleriker die
-Gesinnung aller Wesen im Umkreis von \emph{\unit[15]{Fuss}}, die
-Gesinnung aller magischer Gegenstände, sofern sie eine haben, und ob
-dies hier ein heiliger oder ein unheiliger Ort ist.
-
-\textbf{Mit Tieren sprechen} erlaubt es dem Kleriker, während
-\emph{\unit[1]{h}} mit allen Vertretern \emph{einer Tierart} im
-Umkreis von \emph{\unit[30]{Fuss}} zu reden und ihre Antworten zu
-verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
-gesinnt. Es kann zu einem \hyperref[key:Reaktionswurf]{Reaktionswurf}
-kommen.
-
-\textbf{Personen festhalten} lähmt bis zu 1W4 sichtbare Personen für
-\emph{\unit[1½]{h}} in bis zu \emph{\unit[180]{Fuss}} Entfernung.
-Allen Opfern steht ein Rettungswurf gegen Sprüche zu. Soll nur eine
-Person gelähmt werden, ist der Rettungswurf um -2
-erschwert.\marginnote{Dieses Wunder wirkt nur gegen menschenähnliche
-  Kreaturen. Untote und Riesen sind gegen das Wunder immun, obwohl sie
-  menschenähnlich sind.}
-
-\textbf{Schutz vor Feuer} erlaubt es einem Wesen, in
-bis zu \emph{\unit[30]{Fuss}} Entfernung für \emph{\unit[1]{h}}
-jeglicher Hitze zu trotzen, gibt einen +3 Bonus bei Rettungswürfen
-gegen Feuerangriffe und reduziert zudem jeden Schadenswürfel bei
-Feuerangriffen um einen Punkt.
-
-\textbf{Segen} verleiht allen Verbündeten des Klerikers im Umkreis von
-\emph{\unit[60]{Fuss}} für \emph{\unit[1]{h}} einen +1 Bonus beim
-Trefferwurf und beim Schadenswurf und steigert die Moral um
-+1.\marginnote{\emph{Segen} und \emph{Verfluchen} heben sich
-  gegenseitig auf.}
-
-\textbf{Stille} formt eine unsichtbare, schallschluckende Kugel mit
-\emph{\unit[30]{Fuss}} Durchmesser in bis zu \emph{\unit[180]{Fuss}}
-Entfernung welche für \emph{\unit[2]{h}} andauert. Wird das Wunder auf
-eine unwillige Kreature gewirkt, so steht ihr ein Rettungswurf gegen
-Sprüche zu. Gelingt dieser, wirkt das Wunder auf den Boden und die
-Kreatur kann den Wirkungsbereich problemlos
-verlassen.\marginnote[-4em]{Innerhalb der Kugel kann man selber auch weder
-  reden noch zaubern.}
-
-\subsection{3.~Zirkel}
-
-\textbf{Ewiges Licht} verzaubert einen Gegenstand innerhalb von
-\emph{\unit[120]{Fuss}}, so dass er \emph{für immer} hell wie die
-Sonne zu leuchten beginnt und eine Kugel von \emph{\unit[60]{Fuss}}
-Durchmesser erleuchtet. Wird das Wunder auf die Augen einer Kreatur
-gewirkt, so erblindet sie. In diesem Fall steht dem Opfer ein
-Rettungswurf gegen Sprüche zu. \marginnote[-3em]{\emph{Gegenzauber}
-  beendet das Wunder. \emph{Ewiges Licht} und \emph{Ewige Dunkelheit}
-  heben sich gegenseitig auf. \emph{Ewiges Licht} ist stärker als die
-  \emph{Dunkelheit} des 1.~Zirkels.}
-
-\textbf{Fluch brechen} bricht einen Fluch, der auf einem berührten
-Wesen lastet. Trägt das Wesen einen verfluchten Gegenstand, so kann
-das Wesen den Gegenstand ablegen – der Gegenstand bleibt allerdings
-verflucht.\marginnote{\emph{Fluch brechen} hebt einen \emph{Fluch}
-  auf.}
-
-\textbf{Gerechter Zorn} verzaubert eine Waffe in bis
-zu \emph{\unit[30]{Fuss}} Entfernung, so dass sie für
-\emph{\unit[10]{min}} einen zusätzlichen W6 Schaden verursacht.
-
-\textbf{Krankheiten heilen} heilt bei einem Wesen in bis zu
-\emph{\unit[30]{Fuss}} Entfernung alle Sorten von Krankheiten
-inklusive Mumienfäule, Lykanthropie und grünen
-Schleim.\marginnote{\emph{Krankheiten heilen} beendet
-  \emph{Siechtum}.}
-
-\textbf{Magie bannen} bannt alle Wunder und Zauber von Personen, deren
-Stufe gleich oder unter der Stufe des Klerikers liegt. Für jede Stufe
-\emph{darüber} gibt es eine 5\% Chance, dass der Bann misslingt.
-
-
-\subsection{4.~Zirkel}
-
-Wunder des 4. Zirkels werden dem Anhänger von einer Valkyre persönlich
-gewährt.
-
-\textbf{Gift neutralisieren} rettet ein Opfer selbst noch
-\emph{\unit[1]{m}} nach einer tödlichen Vergiftung.
-
-\textbf{Heilen schwerer Wunden} heilt 2W6+2 Schadenspunkte, behebt
-Lähmung und stillt alle Blutungen wie nach einer Amputation,
-beispielsweise.
-
-
-\subsection{5.~Zirkel}
-
-Wunder des 5. Zirkels werden dem Anhänger von einer Valkyre persönlich
-gewährt.
-
-\textbf{Göttlicher Auftrag} kann einer Kreatur einen Auftrag im
-Dienste Freyas aufzwingen. Der Auftrag darf gefährlich sein, das Opfer
-wird sich jedoch nicht selber schaden. Jedes Mal, wenn sich das Opfer
-dem Auftrag, wird eine Valkyre erscheinen und das Opfer verfluchen.
-Nur die Verfolgung des Auftrages kann diesen Fluch aufheben. Dem Opfer
-steht ein Rettungswurf gegen Sprüche zu.\marginnote[-6em]{Mit einem
-  \textit{Gegenauftrag} kann ein Kleriker einen göttlichen Auftrag
-  lösen, der von jemandem ausgesprochen wurde, dessen Stufe kleiner
-  oder gleich ist. Für jede Stufe \emph{darüber} gibt es eine 5\%
-  Chance, dass der Gegenauftrag misslingt.}
-
-\textbf{Tote wieder erwecken} kann die Seele eines Toten zurück rufen,
-der vor zehn Tagen oder weniger gestorben ist. Auf der 10.~Stufe kann
-das Wunder auch auf Tote gewirkt werden, die schon vierzehn Tage lang
-tot sind. Der zum Leben Erweckte erhält 1 Punkt Lebensenergie und kann
-sich für zwei Wochen nur halb so schnell bewegen und keine
-Anstrengungen unternehmen.\marginnote[-5em]{Der Körper des Toten wird
-  nicht geheilt. Amputierte Glieder fehlen weiterhin. Deswegen
-  schneidet man wichtigen Feinden gerne den Kopf ab: Dann kann man sie
-  nicht so leicht von den Toten wieder erwecken.}
-
-\textbf{Wahres Sehen} verleiht einem berührten Wesen für eine Runde
-pro Stufe des Klerikers die Fähigkeit, alles so zu sehen, wie es
-wirklich ist. Dunkelheit jeglicher Art, geheime Türen, unsichtbare
-Wesen und Gegenstände, eine Verwandlung derselben und alle Sorten von
-Illusionen -- alles wird durchschaut.
-
-\newpage
-
-\section{Wunder des Tsathoggua}
-\label{sec:wunder:tsathoggua}
-
-\subsection{1.~Zirkel}
-
-\textbf{Beklemmung} füllt das Herz mit Kälte und verursacht 1W6+1
-Schadenspunkte. Das Ziel muss berührt werden, was allerdings keinen
-Trefferwurf benötigt.
-
-\textbf{Dunkelheit} beschwört innerhalb von \emph{\unit[120]{Fuss}}
-für \emph{\unit[2]{h}} eine lebendig und böse wirkende Schattenwolke
-mit \emph{\unit[30]{Fuss}} Durchmesser, die alles Licht
-schluckt.\marginnote{Wer im Schatten kämpft, kann nicht gesehen
-  werden, ist selber aber ebenfalls \emph{blind}. Wer seine Gegner
-  nicht sieht, hat einen Abzug von -4 auf alle Angriffe.} Wird das
-Wunder auf eine Kreatur gewirkt, so steht ihr ein Rettungswurf gegen
-Sprüche zu. Gelingt dieser, wirkt das Wunder auf den Boden und die
-Kreatur kann den Wirkungsbereich problemlos
-verlassen.\marginnote{\emph{Licht} und \emph{Dunkelheit} heben sich
-  gegenseitig auf. \emph{Ewiges Licht} ist stärker als dieses Wunder.}
-
-\textbf{Fratze} zwingt ein Wesen, in Panik zu fliehen. Das Opfer darf
-nicht weiter als einen Schritt vom Opfer entfernt sein, wenn dieses
-Wunder gewirkt wird. Das Opfer flieht für so viele Runden wie der
-Kleriker Stufen hat. Dem Opfer steht ein Rettungswurf gegen Sprüche
-zu.
-
-\textbf{Gutmenschen entdecken} zeigt dem Kleriker während
-\emph{\unit[1]{h}}, welche der sichtbaren Wesen im Umkreis von
-\emph{\unit[60]{Fuss}} besserwisserische, selbstgerechte und
-moralisierende Dummköpfe sind.
-
-\textbf{Zögerliches Kröten schlecken} heilt 1W6+1 Schadenspunkte.
-Benötigt eine lebende Kröte. Wen die Kröte selber schleckt, wird von
-aller Lähmung geheilt.
-
-\textbf{Magie entdecken} lässt verzauberte Gegenstände, Kreaturen und
-Orte innerhalb von \emph{\unit[60]{Fuss}} für \emph{\unit[20]{min}}
-aufleuchten. Dieses Leuchten ist für alle sichtbar.
-
-\textbf{Myceliums Wonne} lässt Pflanzen und Pilze auf fruchtbarem
-Boden in \emph{\unit[5]{min}} wie in fünf Monaten wachsen. Der Boden
-ist danach jedoch ausgelaugt. Weiteres Pflanzenwachstum ist für Monate
-verlangsamt.
-
-\textbf{Pilzbefall} lässt im Körper von Gegnern im Umkreis von
-\emph{\unit[60]{Fuss}} für \emph{\unit[1]{h}} grosse Pilze wachsen.
-Diese behindern ihren Wirt und verursachen einen Abzug von -1 beim
-Trefferwurf und beim Schadenswurf, und sie reduzieren die Moral um -1.
-
-Wird daraufhin \textit{Myceliums Wonne} gezaubert, so steht den schon
-befallenen Opfern ein weiterer Rettungswurf zu. Gelingt dieser nicht,
-so führt das starke Wachstum zur vollständigen Bewegungsunfähigkeit.
-Das einzig Positive dabei: Die Opfer werden von riesigen Pilzen auch
-vor Angriffen geschützt. Man muss erst \emph{\unit[5]{Runden}} auf die
-Pilze einhacken, um die Opfer zu befreien oder anzugreifen.
-
-\textbf{Wärme des Verfalls} erlaubt es einem Wesen in bis zu
-\emph{\unit[30]{Fuss}} Entfernung für \emph{\unit[1]{h}} jeglicher
-Kälte zu trotzen, gibt einen +2 Bonus bei Rettungswürfen gegen
-Kälteangriffe und reduziert zudem jeden Schadenswürfel bei
-Kälteangriffen um einen Punkt.
-
-\subsection{2.~Zirkel}
-
-\textbf{Korruption} lässt den Wunderwirkenden \emph{\unit[1]{h}} lang
-die Wünsche erkennen, welche diejenigen, die innerhalb von
-\emph{\unit[30]{Fuss}} reden, mit sich tragen. Für jede Person ist
-dieser Wunsch immer etwas, was sie vom rechten Weg abbringen würde,
-eine Sünde, eine Schwäche, eine Bestechungsmöglichkeit, eine
-Erpressungsmöglichkeit. \marginnote[-3em]{Das heisst nicht, dass man seinen
-  sündigen Gedanken auch ausgeliefert ist. Selbstdisziplin,
-  Aufrichtigleit, Standfestigkeit: Das sind die Gegenmittel, die jedem
-  zur Verfügung stehen.}
-
-\textbf{Tierfreund} macht Tieren zu treuen Freunden. Die Tiere
-verhalten sich wie gut dressierte Hunde, sofern sie können. Der Zauber
-endet erst, wenn den Tieren ein \hyperref[key:moralwurf]{Moralwurf}
-misslingt. Die genaue Anzahl hängt von der Grösse der Tiere
-ab.\marginnote[-2em]{Beispielsweise ein Teich voller Kröten, ein Korb voller
-  Schlangen, bis zu sechs Wölfe, bis zu vier Riesenkröten, eine
-  Riesenschlange.}
-
-\textbf{Mit Tieren sprechen} erlaubt es dem Kleriker, während
-\emph{\unit[1]{h}} mit allen Vertretern \emph{einer Tierart} im
-Umkreis von \emph{\unit[30]{Fuss}} zu reden und ihre Antworten zu
-verstehen. Die Tiere sind dem Kleriker nicht automatisch freundlich
-gesinnt. Es kann zu einem \hyperref[key:Reaktionswurf]{Reaktionswurf}
-kommen.
-
-\textbf{Sprungangriff} verzaubert eine Person, so dass sie
-\emph{\unit[10]{min}} lang unglaubliche Sprünge vollbringen kann, ohne
-Schaden zu erleiden. Die Sprünge können bis zu \emph{\unit[5]{m}} hoch
-und \emph{\unit[10]{m}} weit sein. Im Kampf kann man so, sofern man
-auch \unit[5]{m} hoch springen kann, +2 auf den Schadenswurf
-addieren.\marginnote[-3em]{Darf man mehrmals pro Runde angreifen, so
-  gilt der Bonus nur für den ersten Angriff.}
-
-\textbf{Stille} formt eine unsichtbare, schallschluckende Kugel mit
-\emph{\unit[30]{Fuss}} Durchmesser in bis zu \emph{\unit[180]{Fuss}}
-Entfernung welche für \emph{\unit[2]{h}} andauert. Wird das Wunder auf
-eine unwillige Kreature gewirkt, so steht ihr ein Rettungswurf gegen
-Sprüche zu. Gelingt dieser, wirkt das Wunder auf den Boden und die
-Kreatur kann den Wirkungsbereich problemlos
-verlassen.\marginnote[-4em]{Innerhalb der Kugel kann man selber auch weder
-  reden noch zaubern.}
-
-\textbf{Totenstarre} lässt eine Person ohnmächtig werden. Diese sieht
-aus wie eine Leiche, atmet nicht, blutet nicht.\marginnote{Das kann
-  auch von Vorteil sein, wenn es gilt, Sterbende zu stabilisieren oder
-  andere durch Flüssigkeiten oder giftige Gase zu transportieren.} Der
-Zauber hält für so viele Tage, wie der Kleriker Stufen hat. Dem Opfer
-steht ein Rettungswurf gegen Sprüche zu.
-
-\subsection{3.~Zirkel}
-
-\textbf{Ewige Dunkelheit} verzaubert einen Gegenstand innerhalb von
-\emph{\unit[120]{Fuss}}, so dass dieser \emph{für immer} ein dunkles
-Miasma verströhmt, welches im Umkreis von \emph{\unit[60]{Fuss}} alles
-Licht verschluckt. Hier herrscht absolute Dunkelheit. Wird das Wunder
-auf eine Kreatur gewirkt, so steht dem Opfer ein Rettungswurf gegen
-Sprüche zu. \marginnote{\emph{Gegenzauber} beendet das Wunder.
-  \emph{Ewiges Licht} und \emph{Ewige Dunkelheit} heben sich
-  gegenseitig auf. \emph{Ewige Dunkelheit} ist stärker als das
-  \emph{Licht} des 1.~Zirkels.}
-
-\textbf{Fluch} wirkt auf eine Kreatur innerhalb von
-\emph{\unit[30]{Fuss}}. Der Fluch gilt \emph{für immer}. Typische
-Flüche wären: Blindheit, Taubheit, Stimmverlust, verkrüppelte Beine,
-ein hässliches Gesicht, ein fürchterlicher Gestank, Unfruchtbarkeit,
-Fehlgeburt, Krankheit, Gift, aus der Haut schlüpfende Kröten, eine
-Zungenlänge von \unit[1]{m}, eine Krötenhaut, die jede Nacht feucht
-gehalten werden muss, und so weiter. Dem Opfer steht ein Rettungswurf
-gegen Sprüche zu.\marginnote{\emph{Fluch brechen} hebt einen
-  \emph{Fluch} auf. \emph{Gegenzauber} ist gegen einen Fluch
-  wirkungslos.}
-
-\textbf{Hypnose der 1000 Kröten} zwingt alle Kreaturen innerhalb von
-\emph{\unit[60]{Fuss}}, welche den Wunderwirkenden hören können,
-seinen Einflüsterungen zuzuhören. Den Betroffenen steht ein
-Rettungswurf gegen Sprüche zu. Solange der Wunderwirkende weiter
-säuselt, hält die Wirkung an. Die Betroffenen können nichts anderes
-tun, als dem Wunderwirkenden langsam nach zu schlurfen.
-\marginnote[-3em]{Den Betroffenen steht alle \emph{\unit[10]{min}} ein
-  weiterer Rettungwurf zu. Sehen oder hören die Betroffenen Gewalt --
-  zum Beispiel einen Kampf -- so endet die Wirkung der Hypnose
-  sofort.}
-
-\textbf{Kiemen} lässt \emph{einer Kreatur} für \emph{einen Tag} Kiemen
-wachsen, so dass diese unter Wasser atmen kann.\marginnote{Dieser
-  Zauber bringt einem nicht das Schwimmen bei. Schwimmen mit Rüstung
-  bleibt unmöglich.} Mit diesem Zauber beherrscht man automatisch die
-Sprache der Fische.
-
-\textbf{Knochenmänner} macht aus den Leichen innerhalb von
-\emph{\unit[60]{Fuss}} einfache Skelette. Pro Stufe kann der Kleriker
-eine Leiche in ein Skelett verwandeln. Die Skelette sind nicht
-intelligent, befolgen aber einfache Befehle (bewache diesen Raum, töte
-diese Leute, folge mir, und so weiter).\marginnote[-3em]{Skelette:
-  TW~1 RK~7 1W6 K1 BW~6. Diese Skelette können mit Waffengewalt und
-  Magie zerstört werden, sie können durch andere Kleriker vertrieben
-  oder zerstört werden, und sie können durch \emph{Magie bannen}
-  zerstört werden.}
-
-\textbf{Magie bannen} bannt alle Wunder und Zauber
-von Personen, deren Stufe gleich oder unter der Stufe des Klerikers
-liegt. Für jede Stufe \emph{darüber} gibt es eine 5\% Chance, dass der
-Bann misslingt.
-
-\textbf{Riesenkröte} verwandelt bis zu \emph{vier} normale Kröten für
-\emph{\unit[2]{h}} in Riesenkröten. Diese Riesenkröten befolgen treu
-\emph{jegliche} Befehle. \marginnote[-1em]{Riesenkröten: TW~2+2 RK~7
-  1W4+1 K1 BW~9; können Zwerge und kleiner mit ihrer Zunge von bis zu
-  \emph{\unit[15]{Fuss}} zu sich heranziehen und beissen; können bei
-  einer 20 Halblinge und kleiner verschlucken; verschluckte Kreaturen
-  nehmen jede Runde 1W6 Schaden.}
-
-\textbf{Siechtum} wirkt auf eine Kreatur innerhalb von
-\emph{\unit[30]{Fuss}}. Dies führt zu einer schrecklichen Krankheit,
-welche das Opfer in 2W12 Tagen dahinrafft. Dem Opfer steht ein
-Rettungswurf gegen Sprüche zu. Ein dahinsiechendes Opfer erhält einen
--2 Abzug auf alle Trefferwürfe und kann weder auf natürliche noch auf
-magische Weise heilen. \marginnote{\emph{Krankheiten heilen} beendet
-  \emph{Siechtum}.}
-
-\subsection{4.~Zirkel}
-
-Wunder des 4. Zirkels werden dem Anhänger von einem Froschdämon
-persönlich gewährt.
-
-\textbf{Faulheit} macht eine berührte Kreatur /für immer/ träge und
-antriebslos. Sie versucht im Rahmen ihrer Möglichkeiten einfachere und
-bequemere Lösungen zu finden oder faule Kompromisse einzugehen. Die
-grundsätzlichen Ziele und Wünsche bleiben erhalten. Das Opfer ist
-einfach zu faul, um diese Ziele zur verfolgen. Dem Opfer steht ein
-Rettungswurf gegen Sprüche zu. /Gegenzauber/ beendet das Wunder.
-
-Die Veränderung ist langsam und schleichend. Der Zauber wirkt selbst
-auf Freunde und Verwandte. Diese erkennen die Veränderung im Charakter
-des Opfers einfach nicht. Den Freunden und Verwandten steht kein
-Rettungswurf zu.
-
-\textbf{Stinkende Fäulnis} lässt den Boden oder ein Gegenstand oder
-eine Kreatur innerhalb von \emph{\unit[120]{Fuss}} schrecklich nach
-faulen Eier, Schwefel und Verwesung stinken. Kreaturen, die sich
-diesem Gestankt auf \emph{\unit[30]{Fuss}} nähern, steht ein
-Rettungswurf gegen Sprüche zu. Schaffen sie diesen nicht, wird ihnen
-so schlecht, dass sie nichts weiter tun könne, als auf allen Vieren
-herum zu kriechen. Was sie in den Händen tragen, müssen sie fallen
-lassen.\marginnote[-4em]{Das Wunder wirkt nicht gegen Kreaturen ohne
-  Geruchsinn oder gegen Kreaturen, deren natürlicher Lebensraum
-  ähnlich stinkt.}
-
-Wird das Wunder auf eine Kreatur gewirkt, so steht ihr ein
-Rettungswurf zu. Schafft sie diesen, so wirkt der Zauber auf den
-Boden. Das Ziel ist von diesem Gestank nicht betroffen.
-
-\textbf{Schwarzer Schleim} lässt aus feuchtem Boden in
-\emph{\unit[30]{Fuss}} Entfernung einen schwarzen Schleim aufsteigen.
-Dieser greift alles lebendige an.\marginnote[-3em]{Schwarzer Schleim:
-  TW~10 RK~6 3W8 K5 BW~6; kann nur durch Feuer beschädigt werden. Alle
-  anderen Angriffe erzeugen nur weiteren Schleim: TW~2 RK~6 1W8 K1
-  BW~6.}
-
-\textbf{Herzhaftes Kröten schlecken} heilt 2W6+2 Schadenspunkte.
-Benötigt eine lebende Kröte. Wen die Kröte selber schleckt, wird von
-aller Lähmung geheilt.
-
-\subsection{4.~Zirkel}
-
-\textbf{Gieriges Kröten schlecken} heilt 3W6+3 Schadenspunkte.
-Benötigt eine lebende Kröte. Wen die Kröte selber schleckt, wird von
-aller Lähmung geheilt.
-
-\newpage
-
-\section{Paladine}
-
-\hyperref[sec:kleriker]{Kleriker} sind die militanten Anhänger eines
-Gottes. \key{Priester} sind diejenigen, welche den Tempeln dienen.
-\key{Paladine} sind Leute, die sich einem Gott verschworen haben. Ihr
-Eid bindet sie, und im Gegenzug gewähren die Götter ihren Paladinen
-Fähigkeiten, je nach dem \hyperref[sec:ruf]{Ruf}, den diese geniessen.
-\marginnote[-3em]{Jeder kann Paladin eines Gottes werden, sofern man
-  von einem Priester eine passende Weihe erhält, einen passenden Eid
-  schwört und einen gewissen Ruf hat. Bedenke jedoch, dass sich dieser
-  Eid nicht einfach lösen lassen wird!}
-
-\section{Paladin des Arden}
-\label{sec:paladin:arden}
-
-Arden ist ein elfischer Gott des Lichts. Den Paladinen Ardens sind im
-Moment nur wenige Gaben gegeben, weil Arden erst seit kurzem überhaupt
-ein Lebenszeichen von sich gegeben hat.
-
-\medskip
-\begin{tabular}{cp{9cm}}
-Ruf & Fähigkeit \\
-3 & Wasser mit Sternenlicht füllen \\
-5 & Hell leuchtende Augen \\
-8 & Freundschaft eines Lanternenarchons, eine Art intelligenter
-Lichtfleck \\
-\end{tabular}
-
-
-
-\section{Paladin der Freya}
-\label{sec:paladin:freya}
-
-Freya ist eine Göttin der Fruchtbarkeit, der freien Liebe, der Ernte,
-des Haushaltes und des Goldes. Gewisse Themen überschneiden sich mit
-Ishtar.
-
-Samhain steht für den Beginn des Winters, Beltane steht für den Beginn
-des Sommers. Und so wie Samhain ein Fest des Todes und der Toten ist,
-ist Beltane ein Fest des wiedererwachten Lebens und des Sieges der
-Sonne und des Sommers über den Winter und den Tod. Beide Feste finden
-zur Ehre der Freya statt und symbolisieren den ewigen Kreis des
-Lebens.
-
-In ihrem kriegerischen Aspekt ist Freya die Schutzherrin der Valkyren
-und wer nicht in Walhalla endet, der endet bei ihr, in Sessrúmnir.
-
-Falken, Hirsche, Winterwölfe, Eber, Wildkatzen, sie alle sind treue
-Gefährten der Freya. Einem Paladin gewährt Freya gerne einen
-Wolfsgefährten: TW~2+1 RK~7 1W6 K1 BW~18.
-
-\medskip
-\begin{tabular}{cp{9cm}}
-Ruf & Fähigkeit \\
-
-2 & Adoptiert man einen Wolf als Gefolgsmann, so versteht man sich auf
-Anhieb. Es ist keine spezielle Dressur nötig. \\
-
-4 & Ein adoptierter Wolf teilt automatisch alle vorteilhaften Zauber,
-die man empfängt (Schutz, Heilung, Teleportation, Verwandlung). \\
-
-6 & Ein adoptierter Wolf wird automatisch von Freya gesegnet und wird
-zu einem Winterwolf der dritten Stufe: TW~3+1 RK~4 Biss 1W10 (1–4/6)
-oder 3W4 Eisatem bis 5m (5–6/6) K4 BW~15 \\
-
-7 & Winterwolf der vierten Stufe: TW~4+1 RK~4 Biss 1W10 (1–4/6) oder
-4W4 Eisatem bis 5m (5–6/6) K5 BW~15 \\
-
-8 & Winterwolf der fünften Stufe: TW~5+1 RK~4 Biss 1W10 (1–4/6) oder
-5W4 Eisatem bis 5m (5–6/6) K6 BW~15 \\
-\end{tabular}
-\medskip
-
-Wölfe, die sich einem Paladin der Freya anschliessen, können mit der
-Zeit zu einem \key{Winterwolf} werden. Winterwölfe werden immer
-grösser, bis sie schliesslich die Grösse eines Ponys erreichen.
-Winterwölfe sind immun gegen Kälte. Von magischen Kälteangriffen
-erleiden sie nur halben Schaden. Im Gegenzug sind sie gegen Feuer sehr
-empfindlich und erleiden für jeden Schadenswürfel +1 Schaden.
-
-Falls Winterwölfe nicht einem Paladin der Freya folgen, haben sie eine
-Moral von 10.
-
-Winterwölfe sind und bleiben Kreaturen des Chaos und der Zerstörung.
-Wölfe sind keine Haustiere! Winterwölfe erst recht nicht.
-
-
-
-\section{Paladin des Loki}
-\label{sec:paladin:loki}
-
-Loki ist einer der nordischen Götter. Ein listiger, schlauer,
-heimtückischer Gott, dessen Mundwerk sowohl im Guten wie im Schlechten
-unübertroffen ist. Er sieht sich als weniger borniert als seine
-nordischen Kollegen und pflegt gute Kontakte zu den Jötun Riesen und
-anderen Kreaturen.
-
-Loki ist der Schutzherr aller Gestaltwandler und Diebe, aller falsch
-verstandenen, es eigentlich gut meinenden, unschuldig Angeklagten,
-versetzten, hingehaltenen und unterschätzten Menschen. Ihnen hilft er,
-rettet sie aus der Patsche, gibt ihnen Hoffnung. Doch wenn die
-Rechnung dann nicht aufgeht, dann ist Loki vielleicht auch einfach mal
-nicht da, konnte leider nicht rechtzeitig kommen, war aufgehalten
-worden, Entschuldigungen, Erklärungen, Rechtfertigungen, Ausreden,
-Ausreden, Ausreden.
-
-Viele Spione, Händler und Diplomaten erhoffen sich ebenfalls Hilfe von
-Loki, da er so listenreich und redegewandt ist.
-
-\medskip
-\begin{tabular}{cp{9cm}}
-Ruf & Fähigkeit \\
-1 & \textbf{Silberzunge}: Reaktionen +1 \\
-2 & \textbf{Verkleiden}: 2/6 statt 1/6 \\
-3 & \textbf{Schattengesicht}: im Dunkel kann man Silhouette und
-Stimmen nachahmen \\
-4 & \textbf{Lügen} decken: Das Aussprechen einer Anklage gegen einen
-Lügner wird verhindert, so dass es sehr schwierig wird, Lügen
-aufzudecken \\
-5 & \textbf{Chamäleonhaut}: Hautfarbe und -struktur kann verändert
-werden (z.B. Schlangenhaut) \\
-6 & \textbf{Tiergestalt}: Verwandlung in ein bestimmtes Tier (z.B.
-Seehund); das gewählte Tier kann nicht geändert werden, die Fähigkeit
-kann allerdings mehrfach genommen werden
-\end{tabular}
-
-
 \printindex
 
 \clearpage
 
-\section*{Lizenz: Open Game License Version 1.0a}
+\section*{Open Game License Version 1.0a}
 
 \begin{fullwidth}
 
@@ -2583,8 +1797,8 @@ material by Gary Gygax
   Lord}\textsuperscript{\texttrademark} Copyright 2007-2009, Daniel
 Proctor. Author Daniel Proctor.
 \newline
-\href{https://github.com/kensanata/halberdsnhelmets/tree/master/Hellebarden\%20und\%20Helme}{Hellebarden
-  und Helme} Copyright 2012--2014, Alex Schroeder. Author Alex
+\href{https://github.com/kensanata/halberdsnhelmets/tree/master/Halberds\%20and\%20Helmets}{Halberds
+  and Helmets} Copyright 2012--2015, Alex Schroeder. Author Alex
 Schroeder, Samuel Dennler.
 
 \end{enumerate}
