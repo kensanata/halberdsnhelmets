@@ -30,6 +30,14 @@
   {\label{key:#2}\textbf{\index{#2}#2}}
   {\label{key:#1}\textbf{\index{#1}#2}}}
 
+% Ordinals: This is the 2\nd of December. Or the 4\nth of July. Or
+% 3\rd place in a race.
+\usepackage{xspace}
+\newcommand\st{\textsuperscript{st}\xspace}
+\newcommand\nd{\textsuperscript{nd}\xspace}
+\newcommand\rd{\textsuperscript{rd}\xspace}
+\renewcommand\th{\textsuperscript{th}\xspace} % override þ
+
 % The fancyvrb package lets us customize the formatting of verbatim
 % environments. We use a slightly smaller font.
 \usepackage{fancyvrb}
@@ -76,7 +84,7 @@ on \href{http://www.goblinoidgames.com/labyrinthlord.html}{Labyrinth
 \marginnote{Ownership of the rules is optional. We'll add more rules
   as time passes. Discovering and befriending intelligent humanoids,
   for example, will allow you hire them and eventually to play them.
-  Certain magic-users can teach player characters new spells, too.}
+  Certain magic users can teach player characters new spells, too.}
 
 The rules offer \textbf{very little mechanics}: there aren't many
 classes to choose from, no feats, no skills, no prestige classes and
@@ -122,7 +130,7 @@ rolling dice, it's already too late.
 
 \clearpage
 
-\section{\index{Character Creation}Character Creation}
+\section{\index{character creation}Character Creation}
 \label{sec:charactercreation}
 
 \marginnote{A short summary for players:
@@ -261,15 +269,15 @@ class to play.
 \smallskip
 \begin{tabular}{lcccccccccc}
 Armor Class & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
-Level 0   & 20 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 \\
+Level 0    & 20 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 \\
 Level 1--2 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
-Level 3   & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
-Level 4   & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
-Level 5   & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 \\
-Level 6   & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 \\
+Level 3    & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Level 4    & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Level 5    & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 \\
+Level 6    & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 \\
 Level 7--8 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 \\
-Level 9   & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 \\
-Level 10  & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 
+Level 9    & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 \\
+Level 10   & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 
 \end{tabular}
 
 \medskip\noindent The to-hit values and saving throws for \key{level
@@ -278,8 +286,8 @@ and \key{porters}.
 
 \medskip
 \begin{tabular}{lcccccccccc}
-Saving      & Dragon Breath & Paralysis    & Death  & Rays  & Spells \\
-Throws      & Explosions   & Petrification & Poison & Wands & Miracles \\
+Saving     & Dragon Breath & Paralysis    & Death  & Rays  & Spells \\
+Throws     & Explosions   & Petrification & Poison & Wands & Miracles \\
 Level 0    & 17 & 16 & 14 & 15 & 18 \\
 Level 1--3 & 15 & 14 & 12 & 13 & 16 \\
 Level 4--6 & 13 & 12 & 10 & 11 & 14 \\
@@ -288,12 +296,12 @@ Level 10   &  7 &   8 &  6 &  7 & 10
 \end{tabular}
 
 
-\subsection{\index{Magier}Magier}
-\label{sec:magier}
+\subsection{\index{magic user}Magic User}
+\label{sec:magicuser}
 
 \marginnote{
 \begin{tabular}{cc}
-Level & Erfahrungspunkte \\
+Level & Experience Points \\
 1 & 0\\
 2 & 2'501\\
 3 & 5'001\\
@@ -307,27 +315,25 @@ Level & Erfahrungspunkte \\
 \end{tabular}
 }
 
-Du lernst Zaubersprüche aus deinem Zauberbuch. Kämpfen ist nicht so
-dein Ding. Du kannst nur kleine Waffen wie Messer und Stäbe verwenden.
-Anfangs wirst du schwach sein, aber wenn du überlebst, wirst du sehr
-mächtig sein. Du darfst weder Rüstungen noch Schilder tragen.
+You can both cast spells from your spellbook. Fighting isn't quite
+your thing. You can use but small knives and clubs. At first you will
+be weak, but if you survive, you will be very powerful. You may wear
+no armor nor carry a shield.
 
 \smallskip
 \begin{tabular}{lcccccccccc}
 Armor Class & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
-Level 1--3 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
-Level 4--7 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Level 1--3  & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Level 4--7  & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
 Level 8--10 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 
 \end{tabular}
 
-\marginnote{Wenn du dir deine Zaubersprüche auf dem Charakterblatt
-  notierst, musst du wärend dem Spiel nicht in deinen Unterlagen
-  blättern.}
+\marginnote{If you write your spells on to your character sheet, you
+  won't have to search your notes during the game.}
 
-\medskip\noindent Im Abschnitt
-\hyperref[sec:zaubersprüche]{Zaubersprüche der Magier und Elfen} gibt
-es eine Liste von Zaubersprüchen. Wähle einen Zauberspruch des
-1.~Zirkels für dein Zauberbuch.
+\medskip\noindent Look for a list of spells in the
+\hyperref[sec:spells]{Spells} section. Choose a spell of the first
+circle for your spell book.
 
 \medskip
 \begin{tabular}{lcccccccccc}
@@ -341,12 +347,12 @@ Level 6--10 & 14 & 11 & 11 & 11 & 12
 
 
 
-\subsection{\index{Dieb}Dieb}
-\label{sec:dieb}
+\subsection{\index{thief}Thieves}
+\label{sec:thief}
 
 \marginnote{
 \begin{tabular}{cc}
-Level & Erfahrungspunkte \\
+Level & Experience Points \\
 1 & 0\\
 2 & 1'251\\
 3 & 2'501\\
@@ -360,22 +366,22 @@ Level & Erfahrungspunkte \\
 \end{tabular}
 }
 
-Du bist Alleskönner: Deine \hyperref[sec:fertigkeiten]{Fertigkeiten}
-werden immer besser. Du darfst ausser einer Lederrüstung keine Rüstung
-und weder Schild noch Helm tragen.
+You are a Jack of all trades. Your \hyperref[sec:skills]{skills} will
+improve over time. You may no armor other than leather and you may
+carry neither shield nor wear a helmet.
 
 \smallskip
 \begin{tabular}{lcccccccccc}
 Armor Class & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
-Level 1--3 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
-Level 4--5 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
-Level 6--8 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Level 1--3  & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Level 4--5  & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Level 6--8  & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
 Level 9--10 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 
 \end{tabular}
 
-\medskip\noindent In der Überraschungsrunde fügst du deinen Gegnern
-\key[Schaden!doppelter]{doppelten Schaden} ($2\times$ würfeln) zu.
-\marginnote[-1em]{\emph{Falls} deine Gegner überrascht sind!}
+\medskip\noindent In the \hyperref[key:surprise]{surprise round},
+you'll deal \key[damage!double]{double damage} (roll twice).
+\marginnote[-1em]{\emph{Only if} you surprise your foes!}
 
 \medskip
 \begin{tabular}{lcccccccccc}
@@ -390,12 +396,12 @@ Level 9--10 & 12 &  9 & 10 & 11 & 10 \\
 
 
 
-\subsection{\index{Kleriker}Kleriker}
-\label{sec:kleriker}
+\subsection{\index{clerics}Clerics}
+\label{sec:cleric}
 
 \marginnote{
 \begin{tabular}{cc}
-Level & Erfahrungspunkte \\
+Level & Experience Points \\
 1 & 0\\
 2 & 1'565\\
 3 & 3'125\\
@@ -407,17 +413,17 @@ Level & Erfahrungspunkte \\
 9 & 200'001\\
 10 & 300'001\\
 \end{tabular}
-} Du kannst kämpfen (aber nicht so gut wie ein Krieger) und du kannst
-Wunder wirken (aber deine Zaubersprüche sind nicht so mächtig wie die
-Sprüche eines Magiers). Im Abschnitt \hyperref[sec:wunder]{Wunder der
-  Kleriker} gibt es entsprechende Listen.
+} You can fight (but not as well as a fighter) and you can work
+miracles (but your miracles are not as powerfull as a magic user's
+spells). Look for a list of miracles in the
+\hyperref[sec:miracle]{Miracles} section.
 
 \smallskip
 \begin{tabular}{lcccccccccc}
 Armor Class & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
-Level 1--3 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
-Level 4--5 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
-Level 6--8 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Level 1--3  & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Level 4--5  & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Level 6--8  & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
 Level 9--10 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 
 \end{tabular}
 
@@ -432,58 +438,56 @@ Level 5--8  & 14 & 12 &  9 & 10 & 12 \\
 Level 9--10 & 12 & 10 &  7 &  8 &  9 \\
 \end{tabular}
 
-\medskip\noindent Du darfst nur einfache, stumpfe Waffen verwenden --
-oder die Waffe, welche deinem Gott zugeschrieben wird.
-\marginnote[-1em]{Gewisse Kleriker favorisieren die Waffen, welche
-  ihren Göttern zugeschrieben werden. Dies ist optional. Hier ein paar
-  Beispiele:
+\medskip\noindent You may only use simple, bludgeoning wepons -- or
+the weapon ascribed to your god. \marginnote[-1em]{Some clerics favor
+  the weapon ascribed to their god. This is optional. Here are some
+  examples:
 
 \medskip
 \begin{tabular}{ll}
-\index{Orcus}Orcus & Streitkolben \\
-\index{Ishtar}Ishtar & Sichelschwert \\
-\index{Nergal}Nergal & Kriegsaxt \\
-\index{Freya}Freya & Speer \\
-\index{Marduk}Marduk & Keule \\
-\index{Mitra}Mitra & Handaxt \\
-\index{Set}Set & Dolch \\
-\index{Hekate}Hekate & Peitsche 
+\index{Orcus}Orcus & mace \\
+\index{Ishtar}Ishtar & sickle sword (kopesh) \\
+\index{Nergal}Nergal & battle axe \\
+\index{Freya}Freya & spear \\
+\index{Marduk}Marduk & club \\
+\index{Mitra}Mitra & hand axe \\
+\index{Set}Set & dagger \\
+\index{Hekate}Hekate & whip 
 \end{tabular}
 }
 
-\newthought{Du kannst Untote vertreiben!} Hierfür wird den Untoten ein
-heiliges Symbol entgegen gestreckt und laut die
-\index{Goetter@Götter!Waffen}Götter angerufen. Jede Runde können so
-2W6 Trefferwürfel von Untoten vertrieben oder zerstört werden. Der
-Erfolg hängt von deiner Stufe und etwas Glück ab.
+\newthought{You can turn undead!}\index{turn undead}\index{undead} You
+must raise your holy symbol so they may see it and loudly invoke your
+god. Each round, 2d6 hit dice worth of undead will be turned or
+destroyed. Your success depends on your level and luck.
 
-In der folgenden Tabelle sieht man, welche Zahl man mit 2W6 würfeln
-muss, um Untote zu vertreiben. ``Z'' steht für ``Zerstören'' und
-bedeutet, dass die Untoten automatisch zerstört werden.
+The following table shows, what number you need to roll using 2d6 in
+order to turn undead. ``D'' means the undead will be ``destroyed''
+instead of turned.
 
 \medskip
 \begin{tabular}{lcccccccccc}
-Klerikerstufe & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
-Skelette & 7+ & 5+ & 3+ & Z & Z & Z & Z & Z & Z & Z \\
-Zombies  & 9+ & 7+ & 5+ & 3+ & Z & Z & Z & Z & Z & Z \\
-Ghule    & 11+ & 9+ & 7+ & 5+ & 3+ & Z & Z & Z & Z & Z \\
-Draugr   & -- & 11+ & 9+ & 7+ & 5+ & 3+ & Z & Z & Z & Z \\
-Todesalb & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ & Z & Z & Z \\
-Mumie    & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ & Z & Z \\
-Ringgeist & -- & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ & Z \\
-Vampir   & -- & -- & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ \\
+Cleric Level & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+Skeletons & 7+ & 5+ & 3+ & D & D & D & D & D & D & D \\
+Zombies   & 9+ & 7+ & 5+ & 3+ & D & D & D & D & D & D \\
+Ghouls    & 11+ & 9+ & 7+ & 5+ & 3+ & D & D & D & D & D \\
+Draugr    & -- & 11+ & 9+ & 7+ & 5+ & 3+ & D & D & D & D \\
+Wraiths   & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ & D & D & D \\
+Mummies   & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ & D & D \\
+Spectres  & -- & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ & D \\
+Vampires  & -- & -- & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ \\
 \end{tabular}
 
 \newpage
 
 
 
-\subsection{\index{Elf}Elf}
+\subsection{\index{elf}Elf}
 \label{sec:elf}
 
 \marginnote{
 \begin{tabular}{cc}
-Level & Erfahrungspunkte \\
+Level & Experience Points \\
 1 & 0\\
 2 & 4'065\\
 3 & 8'125\\
@@ -496,38 +500,39 @@ Level & Erfahrungspunkte \\
 10 & 600'001\\
 \end{tabular}
 
-\medskip\noindent Da Elfen alle Rüstungen und Waffen verwenden
-\emph{und} Zaubern können, sind sie sehr beliebt. Weil sie zum Stufe
-steigen aber mehr Erfahrungspunkte brauchen, liegen sie oft eine Stufe
-unter ihren Mitstreitern. Zudem haben sie weniger Lebensenergie als
-Krieger.} Du lernst Zaubersprüche aus deinem Zauberbuch und du kannst
-kämpfen. Du kannst im Sternenlicht sehen und du wirst ewig leben. Du
-brauchst eine Bildung von mindestens 9.
+\medskip\noindent Elves can wear all armor, wield all weapons,
+\emph{and} cast spells. That makes them very popular. They need much
+more experience points to gain a level, however. That's why they will
+often be a level below their fellow party members. They also have
+fewer hit points than fighters.} You can both cast spells from your
+spellbook and fight. You will advance more slowly than your peers. You
+can see in the dark and you will live forever. You need a minimum
+intelligence of 9.
 
-Elfen können nicht höher als bis auf die 10.~Stufe steigen.
+Elves cannot rise beyond level 10.
 
 \smallskip
 \begin{tabular}{lcccccccccc}
 Armor Class & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
 Level 1--2 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
-Level 3   & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
-Level 4   & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
-Level 5   & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 \\
-Level 6   & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 \\
+Level 3    & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Level 4    & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Level 5    & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 \\
+Level 6    & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 \\
 Level 7--8 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 \\
-Level 9   & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 \\
+Level 9    & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 \\
 Level 10   & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 
 \end{tabular}
 \medskip
 
-\noindent Elfen sprechen die gemeine Sprache und Elfisch; zudem können
-sie sich einigermassen in der Sprache der Hyänenmenschen, Hobgobline
-und Orks (Schweinemenschen) verständigen.
+\noindent Elves speak the common tongue and elvish; they are also
+somewhat familiar with the languages of gnolls (hyena men), hobgoblins
+and orcs (pig men).
 
 \medskip
 \begin{tabular}{lcccccccccc}
-Saving      & Dragon Breath & Paralysis    & Death  & Rays  & Spells \\
-Throws      & Explosions   & Petrification & Poison & Wands & Miracles \\
+Saving     & Dragon Breath & Paralysis    & Death  & Rays  & Spells \\
+Throws     & Explosions   & Petrification & Poison & Wands & Miracles \\
 Level 1--3 & 15 & 13 & 12 & 13 & 15 \\
 Level 4--6 & 13 & 11 & 10 & 11 & 13 \\
 Level 7--9 &  9 &  9 &  8 &  9 & 11 \\
@@ -536,12 +541,12 @@ Level 10   &  7 &  7 &  6 &  7 &  9 \\
 
 
 
-\subsection{\index{Halbling}Halbling}
-\label{sec:halbling}
+\subsection{\index{halflings}Halflings}
+\label{sec:halfling}
 
 \marginnote{
 \begin{tabular}{cc}
-Level & Erfahrungspunkte \\
+Level & Experience Points \\
 1 & 0\\
 2 & 2'035\\
 3 & 4'065\\
@@ -551,19 +556,15 @@ Level & Erfahrungspunkte \\
 7 & 65'001\\
 8 & 130'001\\
 \end{tabular}
-
-\medskip\noindent Elfen, Halblinge und Zwerge kämpfen genau so gut wie
-Krieger.
-
 \bigskip
-\includegraphics{Reiterhelm.jpg}} Du bist noch kleiner und immer
-barfuss unterwegs. Du kannst dich gut verstecken und du kannst
-Fernkampfwaffen besonders gut einsetzen. Riesen haben Mühe, dich zu
-treffen. Du brauchst ein Geschick von mindestens 9.
+\includegraphics{Reiterhelm.jpg}} You are very small and walk around
+barefoot. You can hide well and you're good with ranged weapons.
+Giants have a hard time hitting you. You need a minimum /dexterity/ of
+9.
 
-Halblinge können nicht höher als bis auf die 8.~Stufe steigen. Da du
-so klein bist, kannst du keine grossen Waffen verwenden. Du bist
-langsamer als Menschen aber immer noch schneller als Zwerge.
+Halflings cannot rise beyond level 8. Since you're so small, you
+cannot use any large weapons such as battle axes, two handed swords or
+polearms. You are smaller than men but faster than dwarves.
 
 \smallskip
 \begin{tabular}{lcccccccccc}
@@ -577,13 +578,14 @@ Level 7--8 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 \\
 \end{tabular}
 \medskip
 
-\noindent Halblinge haben einen +1 Bonus im \emph{Fernkampf} und eine
-bessere Rüstungsklasse (-2) gegen Riesen.
+\noindent 
+You get an additional +1 bonus for ranged weapons. Your own armor
+class improves by -2 when fighting opponents larger than humans.
 
 \medskip
 \begin{tabular}{lcccccccccc}
-Saving      & Dragon Breath & Paralysis    & Death  & Rays  & Spells \\
-Throws      & Explosions   & Petrification & Poison & Wands & Miracles \\
+Saving     & Dragon Breath & Paralysis    & Death  & Rays  & Spells \\
+Throws     & Explosions   & Petrification & Poison & Wands & Miracles \\
 Level 1--3 & 13 & 10 &  8 &  9 & 12 \\
 Level 4--6 & 10 &  8 &  6 &  7 & 10 \\
 Level 7--8 &  7 &  6 &  4 &  5 &  8 \\
@@ -593,12 +595,12 @@ Level 7--8 &  7 &  6 &  4 &  5 &  8 \\
 
 
 
-\subsection{\index{Zwerg}Zwerg}
-\label{sec:zwerg}
+\subsection{\index{dwarf}Dwarves}
+\label{sec:dwarf}
 
 \marginnote{
 \begin{tabular}{cc}
-Level & Erfahrungspunkte \\
+Level & Experience Points \\
 1 & 0\\
 2 & 2'187\\
 3 & 4'375\\
@@ -610,36 +612,35 @@ Level & Erfahrungspunkte \\
 9 & 280'001\\
 10 & 400'001\\
 \end{tabular}
-} Du bist klein, zäh und du kannst gut kämpfen. Du weisst viel über
-Bauten unter der Erde. Du kannst im Dunkeln sehen. Du brauchst eine
-Gesundheit von mindestens 9.
+} You are small, tough, and you know how to fight. You know a lot
+about constructions underground. You can see in the dark. You need a
+minimum \emph{constitution} of 9.
 
-Zwerge können nicht höher als bis auf die 12.~Stufe steigen. Da du
-relativ klein bist, kannst du keine grossen Waffen verwenden. Du bist
-nur halb so schnell wie ein Mensch.
+Dwarves cannot rise beyond level 12. Since you're relatively small,
+you cannot use two handed swords. You are slow.
 
 \smallskip
 \begin{tabular}{lcccccccccc}
 Armor Class & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
 Level 1--2 & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
-Level 3   & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
-Level 4   & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
-Level 5   & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 \\
-Level 6   & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 \\
+Level 3    & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Level 4    & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Level 5    & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 \\
+Level 6    & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 \\
 Level 7--8 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 \\
-Level 9   & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 \\
+Level  9   & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 \\
 Level 10   & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 
 \end{tabular}
 \medskip
 
 \noindent 
-Zwerge können sich mehr schlecht als recht mit Goblins, Gnomen und
-Kobolden unterhalten.
+Dwarves are somewhat familiar with the languages of goblins, gnomes
+and kobolds.
 
 \medskip
 \begin{tabular}{lcccccccccc}
-Saving      & Dragon Breath & Paralysis    & Death  & Rays  & Spells \\
-Throws      & Explosions   & Petrification & Poison & Wands & Miracles \\
+Saving       & Dragon Breath & Paralysis    & Death  & Rays  & Spells \\
+Throws       & Explosions   & Petrification & Poison & Wands & Miracles \\
 Level 1--3   & 13 & 10 &  8 &  9 & 12 \\
 Level 4--6   & 10 &  8 &  6 &  7 & 10 \\
 Level 7--9   &  7 &  6 &  4 &  5 &  8 \\
@@ -651,49 +652,48 @@ Level 10--12 &  4 &  4 &  2 &  3 &  6 \\
   \includegraphics[width=2.5cm]{Berner.jpg}
 \end{figure}
 
-\newthought{Bestimme deine \index{Lebensenergie}Lebensenergie} und
-vergiss nicht, deinen Bonus für Gesundheit zu addieren. Krieger und
-Zwerge verwenden einen W8, Diebe und Magier einen W4, alle anderen
-einen W6. \marginnote[-3em]{Steigst du eine Stufe, würfelst du deine
-  Lebensenergie neu: Einen Würfel pro Stufe, jeweils plus deinen Bonus
-  für Gesundheit (aber mindestens 1). Behalte den alten Wert, falls
-  das neue Resultat niedriger ist.}
 
-\newthought{Würfel 3W6 \texttimes 10~Gold}. Mit diesem
-\index{Gold!Charaktererschaffung}Gold kaufst du dir die passende
-\hyperref[sec:ausrüstung]{Ausrüstung}. \marginnote{Eine gute
-  Faustregel für den Einkauf: Rucksack und Wegration für eine Woche.
-  Die Hälfte des verbleibenden Geldes für die Rüstung mit Schild und
-  Helm, wenn möglich. Mit dem Rest dann so viel wie möglich kaufen:
-  eine Nahkampfwaffe, eine Fernkampfwaffe, eine Lichtquelle. Diebe
-  brauchen Diebeswerkzeug, Kleriker brauchen ein heiliges Symbol. Zum
-  Erforschen entweder ein Seil oder einen Hammer mit Keilen. Gegen
-  Monster entweder Holzpflöcke, Spiegel, Weihwasser oder Wolfsbann.
-  Mit dem restlichen Geld dann Gefolgsleute anheuern und ausrüsten. }
+\newthought{Roll for hit points}\index{hit points} and add your
+Constitution bonus. Fighters and Dwarves roll 1d8, Wizards and Thieves
+roll 1d4, everybody else rolls 1d6. \marginnote[-3em]{When gaining a
+  level, reroll one die per level. Add your Constitution bonus to
+  every level. A die can not be reduced below 1. Keep your old hit
+  points if the new result is lower.}
+
+\newthought{Roll 3W6 \texttimes 10~gold}. Buy some
+\hyperref[sec:equipment]{equipment} using this \index{gold!character
+  creation}gold . \marginnote{A good rule of thumb when shopping: a
+  backpack and rations for a week. Half of your remaining gold für
+  armor, shield, and helmet, if possible. Then buy a melee weapon, a
+  ranged weapon and a light source. Thieves need thieves' tools,
+  clerics need a holy symbol. Buy rope or iron spikes and a hammer for
+  exploration. Some monsters require wooden poles mirrors, holy water
+  or wolfsbane to defeat. Use the remaining money to hire retainers
+  and equip them.}
 
 \medskip
 \begin{tabular}{cl}
-Gold & \index{Hintergrund}Hintergrund der Eltern \\
-30 & Lumpensammler, Bettler, Leibeigene, Flüchtlinge \\
-40--50 & Ausgestossene, Alleinerziehende, Künstler \\
-60--80 & Diebe, Räuber, Betrüger \\
-90--120 & Handwerker, Gewerbetreibende, Bauern \\
-130--150 & Händler, Priester \\
-160--170 & Grossgrundbesitzer \\
-180 & Aristokraten \\
+Gold & \index{background}Your parent's background \\
+30 & rag pickers, beggars, slaves, refugees \\
+40--50 & outcasts, single parents, artists \\
+60--80 & thieves, robbers, scammers \\
+90--120 & artisans, craftsmen, peasants \\
+130--150 & merchants, priests \\
+160--170 & landowners \\
+180 & nobles \\
 \end{tabular}
 
 \newpage
 
-\section{\index{Ausrüstung}Ausrüstung}
-\label{sec:ausrüstung}
+\section{\index{equipment}Equipment}
+\label{sec:equipment}
 
 {
 \small
 \begin{fullwidth}
 \begin{minipage}[t]{0.47\linewidth}
 \begin{tabular}[t]{lcp{3.8cm}}
-\key{Waffe} & Gold & Bemerkung \\
+\key[weapon]{Weapon} & Gold & Notes \\
 
 Kriegsaxt & 7 & zweihändig, Türen einschlagen \\
 
@@ -1500,7 +1500,7 @@ deiner Stufe bestimmt:
 
 \medskip
 \begin{tabular}{cccccc}
-Level & 1. Zirkel & 2. Zirkel & 3. Zirkel & 4. Zirkel & 5. Zirkel \\
+Level & 1\st circle & 2\nd circle & 3\rd circle & 4\th circle & 5\th circle \\
 1 & 1 & - & - & - & - \\
 2 & 2 & - & - & - & - \\
 3 & 2 & 1 & - & - & - \\
@@ -1564,21 +1564,19 @@ zuerst betroffen.\marginnote{Es gibt keinen Rettungswurf!}
 
 
 
-\section{Die \index{Wunder}Wunder der Kleriker}
-\label{sec:wunder}
+\section{\index{Miracles}Miracles}
+\label{sec:miracle}
 
-Als Kleriker kannst du von den Göttern \textbf{Wunder
-  erflehen}.\marginnote{Wie man sieht, bestehen zwischen den Wundern
-  der Klerikern und den Zaubersprüchen der Magier und Elfen viele
-  Gemeinsamkeiten. Das \key[Repertoire!Kleriker]{Repertoire} der
-  Kleriker wird allerdings von den verehrten Götter bestimmt.}
-
-Die folgende Tabelle zeigt, wie viele Wunder du pro Tag wirken kannst.
-Zauberbuch benötigst du keines.
+You can beg the gods for a \textbf{miracle} by raising your hands and
+praying or singing. The following table shows how your miracle working
+improves as you gain levels. You need no spell book. \marginnote{As
+  you can see, miracles very similar to spells. The key difference is
+  that a cleric's \key[repertoire!clerics]{repertoire} is determined
+  by god they serve.}
 
 \medskip
 \begin{tabular}{cccccc}
-Level & 1. Zirkel & 2. Zirkel & 3. Zirkel & 4. Zirkel & 5. Zirkel \\
+Level & 1\st circle & 2\nd circle & 3\rd circle & 4\th circle & 5\th circle \\
 1 & 1 & - & - & - & - \\
 2 & 2 & - & - & - & - \\
 3 & 2 & 1 & - & - & - \\
