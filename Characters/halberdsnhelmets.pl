@@ -517,7 +517,7 @@ sub get_price_cache {
   if (!%price_cache) {
     
     my $i = 0; # the default is B/X
-    if ($char{rules} eq "ACKS") { $i = 2; }
+    if ($char{rules} eq "acks") { $i = 2; }
     elsif ($char{rules} eq "labyrinth lord") { $i = 1; }
   
     %price_cache = (
@@ -714,13 +714,16 @@ sub buy_armor {
   my $dex = $char{dex};
   my $ac = 9 - bonus($dex);
   
-  if(member(T('plate mail'), @property)) { $ac -= 6; }
-  elsif(member(T('chain mail'), @property)) { $ac -= 4; }
-  elsif(member(T('leather armor'), @property)) { $ac -= 2; }
+  if (member(T('plate mail'), @property)) { $ac -= 6; }
+  elsif (member(T('chain mail'), @property)) { $ac -= 4; }
+  elsif (member(T('leather armor'), @property)) { $ac -= 2; }
 
-  if(member(T('shield'), @property)) { $ac -= 1; }
+  if (member(T('shield'), @property)) { $ac -= 1; }
   if ($class eq T('bladedancer')) { $ac -= $char{level}; }
 
+  # ACKS is ascending
+  if ($char{rules} eq "acks") { $ac = 9 - $ac; }
+  
   provide("ac",  $ac);
 
   return ($money + $budget, @property);
@@ -1228,9 +1231,10 @@ sub random_acks {
   }
 
   provide("hp",  $hp);
-
+  
   equipment();
 
+  provide("abilities", proficiencies());
   # abilities
   # spells
 }
@@ -1251,6 +1255,149 @@ sub random_parameters {
   } else {
     error(T('Unknown Rules'), T('%0 is unknown.', $char{rules}));
   }
+}
+
+sub proficiencies {
+  my %proficiencies = ();
+
+  # start with class based preferences for proficiencies
+  if ($char{class} eq T('assassin')) {
+
+    %proficiencies = (
+      'Acrobatics' => +2,
+      'Alchemy' => -1,
+      'Alertness' => 0,
+      'Arcane Dabbling' => 0,
+      'Blind Fighting' => 0,
+      'Bribery' => +1,
+      'Cat Burglary' => climbing +1,
+      'Climbing' => +1,
+      'Combat Refexes' => 0,
+      'Combat Trickery (Disarm)' => 0,
+      'Combat Trickery (Incapacitate)' => 0,
+      'Contortionism' => 0,
+      'Disguise' => +1,
+      'Eavesdropping' => 0,
+      'Fighting Style' => +1,
+      'Gambling' => -2,
+      'Intimidation' => 0,
+      'Mimicry' => -1,
+      'Precise Shooting' => +1,
+      'Running' => 0,
+      'Seduction' => 0,
+      'Skirmishing' => 0,
+      'Skulking' => +1,
+      'Sniping' => +1,
+      'Swashbuckling' => 0,
+      'Trap Finding' => 0,
+      'Weapon Finesse' => -2,
+      'Weapon Focus' => -1, );
+    if ($char{cha} > 12) {
+      $proficiencies{Bribery} = +2;
+      $proficiencies{Intimidation} = +1;
+      $proficiencies{Seduction} = +1;
+    }
+    if ($char{dex} > 12) {
+      $proficiencies{Sniping} = +2;
+    }
+    if ($char{level} > 5) {
+      $proficiencies{'Arcane Dabbling'} = +1;
+    }
+  }      
+
+  # add general proficiencies
+  my %general = ();
+  $general{'Alchemy'} = 1 if $char{class} eq T('mage');
+  $general{'Animal Husbandry'} = 0;
+  $general{'Animal Husbandry'} = 1 if $char{class} eq T('explorer');
+  $general{'Beast Friendship'} = 2;
+  $general{'Animal Training (Dog)'} = 2;
+  $general{'Art'} = 0;
+  $general{'Bargaining'} = 0;
+  $general{'Bargaining'} = 1 if member($char{class}, T('dwarven vaultguard'), T('dwarven craftpriest'), T('explorer'));
+  $general{'Caving'} = 0;
+  $general{'Collegiate Wizardry'} = 0;
+  $general{'Collegiate Wizardry'} = 1 if member($char{class}, T('mage'), T('elven spellsword'), T('elven nightblade'));
+  $general{'Craft'} = 0;
+  $general{'Diplomacy'} = 0;
+  $general{'Diplomacy'} = 1 if $char{cha} > 12;
+  $general{'Disguise'} = 0;
+  $general{'Disguise'} = 1 if $char{class} eq T('thief');
+  $general{'Disguise'} = 2 if $char{class} eq T('assassin');
+  $general{'Endurance'} = 0;
+  $general{'Endurance'} = 1 if $char{ac} < 3;
+  $general{'Engineering'} = 0;
+  $general{'Gambling'} = 0;
+  $general{'Healing'} = 0;
+  # add more Healing if we already have healing?
+  $general{'Healing'} = 3 if $char{int} >= 18;
+  $general{'Gambling'} = 0;
+  $general{'Intimidation'} = 0;
+  $general{'Intimidation'} = 1 if $char{cha} > 13;
+  $general{'Knowledge'} = 0;
+  $general{'Knowledge'} = 3 if $char{int} >= 18;
+  $general{'Labor'} = 0;
+  $general{'Language'} = 0;
+  $general{'Leadership'} = 0;
+  $general{'Lip Reading'} = 0;
+  $general{'Lip Reading'} = 3 if $char{class} eq T('thief');
+  $general{'Manual of Arms'} = 0;
+  $general{'Mapping'} = 0;
+  $general{'Military Strategy'} = 0;
+  $general{'Military Strategy'} = 1 if $char{int} > 13 and $char{wis} > 13;
+  $general{'Mimicry'} = 0;
+  $general{'Naturalism'} = 0;
+  $general{'Navigation'} = 0;
+  $general{'Performance'} = 0;
+  $general{'Performance'} = 3 if $char{class} eq T('bard');
+  $general{'Profession'} = 0;
+  $general{'Profession'} = 1 if $char{str} < 9 or $char{dex} < 9;
+  $general{'Riding'} = 0;
+  $general{'Riding'} = 1 if member($char{class}, T('fighter'), T('explorer'), T('barbarian'));
+  $general{'Seafaring'} = 0;
+  $general{'Seduction'} = 0;
+  $general{'Seduction'} = 1 if $char{cha} > 13;
+  $general{'Siege Engineering'} = 0;
+  $general{'Seduction'} = 0;
+  $general{'Signaling'} = 0 if $char{ac} < 3;
+  $general{'Survival'} = 0;
+  $general{'Survival'} = 2 if member($char{class}, T('explorer'), T('barbarian'));
+  $general{'Theology'} = 0;
+  $general{'Theology'} = 2 if member($char{class}, T('cleric'), T('elven bladedancer'));
+  $general{'Tracking'} = 0;
+  $general{'Tracking'} = 1 if member($char{class}, T('assassin'), T('explorer'));
+  $general{'Trapping'} = 0;
+  $general{'Trapping'} = 1 if $char{class} eq T('explorer');
+
+  # set up lists
+  my @proficiencies = distribution(\%proficiencies);
+  my @general = distribution(\%general);
+  my @result = ('Adventuring');
+  push(@result, one(@proficiencies));
+  my $proficiency;
+  my $m = 1;
+  $m += $char{'int-bonus'} if $char{'int-bonus'} > 0;
+  for (my $i = 0; $i < $m; $i++) {
+    $proficiency = one(@general);
+    # do { $proficiency = one(@general) } until not member($proficiency, @result);
+    push(@result, $proficiency);
+  }
+  return join(', ', map { T($_) } @result);
+}
+
+sub distribution {
+  # Given a hash ref mapping keys to numbers between -2 and +2, returns an array with an appropriate number of keys. Use
+  # one() to pick a random key.
+  my $hashref = shift;
+  my @result = ();
+  my $default = 3; # this means the ratio between -- and ++ is 1:5
+  for my $key (keys %$hashref) {
+    my $n = $default + $hashref->{$key};
+    for (my $i = 0; $i < $n; $i++) {
+      push(@result, $key);
+    }
+  }
+  return @result;
 }
 
 # http://www.stadt-zuerich.ch/content/prd/de/index/statistik/publikationsdatenbank/Vornamen-Verzeichnis/VVZ_2012.html
