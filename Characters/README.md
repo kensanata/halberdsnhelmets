@@ -58,3 +58,20 @@ Stripping EXIF Data
 Example:
 
     exiftool -all= -overwrite_original *.jpg
+
+Posting 20 Characters to Campaign Wiki
+======================================
+
+Example
+
+    for i in $(seq 20); do
+        f=$(mktemp /tmp/char.XXXX)
+        perl halberdsnhelmets.pl '/random/text?' > $f
+        name=$(grep name: $f | cut -c 7-)
+        class=$(grep class: $f | cut -c 8-)
+        if curl --head --silent "https://campaignwiki.org/wiki/Greyheim/$name" | grep --silent "^HTTP/1.1 404"; then
+            echo "|[[$name]] | | 0| 0| $class 1| ?|[[Greyheim]] | – | |"
+            curl -F ns=Greyheim -F title=$name -F frodo=1 -F username=Alex -F summary="New character" -F "text=<$f" https://campaignwiki.org/wiki
+            sleep 1
+        fi
+    done

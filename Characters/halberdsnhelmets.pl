@@ -2009,6 +2009,19 @@ sub translation {
   }
 }
 
+sub text {
+  my $str = T('Character:') . "\n";
+  my $rows;
+  for my $key (@provided) {
+    for my $val (split(/\\\\/, $char{$key})) {
+      # utf8::decode($val);
+      $str .= "$key: $val\n";
+      $rows++;
+    }
+  }
+  return $str;
+}
+
 sub show_link {
   header();
   print $q->h2(T('Bookmark'));
@@ -2019,18 +2032,9 @@ sub show_link {
   print $q->p(T('Use the following form to make changes to your character sheet.'),
 	      T('You can also copy and paste it on to a %0 page to generate an inline character sheet.',
 		$q->a({-href=>"https://campaignwiki.org/"}, "Campaign Wiki")));
-  my $str = T('Character:') . "\n";
-  my $rows;
-  for my $key (@provided) {
-    for my $val (split(/\\\\/, $char{$key})) {
-      # utf8::decode($val);
-      $str .= "$key: $val\n";
-      $rows++;
-    }
-  }
   print $q->start_form(-method=>"get", -action=>"$url/redirect/$lang", -accept_charset=>"UTF-8");
   print $q->textarea(-name    => "input",
-		     -default => $str,
+		     -default => text(),
 		     -rows    => $rows + 3,
 		     -columns => 55,
 		     -style   => "width: 100%", );
@@ -2250,7 +2254,12 @@ sub main {
   } elsif ($q->path_info =~ m!/random\b!) {
     random_parameters();
     compute_data();
-    svg_write(svg_transform(svg_read()));
+    if ($q->path_info =~ m!/text\b!) {
+      binmode(STDOUT, ":utf8");
+      print text();
+    } else {
+      svg_write(svg_transform(svg_read()));
+    }
   } elsif ($q->path_info =~ m!/characters\b!) {
     characters();
   } elsif ($q->path_info =~ m!/translation\b!) {
