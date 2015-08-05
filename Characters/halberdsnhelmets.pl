@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Copyright (C) 2012-2014  Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2012-2015  Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -32,6 +32,7 @@ my ($lang) = $q->path_info =~ m!/(en|de)\b!;
 $lang = "en" unless $lang;
 my $filename = $char{charsheet} || T('Charactersheet.svg');
 our $url ||= "https://campaignwiki.org/halberdsnhelmets";
+our $pics ||= "https://campaignwiki.org/"; # contains "women" and "men" dirs
 my $email = "kensanata\@gmail.com";
 my $author = "Alex Schroeder";
 my $contact = "https://alexschroeder.ch/wiki/Contact";
@@ -457,7 +458,9 @@ sub acks {
   acks_saves();
 }
 
+# This function is called when preparing data for display in SVG.
 sub compute_data {
+  provide("portrait", portrait()) unless $char{portrait};
   if (not exists $char{rules} or not defined $char{rules}) {
     moldvay();
   } elsif ($char{rules} eq "pendragon") {
@@ -2062,6 +2065,22 @@ sub traits {
     $description .= " " . T('and') . " " . $other;
   }
   return $description;
+}
+
+sub portrait {
+  my $gender = $names{$char{name}};
+  my $dir = '';
+  if ($gender eq "F") {
+    $dir = 'women';
+  } elsif ($gender eq "M") {
+    $dir = 'men';
+  } else {
+    $dir = one('women', 'men');
+  }
+  opendir(my $dh, $dir) || die "can't opendir $dir: $!";
+  my @jpgs = grep { /\.jpg$/ } readdir($dh);
+  closedir $dh;
+  return "$pics/$dir/" . one(@jpgs);
 }
 
 sub characters {
