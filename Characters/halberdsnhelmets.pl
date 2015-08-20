@@ -460,7 +460,6 @@ sub acks {
 
 # This function is called when preparing data for display in SVG.
 sub compute_data {
-  provide("portrait", portrait()) unless $char{portrait};
   if (not exists $char{rules} or not defined $char{rules}) {
     moldvay();
   } elsif ($char{rules} eq "pendragon") {
@@ -1257,6 +1256,11 @@ sub random_parameters {
     random_acks();
   } else {
     error(T('Unknown Rules'), T('%0 is unknown.', $char{rules}));
+  }
+
+  # choose a random portrait based on the character name
+  if (grep { $_ eq 'portrait' } @_) {
+    provide("portrait", portrait()) unless $char{portrait};
   }
 }
 
@@ -2418,7 +2422,7 @@ sub main {
   } elsif ($q->path_info =~ m!/show\b!) {
     svg_write(svg_show_id(svg_read()));
   } elsif ($q->path_info =~ m!/random\b!) {
-    random_parameters();
+    random_parameters('portrait');
     compute_data();
     if ($q->path_info =~ m!/text\b!) {
       binmode(STDOUT, ":utf8");
