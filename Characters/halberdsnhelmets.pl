@@ -21,6 +21,8 @@ use List::Util qw(shuffle);
 use POSIX qw(floor ceil);
 use utf8;
 use strict;
+use warnings;
+no warnings qw(uninitialized numeric);
 
 # see __DATA__ at the end of the file
 my %Translation = map { chop($_); $_; } <DATA>;
