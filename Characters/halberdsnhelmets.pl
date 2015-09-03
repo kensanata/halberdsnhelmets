@@ -20,14 +20,15 @@ use LWP::UserAgent;
 use List::Util qw(shuffle);
 use POSIX qw(floor ceil);
 use utf8;
+use strict;
 
 # see __DATA__ at the end of the file
 my %Translation = map { chop($_); $_; } <DATA>;
 
 # globals
 my $q = new CGI;
-my %char = ($q->Vars);
-my @provided = $q->param;
+my %char;
+my @provided;
 my ($lang) = $q->path_info =~ m!/(en|de)\b!;
 $lang = "en" unless $lang;
 my $filename = $char{charsheet} || T('Charactersheet.svg');
@@ -156,7 +157,7 @@ sub replace_text {
   $tspan->setAttribute("y", $node->getAttribute("y"));
 
   while (my $line = shift(@line)) {
-    $fragment = $parser->parse_balanced_chunk(T($line));
+    my $fragment = $parser->parse_balanced_chunk(T($line));
     foreach my $child ($fragment->childNodes) {
       my $tag = $child->nodeName;
       if ($tag eq "strong" or $tag eq "b") {
@@ -1278,7 +1279,7 @@ sub proficiencies {
       'Arcane Dabbling' => 0,
       'Blind Fighting' => 0,
       'Bribery' => +1,
-      'Cat Burglary' => climbing +1,
+      'Cat Burglary' => +1,
       'Climbing' => +1,
       'Combat Refexes' => 0,
       'Combat Trickery (Disarm)' => 0,
@@ -2139,8 +2140,8 @@ sub stats {
       $property{$_}++;
     }
   }
-  my $n;
 
+  $n = 0;
   print "Classes\n";
   foreach (sort { $class{$b} <=> $class{$a} } keys %class) {
     printf "%25s %4d\n", $_, $class{$_};
@@ -2190,7 +2191,7 @@ sub text {
       $rows++;
     }
   }
-  return $str;
+  return wantarray ? ($str, $rows) : $str;
 }
 
 sub show_link {
@@ -2204,8 +2205,9 @@ sub show_link {
 	      T('You can also copy and paste it on to a %0 page to generate an inline character sheet.',
 		$q->a({-href=>"https://campaignwiki.org/"}, "Campaign Wiki")));
   print $q->start_form(-method=>"get", -action=>"$url/redirect/$lang", -accept_charset=>"UTF-8");
+  my ($str, $rows) = text();
   print $q->textarea(-name    => "input",
-		     -default => text(),
+		     -default => $str,
 		     -rows    => $rows + 3,
 		     -columns => 55,
 		     -style   => "width: 100%", );
@@ -2416,7 +2418,17 @@ sub redirect {
   print $q->redirect("$url/$lang?" . join(";", @param));
 }
 
+sub init {
+  # halberdsnhelmets/random?name= means name is defined but false (ie. not provided)
+  my $params = $q->Vars;
+  while (my ($key, $value) = each (%$params)) {
+    $char{$key} = $value if $value;
+  }
+  @provided = keys %char;
+}
+
 sub main {
+  init();
   if ($q->path_info eq "/source") {
     print "Content-type: text/plain; charset=UTF-8\r\n\r\n",
       source();
