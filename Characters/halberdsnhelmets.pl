@@ -33,7 +33,6 @@ my %char;
 my @provided;
 my ($lang) = $q->path_info =~ m!/(en|de)\b!;
 $lang = "en" unless $lang;
-my $filename = $char{charsheet} || T('Charactersheet.svg');
 our $url ||= "https://campaignwiki.org/halberdsnhelmets";
 our $pics ||= "https://campaignwiki.org/"; # contains "women" and "men" dirs
 my $email = "kensanata\@gmail.com";
@@ -41,6 +40,7 @@ my $author = "Alex Schroeder";
 my $contact = "https://alexschroeder.ch/wiki/Contact";
 my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
 my $alternative = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg";
+my $default_filename = T('Charactersheet.svg');
 my $parser;
 
 sub T {
@@ -109,6 +109,7 @@ sub error {
 }
 
 sub svg_read {
+  my $filename = $char{charsheet} || $default_filename;
   my $doc;
   my $parser = XML::LibXML->new();
   if (-f $filename) {
