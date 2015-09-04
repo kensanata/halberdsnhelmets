@@ -159,7 +159,7 @@ sub replace_text {
   $tspan->setAttribute("y", $node->getAttribute("y"));
 
   while (@line) {
-    my $line = shift(@line); # cannot have this in while cond because of '0'
+    my $line = shift(@line); # cannot have this in while cond because of "0"
     my $fragment = $parser->parse_balanced_chunk(T($line));
     foreach my $child ($fragment->childNodes) {
       my $tag = $child->nodeName;
@@ -1264,7 +1264,7 @@ sub random_parameters {
   }
 
   # choose a random portrait based on the character name
-  if (grep { $_ eq 'portrait' } @_) {
+  if (grep { $_ eq "portrait" } @_) {
     provide("portrait", portrait()) unless $char{portrait};
   }
 }
@@ -1388,13 +1388,13 @@ sub proficiencies {
   push(@result, one(@proficiencies));
   my $proficiency;
   my $m = 1;
-  $m += $char{'int-bonus'} if $char{'int-bonus'} > 0;
+  $m += $char{"int-bonus"} if $char{"int-bonus"} > 0;
   for (my $i = 0; $i < $m; $i++) {
     $proficiency = one(@general);
     # do { $proficiency = one(@general) } until not member($proficiency, @result);
     push(@result, $proficiency);
   }
-  return join(', ', map { T($_) } @result);
+  return join(", ", map { T($_) } @result);
 }
 
 sub distribution {
@@ -2080,11 +2080,11 @@ sub portrait {
   my $gender = $names{$char{name}};
   my $dir = '';
   if ($gender eq "F") {
-    $dir = 'women';
+    $dir = "women";
   } elsif ($gender eq "M") {
-    $dir = 'men';
+    $dir = "men";
   } else {
-    $dir = one('women', 'men');
+    $dir = one("women", "men");
   }
   opendir(my $dh, $dir) || die "can't opendir $dir: $!";
   my @jpgs = grep { /\.jpg$/ } readdir($dh);
@@ -2438,7 +2438,7 @@ sub main {
   } elsif ($q->path_info =~ m!/show\b!) {
     svg_write(svg_show_id(svg_read()));
   } elsif ($q->path_info =~ m!/random\b!) {
-    random_parameters('portrait');
+    random_parameters("portrait");
     compute_data();
     if ($q->path_info =~ m!/text\b!) {
       binmode(STDOUT, ":utf8");
@@ -2474,12 +2474,12 @@ main();
 __DATA__
 %0 gold
 %0 Gold
+%0 is unknown.
+%0 ist unbekannt.
 %0 silver
 %0 Silber
 %0: How much does this cost?
 %0: Wieviel kostet das?
-(starting gold: %0)
-(Startgold: %0)
 +1 bonus to ranged weapons
 +1 für Fernwaffen
 +4 to hit and double damage backstabbing
@@ -2498,30 +2498,58 @@ __DATA__
 5/6 für Verstecken und Schleichen im Freien
 AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
+Acrobatics
+Akrobatik
 Adventure Conqueror King
 Adventure Conqueror King
 Adventure Conqueror King character
 Adventure Conqueror King Charakter
+Adventuring
+Abenteurer
+Alchemy
+Alchemie
+Alertness
+Aufmerksamkeit
 Also note that the parameters need to be UTF-8 encoded.
 Die Parameter müssen UTF-8 codiert sein.
+Animal Husbandry
+Tierpflege
+Animal Training (Dog)
+Tiertrainer (Hunde)
+Arcane Dabbling
+Hexereien
 Arcanist
 Arkanist
 Arcanist-Avenger
 Arkaner Rächer
 Arcanist-Guardian
 Arkaner Wächter
+Art
+Kunst
 As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.
 Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste etwas unterscheidet, kann man auch %0, %1 oder %2 mit Labyrinth Lord Regeln generieren.
+Bargaining
+Handeln
 Basic D&amp;D
 Basic D&amp;D
+Beast Friendship
+Tierfreundschaft
 Blade-Initiate
 Klingenkenner
+Blind Fighting
+Blind Kämpfen
 Bookmark
 Lesezeichen
 Bookmark the following link to your %0.
 Den Charakter kann man einfach aufbewahren, in dem man sich das %0 als Lesezeichen speichert.
+Bribery
+Bestechung
+Cat Burglary
+Einbruch
 Catechist
 Katechet
+Caving
+Höhlenwandern
 Character Sheet
 Charakterblatt
 Character Sheet Generator
@@ -2530,22 +2558,50 @@ Character:
 Charakter:
 Charactersheet.svg
 Charakterblatt.svg
+Climbing
+Klettern
+Collegiate Wizardry
+Zauberkollegium
+Combat Refexes
+Kampfreflexe
+Combat Trickery (Disarm)
+Austricksen (Entwaffnen)
+Combat Trickery (Incapacitate)
+Austricksen (Überwältigen)
+Contortionism
+Kontorsion
+Craft
+Handwerk
 Crypts &amp; Things
 Crypts &amp; Things
 Crypts &amp; Things character
 Crypts &amp; Things Charakter
+Diplomacy
+Diplomatie
+Disguise
+Verkleiden
 Dwarven Craft-Catechist
 Zwergischer Werk-Katechet
 ESP
 Gedankenlesen
+Eavesdropping
+Lauschen
 Edit
 Bearbeiten
+Endurance
+Ausdauer
+Engineering
+Technik
 English
 Englisch
+Fighting Style
+Kampfstil
 First level spells:
 Sprüche der ersten Stufe:
 Footpad
 Strassenräuber
+Gambling
+Glücksspiel
 German
 Deutsch
 Get started with a %0.
@@ -2554,30 +2610,84 @@ Get started with an %0.
 %0 bearbeiten.
 Halberds and Helmets
 Hellebarden und Helme
+Healing
+Heilung
 Help
 Hilfe
 If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
 Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch doppelte Backslashes trennen.
 In addition to that, some parameters are computed unless provided:
 Zudem werden einige Parameter berechnet, sofern sie nicht angegeben wurden:
+Intimidation
+Einschüchterung
+Knowledge
+Wissen
+Labor
+Arbeit
+Language
+Sprache
+Leadership
+Anführer
+Lip Reading
+Lippenlesen
 Man-at-Arms
 Landsknecht
+Manual of Arms
+Fechtbuch
+Mapping
+Kartographie
+Military Strategy
+Strategie
+Mimicry
+Mimikry
 Name:
 Name:
+Naturalism
+Naturfreund
+Navigation
+Navigation
 Pendragon
 Pendragon
 Pendragon character
 Pendragon Charakter
+Performance
+Auftritt
+Precise Shooting
+Scharfschütze
+Profession
+Beruf
 Reciter
 Rezitierer
+Riding
+Reiten
+Running
+Rennen
 Scout
 Späher
+Seafaring
+Seefahrt
+Seduction
+Verführung
 Sentry
 Wächter
+Siege Engineering
+Belagerung
+Signaling
+Signalisieren
+Skirmishing
+Plänkeln
+Skulking
+Schleichen
+Sniping
+Scharfschütze
 Source
 Quellcode
 Spells:
 Zaubersprüche:
+Survival
+Überleben
+Swashbuckling
+Draufgängertum
 The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
 Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 The default template (%0) uses the %1 font.
@@ -2594,14 +2704,28 @@ The script can also generate a %0, a %1, or %2.
 Das Skript kann auch %0, %1 oder %2 generieren.
 The script can also show %0.
 Das Skript kann auch zeigen %0.
+Theology
+Theologie
 This is the %0 character sheet generator.
 Dies ist der %0 Charaktergenerator.
 Thug
 Schläger
+Tracking
+Spurenlesen
+Trap Finding
+Fallenfinden
+Trapping
+Fallenstellen
 Unknown Price
 Unbekannter Preis
+Unknown Rules
+Unbekannte Regeln
 Use the following form to make changes to your character sheet.
 Mit dem folgenden Formular lassen sich leicht Änderungen am Charakter machen.
+Weapon Finesse
+Waffenfinesse
+Weapon Focus
+Waffenfokus
 You can also copy and paste it on to a %0 page to generate an inline character sheet.
 Man kann diesen Text auch auf einer %0 Seite verwenden, um das Charakterblatt einzufügen.
 You provide values for the placeholders by providing URL parameters (%0).
@@ -2616,6 +2740,8 @@ assassin
 Assassine
 backpack
 Rucksack
+barbarian
+Barbar
 bard
 Barde
 battle axe
@@ -2660,6 +2786,8 @@ elderly woman
 ältere Frau
 elf
 Elf
+elven bladedancer
+Elfischer Klingentänzer
 elven nightblade
 Elfische Nachtklinge
 elven spellsword
