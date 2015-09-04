@@ -1,5 +1,4 @@
 use Test::More tests => 1;
-use XML::LibXML;
 use utf8;
 
 # Test::More explains how to fix wide character in print issues
@@ -19,4 +18,3 @@ for my $english (keys %translations) {
   }
 }
 ok($empty == 0, "No missing German translations.");
-
