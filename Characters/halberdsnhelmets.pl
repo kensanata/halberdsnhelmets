@@ -158,7 +158,8 @@ sub replace_text {
   $tspan->setAttribute("x", $node->getAttribute("x"));
   $tspan->setAttribute("y", $node->getAttribute("y"));
 
-  while (my $line = shift(@line)) {
+  while (@line) {
+    my $line = shift(@line); # cannot have this in while cond because of '0'
     my $fragment = $parser->parse_balanced_chunk(T($line));
     foreach my $child ($fragment->childNodes) {
       my $tag = $child->nodeName;
@@ -2424,7 +2425,7 @@ sub init {
   # halberdsnhelmets/random?name= means name is defined but false (ie. not provided)
   my $params = $q->Vars;
   while (my ($key, $value) = each (%$params)) {
-    $char{$key} = $value if $value;
+    $char{$key} = $value if $value ne '';
   }
   @provided = keys %char;
 }
