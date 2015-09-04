@@ -160,6 +160,7 @@ sub replace_text {
 
   while (@line) {
     my $line = shift(@line); # cannot have this in while cond because of "0"
+    next if $line eq ''; # cannot parse empty strings
     my $fragment = $parser->parse_balanced_chunk(T($line));
     foreach my $child ($fragment->childNodes) {
       my $tag = $child->nodeName;
@@ -212,7 +213,7 @@ sub svg_transform {
     next unless $id =~ /^[-a-z0-9]+$/;
     my $nodes = $svg->find(qq{//svg:text[\@id="$id"]}, $doc);
     for my $node ($nodes->get_nodelist) {
-      replace_text($node, $char{$id}, $doc) if $char{$id};
+      replace_text($node, $char{$id}, $doc);
       next;
     }
     $nodes = $svg->find(qq{//svg:image[\@id="$id"]}, $doc);
