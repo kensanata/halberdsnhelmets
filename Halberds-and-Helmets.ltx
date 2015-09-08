@@ -1,5 +1,7 @@
 \documentclass[a4paper,twoside,notitlepage,openany]{tufte-book}
 \usepackage[utf8]{inputenc}
+
+% \usepackage{showkeys}% debugging \keys
 % \usepackage{multirow}
 
 %\geometry{showframe}% for debugging purposes -- displays the margins
@@ -171,8 +173,9 @@ Score & Bonus \\
 \end{tabular}
 }
 
-\key{Strength} allows you to hit harder. Add the bonus to your to-hit
-rolls and to your damage rolls when using \emph{melee weapons}.
+\key{Strength} allows you to carry more and to hit harder. Add the
+bonus to your to-hit rolls and to your damage rolls when using
+\emph{melee weapons}.
 
 \key{Dexterity} allows you to aim better and to better avoid attacks.
 Add the bonus to your to-hit roll when using \emph{ranged weapons}
@@ -755,7 +758,7 @@ Spear & 3 & can be thrown \\
   \index{Chain} Chain & 5 & 40 & no sneaking and no swimming \\
   \index{Plate} Plate & 3 & 60 & no sneaking and no swimming \\
   \index{Shield} Shield & -1 & 10 & can be sacrificed in order to evade an attack \\
-  \index{Helmet} Helmet  & -- & 10 & helps against \hyperref[key:Death]{death and dismemberment} \\
+  \index{Helmet} Helmet  & -- & 10 & helps against \hyperref[key:death]{death and dismemberment} \\
 \end{tabular}
 \end{minipage}
 \begin{minipage}[t]{0.47\linewidth}
@@ -897,7 +900,7 @@ attract 1d6 \hyperref[sec:candidates]{candidates}.
   \end{tabular}
 
   \bigskip\noindent Magic users and elves will have a spell book with
-  a random spell:
+  a random \hyperref[sec:spells]{spell}:
 
   \medskip
   \begin{tabular}{cl}
@@ -1079,8 +1082,8 @@ any saving throws granted. Saving throws depend on your level. To make
 it, roll a d20 and add your wisdom bonus. You must get number
 indicated or higher.
 
-\key{Circle}: As casters gain levels, the get access to more and more
-powerful spells and miracles per day.
+\key{Circle}: As casters gain levels, they get access to higher spell
+circles -- more powerful spells and miracles:
 
 \medskip
 \begin{tabular}{lcccccccccc}
@@ -1172,7 +1175,7 @@ The big table of d6:
 \begin{tabular}{lc}
 Skill & 1d6 \\
 Default & 1 \\
-\index{Doors}Kick in doors & 1--2 \\
+\index{Doors}Kick in doors, add your strength bonus & 1--2 \\
 \index{Traps}Trigger, evade or disarm traps & 1--2 \\
 \index{Dwarf!Skills}Dwarfs are better at finding secret constructions & 1--2 \\
 Dwarves are better at finding traps & 1--2 \\
@@ -1181,9 +1184,9 @@ Elves are better at finding secret and concealed doors & 1--2 \\
 \index{Halflings!Skills}Halflings are better at hiding and sneaking & 1--2 \\
 Halflings are even better at hiding and sneaking outdoors & 1--5 \\
 \index{Thieves!Skills}Thieves are better at everything & 1--2 \\
-Thieves from 3rd level onwards & 1--3 \\
-Thieves from 6th level onwards & 1--4 \\
-Thieves from 9th level onwards & 1--5 \\
+Thieves from 3\rd level onwards & 1--3 \\
+Thieves from 6\th level onwards & 1--4 \\
+Thieves from 9\th level onwards & 1--5 \\
 \end{tabular}
 
 \marginnote{Thieves improve over time. They'll be faster at opening
@@ -1305,21 +1308,22 @@ beating a character can take. Once it falls to \index{Hit
   Points!zero}zero, and whenever you're hit thereafter, you'll have to
 roll on the table of \emph{Death \& Dismemberment}.
 
-\marginnote[1cm]{\emph{Resurrection} is a miracle of the 7th circle
+\marginnote[1cm]{\key{Resurrection} is a miracle of the 7\th circle
   and requires a level~13 cleric. So long as some small portion of the
   body still exists and you haven't been dead for more more than a
   hundred years, you can be raised from the dead, fully healed.
 
-  \emph{Regeneration} is also a miracle of the 7th circle and requires
+  \key{Regeneration} is also a miracle of the 7\th circle and requires
   a level~13 cleric. This miracle will regrow missing limbs and mend
-  broken bones.
+  broken bones. It's less taxing on the cleric than
+  \emph{Resurrection}.
 
-  \emph{Raise Dead} is a miracle of the 5th circle and requires a
+  \key{Raise Dead} is a miracle of the 5\th circle and requires a
   level~9 cleric. This miracle will not regrow missing limbs or broken
   bones. It simply restores you to life if you died due to hit point
   loss.
 
-  \emph{Cure Serious Wounds} is a miracle of the 4th circle and
+  \key{Cure Serious Wounds} is a miracle of the 4\th circle and
   requires a level~7 cleric.
 
   The Death \& Dismemberment table was adapted from a
@@ -1327,8 +1331,10 @@ roll on the table of \emph{Death \& Dismemberment}.
     post} by Trollsmyth.
 }
 
+% Note: \key doesn't produce labels inside table or tabular!
+\label{key:death}
 \begin{table}
-\begin{tabular}{cp{9.8cm}}
+\begin{tabular}{cp{9.1cm}}
 2W6 & Result \\
 
 2 & \key[Death]{Instant Death}: Decapitated or other grievous wound \\
@@ -1350,7 +1356,7 @@ miracle \emph{Cure Serious Wounds} \\
 7, 8 & \key{Unconscious}: knocked out and helpless for 2d6 rounds
 unless wearing a helmet; with a helmet, stunned for a round \\
 
-9 & \key{Stunned}: unable to act for a round; with a helmet, only
+9 & \textbf{Stunned}: unable to act for a round; with a helmet, only
 knocked down \\
 
 10 & \key{Knocked Down}: knocked down \\
@@ -1362,9 +1368,10 @@ levels you have (round up); after the fight you'll collapse with zero
 hit points and faint for 2d6 rounds \\
 \end{tabular}
 \end{table}
+\bigskip
 
-\bigskip\noindent\key{Conditions}: The \emph{Death \& Dismemberment}
-table imposes various conditions:
+\key{Conditions}: The \emph{Death \& Dismemberment} table imposes
+various conditions:
 
 \textbf{Arm Lost or Broken}: You can retrain your sword hand, no
 problem. You'll need a hand to cast spells.\marginnote{ If you loose
@@ -1377,7 +1384,7 @@ wooden leg. You'll never run using a wooden leg.\marginnote{If you
   loose both legs, you'll need to find somebody to carry you or
   magical means of movement.}
 
-\textbf{Broken Rip}: No sudden moves with a broken rip or you'll
+\textbf{Rip Broken}: No sudden moves with a broken rip or you'll
 pierce your lung!
 
 \key{Helpless}: you can be killed without requiring a roll to hit.
@@ -1395,97 +1402,117 @@ getting up prevents you from moving in the same round.
 \section{\index{Movement}Movement}
 \label{sec:movement}
 
-\key{Movement Rate}: Menschen und ähnliche Kreaturen haben eine
-Bewegungsrate (BW) von 12 -- das entspricht \unit[120]{ft} pro Runde
-(10s) beim \emph{Rennen} oder \emph{Kämpfen}.
-\marginnote[-1em]{Typische Bewegungsraten anderer Wesen: Zwerg 6,
-  Halbling 9, Elf 12, Riesenwiesel 15, Wolf 18, Panther 21,
-  galoppierendes Reitpferd 24, fliegender Hippogryph 36, fliegender
-  Pegasus 48.}
+\key{Movement Rate}: Humans and similar creates have a movement rate
+(\key{MV}) of 12 -- that's \unit[120]{ft} per round (\unit[10]{s})
+when \emph{running} or \emph{fighting}. \marginnote[-1em]{Typical
+  movement rates of other creatures: dwarf 6, halfling 9, elf 12,
+  giant weasel 15, dog or wolf 18, panther 21, galloping horse 24,
+  flying hippogryph 36, flying pegasus 48.}
 
-Das langsame und vorsichtige Vorgehen in der Unterwelt verlangsamt die
-Bewegung dramatisch. BW~12 entspricht nun \unit[120]{ft} pro
-\unit[10]{min}. Nur so bleibt Zeit, um beispielsweise eine Karte zu
-zeichnen.
+Proceeding slowly and methodically in the underworld slows you down
+dramatically. MV~12 is only \unit[120]{ft} per turn (\unit[10]{min}).
+That's the only way to have a fair chance of drawing maps and avoiding
+traps.
 
-\key{Tragkraft}: Man kann so viele Gegenstände tragen, wie man
-\emph{Stärke} hat.\marginnote{Gegenstände sind zum Beispiel eine
-  Rüstung, eine Waffe, ein Buch, einen Trank, eine Fackel, einen
-  Köcher, einen Stab, eine Schriftrolle. Der Einfachheit halber wird
-  kein Unteschied zwischen leichten und schweren Gegenständen gemacht.
-  Kleider, Säcke oder Rucksäcke werden nicht gezählt.} Trägt man mehr,
-so gibt jeder weitere Gegenstand -1 auf Angriff und Rettungswürfe.
+\key{Carrying Capacity}: You can carry as many significant items as
+your \emph{strength}.\marginnote{Typical items: armor, a weapon, a
+  book, a potion, a torch, a quiver, a scroll. There's no difference
+  between light and heavy items. Clothing, bags or backpacks don't
+  count.} If you care more, each extra item adds -1 to hit and to
+saving throws.
 
-\key{Kleinkram}: Je hundert kleine Dinge wie Goldmünzen, Edelsteine,
-Ringe oder Anhänger zählen als ein Gegenstand.
+\key{Stuff}: It takes a lot of small things to count as an item: a
+hundred gold coins, gems, rings, amulets and the like count as a
+single item.
 
-\section{Ruf}
-\label{sec:ruf}
+\section{Reputation}
+\label{sec:reputation}
 
-\key{Ruf}: Überall kann Ruhm und Ehre gewonnen werden.\marginnote{Der
-  Spielleiter führt eine Liste der Götter, Städte und
-  Interessengruppen, für die der Ruf jeweils geführt wird.} Selbst die
-\index{Goetter@Götter!Ruf}Götter zeigen ein Interesse an den Taten der
-Sterblichen. Der Ruf kann gut oder schlecht sein. Die Götter
-interessieren sich auch für die Frevler!\marginnote{Je höher der Ruf,
-  desto schwieriger wird es, diesen noch weiter zu steigern.}
-Normalerweise ändert sich der Ruf um höchstens ±1 pro Spielabend.
+\key{Reputation}: Fame and honor can be earned everywhere. Even the
+\index{Gods!Reputation}gods are interested in the deeds of mortals.
+Reputation is tracked separately for all the gods, towns and
+factions.\marginnote{The referee maintains a list of gods, towns and
+  factions and the respective reputation for each character.} The
+higher your reputation, the harder it is to increase it. In order to
+gain reputation, roll higher than your current reputation. The
+starting reputation is 0. Thus, the first time reputation increases,
+no roll is required.Reputation can be good or bad. The gods take an
+interest in blasphemers, too!\marginnote{The higher your reputation,
+  the harder it will be to increase.} Usually, reputation will not
+change for more than ±1 per session.
 
 \begin{marginfigure}[1cm]
   \centering
   \includegraphics[height=4cm]{Seusenhofer.jpg}
 \end{marginfigure}
 
-\begin{description}
-\item[bis 4] Religiöse Gegenstände Dinge finden, zurück
-  bringen, Tiere retten oder opfern, Altäre weihen oder entweihen
+Roll an appropriate die depending on the deeds you have done:
 
-\item[bis 6] Menschenleben retten oder opfern, Tempel weihen
-  oder entweihen
+\medskip
+\begin{tabular}{cp{9.8cm}}
+  Roll & Deeds \\
+  
+  d4 & Finding and returning or stealing and destroying items of
+  religious significance; saving or sacrificing animals; dedicating or
+  desecrating altars and shrines \\
 
-\item[bis 8] Siedlungen und Gemeinschaften retten oder
-  opfern, einen Kult gründen oder eine Häresie ausmerzen
+  d6 & Saving or sacrificing humans, dedicating or desecrating temples
+  \\
 
-\item[bis 10] Völker und Stämme bekehren, retten oder opfern
+  d8 & rescuing or sacrifice villages and whole communities, found
+  cults or eradicate heresies \\
 
-\item[über 10] Taten im Auftrag der Götter
-\end{description}
+  d10 & convert, save or sacrifice nations and entire tribes \\
 
-\medskip\noindent\key{Hilfe}: Für Städte und Interessengruppen bestimmt
-der Ruf auch ihre Hilfsbereitschaft. Würfelt man mit 2W6 über diesen
-Wert, gibt es keine Unterstützung von der Gemeinschaft.
+  d12 & render a service to the gods \\
+\end{tabular}
+\medskip
 
-\key[Intervention]{Eingreifen der Götter}: Der Ruf gilt in der Not
-auch als Prozent Chance für eine göttliche Intervention.
-\marginnote{Eine göttliche Intervention könnte beispielsweise das
-  Erscheinen eines Engels, eines Teufels oder eines Dämons sein.}
+\key{Help}: The help of towns and factions may depend on your
+reputation. Roll 2d6 and compare it to your reputation. If you rolled
+\emph{higher}, help is not forthcoming.
 
-\textbf{Wunder}: Für Kleriker gilt, dass der Ruf auch den Zirkel der
-ihm gewährten Wunder begrenzt. Für das erste Abenteuer eines Klerikers
-gibt es entsprechend noch keine Wunder zu wirken, da ein Kleriker noch
-keinen Ruf hat.
+\key[Intervention]{Intervention}: In an emergency, reputation also
+acts as the percentage chance for divine intervention.\marginnote{A
+  divine intervention could mean the appearance of an angel, a devil,
+  demon, a naga, or the like.}
+
+\key[Miracles!Reputation]{Miracles}: Reputation also limits the circle
+of miracles available to clerics. Thus, a cleric cannot work any
+miracles on their first adventure since they are lacking an
+appropriate reputation. You need to gain a reputation of 1 in order to
+work miracles of the first circle.
 
 \clearpage
 
 
 
-\section{\index{Zaubersprüche}Zaubersprüche der Magier und Elfen}
-\label{sec:zaubersprüche}
+\section{\index{Spells}Spells of Magic Users and Elves}
+\label{sec:spells}
 
-Als Magier oder Elf beginnst du deine Karriere mit genau \emph{einem}
-Zauberspruch. Dieser Zauberspruch steht in deinem Zauberbuch. Wenn du
-eine Stufe steigst, kannst du von anderen Elfen oder Magiern neue
-Zaubersprüche lernen. \marginnote{Da man neue Zaubersprüche nur von
-  einer anderen Person lernen kann, bleiben viele Magier und Elfen in
-  engem Kontakt mit ihren Lehreren, Gilden und Schulen. Der
-  Spielleiter sollte mindestens eine solche Quelle neuer Sprüche für
-  dich ausgearbeitet haben, so dass Du weisst, worauf du dich freuen
-  kannst.}
+Magic users and elves begin their career with exactly \emph{one} spell
+in their spell book. When you gain a level, you can learn one or more
+new spells from your peers. The referee will have at least one source
+of new spells prepared.\marginnote{Magic users and elves will often
+  stay close to their former master and keep learning new spells from
+  them, often in exchange for services rendered. This is why many low
+  level casters will simply have a subset of their master's spell
+  book.
+  
+  An alternative to that is \key{Research}. This requires a starting
+  point such as an existing a scroll, spell book or magic item, and a
+  library of further books about the origins of magic, related spells,
+  history and lore, and so on. The magic user or elf must have
+  attained level~9 and spend 1,000 gold and two weeks per spell level
+  researching (no adventuring).
 
-\key[Repertoire!Magier und Elfen]{Repertoire}: Die Liste der Sprüche
-in deinem Zauberbuch bildet dein Repertoire. Wenn du zauberst, wählst
-du einen Zauberspruch aus deinem Repertoire. Dein Repertoire wird von
-deiner Stufe bestimmt:
+  \bigskip The table determines both the number of spells you can cast
+  \emph{per day} and the number of spells \emph{in your repertoire}.}
+
+\key[Repertoire!Magic Users and Elves]{Repertoire}: The list of spells
+in your spell book make up your repertoire. When casting a spell,
+choose a spell from your repertoire. The size of your repertoire is
+determined by your level:
 
 \medskip
 \begin{tabular}{cccccc}
@@ -1501,53 +1528,53 @@ Level & 1\st circle & 2\nd circle & 3\rd circle & 4\th circle & 5\th circle \\
 9 & 3 & 3 & 3 & 2 & 1 \\
 10 & 3 & 3 & 3 & 3 & 2 \\
 \end{tabular}
-\marginnote{Die Tabelle bestimmt sowohl die Anzahl Zaubersprüche, die
-  du pro Tag zaubern kannst, als auch die Anzahl Zaubersprüche in
-  deinem Repertoire.}
 
-\newthought{Auf der ersten Stufe} startest du mit einem Spruch aus dem
-Buch deines Meisters. Typische Sprüche für
-\hyperref[sec:Kandidaten]{Gefolgsleute}:
+\newthought{On 1\st level you start} with a single spell from your
+master's spell book. Typically, \hyperref[sec:candidates]{retainers}
+would have one of the following:
 
-\textbf{Licht} verzaubert einen Gegenstand innerhalb von
-\emph{\unit[120]{ft}} für \emph{\unit[1]{h} + \unit[10]{min/Stufe}},
-so dass er schwach zu leuchten beginnt und eine Kugel von
-\emph{\unit[30]{ft}} Durchmesser beleuchtet.\marginnote{Werden die
-  Augen einer Kreatur verzaubert, so erblindet sie für diese Zeit. In
-  diesem Fall steht dem Opfer ein Rettungswurf gegen Sprüche zu.}
-
-\textbf{Magie entdecken} lässt verzauberte Gegenstände, Kreaturen und
-Orte innerhalb von \emph{\unit[60]{ft}} für \emph{\unit[20]{min}}
-aufleuchten.\marginnote{Dieses Leuchten ist für alle sichtbar.}
-
-\textbf{Magie entziffern} erlaubt es, für \emph{\unit[10]{min}} alle
-magische Runen zu entziffern. So können Zauberbücher, Schriftrollen
-und Inschriften gelesen werden.
-
-\textbf{Magisches Geschoss} trifft innerhalb von
-\emph{\unit[150]{ft}} ein beliebiges Ziel und verursacht 1W6+1
-Schaden. Auf der 5.~Stufe werden es \emph{drei} Geschosse, welche
-unabhängige Ziele treffen können.
-
-\textbf{Person bezaubern} macht \emph{eine} menschenähnliche Kreatur
-zu deinem treuen Freund. Dem Opfer steht ein Rettungswurf gegen
-Sprüche zu.\marginnote[-2cm]{Untote und Riesen sind zwar
-  menschenähnlich aber trotzdem immun gegen Bezauberung. Mit der Zeit
-  stehen dem Opfer weitere Rettungswürfe zu:
+\textbf{Charm Person} turns \emph{one} humanoid creature into a loyal
+friend. The target is granted a saving throw
+vs.~spells.\marginnote{Undead and giants may be humanoid but they're
+  still immune to this charm.} As time passes, more saving throws are
+granted to the target:
 
 \medskip
 \begin{tabular}{cl}
-Bildung & Zeitraum \\
-3--8 & monatlich \\
-9--12 & wöchentlich \\
-13--18 & täglich \\
-\end{tabular}}
+Intelligence & Timeframe \\
+3--8 & monthly \\
+9--12 & weekly \\
+13--18 & daily \\
+\end{tabular}
+\medskip
 
-\textbf{Schlaf} lässt \emph{2W8 Trefferwürfel} von Kreaturen innerhalb
-von \emph{\unit[240]{ft}} für \emph{4W4 $\times$ \unit[10]{min}} in
-einen magischen Schlummer versinken. Keine Kreatur darf mehr als
-4+1~Trefferwürfel haben. Kreaturen mit weniger Trefferwürfel sind
-zuerst betroffen.\marginnote{Es gibt keinen Rettungswurf!}
+\textbf{Detect Magic} makes all enchanted items, creatures and
+locations within \emph{\unit[60]{ft}} shine with a pale blue light for
+\emph{\unit[20]{min}}.\marginnote[-1em]{The pale blue light is visible
+  to all.}
+
+\textbf{Light} enchants one object within \emph{\unit[120]{ft}} for
+\emph{\unit[1]{h} + \unit[10]{min/level}} so that it shines faint
+light with a \emph{\unit[15]{ft}} radius.\marginnote[-2em]{If you target the
+  eyes of a creature, it will go blind for as long as the spell lasts.
+  Blind creatures are at -4 to hit. Targets are granted a saving throw
+  vs.~spells.}
+
+\textbf{Magic Missile} hits any target within \emph{\unit[150]{ft}}
+and causes 1W6+1 damage. At 5\th level, \emph{three} missiles can be
+shot at the same time and they hit different targets.\marginnote{There
+  is no saving throw!}
+
+\textbf{Read Magic} allows you to decipher magical runes for
+\emph{\unit[10]{min}}. This is how to read spell books, scrolls and
+magical inscriptions.
+
+\textbf{Sleep} puts \emph{2W8 hit dice} of creatures within
+\emph{\unit[240]{ft}} to sleep for \emph{4W4 $\times$ \unit[10]{min}}.
+This is a magical slumber. They need to be slapped in order to wake
+them before the spell ends. No creature may have more than 4+1~hit
+dice. Creatures with less hit dice are affected
+first.\marginnote{There is no saving throw!}
 
 \newpage
 
