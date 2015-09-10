@@ -2,3 +2,5 @@ html
 *.orgx
 theindex.inc
 \#*
+*.bbl
+*.blg
