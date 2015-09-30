@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Copyright (C) 2012-2015  Alex Schroeder <alex@gnu.org>
 
@@ -14,30 +14,21 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>.
 
-use CGI qw(-utf8);
+use Mojolicious::Lite;
+use Mojo::UserAgent;
 use XML::LibXML;
-use LWP::UserAgent;
 use List::Util qw(shuffle);
 use POSIX qw(floor ceil);
-use utf8;
-use strict;
-use warnings;
 no warnings qw(uninitialized numeric);
 
-# see __DATA__ at the end of the file
-my %Translation = map { chop($_); $_; } <DATA>;
-
 # globals
-my $q = new CGI;
+my $q;
+my %Translation;
 my %char;
 my @provided;
-my ($lang) = $q->path_info =~ m!/(en|de)\b!;
-$lang = "en" unless $lang;
+my $lang;
 our $url ||= "https://campaignwiki.org/halberdsnhelmets";
-our $pics ||= "https://campaignwiki.org/"; # contains "women" and "men" dirs
-my $email = "kensanata\@gmail.com";
-my $author = "Alex Schroeder";
-my $contact = "https://alexschroeder.ch/wiki/Contact";
+my $email = "";
 my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
 my $alternative = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg";
 my $default_filename = T('Charactersheet.svg');
@@ -80,30 +71,12 @@ sub header {
   }
 }
 
-sub footer {
-  print "<div class=\"footer\">";
-  print $q->hr();
-  print $q->p($q->a({-href=>$contact}, $author),
-	      "<" . $q->a({-href=>"mailto:$email"}, $email) . ">",
-	      $q->br(),
-	      $q->a({-href=>$url . "/$lang"}, 'Character Sheet Generator'),
-	      $q->a({-href=>$url . "/help/$lang"}, T('Help')),
-	      $q->a({-href=>$url . "/source"}, T('Source')),
-	      $q->a({-href=>"https://github.com/kensanata/halberdsnhelmets/tree/master/Characters"},
-		    T("GitHub")),
-	      ($lang eq "en"
-	       ? $q->a({-href=>$url . "/de"}, T('German'))
-	       : $q->a({-href=>$url . "/en"}, T('English'))));
-  print "</div>";
-}
-
 sub error {
   my ($title, $text) = @_;
   print $q->header(-status=>"400 Bad request");
   print $q->start_html($title);
   print $q->h1($title);
   print $q->p($text);
-  footer();
   print $q->end_html;
   exit;
 }
@@ -123,14 +96,6 @@ sub svg_read {
     $doc = $parser->parse_string($response->decoded_content);
   }
   return $doc;
-}
-
-sub svg_write {
-  my $svg = shift;
-  binmode(STDOUT, ":perlio");
-  print $q->header(-type=>"image/svg+xml",
-		   -charset=>"utf-8");
-  print $svg->toString();
 }
 
 sub replace_text {
@@ -2080,19 +2045,14 @@ sub traits {
 
 sub portrait {
   my $gender = $names{$char{name}};
-  my $url = 'https://campaignwiki.org/face/redirect/alex/';
-  if ($gender eq "F") {
-    $url .= "woman";
-  } elsif ($gender eq "M") {
-    $url .= "man";
-  } else {
-    $url .= one("woman", "man");
-  }
-  my $request = HTTP::Request->new(GET => $url);
-  my $ua = LWP::UserAgent->new;
-  my $response = $ua->simple_request($request);
-  return '' unless $response->is_redirect;
-  return $response->header('Location');
+  if ($gender eq "F") { $gender = "woman" }
+  elsif ($gender eq "M") { $gender = "man" }
+  else { $gender = one("woman", "man") }
+  my $url = Mojo::URL->new("https://campaignwiki.org/face/redirect/alex/$gender");
+  my $ua = Mojo::UserAgent->new;
+  my $tx = $ua->get($url);
+  $url->path($tx->res->headers->location);
+  return $url;
 }
 
 sub characters {
@@ -2126,7 +2086,6 @@ sub characters {
     print $q->end_pre();
   }
   print $q->div({-style=>"clear: both;"});
-  footer();
 }
 
 sub stats {
@@ -2219,7 +2178,6 @@ sub show_link {
 		     -style   => "width: 100%", );
   print $q->p($q->submit);
   print $q->end_form;
-  footer();
 }
 
 sub source {
@@ -2238,7 +2196,6 @@ sub default {
 		       -accept_charset=>"UTF-8"),
     T('Name:'), " ", $q->textfield("name"), " ", $q->submit, $q->end_form;
   print $q->p(T('The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.'));
-  footer();
   print $q->end_html;
 }
 
@@ -2394,7 +2351,6 @@ sub help {
   print $q->p(T('The script can also generate a %0, a %1, or %2.',
 		$random, $bunch, $stats));
 
-  footer();
 }
 
 sub url_encode {
@@ -2431,50 +2387,10 @@ sub init {
     $char{$key} = $value if $value ne '';
   }
   @provided = keys %char;
-}
 
-sub main {
-  init();
-  if ($q->path_info eq "/source") {
-    print "Content-type: text/plain; charset=UTF-8\r\n\r\n",
-      source();
-  } elsif ($q->path_info =~ m!/show\b!) {
-    svg_write(svg_show_id(svg_read()));
-  } elsif ($q->path_info =~ m!/random\b!) {
-    random_parameters("portrait");
-    compute_data();
-    if ($q->path_info =~ m!/text\b!) {
-      binmode(STDOUT, ":utf8");
-      print text();
-    } else {
-      svg_write(svg_transform(svg_read()));
-    }
-  } elsif ($q->path_info =~ m!/characters\b!) {
-    characters();
-  } elsif ($q->path_info =~ m!/translation\b!) {
-    translation();
-  } elsif ($q->path_info =~ m!/stats(?:/(\d+))?!) {
-    stats($1 || 10000);
-  } elsif ($q->path_info =~ m!/link\b!) {
-    show_link();
-  } elsif ($q->path_info =~ m!/redirect\b!) {
-    redirect();
-  } elsif ($q->path_info =~ m!/help\b!) {
-    help();
-  } elsif (%char) {
-    compute_data();
-    svg_write(svg_transform(svg_read()));
-  } else {
-    default();
-  }
-}
-
-main();
-
-# strings in sinqle quotes are translated into German if necessary
-# use %0, %1, etc. for parameters
-
-__DATA__
+  # strings in sinqle quotes are translated into German if necessary
+  # use %0, %1, etc. for parameters
+  %Translation = split(/\n/, <<'EOT');
 %0 gold
 %0 Gold
 %0 is unknown.
@@ -2923,3 +2839,108 @@ young man
 junger Mann
 young woman
 junge Frau
+EOT
+}
+
+# sub main {
+#   init();
+#   if ($q->path_info eq "/source") {
+#     print "Content-type: text/plain; charset=UTF-8\r\n\r\n",
+#       source();
+#   } elsif ($q->path_info =~ m!/show\b!) {
+#     svg_write(svg_show_id(svg_read()));
+#   } elsif ($q->path_info =~ m!/random\b!) {
+#     random_parameters("portrait");
+#     compute_data();
+#     if ($q->path_info =~ m!/text\b!) {
+#       binmode(STDOUT, ":utf8");
+#       print text();
+#     } else {
+#       svg_write(svg_transform(svg_read()));
+#     }
+#   } elsif ($q->path_info =~ m!/characters\b!) {
+#     characters();
+#   } elsif ($q->path_info =~ m!/translation\b!) {
+#     translation();
+#   } elsif ($q->path_info =~ m!/stats(?:/(\d+))?!) {
+#     stats($1 || 10000);
+#   } elsif ($q->path_info =~ m!/link\b!) {
+#     show_link();
+#   } elsif ($q->path_info =~ m!/redirect\b!) {
+#     redirect();
+#   } elsif ($q->path_info =~ m!/help\b!) {
+#     help();
+#   } elsif (%char) {
+#     compute_data();
+#     svg_write(svg_transform(svg_read()));
+#   } else {
+#     default();
+#   }
+# }
+
+plugin 'Config' => {default => {}};
+
+get '/' => sub {
+  my $self = shift;
+  $self->redirect_to('main');
+};
+
+get '/halberdsnhelmets' => sub {
+  my $self = shift;
+  $self->render(template => 'index');
+} => 'main';
+
+get '/halberdsnhelmets/random' => sub {
+  my $self = shift;
+  random_parameters("portrait");
+  compute_data();
+  my $svg = svg_transform(svg_read());
+  $self->render(format => 'svg',
+		data => $svg->toString());
+} => 'random';
+
+app->secrets([app->config('secret')]) if app->config('secret');
+
+app->start;
+
+__DATA__
+
+@@ index.html.ep
+% layout 'default';
+% title 'Character Sheet Generator';
+<h1>Character Sheet Generator</h1>
+<p>This is the <i>Halberds and Helmets</i> Character Sheet Generator.
+%= form_for random => begin
+%= label_for name => 'Name:'
+%= text_field 'name'
+%= submit_button
+% end
+<p class="text">
+The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
+
+@@ layouts/default.html.ep
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= title %></title>
+%= stylesheet '/halberdsnhelmets/default.css'
+%= stylesheet begin
+body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
+.text { width: 80ex }
+% end
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+<%= content %>
+<div class="footer">
+<hr>
+<p>
+<a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &lt;<a href="kensanata@gmail.com">kensanata@gmail.com</a>&gt;<br>
+<%= link_to 'Character Sheet Generator' => 'main' %>
+<%= link_to Help => 'help' %>
+<%= link_to Source => 'source' %>
+<a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a>
+<%= link_to German => 'german' %>
+</div>
+</body>
+</html>
