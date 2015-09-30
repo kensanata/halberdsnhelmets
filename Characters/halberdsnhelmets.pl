@@ -27,12 +27,12 @@ my %Translation;
 my %char;
 my @provided;
 my $lang;
-our $url ||= "https://campaignwiki.org/halberdsnhelmets";
-my $email = "";
+my $url = "https://campaignwiki.org/halberdsnhelmets";
+my $pic = "https://campaignwiki.org/face/redirect/alex"; # we'll append man or woman
 my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
 my $alternative = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg";
 my $default_filename = T('Charactersheet.svg');
-my $parser;
+my $parser = XML::LibXML->new();
 
 sub T {
   my ($en, @arg) = @_;
@@ -84,7 +84,6 @@ sub error {
 sub svg_read {
   my $filename = $char{charsheet} || $default_filename;
   my $doc;
-  my $parser = XML::LibXML->new();
   if (-f $filename) {
     open(my $fh, "<:utf8", $filename);
     $doc = $parser->parse_fh($fh);
@@ -117,8 +116,6 @@ sub replace_text {
 
   # delete the tspan nodes of the text node
   $node->removeChildNodes();
-
-  $parser = XML::LibXML->new() unless $parser;
 
   my $tspan = XML::LibXML::Element->new("tspan");
   $tspan->setAttribute("x", $node->getAttribute("x"));
@@ -1231,7 +1228,7 @@ sub random_parameters {
   }
 
   # choose a random portrait based on the character name
-  if (grep { $_ eq "portrait" } @_) {
+  if (member("portrait", @_)) {
     provide("portrait", portrait()) unless $char{portrait};
   }
 }
@@ -2048,7 +2045,7 @@ sub portrait {
   if ($gender eq "F") { $gender = "woman" }
   elsif ($gender eq "M") { $gender = "man" }
   else { $gender = one("woman", "man") }
-  my $url = Mojo::URL->new("https://campaignwiki.org/face/redirect/alex/$gender");
+  my $url = Mojo::URL->new("$pic/$gender");
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->get($url);
   $url->path($tx->res->headers->location);
@@ -2178,13 +2175,6 @@ sub show_link {
 		     -style   => "width: 100%", );
   print $q->p($q->submit);
   print $q->end_form;
-}
-
-sub source {
-  seek DATA, 0, 0;
-  undef $/;
-  my $str = <DATA>;
-  return $str;
 }
 
 sub default {
@@ -2381,11 +2371,8 @@ sub redirect {
 }
 
 sub init {
-  # halberdsnhelmets/random?name= means name is defined but false (ie. not provided)
-  my $params = $q->Vars;
-  while (my ($key, $value) = each (%$params)) {
-    $char{$key} = $value if $value ne '';
-  }
+  my $self = shift;
+  %char = %{$self->req->params->to_hash};
   @provided = keys %char;
 
   # strings in sinqle quotes are translated into German if necessary
@@ -2892,12 +2879,20 @@ get '/halberdsnhelmets' => sub {
 
 get '/halberdsnhelmets/random' => sub {
   my $self = shift;
+  init($self);
   random_parameters("portrait");
   compute_data();
   my $svg = svg_transform(svg_read());
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'random';
+
+get '/halberdsnhelmets/show' => sub {
+  my $self = shift;
+  my $svg = svg_show_id(svg_read());
+  $self->render(format => 'svg',
+		data => $svg->toString());
+} => 'show';
 
 app->secrets([app->config('secret')]) if app->config('secret');
 
@@ -2935,11 +2930,9 @@ body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino,
 <div class="footer">
 <hr>
 <p>
-<a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &lt;<a href="kensanata@gmail.com">kensanata@gmail.com</a>&gt;<br>
-<%= link_to 'Character Sheet Generator' => 'main' %>
-<%= link_to Help => 'help' %>
-<%= link_to Source => 'source' %>
-<a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a>
+<a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
+<%= link_to Help => 'help' %> &nbsp;
+<a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
 <%= link_to German => 'german' %>
 </div>
 </body>
