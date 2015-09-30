@@ -2080,18 +2080,19 @@ sub traits {
 
 sub portrait {
   my $gender = $names{$char{name}};
-  my $dir = '';
+  my $url = 'https://campaignwiki.org/face/redirect/alex/';
   if ($gender eq "F") {
-    $dir = "women";
+    $url .= "woman";
   } elsif ($gender eq "M") {
-    $dir = "men";
+    $url .= "man";
   } else {
-    $dir = one("women", "men");
+    $url .= one("woman", "man");
   }
-  opendir(my $dh, $dir) || die "can't opendir $dir: $!";
-  my @jpgs = grep { /\.jpg$/ } readdir($dh);
-  closedir $dh;
-  return "$pics/$dir/" . one(@jpgs);
+  my $request = HTTP::Request->new(GET => $url);
+  my $ua = LWP::UserAgent->new;
+  my $response = $ua->simple_request($request);
+  return '' unless $response->is_redirect;
+  return $response->header('Location');
 }
 
 sub characters {
