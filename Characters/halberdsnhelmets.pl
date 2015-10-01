@@ -2051,40 +2051,36 @@ sub characters {
   return \@characters;
 }
 
-# sub stats {
-#   my $n = shift;
-#   print $q->header(-type=>"text/plain",
-# 		   -charset=>"utf8");
-#   binmode(STDOUT, ":utf8");
+sub stats {
+  my ($char, $n) = @_;
+  my (%class, %property);
+  my %init = map { $_ => $char->{$_} } @{$char->{provided}};
+  for (my $i = 0; $i < $n; $i++) {
+    my %one = %$char; # defaults
+    random_parameters(\%one);
+    $class{$one{class}}++;
+    foreach (split(/\\\\/, $one{property})) {
+      $property{$_}++;
+    }
+  }
 
-#   my (%class, %property, %init);
-#   %init = map { $_ => $char->{$_} } @provided;
-#   for (my $i = 0; $i < $n; $i++) {
-#     $q->delete_all();
-#     %char = %init;
-#     random_parameters();
-#     $class{$char->{class}}++;
-#     foreach (split(/\\\\/, $char->{property})) {
-#       $property{$_}++;
-#     }
-#   }
+  $n = 0;
+  my $txt = "Classes\n";
+  foreach (sort { $class{$b} <=> $class{$a} } keys %class) {
+    $txt .= sprintf "%25s %4d\n", $_, $class{$_};
+    $n += $class{$_};
+  }
+  $txt .= sprintf "%25s %4d\n", "total", $n;
 
-#   $n = 0;
-#   print "Classes\n";
-#   foreach (sort { $class{$b} <=> $class{$a} } keys %class) {
-#     printf "%25s %4d\n", $_, $class{$_};
-#     $n += $class{$_};
-#   }
-#   printf "%25s %4d\n", "total", $n;
-
-#   print "Property\n";
-#   foreach (sort { $property{$b} <=> $property{$a} }
-# 	   keys %property) {
-#     next if /starting gold:/ or /gold$/;
-#     next if /Startgold:/ or /Gold$/;
-#     printf "%25s %4d\n", $_, $property{$_};
-#   }
-# }
+  $txt .= "Property\n";
+  foreach (sort { $property{$b} <=> $property{$a} }
+	   keys %property) {
+    next if /starting gold:/ or /gold$/;
+    next if /Startgold:/ or /Gold$/;
+    $txt .= sprintf "%25s %4d\n", $_, $property{$_};
+  }
+  return $txt;
+}
 
 # sub translation {
 #   print $q->header(-type=>"text/plain",
@@ -2833,9 +2829,19 @@ get '/halberdsnhelmets' => sub {
   $self->render(template => 'index');
 } => 'main';
 
+get '/halberdsnhelmets/help' => 'help';
+
+get '/halberdsnhelmets/hilfe' => 'hilfe';
+
 get '/halberdsnhelmets/random' => sub {
   my $self = shift;
+  $self->redirect_to(random => {lang => 'en'});
+};
+
+get '/halberdsnhelmets/random/:lang' => sub {
+  my $self = shift;
   my $char = init($self);
+  # FIXME: my $lang = $self->param('lang');
   random_parameters($char, "portrait");
   compute_data($char);
   my $svg = svg_transform(svg_read($char));
@@ -2852,8 +2858,20 @@ get '/halberdsnhelmets/show' => sub {
 
 get '/halberdsnhelmets/characters' => sub {
   my $self = shift;
-  $self->render(template => 'index',
-		characters => [characters(init($self))]);
+  $self->render(template => 'characters',
+		characters => characters(init($self)));
+} => 'characters';
+
+get '/halberdsnhelmets/stats' => sub {
+  my $self = shift;
+  $self->render(format => 'txt',
+		text => stats($self, 10000));
+} => 'characters';
+
+get '/halberdsnhelmets/stats/:n' => sub {
+  my $self = shift;
+  $self->render(format => 'txt',
+		text => stats($self, $self->param('n')));
 } => 'characters';
 
 app->secrets([app->config('secret')]) if app->config('secret');
@@ -2878,20 +2896,304 @@ The character sheet contains a link in the bottom right corner which allows you 
 @@ characters.html.ep
 % layout 'default';
 % title 'Characters';
+<h1>A Bunch of Characters</h1>
 <% for my $char (@{$characters}) { %>
 <pre style="display: block; float: left; height: 25em; width: 30em; font-size: 6pt">
+<%= $char->{traits} %>
 Str Dex Con Int Wis Cha HP AC Class
-<%= sprintf "%3d", $char->{str} =%>
-<%= sprintf "%3d", $char->{dex} =%>
-<%= sprintf "%3d", $char->{con} =%>
-<%= sprintf "%3d", $char->{int} =%>
-<%= sprintf "%3d", $char->{wis} =%>
-<%= sprintf "%3d", $char->{cha} =%>
-<%= sprintf "%2d", $char->{hp} =%>
-<%= sprintf "%2d", $char->{ac} =%>
- <%= $char{class} %>
+<%= sprintf "%3d", $char->{str} %> \
+<%= sprintf "%3d", $char->{dex} %> \
+<%= sprintf "%3d", $char->{con} %> \
+<%= sprintf "%3d", $char->{int} %> \
+<%= sprintf "%3d", $char->{wis} %> \
+<%= sprintf "%3d", $char->{cha} %> \
+<%= sprintf "%2d", $char->{hp} %> \
+<%= sprintf "%2d", $char->{ac} %> \
+<%= $char->{class} %>
+<% for my $property (split(/\\\\/, $char->{property})) { =%>
+<%= $property %>
+<% } %>
 </pre>
 <% } %>
+<div style="clear: both"></div>
+
+@@ hilfe.html.ep
+% layout 'default';
+% title 'Hilfe (Charakterblatt Generator)';
+
+
+<h1>Charakterblatt Generator</h1>
+<p>Das funktioniert über eine Vorlage und dem Ersetzen von
+Platzhaltern.
+
+
+<h2>Basic D&amp;D</h2>
+
+<p class="text">
+Die Defaultvorlage (<a href=
+"/Charakterblatt.svg">Charakterblatt.svg</a>) verwendet die
+<a href="/Purisa.ttf">Purisa</a> Schrift. Den Platzhaltern werden
+über URL Parameter Werte zugewiesen (<a href=
+"https://campaignwiki.org/halberdsnhelmets/de?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19">Beispiel</a>,
+<a href=
+"https://campaignwiki.org/halberdsnhelmets/de?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg">
+Alternative</a>). Das Skript kann auch zeigen <a href=
+"https://campaignwiki.org/halberdsnhelmets/show/de">welche
+Parameter wo erscheinen</a>. Die Parameter müssen UTF-8 codiert
+sein. Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der
+entsprechende Parameter muss die Zeilen dann durch doppelte
+Backslashes trennen.
+
+<p class="text">
+Zudem werden einige Parameter berechnet, sofern sie nicht
+angegeben wurden:
+
+<ul>
+<li>str → str-bonus
+<li>dex → dex-bonus
+<li>con → con-bonus
+<li>int → int-bonus
+<li>wis → wis-bonus
+<li>cha → cha-bonus
+<li>cha-bonus → loyalty
+<li>str-bonus → damage
+<li>thac0 → melee-thac0
+<li>melee-thac0 → melee0-9
+<li>damage → melee-damage
+<li>thac0 → range-thac0
+<li>range-thac0 → range0-9
+<li>damage → range-damage
+</ul>
+
+<p class="text">
+Das Skript kann auch <a href=
+"https://campaignwiki.org/halberdsnhelmets/random/de">einen
+zufälligen Charakter</a>, <a href=
+"https://campaignwiki.org/halberdsnhelmets/characters/de">einige
+Charaktere</a> oder <a href=
+"https://campaignwiki.org/halberdsnhelmets/stats/de">Statistiken</a>
+generieren.
+
+<p class="text">
+Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste
+etwas unterscheidet, kann man auch <a href=
+"https://campaignwiki.org/halberdsnhelmets/random/de?rules=labyrinth+lord">
+einen zufälligen Charakter</a>, <a href=
+"https://campaignwiki.org/halberdsnhelmets/characters/de?rules=labyrinth+lord">
+einige Charaktere</a> oder <a href=
+"https://campaignwiki.org/halberdsnhelmets/stats/de?rules=labyrinth+lord">
+Statistiken</a> mit Labyrinth Lord Regeln generieren.
+
+<h2>Pendragon</h2>
+
+<p class="text">
+Das Skript kann auch Pendragon Charaktere anzeigen (aber nicht
+zufällig erstellen): <a href=
+"https://campaignwiki.org/halberdsnhelmets/link/de?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">
+Pendragon Charakter</a> bearbeiten. Das Skript kann auch zeigen
+<a href=
+"https://campaignwiki.org/halberdsnhelmets/show/de?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">
+welche Parameter wo erscheinen</a>.
+
+<p class="text">
+Zudem werden einige Parameter berechnet, sofern sie nicht
+angegeben wurden:
+
+<ul>
+<li>str+siz → damage
+<li>str+con → heal
+<li>str+dex → move
+<li>siz+con → hp
+<li>hp → unconscious
+<li>chaste ↔ lustful
+<li>energetic ↔ lazy
+<li>forgiving ↔ vengeful
+<li>generous ↔ selfish
+<li>honest ↔ deceitful
+<li>just ↔ arbitrary
+<li>merciful ↔ cruel
+<li>modest ↔ proud
+<li>pious ↔ worldly
+<li>prudent ↔ reckless
+<li>temperate ↔ indulgent
+<li>trusting ↔ suspicious
+<li>valorous ↔ cowardly
+</ul>
+
+<h2>Crypts &amp; Things</h2>
+
+<p class="text">
+Das Skript kann auch Charaktere für Crypts &amp; Things anzeigen
+(aber nicht zufällig erstellen): <a href=
+"https://campaignwiki.org/halberdsnhelmets/link/de?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">
+Crypts &amp; Things Charakter</a> bearbeiten. Das Skript kann auch
+zeigen <a href=
+"https://campaignwiki.org/halberdsnhelmets/show/de?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">
+welche Parameter wo erscheinen</a>.
+
+<p class="text">
+Zudem werden einige Parameter berechnet, sofern sie nicht
+angegeben wurden:
+
+<ul>
+<li>str → to-hit
+<li>str → damage-bonus
+<li>dex → missile-bonus
+<li>dex → ac-bonus
+<li>con → con-bonus
+<li>int → understand
+<li>cha → charm
+<li>cha → hirelings
+<li>wis → sanity
+</ul>
+
+<h2>Adventure Conqueror King</h2>
+
+<p class="text">
+Das Skript kann auch Charaktere für Adventure Conqueror King
+anzeigen (aber nicht zufällig erstellen): <a href=
+"https://campaignwiki.org/halberdsnhelmets/link/de?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">
+Adventure Conqueror King Charakter</a> bearbeiten. Das Skript kann
+auch zeigen <a href=
+"https://campaignwiki.org/halberdsnhelmets/show/de?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">
+welche Parameter wo erscheinen</a>.
+
+<p class="text">
+Zudem werden einige Parameter berechnet, sofern sie nicht
+angegeben wurden:
+
+<ul>
+<li>str → str-bonus
+<li>int → int-bonus
+<li>wis → wis-bonus
+<li>dex → dex-bonus
+<li>con → con-bonus
+<li>cha → cha-bonus
+<li>attack+str → melee
+<li>attack+dex → missile
+</ul>
+
+<p class="text">
+Das Skript kann auch <a href=
+"https://campaignwiki.org/halberdsnhelmets/random/de?rules=acks">einen
+zufälligen Charakter</a>, <a href=
+"https://campaignwiki.org/halberdsnhelmets/characters/de?rules=acks">
+einige Charaktere</a> oder <a href=
+"https://campaignwiki.org/halberdsnhelmets/stats/de?rules=acks">Statistiken</a>
+generieren.
+
+
+@@ help.html.ep
+% layout 'default';
+% title 'Help (Character Sheet Generator)';
+<h1>Character Sheet Generator</h1>
+<p class="text">
+The generator works by using a template and replacing some placeholders.
+
+<h2>Basic D&D</h2>
+
+<p class="text">
+The default template (<a href="/Charactersheet.svg">Charactersheet.svg</a>) uses the <a href="/Purisa.ttf">Purisa</a> font. You provide values for the placeholders by providing URL parameters (<a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19">example</a>, <a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg">alternative</a>). The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en">which parameters go where</a>. Also note that the parameters need to be UTF-8 encoded. If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
+
+<p class="text">
+In addition to that, some parameters are computed unless provided:
+
+<ul>
+<li>str → str-bonus
+<li>dex → dex-bonus
+<li>con → con-bonus
+<li>int → int-bonus
+<li>wis → wis-bonus
+<li>cha → cha-bonus
+<li>cha-bonus → loyalty
+<li>str-bonus → damage
+<li>thac0 → melee-thac0
+<li>melee-thac0 → melee0-9
+<li>damage → melee-damage
+<li>thac0 → range-thac0
+<li>range-thac0 → range0-9
+<li>damage → range-damage
+</ul>
+
+<p class="text">
+The script can also generate a
+<%= link_to 'random character' => 'random' =%>,
+<%= link_to 'bunch of characters' => 'characters' =%>,
+or <%= link_to 'some statistics' => 'stats' =%></a>.
+
+<p class="text">
+As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a <a href="https://campaignwiki.org/halberdsnhelmets/random/en?rules=labyrinth+lord">random character</a>, a <a href="https://campaignwiki.org/halberdsnhelmets/characters/en?rules=labyrinth+lord">bunch of characters</a>, or <a href="https://campaignwiki.org/halberdsnhelmets/stats/en?rules=labyrinth+lord">some statistics</a> using Labyrinth Lord rules.
+
+<h2>Pendragon</h2>
+
+<p class="text">
+The script also supports Pendragon characters (but cannot generate them randomly): Get started with a <a href="https://campaignwiki.org/halberdsnhelmets/link/en?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">Pendragon character</a>. The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">which parameters go where</a>.
+
+<p class="text">
+In addition to that, some parameters are computed unless provided:
+
+<ul>
+<li>str+siz → damage
+<li>str+con → heal
+<li>str+dex → move
+<li>siz+con → hp
+<li>hp → unconscious
+<li>chaste ↔ lustful
+<li>energetic ↔ lazy
+<li>forgiving ↔ vengeful
+<li>generous ↔ selfish
+<li>honest ↔ deceitful
+<li>just ↔ arbitrary
+<li>merciful ↔ cruel
+<li>modest ↔ proud
+<li>pious ↔ worldly
+<li>prudent ↔ reckless
+<li>temperate ↔ indulgent
+<li>trusting ↔ suspicious
+<li>valorous ↔ cowardly
+</ul>
+
+<h2>Crypts &amp; Things</h2>
+
+<p class="text">
+The script also supports Crypts &amp; Things characters (but cannot generate them randomly): Get started with a <a href="https://campaignwiki.org/halberdsnhelmets/link/en?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">Crypts &amp; Things character</a>. The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">which parameters go where</a>.
+
+<p class="text">
+In addition to that, some parameters are computed unless provided:
+
+<ul>
+<li>str → to-hit
+<li>str → damage-bonus
+<li>dex → missile-bonus
+<li>dex → ac-bonus
+<li>con → con-bonus
+<li>int → understand
+<li>cha → charm
+<li>cha → hirelings
+<li>wis → sanity
+</ul>
+
+<h2>Adventure Conqueror King</h2>
+
+<p class="text">
+The script also supports Adventure Conqueror King characters (but cannot generate them randomly): Get started with an <a href="https://campaignwiki.org/halberdsnhelmets/link/en?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">Adventure Conqueror King character</a>. The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">which parameters go where</a>.
+
+<p class="text">
+In addition to that, some parameters are computed unless provided:
+
+<ul>
+<li>str → str-bonus
+<li>int → int-bonus
+<li>wis → wis-bonus
+<li>dex → dex-bonus
+<li>con → con-bonus
+<li>cha → cha-bonus
+<li>attack+str → melee
+<li>attack+dex → missile
+</ul>
+
+<p class="text">
+The script can also generate a <a href="https://campaignwiki.org/halberdsnhelmets/random/en?rules=acks">random character</a>, a <a href="https://campaignwiki.org/halberdsnhelmets/characters/en?rules=acks">bunch of characters</a>, or <a href="https://campaignwiki.org/halberdsnhelmets/stats/en?rules=acks">some statistics</a>.
 
 @@ layouts/default.html.ep
 <!DOCTYPE html>
