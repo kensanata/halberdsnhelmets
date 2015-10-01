@@ -429,6 +429,8 @@ sub starting_gold {
   return roll_3d6() * 10;
 }
 
+my %price_cache;
+
 sub equipment {
   my $char = shift;
   my $xp = $char->{xp};
@@ -436,6 +438,7 @@ sub equipment {
   my $class = $char->{class};
   return if $xp or $level > 1 or not $class;
 
+  get_price_cache();
   my $money = starting_gold();
   my @property;
 
@@ -459,64 +462,58 @@ sub equipment {
   provide($char, "property",  join("\\\\", @property));
 }
 
-my %price_cache;
-
 sub get_price_cache {
   my $char = shift;
-  if (!%price_cache) {
-    
-    my $i = 0; # the default is B/X
-    if ($char->{rules} eq "acks") { $i = 2; }
-    elsif ($char->{rules} eq "labyrinth lord") { $i = 1; }
+  my $i = 0; # the default is B/X
+  if ($char->{rules} eq "acks") { $i = 2; }
+  elsif ($char->{rules} eq "labyrinth lord") { $i = 1; }
   
-    %price_cache = (
-      T('backpack') => [5, 2, 2]->[$i],
-      # ACKS: 1-6gp for one week, LL: 5sp/day, B/X: 15gp
-      T('iron rations (1 week)') => [15, 3.5, 1]->[$i],
-      T('holy symbol') => 25,
-      T('thieves’ tools') => 25,
-      T('lantern') => [10, 9, 10]->[$i],
-      T('flask of oil') => [2, 0.1, 2]->[$i],
-      T('torches') => [1, 0.3, 0.1]->[$i],
-      T('rope') => 1,
-      T('iron spikes and hammer') => [3, 1.5, 3]->[$i],
-      T('wooden pole') => [1, 0.2, 0.1]->[$i],
-      T('holy water') => 25,
-      T('wolfsbane') => 10,
-      T('mirror') => [5, 10, 5]->[$i],
-      T('leather armor') => [20, 6, 20]->[$i],
-      T('chain mail') => [40, 70, 40]->[$i],
-      T('plate mail') => [60, 450, 60]->[$i],
-      T('shield') => 10,
-      T('helmet') => 10,
-      T('club') => [3, 3, 1]->[$i],
-      T('mace') => 5,
-      T('war hammer') => [5, 7, 5]->[$i],
-      T('staff') => [2, 2, 1]->[$i],
-      T('dagger') => 3,
-      T('silver dagger') => 30,
-      T('two handed sword') => 15,
-      T('battle axe') => [7, 6, 7]->[$i],
-      T('pole arm') => 7,
-      T('long sword') => 10,
-      T('short sword') => 7,
-      T('long bow') => [40, 40, 7]->[$i],
-      T('quiver with 20 arrows') => [5, 5, 1]->[$i],
-      T('short bow') => [25, 25, 3]->[$i],
-      T('crossbow') => [30, 25, 30]->[$i],
-      T('case with 30 bolts') => [10, 9, 3]->[$i],
-      T('sling') => 2,
-      T('pouch with 30 stones') => 0,
-      T('hand axe') => [4, 1, 4]->[$i],
-      T('spear') => 3,
-	);
-  }
-  return \%price_cache;
+  %price_cache = (
+    T('backpack') => [5, 2, 2]->[$i],
+    # ACKS: 1-6gp for one week, LL: 5sp/day, B/X: 15gp
+    T('iron rations (1 week)') => [15, 3.5, 1]->[$i],
+    T('holy symbol') => 25,
+    T('thieves’ tools') => 25,
+    T('lantern') => [10, 9, 10]->[$i],
+    T('flask of oil') => [2, 0.1, 2]->[$i],
+    T('torches') => [1, 0.3, 0.1]->[$i],
+    T('rope') => 1,
+    T('iron spikes and hammer') => [3, 1.5, 3]->[$i],
+    T('wooden pole') => [1, 0.2, 0.1]->[$i],
+    T('holy water') => 25,
+    T('wolfsbane') => 10,
+    T('mirror') => [5, 10, 5]->[$i],
+    T('leather armor') => [20, 6, 20]->[$i],
+    T('chain mail') => [40, 70, 40]->[$i],
+    T('plate mail') => [60, 450, 60]->[$i],
+    T('shield') => 10,
+    T('helmet') => 10,
+    T('club') => [3, 3, 1]->[$i],
+    T('mace') => 5,
+    T('war hammer') => [5, 7, 5]->[$i],
+    T('staff') => [2, 2, 1]->[$i],
+    T('dagger') => 3,
+    T('silver dagger') => 30,
+    T('two handed sword') => 15,
+    T('battle axe') => [7, 6, 7]->[$i],
+    T('pole arm') => 7,
+    T('long sword') => 10,
+    T('short sword') => 7,
+    T('long bow') => [40, 40, 7]->[$i],
+    T('quiver with 20 arrows') => [5, 5, 1]->[$i],
+    T('short bow') => [25, 25, 3]->[$i],
+    T('crossbow') => [30, 25, 30]->[$i],
+    T('case with 30 bolts') => [10, 9, 3]->[$i],
+    T('sling') => 2,
+    T('pouch with 30 stones') => 0,
+    T('hand axe') => [4, 1, 4]->[$i],
+    T('spear') => 3,
+      );
 }
 
 sub price {
   my ($char, $item) = @_;
-  my $price = get_price_cache($char)->{$item};
+  my $price = $price_cache{$item};
   if (not defined $price) {
     error(T('Unknown Price'), T('%0: How much does this cost?', $item));
   }
