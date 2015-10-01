@@ -438,7 +438,7 @@ sub equipment {
   my $class = $char->{class};
   return if $xp or $level > 1 or not $class;
 
-  get_price_cache();
+  get_price_cache($char);
   my $money = starting_gold();
   my @property;
 
@@ -467,7 +467,6 @@ sub get_price_cache {
   my $i = 0; # the default is B/X
   if ($char->{rules} eq "acks") { $i = 2; }
   elsif ($char->{rules} eq "labyrinth lord") { $i = 1; }
-  
   %price_cache = (
     T('backpack') => [5, 2, 2]->[$i],
     # ACKS: 1-6gp for one week, LL: 5sp/day, B/X: 15gp
@@ -2324,7 +2323,15 @@ sub url_encode {
 sub init {
   my $self = shift;
   my %char = %{$self->req->params->to_hash};
-  $char{provided} = [keys %char];
+  my @provided; # We want to remember the order!
+  my @pairs = @{$self->req->params->pairs};
+  while (@pairs) {
+    my $key = shift @pairs;
+    my $value = shift @pairs;
+    push(@provided, $key);
+    warn $key;
+  }
+  $char{provided} = \@provided;
   return \%char;
   
   # strings in sinqle quotes are translated into German if necessary
@@ -2849,6 +2856,19 @@ get '/halberdsnhelmets/random/:lang' => sub {
 		data => $svg->toString());
 } => 'random';
 
+get '/halberdsnhelmets/link' => sub {
+  my $self = shift;
+  $self->redirect_to(link => {lang => 'en'});
+};
+
+get '/halberdsnhelmets/link/:lang' => sub {
+  my $self = shift;
+  my $char = init($self);
+  # FIXME: my $lang = $self->param('lang');
+  $self->render(template => 'link',
+		char => $char);
+} => 'link';
+
 get '/halberdsnhelmets/show' => sub {
   my $self = shift;
   my $svg = svg_show_id(svg_read());
@@ -2865,13 +2885,13 @@ get '/halberdsnhelmets/characters' => sub {
 get '/halberdsnhelmets/stats' => sub {
   my $self = shift;
   $self->render(format => 'txt',
-		text => stats($self, 10000));
+		text => stats(init($self), 1000));
 } => 'characters';
 
 get '/halberdsnhelmets/stats/:n' => sub {
   my $self = shift;
   $self->render(format => 'txt',
-		text => stats($self, $self->param('n')));
+		text => stats(init($self), $self->param('n')));
 } => 'characters';
 
 app->secrets([app->config('secret')]) if app->config('secret');
@@ -2892,6 +2912,35 @@ __DATA__
 % end
 <p class="text">
 The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
+
+@@ link.html.ep
+% layout 'default';
+% title 'Link (Character Sheet Generator)';
+<h1>A Link For Your Character</h1>
+
+<h2>Bookmark</h2>
+
+<p class="text">
+Bookmark the following link to your
+<%= link_to url_for('main')->query($self->req->params) => begin %>Character Sheet<% end %>.
+
+<h2>Edit</h2>
+
+<p class="text">
+Use the following form to make changes to your character sheet. You can also
+copy and paste it on to a <a href="https://campaignwiki.org/">Campaign Wiki</a>
+page to generate an inline character sheet.
+
+%= form_for redirect => begin
+%= text_area 'input' => (cols => 72, rows => 20) => begin
+<% for my $key (@{$char->{provided}}) { %>\
+<%= $key =%>: <%= $char->{$key} %>
+<% } %>
+% end
+<p>
+%= submit_button
+% end
+
 
 @@ characters.html.ep
 % layout 'default';
@@ -3121,8 +3170,12 @@ The script can also generate a
 <%= link_to 'bunch of characters' => 'characters' =%>,
 or <%= link_to 'some statistics' => 'stats' =%></a>.
 
-<p class="text">
-As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a <a href="https://campaignwiki.org/halberdsnhelmets/random/en?rules=labyrinth+lord">random character</a>, a <a href="https://campaignwiki.org/halberdsnhelmets/characters/en?rules=labyrinth+lord">bunch of characters</a>, or <a href="https://campaignwiki.org/halberdsnhelmets/stats/en?rules=labyrinth+lord">some statistics</a> using Labyrinth Lord rules.
+<p class="text"> As the price list for Labyrinth Lord differs from the Moldvay
+price list, you can also generate a
+<%= link_to url_for('random')->query(rules => 'labyrinth lord') => begin %>random character<% end %>,
+<%= link_to url_for('characters')->query(rules => 'labyrinth lord') => begin %>bunch of characters<% end %>,
+or <%= link_to  url_for('stats')->query(rules => 'labyrinth lord') => begin %>some statistics<% end %>
+using <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a> rules.
 
 <h2>Pendragon</h2>
 
