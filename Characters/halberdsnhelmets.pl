@@ -22,13 +22,10 @@ use POSIX qw(floor ceil);
 no warnings qw(uninitialized numeric);
 
 # globals
-my $q;
 my %Translation;
-my %char;
-my @provided;
-my $lang;
 my $url = "https://campaignwiki.org/halberdsnhelmets";
 my $pic = "https://campaignwiki.org/face/redirect/alex"; # we'll append man or woman
+my $lang = 'en';
 my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
 my $alternative = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg";
 my $default_filename = T('Charactersheet.svg');
@@ -53,36 +50,9 @@ sub T {
   return $en . $suffix;
 }
 
-sub header {
-  my $header = shift;
-  print $q->header(-charset=>"utf-8");
-  binmode(STDOUT, ":utf8");
-  print $q->start_html(-title => T('Character Sheet Generator'),
-		       -style => {
-				  -code =>
-				  "\@media print { .footer { display: none }}"
-				 });
-  if ($header) {
-    print $q->h1(T($header));
-  } elsif (defined $header) {
-    # '' = no header
-  } else {
-    print $q->h1(T('Character Sheet Generator'));
-  }
-}
-
-sub error {
-  my ($title, $text) = @_;
-  print $q->header(-status=>"400 Bad request");
-  print $q->start_html($title);
-  print $q->h1($title);
-  print $q->p($text);
-  print $q->end_html;
-  exit;
-}
-
 sub svg_read {
-  my $filename = $char{charsheet} || $default_filename;
+  my $char = shift;
+  my $filename = $char->{charsheet} || $default_filename;
   my $doc;
   if (-f $filename) {
     open(my $fh, "<:utf8", $filename);
@@ -94,7 +64,7 @@ sub svg_read {
     $response->is_success or error($response->status_line, $filename);
     $doc = $parser->parse_string($response->decoded_content);
   }
-  return $doc;
+  return ($char, $doc);
 }
 
 sub replace_text {
@@ -155,47 +125,47 @@ sub replace_text {
 }
 
 sub link_to {
-  my $path = shift;
+  my ($char, $path) = @_;
   my $link = $url;
   $link .= "/$path" if $path;
   $link .= "/$lang" if $lang;
 
   return "$link?"
     . join(";",
-	   map { "$_=" . url_encode($char{$_}) }
-	   @provided);
+	   map { "$_=" . url_encode($char->{$_}) }
+	   @{$char->{provided}});
 }
 
 sub svg_transform {
-  my $doc = shift;
+  my ($char, $doc) = @_;
 
   my $svg = XML::LibXML::XPathContext->new;
   $svg->registerNs("svg", "http://www.w3.org/2000/svg");
 
-  for my $id (keys %char) {
+  for my $id (keys %$char) {
     next unless $id =~ /^[-a-z0-9]+$/;
     my $nodes = $svg->find(qq{//svg:text[\@id="$id"]}, $doc);
     for my $node ($nodes->get_nodelist) {
-      replace_text($node, $char{$id}, $doc);
+      replace_text($node, $char->{$id}, $doc);
       next;
     }
     $nodes = $svg->find(qq{//svg:image[\@id="$id"]}, $doc);
     for my $node ($nodes->get_nodelist) {
       $node->setAttributeNS("http://www.w3.org/1999/xlink",
-			    "xlink:href", $char{$id});
+			    "xlink:href", $char->{$id});
       next;
     }
   }
 
   my $nodes = $svg->find(qq{//svg:a[\@id="link"]/attribute::xlink:href}, $doc);
   for my $node ($nodes->get_nodelist) {
-    $node->setValue(link_to("link"));
+    $node->setValue(link_to($char, "link"));
   }
   return $doc;
 }
 
 sub svg_show_id {
-  my $doc = shift;
+  my ($char, $doc) = @_;
 
   my $svg = XML::LibXML::XPathContext->new;
   $svg->registerNs("svg", "http://www.w3.org/2000/svg");
@@ -248,55 +218,45 @@ sub cha_bonus {
 }
 
 sub moldvay {
+  my $char = shift;
   for my $id (qw(str dex con int wis cha)) {
-    if ($char{$id} and not $char{"$id-bonus"}) {
-      $char{"$id-bonus"} = bonus($char{$id});
+    if ($char->{$id} and not $char->{"$id-bonus"}) {
+      $char->{"$id-bonus"} = bonus($char->{$id});
     }
   }
-  if ($char{cha} and not $char{reaction}) {
-    $char{reaction} = cha_bonus($char{cha});
+  if ($char->{cha} and not $char->{reaction}) {
+    $char->{reaction} = cha_bonus($char->{cha});
   }
-  if (not $char{loyalty}) {
-    $char{loyalty} =  7 + $char{"cha-bonus"};
+  if (not $char->{loyalty}) {
+    $char->{loyalty} =  7 + $char->{"cha-bonus"};
   }
-  if (not $char{hirelings}) {
-    $char{hirelings} =  4 + $char{"cha-bonus"};
+  if (not $char->{hirelings}) {
+    $char->{hirelings} =  4 + $char->{"cha-bonus"};
   }
-  if ($char{thac0} and not $char{"melee-thac0"}) {
-    $char{"melee-thac0"} = $char{thac0} - $char{"str-bonus"};
+  if ($char->{thac0} and not $char->{"melee-thac0"}) {
+    $char->{"melee-thac0"} = $char->{thac0} - $char->{"str-bonus"};
   }
-  if ($char{thac0} and not $char{"range-thac0"}) {
-    $char{"range-thac0"} = $char{thac0} - $char{"dex-bonus"};
+  if ($char->{thac0} and not $char->{"range-thac0"}) {
+    $char->{"range-thac0"} = $char->{thac0} - $char->{"dex-bonus"};
   }
   for my $type ("melee", "range") {
     for (my $n = 0; $n <= 9; $n++) {
-      my $val = $char{"$type-thac0"} - $n;
+      my $val = $char->{"$type-thac0"} - $n;
       $val = 20 if $val > 20;
       $val =  1 if $val <  1;
-      $char{"$type$n"} = $val unless $char{"$type$n"};
+      $char->{"$type$n"} = $val unless $char->{"$type$n"};
     }
   }
-  if (not $char{damage}) {
-    $char{damage} = 1 . T('d6');
+  if (not $char->{damage}) {
+    $char->{damage} = 1 . T('d6');
   }
-  if (not $char{"melee-damage"}) {
-    $char{"melee-damage"} = $char{damage} . $char{"str-bonus"};
+  if (not $char->{"melee-damage"}) {
+    $char->{"melee-damage"} = $char->{damage} . $char->{"str-bonus"};
   }
-  if (not $char{"range-damage"}) {
-    $char{"range-damage"} = $char{damage};
+  if (not $char->{"range-damage"}) {
+    $char->{"range-damage"} = $char->{damage};
   }
-  moldvay_saves();
-}
-
-sub complete {
-  my ($one, $two) = @_;
-  if ($char{$one} and not $char{$two}) {
-    if ($char{$one} > 20) {
-      $char{$two} = 0;
-    } else {
-      $char{$two} = 20 - $char{$one};
-    }
-  }
+  moldvay_saves($char);
 }
 
 sub crypt_bonus {
@@ -309,86 +269,99 @@ sub crypt_bonus {
 }
 
 sub crypts_n_things {
-  if ($char{str} and not $char{"to-hit"}) {
-    $char{"to-hit"} = crypt_bonus($char{str});
+  my $char = shift;
+  if ($char->{str} and not $char->{"to-hit"}) {
+    $char->{"to-hit"} = crypt_bonus($char->{str});
   }
-  if ($char{str} and not $char{"damage-bonus"}) {
-    $char{"damage-bonus"} = crypt_bonus($char{str});
+  if ($char->{str} and not $char->{"damage-bonus"}) {
+    $char->{"damage-bonus"} = crypt_bonus($char->{str});
   }
-  if ($char{dex} and not $char{"missile-bonus"}) {
-    $char{"missile-bonus"} = crypt_bonus($char{dex});
+  if ($char->{dex} and not $char->{"missile-bonus"}) {
+    $char->{"missile-bonus"} = crypt_bonus($char->{dex});
   }
-  if ($char{dex} and not $char{"ac-bonus"}) {
-    $char{"ac-bonus"} = crypt_bonus($char{dex});
+  if ($char->{dex} and not $char->{"ac-bonus"}) {
+    $char->{"ac-bonus"} = crypt_bonus($char->{dex});
   }
-  if ($char{con} and not $char{"con-bonus"}) {
-    $char{"con-bonus"} = crypt_bonus($char{con});
+  if ($char->{con} and not $char->{"con-bonus"}) {
+    $char->{"con-bonus"} = crypt_bonus($char->{con});
   }
-  if ($char{int} and not $char{understand}) {
-    if ($char{int} <= 7) {
-      $char{understand} = "0%";
-    } elsif ($char{int} <= 9) {
-      $char{understand} = 5 * ($char{int} - 7) . "%";
-    } elsif ($char{int} <= 16) {
-      $char{understand} = 5 * ($char{int} - 6) . "%";
+  if ($char->{int} and not $char->{understand}) {
+    if ($char->{int} <= 7) {
+      $char->{understand} = "0%";
+    } elsif ($char->{int} <= 9) {
+      $char->{understand} = 5 * ($char->{int} - 7) . "%";
+    } elsif ($char->{int} <= 16) {
+      $char->{understand} = 5 * ($char->{int} - 6) . "%";
     } else {
-      $char{understand} = 15 * ($char{int} - 13) . "%";
+      $char->{understand} = 15 * ($char->{int} - 13) . "%";
     }
   }
-  if ($char{cha} and not $char{charm}) {
-    if ($char{cha} <= 4) {
-      $char{charm} = "10%";
-    } elsif ($char{cha} <= 6) {
-      $char{charm} = "20%";
-    } elsif ($char{cha} <= 8) {
-      $char{charm} = "30%";
-    } elsif ($char{cha} <= 12) {
-      $char{charm} = "40%";
-    } elsif ($char{cha} <= 15) {
-      $char{charm} = "50%";
-    } elsif ($char{cha} <= 17) {
-      $char{charm} = "60%";
-    } elsif ($char{cha} <= 18) {
-      $char{charm} = "75%";
+  if ($char->{cha} and not $char->{charm}) {
+    if ($char->{cha} <= 4) {
+      $char->{charm} = "10%";
+    } elsif ($char->{cha} <= 6) {
+      $char->{charm} = "20%";
+    } elsif ($char->{cha} <= 8) {
+      $char->{charm} = "30%";
+    } elsif ($char->{cha} <= 12) {
+      $char->{charm} = "40%";
+    } elsif ($char->{cha} <= 15) {
+      $char->{charm} = "50%";
+    } elsif ($char->{cha} <= 17) {
+      $char->{charm} = "60%";
+    } elsif ($char->{cha} <= 18) {
+      $char->{charm} = "75%";
     }
   }
-  if ($char{cha} and not $char{hirelings}) {
-    if ($char{cha} <= 4) {
-      $char{hirelings} = 1;
-    } elsif ($char{cha} <= 6) {
-      $char{hirelings} = 2;
-    } elsif ($char{cha} <= 8) {
-      $char{hirelings} = 3;
-    } elsif ($char{cha} <= 12) {
-      $char{hirelings} = 4;
-    } elsif ($char{cha} <= 15) {
-      $char{hirelings} = 5;
-    } elsif ($char{cha} <= 17) {
-      $char{hirelings} = 6;
-    } elsif ($char{cha} <= 18) {
-      $char{hirelings} = 7;
+  if ($char->{cha} and not $char->{hirelings}) {
+    if ($char->{cha} <= 4) {
+      $char->{hirelings} = 1;
+    } elsif ($char->{cha} <= 6) {
+      $char->{hirelings} = 2;
+    } elsif ($char->{cha} <= 8) {
+      $char->{hirelings} = 3;
+    } elsif ($char->{cha} <= 12) {
+      $char->{hirelings} = 4;
+    } elsif ($char->{cha} <= 15) {
+      $char->{hirelings} = 5;
+    } elsif ($char->{cha} <= 17) {
+      $char->{hirelings} = 6;
+    } elsif ($char->{cha} <= 18) {
+      $char->{hirelings} = 7;
     }
   }
-  if ($char{wis} and not $char{sanity}) {
-    $char{sanity} = $char{wis};
+  if ($char->{wis} and not $char->{sanity}) {
+    $char->{sanity} = $char->{wis};
+  }
+}
+
+sub complete {
+  my ($char, $one, $two) = @_;
+  if ($char->{$one} and not $char->{$two}) {
+    if ($char->{$one} > 20) {
+      $char->{$two} = 0;
+    } else {
+      $char->{$two} = 20 - $char->{$one};
+    }
   }
 }
 
 sub pendragon {
-  if ($char{str} and $char{siz} and not $char{damage}) {
-    $char{damage} = int(($char{str}+$char{siz}) / 6 + 0.5) . T('d6');
+  my $char = shift;
+  if ($char->{str} and $char->{siz} and not $char->{damage}) {
+    $char->{damage} = int(($char->{str}+$char->{siz}) / 6 + 0.5) . T('d6');
   }
-  if ($char{str} and $char{con} and not $char{healing}) {
-    $char{healing} = int(($char{str}+$char{con}) / 10 + 0.5);
+  if ($char->{str} and $char->{con} and not $char->{healing}) {
+    $char->{healing} = int(($char->{str}+$char->{con}) / 10 + 0.5);
   }
-  if ($char{str} and $char{dex} and not $char{move}) {
-    $char{move} = int(($char{str}+$char{dex}) / 10 + 0.5);
+  if ($char->{str} and $char->{dex} and not $char->{move}) {
+    $char->{move} = int(($char->{str}+$char->{dex}) / 10 + 0.5);
   }
-  if ($char{con} and $char{siz} and not $char{hp}) {
-    $char{hp} = $char{con}+$char{siz};
+  if ($char->{con} and $char->{siz} and not $char->{hp}) {
+    $char->{hp} = $char->{con}+$char->{siz};
   }
-  if ($char{hp} and not $char{unconscious}) {
-    $char{unconscious} = int($char{hp} / 4 + 0.5);
+  if ($char->{hp} and not $char->{unconscious}) {
+    $char->{unconscious} = int($char->{hp} / 4 + 0.5);
   }
   my @traits = qw(chaste lustful
 		  energetic lazy
@@ -406,57 +379,61 @@ sub pendragon {
   while (@traits) {
     my $one = shift(@traits);
     my $two = shift(@traits);
-    complete($one, $two);
-    complete($two, $one);
+    complete($char, $one, $two);
+    complete($char, $two, $one);
   }
 }
 
 sub acks {
+  my $char = shift;
   for my $id (qw(str dex con int wis cha)) {
-    if ($char{$id} and not $char{"$id-bonus"}) {
-      $char{"$id-bonus"} = bonus($char{$id});
+    if ($char->{$id} and not $char->{"$id-bonus"}) {
+      $char->{"$id-bonus"} = bonus($char->{$id});
     }
   }
-  if ($char{attack} and not $char{melee}) {
-    $char{melee} =  $char{attack} - $char{"str-bonus"};
+  if ($char->{attack} and not $char->{melee}) {
+    $char->{melee} =  $char->{attack} - $char->{"str-bonus"};
   }
-  if ($char{attack} and not $char{missile}) {
-    $char{missile} =  $char{attack} - $char{"dex-bonus"};
+  if ($char->{attack} and not $char->{missile}) {
+    $char->{missile} =  $char->{attack} - $char->{"dex-bonus"};
   }
 
-  acks_saves();
+  acks_saves($char);
 }
 
 # This function is called when preparing data for display in SVG.
 sub compute_data {
-  if (not exists $char{rules} or not defined $char{rules}) {
-    moldvay();
-  } elsif ($char{rules} eq "pendragon") {
-    pendragon();
-  } elsif ($char{rules} eq "moldvay") {
-    moldvay();
-  } elsif ($char{rules} eq "labyrinth lord") {
-    moldvay();
-  } elsif ($char{rules} eq "crypts-n-things") {
-    crypts_n_things();
-  } elsif ($char{rules} eq "acks") {
-    acks();
+  my $char = shift;
+  if (not exists $char->{rules} or not defined $char->{rules}) {
+    moldvay($char);
+  } elsif ($char->{rules} eq "pendragon") {
+    pendragon($char);
+  } elsif ($char->{rules} eq "moldvay") {
+    moldvay($char);
+  } elsif ($char->{rules} eq "labyrinth lord") {
+    moldvay($char);
+  } elsif ($char->{rules} eq "crypts-n-things") {
+    crypts_n_things($char);
+  } elsif ($char->{rules} eq "acks") {
+    acks($char);
   } else {
-    moldvay();
+    moldvay($char);
   }
 }
 
 sub starting_gold {
-  if ($char{rules} eq "labyrinth lord") {
+  my $char = shift;
+  if ($char->{rules} eq "labyrinth lord") {
     return roll_3d8() * 10;
   }
   return roll_3d6() * 10;
 }
 
 sub equipment {
-  my $xp = $char{xp};
-  my $level = $char{level};
-  my $class = $char{class};
+  my $char = shift;
+  my $xp = $char->{xp};
+  my $level = $char->{level};
+  my $class = $char->{class};
   return if $xp or $level > 1 or not $class;
 
   my $money = starting_gold();
@@ -468,28 +445,29 @@ sub equipment {
     push(@property, T('spell book'));
   }
 
-  ($money, @property) = buy_basics($money, $class, @property);
-  ($money, @property) = buy_armor($money, $class, @property);
-  ($money, @property) = buy_weapon($money, $class, @property);
-  ($money, @property) = buy_tools($money, $class, @property);
-  ($money, @property) = buy_light($money, $class, @property);
-  ($money, @property) = buy_gear($money, $class, @property);
-  ($money, @property) = buy_protection($money, $class, @property);
+  ($money, @property) = buy_basics($char, $money, $class, @property);
+  ($money, @property) = buy_armor($char, $money, $class, @property);
+  ($money, @property) = buy_weapon($char, $money, $class, @property);
+  ($money, @property) = buy_tools($char, $money, $class, @property);
+  ($money, @property) = buy_light($char, $money, $class, @property);
+  ($money, @property) = buy_gear($char, $money, $class, @property);
+  ($money, @property) = buy_protection($char, $money, $class, @property);
   my $gold = int($money);
   my $silver = int(10 * ($money - $gold) + 0.5);;
   push(@property, T('%0 gold', $gold)) if $gold;
   push(@property, T('%0 silver', $silver)) if $silver;
-  provide("property",  join("\\\\", @property));
+  provide($char, "property",  join("\\\\", @property));
 }
 
 my %price_cache;
 
 sub get_price_cache {
+  my $char = shift;
   if (!%price_cache) {
     
     my $i = 0; # the default is B/X
-    if ($char{rules} eq "acks") { $i = 2; }
-    elsif ($char{rules} eq "labyrinth lord") { $i = 1; }
+    if ($char->{rules} eq "acks") { $i = 2; }
+    elsif ($char->{rules} eq "labyrinth lord") { $i = 1; }
   
     %price_cache = (
       T('backpack') => [5, 2, 2]->[$i],
@@ -537,8 +515,8 @@ sub get_price_cache {
 }
 
 sub price {
-  my $item = shift;
-  my $price = get_price_cache()->{$item};
+  my ($char, $item) = @_;
+  my $price = get_price_cache($char)->{$item};
   if (not defined $price) {
     error(T('Unknown Price'), T('%0: How much does this cost?', $item));
   }
@@ -567,39 +545,39 @@ sub add {
 
 # Use array references to buy one of several alternatives.
 # Buy a and b, or buy c instead:
-# ($money, @property) = buy([[a, b], c], $money, @property)
+# ($money, @property) = buy($char, [[a, b], c], $money, @property)
 sub buy {
-  my ($item, $money, @property) = @_;
+  my ($char, $item, $money, @property) = @_;
   if (ref $item eq "ARRAY") {
     for my $elem (@$item) {
       if (ref $elem eq "ARRAY") {
 	my $price = 0;
 	for my $thing (@$elem) {
-	  $price += price($thing);
+	  $price += price($char, $thing);
 	}
 	if ($money >= $price) {
 	  $money -= $price;
-	  $elem->[-1] .= " (${price}gp)" if $char{debug};
+	  $elem->[-1] .= " (${price}gp)" if $char->{debug};
 	  foreach (@$elem) {
 	    add($_, \@property);
 	  }
 	  last;
 	}
       } else {
-	my $price = price($elem);
+	my $price = price($char, $elem);
 	if ($money >= $price) {
 	  $money -= $price;
-	  $elem .= " (${price}gp)" if $char{debug};
+	  $elem .= " (${price}gp)" if $char->{debug};
 	  add($elem, \@property);
 	  last;
 	}
       }
     }
   } else {
-    my $price = price($item);
+    my $price = price($char, $item);
     if ($money >= $price) {
       $money -= $price;
-      $item .= " (${price}gp)" if $char{debug};
+      $item .= " (${price}gp)" if $char->{debug};
       add($item, \@property);
     }
   }
@@ -607,56 +585,56 @@ sub buy {
 }
 
 sub buy_basics {
-  my ($money, $class, @property) = @_;
-  push(@property, "- $money gp -") if $char{debug};
-  ($money, @property) = buy(T('backpack'), $money, @property);
-  ($money, @property) = buy(T('iron rations (1 week)'), $money, @property);
+  my ($char, $money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char->{debug};
+  ($money, @property) = buy($char, T('backpack'), $money, @property);
+  ($money, @property) = buy($char, T('iron rations (1 week)'), $money, @property);
   
   return ($money, @property);
 }
 
 sub buy_tools {
-  my ($money, $class, @property) = @_;
-  push(@property, "- $money gp -") if $char{debug};
+  my ($char, $money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char->{debug};
   if (member($class, T('cleric'), T('dwarven craftpriest'), T('bladedancer'))) {
-    ($money, @property) = buy(T('holy symbol'), $money, @property);
+    ($money, @property) = buy($char, T('holy symbol'), $money, @property);
   } elsif ($class eq T('thief')) {
-    ($money, @property) = buy(T('thieves’ tools'), $money, @property);
+    ($money, @property) = buy($char, T('thieves’ tools'), $money, @property);
   }
   return ($money, @property);
 }
 
 sub buy_light {
-  my ($money, $class, @property) = @_;
-  push(@property, "- $money gp -") if $char{debug};
-  return buy([[T('lantern'), T('flask of oil')],
+  my ($char, $money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char->{debug};
+  return buy($char, [[T('lantern'), T('flask of oil')],
 	      T('torches')],
 	     $money, @property);
 }
 
 sub buy_gear {
-  my ($money, $class, @property) = @_;
-  push(@property, "- $money gp -") if $char{debug};
+  my ($char, $money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char->{debug};
   my @preferences = shuffle(
     T('rope'),
     T('iron spikes and hammer'),
     T('wooden pole'));
-  return buy(\@preferences, $money, @property);
+  return buy($char, \@preferences, $money, @property);
 }
 
 sub buy_protection {
-  my ($money, $class, @property) = @_;
-  push(@property, "- $money gp -") if $char{debug};
+  my ($char, $money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char->{debug};
   my @preferences = shuffle(
     T('holy water'),
     T('wolfsbane'),
     T('mirror'));
-  return buy(\@preferences, $money, @property);
+  return buy($char, \@preferences, $money, @property);
 }
 
 sub buy_armor {
-  my ($money, $class, @property) = @_;
-  push(@property, "- $money gp -") if $char{debug};
+  my ($char, $money, $class, @property) = @_;
+  push(@property, "- $money gp -") if $char->{debug};
   my $budget = $money / 2;
   $money -= $budget;
 
@@ -665,24 +643,24 @@ sub buy_armor {
   } elsif (member($class, T('thief'), T('assassin'), T('bard'),
 		  T('bladedancer'), T('elven nightblade'))) {
     # leather, no shield, no helmet
-    ($budget, @property) = buy(T('leather armor'), $budget, @property);
+    ($budget, @property) = buy($char, T('leather armor'), $budget, @property);
   } elsif (member($class, T('explorer'))) {
     # chain and shield
-    ($budget, @property) = buy([T('chain mail'),
+    ($budget, @property) = buy($char, [T('chain mail'),
 			       T('leather armor')], $budget, @property);
-    ($budget, @property) = buy(T('shield'), $budget, @property);
-    ($budget, @property) = buy(T('helmet'), $budget, @property);
+    ($budget, @property) = buy($char, T('shield'), $budget, @property);
+    ($budget, @property) = buy($char, T('helmet'), $budget, @property);
   } else {
     # any armor
-    ($budget, @property) = buy([T('plate mail'),
+    ($budget, @property) = buy($char, [T('plate mail'),
 				T('chain mail'),
 				T('leather armor')], $budget, @property);
-    ($budget, @property) = buy(T('shield'), $budget, @property);
-    ($budget, @property) = buy(T('helmet'), $budget, @property);
+    ($budget, @property) = buy($char, T('shield'), $budget, @property);
+    ($budget, @property) = buy($char, T('helmet'), $budget, @property);
   }
   
   # compute AC
-  my $dex = $char{dex};
+  my $dex = $char->{dex};
   my $ac = 9 - bonus($dex);
   
   if (member(T('plate mail'), @property)) { $ac -= 6; }
@@ -690,20 +668,21 @@ sub buy_armor {
   elsif (member(T('leather armor'), @property)) { $ac -= 2; }
 
   if (member(T('shield'), @property)) { $ac -= 1; }
-  if ($class eq T('bladedancer')) { $ac -= $char{level}; }
+  if ($class eq T('bladedancer')) { $ac -= $char->{level}; }
 
   # ACKS is ascending
-  if ($char{rules} eq "acks") { $ac = 9 - $ac; }
+  if ($char->{rules} eq "acks") { $ac = 9 - $ac; }
   
-  provide("ac",  $ac);
+  provide($char, "ac",  $ac);
 
   return ($money + $budget, @property);
 }
 
 sub buy_melee_weapon {
+  my $char = shift;
   my ($money, $class, @property) = @_;
-  my $str = $char{str};
-  my $hp  = $char{hp};
+  my $str = $char->{str};
+  my $hp  = $char->{hp};
   my $shield = member(T('shield'), @property);
   my @preferences;
   
@@ -731,10 +710,11 @@ sub buy_melee_weapon {
     }
     push(@preferences, T('long sword'), T('short sword'));
   }
-  return buy(\@preferences, $money, @property);
+  return buy($char, \@preferences, $money, @property);
 }
 
 sub buy_throwing_weapon {
+  my $char = shift;
   my ($money, $class, @property) = @_;
   my @preferences;
   if (member($class, T('dwarf'), T('dwarven vaultguard'), T('dwarven craftpriest'))
@@ -745,13 +725,14 @@ sub buy_throwing_weapon {
   if ($class eq T('fighter')) {
     push(@preferences, T('spear'));
   }
-  return buy(\@preferences, $money, @property);
+  return buy($char, \@preferences, $money, @property);
 }
 
 sub buy_ranged_weapon {
+  my $char = shift;
   my ($money, $class, @property) = @_;
   my @preferences;
-  my $dex = $char{dex};
+  my $dex = $char->{dex};
   if (($class eq T('fighter') or $class eq T('elf'))
       and average($dex)) {
     push(@preferences,
@@ -780,33 +761,35 @@ sub buy_ranged_weapon {
 	 [T('sling'),
 	  T('pouch with 30 stones')]);
   }
-  return buy(\@preferences, $money, @property);
+  return buy($char, \@preferences, $money, @property);
 }
 
 sub buy_weapon {
+  my $char = shift;
   my ($money, $class, @property) = @_;
-  push(@property, "- $money gp -") if $char{debug};
+  push(@property, "- $money gp -") if $char->{debug};
   my $budget = $money / 2;
   $money -= $budget;
   
-  ($budget, @property) = buy_melee_weapon($budget, $class, @property);
-  ($budget, @property) = buy_throwing_weapon($budget, $class, @property);
-  ($budget, @property) = buy_ranged_weapon($budget, $class, @property);
+  ($budget, @property) = buy_melee_weapon($char, $budget, $class, @property);
+  ($budget, @property) = buy_throwing_weapon($char, $budget, $class, @property);
+  ($budget, @property) = buy_ranged_weapon($char, $budget, $class, @property);
 
   if ($class ne T('cleric')) {
-    ($budget, @property) = buy(T('silver dagger'), $budget, @property);
+    ($budget, @property) = buy($char, T('silver dagger'), $budget, @property);
   }
 
   if ($class ne T('cleric') and $class ne T('magic-user')) {
-    ($budget, @property) = buy(T('dagger'), $budget, @property);
-    ($budget, @property) = buy(T('dagger'), $budget, @property);
+    ($budget, @property) = buy($char, T('dagger'), $budget, @property);
+    ($budget, @property) = buy($char, T('dagger'), $budget, @property);
   }
 
   return ($money + $budget, @property);
 }
 
 sub spellbook {
-  if ($char{rules} eq "labyrinth lord") {
+  my $char = shift;
+  if ($char->{rules} eq "labyrinth lord") {
     return T('First level spells:') . "\\\\"
     . join("\\\\",
 	   two(T('charm person'),
@@ -852,8 +835,9 @@ sub spellbook {
 }
 
 sub moldvay_saves {
-  my $class = $char{class};
-  my $level = $char{level};
+  my $char = shift;
+  my $class = $char->{class};
+  my $level = $char->{level};
   return unless $class and $level >= 1 and $level <= 3;
   my ($breath, $poison, $petrify, $wands, $spells);
   if ($class eq T('cleric')) {
@@ -876,16 +860,17 @@ sub moldvay_saves {
       (16, 14, 13, 15, 13);
   }
 
-  provide("breath",  $breath) unless $char{breath};
-  provide("poison",  $poison) unless $char{poison};
-  provide("petrify",  $petrify) unless $char{petrify};
-  provide("wands",  $wands) unless $char{wands};
-  provide("spells",  $spells) unless $char{spells};
+  provide($char, "breath",  $breath) unless $char->{breath};
+  provide($char, "poison",  $poison) unless $char->{poison};
+  provide($char, "petrify",  $petrify) unless $char->{petrify};
+  provide($char, "wands",  $wands) unless $char->{wands};
+  provide($char, "spells",  $spells) unless $char->{spells};
 }
 
 sub acks_saves {
-  my $class = $char{class};
-  my $level = $char{level};
+  my $char = shift;
+  my $class = $char->{class};
+  my $level = $char->{level};
   return unless $class and $level == 1;
   my ($petrify, $poison, $breath, $wands, $spells);
   if ($class eq T('fighter')) {
@@ -917,11 +902,11 @@ sub acks_saves {
       (12, 13, 16, 14, 14);
   }
 
-  provide("breath",  $breath) unless $char{breath};
-  provide("poison",  $poison) unless $char{poison};
-  provide("petrify",  $petrify) unless $char{petrify};
-  provide("wands",  $wands) unless $char{wands};
-  provide("spells",  $spells) unless $char{spells};
+  provide($char, "breath",  $breath) unless $char->{breath};
+  provide($char, "poison",  $poison) unless $char->{poison};
+  provide($char, "petrify",  $petrify) unless $char->{petrify};
+  provide($char, "wands",  $wands) unless $char->{wands};
+  provide($char, "spells",  $spells) unless $char->{spells};
 }
 
 sub d3 {
@@ -979,9 +964,9 @@ sub average {
 }
 
 sub provide {
-  my ($key, $value) = @_;
-  push(@provided, $key) unless $char{$key};
-  $char{$key} = $value;
+  my ($char, $key, $value) = @_;
+  push(@{$char->{provided}}, $key) unless $char->{$key};
+  $char->{$key} = $value;
 }
 
 sub one {
@@ -1004,14 +989,15 @@ sub member {
 }
 
 sub random_moldvay {
-  provide("name", name()) unless $char{name};
+  my $char = shift;
+  provide($char, "name", name()) unless $char->{name};
 
   my ($str, $dex, $con, $int, $wis, $cha) =
     (roll_3d6(), roll_3d6(), roll_3d6(),
      roll_3d6(), roll_3d6(), roll_3d6());
 
   # if a class is provided, make sure minimum requirements are met
-  my $class = $char{class};
+  my $class = $char->{class};
   while ($class eq T('dwarf') and not average($con)) {
     $con = roll_3d6();
   }
@@ -1025,16 +1011,16 @@ sub random_moldvay {
     $dex = roll_3d6();
   }
 
-  provide("str", $str);
-  provide("dex", $dex);
-  provide("con", $con);
-  provide("int", $int);
-  provide("wis", $wis);
-  provide("cha", $cha);
+  provide($char, "str", $str);
+  provide($char, "dex", $dex);
+  provide($char, "con", $con);
+  provide($char, "int", $int);
+  provide($char, "wis", $wis);
+  provide($char, "cha", $cha);
 
-  provide("level",  "1");
-  provide("xp",  "0");
-  provide("thac0",  19);
+  provide($char, "level",  "1");
+  provide($char, "xp",  "0");
+  provide($char, "thac0",  19);
 
   my $best = best($str, $dex, $con, $int, $wis, $cha);
 
@@ -1065,9 +1051,9 @@ sub random_moldvay {
     }
   }
 
-  provide("class",  $class);
+  provide($char, "class",  $class);
 
-  my $hp = $char{hp};
+  my $hp = $char->{hp};
   if (not $hp) {
 
     if ($class eq T('fighter') or $class eq T('dwarf')) {
@@ -1082,9 +1068,9 @@ sub random_moldvay {
     $hp = 1 if $hp < 1;
   }
 
-  provide("hp",  $hp);
+  provide($char, "hp",  $hp);
 
-  equipment();
+  equipment($char);
 
   my $abilities = T('1/6 for normal tasks');
   if ($class eq T('elf')) {
@@ -1107,35 +1093,36 @@ sub random_moldvay {
   if ($class eq T('magic-user') or $class eq T('elf')) {
     $abilities .= "\\\\" . spellbook();
   }
-  provide("abilities", $abilities);
+  provide($char, "abilities", $abilities);
 }
 
 sub random_acks {
-  provide("name", name()) unless $char{name};
+  my $char = shift;
+  provide($char, "name", name()) unless $char->{name};
 
   my ($str, $dex, $con, $int, $wis, $cha) =
     (roll_3d6(), roll_3d6(), roll_3d6(),
      roll_3d6(), roll_3d6(), roll_3d6());
 
   # if a class is provided, make sure minimum requirements are met
-  my $class = $char{class};
+  my $class = $char->{class};
   while (member($class, T('dwarven vaultguard'), T('dwarven craftpriest'))
 	 and not average($con)) {
     $con = roll_3d6();
   }
 
-  my $title = $char{title};
+  my $title = $char->{title};
 
-  provide("str", $str);
-  provide("dex", $dex);
-  provide("con", $con);
-  provide("int", $int);
-  provide("wis", $wis);
-  provide("cha", $cha);
+  provide($char, "str", $str);
+  provide($char, "dex", $dex);
+  provide($char, "con", $con);
+  provide($char, "int", $int);
+  provide($char, "wis", $wis);
+  provide($char, "cha", $cha);
 
-  provide("level",  "1");
-  provide("xp",  "0");
-  provide("attack",  10);
+  provide($char, "level",  "1");
+  provide($char, "xp",  "0");
+  provide($char, "attack",  10);
 
   my $best = best($str, $dex, $con, $int, $wis, $cha);
 
@@ -1184,10 +1171,10 @@ sub random_acks {
     }
   }
 
-  provide("class",  $class);
-  provide("title",  $title);
+  provide($char, "class",  $class);
+  provide($char, "title",  $title);
 
-  my $hp = $char{hp};
+  my $hp = $char->{hp};
   if (not $hp) {
     if ($class eq T('fighter') or $class eq T('dwarven vaultguard')) {
       $hp = d8();
@@ -1201,43 +1188,45 @@ sub random_acks {
     $hp = 1 if $hp < 1;
   }
 
-  provide("hp",  $hp);
+  provide($char, "hp",  $hp);
   
-  equipment();
+  equipment($char);
 
-  provide("abilities", proficiencies());
+  provide($char, "abilities", proficiencies());
   # abilities
   # spells
 }
 
 sub random_parameters {
-  if (not exists $char{rules} or not defined $char{rules}) {
-    random_moldvay();
-  } elsif ($char{rules} eq "pendragon") {
-    random_pendragon();
-  } elsif ($char{rules} eq "moldvay") {
-    random_moldvay();
-  } elsif ($char{rules} eq "labyrinth lord") {
-    random_moldvay();
-  } elsif ($char{rules} eq "crypts-n-things") {
-    random_crypts_n_things();
-  } elsif ($char{rules} eq "acks") {
-    random_acks();
+  my $char = shift;
+  if (not exists $char->{rules} or not defined $char->{rules}) {
+    random_moldvay($char);
+  } elsif ($char->{rules} eq "pendragon") {
+    random_pendragon($char);
+  } elsif ($char->{rules} eq "moldvay") {
+    random_moldvay($char);
+  } elsif ($char->{rules} eq "labyrinth lord") {
+    random_moldvay($char);
+  } elsif ($char->{rules} eq "crypts-n-things") {
+    random_crypts_n_things($char);
+  } elsif ($char->{rules} eq "acks") {
+    random_acks($char);
   } else {
-    error(T('Unknown Rules'), T('%0 is unknown.', $char{rules}));
+    error(T('Unknown Rules'), T('%0 is unknown.', $char->{rules}));
   }
 
   # choose a random portrait based on the character name
   if (member("portrait", @_)) {
-    provide("portrait", portrait()) unless $char{portrait};
+    provide($char, "portrait", portrait()) unless $char->{portrait};
   }
 }
 
 sub proficiencies {
+  my $char = shift;
   my %proficiencies = ();
 
   # start with class based preferences for proficiencies
-  if ($char{class} eq T('assassin')) {
+  if ($char->{class} eq T('assassin')) {
 
     %proficiencies = (
       'Acrobatics' => +2,
@@ -1268,82 +1257,82 @@ sub proficiencies {
       'Trap Finding' => 0,
       'Weapon Finesse' => -2,
       'Weapon Focus' => -1, );
-    if ($char{cha} > 12) {
+    if ($char->{cha} > 12) {
       $proficiencies{Bribery} = +2;
       $proficiencies{Intimidation} = +1;
       $proficiencies{Seduction} = +1;
     }
-    if ($char{dex} > 12) {
+    if ($char->{dex} > 12) {
       $proficiencies{Sniping} = +2;
     }
-    if ($char{level} > 5) {
+    if ($char->{level} > 5) {
       $proficiencies{'Arcane Dabbling'} = +1;
     }
   }      
 
   # add general proficiencies
   my %general = ();
-  $general{'Alchemy'} = 1 if $char{class} eq T('mage');
+  $general{'Alchemy'} = 1 if $char->{class} eq T('mage');
   $general{'Animal Husbandry'} = 0;
-  $general{'Animal Husbandry'} = 1 if $char{class} eq T('explorer');
+  $general{'Animal Husbandry'} = 1 if $char->{class} eq T('explorer');
   $general{'Beast Friendship'} = 2;
   $general{'Animal Training (Dog)'} = 2;
   $general{'Art'} = 0;
   $general{'Bargaining'} = 0;
-  $general{'Bargaining'} = 1 if member($char{class}, T('dwarven vaultguard'), T('dwarven craftpriest'), T('explorer'));
+  $general{'Bargaining'} = 1 if member($char->{class}, T('dwarven vaultguard'), T('dwarven craftpriest'), T('explorer'));
   $general{'Caving'} = 0;
   $general{'Collegiate Wizardry'} = 0;
-  $general{'Collegiate Wizardry'} = 1 if member($char{class}, T('mage'), T('elven spellsword'), T('elven nightblade'));
+  $general{'Collegiate Wizardry'} = 1 if member($char->{class}, T('mage'), T('elven spellsword'), T('elven nightblade'));
   $general{'Craft'} = 0;
   $general{'Diplomacy'} = 0;
-  $general{'Diplomacy'} = 1 if $char{cha} > 12;
+  $general{'Diplomacy'} = 1 if $char->{cha} > 12;
   $general{'Disguise'} = 0;
-  $general{'Disguise'} = 1 if $char{class} eq T('thief');
-  $general{'Disguise'} = 2 if $char{class} eq T('assassin');
+  $general{'Disguise'} = 1 if $char->{class} eq T('thief');
+  $general{'Disguise'} = 2 if $char->{class} eq T('assassin');
   $general{'Endurance'} = 0;
-  $general{'Endurance'} = 1 if $char{ac} < 3;
+  $general{'Endurance'} = 1 if $char->{ac} < 3;
   $general{'Engineering'} = 0;
   $general{'Gambling'} = 0;
   $general{'Healing'} = 0;
   # add more Healing if we already have healing?
-  $general{'Healing'} = 3 if $char{int} >= 18;
+  $general{'Healing'} = 3 if $char->{int} >= 18;
   $general{'Gambling'} = 0;
   $general{'Intimidation'} = 0;
-  $general{'Intimidation'} = 1 if $char{cha} > 13;
+  $general{'Intimidation'} = 1 if $char->{cha} > 13;
   $general{'Knowledge'} = 0;
-  $general{'Knowledge'} = 3 if $char{int} >= 18;
+  $general{'Knowledge'} = 3 if $char->{int} >= 18;
   $general{'Labor'} = 0;
   $general{'Language'} = 0;
   $general{'Leadership'} = 0;
   $general{'Lip Reading'} = 0;
-  $general{'Lip Reading'} = 3 if $char{class} eq T('thief');
+  $general{'Lip Reading'} = 3 if $char->{class} eq T('thief');
   $general{'Manual of Arms'} = 0;
   $general{'Mapping'} = 0;
   $general{'Military Strategy'} = 0;
-  $general{'Military Strategy'} = 1 if $char{int} > 13 and $char{wis} > 13;
+  $general{'Military Strategy'} = 1 if $char->{int} > 13 and $char->{wis} > 13;
   $general{'Mimicry'} = 0;
   $general{'Naturalism'} = 0;
   $general{'Navigation'} = 0;
   $general{'Performance'} = 0;
-  $general{'Performance'} = 3 if $char{class} eq T('bard');
+  $general{'Performance'} = 3 if $char->{class} eq T('bard');
   $general{'Profession'} = 0;
-  $general{'Profession'} = 1 if $char{str} < 9 or $char{dex} < 9;
+  $general{'Profession'} = 1 if $char->{str} < 9 or $char->{dex} < 9;
   $general{'Riding'} = 0;
-  $general{'Riding'} = 1 if member($char{class}, T('fighter'), T('explorer'), T('barbarian'));
+  $general{'Riding'} = 1 if member($char->{class}, T('fighter'), T('explorer'), T('barbarian'));
   $general{'Seafaring'} = 0;
   $general{'Seduction'} = 0;
-  $general{'Seduction'} = 1 if $char{cha} > 13;
+  $general{'Seduction'} = 1 if $char->{cha} > 13;
   $general{'Siege Engineering'} = 0;
   $general{'Seduction'} = 0;
-  $general{'Signaling'} = 0 if $char{ac} < 3;
+  $general{'Signaling'} = 0 if $char->{ac} < 3;
   $general{'Survival'} = 0;
-  $general{'Survival'} = 2 if member($char{class}, T('explorer'), T('barbarian'));
+  $general{'Survival'} = 2 if member($char->{class}, T('explorer'), T('barbarian'));
   $general{'Theology'} = 0;
-  $general{'Theology'} = 2 if member($char{class}, T('cleric'), T('elven bladedancer'));
+  $general{'Theology'} = 2 if member($char->{class}, T('cleric'), T('elven bladedancer'));
   $general{'Tracking'} = 0;
-  $general{'Tracking'} = 1 if member($char{class}, T('assassin'), T('explorer'));
+  $general{'Tracking'} = 1 if member($char->{class}, T('assassin'), T('explorer'));
   $general{'Trapping'} = 0;
-  $general{'Trapping'} = 1 if $char{class} eq T('explorer');
+  $general{'Trapping'} = 1 if $char->{class} eq T('explorer');
 
   # set up lists
   my @proficiencies = distribution(\%proficiencies);
@@ -1352,7 +1341,7 @@ sub proficiencies {
   push(@result, one(@proficiencies));
   my $proficiency;
   my $m = 1;
-  $m += $char{"int-bonus"} if $char{"int-bonus"} > 0;
+  $m += $char->{"int-bonus"} if $char->{"int-bonus"} > 0;
   for (my $i = 0; $i < $m; $i++) {
     $proficiency = one(@general);
     # do { $proficiency = one(@general) } until not member($proficiency, @result);
@@ -2041,7 +2030,8 @@ sub traits {
 }
 
 sub portrait {
-  my $gender = $names{$char{name}};
+  my $char = shift;
+  my $gender = $names{$char->{name}};
   if ($gender eq "F") { $gender = "woman" }
   elsif ($gender eq "M") { $gender = "man" }
   else { $gender = one("woman", "man") }
@@ -2053,295 +2043,263 @@ sub portrait {
 }
 
 sub characters {
-  header('');
-  my %init = map { $_ => $char{$_} } @provided;
+  my $char = shift;
+  my @characters;
   for (my $i = 0; $i < 50; $i++) {
-    $q->delete_all();
-    %char = %init;
-    print $q->start_pre({-style=>"display: block; float: left; height: 25em; width: 30em; font-size: 6pt; "});
-    random_parameters();
-    print "Str Dex Con Int Wis Cha HP AC Class\n";
-    printf "%3d", $char{"str"};
-    printf " %3d", $char{dex};
-    printf " %3d", $char{con};
-    printf " %3d", $char{int};
-    printf " %3d", $char{wis};
-    printf " %3d", $char{cha};
-    printf " %2d", $char{hp};
-    printf " %2d", $char{ac};
-    print " " . $char{class};
-    print "\n";
-    my $traits = traits();
-    # The max length of the traits is based on the width given by the
-    # CSS above!
-    while (length $traits > 45) {
-      $traits = traits();
-    }
-    print "$traits\n";
-    print map { "  $_\n" }
-      split(/\\\\/, $char{property});
-    print $q->end_pre();
+    my %one = %$char; # defaults
+    random_parameters(\%one);
+    $one{traits} = traits();
+    push(@characters, \%one);
   }
-  print $q->div({-style=>"clear: both;"});
+  return \@characters;
 }
 
-sub stats {
-  my $n = shift;
-  print $q->header(-type=>"text/plain",
-		   -charset=>"utf8");
-  binmode(STDOUT, ":utf8");
+# sub stats {
+#   my $n = shift;
+#   print $q->header(-type=>"text/plain",
+# 		   -charset=>"utf8");
+#   binmode(STDOUT, ":utf8");
 
-  my (%class, %property, %init);
-  %init = map { $_ => $char{$_} } @provided;
-  for (my $i = 0; $i < $n; $i++) {
-    $q->delete_all();
-    %char = %init;
-    random_parameters();
-    $class{$char{class}}++;
-    foreach (split(/\\\\/, $char{property})) {
-      $property{$_}++;
-    }
-  }
+#   my (%class, %property, %init);
+#   %init = map { $_ => $char->{$_} } @provided;
+#   for (my $i = 0; $i < $n; $i++) {
+#     $q->delete_all();
+#     %char = %init;
+#     random_parameters();
+#     $class{$char->{class}}++;
+#     foreach (split(/\\\\/, $char->{property})) {
+#       $property{$_}++;
+#     }
+#   }
 
-  $n = 0;
-  print "Classes\n";
-  foreach (sort { $class{$b} <=> $class{$a} } keys %class) {
-    printf "%25s %4d\n", $_, $class{$_};
-    $n += $class{$_};
-  }
-  printf "%25s %4d\n", "total", $n;
+#   $n = 0;
+#   print "Classes\n";
+#   foreach (sort { $class{$b} <=> $class{$a} } keys %class) {
+#     printf "%25s %4d\n", $_, $class{$_};
+#     $n += $class{$_};
+#   }
+#   printf "%25s %4d\n", "total", $n;
 
-  print "Property\n";
-  foreach (sort { $property{$b} <=> $property{$a} }
-	   keys %property) {
-    next if /starting gold:/ or /gold$/;
-    next if /Startgold:/ or /Gold$/;
-    printf "%25s %4d\n", $_, $property{$_};
-  }
-}
+#   print "Property\n";
+#   foreach (sort { $property{$b} <=> $property{$a} }
+# 	   keys %property) {
+#     next if /starting gold:/ or /gold$/;
+#     next if /Startgold:/ or /Gold$/;
+#     printf "%25s %4d\n", $_, $property{$_};
+#   }
+# }
 
-sub translation {
-  print $q->header(-type=>"text/plain",
-		   -charset=>"utf-8");
-  binmode(STDOUT, ":utf8");
+# sub translation {
+#   print $q->header(-type=>"text/plain",
+# 		   -charset=>"utf-8");
+#   binmode(STDOUT, ":utf8");
 
-  my $str = source();
-  my %data;
-  while ($str =~ /'(.+?)'/g) {
-    next if $1 eq "(.+?)";
-    $data{$1} = $Translation{$1};
-  }
-  foreach (sort keys %data) {
-    print "$_\n";
-    print $Translation{$_} . "\n";
-  }
-  foreach (sort keys %Translation) {
-    if (not exists $data{$_}) {
-      print "$_\n";
-      print "NOT USED: " . $Translation{$_} . "\n";
-    }
-  }
-}
+#   my $str = source();
+#   my %data;
+#   while ($str =~ /'(.+?)'/g) {
+#     next if $1 eq "(.+?)";
+#     $data{$1} = $Translation{$1};
+#   }
+#   foreach (sort keys %data) {
+#     print "$_\n";
+#     print $Translation{$_} . "\n";
+#   }
+#   foreach (sort keys %Translation) {
+#     if (not exists $data{$_}) {
+#       print "$_\n";
+#       print "NOT USED: " . $Translation{$_} . "\n";
+#     }
+#   }
+# }
 
-sub text {
-  my $str = T('Character:') . "\n";
-  my $rows;
-  for my $key (@provided) {
-    for my $val (split(/\\\\/, $char{$key})) {
-      # utf8::decode($val);
-      $str .= "$key: $val\n";
-      $rows++;
-    }
-  }
-  return wantarray ? ($str, $rows) : $str;
-}
+# sub text {
+#   my $char = shift;
+#   my $str = T('Character:') . "\n";
+#   my $rows;
+#   for my $key (@provided) {
+#     for my $val (split(/\\\\/, $char->{$key})) {
+#       # utf8::decode($val);
+#       $str .= "$key: $val\n";
+#       $rows++;
+#     }
+#   }
+#   return wantarray ? ($str, $rows) : $str;
+# }
 
-sub show_link {
-  header();
-  print $q->h2(T('Bookmark'));
-  print $q->p(T('Bookmark the following link to your %0.',
-		$q->a({-href=>link_to()},
-		      T('Character Sheet'))));
-  print $q->h2(T('Edit'));
-  print $q->p(T('Use the following form to make changes to your character sheet.'),
-	      T('You can also copy and paste it on to a %0 page to generate an inline character sheet.',
-		$q->a({-href=>"https://campaignwiki.org/"}, "Campaign Wiki")));
-  print $q->start_form(-method=>"get", -action=>"$url/redirect/$lang", -accept_charset=>"UTF-8");
-  my ($str, $rows) = text();
-  print $q->textarea(-name    => "input",
-		     -default => $str,
-		     -rows    => $rows + 3,
-		     -columns => 55,
-		     -style   => "width: 100%", );
-  print $q->p($q->submit);
-  print $q->end_form;
-}
+# sub show_link {
+#   header();
+#   print $q->h2(T('Bookmark'));
+#   print $q->p(T('Bookmark the following link to your %0.',
+# 		$q->a({-href=>link_to()},
+# 		      T('Character Sheet'))));
+#   print $q->h2(T('Edit'));
+#   print $q->p(T('Use the following form to make changes to your character sheet.'),
+# 	      T('You can also copy and paste it on to a %0 page to generate an inline character sheet.',
+# 		$q->a({-href=>"https://campaignwiki.org/"}, "Campaign Wiki")));
+#   print $q->start_form(-method=>"get", -action=>"$url/redirect/$lang", -accept_charset=>"UTF-8");
+#   my ($str, $rows) = text();
+#   print $q->textarea(-name    => "input",
+# 		     -default => $str,
+# 		     -rows    => $rows + 3,
+# 		     -columns => 55,
+# 		     -style   => "width: 100%", );
+#   print $q->p($q->submit);
+#   print $q->end_form;
+# }
 
-sub default {
-  header();
-  print $q->p(T('This is the %0 character sheet generator.',
-		$q->a({-href=>T('https://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/')},
-		      T('Halberds and Helmets'))));
-  print $q->start_form(-method=>"get", -action=>"$url/random/$lang",
-		       -accept_charset=>"UTF-8"),
-    T('Name:'), " ", $q->textfield("name"), " ", $q->submit, $q->end_form;
-  print $q->p(T('The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.'));
-  print $q->end_html;
-}
+# sub help {
+#   header();
+#   print $q->p(T('The generator works by using a template and replacing some placeholders.'));
 
-sub help {
-  header();
-  print $q->p(T('The generator works by using a template and replacing some placeholders.'));
+#   print $q->h2(T('Basic D&amp;D'));
 
-  print $q->h2(T('Basic D&amp;D'));
+#   print $q->p(T('The default template (%0) uses the %1 font.',
+# 		$q->a({-href=>"/" . T('Charactersheet.svg')},
+# 		      T('Charactersheet.svg')),
+# 		$q->a({-href=>"/Purisa.ttf"},
+# 		      "Purisa")),
+# 	      T('You provide values for the placeholders by providing URL parameters (%0).',
+# 		$q->a({-href=>$example}, T('example')) . ", "
+# 		. $q->a({-href=>$alternative}, T('alternative'))),
+# 	      T('The script can also show %0.',
+# 		$q->a({-href=>"$url/show/$lang"},
+# 		      T('which parameters go where'))),
+# 	      T('Also note that the parameters need to be UTF-8 encoded.'),
+# 	      T('If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.'));
+#   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
+#   print "<ul>";
+#   my @doc = qw(str str-bonus
+# 	       dex dex-bonus
+# 	       con con-bonus
+# 	       int int-bonus
+# 	       wis wis-bonus
+# 	       cha cha-bonus
+# 	       cha-bonus loyalty
+# 	       str-bonus damage
+#                thac0 melee-thac0
+#                melee-thac0 melee0-9
+#                damage melee-damage
+# 	       thac0 range-thac0
+#                range-thac0 range0-9
+#                damage range-damage);
+#   while (@doc) {
+#     print $q->li(shift(@doc), "&rarr;", shift(@doc));
+#   }
+#   print "</ul>";
 
-  print $q->p(T('The default template (%0) uses the %1 font.',
-		$q->a({-href=>"/" . T('Charactersheet.svg')},
-		      T('Charactersheet.svg')),
-		$q->a({-href=>"/Purisa.ttf"},
-		      "Purisa")),
-	      T('You provide values for the placeholders by providing URL parameters (%0).',
-		$q->a({-href=>$example}, T('example')) . ", "
-		. $q->a({-href=>$alternative}, T('alternative'))),
-	      T('The script can also show %0.',
-		$q->a({-href=>"$url/show/$lang"},
-		      T('which parameters go where'))),
-	      T('Also note that the parameters need to be UTF-8 encoded.'),
-	      T('If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.'));
-  print $q->p(T('In addition to that, some parameters are computed unless provided:'));
-  print "<ul>";
-  my @doc = qw(str str-bonus
-	       dex dex-bonus
-	       con con-bonus
-	       int int-bonus
-	       wis wis-bonus
-	       cha cha-bonus
-	       cha-bonus loyalty
-	       str-bonus damage
-               thac0 melee-thac0
-               melee-thac0 melee0-9
-               damage melee-damage
-	       thac0 range-thac0
-               range-thac0 range0-9
-               damage range-damage);
-  while (@doc) {
-    print $q->li(shift(@doc), "&rarr;", shift(@doc));
-  }
-  print "</ul>";
+#   my ($random, $bunch, $stats) =
+#     ($q->a({-href=>"$url/random/$lang"}, T('random character')),
+#      $q->a({-href=>"$url/characters/$lang"}, T('bunch of characters')),
+#      $q->a({-href=>"$url/stats/$lang"}, T('some statistics')));
 
-  my ($random, $bunch, $stats) =
-    ($q->a({-href=>"$url/random/$lang"}, T('random character')),
-     $q->a({-href=>"$url/characters/$lang"}, T('bunch of characters')),
-     $q->a({-href=>"$url/stats/$lang"}, T('some statistics')));
+#   print $q->p(T('The script can also generate a %0, a %1, or %2.',
+# 		$random, $bunch, $stats));
 
-  print $q->p(T('The script can also generate a %0, a %1, or %2.',
-		$random, $bunch, $stats));
+#   ($random, $bunch, $stats) =
+#     ($q->a({-href=>"$url/random/$lang?rules=labyrinth+lord"},
+# 	   T('random character')),
+#      $q->a({-href=>"$url/characters/$lang?rules=labyrinth+lord"},
+# 	   T('bunch of characters')),
+#      $q->a({-href=>"$url/stats/$lang?rules=labyrinth+lord"},
+# 	   T('some statistics')));
 
-  ($random, $bunch, $stats) =
-    ($q->a({-href=>"$url/random/$lang?rules=labyrinth+lord"},
-	   T('random character')),
-     $q->a({-href=>"$url/characters/$lang?rules=labyrinth+lord"},
-	   T('bunch of characters')),
-     $q->a({-href=>"$url/stats/$lang?rules=labyrinth+lord"},
-	   T('some statistics')));
+#   print $q->p(T('As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.',
+# 		$random, $bunch, $stats));
 
-  print $q->p(T('As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.',
-		$random, $bunch, $stats));
+#   print $q->h2(T('Pendragon'));
+#   print $q->p(T('The script also supports Pendragon characters (but cannot generate them randomly):'),
+# 	      T('Get started with a %0.',
+# 		$q->a({-href=>"$url/link/$lang?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
+# 		      T('Pendragon character'))),
+# 	      T('The script can also show %0.',
+# 		$q->a({-href=>"$url/show/$lang?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
+# 		      T('which parameters go where'))));
+#   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
+#   print "<ul>";
+#   @doc = qw(str+siz damage
+# 	       str+con heal
+# 	       str+dex move
+# 	       siz+con hp
+# 	       hp unconscious);
+#   while (@doc) {
+#     print $q->li(shift(@doc), "&rarr;", shift(@doc));
+#   }
+#   @doc = qw(chaste lustful
+# 	    energetic lazy
+# 	    forgiving vengeful
+# 	    generous selfish
+# 	    honest deceitful
+# 	    just arbitrary
+# 	    merciful cruel
+# 	    modest proud
+# 	    pious worldly
+# 	    prudent reckless
+# 	    temperate indulgent
+# 	    trusting suspicious
+# 	    valorous cowardly);
+#   while (@doc) {
+#     print $q->li(shift(@doc), "&harr;", shift(@doc));
+#   }
+#   print "</ul>";
 
-  print $q->h2(T('Pendragon'));
-  print $q->p(T('The script also supports Pendragon characters (but cannot generate them randomly):'),
-	      T('Get started with a %0.',
-		$q->a({-href=>"$url/link/$lang?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
-		      T('Pendragon character'))),
-	      T('The script can also show %0.',
-		$q->a({-href=>"$url/show/$lang?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
-		      T('which parameters go where'))));
-  print $q->p(T('In addition to that, some parameters are computed unless provided:'));
-  print "<ul>";
-  @doc = qw(str+siz damage
-	       str+con heal
-	       str+dex move
-	       siz+con hp
-	       hp unconscious);
-  while (@doc) {
-    print $q->li(shift(@doc), "&rarr;", shift(@doc));
-  }
-  @doc = qw(chaste lustful
-	    energetic lazy
-	    forgiving vengeful
-	    generous selfish
-	    honest deceitful
-	    just arbitrary
-	    merciful cruel
-	    modest proud
-	    pious worldly
-	    prudent reckless
-	    temperate indulgent
-	    trusting suspicious
-	    valorous cowardly);
-  while (@doc) {
-    print $q->li(shift(@doc), "&harr;", shift(@doc));
-  }
-  print "</ul>";
+#   print $q->h2(T('Crypts &amp; Things'));
+#   print $q->p(T('The script also supports Crypts &amp; Things characters (but cannot generate them randomly):'),
+# 	      T('Get started with a %0.',
+# 		$q->a({-href=>"$url/link/$lang?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
+# 		      T('Crypts &amp; Things character'))),
+# 	      T('The script can also show %0.',
+# 		$q->a({-href=>"$url/show/$lang?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
+# 		      T('which parameters go where'))));
 
-  print $q->h2(T('Crypts &amp; Things'));
-  print $q->p(T('The script also supports Crypts &amp; Things characters (but cannot generate them randomly):'),
-	      T('Get started with a %0.',
-		$q->a({-href=>"$url/link/$lang?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
-		      T('Crypts &amp; Things character'))),
-	      T('The script can also show %0.',
-		$q->a({-href=>"$url/show/$lang?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
-		      T('which parameters go where'))));
+#   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
+#   print "<ul>";
+#   @doc = qw(str to-hit
+# 	    str damage-bonus
+# 	    dex missile-bonus
+# 	    dex ac-bonus
+# 	    con con-bonus
+# 	    int understand
+# 	    cha charm
+# 	    cha hirelings
+# 	    wis sanity);
+#   while (@doc) {
+#     print $q->li(shift(@doc), "&rarr;", shift(@doc));
+#   }
+#   print "</ul>";
 
-  print $q->p(T('In addition to that, some parameters are computed unless provided:'));
-  print "<ul>";
-  @doc = qw(str to-hit
-	    str damage-bonus
-	    dex missile-bonus
-	    dex ac-bonus
-	    con con-bonus
-	    int understand
-	    cha charm
-	    cha hirelings
-	    wis sanity);
-  while (@doc) {
-    print $q->li(shift(@doc), "&rarr;", shift(@doc));
-  }
-  print "</ul>";
+#   print $q->h2(T('Adventure Conqueror King'));
+#   print $q->p(T('The script also supports Adventure Conqueror King characters (but cannot generate them randomly):'),
+# 	      T('Get started with an %0.',
+# 		$q->a({-href=>"$url/link/$lang?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
+# 		      T('Adventure Conqueror King character'))),
+# 	      T('The script can also show %0.',
+# 		$q->a({-href=>"$url/show/$lang?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
+# 		      T('which parameters go where'))));
 
-  print $q->h2(T('Adventure Conqueror King'));
-  print $q->p(T('The script also supports Adventure Conqueror King characters (but cannot generate them randomly):'),
-	      T('Get started with an %0.',
-		$q->a({-href=>"$url/link/$lang?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
-		      T('Adventure Conqueror King character'))),
-	      T('The script can also show %0.',
-		$q->a({-href=>"$url/show/$lang?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
-		      T('which parameters go where'))));
+#   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
+#   print "<ul>";
+#   @doc = qw(str str-bonus
+# 	    int int-bonus
+# 	    wis wis-bonus
+# 	    dex dex-bonus
+# 	    con con-bonus
+# 	    cha cha-bonus
+# 	    attack+str melee
+# 	    attack+dex missile);
+#   while (@doc) {
+#     print $q->li(shift(@doc), "&rarr;", shift(@doc));
+#   }
+#   print "</ul>";
 
-  print $q->p(T('In addition to that, some parameters are computed unless provided:'));
-  print "<ul>";
-  @doc = qw(str str-bonus
-	    int int-bonus
-	    wis wis-bonus
-	    dex dex-bonus
-	    con con-bonus
-	    cha cha-bonus
-	    attack+str melee
-	    attack+dex missile);
-  while (@doc) {
-    print $q->li(shift(@doc), "&rarr;", shift(@doc));
-  }
-  print "</ul>";
+#   ($random, $bunch, $stats) =
+#       ($q->a({-href=>"$url/random/$lang?rules=acks"}, T('random character')),
+#        $q->a({-href=>"$url/characters/$lang?rules=acks"}, T('bunch of characters')),
+#        $q->a({-href=>"$url/stats/$lang?rules=acks"}, T('some statistics')));
 
-  ($random, $bunch, $stats) =
-      ($q->a({-href=>"$url/random/$lang?rules=acks"}, T('random character')),
-       $q->a({-href=>"$url/characters/$lang?rules=acks"}, T('bunch of characters')),
-       $q->a({-href=>"$url/stats/$lang?rules=acks"}, T('some statistics')));
+#   print $q->p(T('The script can also generate a %0, a %1, or %2.',
+# 		$random, $bunch, $stats));
 
-  print $q->p(T('The script can also generate a %0, a %1, or %2.',
-		$random, $bunch, $stats));
-
-}
+# }
 
 sub url_encode {
   my $str = shift;
@@ -2355,26 +2313,27 @@ sub url_encode {
   return join('', @letters);
 }
 
-sub redirect {
-  $_ = $char{input};
-  my @param;
-  my $last;
-  while (/^([-a-z0-9]*): *(.*?)\r$/gm) {
-    if ($1 eq $last or $1 eq "") {
-      $param[$#param] .= "\\\\" . url_encode($2);
-    } else {
-      push(@param, $1 . "=" . url_encode($2));
-      $last = $1;
-    }
-  }
-  print $q->redirect("$url/$lang?" . join(";", @param));
-}
+# sub redirect {
+#   $_ = $char->{input};
+#   my @param;
+#   my $last;
+#   while (/^([-a-z0-9]*): *(.*?)\r$/gm) {
+#     if ($1 eq $last or $1 eq "") {
+#       $param[$#param] .= "\\\\" . url_encode($2);
+#     } else {
+#       push(@param, $1 . "=" . url_encode($2));
+#       $last = $1;
+#     }
+#   }
+#   print $q->redirect("$url/$lang?" . join(";", @param));
+# }
 
 sub init {
   my $self = shift;
-  %char = %{$self->req->params->to_hash};
-  @provided = keys %char;
-
+  my %char = %{$self->req->params->to_hash};
+  $char{provided} = [keys %char];
+  return \%char;
+  
   # strings in sinqle quotes are translated into German if necessary
   # use %0, %1, etc. for parameters
   %Translation = split(/\n/, <<'EOT');
@@ -2879,10 +2838,10 @@ get '/halberdsnhelmets' => sub {
 
 get '/halberdsnhelmets/random' => sub {
   my $self = shift;
-  init($self);
-  random_parameters("portrait");
-  compute_data();
-  my $svg = svg_transform(svg_read());
+  my $char = init($self);
+  random_parameters($char, "portrait");
+  compute_data($char);
+  my $svg = svg_transform(svg_read($char));
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'random';
@@ -2893,6 +2852,12 @@ get '/halberdsnhelmets/show' => sub {
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'show';
+
+get '/halberdsnhelmets/characters' => sub {
+  my $self = shift;
+  $self->render(template => 'index',
+		characters => [characters(init($self))]);
+} => 'characters';
 
 app->secrets([app->config('secret')]) if app->config('secret');
 
@@ -2912,6 +2877,24 @@ __DATA__
 % end
 <p class="text">
 The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
+
+@@ characters.html.ep
+% layout 'default';
+% title 'Characters';
+<% for my $char (@{$characters}) { %>
+<pre style="display: block; float: left; height: 25em; width: 30em; font-size: 6pt">
+Str Dex Con Int Wis Cha HP AC Class
+<%= sprintf "%3d", $char->{str} =%>
+<%= sprintf "%3d", $char->{dex} =%>
+<%= sprintf "%3d", $char->{con} =%>
+<%= sprintf "%3d", $char->{int} =%>
+<%= sprintf "%3d", $char->{wis} =%>
+<%= sprintf "%3d", $char->{cha} =%>
+<%= sprintf "%2d", $char->{hp} =%>
+<%= sprintf "%2d", $char->{ac} =%>
+ <%= $char{class} %>
+</pre>
+<% } %>
 
 @@ layouts/default.html.ep
 <!DOCTYPE html>
