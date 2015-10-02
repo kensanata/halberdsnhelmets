@@ -22,14 +22,7 @@ use POSIX qw(floor ceil);
 no warnings qw(uninitialized numeric);
 
 # globals
-my $url = "https://campaignwiki.org/halberdsnhelmets";
-my $pic = "https://campaignwiki.org/face/redirect/alex"; # we'll append man or woman
 my $lang = 'en';
-my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19";
-my $alternative = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg";
-my $default_filename = T('Charactersheet.svg');
-my $parser = XML::LibXML->new();
-
 my $translation = translations();
 
 sub translations {
@@ -64,18 +57,12 @@ AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
 Acrobatics
 Akrobatik
-Adventure Conqueror King
-Adventure Conqueror King
-Adventure Conqueror King character
-Adventure Conqueror King Charakter
 Adventuring
 Abenteurer
 Alchemy
 Alchemie
 Alertness
 Aufmerksamkeit
-Also note that the parameters need to be UTF-8 encoded.
-Die Parameter müssen UTF-8 codiert sein.
 Animal Husbandry
 Tierpflege
 Animal Training (Dog)
@@ -90,22 +77,14 @@ Arcanist-Guardian
 Arkaner Wächter
 Art
 Kunst
-As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.
-Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste etwas unterscheidet, kann man auch %0, %1 oder %2 mit Labyrinth Lord Regeln generieren.
 Bargaining
 Handeln
-Basic D&amp;D
-Basic D&amp;D
 Beast Friendship
 Tierfreundschaft
 Blade-Initiate
 Klingenkenner
 Blind Fighting
 Blind Kämpfen
-Bookmark
-Lesezeichen
-Bookmark the following link to your %0.
-Den Charakter kann man einfach aufbewahren, in dem man sich das %0 als Lesezeichen speichert.
 Bribery
 Bestechung
 Cat Burglary
@@ -114,12 +93,8 @@ Catechist
 Katechet
 Caving
 Höhlenwandern
-Character Sheet
-Charakterblatt
 Character Sheet Generator
 Charakterblatt Generator
-Character:
-Charakter:
 Charactersheet.svg
 Charakterblatt.svg
 Climbing
@@ -136,10 +111,6 @@ Contortionism
 Kontorsion
 Craft
 Handwerk
-Crypts &amp; Things
-Crypts &amp; Things
-Crypts &amp; Things character
-Crypts &amp; Things Charakter
 Diplomacy
 Diplomatie
 Disguise
@@ -150,8 +121,6 @@ ESP
 Gedankenlesen
 Eavesdropping
 Lauschen
-Edit
-Bearbeiten
 Endurance
 Ausdauer
 Engineering
@@ -164,16 +133,8 @@ Footpad
 Strassenräuber
 Gambling
 Glücksspiel
-Get started with a %0.
-%0 bearbeiten.
-Get started with an %0.
-%0 bearbeiten.
 Healing
 Heilung
-If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
-Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch doppelte Backslashes trennen.
-In addition to that, some parameters are computed unless provided:
-Zudem werden einige Parameter berechnet, sofern sie nicht angegeben wurden:
 Intimidation
 Einschüchterung
 Knowledge
@@ -202,10 +163,6 @@ Naturalism
 Naturfreund
 Navigation
 Navigation
-Pendragon
-Pendragon
-Pendragon character
-Pendragon Charakter
 Performance
 Auftritt
 Precise Shooting
@@ -242,20 +199,6 @@ Survival
 Überleben
 Swashbuckling
 Draufgängertum
-The default template (%0) uses the %1 font.
-Die Defaultvorlage (%0) verwendet die %1 Schrift.
-The generator works by using a template and replacing some placeholders.
-Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
-The script also supports Adventure Conqueror King characters (but cannot generate them randomly):
-Das Skript kann auch Charaktere für Adventure Conqueror King anzeigen (aber nicht zufällig erstellen):
-The script also supports Crypts &amp; Things characters (but cannot generate them randomly):
-Das Skript kann auch Charaktere für Crypts &amp; Things anzeigen (aber nicht zufällig erstellen):
-The script also supports Pendragon characters (but cannot generate them randomly):
-Das Skript kann auch Pendragon Charaktere anzeigen (aber nicht zufällig erstellen):
-The script can also generate a %0, a %1, or %2.
-Das Skript kann auch %0, %1 oder %2 generieren.
-The script can also show %0.
-Das Skript kann auch zeigen %0.
 Theology
 Theologie
 Thug
@@ -270,18 +213,10 @@ Unknown Price
 Unbekannter Preis
 Unknown Rules
 Unbekannte Regeln
-Use the following form to make changes to your character sheet.
-Mit dem folgenden Formular lassen sich leicht Änderungen am Charakter machen.
 Weapon Finesse
 Waffenfinesse
 Weapon Focus
 Waffenfokus
-You can also copy and paste it on to a %0 page to generate an inline character sheet.
-Man kann diesen Text auch auf einer %0 Seite verwenden, um das Charakterblatt einzufügen.
-You provide values for the placeholders by providing URL parameters (%0).
-Den Platzhaltern werden über URL Parameter Werte zugewiesen (%0).
-alternative
-Alternative
 and
 und
 arcane lock
@@ -342,8 +277,6 @@ elven nightblade
 Elfische Nachtklinge
 elven spellsword
 Elfische Zauberklinge
-example
-Beispiel
 explorer
 Forscher
 fighter
@@ -456,8 +389,6 @@ war hammer
 Kriegshammer
 web
 Netz
-which parameters go where
-welche Parameter wo erscheinen
 wolfsbane
 Eisenhut (sog. Wolfsbann)
 woman
@@ -493,8 +424,8 @@ sub T {
 }
 
 sub svg_read {
-  my $char = shift;
-  my $filename = $char->{charsheet} || $default_filename;
+  my ($char, $parser) = @_;
+  my $filename = $char->{charsheet} || T('Charactersheet.svg');
   my $doc;
   if (-f $filename) {
     open(my $fh, "<:utf8", $filename);
@@ -506,11 +437,11 @@ sub svg_read {
     die "«$filename»: " . $tx->res->error->{message} . "\n" unless $tx->success;
     $doc = $parser->parse_string($tx->res->body);
   }
-  return ($char, $doc);
+  return ($char, $doc, $parser); # used as parameters for svg_transform
 }
 
 sub replace_text {
-  my ($node, $str) = @_;
+  my ($parser, $node, $str) = @_;
   my @line = split(/\\\\/, $str);
 
   # is this multiline in the template
@@ -567,7 +498,7 @@ sub replace_text {
 }
 
 sub svg_transform {
-  my ($self, $char, $doc) = @_;
+  my ($self, $char, $doc, $parser) = @_;
 
   my $svg = XML::LibXML::XPathContext->new;
   $svg->registerNs("svg", "http://www.w3.org/2000/svg");
@@ -576,7 +507,7 @@ sub svg_transform {
     next unless $id =~ /^[-a-z0-9]+$/;
     my $nodes = $svg->find(qq{//svg:text[\@id="$id"]}, $doc);
     for my $node ($nodes->get_nodelist) {
-      replace_text($node, $char->{$id}, $doc);
+      replace_text($parser, $node, $char->{$id}, $doc);
       next;
     }
     $nodes = $svg->find(qq{//svg:image[\@id="$id"]}, $doc);
@@ -2465,7 +2396,7 @@ sub portrait {
   if ($gender eq "F") { $gender = "woman" }
   elsif ($gender eq "M") { $gender = "man" }
   else { $gender = one("woman", "man") }
-  my $url = Mojo::URL->new("$pic/$gender");
+  my $url = Mojo::URL->new("https://campaignwiki.org/face/redirect/alex/$gender");
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->get($url);
   $url->path($tx->res->headers->location);
@@ -2571,7 +2502,7 @@ get '/halberdsnhelmets/random/:lang' => sub {
   # FIXME: my $lang = $self->param('lang');
   random_parameters($char, "portrait");
   compute_data($char);
-  my $svg = svg_transform($self, svg_read($char));
+  my $svg = svg_transform($self, svg_read($char, XML::LibXML->new));
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'random';
@@ -2582,7 +2513,7 @@ get '/halberdsnhelmets/char' => sub {
   my $char = init($self);
   # no random parameters
   compute_data($char);
-  my $svg = svg_transform($self, svg_read($char));
+  my $svg = svg_transform($self, svg_read($char, XML::LibXML->new));
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'char';
