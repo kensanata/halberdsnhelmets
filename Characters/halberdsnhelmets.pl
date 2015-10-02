@@ -2515,196 +2515,6 @@ sub stats {
   return $txt;
 }
 
-
-# sub text {
-#   my $char = shift;
-#   my $str = T('Character:') . "\n";
-#   my $rows;
-#   for my $key (@provided) {
-#     for my $val (split(/\\\\/, $char->{$key})) {
-#       # utf8::decode($val);
-#       $str .= "$key: $val\n";
-#       $rows++;
-#     }
-#   }
-#   return wantarray ? ($str, $rows) : $str;
-# }
-
-# sub show_link {
-#   header();
-#   print $q->h2(T('Bookmark'));
-#   print $q->p(T('Bookmark the following link to your %0.',
-# 		$q->a({-href=>link_to()},
-# 		      T('Character Sheet'))));
-#   print $q->h2(T('Edit'));
-#   print $q->p(T('Use the following form to make changes to your character sheet.'),
-# 	      T('You can also copy and paste it on to a %0 page to generate an inline character sheet.',
-# 		$q->a({-href=>"https://campaignwiki.org/"}, "Campaign Wiki")));
-#   print $q->start_form(-method=>"get", -action=>"$url/redirect/$lang", -accept_charset=>"UTF-8");
-#   my ($str, $rows) = text();
-#   print $q->textarea(-name    => "input",
-# 		     -default => $str,
-# 		     -rows    => $rows + 3,
-# 		     -columns => 55,
-# 		     -style   => "width: 100%", );
-#   print $q->p($q->submit);
-#   print $q->end_form;
-# }
-
-# sub help {
-#   header();
-#   print $q->p(T('The generator works by using a template and replacing some placeholders.'));
-
-#   print $q->h2(T('Basic D&amp;D'));
-
-#   print $q->p(T('The default template (%0) uses the %1 font.',
-# 		$q->a({-href=>"/" . T('Charactersheet.svg')},
-# 		      T('Charactersheet.svg')),
-# 		$q->a({-href=>"/Purisa.ttf"},
-# 		      "Purisa")),
-# 	      T('You provide values for the placeholders by providing URL parameters (%0).',
-# 		$q->a({-href=>$example}, T('example')) . ", "
-# 		. $q->a({-href=>$alternative}, T('alternative'))),
-# 	      T('The script can also show %0.',
-# 		$q->a({-href=>"$url/show/$lang"},
-# 		      T('which parameters go where'))),
-# 	      T('Also note that the parameters need to be UTF-8 encoded.'),
-# 	      T('If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.'));
-#   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
-#   print "<ul>";
-#   my @doc = qw(str str-bonus
-# 	       dex dex-bonus
-# 	       con con-bonus
-# 	       int int-bonus
-# 	       wis wis-bonus
-# 	       cha cha-bonus
-# 	       cha-bonus loyalty
-# 	       str-bonus damage
-#                thac0 melee-thac0
-#                melee-thac0 melee0-9
-#                damage melee-damage
-# 	       thac0 range-thac0
-#                range-thac0 range0-9
-#                damage range-damage);
-#   while (@doc) {
-#     print $q->li(shift(@doc), "&rarr;", shift(@doc));
-#   }
-#   print "</ul>";
-
-#   my ($random, $bunch, $stats) =
-#     ($q->a({-href=>"$url/random/$lang"}, T('random character')),
-#      $q->a({-href=>"$url/characters/$lang"}, T('bunch of characters')),
-#      $q->a({-href=>"$url/stats/$lang"}, T('some statistics')));
-
-#   print $q->p(T('The script can also generate a %0, a %1, or %2.',
-# 		$random, $bunch, $stats));
-
-#   ($random, $bunch, $stats) =
-#     ($q->a({-href=>"$url/random/$lang?rules=labyrinth+lord"},
-# 	   T('random character')),
-#      $q->a({-href=>"$url/characters/$lang?rules=labyrinth+lord"},
-# 	   T('bunch of characters')),
-#      $q->a({-href=>"$url/stats/$lang?rules=labyrinth+lord"},
-# 	   T('some statistics')));
-
-#   print $q->p(T('As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.',
-# 		$random, $bunch, $stats));
-
-#   print $q->h2(T('Pendragon'));
-#   print $q->p(T('The script also supports Pendragon characters (but cannot generate them randomly):'),
-# 	      T('Get started with a %0.',
-# 		$q->a({-href=>"$url/link/$lang?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
-# 		      T('Pendragon character'))),
-# 	      T('The script can also show %0.',
-# 		$q->a({-href=>"$url/show/$lang?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg"},
-# 		      T('which parameters go where'))));
-#   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
-#   print "<ul>";
-#   @doc = qw(str+siz damage
-# 	       str+con heal
-# 	       str+dex move
-# 	       siz+con hp
-# 	       hp unconscious);
-#   while (@doc) {
-#     print $q->li(shift(@doc), "&rarr;", shift(@doc));
-#   }
-#   @doc = qw(chaste lustful
-# 	    energetic lazy
-# 	    forgiving vengeful
-# 	    generous selfish
-# 	    honest deceitful
-# 	    just arbitrary
-# 	    merciful cruel
-# 	    modest proud
-# 	    pious worldly
-# 	    prudent reckless
-# 	    temperate indulgent
-# 	    trusting suspicious
-# 	    valorous cowardly);
-#   while (@doc) {
-#     print $q->li(shift(@doc), "&harr;", shift(@doc));
-#   }
-#   print "</ul>";
-
-#   print $q->h2(T('Crypts &amp; Things'));
-#   print $q->p(T('The script also supports Crypts &amp; Things characters (but cannot generate them randomly):'),
-# 	      T('Get started with a %0.',
-# 		$q->a({-href=>"$url/link/$lang?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
-# 		      T('Crypts &amp; Things character'))),
-# 	      T('The script can also show %0.',
-# 		$q->a({-href=>"$url/show/$lang?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg"},
-# 		      T('which parameters go where'))));
-
-#   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
-#   print "<ul>";
-#   @doc = qw(str to-hit
-# 	    str damage-bonus
-# 	    dex missile-bonus
-# 	    dex ac-bonus
-# 	    con con-bonus
-# 	    int understand
-# 	    cha charm
-# 	    cha hirelings
-# 	    wis sanity);
-#   while (@doc) {
-#     print $q->li(shift(@doc), "&rarr;", shift(@doc));
-#   }
-#   print "</ul>";
-
-#   print $q->h2(T('Adventure Conqueror King'));
-#   print $q->p(T('The script also supports Adventure Conqueror King characters (but cannot generate them randomly):'),
-# 	      T('Get started with an %0.',
-# 		$q->a({-href=>"$url/link/$lang?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
-# 		      T('Adventure Conqueror King character'))),
-# 	      T('The script can also show %0.',
-# 		$q->a({-href=>"$url/show/$lang?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg"},
-# 		      T('which parameters go where'))));
-
-#   print $q->p(T('In addition to that, some parameters are computed unless provided:'));
-#   print "<ul>";
-#   @doc = qw(str str-bonus
-# 	    int int-bonus
-# 	    wis wis-bonus
-# 	    dex dex-bonus
-# 	    con con-bonus
-# 	    cha cha-bonus
-# 	    attack+str melee
-# 	    attack+dex missile);
-#   while (@doc) {
-#     print $q->li(shift(@doc), "&rarr;", shift(@doc));
-#   }
-#   print "</ul>";
-
-#   ($random, $bunch, $stats) =
-#       ($q->a({-href=>"$url/random/$lang?rules=acks"}, T('random character')),
-#        $q->a({-href=>"$url/characters/$lang?rules=acks"}, T('bunch of characters')),
-#        $q->a({-href=>"$url/stats/$lang?rules=acks"}, T('some statistics')));
-
-#   print $q->p(T('The script can also generate a %0, a %1, or %2.',
-# 		$random, $bunch, $stats));
-
-# }
-
 sub url_encode {
   my $str = shift;
   return '' unless defined $str;
@@ -2716,21 +2526,6 @@ sub url_encode {
   }
   return join('', @letters);
 }
-
-# sub redirect {
-#   $_ = $char->{input};
-#   my @param;
-#   my $last;
-#   while (/^([-a-z0-9]*): *(.*?)\r$/gm) {
-#     if ($1 eq $last or $1 eq "") {
-#       $param[$#param] .= "\\\\" . url_encode($2);
-#     } else {
-#       push(@param, $1 . "=" . url_encode($2));
-#       $last = $1;
-#     }
-#   }
-#   print $q->redirect("$url/$lang?" . join(";", @param));
-# }
 
 sub init {
   my $self = shift;
@@ -2745,42 +2540,6 @@ sub init {
   $char{provided} = \@provided;
   return \%char;
 }
-
-# sub main {
-#   init();
-#   if ($q->path_info eq "/source") {
-#     print "Content-type: text/plain; charset=UTF-8\r\n\r\n",
-#       source();
-#   } elsif ($q->path_info =~ m!/show\b!) {
-#     svg_write(svg_show_id(svg_read()));
-#   } elsif ($q->path_info =~ m!/random\b!) {
-#     random_parameters("portrait");
-#     compute_data();
-#     if ($q->path_info =~ m!/text\b!) {
-#       binmode(STDOUT, ":utf8");
-#       print text();
-#     } else {
-#       svg_write(svg_transform(svg_read()));
-#     }
-#   } elsif ($q->path_info =~ m!/characters\b!) {
-#     characters();
-#   } elsif ($q->path_info =~ m!/translation\b!) {
-#     translation();
-#   } elsif ($q->path_info =~ m!/stats(?:/(\d+))?!) {
-#     stats($1 || 10000);
-#   } elsif ($q->path_info =~ m!/link\b!) {
-#     show_link();
-#   } elsif ($q->path_info =~ m!/redirect\b!) {
-#     redirect();
-#   } elsif ($q->path_info =~ m!/help\b!) {
-#     help();
-#   } elsif (%char) {
-#     compute_data();
-#     svg_write(svg_transform(svg_read()));
-#   } else {
-#     default();
-#   }
-# }
 
 plugin 'Config' => {default => {}};
 
@@ -2893,14 +2652,26 @@ __DATA__
 % layout 'default';
 % title 'Character Sheet Generator';
 <h1>Character Sheet Generator</h1>
-<p>This is the <i>Halberds and Helmets</i> Character Sheet Generator.
+
+<p class="text">
+
+This is the <i>Halberds and Helmets</i> Character Sheet Generator. By default it
+will generate a <%= link_to 'random character' => 'random' %> for <i>Basic
+D&D</i> by Moldvay (the “B” in <a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1981_revision">B/X D&D</a>).
+Reload the character sheet to generate more 1<sup>st</sup> level characters.
+
+Feel free to provide a name for your random character!
+
 %= form_for random => begin
 %= label_for name => 'Name:'
 %= text_field 'name'
 %= submit_button
 % end
+
 <p class="text">
-The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
+The character sheet contains a link in the bottom right corner which allows you
+to bookmark and edit your character. <%= link_to 'Learn more…' => 'help' %>
+
 
 @@ link.html.ep
 % layout 'default';
