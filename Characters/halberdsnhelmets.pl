@@ -2833,6 +2833,9 @@ get '/' => sub {
 
 get '/halberdsnhelmets' => sub {
   my $self = shift;
+  if (@{$self->req->params}) {
+    $self->redirect_to($self->url_with('char'));
+  }
   $self->render(template => 'index');
 } => 'main';
 
@@ -2856,6 +2859,16 @@ get '/halberdsnhelmets/random/:lang' => sub {
 		data => $svg->toString());
 } => 'random';
 
+get '/halberdsnhelmets/char' => sub {
+  my $self = shift;
+  my $char = init($self);
+  # no random parameters
+  compute_data($char);
+  my $svg = svg_transform(svg_read($char));
+  $self->render(format => 'svg',
+		data => $svg->toString());
+} => 'char';
+
 get '/halberdsnhelmets/link' => sub {
   my $self = shift;
   $self->redirect_to(link => {lang => 'en'});
@@ -2868,6 +2881,23 @@ get '/halberdsnhelmets/link/:lang' => sub {
   $self->render(template => 'link',
 		char => $char);
 } => 'link';
+
+get '/halberdsnhelmets/redirect' => sub {
+  my $self = shift;
+  my $input = $self->param('input');
+  my $params = Mojo::Parameters->new;
+  my $last;
+  while ($input =~ /^([-a-z0-9]*): *(.*?)\r?$/gm) {
+    if ($1 eq $last or $1 eq "") {
+      $params->param($1 => $params->param($1) . "\\\\$2");
+    } else {
+      $params->append($1 => $2);
+      $last = $1;
+    }
+  }
+  $self->redirect_to($self->url_for('char')->query($params));
+} => 'redirect';
+
 
 get '/halberdsnhelmets/show' => sub {
   my $self = shift;
