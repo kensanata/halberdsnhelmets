@@ -2479,7 +2479,9 @@ get '/' => sub {
   $self->redirect_to('main');
 };
 
-get '/halberdsnhelmets' => sub {
+under '/halberdsnhelmets';
+
+get '/' => sub {
   my $self = shift;
   if (@{$self->req->params}) {
     $self->redirect_to($self->url_with('char'));
@@ -2487,19 +2489,19 @@ get '/halberdsnhelmets' => sub {
   $self->render(template => 'index');
 } => 'main';
 
-get '/halberdsnhelmets/help' => 'help';
+get '/help' => 'help';
 
-get '/halberdsnhelmets/hilfe' => 'hilfe';
+get '/hilfe' => 'hilfe';
 
-get '/halberdsnhelmets/random' => sub {
+get '/random' => sub {
   my $self = shift;
   $self->redirect_to($self->url_with('random' => {lang => 'en'}));
 };
 
-get '/halberdsnhelmets/random/:lang' => sub {
+get '/random/:lang' => [lang => qr/(en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
-  # FIXME: my $lang = $self->param('lang');
+  $lang = $self->param('lang');
   random_parameters($char, "portrait");
   compute_data($char);
   my $svg = svg_transform($self, svg_read($char, XML::LibXML->new));
@@ -2508,7 +2510,7 @@ get '/halberdsnhelmets/random/:lang' => sub {
 } => 'random';
 
 # Character sheet is independent of language!
-get '/halberdsnhelmets/char' => sub {
+get '/char' => sub {
   my $self = shift;
   my $char = init($self);
   # no random parameters
@@ -2518,12 +2520,12 @@ get '/halberdsnhelmets/char' => sub {
 		data => $svg->toString());
 } => 'char';
 
-get '/halberdsnhelmets/link' => sub {
+get '/link' => sub {
   my $self = shift;
   $self->redirect_to(link => {lang => 'en'});
 };
 
-get '/halberdsnhelmets/link/:lang' => sub {
+get '/link/:lang' => [lang => qr/(en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
   # FIXME: my $lang = $self->param('lang');
@@ -2531,7 +2533,7 @@ get '/halberdsnhelmets/link/:lang' => sub {
 		char => $char);
 } => 'link';
 
-get '/halberdsnhelmets/redirect' => sub {
+get '/redirect' => sub {
   my $self = shift;
   my $input = $self->param('input');
   my $params = Mojo::Parameters->new;
@@ -2548,26 +2550,26 @@ get '/halberdsnhelmets/redirect' => sub {
 } => 'redirect';
 
 
-get '/halberdsnhelmets/show' => sub {
+get '/show' => sub {
   my $self = shift;
   my $svg = svg_show_id(svg_read());
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'show';
 
-get '/halberdsnhelmets/characters' => sub {
+get '/characters' => sub {
   my $self = shift;
   $self->render(template => 'characters',
 		characters => characters(init($self)));
 } => 'characters';
 
-get '/halberdsnhelmets/stats' => sub {
+get '/stats' => sub {
   my $self = shift;
   $self->render(format => 'txt',
 		text => stats(init($self), 1000));
 } => 'characters';
 
-get '/halberdsnhelmets/stats/:n' => sub {
+get '/stats/:n' => sub {
   my $self = shift;
   $self->render(format => 'txt',
 		text => stats(init($self), $self->param('n')));
