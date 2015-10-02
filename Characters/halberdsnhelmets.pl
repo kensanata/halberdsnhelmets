@@ -2964,8 +2964,10 @@ page to generate an inline character sheet.
 %= form_for redirect => begin
 %= text_area 'input' => (cols => 72, rows => 20) => begin
 <% for my $key (@{$char->{provided}}) { %>\
-<%= $key =%>: <%= $char->{$key} %>
-<% } %>
+<%   for my $value (split(/\\\\/, $char->{$key})) { =%>\
+<%= $key =%>: <%= $value %>
+<%   } %>\
+<% } %>\
 % end
 <p>
 %= submit_button
