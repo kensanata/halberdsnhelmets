@@ -2845,7 +2845,7 @@ get '/halberdsnhelmets/hilfe' => 'hilfe';
 
 get '/halberdsnhelmets/random' => sub {
   my $self = shift;
-  $self->redirect_to(random => {lang => 'en'});
+  $self->redirect_to($self->url_with('random' => {lang => 'en'}));
 };
 
 get '/halberdsnhelmets/random/:lang' => sub {
