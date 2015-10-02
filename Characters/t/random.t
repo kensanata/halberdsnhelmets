@@ -28,9 +28,9 @@ my $t = Test::Mojo->new;
 # typical use case: request a random character    
 $t->get_ok('/')
     ->status_is(302)
-    ->header_is(Location => '/halberdsnhelmets');
+    ->header_is(Location => '/halberdsnhelmets/en');
 
-$t->get_ok('/halberdsnhelmets')
+$t->get_ok('/halberdsnhelmets/en')
     ->status_is(200)
     ->text_is('h1' => 'Character Sheet Generator');
 

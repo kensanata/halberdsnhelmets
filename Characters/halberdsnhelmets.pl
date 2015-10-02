@@ -428,14 +428,12 @@ sub svg_read {
   my $filename = $char->{charsheet} || T('Charactersheet.svg');
   my $doc;
   if (-f $filename) {
-    open(my $fh, "<:utf8", $filename);
-    $doc = $parser->parse_fh($fh);
-    close($fh);
+    $doc = XML::LibXML->load_xml(location => $filename);
   } else {
     my $ua = Mojo::UserAgent->new;
     my $tx = $ua->get($filename);
     die "«$filename»: " . $tx->res->error->{message} . "\n" unless $tx->success;
-    $doc = $parser->parse_string($tx->res->body);
+    $doc = XML::LibXML->load_xml(string => $tx->res->body);
   }
   return ($char, $doc, $parser); # used as parameters for svg_transform
 }
@@ -2476,17 +2474,23 @@ plugin 'Config' => {default => {}};
 
 get '/' => sub {
   my $self = shift;
-  $self->redirect_to('main');
+  $self->redirect_to('main' => {lang => 'en'});
 };
 
 under '/halberdsnhelmets';
 
 get '/' => sub {
   my $self = shift;
+  $self->redirect_to($self->url_with('main' => {lang => 'en'}));
+};
+
+get '/:lang' => [lang => qr/(en|de)/] => sub {
+  my $self = shift;
+  $lang = $self->param('lang');
   if (@{$self->req->params}) {
     $self->redirect_to($self->url_with('char'));
   }
-  $self->render(template => 'index');
+  $self->render(template => "index.$lang");
 } => 'main';
 
 get '/help' => 'help';
@@ -2581,7 +2585,7 @@ app->start;
 
 __DATA__
 
-@@ index.html.ep
+@@ index.en.html.ep
 % layout 'default';
 % title 'Character Sheet Generator';
 <h1>Character Sheet Generator</h1>
@@ -2604,6 +2608,32 @@ Feel free to provide a name for your random character!
 <p class="text">
 The character sheet contains a link in the bottom right corner which allows you
 to bookmark and edit your character. <%= link_to 'Learn more…' => 'help' %>
+
+@@ index.de.html.ep
+% layout 'default.de';
+% title 'Character Sheet Generator';
+<h1>Charakterblatt Generator</h1>
+
+<p class="text">
+
+Dies ist der <i>Hellebarden und Helme</i> Charaktergenerator. Per Default generieren wir einen
+<%= link_to url_for('random', {lang => 'de'}) => begin %>zufälligen Charakter<% end %>
+für die <i>Basic D&D</i> Regeln von Moldvay (das “B” in
+<a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1981_revision">B/X D&D</a>).
+Um weitere Charaktere der 1. Stufe zu generieren, kann man die Seite einfach neu laden.
+
+Wer will, kann dem generierten Charakter hier auch einen Namen geben:
+
+%= form_for random => begin
+%= label_for name => 'Name:'
+%= text_field 'name'
+%= submit_button
+% end
+
+<p class="text">
+Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man
+sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
+<%= link_to 'Weiterlesen…' => 'hilfe' %>
 
 
 @@ link.html.ep
@@ -2662,7 +2692,7 @@ Str Dex Con Int Wis Cha HP AC Class
 <div style="clear: both"></div>
 
 @@ hilfe.html.ep
-% layout 'default';
+% layout 'default.de';
 % title 'Hilfe (Charakterblatt Generator)';
 
 
@@ -2963,7 +2993,33 @@ body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino,
 <a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
 <%= link_to Help => 'help' %> &nbsp;
 <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
-<%= link_to German => 'german' %>
+<%= link_to url_for('main' => {lang => 'de'}) => begin %>German<% end %>
+</div>
+</body>
+</html>
+
+
+@@ layouts/default.de.html.ep
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= title %></title>
+%= stylesheet '/halberdsnhelmets/default.css'
+%= stylesheet begin
+body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
+.text { width: 80ex }
+% end
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+<%= content %>
+<div class="footer">
+<hr>
+<p>
+<a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
+<%= link_to Hilfe => 'hilfe' %> &nbsp;
+<a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
+<%= link_to url_for('main' => {lang => 'en'}) => begin %>English<% end %>
 </div>
 </body>
 </html>
