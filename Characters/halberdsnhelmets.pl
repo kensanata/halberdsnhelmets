@@ -2812,17 +2812,18 @@ get '/halberdsnhelmets/random/:lang' => sub {
   # FIXME: my $lang = $self->param('lang');
   random_parameters($char, "portrait");
   compute_data($char);
-  my $svg = svg_transform(svg_read($char));
+  my $svg = svg_transform($self, svg_read($char));
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'random';
 
+# Character sheet is independent of language!
 get '/halberdsnhelmets/char' => sub {
   my $self = shift;
   my $char = init($self);
   # no random parameters
   compute_data($char);
-  my $svg = svg_transform(svg_read($char));
+  my $svg = svg_transform($self, svg_read($char));
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'char';
@@ -2910,7 +2911,7 @@ The character sheet contains a link in the bottom right corner which allows you 
 
 <p class="text">
 Bookmark the following link to your
-<%= link_to url_for('main')->query($self->req->params) => begin %>Character Sheet<% end %>.
+<%= link_to url_for('char')->query($self->req->params) => begin %>Character Sheet<% end %>.
 
 <h2>Edit</h2>
 
