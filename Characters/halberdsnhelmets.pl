@@ -22,7 +22,6 @@ use POSIX qw(floor ceil);
 no warnings qw(uninitialized numeric);
 
 # globals
-my %Translation;
 my $url = "https://campaignwiki.org/halberdsnhelmets";
 my $pic = "https://campaignwiki.org/face/redirect/alex"; # we'll append man or woman
 my $lang = 'en';
@@ -30,6 +29,449 @@ my $example = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;d
 my $alternative = "$url/$lang?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg";
 my $default_filename = T('Charactersheet.svg');
 my $parser = XML::LibXML->new();
+
+my $translation = translations();
+
+sub translations {
+  # strings in sinqle quotes are translated into German if necessary
+  # use %0, %1, etc. for parameters
+  my %translations = split(/\n/, <<'EOT');
+%0 gold
+%0 Gold
+%0 is unknown.
+%0 ist unbekannt.
+%0 silver
+%0 Silber
+%0: How much does this cost?
+%0: Wieviel kostet das?
++1 bonus to ranged weapons
++1 für Fernwaffen
++4 to hit and double damage backstabbing
++4 und Schaden ×2 für hinterhältigen Angriff
+1/6 for normal tasks
+1/6 für normale Aufgaben
+2/6 to find secret constructions and traps
+2/6 um Geheimbauten und Fallen zu finden
+2/6 to find secret or concealed doors
+2/6 um geheime und versteckte Türen zu finden
+2/6 to hear noise
+2/6 um Geräusche zu hören
+2/6 to hide and sneak
+2/6 für Verstecken und Schleichen
+5/6 to hide and sneak outdoors
+5/6 für Verstecken und Schleichen im Freien
+AC -2 vs. opponents larger than humans
+Rüstung -2 bei Gegnern über Menschengrösse
+Acrobatics
+Akrobatik
+Adventure Conqueror King
+Adventure Conqueror King
+Adventure Conqueror King character
+Adventure Conqueror King Charakter
+Adventuring
+Abenteurer
+Alchemy
+Alchemie
+Alertness
+Aufmerksamkeit
+Also note that the parameters need to be UTF-8 encoded.
+Die Parameter müssen UTF-8 codiert sein.
+Animal Husbandry
+Tierpflege
+Animal Training (Dog)
+Tiertrainer (Hunde)
+Arcane Dabbling
+Hexereien
+Arcanist
+Arkanist
+Arcanist-Avenger
+Arkaner Rächer
+Arcanist-Guardian
+Arkaner Wächter
+Art
+Kunst
+As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.
+Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste etwas unterscheidet, kann man auch %0, %1 oder %2 mit Labyrinth Lord Regeln generieren.
+Bargaining
+Handeln
+Basic D&amp;D
+Basic D&amp;D
+Beast Friendship
+Tierfreundschaft
+Blade-Initiate
+Klingenkenner
+Blind Fighting
+Blind Kämpfen
+Bookmark
+Lesezeichen
+Bookmark the following link to your %0.
+Den Charakter kann man einfach aufbewahren, in dem man sich das %0 als Lesezeichen speichert.
+Bribery
+Bestechung
+Cat Burglary
+Einbruch
+Catechist
+Katechet
+Caving
+Höhlenwandern
+Character Sheet
+Charakterblatt
+Character Sheet Generator
+Charakterblatt Generator
+Character:
+Charakter:
+Charactersheet.svg
+Charakterblatt.svg
+Climbing
+Klettern
+Collegiate Wizardry
+Zauberkollegium
+Combat Refexes
+Kampfreflexe
+Combat Trickery (Disarm)
+Austricksen (Entwaffnen)
+Combat Trickery (Incapacitate)
+Austricksen (Überwältigen)
+Contortionism
+Kontorsion
+Craft
+Handwerk
+Crypts &amp; Things
+Crypts &amp; Things
+Crypts &amp; Things character
+Crypts &amp; Things Charakter
+Diplomacy
+Diplomatie
+Disguise
+Verkleiden
+Dwarven Craft-Catechist
+Zwergischer Werk-Katechet
+ESP
+Gedankenlesen
+Eavesdropping
+Lauschen
+Edit
+Bearbeiten
+Endurance
+Ausdauer
+Engineering
+Technik
+Fighting Style
+Kampfstil
+First level spells:
+Sprüche der ersten Stufe:
+Footpad
+Strassenräuber
+Gambling
+Glücksspiel
+Get started with a %0.
+%0 bearbeiten.
+Get started with an %0.
+%0 bearbeiten.
+Healing
+Heilung
+If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
+Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch doppelte Backslashes trennen.
+In addition to that, some parameters are computed unless provided:
+Zudem werden einige Parameter berechnet, sofern sie nicht angegeben wurden:
+Intimidation
+Einschüchterung
+Knowledge
+Wissen
+Labor
+Arbeit
+Language
+Sprache
+Leadership
+Anführer
+Lip Reading
+Lippenlesen
+Man-at-Arms
+Landsknecht
+Manual of Arms
+Fechtbuch
+Mapping
+Kartographie
+Military Strategy
+Strategie
+Mimicry
+Mimikry
+Name:
+Name:
+Naturalism
+Naturfreund
+Navigation
+Navigation
+Pendragon
+Pendragon
+Pendragon character
+Pendragon Charakter
+Performance
+Auftritt
+Precise Shooting
+Scharfschütze
+Profession
+Beruf
+Reciter
+Rezitierer
+Riding
+Reiten
+Running
+Rennen
+Scout
+Späher
+Seafaring
+Seefahrt
+Seduction
+Verführung
+Sentry
+Wächter
+Siege Engineering
+Belagerung
+Signaling
+Signalisieren
+Skirmishing
+Plänkeln
+Skulking
+Schleichen
+Sniping
+Scharfschütze
+Spells:
+Zaubersprüche:
+Survival
+Überleben
+Swashbuckling
+Draufgängertum
+The default template (%0) uses the %1 font.
+Die Defaultvorlage (%0) verwendet die %1 Schrift.
+The generator works by using a template and replacing some placeholders.
+Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
+The script also supports Adventure Conqueror King characters (but cannot generate them randomly):
+Das Skript kann auch Charaktere für Adventure Conqueror King anzeigen (aber nicht zufällig erstellen):
+The script also supports Crypts &amp; Things characters (but cannot generate them randomly):
+Das Skript kann auch Charaktere für Crypts &amp; Things anzeigen (aber nicht zufällig erstellen):
+The script also supports Pendragon characters (but cannot generate them randomly):
+Das Skript kann auch Pendragon Charaktere anzeigen (aber nicht zufällig erstellen):
+The script can also generate a %0, a %1, or %2.
+Das Skript kann auch %0, %1 oder %2 generieren.
+The script can also show %0.
+Das Skript kann auch zeigen %0.
+Theology
+Theologie
+Thug
+Schläger
+Tracking
+Spurenlesen
+Trap Finding
+Fallenfinden
+Trapping
+Fallenstellen
+Unknown Price
+Unbekannter Preis
+Unknown Rules
+Unbekannte Regeln
+Use the following form to make changes to your character sheet.
+Mit dem folgenden Formular lassen sich leicht Änderungen am Charakter machen.
+Weapon Finesse
+Waffenfinesse
+Weapon Focus
+Waffenfokus
+You can also copy and paste it on to a %0 page to generate an inline character sheet.
+Man kann diesen Text auch auf einer %0 Seite verwenden, um das Charakterblatt einzufügen.
+You provide values for the placeholders by providing URL parameters (%0).
+Den Platzhaltern werden über URL Parameter Werte zugewiesen (%0).
+alternative
+Alternative
+and
+und
+arcane lock
+Arkanes Schloss
+assassin
+Assassine
+backpack
+Rucksack
+barbarian
+Barbar
+bard
+Barde
+battle axe
+Streitaxt
+bladedancer
+Klingentänzer
+bunch of characters
+einige Charaktere
+case with 30 bolts
+Kiste mit 30 Bolzen
+chain mail
+Kettenhemd
+charm person
+Person bezaubern
+cleric
+Kleriker
+club
+Keule
+continual light
+Ewiges Licht
+crossbow
+Armbrust
+d6
+W6
+dagger
+Dolch
+detect evil
+Böses entdecken
+detect invisible
+Unsichtbares entdecken
+detect magic
+Magie entdecken
+dwarf
+Zwerg
+dwarven craftpriest
+Zwergischer Werkpriester
+dwarven vaultguard
+Zwergischer Schatzwächter
+elderly man
+älterer Mann
+elderly woman
+ältere Frau
+elf
+Elf
+elven bladedancer
+Elfischer Klingentänzer
+elven nightblade
+Elfische Nachtklinge
+elven spellsword
+Elfische Zauberklinge
+example
+Beispiel
+explorer
+Forscher
+fighter
+Krieger
+flask of oil
+Ölflasche
+floating disc
+Schwebende Scheibe
+halfling
+Halbling
+hand axe
+Handaxt
+helmet
+Helm
+hold portal
+Portal verschliessen
+holy symbol
+Heiliges Symbol
+holy water
+Weihwasser
+invisibility
+Unsichtbarkeit
+iron rations (1 week)
+Feldrationen (1 Woche)
+iron spikes and hammer
+Eisenkeile und Hammer
+knock
+Klopfen
+lantern
+Laterne
+leather armor
+Lederrüstung
+levitate
+Schweben
+light
+Licht
+locate object
+Objekt lokalisieren
+long bow
+Langbogen
+long sword
+Langschwert
+mace
+Streitkeule
+mage
+Magier
+magic missile
+Magisches Geschoss
+magic-user
+Magier
+man
+Mann
+minor image
+kleines Ebenbild
+mirror
+Spiegel
+phantasmal force
+phantastische Kraft
+plate mail
+Plattenpanzer
+pole arm
+Stangenwaffe
+pouch with 30 stones
+Beutel mit 30 Steinen
+protection from evil
+Schutz vor Bösem
+quiver with 20 arrows
+Köcher mit 20 Pfeilen
+random character
+einen zufälligen Charakter
+read languages
+Sprachen lesen
+read magic
+Magie lesen
+rope
+Seil
+second level spells:
+Sprüche der zweiten Stufe:
+shield
+Schild
+short bow
+Kurzbogen
+short sword
+Kurzschwert
+silver dagger
+Silberner Dolch
+sleep
+Schlaf
+sling
+Schleuder
+some statistics
+Statistiken
+spear
+Speer
+spell book
+Zauberbuch
+staff
+Stab
+thief
+Dieb
+thieves’ tools
+Diebeswerkzeug
+torches
+Fackeln
+two handed sword
+Zweihänder
+ventriloquism
+Bauchreden
+war hammer
+Kriegshammer
+web
+Netz
+which parameters go where
+welche Parameter wo erscheinen
+wolfsbane
+Eisenhut (sog. Wolfsbann)
+woman
+Frau
+wooden pole
+Holzstab
+young man
+junger Mann
+young woman
+junge Frau
+EOT
+
+  return \%translations;
+}
 
 sub T {
   my ($en, @arg) = @_;
@@ -39,8 +481,8 @@ sub T {
     $en = $1;
     $suffix = $2;
   }
-  if ($Translation{$en} and $lang eq "de") {
-    $en = $Translation{$en};
+  if ($translation->{$en} and $lang eq "de") {
+    $en = $translation->{$en};
   }
   # utf8::encode($en);
   for (my $i = 0; $i < scalar @arg; $i++) {
@@ -59,10 +501,10 @@ sub svg_read {
     $doc = $parser->parse_fh($fh);
     close($fh);
   } else {
-    my $ua = LWP::UserAgent->new;
-    my $response = $ua->get($filename);
-    $response->is_success or error($response->status_line, $filename);
-    $doc = $parser->parse_string($response->decoded_content);
+    my $ua = Mojo::UserAgent->new;
+    my $tx = $ua->get($filename);
+    die "«$filename»: " . $tx->res->error->{message} . "\n" unless $tx->success;
+    $doc = $parser->parse_string($tx->res->body);
   }
   return ($char, $doc);
 }
@@ -124,20 +566,8 @@ sub replace_text {
   }
 }
 
-sub link_to {
-  my ($char, $path) = @_;
-  my $link = $url;
-  $link .= "/$path" if $path;
-  $link .= "/$lang" if $lang;
-
-  return "$link?"
-    . join(";",
-	   map { "$_=" . url_encode($char->{$_}) }
-	   @{$char->{provided}});
-}
-
 sub svg_transform {
-  my ($char, $doc) = @_;
+  my ($self, $char, $doc) = @_;
 
   my $svg = XML::LibXML::XPathContext->new;
   $svg->registerNs("svg", "http://www.w3.org/2000/svg");
@@ -159,7 +589,11 @@ sub svg_transform {
 
   my $nodes = $svg->find(qq{//svg:a[\@id="link"]/attribute::xlink:href}, $doc);
   for my $node ($nodes->get_nodelist) {
-    $node->setValue(link_to($char, "link"));
+    my $params = Mojo::Parameters->new;
+    for my $key (@{$char->{provided}}) {
+      $params->append($key => $char->{$key});
+    }
+    $node->setValue($self->url_for('link')->query($params));
   }
   return $doc;
 }
@@ -2081,28 +2515,6 @@ sub stats {
   return $txt;
 }
 
-# sub translation {
-#   print $q->header(-type=>"text/plain",
-# 		   -charset=>"utf-8");
-#   binmode(STDOUT, ":utf8");
-
-#   my $str = source();
-#   my %data;
-#   while ($str =~ /'(.+?)'/g) {
-#     next if $1 eq "(.+?)";
-#     $data{$1} = $Translation{$1};
-#   }
-#   foreach (sort keys %data) {
-#     print "$_\n";
-#     print $Translation{$_} . "\n";
-#   }
-#   foreach (sort keys %Translation) {
-#     if (not exists $data{$_}) {
-#       print "$_\n";
-#       print "NOT USED: " . $Translation{$_} . "\n";
-#     }
-#   }
-# }
 
 # sub text {
 #   my $char = shift;
@@ -2329,463 +2741,9 @@ sub init {
     my $key = shift @pairs;
     my $value = shift @pairs;
     push(@provided, $key);
-    warn $key;
   }
   $char{provided} = \@provided;
   return \%char;
-  
-  # strings in sinqle quotes are translated into German if necessary
-  # use %0, %1, etc. for parameters
-  %Translation = split(/\n/, <<'EOT');
-%0 gold
-%0 Gold
-%0 is unknown.
-%0 ist unbekannt.
-%0 silver
-%0 Silber
-%0: How much does this cost?
-%0: Wieviel kostet das?
-+1 bonus to ranged weapons
-+1 für Fernwaffen
-+4 to hit and double damage backstabbing
-+4 und Schaden ×2 für hinterhältigen Angriff
-1/6 for normal tasks
-1/6 für normale Aufgaben
-2/6 to find secret constructions and traps
-2/6 um Geheimbauten und Fallen zu finden
-2/6 to find secret or concealed doors
-2/6 um geheime und versteckte Türen zu finden
-2/6 to hear noise
-2/6 um Geräusche zu hören
-2/6 to hide and sneak
-2/6 für Verstecken und Schleichen
-5/6 to hide and sneak outdoors
-5/6 für Verstecken und Schleichen im Freien
-AC -2 vs. opponents larger than humans
-Rüstung -2 bei Gegnern über Menschengrösse
-Acrobatics
-Akrobatik
-Adventure Conqueror King
-Adventure Conqueror King
-Adventure Conqueror King character
-Adventure Conqueror King Charakter
-Adventuring
-Abenteurer
-Alchemy
-Alchemie
-Alertness
-Aufmerksamkeit
-Also note that the parameters need to be UTF-8 encoded.
-Die Parameter müssen UTF-8 codiert sein.
-Animal Husbandry
-Tierpflege
-Animal Training (Dog)
-Tiertrainer (Hunde)
-Arcane Dabbling
-Hexereien
-Arcanist
-Arkanist
-Arcanist-Avenger
-Arkaner Rächer
-Arcanist-Guardian
-Arkaner Wächter
-Art
-Kunst
-As the price list for Labyrinth Lord differs from the Moldvay price list, you can also generate a %0, a %1, or %2 using Labyrinth Lord rules.
-Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste etwas unterscheidet, kann man auch %0, %1 oder %2 mit Labyrinth Lord Regeln generieren.
-Bargaining
-Handeln
-Basic D&amp;D
-Basic D&amp;D
-Beast Friendship
-Tierfreundschaft
-Blade-Initiate
-Klingenkenner
-Blind Fighting
-Blind Kämpfen
-Bookmark
-Lesezeichen
-Bookmark the following link to your %0.
-Den Charakter kann man einfach aufbewahren, in dem man sich das %0 als Lesezeichen speichert.
-Bribery
-Bestechung
-Cat Burglary
-Einbruch
-Catechist
-Katechet
-Caving
-Höhlenwandern
-Character Sheet
-Charakterblatt
-Character Sheet Generator
-Charakterblatt Generator
-Character:
-Charakter:
-Charactersheet.svg
-Charakterblatt.svg
-Climbing
-Klettern
-Collegiate Wizardry
-Zauberkollegium
-Combat Refexes
-Kampfreflexe
-Combat Trickery (Disarm)
-Austricksen (Entwaffnen)
-Combat Trickery (Incapacitate)
-Austricksen (Überwältigen)
-Contortionism
-Kontorsion
-Craft
-Handwerk
-Crypts &amp; Things
-Crypts &amp; Things
-Crypts &amp; Things character
-Crypts &amp; Things Charakter
-Diplomacy
-Diplomatie
-Disguise
-Verkleiden
-Dwarven Craft-Catechist
-Zwergischer Werk-Katechet
-ESP
-Gedankenlesen
-Eavesdropping
-Lauschen
-Edit
-Bearbeiten
-Endurance
-Ausdauer
-Engineering
-Technik
-English
-Englisch
-Fighting Style
-Kampfstil
-First level spells:
-Sprüche der ersten Stufe:
-Footpad
-Strassenräuber
-Gambling
-Glücksspiel
-German
-Deutsch
-Get started with a %0.
-%0 bearbeiten.
-Get started with an %0.
-%0 bearbeiten.
-Halberds and Helmets
-Hellebarden und Helme
-Healing
-Heilung
-Help
-Hilfe
-If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
-Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch doppelte Backslashes trennen.
-In addition to that, some parameters are computed unless provided:
-Zudem werden einige Parameter berechnet, sofern sie nicht angegeben wurden:
-Intimidation
-Einschüchterung
-Knowledge
-Wissen
-Labor
-Arbeit
-Language
-Sprache
-Leadership
-Anführer
-Lip Reading
-Lippenlesen
-Man-at-Arms
-Landsknecht
-Manual of Arms
-Fechtbuch
-Mapping
-Kartographie
-Military Strategy
-Strategie
-Mimicry
-Mimikry
-Name:
-Name:
-Naturalism
-Naturfreund
-Navigation
-Navigation
-Pendragon
-Pendragon
-Pendragon character
-Pendragon Charakter
-Performance
-Auftritt
-Precise Shooting
-Scharfschütze
-Profession
-Beruf
-Reciter
-Rezitierer
-Riding
-Reiten
-Running
-Rennen
-Scout
-Späher
-Seafaring
-Seefahrt
-Seduction
-Verführung
-Sentry
-Wächter
-Siege Engineering
-Belagerung
-Signaling
-Signalisieren
-Skirmishing
-Plänkeln
-Skulking
-Schleichen
-Sniping
-Scharfschütze
-Source
-Quellcode
-Spells:
-Zaubersprüche:
-Survival
-Überleben
-Swashbuckling
-Draufgängertum
-The character sheet contains a link in the bottom right corner which allows you to bookmark and edit your character.
-Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
-The default template (%0) uses the %1 font.
-Die Defaultvorlage (%0) verwendet die %1 Schrift.
-The generator works by using a template and replacing some placeholders.
-Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
-The script also supports Adventure Conqueror King characters (but cannot generate them randomly):
-Das Skript kann auch Charaktere für Adventure Conqueror King anzeigen (aber nicht zufällig erstellen):
-The script also supports Crypts &amp; Things characters (but cannot generate them randomly):
-Das Skript kann auch Charaktere für Crypts &amp; Things anzeigen (aber nicht zufällig erstellen):
-The script also supports Pendragon characters (but cannot generate them randomly):
-Das Skript kann auch Pendragon Charaktere anzeigen (aber nicht zufällig erstellen):
-The script can also generate a %0, a %1, or %2.
-Das Skript kann auch %0, %1 oder %2 generieren.
-The script can also show %0.
-Das Skript kann auch zeigen %0.
-Theology
-Theologie
-This is the %0 character sheet generator.
-Dies ist der %0 Charaktergenerator.
-Thug
-Schläger
-Tracking
-Spurenlesen
-Trap Finding
-Fallenfinden
-Trapping
-Fallenstellen
-Unknown Price
-Unbekannter Preis
-Unknown Rules
-Unbekannte Regeln
-Use the following form to make changes to your character sheet.
-Mit dem folgenden Formular lassen sich leicht Änderungen am Charakter machen.
-Weapon Finesse
-Waffenfinesse
-Weapon Focus
-Waffenfokus
-You can also copy and paste it on to a %0 page to generate an inline character sheet.
-Man kann diesen Text auch auf einer %0 Seite verwenden, um das Charakterblatt einzufügen.
-You provide values for the placeholders by providing URL parameters (%0).
-Den Platzhaltern werden über URL Parameter Werte zugewiesen (%0).
-alternative
-Alternative
-and
-und
-arcane lock
-Arkanes Schloss
-assassin
-Assassine
-backpack
-Rucksack
-barbarian
-Barbar
-bard
-Barde
-battle axe
-Streitaxt
-bladedancer
-Klingentänzer
-bunch of characters
-einige Charaktere
-case with 30 bolts
-Kiste mit 30 Bolzen
-chain mail
-Kettenhemd
-charm person
-Person bezaubern
-cleric
-Kleriker
-club
-Keule
-continual light
-Ewiges Licht
-crossbow
-Armbrust
-d6
-W6
-dagger
-Dolch
-detect evil
-Böses entdecken
-detect invisible
-Unsichtbares entdecken
-detect magic
-Magie entdecken
-dwarf
-Zwerg
-dwarven craftpriest
-Zwergischer Werkpriester
-dwarven vaultguard
-Zwergischer Schatzwächter
-elderly man
-älterer Mann
-elderly woman
-ältere Frau
-elf
-Elf
-elven bladedancer
-Elfischer Klingentänzer
-elven nightblade
-Elfische Nachtklinge
-elven spellsword
-Elfische Zauberklinge
-example
-Beispiel
-explorer
-Forscher
-fighter
-Krieger
-flask of oil
-Ölflasche
-floating disc
-Schwebende Scheibe
-halfling
-Halbling
-hand axe
-Handaxt
-helmet
-Helm
-hold portal
-Portal verschliessen
-holy symbol
-Heiliges Symbol
-holy water
-Weihwasser
-https://campaignwiki.org/wiki/Halberds%C2%A0and%C2%A0Helmets/
-https://campaignwiki.org/wiki/Hellebarden%C2%A0und%C2%A0Helme/
-invisibility
-Unsichtbarkeit
-iron rations (1 week)
-Feldrationen (1 Woche)
-iron spikes and hammer
-Eisenkeile und Hammer
-knock
-Klopfen
-lantern
-Laterne
-leather armor
-Lederrüstung
-levitate
-Schweben
-light
-Licht
-locate object
-Objekt lokalisieren
-long bow
-Langbogen
-long sword
-Langschwert
-mace
-Streitkeule
-mage
-Magier
-magic missile
-Magisches Geschoss
-magic-user
-Magier
-man
-Mann
-minor image
-kleines Ebenbild
-mirror
-Spiegel
-phantasmal force
-phantastische Kraft
-plate mail
-Plattenpanzer
-pole arm
-Stangenwaffe
-pouch with 30 stones
-Beutel mit 30 Steinen
-protection from evil
-Schutz vor Bösem
-quiver with 20 arrows
-Köcher mit 20 Pfeilen
-random character
-einen zufälligen Charakter
-read languages
-Sprachen lesen
-read magic
-Magie lesen
-rope
-Seil
-second level spells:
-Sprüche der zweiten Stufe:
-shield
-Schild
-short bow
-Kurzbogen
-short sword
-Kurzschwert
-silver dagger
-Silberner Dolch
-sleep
-Schlaf
-sling
-Schleuder
-some statistics
-Statistiken
-spear
-Speer
-spell book
-Zauberbuch
-staff
-Stab
-thief
-Dieb
-thieves’ tools
-Diebeswerkzeug
-torches
-Fackeln
-two handed sword
-Zweihänder
-ventriloquism
-Bauchreden
-war hammer
-Kriegshammer
-web
-Netz
-which parameters go where
-welche Parameter wo erscheinen
-wolfsbane
-Eisenhut (sog. Wolfsbann)
-woman
-Frau
-wooden pole
-Holzstab
-young man
-junger Mann
-young woman
-junge Frau
-EOT
 }
 
 # sub main {
