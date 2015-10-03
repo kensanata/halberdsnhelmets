@@ -2497,9 +2497,9 @@ get '/' => sub {
 get '/:lang' => [lang => qr/(en|de)/] => sub {
   my $self = shift;
   my $lang = $self->param('lang');
-  if ($self->req->query_params) {
+  my $query = $self->req->query_params->to_string;
+  if ($query) {
     # deprecated
-    my $query = $self->req->query_params;
     $query =~ tr/;/&/;
     my $params = Mojo::Parameters->new($query);
     return $self->redirect_to($self->url_for('char' => {lang => $lang})->query(@$params));
