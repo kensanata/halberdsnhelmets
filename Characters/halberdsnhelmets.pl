@@ -2480,12 +2480,6 @@ sub lang {
   return $p->match(qw(en de));
 }
 
-sub other_lang {
-  my $self = shift;
-  my $lang = lang($self);
-  return $lang eq 'en' ? 'de' : 'en';
-}
-
 plugin 'Config' => {default => {}};
 
 get '/' => sub {
@@ -2642,7 +2636,7 @@ app->start;
 __DATA__
 
 @@ index.en.html.ep
-% layout 'default';
+% layout 'default.en';
 % title 'Character Sheet Generator';
 <h1>Character Sheet Generator</h1>
 
@@ -2664,6 +2658,7 @@ Feel free to provide a name for your random character!
 <p class="text">
 The character sheet contains a link in the bottom right corner which allows you
 to bookmark and edit your character. <%= link_to 'Learn more…' => 'help' %>
+
 
 @@ index.de.html.ep
 % layout 'default.de';
@@ -2693,7 +2688,7 @@ sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 
 
 @@ edit.en.html.ep
-% layout 'default';
+% layout 'default.en';
 % title 'Link (Character Sheet Generator)';
 <h1>A Link For Your Character</h1>
 
@@ -2725,7 +2720,7 @@ page to generate an inline character sheet.
 
 
 @@ edit.de.html.ep
-% layout 'default';
+% layout 'default.de';
 % title 'Edit Your Character';
 <h1>Ein Link für deinen Charakter</h1>
 
@@ -2757,7 +2752,7 @@ Wiki</a> Seite verwenden, um das Charakterblatt einzufügen.
 
 
 @@ characters.html.ep
-% layout 'default';
+% layout 'default.en';
 % title 'Characters';
 <h1>A Bunch of Characters</h1>
 <% for my $char (@{$characters}) { %>
@@ -2779,6 +2774,7 @@ Str Dex Con Int Wis Cha HP AC Class
 </pre>
 <% } %>
 <div style="clear: both"></div>
+
 
 @@ hilfe.html.ep
 % layout 'default.de';
@@ -2947,7 +2943,7 @@ generieren.
 
 
 @@ help.html.ep
-% layout 'default';
+% layout 'default.en';
 % title 'Help (Character Sheet Generator)';
 <h1>Character Sheet Generator</h1>
 <p class="text">
@@ -3062,15 +3058,15 @@ In addition to that, some parameters are computed unless provided:
 <p class="text">
 The script can also generate a <a href="https://campaignwiki.org/halberdsnhelmets/random/en?rules=acks">random character</a>, a <a href="https://campaignwiki.org/halberdsnhelmets/characters/en?rules=acks">bunch of characters</a>, or <a href="https://campaignwiki.org/halberdsnhelmets/stats/en?rules=acks">some statistics</a>.
 
-@@ layouts/default.html.ep
+
+@@ layouts/default.en.html.ep
 <!DOCTYPE html>
 <html>
 <head>
 <title><%= title %></title>
 %= stylesheet '/halberdsnhelmets/default.css'
 %= stylesheet begin
-body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
-.text { width: 80ex }
+body { padding: 1em; width: 80ex; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
 % end
 <meta name="viewport" content="width=device-width">
 </head>
@@ -3079,8 +3075,9 @@ body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino,
 <div class="footer">
 <hr>
 <p>
-<a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
+<%= link_to url_for('main' => {lang => 'de'}) => begin %>Character Generator<% end %> &nbsp;
 <%= link_to Help => 'help' %> &nbsp;
+<a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
 <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
 <%= link_to url_for('main' => {lang => 'de'}) => begin %>German<% end %>
 </div>
@@ -3095,8 +3092,7 @@ body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino,
 <title><%= title %></title>
 %= stylesheet '/halberdsnhelmets/default.css'
 %= stylesheet begin
-body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
-.text { width: 80ex }
+body { padding: 1em; width: 80ex; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
 % end
 <meta name="viewport" content="width=device-width">
 </head>
@@ -3105,10 +3101,11 @@ body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino,
 <div class="footer">
 <hr>
 <p>
-<a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
+<%= link_to url_for('main' => {lang => 'de'}) => begin %>Charakterblatt Generator<% end %> &nbsp;
 <%= link_to Hilfe => 'hilfe' %> &nbsp;
+<a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
 <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
-<%= link_to url_for('main' => {lang => HH::other_lang($self)}) => begin %>English<% end %>
+<%= link_to url_for('main' => {lang => 'en'}) => begin %>English<% end %>
 </div>
 </body>
 </html>
