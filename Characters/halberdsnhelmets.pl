@@ -2503,8 +2503,12 @@ get '/' => sub {
 get '/:lang' => [lang => qr/(en|de)/] => sub {
   my $self = shift;
   my $lang = $self->param('lang');
-  if (@{$self->req->params}) {
-    $self->redirect_to($self->url_with('char'));
+  if ($self->req->query_params) {
+    # deprecated
+    my $query = $self->req->query_params;
+    $query =~ tr/;/&/;
+    my $params = Mojo::Parameters->new($query);
+    return $self->redirect_to($self->url_for('char' => {lang => $lang})->query(@$params));
   }
   $self->render(template => "index.$lang");
 } => 'main';
@@ -2543,6 +2547,16 @@ get '/char/:lang' => sub {
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'char';
+
+# deprecated
+get '/link/:lang' => sub {
+  my $self = shift;
+  my $lang = $self->param('lang');
+  my $query = $self->req->query_params;
+  $query =~ tr/;/&/;
+  my $params = Mojo::Parameters->new($query);
+  $self->redirect_to($self->url_for('edit' => {lang => lang($self)})->query(@$params));
+};
 
 get '/edit' => sub {
   my $self = shift;
