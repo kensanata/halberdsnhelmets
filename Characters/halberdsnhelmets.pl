@@ -14,16 +14,14 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>.
 
+package HH;
 use Mojolicious::Lite;
 use Mojo::UserAgent;
+use HTTP::AcceptLanguage;
 use XML::LibXML;
 use List::Util qw(shuffle);
 use POSIX qw(floor ceil);
 no warnings qw(uninitialized numeric);
-
-# globals
-my $lang = 'en';
-my $translation = translations();
 
 sub translations {
   # strings in sinqle quotes are translated into German if necessary
@@ -404,6 +402,9 @@ EOT
   return \%translations;
 }
 
+my $translation = translations();
+our $lang; # we'll set it in random_parameters
+
 sub T {
   my ($en, @arg) = @_;
   my $suffix = '';
@@ -425,7 +426,7 @@ sub T {
 
 sub svg_read {
   my ($char, $parser) = @_;
-  my $filename = $char->{charsheet} || T('Charactersheet.svg');
+  my $filename = $char->{charsheet} || 'Charactersheet.svg';
   my $doc;
   if (-f $filename) {
     $doc = XML::LibXML->load_xml(location => $filename);
@@ -522,7 +523,7 @@ sub svg_transform {
     for my $key (@{$char->{provided}}) {
       $params->append($key => $char->{$key});
     }
-    $node->setValue($self->url_for('link')->query($params));
+    $node->setValue($self->url_for('edit')->query($params));
   }
   return $doc;
 }
@@ -1349,6 +1350,9 @@ sub member {
 
 sub random_moldvay {
   my $char = shift;
+
+  # keys that can be provided: name, class, charsheet
+  
   provide($char, "name", name()) unless $char->{name};
 
   my ($str, $dex, $con, $int, $wis, $cha) =
@@ -1453,6 +1457,7 @@ sub random_moldvay {
     $abilities .= "\\\\" . spellbook();
   }
   provide($char, "abilities", $abilities);
+  provide($char, "charsheet", T('Charactersheet.svg')) unless $char->{charsheet};
 }
 
 sub random_acks {
@@ -1557,7 +1562,8 @@ sub random_acks {
 }
 
 sub random_parameters {
-  my $char = shift;
+  my ($char, $language) = @_;
+  local $lang = $language; # make sure T works as intended
   if (not exists $char->{rules} or not defined $char->{rules}) {
     random_moldvay($char);
   } elsif ($char->{rules} eq "pendragon") {
@@ -2028,9 +2034,9 @@ sub name {
   return one(keys %names);
 }
 
-if ($lang eq "de") {
+my $traits = {
   # http://charaktereigenschaften.miroso.de/
-  $_ = qq{
+  de => [qw{
 aalglatt abenteuerlustig abfällig abgebrüht abgehoben abgeklärt abgestumpft
 absprachefähig abwartend abweisend abwägend achtsam affektiert affig aggressiv
 agil akkurat akribisch aktiv albern altklug altruistisch ambitioniert
@@ -2205,10 +2211,9 @@ zuverlässig zuversichtlich zuvorkommend zwanghaft zweifelnd zwiegespalten
 zwingend zäh zärtlich zögerlich züchtig ängstlich ätzend öde überdreht
 überemotional überfürsorglich übergenau überheblich überkandidelt überkritisch
 überlebensfähig überlegen überlegt übermütig überragend überraschend
-überreagierend überschwenglich übersensibel überspannt überwältigent};
-} else {
-  # http://www.roleplayingtips.com/tools/1000-npc-traits/
-  $_ = qq{able abrasive abrupt absent minded abusive accepting
+überreagierend überschwenglich übersensibel überspannt überwältigent}],
+# http://www.roleplayingtips.com/tools/1000-npc-traits/
+en => [qw{able abrasive abrupt absent minded abusive accepting
 accident prone accommodating accomplished action oriented active
 adaptable substance abusing adorable adventurous affable affected
 affectionate afraid uncommited aggressive agnostic agreeable alert
@@ -2346,14 +2351,13 @@ vigorous vindictive violent virtuous visual vivacious volatile
 voracious vulgar vulnerable warlike warm hearted wary wasteful weak
 weary weird well grounded whimsical wholesome wicked wild willing wise
 wishy washy withdrawn witty worldly worried worthless wretched
-xenophobic youthful zany zealous};
-}
-my @trait = split(/[ \r\n]+/, $_);
+xenophobic youthful zany zealous}], };
 
 # one way to test this on the command-line:
 # perl halberdsnhelmets.pl "/characters?" | tail -n +3 | w3m -T text/html
 
 sub traits {
+  my $lang = shift;
   my $name = name();
   my $gender = $names{$name};
   my $description = "$name, ";
@@ -2379,9 +2383,9 @@ sub traits {
     $description .= T('elderly man');
   };
   $description .= ", ";
-  my $trait = $trait[rand @trait];
+  my $trait = one(@{$traits->{$lang}});
   $description .= $trait;
-  my $other = $trait[rand @trait];
+  my $other = one(@{$traits->{$lang}});
   if ($other ne $trait) {
     $description .= " " . T('and') . " " . $other;
   }
@@ -2402,11 +2406,11 @@ sub portrait {
 }
 
 sub characters {
-  my $char = shift;
+  my ($char, $lang) = @_;
   my @characters;
   for (my $i = 0; $i < 50; $i++) {
     my %one = %$char; # defaults
-    random_parameters(\%one);
+    random_parameters(\%one, $lang);
     $one{traits} = traits();
     push(@characters, \%one);
   }
@@ -2414,12 +2418,12 @@ sub characters {
 }
 
 sub stats {
-  my ($char, $n) = @_;
+  my ($char, $lang, $n) = @_;
   my (%class, %property);
   my %init = map { $_ => $char->{$_} } @{$char->{provided}};
   for (my $i = 0; $i < $n; $i++) {
     my %one = %$char; # defaults
-    random_parameters(\%one);
+    random_parameters(\%one, $lang);
     $class{$one{class}}++;
     foreach (split(/\\\\/, $one{property})) {
       $property{$_}++;
@@ -2470,23 +2474,35 @@ sub init {
   return \%char;
 }
 
+sub lang {
+  my $self = shift;
+  my $p = HTTP::AcceptLanguage->new($self->req->headers->accept_language);
+  return $p->match(qw(en de));
+}
+
+sub other_lang {
+  my $self = shift;
+  my $lang = lang($self);
+  return $lang eq 'en' ? 'de' : 'en';
+}
+
 plugin 'Config' => {default => {}};
 
 get '/' => sub {
   my $self = shift;
-  $self->redirect_to('main' => {lang => 'en'});
+  $self->redirect_to('main' => {lang => lang($self)});
 };
 
 under '/halberdsnhelmets';
 
 get '/' => sub {
   my $self = shift;
-  $self->redirect_to($self->url_with('main' => {lang => 'en'}));
+  $self->redirect_to($self->url_with('main' => {lang => lang($self)}));
 };
 
 get '/:lang' => [lang => qr/(en|de)/] => sub {
   my $self = shift;
-  $lang = $self->param('lang');
+  my $lang = $self->param('lang');
   if (@{$self->req->params}) {
     $self->redirect_to($self->url_with('char'));
   }
@@ -2499,22 +2515,26 @@ get '/hilfe' => 'hilfe';
 
 get '/random' => sub {
   my $self = shift;
-  $self->redirect_to($self->url_with('random' => {lang => 'en'}));
+  $self->redirect_to($self->url_with('random' => {lang => lang($self)}));
 };
 
 get '/random/:lang' => [lang => qr/(en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
-  $lang = $self->param('lang');
-  random_parameters($char, "portrait");
+  my $lang = $self->param('lang');
+  random_parameters($char, $lang, "portrait");
   compute_data($char);
   my $svg = svg_transform($self, svg_read($char, XML::LibXML->new));
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'random';
 
-# Character sheet is independent of language!
 get '/char' => sub {
+  my $self = shift;
+  $self->redirect_to($self->url_with('char' => {lang => lang($self)}));
+};
+
+get '/char/:lang' => sub {
   my $self = shift;
   my $char = init($self);
   # no random parameters
@@ -2524,21 +2544,27 @@ get '/char' => sub {
 		data => $svg->toString());
 } => 'char';
 
-get '/link' => sub {
+get '/edit' => sub {
   my $self = shift;
-  $self->redirect_to(link => {lang => 'en'});
+  $self->redirect_to(edit => {lang => lang($self)});
 };
 
-get '/link/:lang' => [lang => qr/(en|de)/] => sub {
+get '/edit/:lang' => [lang => qr/(en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
-  # FIXME: my $lang = $self->param('lang');
-  $self->render(template => 'link',
+  my $lang = $self->param('lang');
+  $self->render(template => "edit.$lang",
 		char => $char);
-} => 'link';
+} => 'edit';
 
 get '/redirect' => sub {
   my $self = shift;
+  $self->redirect_to($self->url_with('redirect' => {lang => lang($self)}));
+};
+
+get '/redirect/:lang' => sub {
+  my $self = shift;
+  my $lang = $self->param('lang');
   my $input = $self->param('input');
   my $params = Mojo::Parameters->new;
   my $last;
@@ -2550,7 +2576,7 @@ get '/redirect' => sub {
       $last = $1;
     }
   }
-  $self->redirect_to($self->url_for('char')->query($params));
+  $self->redirect_to($self->url_for('char' => {lang => $lang})->query($params));
 } => 'redirect';
 
 
@@ -2563,20 +2589,36 @@ get '/show' => sub {
 
 get '/characters' => sub {
   my $self = shift;
+  $self->redirect_to($self->url_with('characters' => {lang => lang($self)}));
+};
+
+get '/characters/:lang' => sub {
+  my $self = shift;
+  my $lang = $self->param('lang');
+  my $char = init($self);
   $self->render(template => 'characters',
-		characters => characters(init($self)));
+		characters => characters($char, $lang));
 } => 'characters';
 
 get '/stats' => sub {
   my $self = shift;
-  $self->render(format => 'txt',
-		text => stats(init($self), 1000));
-} => 'characters';
+  $self->redirect_to($self->url_with('stats' => {lang => lang($self),
+						 n => 1000}));
+};
 
 get '/stats/:n' => sub {
   my $self = shift;
+  $self->redirect_to($self->url_with('stats' => {lang => lang($self),
+						 n => $self->param('n')}));
+};
+
+get '/stats/:lang/:n' => sub {
+  my $self = shift;
+  my $lang = $self->param('lang');
+  my $n = $self->param('n');
+  my $char = init($self);
   $self->render(format => 'txt',
-		text => stats(init($self), $self->param('n')));
+		text => stats($char, $lang, $n));
 } => 'characters';
 
 app->secrets([app->config('secret')]) if app->config('secret');
@@ -2636,7 +2678,7 @@ sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 <%= link_to 'Weiterlesen…' => 'hilfe' %>
 
 
-@@ link.html.ep
+@@ edit.en.html.ep
 % layout 'default';
 % title 'Link (Character Sheet Generator)';
 <h1>A Link For Your Character</h1>
@@ -2654,7 +2696,40 @@ Use the following form to make changes to your character sheet. You can also
 copy and paste it on to a <a href="https://campaignwiki.org/">Campaign Wiki</a>
 page to generate an inline character sheet.
 
-%= form_for redirect => begin
+%= form_for url_for('redirect' => {lang => $lang}) => begin
+%= hidden_field lang => $lang
+%= text_area 'input' => (cols => 72, rows => 20) => begin
+<% for my $key (@{$char->{provided}}) { %>\
+<%   for my $value (split(/\\\\/, $char->{$key})) { =%>\
+<%= $key =%>: <%= $value %>
+<%   } %>\
+<% } %>\
+% end
+<p>
+%= submit_button
+% end
+
+
+@@ edit.de.html.ep
+% layout 'default';
+% title 'Edit Your Character';
+<h1>Ein Link für deinen Charakter</h1>
+
+<h2>Lesezeichen</h2>
+
+<p class="text">
+Den Charakter kann man einfach aufbewahren, in dem man sich den Link auf
+<%= link_to url_for('char')->query($self->req->params) => begin %>Charakterblatt<% end %>
+als Lesezeichen speichert.
+
+<h2>Bearbeiten</h2>
+
+<p class="text">
+Mit dem folgenden Formular lassen sich leicht Änderungen am Charakter machen.
+Man kann diesen Text auch auf einer <a href="https://campaignwiki.org/">Campaign
+Wiki</a> Seite verwenden, um das Charakterblatt einzufügen.
+
+%= form_for url_for('redirect' => {lang => $lang}) => begin
 %= text_area 'input' => (cols => 72, rows => 20) => begin
 <% for my $key (@{$char->{provided}}) { %>\
 <%   for my $value (split(/\\\\/, $char->{$key})) { =%>\
@@ -3019,7 +3094,7 @@ body { padding: 1em; font-family: "Palatino Linotype", "Book Antiqua", Palatino,
 <a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
 <%= link_to Hilfe => 'hilfe' %> &nbsp;
 <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
-<%= link_to url_for('main' => {lang => 'en'}) => begin %>English<% end %>
+<%= link_to url_for('main' => {lang => HH::other_lang($self)}) => begin %>English<% end %>
 </div>
 </body>
 </html>

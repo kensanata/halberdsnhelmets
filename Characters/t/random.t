@@ -48,7 +48,7 @@ my $url = $t->tx->res->dom->at('a#link')->attr('xlink:href');
 my $str = $t->tx->res->dom->at('text#str tspan')->text;
 
 like($url,
-     qr!^/halberdsnhelmets/link/en\?name=Alex&str=$str&!,
+     qr!^/halberdsnhelmets/edit/en\?name=Alex&str=$str&!,
      "link with str $str");
 
 $t->get_ok($url)
@@ -58,20 +58,20 @@ $t->get_ok($url)
     ->text_like('textarea[name="input"]' => qr/name: Alex\nstr: $str\n/);
 
 like($t->tx->res->dom->at('a:first-of-type')->attr('href'),
-     qr!^/halberdsnhelmets/char\?name=Alex&str=$str&!,
+     qr!^/halberdsnhelmets/char/en\?name=Alex&str=$str&!,
      'link back to character sheet');
 
 my $action = $t->tx->res->dom->at('form')->attr('action');
 
 is($action,
-   '/halberdsnhelmets/redirect',
+   '/halberdsnhelmets/redirect/en',
    'form points to redirect route');
 
 my $input = $t->tx->res->dom->at('textarea[name="input"]')->text;
 
 $t->get_ok($action => {Accept => '*/*'} => form => {input => $input})
     ->status_is(302)
-    ->header_like(Location => qr!/halberdsnhelmets/char\?name=Alex&str=$str&!,
+    ->header_like(Location => qr!/halberdsnhelmets/char/en\?name=Alex&str=$str&!,
 		  'redirection goes back to character sheet');
 
 # following the redirect back to the character sheet
