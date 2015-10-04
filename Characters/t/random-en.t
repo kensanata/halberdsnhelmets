@@ -25,14 +25,19 @@ require "$FindBin::Bin/../halberdsnhelmets.pl";
 
 my $t = Test::Mojo->new;
 
-# typical use case: request a random character    
-$t->get_ok('/')
+# start with an english root
+$t->get_ok('/' => {'Accept-Language' => 'en'})
     ->status_is(302)
     ->header_is(Location => '/halberdsnhelmets/en');
 
 $t->get_ok('/halberdsnhelmets/en')
     ->status_is(200)
-    ->text_is('h1' => 'Character Sheet Generator');
+    ->text_is('h1' => 'Character Sheet Generator')
+    ->text_is('.footer a[href="/halberdsnhelmets/de"]:nth-child(1)' => 'Character Generator')
+    ->text_is('.footer a[href="/halberdsnhelmets/help"]:nth-child(2)' => 'Help')
+    ->text_is('.footer a[href="https://alexschroeder.ch/wiki/Contact"]:nth-child(3)' => 'Alex Schroeder')
+    ->text_is('.footer a[href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters"]:nth-child(4)' => 'GitHub')
+    ->text_is('.footer a[href="/halberdsnhelmets/de"]:nth-child(5)' => 'German');
 
 $t->get_ok('/halberdsnhelmets/random?name=Alex')
     ->status_is(302)
