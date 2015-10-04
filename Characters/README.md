@@ -14,10 +14,12 @@ Take a look at the
 [Help](http://campaignwiki.org/halberdsnhelmets/help) page. It comes
 with links to examples of what this web application can do.
 
+
 ## Purisa
 
 You can get the Purisa font for free from the
 [linux.thai.net (LTN) Thai Linux FTP archive](ftp://linux.thai.net/pub/thailinux/software/thai-ttf/).
+
 
 ## Posting 20 Characters to Campaign Wiki
 
@@ -35,9 +37,8 @@ Example
         fi
     done
 
-## Installation
 
-# Dependencies
+## Dependencies
 
 The CGI script depends on [Mojolicious](http://mojolicio.us/) (perhaps
 this is too old: `sudo apt-get install libmojolicious-perl` – I used
@@ -47,7 +48,8 @@ libgd-gd2-perl`). The clean up instructions depend on
 [ImageMagick](http://www.imagemagick.org/) (`sudo apt-get install
 imagemagick`).
 
-# Installation
+
+## Installation
 
 You can simply install it as a CGI script on your web server.
 
