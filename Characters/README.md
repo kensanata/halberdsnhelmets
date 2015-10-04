@@ -42,11 +42,8 @@ Example
 
 The CGI script depends on [Mojolicious](http://mojolicio.us/) (perhaps
 this is too old: `sudo apt-get install libmojolicious-perl` – I used
-`cpan Mojolicious` instead). Cutter depends on
-[GD](https://metacpan.org/pod/GD) (`sudo apt-get install
-libgd-gd2-perl`). The clean up instructions depend on
-[ImageMagick](http://www.imagemagick.org/) (`sudo apt-get install
-imagemagick`).
+`cpan Mojolicious` instead). We also require `XML::LibXML` and
+`HTTP::AcceptLanguage`.
 
 
 ## Installation
