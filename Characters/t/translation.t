@@ -47,7 +47,7 @@ for my $english (sort keys %$translations) {
 ok(@unused == 0, "no unused translations");
 
 my @missing;
-for my $english (sort keys %$translations) {
+for my $english (sort keys %data) {
   if (not $translations->{$english}) {
     push(@missing, $english);
     diag("Missing a translation: $english");
