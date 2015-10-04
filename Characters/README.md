@@ -1,5 +1,4 @@
-Character Generator
-===================
+# Character Generator
 
 This is the source repository for a character generator for Basic D&D
 and Labyrinth Lord. In addition to that, it can be used to take any
@@ -15,10 +14,94 @@ Take a look at the
 [Help](http://campaignwiki.org/halberdsnhelmets/help) page. It comes
 with links to examples of what this web application can do.
 
+## Purisa
+
 You can get the Purisa font for free from the
 [linux.thai.net (LTN) Thai Linux FTP archive](ftp://linux.thai.net/pub/thailinux/software/thai-ttf/).
 
-The images are from public domain works:
+## Posting 20 Characters to Campaign Wiki
+
+Example
+
+    for i in $(seq 20); do
+        f=$(mktemp /tmp/char.XXXX)
+        perl halberdsnhelmets.pl '/random/text?' > $f
+        name=$(grep name: $f | cut -c 7-)
+        class=$(grep class: $f | cut -c 8-)
+        if curl --head --silent "https://campaignwiki.org/wiki/Greyheim/$name" | grep --silent "^HTTP/1.1 404"; then
+            echo "|[[$name]] | | 0| 0| $class 1| ?|[[Greyheim]] | – | |"
+            curl -F ns=Greyheim -F title=$name -F frodo=1 -F username=Alex -F summary="New character" -F "text=<$f" https://campaignwiki.org/wiki
+            sleep 1
+        fi
+    done
+
+## Installation
+
+# Dependencies
+
+The CGI script depends on [Mojolicious](http://mojolicio.us/) (perhaps
+this is too old: `sudo apt-get install libmojolicious-perl` – I used
+`cpan Mojolicious` instead). Cutter depends on
+[GD](https://metacpan.org/pod/GD) (`sudo apt-get install
+libgd-gd2-perl`). The clean up instructions depend on
+[ImageMagick](http://www.imagemagick.org/) (`sudo apt-get install
+imagemagick`).
+
+# Installation
+
+You can simply install it as a CGI script on your web server.
+
+As the [script](halberdsnhelmets.pl) is a
+[Mojolicious](http://mojolicio.us/) app, there are many other ways to
+deploy it. There is a
+[Cookbook](http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook#DEPLOYMENT)
+with a section on deployment. The following is a quick summary.
+
+This runs the script as a server on
+[localhost:3000](http://localhost:3000/):
+
+```
+perl halberdsnhelmets.pl daemon
+```
+
+This runs the script as a server on
+[localhost:3000](http://localhost:3000/) and reloads it every time you
+change it:
+
+```
+morbo halberdsnhelmets.pl
+```
+
+This runs the script as a server on port 8080, writing a pid file:
+
+```
+hypnotoad halberdsnhelmets.pl
+```
+
+Whenever you repeat this `hypnotoad` command, the server will be
+restarted. There's no need to kill it.
+
+You can configure `hypnotoad` to listen on a different port by adding
+an additional item to the config file, `halberdsnhelmets.conf`. Here's
+an example:
+
+```
+{
+  hypnotoad => {listen => ['http://*:8083'],},
+}
+```
+
+
+## Images
+
+The character portraits are made by the
+[face generator](https://campaignwiki.org/face).
+
+For a while these portraits were images are from public domain works.
+They can still be found in the folders for [men](men) and
+[women](women).
+
+### Sources for these images
 
 * [Women of all nations, a record of their characteristics, habits, manners, customs and influence](https://www.flickr.com/photos/internetarchivebookimages/tags/bookidwomenofallnation01joyc)
 
@@ -52,26 +135,9 @@ The images are from public domain works:
 
 * [Bain Collection](https://www.flickr.com/photos/library_of_congress/sets/72157603624867509/)
 
-Stripping EXIF Data
-===================
+
+### Stripping EXIF Data
 
 Example:
 
     exiftool -all= -overwrite_original *.jpg
-
-Posting 20 Characters to Campaign Wiki
-======================================
-
-Example
-
-    for i in $(seq 20); do
-        f=$(mktemp /tmp/char.XXXX)
-        perl halberdsnhelmets.pl '/random/text?' > $f
-        name=$(grep name: $f | cut -c 7-)
-        class=$(grep class: $f | cut -c 8-)
-        if curl --head --silent "https://campaignwiki.org/wiki/Greyheim/$name" | grep --silent "^HTTP/1.1 404"; then
-            echo "|[[$name]] | | 0| 0| $class 1| ?|[[Greyheim]] | – | |"
-            curl -F ns=Greyheim -F title=$name -F frodo=1 -F username=Alex -F summary="New character" -F "text=<$f" https://campaignwiki.org/wiki
-            sleep 1
-        fi
-    done

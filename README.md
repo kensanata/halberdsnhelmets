@@ -8,6 +8,5 @@ The German translation of these is
 I also have a very small number of adventures in the
 [English section](Halberds%20and%20Helmets/).
 
-The [Character Generator](https://github.com/kensanata/halberdsnhelmets/tree/master/Characters) for Hellebarden &
-Helme, Basic D&D and Labyrinth Lord is currently
+The [Character Generator](https://github.com/kensanata/halberdsnhelmets/tree/master/Characters) is currently
 [installed on Campaign Wiki](http://campaignwiki.org/halberdsnhelmets).
