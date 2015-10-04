@@ -425,7 +425,7 @@ sub T {
 }
 
 sub svg_read {
-  my ($char, $parser) = @_;
+  my ($char) = @_;
   my $filename = $char->{charsheet} || 'Charactersheet.svg';
   my $doc;
   if (-f $filename) {
@@ -436,7 +436,7 @@ sub svg_read {
     die "«$filename»: " . $tx->res->error->{message} . "\n" unless $tx->success;
     $doc = XML::LibXML->load_xml(string => $tx->res->body);
   }
-  return ($char, $doc, $parser); # used as parameters for svg_transform
+  return ($char, $doc); # used as parameters for svg_transform
 }
 
 sub replace_text {
@@ -448,7 +448,6 @@ sub replace_text {
   my $dy;
   my $tspans = $node->find(qq{svg:tspan});
   if ($tspans->size() > 1) {
-
     $dy = $tspans->get_node(2)->getAttribute("y")
       - $tspans->get_node(1)->getAttribute("y");
   } else {
@@ -497,8 +496,8 @@ sub replace_text {
 }
 
 sub svg_transform {
-  my ($self, $char, $doc, $parser) = @_;
-
+  my ($self, $char, $doc) = @_;
+  my $parser = XML::LibXML->new;
   my $svg = XML::LibXML::XPathContext->new;
   $svg->registerNs("svg", "http://www.w3.org/2000/svg");
 
@@ -2521,7 +2520,7 @@ get '/random/:lang' => [lang => qr/(?:en|de)/] => sub {
   my $lang = $self->param('lang');
   random_parameters($char, $lang, "portrait");
   compute_data($char);
-  my $svg = svg_transform($self, svg_read($char, XML::LibXML->new));
+  my $svg = svg_transform($self, svg_read($char));
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'random';
@@ -2536,7 +2535,7 @@ get '/char/:lang' => [lang => qr/(?:en|de)/] => sub {
   my $char = init($self);
   # no random parameters
   compute_data($char);
-  my $svg = svg_transform($self, svg_read($char, XML::LibXML->new));
+  my $svg = svg_transform($self, svg_read($char));
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'char';
