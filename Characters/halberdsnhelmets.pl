@@ -2961,8 +2961,9 @@ generieren.
 
 <h2>Basic D&D</h2>
 
-<p>
-The default template (<a href="/Charactersheet.svg">Charactersheet.svg</a>) uses the <a href="/Purisa.ttf">Purisa</a> font. You provide values for the placeholders by providing URL parameters (<a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19">example</a>, <a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg">alternative</a>). The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en">which parameters go where</a>. Also note that the parameters need to be UTF-8 encoded. If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
+<p>The
+<%= link_to url_for('char' => {lang => 'en'}) => begin %>default template<% end %>
+uses the <a href="/Purisa.ttf">Purisa</a> font. You provide values for the placeholders by providing URL parameters (<a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19">example</a>, <a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg">alternative</a>). The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en">which parameters go where</a>. Also note that the parameters need to be UTF-8 encoded. If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
 
 <p>
 In addition to that, some parameters are computed unless provided:
@@ -2986,15 +2987,15 @@ In addition to that, some parameters are computed unless provided:
 
 <p>
 The script can also generate a
-<%= link_to 'random character' => 'random' =%>,
-<%= link_to 'bunch of characters' => 'characters' =%>,
-or <%= link_to 'some statistics' => 'stats' =%></a>.
+<%= link_to url_for('random' => {lang => 'en'}) => begin %>random character<% end %>,
+<%= link_to url_for('characters' => {lang => 'en'}) => begin %>bunch of characters<% end %>
+or <%= link_to url_for('stats' => {lang => 'en'}) => begin %>some statistics<% end =%>.
 
 <p> As the price list for Labyrinth Lord differs from the Moldvay
 price list, you can also generate a
-<%= link_to url_for('random')->query(rules => 'labyrinth lord') => begin %>random character<% end %>,
-<%= link_to url_for('characters')->query(rules => 'labyrinth lord') => begin %>bunch of characters<% end %>,
-or <%= link_to  url_for('stats')->query(rules => 'labyrinth lord') => begin %>some statistics<% end %>
+<%= link_to url_for('random' => {lang => 'en'})->query(rules => 'labyrinth lord') => begin %>random character<% end %>,
+<%= link_to url_for('characters' => {lang => 'en'})->query(rules => 'labyrinth lord') => begin %>bunch of characters<% end %>,
+or <%= link_to  url_for('stats' => {lang => 'en'})->query(rules => 'labyrinth lord') => begin %>some statistics<% end %>
 using <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a> rules.
 
 <h2>Pendragon</h2>
