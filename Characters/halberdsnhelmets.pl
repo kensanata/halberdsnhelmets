@@ -2420,7 +2420,6 @@ sub characters {
 sub stats {
   my ($char, $lang, $n) = @_;
   my (%class, %property);
-  my %init = map { $_ => $char->{$_} } @{$char->{provided}};
   for (my $i = 0; $i < $n; $i++) {
     my %one = %$char; # defaults
     random_parameters(\%one, $lang);
@@ -2494,7 +2493,7 @@ get '/' => sub {
   $self->redirect_to($self->url_with('main' => {lang => lang($self)}));
 };
 
-get '/:lang' => [lang => qr/(en|de)/] => sub {
+get '/:lang' => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $lang = $self->param('lang');
   my $query = $self->req->query_params->to_string;
@@ -2516,7 +2515,7 @@ get '/random' => sub {
   $self->redirect_to($self->url_with('random' => {lang => lang($self)}));
 };
 
-get '/random/:lang' => [lang => qr/(en|de)/] => sub {
+get '/random/:lang' => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
   my $lang = $self->param('lang');
@@ -2532,7 +2531,7 @@ get '/char' => sub {
   $self->redirect_to($self->url_with('char' => {lang => lang($self)}));
 };
 
-get '/char/:lang' => sub {
+get '/char/:lang' => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
   # no random parameters
@@ -2543,7 +2542,7 @@ get '/char/:lang' => sub {
 } => 'char';
 
 # deprecated
-get '/link/:lang' => sub {
+get '/link/:lang' => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $lang = $self->param('lang');
   my $query = $self->req->query_params;
@@ -2557,7 +2556,7 @@ get '/edit' => sub {
   $self->redirect_to(edit => {lang => lang($self)});
 };
 
-get '/edit/:lang' => [lang => qr/(en|de)/] => sub {
+get '/edit/:lang' => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
   my $lang = $self->param('lang');
@@ -2570,7 +2569,7 @@ get '/redirect' => sub {
   $self->redirect_to($self->url_with('redirect' => {lang => lang($self)}));
 };
 
-get '/redirect/:lang' => sub {
+get '/redirect/:lang' => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $lang = $self->param('lang');
   my $input = $self->param('input');
@@ -2600,7 +2599,7 @@ get '/characters' => sub {
   $self->redirect_to($self->url_with('characters' => {lang => lang($self)}));
 };
 
-get '/characters/:lang' => sub {
+get '/characters/:lang' => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $lang = $self->param('lang');
   my $char = init($self);
@@ -2615,20 +2614,28 @@ get '/stats' => sub {
 						 n => 1000}));
 };
 
-get '/stats/:n' => sub {
+get '/stats/:n' => [n => qr/\d+/] => sub {
   my $self = shift;
+  my $n = $self->param('n');
   $self->redirect_to($self->url_with('stats' => {lang => lang($self),
-						 n => $self->param('n')}));
+						 n => $n}));
 };
 
-get '/stats/:lang/:n' => sub {
+get '/stats/:lang' => [lang => qr/(?:en|de)/] => sub {
+  my $self = shift;
+  my $lang = $self->param('lang');
+  $self->redirect_to($self->url_with('stats' => {lang => $lang,
+						 n => 1000}));
+};
+
+get '/stats/:lang/:n' => [lang => qr/(?:en|de)/, n => qr/\d+/] => sub {
   my $self = shift;
   my $lang = $self->param('lang');
   my $n = $self->param('n');
   my $char = init($self);
   $self->render(format => 'txt',
 		text => stats($char, $lang, $n));
-} => 'characters';
+} => 'stats';
 
 app->secrets([app->config('secret')]) if app->config('secret');
 
