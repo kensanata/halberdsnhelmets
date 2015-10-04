@@ -26,8 +26,7 @@ no warnings qw(uninitialized numeric);
 sub translations {
   # strings in sinqle quotes are translated into German if necessary
   # use %0, %1, etc. for parameters
-  my %translations = split(/\n/, <<'EOT');
-%0 gold
+  my %translations = split(/\n/, q{%0 gold
 %0 Gold
 %0 is unknown.
 %0 ist unbekannt.
@@ -91,10 +90,10 @@ Catechist
 Katechet
 Caving
 Höhlenwandern
-Character Sheet Generator
-Charakterblatt Generator
 Charactersheet.svg
 Charakterblatt.svg
+Classes
+Klassen
 Climbing
 Klettern
 Collegiate Wizardry
@@ -155,8 +154,6 @@ Military Strategy
 Strategie
 Mimicry
 Mimikry
-Name:
-Name:
 Naturalism
 Naturfreund
 Navigation
@@ -167,6 +164,8 @@ Precise Shooting
 Scharfschütze
 Profession
 Beruf
+Property
+Eigentum
 Reciter
 Rezitierer
 Riding
@@ -231,8 +230,6 @@ battle axe
 Streitaxt
 bladedancer
 Klingentänzer
-bunch of characters
-einige Charaktere
 case with 30 bolts
 Kiste mit 30 Bolzen
 chain mail
@@ -343,8 +340,6 @@ protection from evil
 Schutz vor Bösem
 quiver with 20 arrows
 Köcher mit 20 Pfeilen
-random character
-einen zufälligen Charakter
 read languages
 Sprachen lesen
 read magic
@@ -365,8 +360,6 @@ sleep
 Schlaf
 sling
 Schleuder
-some statistics
-Statistiken
 spear
 Speer
 spell book
@@ -397,7 +390,7 @@ young man
 junger Mann
 young woman
 junge Frau
-EOT
+});
 
   return \%translations;
 }
@@ -522,7 +515,7 @@ sub svg_transform {
     for my $key (@{$char->{provided}}) {
       $params->append($key => $char->{$key});
     }
-    $node->setValue($self->url_for('edit')->query($params));
+    $node->setValue($self->url_for("edit")->query($params));
   }
   return $doc;
 }
@@ -2417,7 +2410,8 @@ sub characters {
 }
 
 sub stats {
-  my ($char, $lang, $n) = @_;
+  my ($char, $language, $n) = @_;
+  local $lang = $language; # make sure T works as intended
   my (%class, %property);
   for (my $i = 0; $i < $n; $i++) {
     my %one = %$char; # defaults
@@ -2429,14 +2423,14 @@ sub stats {
   }
 
   $n = 0;
-  my $txt = "Classes\n";
+  my $txt = T('Classes') . "\n";
   foreach (sort { $class{$b} <=> $class{$a} } keys %class) {
     $txt .= sprintf "%25s %4d\n", $_, $class{$_};
     $n += $class{$_};
   }
   $txt .= sprintf "%25s %4d\n", "total", $n;
 
-  $txt .= "Property\n";
+  $txt .= T('Property') . "\n";
   foreach (sort { $property{$b} <=> $property{$a} }
 	   keys %property) {
     next if /starting gold:/ or /gold$/;
@@ -2478,100 +2472,100 @@ sub lang {
   return $p->match(qw(en de));
 }
 
-plugin 'Config' => {default => {}};
+plugin "Config" => {default => {}};
 
-get '/' => sub {
+get "/" => sub {
   my $self = shift;
-  $self->redirect_to('main' => {lang => lang($self)});
+  $self->redirect_to("main" => {lang => lang($self)});
 };
 
-under '/halberdsnhelmets';
+under "/halberdsnhelmets";
 
-get '/' => sub {
+get "/" => sub {
   my $self = shift;
-  $self->redirect_to($self->url_with('main' => {lang => lang($self)}));
+  $self->redirect_to($self->url_with("main" => {lang => lang($self)}));
 };
 
-get '/:lang' => [lang => qr/(?:en|de)/] => sub {
+get "/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
-  my $lang = $self->param('lang');
+  my $lang = $self->param("lang");
   my $query = $self->req->query_params->to_string;
   if ($query) {
     # deprecated
     $query =~ tr/;/&/;
     my $params = Mojo::Parameters->new($query);
-    return $self->redirect_to($self->url_for('char' => {lang => $lang})->query(@$params));
+    return $self->redirect_to($self->url_for("char" => {lang => $lang})->query(@$params));
   }
   $self->render(template => "index.$lang");
-} => 'main';
+} => "main";
 
-get '/help' => 'help';
+get "/help" => "help";
 
-get '/hilfe' => 'hilfe';
+get "/hilfe" => "hilfe";
 
-get '/random' => sub {
+get "/random" => sub {
   my $self = shift;
-  $self->redirect_to($self->url_with('random' => {lang => lang($self)}));
+  $self->redirect_to($self->url_with("random" => {lang => lang($self)}));
 };
 
-get '/random/:lang' => [lang => qr/(?:en|de)/] => sub {
+get "/random/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
-  my $lang = $self->param('lang');
+  my $lang = $self->param("lang");
   random_parameters($char, $lang, "portrait");
   compute_data($char);
   my $svg = svg_transform($self, svg_read($char));
-  $self->render(format => 'svg',
+  $self->render(format => "svg",
 		data => $svg->toString());
-} => 'random';
+} => "random";
 
-get '/char' => sub {
+get "/char" => sub {
   my $self = shift;
-  $self->redirect_to($self->url_with('char' => {lang => lang($self)}));
+  $self->redirect_to($self->url_with("char" => {lang => lang($self)}));
 };
 
-get '/char/:lang' => [lang => qr/(?:en|de)/] => sub {
+get "/char/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
   # no random parameters
   compute_data($char);
   my $svg = svg_transform($self, svg_read($char));
-  $self->render(format => 'svg',
+  $self->render(format => "svg",
 		data => $svg->toString());
-} => 'char';
+} => "char";
 
 # deprecated
-get '/link/:lang' => [lang => qr/(?:en|de)/] => sub {
+get "/link/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
-  my $lang = $self->param('lang');
+  my $lang = $self->param("lang");
   my $query = $self->req->query_params;
   $query =~ tr/;/&/;
   my $params = Mojo::Parameters->new($query);
-  $self->redirect_to($self->url_for('edit' => {lang => lang($self)})->query(@$params));
+  $self->redirect_to($self->url_for("edit" => {lang => lang($self)})->query(@$params));
 };
 
-get '/edit' => sub {
+get "/edit" => sub {
   my $self = shift;
   $self->redirect_to(edit => {lang => lang($self)});
 };
 
-get '/edit/:lang' => [lang => qr/(?:en|de)/] => sub {
+get "/edit/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
-  my $lang = $self->param('lang');
+  my $lang = $self->param("lang");
   $self->render(template => "edit.$lang",
 		char => $char);
-} => 'edit';
+} => "edit";
 
-get '/redirect' => sub {
+get "/redirect" => sub {
   my $self = shift;
-  $self->redirect_to($self->url_with('redirect' => {lang => lang($self)}));
+  $self->redirect_to($self->url_with("redirect" => {lang => lang($self)}));
 };
 
-get '/redirect/:lang' => [lang => qr/(?:en|de)/] => sub {
+get "/redirect/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
-  my $lang = $self->param('lang');
-  my $input = $self->param('input');
+  my $lang = $self->param("lang");
+  my $input = $self->param("input");
   my $params = Mojo::Parameters->new;
   my $last;
   while ($input =~ /^([-a-z0-9]*): *(.*?)\r?$/gm) {
@@ -2582,101 +2576,101 @@ get '/redirect/:lang' => [lang => qr/(?:en|de)/] => sub {
       $last = $1;
     }
   }
-  $self->redirect_to($self->url_for('char' => {lang => $lang})->query($params));
-} => 'redirect';
+  $self->redirect_to($self->url_for("char" => {lang => $lang})->query($params));
+} => "redirect";
 
 
-get '/show' => sub {
+get "/show" => sub {
   my $self = shift;
   my $char = init($self);
   my $svg = svg_show_id(svg_read($char));
-  $self->render(format => 'svg',
+  $self->render(format => "svg",
 		data => $svg->toString());
-} => 'show';
+} => "show";
 
-get '/characters' => sub {
+get "/characters" => sub {
   my $self = shift;
-  $self->redirect_to($self->url_with('characters' => {lang => lang($self)}));
+  $self->redirect_to($self->url_with("characters" => {lang => lang($self)}));
 };
 
-get '/characters/:lang' => [lang => qr/(?:en|de)/] => sub {
+get "/characters/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
-  my $lang = $self->param('lang');
+  my $lang = $self->param("lang");
   my $char = init($self);
   $self->render(template => "characters.$lang",
-		width => '100%',
+		width => "100%",
 		characters => characters($char, $lang));
-} => 'characters';
+} => "characters";
 
-get '/stats' => sub {
+get "/stats" => sub {
   my $self = shift;
-  $self->redirect_to($self->url_with('stats' => {lang => lang($self),
+  $self->redirect_to($self->url_with("stats" => {lang => lang($self),
 						 n => 1000}));
 };
 
-get '/stats/:n' => [n => qr/\d+/] => sub {
+get "/stats/:n" => [n => qr/\d+/] => sub {
   my $self = shift;
-  my $n = $self->param('n');
-  $self->redirect_to($self->url_with('stats' => {lang => lang($self),
+  my $n = $self->param("n");
+  $self->redirect_to($self->url_with("stats" => {lang => lang($self),
 						 n => $n}));
 };
 
-get '/stats/:lang' => [lang => qr/(?:en|de)/] => sub {
+get "/stats/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
-  my $lang = $self->param('lang');
-  $self->redirect_to($self->url_with('stats' => {lang => $lang,
+  my $lang = $self->param("lang");
+  $self->redirect_to($self->url_with("stats" => {lang => $lang,
 						 n => 1000}));
 };
 
-get '/stats/:lang/:n' => [lang => qr/(?:en|de)/, n => qr/\d+/] => sub {
+get "/stats/:lang/:n" => [lang => qr/(?:en|de)/, n => qr/\d+/] => sub {
   my $self = shift;
-  my $lang = $self->param('lang');
-  my $n = $self->param('n');
+  my $lang = $self->param("lang");
+  my $n = $self->param("n");
   my $char = init($self);
-  $self->render(format => 'txt',
+  $self->render(format => "txt",
 		text => stats($char, $lang, $n));
-} => 'stats';
+} => "stats";
 
-app->secrets([app->config('secret')]) if app->config('secret');
+app->secrets([app->config("secret")]) if app->config("secret");
 
 app->start;
 
 __DATA__
 
 @@ index.en.html.ep
-% layout 'default.en';
-% title 'Character Sheet Generator';
+% layout "default.en";
+% title "Character Sheet Generator";
 <h1>Character Sheet Generator</h1>
 
 <p>
 
 This is the <i>Halberds and Helmets</i> Character Sheet Generator. By default it
-will generate a <%= link_to 'random character' => 'random' %> for <i>Basic
+will generate a <%= link_to "random character" => "random" %> for <i>Basic
 D&D</i> by Moldvay (the “B” in <a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1981_revision">B/X D&D</a>).
 Reload the character sheet to generate more 1<sup>st</sup> level characters.
 
 Feel free to provide a name for your random character!
 
 %= form_for random => begin
-%= label_for name => 'Name:'
-%= text_field 'name'
+%= label_for name => "Name:"
+%= text_field "name"
 %= submit_button
 % end
 
 <p>
 The character sheet contains a link in the bottom right corner which allows you
-to bookmark and edit your character. <%= link_to 'Learn more…' => 'help' %>
+to bookmark and edit your character. <%= link_to "Learn more…" => "help" %>
 
 
 @@ index.de.html.ep
-% layout 'default.de';
-% title 'Character Sheet Generator';
+% layout "default.de";
+% title "Character Sheet Generator";
 <h1>Charakterblatt Generator</h1>
 
 <p>
 
 Dies ist der <i>Hellebarden und Helme</i> Charaktergenerator. Per Default generieren wir einen
-<%= link_to url_for('random', {lang => 'de'}) => begin %>zufälligen Charakter<% end %>
+<%= link_to url_for("random", {lang => "de"}) => begin %>zufälligen Charakter<% end %>
 für die <i>Basic D&D</i> Regeln von Moldvay (das “B” in
 <a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1981_revision">B/X D&D</a>).
 Um weitere Charaktere der 1. Stufe zu generieren, kann man die Seite einfach neu laden.
@@ -2684,27 +2678,27 @@ Um weitere Charaktere der 1. Stufe zu generieren, kann man die Seite einfach ne
 Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 
 %= form_for random => begin
-%= label_for name => 'Name:'
-%= text_field 'name'
+%= label_for name => "Name:"
+%= text_field "name"
 %= submit_button
 % end
 
 <p>
 Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man
 sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
-<%= link_to 'Weiterlesen…' => 'hilfe' %>
+<%= link_to "Weiterlesen…" => "hilfe" %>
 
 
 @@ edit.en.html.ep
-% layout 'default.en';
-% title 'Link (Character Sheet Generator)';
+% layout "default.en";
+% title "Link (Character Sheet Generator)";
 <h1>A Link For Your Character</h1>
 
 <h2>Bookmark</h2>
 
 <p>
 Bookmark the following link to your
-<%= link_to url_for('char')->query($self->req->params) => begin %>Character Sheet<% end %>.
+<%= link_to url_for("char")->query($self->req->params) => begin %>Character Sheet<% end %>.
 
 <h2>Edit</h2>
 
@@ -2713,9 +2707,9 @@ Use the following form to make changes to your character sheet. You can also
 copy and paste it on to a <a href="https://campaignwiki.org/">Campaign Wiki</a>
 page to generate an inline character sheet.
 
-%= form_for url_for('redirect' => {lang => $lang}) => begin
+%= form_for url_for("redirect" => {lang => $lang}) => begin
 %= hidden_field lang => $lang
-%= text_area 'input' => (cols => 72, rows => 20) => begin
+%= text_area "input" => (cols => 72, rows => 20) => begin
 <% for my $key (@{$char->{provided}}) { %>\
 <%   for my $value (split(/\\\\/, $char->{$key})) { =%>\
 <%= $key =%>: <%= $value %>
@@ -2728,15 +2722,15 @@ page to generate an inline character sheet.
 
 
 @@ edit.de.html.ep
-% layout 'default.de';
-% title 'Edit Your Character';
+% layout "default.de";
+% title "Edit Your Character";
 <h1>Ein Link für deinen Charakter</h1>
 
 <h2>Lesezeichen</h2>
 
 <p>
 Den Charakter kann man einfach aufbewahren, in dem man sich den Link auf
-<%= link_to url_for('char')->query($self->req->params) => begin %>Charakterblatt<% end %>
+<%= link_to url_for("char")->query($self->req->params) => begin %>Charakterblatt<% end %>
 als Lesezeichen speichert.
 
 <h2>Bearbeiten</h2>
@@ -2746,8 +2740,8 @@ Mit dem folgenden Formular lassen sich leicht Änderungen am Charakter machen.
 Man kann diesen Text auch auf einer <a href="https://campaignwiki.org/">Campaign
 Wiki</a> Seite verwenden, um das Charakterblatt einzufügen.
 
-%= form_for url_for('redirect' => {lang => $lang}) => begin
-%= text_area 'input' => (cols => 72, rows => 20) => begin
+%= form_for url_for("redirect" => {lang => $lang}) => begin
+%= text_area "input" => (cols => 72, rows => 20) => begin
 <% for my $key (@{$char->{provided}}) { %>\
 <%   for my $value (split(/\\\\/, $char->{$key})) { =%>\
 <%= $key =%>: <%= $value %>
@@ -2781,36 +2775,45 @@ Str Dex Con Int Wis Cha HP AC Class
 <div style="clear: both"></div>
 
 @@ characters.en.html.ep
-% layout 'default.en';
-% title 'Characters';
+% layout "default.en";
+% title "Characters";
 <h1>A Bunch of Characters</h1>
-%= include 'characters'
+%= include "characters"
 
 @@ characters.de.html.ep
-% layout 'default.de';
-% title 'Charaktere';
+% layout "default.de";
+% title "Charaktere";
 <h1>Einige Charaktere</h1>
-%= include 'characters'
+%= include "characters"
 
 
 @@ hilfe.html.ep
-% layout 'default.de';
-% title 'Hilfe (Charakterblatt Generator)';
+% layout "default.de";
+% title "Hilfe (Charakterblatt Generator)";
 <h1>Charakterblatt Generator</h1>
 
 <p>Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
 
-<h2>Basic D&amp;D</h2>
+<ul>
+<li><a href="#moldvay">Basic D&D</a>
+<li><a href="#labyrinth_lord">Labyrinth Lord</a>
+<li><a href="#pendragon">Pendragon</a>
+<li><a href="#crypts_n_things">Crypts & Things</a>
+<li><a href="#ACKS">Adventure Conqueror King System</a>
+</ul>
+
+<h2 id="moldvay">Basic D&amp;D</h2>
 
 <p>Die
-<%= link_to url_for('char' => {lang => 'de'})->query(charsheet => 'Charakterblatt.svg') => begin %>Defaultvorlage<% end %>
-verwendet die <a href="/Purisa.ttf">Purisa</a> Schrift. Den Platzhaltern werden über URL
-Parameter Werte zugewiesen
-(<%= link_to url_for('char')->query(name => 'Tehah', class => 'Elf', level => '1', xp => '100', ac => '9', hp => '5', str => '15', dex => '9', con => '15', int => '10', wis => '9', cha => '7', breath => '15', poison => '12', petrify => '13', wands => '13', spells => '15', property => 'Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen', abilities => 'Ghinorisch\\\\Elfisch', thac0 => '19', charsheet => 'Charakterblatt.svg') => begin %>Beispiel<% end %>,
-<%= link_to url_for('char')->query(name => 'Tehah', class => 'Elf', level => '1', xp => '100', ac => '9', hp => '5', str => '15', dex => '9', con => '15', int => '10', wis => '9', cha => '7', breath => '15', poison => '12', petrify => '13', wands => '13', spells => '15', property => 'Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen', abilities => 'Ghinorisch\\\\Elfisch', thac0 => '19', charsheet=>'Charakterblatt-quer.svg') => begin %>Alternative<% end %>).
+<%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt.svg") => begin %>Defaultvorlage<% end %>
+(<%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt-quer.svg") => begin %>Alternative<% end %>)
+verwendet die <a href="/Purisa.ttf">Purisa</a> Schrift. Den Platzhaltern werden
+über URL Parameter Werte zugewiesen
+(<%= link_to url_for("char" => {lang => "de"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen", abilities => "Ghinorisch\\\\Elfisch", thac0 => "19", charsheet => "Charakterblatt.svg") => begin %>Beispiel<% end %>,
+<%= link_to url_for("char" => {lang => "de"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen", abilities => "Ghinorisch\\\\Elfisch", thac0 => "19", charsheet=>"Charakterblatt-quer.svg") => begin %>Alternative<% end %>).
 Das Skript kann auch zeigen
-<%= link_to url_for('show' => {lang => 'de'})->query(charsheet=>'Charakterblatt.svg') => begin %>welche Parameter wo erscheinen<% end %>
-(<%= link_to url_for('show' => {lang => 'de'})->query(charsheet=>'Charakterblatt-quer.svg') => begin %>Alternative<% end %>).
+<%= link_to url_for("show")->query(charsheet=>"Charakterblatt.svg") => begin %>welche Parameter wo erscheinen<% end %>
+(<%= link_to url_for("show")->query(charsheet=>"Charakterblatt-quer.svg") => begin %>Alternative<% end %>).
 Die Parameter müssen UTF-8 codiert sein. Die Vorlage kann auch mehrzeilige
 Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch
 doppelte Backslashes trennen.
@@ -2838,31 +2841,29 @@ angegeben wurden:
 
 <p>
 Das Skript kann auch
-<%= link_to url_for('random' => {lang => 'de'}) => begin %>einen zufälligen Charakter<% end %>,
-<%= link_to url_for('characters' => {lang => 'de'}) => begin %>einige Charaktere<% end %>,
-oder <%= link_to url_for('stats' => {lang => 'de'}) => begin %>Statistiken<% end %>
+<%= link_to url_for("random" => {lang => "de"}) => begin %>einen zufälligen Charakter<% end %>,
+<%= link_to url_for("characters" => {lang => "de"}) => begin %>einige Charaktere<% end %>,
+oder <%= link_to url_for("stats" => {lang => "de"}) => begin %>Statistiken<% end %>
 generieren.
 
-<p>
+<p id="labyrinth_lord">
 Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste
-etwas unterscheidet, kann man auch <a href=
-"https://campaignwiki.org/halberdsnhelmets/random/de?rules=labyrinth+lord">
-einen zufälligen Charakter</a>, <a href=
-"https://campaignwiki.org/halberdsnhelmets/characters/de?rules=labyrinth+lord">
-einige Charaktere</a> oder <a href=
-"https://campaignwiki.org/halberdsnhelmets/stats/de?rules=labyrinth+lord">
-Statistiken</a> mit Labyrinth Lord Regeln generieren.
+etwas unterscheidet, kann man auch
+<%= link_to url_for("random" => {lang => "de"})->query(rules => "labyrinth lord") => begin %>einen zufälligen Charakter<% end %>,
+<%= link_to url_for("characters" => {lang => "de"})->query(rules => "labyrinth lord") => begin %>einige Charaktere<% end %>
+oder <%= link_to  url_for("stats" => {lang => "de"})->query(rules => "labyrinth lord") => begin %>Statistiken<% end %>
+mit <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a>
+Regeln generieren.
 
-<h2>Pendragon</h2>
+<h2 id="pendragon">Pendragon</h2>
 
 <p>
-Das Skript kann auch Pendragon Charaktere anzeigen (aber nicht
-zufällig erstellen): <a href=
-"https://campaignwiki.org/halberdsnhelmets/link/de?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">
-Pendragon Charakter</a> bearbeiten. Das Skript kann auch zeigen
-<a href=
-"https://campaignwiki.org/halberdsnhelmets/show/de?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">
-welche Parameter wo erscheinen</a>.
+Das Skript kann auch
+<a href="http://www.nocturnal-media.com/games/pendragon">Pendragon</a>
+Charaktere anzeigen (aber nicht zufällig erstellen):
+<%= link_to url_for("edit" => {lang => "de"})->query(rules => "pendragon", charsheet => "Pendragon.svg") => begin %>Pendragon Charakter<% end %> bearbeiten.
+Das Skript kann auch zeigen
+<%= link_to url_for("show")->query(charsheet => "Pendragon.svg") => begin %>welche Parameter wo erscheinen<% end %>.
 
 <p>
 Zudem werden einige Parameter berechnet, sofern sie nicht
@@ -2889,16 +2890,15 @@ angegeben wurden:
 <li>valorous ↔ cowardly
 </ul>
 
-<h2>Crypts &amp; Things</h2>
+<h2 id="crypts_n_things">Crypts & Things</h2>
 
 <p>
-Das Skript kann auch Charaktere für Crypts &amp; Things anzeigen
-(aber nicht zufällig erstellen): <a href=
-"https://campaignwiki.org/halberdsnhelmets/link/de?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">
-Crypts &amp; Things Charakter</a> bearbeiten. Das Skript kann auch
-zeigen <a href=
-"https://campaignwiki.org/halberdsnhelmets/show/de?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">
-welche Parameter wo erscheinen</a>.
+Das Skript kann auch Charaktere für
+<a href="http://d101games.com/books/crypts-and-things/">Crypts & Things</a>
+anzeigen (aber nicht zufällig erstellen):
+<%= link_to url_for("edit" => {lang => "de"})->query(rules => "crypts-n-things", charsheet => "Crypts-n-Things.svg") => begin %>Crypts & Things Charakter<% end %>
+bearbeiten. Das Skript kann auch zeigen
+<%= link_to url_for("show")->query(charsheet => "Crypts-n-Things.svg") => begin %>welche Parameter wo erscheinen<% end %>.
 
 <p>
 Zudem werden einige Parameter berechnet, sofern sie nicht
@@ -2916,16 +2916,15 @@ angegeben wurden:
 <li>wis → sanity
 </ul>
 
-<h2>Adventure Conqueror King</h2>
+<h2 id="ACKS">Adventure Conqueror King System</h2>
 
 <p>
-Das Skript kann auch Charaktere für Adventure Conqueror King
-anzeigen (aber nicht zufällig erstellen): <a href=
-"https://campaignwiki.org/halberdsnhelmets/link/de?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">
-Adventure Conqueror King Charakter</a> bearbeiten. Das Skript kann
-auch zeigen <a href=
-"https://campaignwiki.org/halberdsnhelmets/show/de?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">
-welche Parameter wo erscheinen</a>.
+Das Skript kann auch Charaktere für
+<a href="http://www.autarch.co/">Adventure Conqueror King System</a>
+anzeigen:
+<%= link_to url_for("edit" => {lang => "de"})->query(rules => "acks", charsheet => "ACKS.svg") => begin %>ACKS Charakter<% end %>
+bearbeiten. Das Skript kann auch zeigen
+<%= link_to url_for("show")->query(charsheet => "ACKS.svg") => begin %>welche Parameter wo erscheinen<% end %>.
 
 <p>
 Zudem werden einige Parameter berechnet, sofern sie nicht
@@ -2943,27 +2942,43 @@ angegeben wurden:
 </ul>
 
 <p>
-Das Skript kann auch <a href=
-"https://campaignwiki.org/halberdsnhelmets/random/de?rules=acks">einen
-zufälligen Charakter</a>, <a href=
-"https://campaignwiki.org/halberdsnhelmets/characters/de?rules=acks">
-einige Charaktere</a> oder <a href=
-"https://campaignwiki.org/halberdsnhelmets/stats/de?rules=acks">Statistiken</a>
+<b>Im Aufbau</b>: Das Skript kann auch
+<%= link_to url_for("random" => {lang => "de"})->query(rules => "acks", charsheet => "ACKS.svg") => begin %>einen zufälligen Charakter<% end %>,
+<%= link_to url_for("characters" => {lang => "de"})->query(rules => "acks") => begin %>einige Charaktere<% end %>
+oder <%= link_to  url_for("stats" => {lang => "de"})->query(rules => "acks") => begin %>Statistiken<% end %>
 generieren.
 
 
 @@ help.html.ep
-% layout 'default.en';
-% title 'Help (Character Sheet Generator)';
+% layout "default.en";
+% title "Help (Character Sheet Generator)";
 <h1>Character Sheet Generator</h1>
 
 <p>The generator works by using a template and replacing some placeholders.
 
-<h2>Basic D&D</h2>
+<ul>
+<li><a href="#moldvay">Basic D&D</a>
+<li><a href="#labyrinth_lord">Labyrinth Lord</a>
+<li><a href="#pendragon">Pendragon</a>
+<li><a href="#crypts_n_things">Crypts & Things</a>
+<li><a href="#ACKS">Adventure Conqueror King System</a>
+</ul>
+
+<h2 id="moldvay">Basic D&D</h2>
 
 <p>The
-<%= link_to url_for('char' => {lang => 'en'}) => begin %>default template<% end %>
-uses the <a href="/Purisa.ttf">Purisa</a> font. You provide values for the placeholders by providing URL parameters (<a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19">example</a>, <a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg">alternative</a>). The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en">which parameters go where</a>. Also note that the parameters need to be UTF-8 encoded. If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
+<%= link_to url_for("char" => {lang => "en"}) => begin %>default template<% end %>
+(<%= link_to url_for("char" => {lang => "en"})->query(charsheet=>"Charactersheet-landscape.svg") => begin %>alternative<% end %>)
+uses the <a href="/Purisa.ttf">Purisa</a> font. You provide values for the
+placeholders by providing URL parameters
+(<%= link_to url_for("char" => {lang => "en"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Spell Book (Gerdana)\\\\* sleepy swoosh", abilities => "Ghinorian\\\\Elven", thac0 => "19", charsheet => "Charactersheet.svg") => begin %>example<% end %>,
+<%= link_to url_for("char" => {lang => "en"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Spell Book (Gerdana)\\\\* sleepy swoosh", abilities => "Ghinorian\\\\Elven", thac0 => "19", charsheet=>"Charactersheet-landscape.svg") => begin %>alternative<% end %>).
+The script can also show
+<%= link_to url_for("show")->query(charsheet=>"Charactersheet.svg") => begin %>which parameters go where<% end %>
+(<%= link_to url_for("show")->query(charsheet=>"Charactersheet-landscape.svg") => begin %>alternative<% end %>).
+Also note that the parameters need to be UTF-8 encoded. If the
+template contains a multiline placeholder, the parameter may also provide
+multiple lines separated by two backslashes.
 
 <p>
 In addition to that, some parameters are computed unless provided:
@@ -2987,21 +3002,28 @@ In addition to that, some parameters are computed unless provided:
 
 <p>
 The script can also generate a
-<%= link_to url_for('random' => {lang => 'en'}) => begin %>random character<% end %>,
-<%= link_to url_for('characters' => {lang => 'en'}) => begin %>bunch of characters<% end %>
-or <%= link_to url_for('stats' => {lang => 'en'}) => begin %>some statistics<% end =%>.
+<%= link_to url_for("random" => {lang => "en"}) => begin %>random character<% end %>,
+<%= link_to url_for("characters" => {lang => "en"}) => begin %>bunch of characters<% end %>
+or <%= link_to url_for("stats" => {lang => "en"}) => begin %>some statistics<% end =%>.
 
-<p> As the price list for Labyrinth Lord differs from the Moldvay
+<p id="labyrinth_lord">
+As the price list for Labyrinth Lord differs from the Moldvay
 price list, you can also generate a
-<%= link_to url_for('random' => {lang => 'en'})->query(rules => 'labyrinth lord') => begin %>random character<% end %>,
-<%= link_to url_for('characters' => {lang => 'en'})->query(rules => 'labyrinth lord') => begin %>bunch of characters<% end %>,
-or <%= link_to  url_for('stats' => {lang => 'en'})->query(rules => 'labyrinth lord') => begin %>some statistics<% end %>
-using <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a> rules.
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "labyrinth lord") => begin %>random character<% end %>,
+<%= link_to url_for("characters" => {lang => "en"})->query(rules => "labyrinth lord") => begin %>bunch of characters<% end %>
+or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "labyrinth lord") => begin %>some statistics<% end %>
+using <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a>
+rules.
 
-<h2>Pendragon</h2>
+<h2 id="pendragon">Pendragon</h2>
 
 <p>
-The script also supports Pendragon characters (but cannot generate them randomly): Get started with a <a href="https://campaignwiki.org/halberdsnhelmets/link/en?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">Pendragon character</a>. The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">which parameters go where</a>.
+The script also supports
+<a href="http://www.nocturnal-media.com/games/pendragon">Pendragon</a>
+characters (but cannot generate them randomly): Get started with a
+<%= link_to url_for("edit" => {lang => "en"})->query(rules => "pendragon", charsheet => "Pendragon.svg") => begin %>Pendragon character<% end %>.
+The script can also show
+<%= link_to url_for("show")->query(charsheet => "Pendragon.svg") => begin %>which parameters go where<% end %>.
 
 <p>
 In addition to that, some parameters are computed unless provided:
@@ -3027,10 +3049,16 @@ In addition to that, some parameters are computed unless provided:
 <li>valorous ↔ cowardly
 </ul>
 
-<h2>Crypts &amp; Things</h2>
+<h2 id="crypts_n_things">Crypts &amp; Things</h2>
 
 <p>
-The script also supports Crypts &amp; Things characters (but cannot generate them randomly): Get started with a <a href="https://campaignwiki.org/halberdsnhelmets/link/en?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">Crypts &amp; Things character</a>. The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">which parameters go where</a>.
+The script also supports
+<a href="http://d101games.com/books/crypts-and-things/">Crypts & Things</a>
+characters (but cannot generate them randomly):
+Get started with a
+<%= link_to url_for("edit" => {lang => "en"})->query(rules => "crypts-n-things", charsheet => "Crypts-n-Things.svg") => begin %>Crypts & Things character<% end %>.
+The script can also show
+<%= link_to url_for("show")->query(charsheet => "Crypts-n-Things.svg") => begin %>which parameters go where<% end %>.
 
 <p>
 In addition to that, some parameters are computed unless provided:
@@ -3047,10 +3075,15 @@ In addition to that, some parameters are computed unless provided:
 <li>wis → sanity
 </ul>
 
-<h2>Adventure Conqueror King</h2>
+<h2 id="ACKS">Adventure Conqueror King System</h2>
 
 <p>
-The script also supports Adventure Conqueror King characters (but cannot generate them randomly): Get started with an <a href="https://campaignwiki.org/halberdsnhelmets/link/en?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">Adventure Conqueror King character</a>. The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">which parameters go where</a>.
+The script also supports
+<a href="http://www.autarch.co/">Adventure Conqueror King System</a>
+characters: Get started with an
+<%= link_to url_for("edit" => {lang => "en"})->query(rules => "acks", charsheet => "ACKS.svg") => begin %>ACKS character<% end %>.
+The script can also show
+<%= link_to url_for("show")->query(charsheet => "ACKS.svg") => begin %>which parameters go where<% end %>.
 
 <p>
 In addition to that, some parameters are computed unless provided:
@@ -3067,7 +3100,10 @@ In addition to that, some parameters are computed unless provided:
 </ul>
 
 <p>
-The script can also generate a <a href="https://campaignwiki.org/halberdsnhelmets/random/en?rules=acks">random character</a>, a <a href="https://campaignwiki.org/halberdsnhelmets/characters/en?rules=acks">bunch of characters</a>, or <a href="https://campaignwiki.org/halberdsnhelmets/stats/en?rules=acks">some statistics</a>.
+<b>Work in Progress</b>: The script can also generate a
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "acks", charsheet => "ACKS.svg") => begin %>random character<% end %>,
+<%= link_to url_for("characters" => {lang => "en"})->query(rules => "acks") => begin %>bunch of characters<% end %>
+or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "acks") => begin %>some statistics<% end %>.
 
 
 @@ default.html.ep
@@ -3075,15 +3111,16 @@ The script can also generate a <a href="https://campaignwiki.org/halberdsnhelmet
 <html>
 <head>
 <title><%= title %></title>
-%= stylesheet '/halberdsnhelmets/default.css'
+%= stylesheet "/halberdsnhelmets/default.css"
 %= stylesheet begin
-body { padding: 1em; width: <%= $self->stash('width')||'80ex' %>; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
+body { padding: 1em; width: <%= $self->stash("width")||"80ex" %>; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
+textarea { width: 100% }
 % end
 <meta name="viewport" content="width=device-width">
 </head>
 <body>
 <%= content %>
-<%= content 'footer' %>
+<%= content "footer" %>
 </body>
 </html>
 
@@ -3092,25 +3129,25 @@ body { padding: 1em; width: <%= $self->stash('width')||'80ex' %>; font-family: "
 <div class="footer">
 <hr>
 <p>
-<%= link_to url_for('main' => {lang => 'de'}) => begin %>Character Generator<% end %> &nbsp;
-<%= link_to Help => 'help' %> &nbsp;
+<%= link_to url_for("main" => {lang => "de"}) => begin %>Character Generator<% end %> &nbsp;
+<%= link_to Help => "help" %> &nbsp;
 <a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
 <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
-<%= link_to url_for('main' => {lang => 'de'}) => begin %>German<% end %>
+<%= link_to url_for("main" => {lang => "de"}) => begin %>German<% end %>
 </div>
 % end
-%= include 'default'
+%= include "default"
 
 @@ layouts/default.de.html.ep
 % content_for footer => begin
 <div class="footer">
 <hr>
 <p>
-<%= link_to url_for('main' => {lang => 'de'}) => begin %>Charakterblatt Generator<% end %> &nbsp;
-<%= link_to Hilfe => 'hilfe' %> &nbsp;
+<%= link_to url_for("main" => {lang => "de"}) => begin %>Charakterblatt Generator<% end %> &nbsp;
+<%= link_to Hilfe => "hilfe" %> &nbsp;
 <a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
 <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
-<%= link_to url_for('main' => {lang => 'en'}) => begin %>English<% end %>
+<%= link_to url_for("main" => {lang => "en"}) => begin %>English<% end %>
 </div>
 % end
-%= include 'default'
+%= include "default"
