@@ -3073,7 +3073,7 @@ The script can also generate a <a href="https://campaignwiki.org/halberdsnhelmet
 <title><%= title %></title>
 %= stylesheet '/halberdsnhelmets/default.css'
 %= stylesheet begin
-body { padding: 1em; width: <%= $width||'80ex' %>; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
+body { padding: 1em; width: <%= $self->stash('width')||'80ex' %>; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
 % end
 <meta name="viewport" content="width=device-width">
 </head>
