@@ -2589,7 +2589,8 @@ get '/redirect/:lang' => [lang => qr/(?:en|de)/] => sub {
 
 get '/show' => sub {
   my $self = shift;
-  my $svg = svg_show_id(svg_read());
+  my $char = init($self);
+  my $svg = svg_show_id(svg_read($char));
   $self->render(format => 'svg',
 		data => $svg->toString());
 } => 'show';
@@ -2796,25 +2797,21 @@ Str Dex Con Int Wis Cha HP AC Class
 @@ hilfe.html.ep
 % layout 'default.de';
 % title 'Hilfe (Charakterblatt Generator)';
-
-
 <h1>Charakterblatt Generator</h1>
-<p>Das funktioniert über eine Vorlage und dem Ersetzen von
-Platzhaltern.
 
+<p>Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
 
 <h2>Basic D&amp;D</h2>
 
-<p>
-Die Defaultvorlage (<a href=
-"/Charakterblatt.svg">Charakterblatt.svg</a>) verwendet die
-<a href="/Purisa.ttf">Purisa</a> Schrift. Den Platzhaltern werden
-über URL Parameter Werte zugewiesen
-(<%= link_to url_for('char')->query(name => 'Tehah', class => 'Elf', level => '1', xp => '100', ac => '9', hp => '5', str => '15', dex => '9', con => '15', int => '10', wis => '9', cha => '7', breath => '15', poison => '12', petrify => '13', wands => '13', spells => '15', property => 'Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen', abilities => 'Ghinorisch\\\\Elfisch', thac0 => '19') => begin %>Beispiel<% end %>,
-<%= link_to url_for('char')->query(name => 'Tehah', class => 'Elf', level => '1', xp => '100', ac => '9', hp => '5', str => '15', dex => '9', con => '15', int => '10', wis => '9', cha => '7', breath => '15', poison => '12', petrify => '13', wands => '13', spells => '15', property => 'Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen', abilities => 'Ghinorisch\\\\Elfisch', thac0 => '19', charsheet=>'Charactersheet-landscape.svg') => begin %>Alternative<% end %>).
+<p>Die
+<%= link_to url_for('char' => {lang => 'de'})->query(charsheet => 'Charakterblatt.svg') => begin %>Defaultvorlage<% end %>
+verwendet die <a href="/Purisa.ttf">Purisa</a> Schrift. Den Platzhaltern werden über URL
+Parameter Werte zugewiesen
+(<%= link_to url_for('char')->query(name => 'Tehah', class => 'Elf', level => '1', xp => '100', ac => '9', hp => '5', str => '15', dex => '9', con => '15', int => '10', wis => '9', cha => '7', breath => '15', poison => '12', petrify => '13', wands => '13', spells => '15', property => 'Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen', abilities => 'Ghinorisch\\\\Elfisch', thac0 => '19', charsheet => 'Charakterblatt.svg') => begin %>Beispiel<% end %>,
+<%= link_to url_for('char')->query(name => 'Tehah', class => 'Elf', level => '1', xp => '100', ac => '9', hp => '5', str => '15', dex => '9', con => '15', int => '10', wis => '9', cha => '7', breath => '15', poison => '12', petrify => '13', wands => '13', spells => '15', property => 'Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen', abilities => 'Ghinorisch\\\\Elfisch', thac0 => '19', charsheet=>'Charakterblatt-quer.svg') => begin %>Alternative<% end %>).
 Das Skript kann auch zeigen
-<%= link_to url_for('show' => {lang => 'de'}) => begin %>welche Parameter wo erscheinen<% end %>
-(<%= link_to url_for('show' => {lang => 'de'})->query(charsheet=>'Charactersheet-landscape.svg') => begin %>Alternative<% end %>).
+<%= link_to url_for('show' => {lang => 'de'})->query(charsheet=>'Charakterblatt.svg') => begin %>welche Parameter wo erscheinen<% end %>
+(<%= link_to url_for('show' => {lang => 'de'})->query(charsheet=>'Charakterblatt-quer.svg') => begin %>Alternative<% end %>).
 Die Parameter müssen UTF-8 codiert sein. Die Vorlage kann auch mehrzeilige
 Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch
 doppelte Backslashes trennen.
@@ -2960,8 +2957,8 @@ generieren.
 % layout 'default.en';
 % title 'Help (Character Sheet Generator)';
 <h1>Character Sheet Generator</h1>
-<p>
-The generator works by using a template and replacing some placeholders.
+
+<p>The generator works by using a template and replacing some placeholders.
 
 <h2>Basic D&D</h2>
 
