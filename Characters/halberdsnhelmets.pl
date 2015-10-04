@@ -2604,7 +2604,8 @@ get '/characters/:lang' => sub {
   my $self = shift;
   my $lang = $self->param('lang');
   my $char = init($self);
-  $self->render(template => 'characters',
+  $self->render(template => "characters.$lang",
+		width => '100%',
 		characters => characters($char, $lang));
 } => 'characters';
 
@@ -2640,7 +2641,7 @@ __DATA__
 % title 'Character Sheet Generator';
 <h1>Character Sheet Generator</h1>
 
-<p class="text">
+<p>
 
 This is the <i>Halberds and Helmets</i> Character Sheet Generator. By default it
 will generate a <%= link_to 'random character' => 'random' %> for <i>Basic
@@ -2655,7 +2656,7 @@ Feel free to provide a name for your random character!
 %= submit_button
 % end
 
-<p class="text">
+<p>
 The character sheet contains a link in the bottom right corner which allows you
 to bookmark and edit your character. <%= link_to 'Learn more…' => 'help' %>
 
@@ -2665,7 +2666,7 @@ to bookmark and edit your character. <%= link_to 'Learn more…' => 'help' %>
 % title 'Character Sheet Generator';
 <h1>Charakterblatt Generator</h1>
 
-<p class="text">
+<p>
 
 Dies ist der <i>Hellebarden und Helme</i> Charaktergenerator. Per Default generieren wir einen
 <%= link_to url_for('random', {lang => 'de'}) => begin %>zufälligen Charakter<% end %>
@@ -2681,7 +2682,7 @@ Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 %= submit_button
 % end
 
-<p class="text">
+<p>
 Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man
 sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 <%= link_to 'Weiterlesen…' => 'hilfe' %>
@@ -2694,13 +2695,13 @@ sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 
 <h2>Bookmark</h2>
 
-<p class="text">
+<p>
 Bookmark the following link to your
 <%= link_to url_for('char')->query($self->req->params) => begin %>Character Sheet<% end %>.
 
 <h2>Edit</h2>
 
-<p class="text">
+<p>
 Use the following form to make changes to your character sheet. You can also
 copy and paste it on to a <a href="https://campaignwiki.org/">Campaign Wiki</a>
 page to generate an inline character sheet.
@@ -2726,14 +2727,14 @@ page to generate an inline character sheet.
 
 <h2>Lesezeichen</h2>
 
-<p class="text">
+<p>
 Den Charakter kann man einfach aufbewahren, in dem man sich den Link auf
 <%= link_to url_for('char')->query($self->req->params) => begin %>Charakterblatt<% end %>
 als Lesezeichen speichert.
 
 <h2>Bearbeiten</h2>
 
-<p class="text">
+<p>
 Mit dem folgenden Formular lassen sich leicht Änderungen am Charakter machen.
 Man kann diesen Text auch auf einer <a href="https://campaignwiki.org/">Campaign
 Wiki</a> Seite verwenden, um das Charakterblatt einzufügen.
@@ -2752,9 +2753,6 @@ Wiki</a> Seite verwenden, um das Charakterblatt einzufügen.
 
 
 @@ characters.html.ep
-% layout 'default.en';
-% title 'Characters';
-<h1>A Bunch of Characters</h1>
 <% for my $char (@{$characters}) { %>
 <pre style="display: block; float: left; height: 25em; width: 30em; font-size: 6pt">
 <%= $char->{traits} %>
@@ -2770,10 +2768,22 @@ Str Dex Con Int Wis Cha HP AC Class
 <%= $char->{class} %>
 <% for my $property (split(/\\\\/, $char->{property})) { =%>
 <%= $property %>
-<% } %>
+<% } %>\
 </pre>
 <% } %>
 <div style="clear: both"></div>
+
+@@ characters.en.html.ep
+% layout 'default.en';
+% title 'Characters';
+<h1>A Bunch of Characters</h1>
+%= include 'characters'
+
+@@ characters.de.html.ep
+% layout 'default.de';
+% title 'Charaktere';
+<h1>Einige Charaktere</h1>
+%= include 'characters'
 
 
 @@ hilfe.html.ep
@@ -2788,22 +2798,21 @@ Platzhaltern.
 
 <h2>Basic D&amp;D</h2>
 
-<p class="text">
+<p>
 Die Defaultvorlage (<a href=
 "/Charakterblatt.svg">Charakterblatt.svg</a>) verwendet die
 <a href="/Purisa.ttf">Purisa</a> Schrift. Den Platzhaltern werden
-über URL Parameter Werte zugewiesen (<a href=
-"https://campaignwiki.org/halberdsnhelmets/de?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19">Beispiel</a>,
-<a href=
-"https://campaignwiki.org/halberdsnhelmets/de?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg">
-Alternative</a>). Das Skript kann auch zeigen <a href=
-"https://campaignwiki.org/halberdsnhelmets/show/de">welche
-Parameter wo erscheinen</a>. Die Parameter müssen UTF-8 codiert
-sein. Die Vorlage kann auch mehrzeilige Platzhalter enthalten. Der
-entsprechende Parameter muss die Zeilen dann durch doppelte
-Backslashes trennen.
+über URL Parameter Werte zugewiesen
+(<%= link_to url_for('char')->query(name => 'Tehah', class => 'Elf', level => '1', xp => '100', ac => '9', hp => '5', str => '15', dex => '9', con => '15', int => '10', wis => '9', cha => '7', breath => '15', poison => '12', petrify => '13', wands => '13', spells => '15', property => 'Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen', abilities => 'Ghinorisch\\\\Elfisch', thac0 => '19') => begin %>Beispiel<% end %>,
+<%= link_to url_for('char')->query(name => 'Tehah', class => 'Elf', level => '1', xp => '100', ac => '9', hp => '5', str => '15', dex => '9', con => '15', int => '10', wis => '9', cha => '7', breath => '15', poison => '12', petrify => '13', wands => '13', spells => '15', property => 'Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen', abilities => 'Ghinorisch\\\\Elfisch', thac0 => '19', charsheet=>'Charactersheet-landscape.svg') => begin %>Alternative<% end %>).
+Das Skript kann auch zeigen
+<%= link_to url_for('show' => {lang => 'de'}) => begin %>welche Parameter wo erscheinen<% end %>
+(<%= link_to url_for('show' => {lang => 'de'})->query(charsheet=>'Charactersheet-landscape.svg') => begin %>Alternative<% end %>).
+Die Parameter müssen UTF-8 codiert sein. Die Vorlage kann auch mehrzeilige
+Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch
+doppelte Backslashes trennen.
 
-<p class="text">
+<p>
 Zudem werden einige Parameter berechnet, sofern sie nicht
 angegeben wurden:
 
@@ -2824,16 +2833,14 @@ angegeben wurden:
 <li>damage → range-damage
 </ul>
 
-<p class="text">
-Das Skript kann auch <a href=
-"https://campaignwiki.org/halberdsnhelmets/random/de">einen
-zufälligen Charakter</a>, <a href=
-"https://campaignwiki.org/halberdsnhelmets/characters/de">einige
-Charaktere</a> oder <a href=
-"https://campaignwiki.org/halberdsnhelmets/stats/de">Statistiken</a>
+<p>
+Das Skript kann auch
+<%= link_to url_for('random' => {lang => 'de'}) => begin %>einen zufälligen Charakter<% end %>,
+<%= link_to url_for('characters' => {lang => 'de'}) => begin %>einige Charaktere<% end %>,
+oder <%= link_to url_for('stats' => {lang => 'de'}) => begin %>Statistiken<% end %>
 generieren.
 
-<p class="text">
+<p>
 Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste
 etwas unterscheidet, kann man auch <a href=
 "https://campaignwiki.org/halberdsnhelmets/random/de?rules=labyrinth+lord">
@@ -2845,7 +2852,7 @@ Statistiken</a> mit Labyrinth Lord Regeln generieren.
 
 <h2>Pendragon</h2>
 
-<p class="text">
+<p>
 Das Skript kann auch Pendragon Charaktere anzeigen (aber nicht
 zufällig erstellen): <a href=
 "https://campaignwiki.org/halberdsnhelmets/link/de?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">
@@ -2854,7 +2861,7 @@ Pendragon Charakter</a> bearbeiten. Das Skript kann auch zeigen
 "https://campaignwiki.org/halberdsnhelmets/show/de?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">
 welche Parameter wo erscheinen</a>.
 
-<p class="text">
+<p>
 Zudem werden einige Parameter berechnet, sofern sie nicht
 angegeben wurden:
 
@@ -2881,7 +2888,7 @@ angegeben wurden:
 
 <h2>Crypts &amp; Things</h2>
 
-<p class="text">
+<p>
 Das Skript kann auch Charaktere für Crypts &amp; Things anzeigen
 (aber nicht zufällig erstellen): <a href=
 "https://campaignwiki.org/halberdsnhelmets/link/de?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">
@@ -2890,7 +2897,7 @@ zeigen <a href=
 "https://campaignwiki.org/halberdsnhelmets/show/de?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">
 welche Parameter wo erscheinen</a>.
 
-<p class="text">
+<p>
 Zudem werden einige Parameter berechnet, sofern sie nicht
 angegeben wurden:
 
@@ -2908,7 +2915,7 @@ angegeben wurden:
 
 <h2>Adventure Conqueror King</h2>
 
-<p class="text">
+<p>
 Das Skript kann auch Charaktere für Adventure Conqueror King
 anzeigen (aber nicht zufällig erstellen): <a href=
 "https://campaignwiki.org/halberdsnhelmets/link/de?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">
@@ -2917,7 +2924,7 @@ auch zeigen <a href=
 "https://campaignwiki.org/halberdsnhelmets/show/de?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">
 welche Parameter wo erscheinen</a>.
 
-<p class="text">
+<p>
 Zudem werden einige Parameter berechnet, sofern sie nicht
 angegeben wurden:
 
@@ -2932,7 +2939,7 @@ angegeben wurden:
 <li>attack+dex → missile
 </ul>
 
-<p class="text">
+<p>
 Das Skript kann auch <a href=
 "https://campaignwiki.org/halberdsnhelmets/random/de?rules=acks">einen
 zufälligen Charakter</a>, <a href=
@@ -2946,15 +2953,15 @@ generieren.
 % layout 'default.en';
 % title 'Help (Character Sheet Generator)';
 <h1>Character Sheet Generator</h1>
-<p class="text">
+<p>
 The generator works by using a template and replacing some placeholders.
 
 <h2>Basic D&D</h2>
 
-<p class="text">
+<p>
 The default template (<a href="/Charactersheet.svg">Charactersheet.svg</a>) uses the <a href="/Purisa.ttf">Purisa</a> font. You provide values for the placeholders by providing URL parameters (<a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19">example</a>, <a href="https://campaignwiki.org/halberdsnhelmets/en?name=Tehah;class=Elf;level=1;xp=100;ac=9;hp=5;str=15;dex=9;con=15;int=10;wis=9;cha=7;breath=15;poison=12;petrify=13;wands=13;spells=15;property=Zauberbuch%20%28Gerdana%29%3a%5C%5C%E2%80%A2%20Einschl%C3%A4ferndes%20Rauschen;abilities=Ghinorisch%5C%5CElfisch;thac0=19;charsheet=https:%2f%2fcampaignwiki.org%2fCharactersheet-landscape.svg">alternative</a>). The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en">which parameters go where</a>. Also note that the parameters need to be UTF-8 encoded. If the template contains a multiline placeholder, the parameter may also provide multiple lines separated by two backslashes.
 
-<p class="text">
+<p>
 In addition to that, some parameters are computed unless provided:
 
 <ul>
@@ -2974,13 +2981,13 @@ In addition to that, some parameters are computed unless provided:
 <li>damage → range-damage
 </ul>
 
-<p class="text">
+<p>
 The script can also generate a
 <%= link_to 'random character' => 'random' =%>,
 <%= link_to 'bunch of characters' => 'characters' =%>,
 or <%= link_to 'some statistics' => 'stats' =%></a>.
 
-<p class="text"> As the price list for Labyrinth Lord differs from the Moldvay
+<p> As the price list for Labyrinth Lord differs from the Moldvay
 price list, you can also generate a
 <%= link_to url_for('random')->query(rules => 'labyrinth lord') => begin %>random character<% end %>,
 <%= link_to url_for('characters')->query(rules => 'labyrinth lord') => begin %>bunch of characters<% end %>,
@@ -2989,10 +2996,10 @@ using <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord<
 
 <h2>Pendragon</h2>
 
-<p class="text">
+<p>
 The script also supports Pendragon characters (but cannot generate them randomly): Get started with a <a href="https://campaignwiki.org/halberdsnhelmets/link/en?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">Pendragon character</a>. The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en?rules=pendragon;charsheet=https%3a%2f%2fcampaignwiki.org%2fPendragon.svg">which parameters go where</a>.
 
-<p class="text">
+<p>
 In addition to that, some parameters are computed unless provided:
 
 <ul>
@@ -3018,10 +3025,10 @@ In addition to that, some parameters are computed unless provided:
 
 <h2>Crypts &amp; Things</h2>
 
-<p class="text">
+<p>
 The script also supports Crypts &amp; Things characters (but cannot generate them randomly): Get started with a <a href="https://campaignwiki.org/halberdsnhelmets/link/en?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">Crypts &amp; Things character</a>. The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en?rules=crypts-n-things;charsheet=https%3a%2f%2fcampaignwiki.org%2fCrypts-n-Things.svg">which parameters go where</a>.
 
-<p class="text">
+<p>
 In addition to that, some parameters are computed unless provided:
 
 <ul>
@@ -3038,10 +3045,10 @@ In addition to that, some parameters are computed unless provided:
 
 <h2>Adventure Conqueror King</h2>
 
-<p class="text">
+<p>
 The script also supports Adventure Conqueror King characters (but cannot generate them randomly): Get started with an <a href="https://campaignwiki.org/halberdsnhelmets/link/en?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">Adventure Conqueror King character</a>. The script can also show <a href="https://campaignwiki.org/halberdsnhelmets/show/en?rules=acks;charsheet=https%3a%2f%2fcampaignwiki.org%2fACKS.svg">which parameters go where</a>.
 
-<p class="text">
+<p>
 In addition to that, some parameters are computed unless provided:
 
 <ul>
@@ -3055,23 +3062,29 @@ In addition to that, some parameters are computed unless provided:
 <li>attack+dex → missile
 </ul>
 
-<p class="text">
+<p>
 The script can also generate a <a href="https://campaignwiki.org/halberdsnhelmets/random/en?rules=acks">random character</a>, a <a href="https://campaignwiki.org/halberdsnhelmets/characters/en?rules=acks">bunch of characters</a>, or <a href="https://campaignwiki.org/halberdsnhelmets/stats/en?rules=acks">some statistics</a>.
 
 
-@@ layouts/default.en.html.ep
+@@ default.html.ep
 <!DOCTYPE html>
 <html>
 <head>
 <title><%= title %></title>
 %= stylesheet '/halberdsnhelmets/default.css'
 %= stylesheet begin
-body { padding: 1em; width: 80ex; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
+body { padding: 1em; width: <%= $width||'80ex' %>; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
 % end
 <meta name="viewport" content="width=device-width">
 </head>
 <body>
 <%= content %>
+<%= content 'footer' %>
+</body>
+</html>
+
+@@ layouts/default.en.html.ep
+% content_for footer => begin
 <div class="footer">
 <hr>
 <p>
@@ -3081,23 +3094,11 @@ body { padding: 1em; width: 80ex; font-family: "Palatino Linotype", "Book Antiqu
 <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
 <%= link_to url_for('main' => {lang => 'de'}) => begin %>German<% end %>
 </div>
-</body>
-</html>
-
+% end
+%= include 'default'
 
 @@ layouts/default.de.html.ep
-<!DOCTYPE html>
-<html>
-<head>
-<title><%= title %></title>
-%= stylesheet '/halberdsnhelmets/default.css'
-%= stylesheet begin
-body { padding: 1em; width: 80ex; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
-% end
-<meta name="viewport" content="width=device-width">
-</head>
-<body>
-<%= content %>
+% content_for footer => begin
 <div class="footer">
 <hr>
 <p>
@@ -3107,5 +3108,5 @@ body { padding: 1em; width: 80ex; font-family: "Palatino Linotype", "Book Antiqu
 <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
 <%= link_to url_for('main' => {lang => 'en'}) => begin %>English<% end %>
 </div>
-</body>
-</html>
+% end
+%= include 'default'
