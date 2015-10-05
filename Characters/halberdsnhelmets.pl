@@ -1571,7 +1571,7 @@ sub random_parameters {
     error(T('Unknown Rules'), T('%0 is unknown.', $char->{rules}));
   }
 
-  # choose a random portrait based on the character name
+  # choose a random portrait based on the character name or class
   if (member("portrait", @_)) {
     provide($char, "portrait", portrait($char)) unless $char->{portrait};
   }
@@ -2386,9 +2386,11 @@ sub traits {
 sub portrait {
   my $char = shift;
   my $gender = $names{$char->{name}};
-  if ($gender eq "F") { $gender = "woman" }
+  if ($char->{class} eq "elf") { $gender = "elf" }
+  elsif ($gender eq "F") { $gender = "woman" }
   elsif ($gender eq "M") { $gender = "man" }
   else { $gender = one("woman", "man") }
+  warn $char->{class};
   my $url = Mojo::URL->new("https://campaignwiki.org/face/redirect/alex/$gender");
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->get($url);
