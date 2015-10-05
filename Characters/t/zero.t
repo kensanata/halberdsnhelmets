@@ -25,7 +25,7 @@ require "$FindBin::Bin/../halberdsnhelmets.pl";
 
 my $t = Test::Mojo->new;
 
-$t->get_ok('/halberdsnhelmets/char/en?ac=0')
+$t->get_ok('/char/en?ac=0')
     ->status_is(200)
     ->header_is('Content-Type' => 'image/svg+xml')
     ->text_is('text#ac tspan' => '0', 'ac zero is shown');

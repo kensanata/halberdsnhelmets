@@ -25,26 +25,26 @@ require "$FindBin::Bin/../halberdsnhelmets.pl";
 
 my $t = Test::Mojo->new;
 
-$t->get_ok('/halberdsnhelmets/stats/en/100')
+$t->get_ok('/stats/en/100')
     ->status_is(200)
     ->content_like(qr/backpack  100\n/);
 
-$t->get_ok('/halberdsnhelmets/stats/de/100')
+$t->get_ok('/stats/de/100')
     ->status_is(200)
     ->content_like(qr/Rucksack  100\n/);
 
 # and some redirections
 
-$t->get_ok('/halberdsnhelmets/stats')
+$t->get_ok('/stats')
     ->status_is(302)
-    ->header_is(Location => '/halberdsnhelmets/stats/en/1000');
+    ->header_is(Location => '/stats/en/1000');
 
-$t->get_ok('/halberdsnhelmets/stats/100')
+$t->get_ok('/stats/100')
     ->status_is(302)
-    ->header_is(Location => '/halberdsnhelmets/stats/en/100');
+    ->header_is(Location => '/stats/en/100');
 
-$t->get_ok('/halberdsnhelmets/stats/de')
+$t->get_ok('/stats/de')
     ->status_is(302)
-    ->header_is(Location => '/halberdsnhelmets/stats/de/1000');
+    ->header_is(Location => '/stats/de/1000');
 
 done_testing();

@@ -25,12 +25,12 @@ require "$FindBin::Bin/../halberdsnhelmets.pl";
 
 my $t = Test::Mojo->new;
 
-$t->get_ok('/halberdsnhelmets/characters/en')
+$t->get_ok('/characters/en')
     ->status_is(200)
     ->text_is(h1 => 'A Bunch of Characters')
     ->content_like(qr/backpack/);
 
-$t->get_ok('/halberdsnhelmets/characters/de')
+$t->get_ok('/characters/de')
     ->status_is(200)
     ->text_is(h1 => 'Einige Charaktere')
     ->content_like(qr/Rucksack/);
