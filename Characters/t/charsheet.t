@@ -25,7 +25,7 @@ require "$FindBin::Bin/../halberdsnhelmets.pl";
 
 my $t = Test::Mojo->new;
 
-$t->get_ok('/halberdsnhelmets/char/en?name=Markus&charsheet=swn_warrior.svg')
+$t->get_ok('/char/en?name=Markus&charsheet=swn_warrior.svg')
     ->status_is(200)
     ->header_is('Content-Type' => 'image/svg+xml');
 

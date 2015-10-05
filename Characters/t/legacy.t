@@ -27,21 +27,21 @@ my $t = Test::Mojo->new;
 
 # old edit links
 
-$t->get_ok('/halberdsnhelmets/link/en?name=Aurora;str=9')
+$t->get_ok('/link/en?name=Aurora;str=9')
     ->status_is(302)
-    ->header_is('Location' => '/halberdsnhelmets/edit/en?name=Aurora&str=9');
+    ->header_is('Location' => '/edit/en?name=Aurora&str=9');
 
-$t->get_ok('/halberdsnhelmets/edit/en?name=Aurora&str=9')
+$t->get_ok('/edit/en?name=Aurora&str=9')
     ->status_is(200)
     ->text_like('textarea[name="input"]' => qr/name: Aurora\nstr: 9\n/);
 
 # old image links
 
-$t->get_ok('/halberdsnhelmets/en?name=Aurora;str=9')
+$t->get_ok('/en?name=Aurora;str=9')
     ->status_is(302)
-    ->header_is('Location' => '/halberdsnhelmets/char/en?name=Aurora&str=9');
+    ->header_is('Location' => '/char/en?name=Aurora&str=9');
 
-$t->get_ok('/halberdsnhelmets/char/en?name=Aurora&str=9')
+$t->get_ok('/char/en?name=Aurora&str=9')
     ->status_is(200)
     ->header_is('Content-Type' => 'image/svg+xml')
     ->text_is('text#name tspan' => 'Aurora')

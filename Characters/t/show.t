@@ -25,7 +25,7 @@ require "$FindBin::Bin/../halberdsnhelmets.pl";
 
 my $t = Test::Mojo->new;
 
-$t->get_ok('/halberdsnhelmets/show')
+$t->get_ok('/show')
     ->status_is(200)
     ->text_is('text#str' => 'str');
 
@@ -33,7 +33,7 @@ is($t->tx->res->dom->at('svg')->attr('sodipodi:docname'),
    "Charactersheet.svg",
    'the correct SVG file was loaded');
 
-$t->get_ok('/halberdsnhelmets/show?charsheet=Charakterblatt.svg')
+$t->get_ok('/show?charsheet=Charakterblatt.svg')
     ->status_is(200)
     ->text_is('text#str' => 'str');
 

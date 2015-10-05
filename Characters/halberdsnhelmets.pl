@@ -513,7 +513,7 @@ sub svg_transform {
   for my $node ($nodes->get_nodelist) {
     my $params = Mojo::Parameters->new;
     for my $key (@{$char->{provided}}) {
-      $params->append($key => $char->{$key});
+      $params->append($key => $char->{$key}||'');
     }
     $node->setValue($self->url_for("edit")->query($params));
   }
@@ -1342,7 +1342,6 @@ sub member {
 
 sub random_moldvay {
   my $char = shift;
-
   # keys that can be provided: name, class, charsheet
   
   provide($char, "name", name()) unless $char->{name};
@@ -2473,13 +2472,6 @@ sub lang {
 }
 
 plugin "Config" => {default => {}};
-
-get "/" => sub {
-  my $self = shift;
-  $self->redirect_to("main" => {lang => lang($self)});
-};
-
-under "/halberdsnhelmets";
 
 get "/" => sub {
   my $self = shift;

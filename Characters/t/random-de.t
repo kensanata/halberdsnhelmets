@@ -29,22 +29,22 @@ my $t = Test::Mojo->new;
 # typical use case: request a random character    
 $t->get_ok('/' => {'Accept-Language' => 'de'})
     ->status_is(302)
-    ->header_is(Location => '/halberdsnhelmets/de');
+    ->header_is(Location => '/de');
 
-$t->get_ok('/halberdsnhelmets/de')
+$t->get_ok('/de')
     ->status_is(200)
     ->text_is('h1' => 'Charakterblatt Generator')
-    ->text_is('.footer a[href="/halberdsnhelmets/de"]:nth-child(1)' => 'Charakterblatt Generator')
-    ->text_is('.footer a[href="/halberdsnhelmets/hilfe"]:nth-child(2)' => 'Hilfe')
+    ->text_is('.footer a[href="/de"]:nth-child(1)' => 'Charakterblatt Generator')
+    ->text_is('.footer a[href="/hilfe"]:nth-child(2)' => 'Hilfe')
     ->text_is('.footer a[href="https://alexschroeder.ch/wiki/Contact"]:nth-child(3)' => 'Alex Schroeder')
     ->text_is('.footer a[href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters"]:nth-child(4)' => 'GitHub')
-    ->text_is('.footer a[href="/halberdsnhelmets/en"]:nth-child(5)' => 'English');
+    ->text_is('.footer a[href="/en"]:nth-child(5)' => 'English');
 
-$t->get_ok('/halberdsnhelmets/random?name=Alex' => {'Accept-Language' => 'de'})
+$t->get_ok('/random?name=Alex' => {'Accept-Language' => 'de'})
     ->status_is(302)
-    ->header_is(Location => '/halberdsnhelmets/random/de?name=Alex');
+    ->header_is(Location => '/random/de?name=Alex');
 
-$t->get_ok('/halberdsnhelmets/random/de?name=Alex')
+$t->get_ok('/random/de?name=Alex')
     ->status_is(200)
     ->header_is('Content-Type' => 'image/svg+xml')
     ->text_is('text#name tspan' => 'Alex')
@@ -54,7 +54,7 @@ my $url = $t->tx->res->dom->at('a#link')->attr('xlink:href');
 my $str = $t->tx->res->dom->at('text#str tspan')->text;
 
 like($url,
-     qr!^/halberdsnhelmets/edit/de\?name=Alex&str=$str&!,
+     qr!^/edit/de\?name=Alex&str=$str&!,
      "link with str $str");
 
 $t->get_ok($url)
@@ -64,20 +64,20 @@ $t->get_ok($url)
     ->text_like('textarea[name="input"]' => qr/name: Alex\nstr: $str\n/);
 
 like($t->tx->res->dom->at('a:first-of-type')->attr('href'),
-     qr!^/halberdsnhelmets/char/de\?name=Alex&str=$str&!,
+     qr!^/char/de\?name=Alex&str=$str&!,
      'link back to character sheet');
 
 my $action = $t->tx->res->dom->at('form')->attr('action');
 
 is($action,
-   '/halberdsnhelmets/redirect/de',
+   '/redirect/de',
    'form points to redirect route');
 
 my $input = $t->tx->res->dom->at('textarea[name="input"]')->text;
 
 $t->get_ok($action => {Accept => '*/*'} => form => {input => $input})
     ->status_is(302)
-    ->header_like(Location => qr!/halberdsnhelmets/char/de\?name=Alex&str=$str&!,
+    ->header_like(Location => qr!/char/de\?name=Alex&str=$str&!,
 		  'redirection goes back to character sheet');
 
 # following the redirect back to the character sheet
