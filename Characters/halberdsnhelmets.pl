@@ -2390,7 +2390,6 @@ sub portrait {
   elsif ($gender eq "F") { $gender = "woman" }
   elsif ($gender eq "M") { $gender = "man" }
   else { $gender = one("woman", "man") }
-  warn $char->{class};
   my $url = Mojo::URL->new("https://campaignwiki.org/face/redirect/alex/$gender");
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->get($url);
