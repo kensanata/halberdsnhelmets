@@ -1573,7 +1573,7 @@ sub random_parameters {
 
   # choose a random portrait based on the character name
   if (member("portrait", @_)) {
-    provide($char, "portrait", portrait()) unless $char->{portrait};
+    provide($char, "portrait", portrait($char)) unless $char->{portrait};
   }
 }
 
