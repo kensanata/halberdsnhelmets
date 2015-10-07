@@ -2654,6 +2654,10 @@ Feel free to provide a name for your random character!
 The character sheet contains a link in the bottom right corner which allows you
 to bookmark and edit your character. <%= link_to "Learn more…" => "help" %>
 
+<p>
+If you're looking for an alternative, check out the
+<a href="http://character.totalpartykill.ca/">Random D&D Character Generator</a>
+by <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a>.
 
 @@ index.de.html.ep
 % layout "default.de";
@@ -2680,6 +2684,11 @@ Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man
 sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 <%= link_to "Weiterlesen…" => "hilfe" %>
+
+<p>
+Eine englische Alternative wäre der
+<a href="http://character.totalpartykill.ca/">Random D&D Character Generator</a>
+von <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a>.
 
 
 @@ edit.en.html.ep
