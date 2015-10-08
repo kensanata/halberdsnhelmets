@@ -2387,6 +2387,7 @@ sub portrait {
   my $char = shift;
   my $gender = $names{$char->{name}};
   if ($char->{class} eq T('elf')) { $gender = "elf" }
+  elsif ($char->{class} eq T('dwarf')) { $gender = "dwarf" }
   elsif ($gender eq "F") { $gender = "woman" }
   elsif ($gender eq "M") { $gender = "man" }
   else { $gender = one("woman", "man") }
