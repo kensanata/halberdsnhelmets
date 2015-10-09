@@ -16,12 +16,16 @@
 
 package HH;
 use Mojolicious::Lite;
+use Mojo::Home;
 use Mojo::UserAgent;
 use HTTP::AcceptLanguage;
 use XML::LibXML;
 use List::Util qw(shuffle);
 use POSIX qw(floor ceil);
 no warnings qw(uninitialized numeric);
+
+my $home = Mojo::Home->new;
+$home->detect;
 
 sub translations {
   # strings in sinqle quotes are translated into German if necessary
@@ -421,8 +425,8 @@ sub svg_read {
   my ($char) = @_;
   my $filename = $char->{charsheet} || 'Charactersheet.svg';
   my $doc;
-  if (-f $filename) {
-    $doc = XML::LibXML->load_xml(location => $filename);
+  if (-f "$home/$filename") {
+    $doc = XML::LibXML->load_xml(location => "$home/$filename");
   } else {
     my $ua = Mojo::UserAgent->new;
     my $tx = $ua->get($filename);
