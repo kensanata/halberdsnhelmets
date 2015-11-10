@@ -9058,23 +9058,44 @@
      type="text/css">
       @media print {
         #link {
-	  display: none;
-	}
+          display: none;
+        }
       }
       @media screen {
         a {
           fill: #0000ff;
         }
+        svg {
+          background: #ffffff;
+        }
       }
       @font-face {
-	font-family: 'Garamond';
-	font-style: normal;
-	font-weight: 400;
-        src: url('/EBGaramond12-Regular.eot'); /* for IE */
-	src: local('Garamond'),
-             local('EB Garamond'),
-             local('EBGaramond'),
-             url('/EBGaramond12-Regular.ttf') format('truetype');
+          font-family: 'Purisa';
+          src: local('Purisa'),
+	       url('/Purisa.ttf') format('truetype');
+	  font-weight: normal;
+	  font-style: normal;
+      }
+      @font-face {
+          font-family: 'Purisa';
+          src: local('Purisa-Oblique'),
+	       url('/Purisa-Oblique.ttf') format('truetype');
+	  font-weight: normal;
+	  font-style: italic;
+      }
+      @font-face {
+          font-family: 'Purisa';
+          src: local('Purisa-Bold'),
+	       url('/Purisa-Bold.ttf') format('truetype');
+	  font-weight: bold;
+	  font-style: normal;
+      }
+      @font-face {
+          font-family: 'Purisa';
+          src: local('Purisa-BoldOblique'),
+	       url('/Purisa-BoldOblique.ttf') format('truetype');
+	  font-weight: bold;
+	  font-style: italic;
       }
   </style>
   <a
@@ -9085,7 +9106,7 @@
     <text
        inkscape:label="#text3505"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:10px;line-height:100%;font-family:Garamond;-inkscape-font-specification:Garamond;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:4.10015774"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:10px;line-height:100%;font-family:Purisa;-inkscape-font-specification:Purisa;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:4.10015774"
        x="659.98553"
        y="948.36548"
        id="link-text"
