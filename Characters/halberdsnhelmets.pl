@@ -761,6 +761,20 @@ sub acks {
   acks_saves($char);
 }
 
+sub freebooters {
+  my $char = shift;
+  for my $id (qw(str dex con int wis cha luc)) {
+    if ($char->{$id} and not $char->{"$id-bonus"}) {
+      $char->{"$id-bonus"} = bonus($char->{$id});
+    }
+  }
+  my $charsheet = "Maezar-Freebooters-" . ucfirst($char->{"class"}) . ".svg";
+  warn $charsheet;
+  if (not $char->{"charsheet"} and -f $charsheet) {
+    $char->{"charsheet"} = $charsheet;
+  }
+}
+
 # This function is called when preparing data for display in SVG.
 sub compute_data {
   my $char = shift;
@@ -776,6 +790,8 @@ sub compute_data {
     crypts_n_things($char);
   } elsif ($char->{rules} eq "acks") {
     acks($char);
+  } elsif ($char->{rules} eq "freebooters") {
+    freebooters($char);
   } else {
     moldvay($char);
   }
@@ -1281,6 +1297,10 @@ sub d8 {
   return 1 + int(rand(8));
 }
 
+sub d12 {
+  return 1 + int(rand(12));
+}
+
 sub roll_3d6 {
   return d6() + d6() + d6();
 }
@@ -1342,387 +1362,6 @@ sub member {
   foreach (@_) {
     return 1 if $element eq $_;
   }
-}
-
-sub random_moldvay {
-  my $char = shift;
-  # keys that can be provided: name, class, charsheet
-  
-  provide($char, "name", name()) unless $char->{name};
-
-  my ($str, $dex, $con, $int, $wis, $cha) =
-    (roll_3d6(), roll_3d6(), roll_3d6(),
-     roll_3d6(), roll_3d6(), roll_3d6());
-
-  # if a class is provided, make sure minimum requirements are met
-  my $class = $char->{class};
-  while ($class eq T('dwarf') and not average($con)) {
-    $con = roll_3d6();
-  }
-  while ($class eq T('elf') and not average($int)) {
-    $int = roll_3d6();
-  }
-  while ($class eq T('halfling') and not average($con)) {
-    $con = roll_3d6();
-  }
-  while ($class eq T('halfling') and not average($dex)) {
-    $dex = roll_3d6();
-  }
-
-  provide($char, "str", $str);
-  provide($char, "dex", $dex);
-  provide($char, "con", $con);
-  provide($char, "int", $int);
-  provide($char, "wis", $wis);
-  provide($char, "cha", $cha);
-
-  provide($char, "level",  "1");
-  provide($char, "xp",  "0");
-  provide($char, "thac0",  19);
-
-  my $best = best($str, $dex, $con, $int, $wis, $cha);
-
-  if (not $class) {
-    if (average($con) and $best eq "str") {
-      $class = T('dwarf');
-    } elsif (average($int)
-	     and good($str, $dex)
-	     and d6() > 2) {
-      $class = T('elf');
-    } elsif (average($str, $dex, $con) == 3
-	     and good($str, $dex, $con)
-	     and d6() > 2) {
-      $class = T('halfling');
-    } elsif (average($str, $dex, $con) >= 2
-	     and ($best eq "str" or $best eq "con")
-	     or good($str, $dex, $con) >= 2) {
-      $class = T('fighter');
-    } elsif ($best eq "int") {
-      $class = T('magic-user');
-    } elsif (($best eq "wis" or $best eq "cha")
-	     and d6() > 2) {
-      $class = T('cleric');
-    } elsif ($best eq "dex") {
-      $class = T('thief');
-    } else {
-      $class = one(T('cleric'), T('magic-user'), T('fighter'), T('thief'));
-    }
-  }
-
-  provide($char, "class",  $class);
-
-  my $hp = $char->{hp};
-  if (not $hp) {
-
-    if ($class eq T('fighter') or $class eq T('dwarf')) {
-      $hp = d8();
-    } elsif ($class eq T('magic-user') or $class eq T('thief')) {
-      $hp = d4();
-    } else {
-      $hp = d6();
-    }
-
-    $hp += bonus($con);
-    $hp = 1 if $hp < 1;
-  }
-
-  provide($char, "hp",  $hp);
-
-  equipment($char);
-
-  my $abilities = T('1/6 for normal tasks');
-  if ($class eq T('elf')) {
-    $abilities .= "\\\\" . T('2/6 to hear noise');
-    $abilities .= "\\\\" . T('2/6 to find secret or concealed doors');
-  } elsif ($class eq T('dwarf')) {
-    $abilities .= "\\\\" . T('2/6 to hear noise');
-    $abilities .= "\\\\" . T('2/6 to find secret constructions and traps');
-  } elsif ($class eq T('halfling')) {
-    $abilities .= "\\\\" . T('2/6 to hear noise');
-    $abilities .= "\\\\" . T('2/6 to hide and sneak');
-    $abilities .= "\\\\" . T('5/6 to hide and sneak outdoors');
-    $abilities .= "\\\\" . T('+1 bonus to ranged weapons');
-    $abilities .= "\\\\" . T('AC -2 vs. opponents larger than humans');
-  } elsif ($class eq T('thief')) {
-    $abilities .= "\\\\" . T('2/6 to hear noise');
-    $abilities .= "\\\\" . T('+4 to hit and double damage backstabbing');
-  }
-  # spellbook
-  if ($class eq T('magic-user') or $class eq T('elf')) {
-    $abilities .= "\\\\" . spellbook();
-  }
-  provide($char, "abilities", $abilities);
-  provide($char, "charsheet", T('Charactersheet.svg')) unless $char->{charsheet};
-}
-
-sub random_acks {
-  my $char = shift;
-  provide($char, "name", name()) unless $char->{name};
-
-  my ($str, $dex, $con, $int, $wis, $cha) =
-    (roll_3d6(), roll_3d6(), roll_3d6(),
-     roll_3d6(), roll_3d6(), roll_3d6());
-
-  # if a class is provided, make sure minimum requirements are met
-  my $class = $char->{class};
-  while (member($class, T('dwarven vaultguard'), T('dwarven craftpriest'))
-	 and not average($con)) {
-    $con = roll_3d6();
-  }
-
-  my $title = $char->{title};
-
-  provide($char, "str", $str);
-  provide($char, "dex", $dex);
-  provide($char, "con", $con);
-  provide($char, "int", $int);
-  provide($char, "wis", $wis);
-  provide($char, "cha", $cha);
-
-  provide($char, "level",  "1");
-  provide($char, "xp",  "0");
-  provide($char, "attack",  10);
-
-  my $best = best($str, $dex, $con, $int, $wis, $cha);
-
-  if (not $class) {
-    if (average($con) and $best eq "str" and d6() > 2) {
-      $class = T('dwarven vaultguard');
-      $title = T('Sentry');
-    } elsif (average($con) and $best eq "wis" and d6() > 2) {
-      $class = T('dwarven craftpriest');
-      $title = T('Dwarven Craft-Catechist');
-    } elsif (average($int) and $best eq "str") {
-      $class = T('elven spellsword');
-      $title = T('Arcanist-Guardian');
-    } elsif (average($int) and $best eq "dex" and d6() > 3) {
-      $class = T('elven nightblade');
-      $title = T('Arcanist-Avenger');
-    } elsif (average($wis) and $best eq "dex") {
-      $class = T('bladedancer');
-      $title = T('Blade-Initiate');
-    } elsif (average($str, $dex) >= 2 and good($str, $dex) >= 1) {
-      if (d6() > 3) {
-	$class = T('explorer');
-	$title = T('Scout');
-      } else {
-	$class = T('assassin');
-	$title = T('Thug');
-      }
-    } elsif (good($str, $con) >= 2) {
-      $class = T('fighter');
-      $title = T('Man-at-Arms');
-    } elsif (good($wis)) {
-      $class = T('cleric');
-      $title = T('Catechist');
-    } elsif ($best eq "int" and d6() > 2) {
-      $class = T('mage');
-      $title = T('Arcanist');
-    } elsif (average($dex) and good($cha)) {
-	$class = T('bard');
-	$title = T('Reciter');
-    } elsif (average($dex)) {
-      $class = T('thief');
-      $title = T('Footpad');
-    } else {
-      $class = T('fighter');
-      $title = T('Man-at-Arms');
-    }
-  }
-
-  provide($char, "class",  $class);
-  provide($char, "title",  $title);
-
-  my $hp = $char->{hp};
-  if (not $hp) {
-    if ($class eq T('fighter') or $class eq T('dwarven vaultguard')) {
-      $hp = d8();
-    } elsif ($class eq T('mage') or $class eq T('thief')) {
-      $hp = d4();
-    } else {
-      $hp = d6();
-    }
-
-    $hp += bonus($con);
-    $hp = 1 if $hp < 1;
-  }
-
-  provide($char, "hp",  $hp);
-  
-  equipment($char);
-
-  provide($char, "abilities", proficiencies());
-  # abilities
-  # spells
-}
-
-sub random_parameters {
-  my ($char, $language) = @_;
-  local $lang = $language; # make sure T works as intended
-  if (not exists $char->{rules} or not defined $char->{rules}) {
-    random_moldvay($char);
-  } elsif ($char->{rules} eq "pendragon") {
-    random_pendragon($char);
-  } elsif ($char->{rules} eq "moldvay") {
-    random_moldvay($char);
-  } elsif ($char->{rules} eq "labyrinth lord") {
-    random_moldvay($char);
-  } elsif ($char->{rules} eq "crypts-n-things") {
-    random_crypts_n_things($char);
-  } elsif ($char->{rules} eq "acks") {
-    random_acks($char);
-  } else {
-    error(T('Unknown Rules'), T('%0 is unknown.', $char->{rules}));
-  }
-
-  # choose a random portrait based on the character name or class
-  if (member("portrait", @_)) {
-    provide($char, "portrait", portrait($char)) unless $char->{portrait};
-  }
-}
-
-sub proficiencies {
-  my $char = shift;
-  my %proficiencies = ();
-
-  # start with class based preferences for proficiencies
-  if ($char->{class} eq T('assassin')) {
-
-    %proficiencies = (
-      'Acrobatics' => +2,
-      'Alchemy' => -1,
-      'Alertness' => 0,
-      'Arcane Dabbling' => 0,
-      'Blind Fighting' => 0,
-      'Bribery' => +1,
-      'Cat Burglary' => +1,
-      'Climbing' => +1,
-      'Combat Refexes' => 0,
-      'Combat Trickery (Disarm)' => 0,
-      'Combat Trickery (Incapacitate)' => 0,
-      'Contortionism' => 0,
-      'Disguise' => +1,
-      'Eavesdropping' => 0,
-      'Fighting Style' => +1,
-      'Gambling' => -2,
-      'Intimidation' => 0,
-      'Mimicry' => -1,
-      'Precise Shooting' => +1,
-      'Running' => 0,
-      'Seduction' => 0,
-      'Skirmishing' => 0,
-      'Skulking' => +1,
-      'Sniping' => +1,
-      'Swashbuckling' => 0,
-      'Trap Finding' => 0,
-      'Weapon Finesse' => -2,
-      'Weapon Focus' => -1, );
-    if ($char->{cha} > 12) {
-      $proficiencies{Bribery} = +2;
-      $proficiencies{Intimidation} = +1;
-      $proficiencies{Seduction} = +1;
-    }
-    if ($char->{dex} > 12) {
-      $proficiencies{Sniping} = +2;
-    }
-    if ($char->{level} > 5) {
-      $proficiencies{'Arcane Dabbling'} = +1;
-    }
-  }      
-
-  # add general proficiencies
-  my %general = ();
-  $general{'Alchemy'} = 1 if $char->{class} eq T('mage');
-  $general{'Animal Husbandry'} = 0;
-  $general{'Animal Husbandry'} = 1 if $char->{class} eq T('explorer');
-  $general{'Beast Friendship'} = 2;
-  $general{'Animal Training (Dog)'} = 2;
-  $general{'Art'} = 0;
-  $general{'Bargaining'} = 0;
-  $general{'Bargaining'} = 1 if member($char->{class}, T('dwarven vaultguard'), T('dwarven craftpriest'), T('explorer'));
-  $general{'Caving'} = 0;
-  $general{'Collegiate Wizardry'} = 0;
-  $general{'Collegiate Wizardry'} = 1 if member($char->{class}, T('mage'), T('elven spellsword'), T('elven nightblade'));
-  $general{'Craft'} = 0;
-  $general{'Diplomacy'} = 0;
-  $general{'Diplomacy'} = 1 if $char->{cha} > 12;
-  $general{'Disguise'} = 0;
-  $general{'Disguise'} = 1 if $char->{class} eq T('thief');
-  $general{'Disguise'} = 2 if $char->{class} eq T('assassin');
-  $general{'Endurance'} = 0;
-  $general{'Endurance'} = 1 if $char->{ac} < 3;
-  $general{'Engineering'} = 0;
-  $general{'Gambling'} = 0;
-  $general{'Healing'} = 0;
-  # add more Healing if we already have healing?
-  $general{'Healing'} = 3 if $char->{int} >= 18;
-  $general{'Gambling'} = 0;
-  $general{'Intimidation'} = 0;
-  $general{'Intimidation'} = 1 if $char->{cha} > 13;
-  $general{'Knowledge'} = 0;
-  $general{'Knowledge'} = 3 if $char->{int} >= 18;
-  $general{'Labor'} = 0;
-  $general{'Language'} = 0;
-  $general{'Leadership'} = 0;
-  $general{'Lip Reading'} = 0;
-  $general{'Lip Reading'} = 3 if $char->{class} eq T('thief');
-  $general{'Manual of Arms'} = 0;
-  $general{'Mapping'} = 0;
-  $general{'Military Strategy'} = 0;
-  $general{'Military Strategy'} = 1 if $char->{int} > 13 and $char->{wis} > 13;
-  $general{'Mimicry'} = 0;
-  $general{'Naturalism'} = 0;
-  $general{'Navigation'} = 0;
-  $general{'Performance'} = 0;
-  $general{'Performance'} = 3 if $char->{class} eq T('bard');
-  $general{'Profession'} = 0;
-  $general{'Profession'} = 1 if $char->{str} < 9 or $char->{dex} < 9;
-  $general{'Riding'} = 0;
-  $general{'Riding'} = 1 if member($char->{class}, T('fighter'), T('explorer'), T('barbarian'));
-  $general{'Seafaring'} = 0;
-  $general{'Seduction'} = 0;
-  $general{'Seduction'} = 1 if $char->{cha} > 13;
-  $general{'Siege Engineering'} = 0;
-  $general{'Seduction'} = 0;
-  $general{'Signaling'} = 0 if $char->{ac} < 3;
-  $general{'Survival'} = 0;
-  $general{'Survival'} = 2 if member($char->{class}, T('explorer'), T('barbarian'));
-  $general{'Theology'} = 0;
-  $general{'Theology'} = 2 if member($char->{class}, T('cleric'), T('elven bladedancer'));
-  $general{'Tracking'} = 0;
-  $general{'Tracking'} = 1 if member($char->{class}, T('assassin'), T('explorer'));
-  $general{'Trapping'} = 0;
-  $general{'Trapping'} = 1 if $char->{class} eq T('explorer');
-
-  # set up lists
-  my @proficiencies = distribution(\%proficiencies);
-  my @general = distribution(\%general);
-  my @result = ('Adventuring');
-  push(@result, one(@proficiencies));
-  my $proficiency;
-  my $m = 1;
-  $m += $char->{"int-bonus"} if $char->{"int-bonus"} > 0;
-  for (my $i = 0; $i < $m; $i++) {
-    $proficiency = one(@general);
-    # do { $proficiency = one(@general) } until not member($proficiency, @result);
-    push(@result, $proficiency);
-  }
-  return join(", ", map { T($_) } @result);
-}
-
-sub distribution {
-  # Given a hash ref mapping keys to numbers between -2 and +2, returns an array with an appropriate number of keys. Use
-  # one() to pick a random key.
-  my $hashref = shift;
-  my @result = ();
-  my $default = 3; # this means the ratio between -- and ++ is 1:5
-  for my $key (keys %$hashref) {
-    my $n = $default + $hashref->{$key};
-    for (my $i = 0; $i < $n; $i++) {
-      push(@result, $key);
-    }
-  }
-  return @result;
 }
 
 # http://www.stadt-zuerich.ch/content/prd/de/index/statistik/publikationsdatenbank/Vornamen-Verzeichnis/VVZ_2012.html
@@ -2385,6 +2024,427 @@ sub traits {
     $description .= " " . T('and') . " " . $other;
   }
   return $description;
+}
+
+sub random_moldvay {
+  my $char = shift;
+  # keys that can be provided: name, class, charsheet
+  
+  provide($char, "name", name()) unless $char->{name};
+
+  my ($str, $dex, $con, $int, $wis, $cha) =
+    (roll_3d6(), roll_3d6(), roll_3d6(),
+     roll_3d6(), roll_3d6(), roll_3d6());
+
+  # if a class is provided, make sure minimum requirements are met
+  my $class = $char->{class};
+  while ($class eq T('dwarf') and not average($con)) {
+    $con = roll_3d6();
+  }
+  while ($class eq T('elf') and not average($int)) {
+    $int = roll_3d6();
+  }
+  while ($class eq T('halfling') and not average($con)) {
+    $con = roll_3d6();
+  }
+  while ($class eq T('halfling') and not average($dex)) {
+    $dex = roll_3d6();
+  }
+
+  provide($char, "str", $str);
+  provide($char, "dex", $dex);
+  provide($char, "con", $con);
+  provide($char, "int", $int);
+  provide($char, "wis", $wis);
+  provide($char, "cha", $cha);
+
+  provide($char, "level",  "1");
+  provide($char, "xp",  "0");
+  provide($char, "thac0",  19);
+
+  my $best = best($str, $dex, $con, $int, $wis, $cha);
+
+  if (not $class) {
+    if (average($con) and $best eq "str") {
+      $class = T('dwarf');
+    } elsif (average($int)
+	     and good($str, $dex)
+	     and d6() > 2) {
+      $class = T('elf');
+    } elsif (average($str, $dex, $con) == 3
+	     and good($str, $dex, $con)
+	     and d6() > 2) {
+      $class = T('halfling');
+    } elsif (average($str, $dex, $con) >= 2
+	     and ($best eq "str" or $best eq "con")
+	     or good($str, $dex, $con) >= 2) {
+      $class = T('fighter');
+    } elsif ($best eq "int") {
+      $class = T('magic-user');
+    } elsif (($best eq "wis" or $best eq "cha")
+	     and d6() > 2) {
+      $class = T('cleric');
+    } elsif ($best eq "dex") {
+      $class = T('thief');
+    } else {
+      $class = one(T('cleric'), T('magic-user'), T('fighter'), T('thief'));
+    }
+  }
+
+  provide($char, "class",  $class);
+
+  my $hp = $char->{hp};
+  if (not $hp) {
+
+    if ($class eq T('fighter') or $class eq T('dwarf')) {
+      $hp = d8();
+    } elsif ($class eq T('magic-user') or $class eq T('thief')) {
+      $hp = d4();
+    } else {
+      $hp = d6();
+    }
+
+    $hp += bonus($con);
+    $hp = 1 if $hp < 1;
+  }
+
+  provide($char, "hp",  $hp);
+
+  equipment($char);
+
+  my $abilities = T('1/6 for normal tasks');
+  if ($class eq T('elf')) {
+    $abilities .= "\\\\" . T('2/6 to hear noise');
+    $abilities .= "\\\\" . T('2/6 to find secret or concealed doors');
+  } elsif ($class eq T('dwarf')) {
+    $abilities .= "\\\\" . T('2/6 to hear noise');
+    $abilities .= "\\\\" . T('2/6 to find secret constructions and traps');
+  } elsif ($class eq T('halfling')) {
+    $abilities .= "\\\\" . T('2/6 to hear noise');
+    $abilities .= "\\\\" . T('2/6 to hide and sneak');
+    $abilities .= "\\\\" . T('5/6 to hide and sneak outdoors');
+    $abilities .= "\\\\" . T('+1 bonus to ranged weapons');
+    $abilities .= "\\\\" . T('AC -2 vs. opponents larger than humans');
+  } elsif ($class eq T('thief')) {
+    $abilities .= "\\\\" . T('2/6 to hear noise');
+    $abilities .= "\\\\" . T('+4 to hit and double damage backstabbing');
+  }
+  # spellbook
+  if ($class eq T('magic-user') or $class eq T('elf')) {
+    $abilities .= "\\\\" . spellbook();
+  }
+  provide($char, "abilities", $abilities);
+  provide($char, "charsheet", T('Charactersheet.svg')) unless $char->{charsheet};
+}
+
+sub random_acks {
+  my $char = shift;
+  provide($char, "name", name()) unless $char->{name};
+
+  my ($str, $dex, $con, $int, $wis, $cha) =
+    (roll_3d6(), roll_3d6(), roll_3d6(),
+     roll_3d6(), roll_3d6(), roll_3d6());
+
+  # if a class is provided, make sure minimum requirements are met
+  my $class = $char->{class};
+  while (member($class, T('dwarven vaultguard'), T('dwarven craftpriest'))
+	 and not average($con)) {
+    $con = roll_3d6();
+  }
+
+  my $title = $char->{title};
+
+  provide($char, "str", $str);
+  provide($char, "dex", $dex);
+  provide($char, "con", $con);
+  provide($char, "int", $int);
+  provide($char, "wis", $wis);
+  provide($char, "cha", $cha);
+
+  provide($char, "level",  "1");
+  provide($char, "xp",  "0");
+  provide($char, "attack",  10);
+
+  my $best = best($str, $dex, $con, $int, $wis, $cha);
+
+  if (not $class) {
+    if (average($con) and $best eq "str" and d6() > 2) {
+      $class = T('dwarven vaultguard');
+      $title = T('Sentry');
+    } elsif (average($con) and $best eq "wis" and d6() > 2) {
+      $class = T('dwarven craftpriest');
+      $title = T('Dwarven Craft-Catechist');
+    } elsif (average($int) and $best eq "str") {
+      $class = T('elven spellsword');
+      $title = T('Arcanist-Guardian');
+    } elsif (average($int) and $best eq "dex" and d6() > 3) {
+      $class = T('elven nightblade');
+      $title = T('Arcanist-Avenger');
+    } elsif (average($wis) and $best eq "dex") {
+      $class = T('bladedancer');
+      $title = T('Blade-Initiate');
+    } elsif (average($str, $dex) >= 2 and good($str, $dex) >= 1) {
+      if (d6() > 3) {
+	$class = T('explorer');
+	$title = T('Scout');
+      } else {
+	$class = T('assassin');
+	$title = T('Thug');
+      }
+    } elsif (good($str, $con) >= 2) {
+      $class = T('fighter');
+      $title = T('Man-at-Arms');
+    } elsif (good($wis)) {
+      $class = T('cleric');
+      $title = T('Catechist');
+    } elsif ($best eq "int" and d6() > 2) {
+      $class = T('mage');
+      $title = T('Arcanist');
+    } elsif (average($dex) and good($cha)) {
+	$class = T('bard');
+	$title = T('Reciter');
+    } elsif (average($dex)) {
+      $class = T('thief');
+      $title = T('Footpad');
+    } else {
+      $class = T('fighter');
+      $title = T('Man-at-Arms');
+    }
+  }
+
+  provide($char, "class",  $class);
+  provide($char, "title",  $title);
+
+  my $hp = $char->{hp};
+  if (not $hp) {
+    if ($class eq T('fighter') or $class eq T('dwarven vaultguard')) {
+      $hp = d8();
+    } elsif ($class eq T('mage') or $class eq T('thief')) {
+      $hp = d4();
+    } else {
+      $hp = d6();
+    }
+
+    $hp += bonus($con);
+    $hp = 1 if $hp < 1;
+  }
+
+  provide($char, "hp",  $hp);
+  
+  equipment($char);
+
+  provide($char, "abilities", proficiencies());
+  # abilities
+  # spells
+}
+
+sub random_freebooters {
+  my $char = shift;
+  # keys that can be provided: name, class, charsheet
+  
+  provide($char, "name", name()) unless $char->{name};
+
+  if (not $char->{gender}) {
+    my $gender = $names{$char->{name}};
+    $gender = one("M", "F") if $gender eq "?" and d6 > 1;
+    provide($char, "gender", $gender);
+  }
+
+  my ($str, $dex, $con, $int, $wis, $cha, $luc) =
+    (roll_3d6(), roll_3d6(), roll_3d6(),
+     roll_3d6(), roll_3d6(), roll_3d6(), roll_3d6());
+
+  if (not $char->{class}) {
+    given(d12()) {
+      $char->{class} = T('fighter') when $_ <=  6;
+      $char->{class} = T('thief')   when $_ <=  9;
+      $char->{class} = T('cleric')  when $_ <= 11;
+      default { $char->{class} = T('magic-user') };
+    }
+  }
+
+  provide($char, "str", $str);
+  provide($char, "dex", $dex);
+  provide($char, "con", $con);
+  provide($char, "int", $int);
+  provide($char, "wis", $wis);
+  provide($char, "cha", $cha);
+  provide($char, "luc", $luc);
+
+  provide($char, "level",  "1");
+  provide($char, "xp",  "0");
+  provide($char, "hp", d8());
+}
+
+sub random_parameters {
+  my ($char, $language) = @_;
+  local $lang = $language; # make sure T works as intended
+  if (not exists $char->{rules} or not defined $char->{rules}) {
+    random_moldvay($char);
+  } elsif ($char->{rules} eq "pendragon") {
+    random_pendragon($char);
+  } elsif ($char->{rules} eq "moldvay") {
+    random_moldvay($char);
+  } elsif ($char->{rules} eq "labyrinth lord") {
+    random_moldvay($char);
+  } elsif ($char->{rules} eq "crypts-n-things") {
+    random_crypts_n_things($char);
+  } elsif ($char->{rules} eq "acks") {
+    random_acks($char);
+  } elsif ($char->{rules} eq "freebooters") {
+    random_freebooters($char);
+  } else {
+    error(T('Unknown Rules'), T('%0 is unknown.', $char->{rules}));
+  }
+
+  # choose a random portrait based on the character name or class
+  if (member("portrait", @_)) {
+    provide($char, "portrait", portrait($char)) unless $char->{portrait};
+  }
+}
+
+sub proficiencies {
+  my $char = shift;
+  my %proficiencies = ();
+
+  # start with class based preferences for proficiencies
+  if ($char->{class} eq T('assassin')) {
+
+    %proficiencies = (
+      'Acrobatics' => +2,
+      'Alchemy' => -1,
+      'Alertness' => 0,
+      'Arcane Dabbling' => 0,
+      'Blind Fighting' => 0,
+      'Bribery' => +1,
+      'Cat Burglary' => +1,
+      'Climbing' => +1,
+      'Combat Refexes' => 0,
+      'Combat Trickery (Disarm)' => 0,
+      'Combat Trickery (Incapacitate)' => 0,
+      'Contortionism' => 0,
+      'Disguise' => +1,
+      'Eavesdropping' => 0,
+      'Fighting Style' => +1,
+      'Gambling' => -2,
+      'Intimidation' => 0,
+      'Mimicry' => -1,
+      'Precise Shooting' => +1,
+      'Running' => 0,
+      'Seduction' => 0,
+      'Skirmishing' => 0,
+      'Skulking' => +1,
+      'Sniping' => +1,
+      'Swashbuckling' => 0,
+      'Trap Finding' => 0,
+      'Weapon Finesse' => -2,
+      'Weapon Focus' => -1, );
+    if ($char->{cha} > 12) {
+      $proficiencies{Bribery} = +2;
+      $proficiencies{Intimidation} = +1;
+      $proficiencies{Seduction} = +1;
+    }
+    if ($char->{dex} > 12) {
+      $proficiencies{Sniping} = +2;
+    }
+    if ($char->{level} > 5) {
+      $proficiencies{'Arcane Dabbling'} = +1;
+    }
+  }      
+
+  # add general proficiencies
+  my %general = ();
+  $general{'Alchemy'} = 1 if $char->{class} eq T('mage');
+  $general{'Animal Husbandry'} = 0;
+  $general{'Animal Husbandry'} = 1 if $char->{class} eq T('explorer');
+  $general{'Beast Friendship'} = 2;
+  $general{'Animal Training (Dog)'} = 2;
+  $general{'Art'} = 0;
+  $general{'Bargaining'} = 0;
+  $general{'Bargaining'} = 1 if member($char->{class}, T('dwarven vaultguard'), T('dwarven craftpriest'), T('explorer'));
+  $general{'Caving'} = 0;
+  $general{'Collegiate Wizardry'} = 0;
+  $general{'Collegiate Wizardry'} = 1 if member($char->{class}, T('mage'), T('elven spellsword'), T('elven nightblade'));
+  $general{'Craft'} = 0;
+  $general{'Diplomacy'} = 0;
+  $general{'Diplomacy'} = 1 if $char->{cha} > 12;
+  $general{'Disguise'} = 0;
+  $general{'Disguise'} = 1 if $char->{class} eq T('thief');
+  $general{'Disguise'} = 2 if $char->{class} eq T('assassin');
+  $general{'Endurance'} = 0;
+  $general{'Endurance'} = 1 if $char->{ac} < 3;
+  $general{'Engineering'} = 0;
+  $general{'Gambling'} = 0;
+  $general{'Healing'} = 0;
+  # add more Healing if we already have healing?
+  $general{'Healing'} = 3 if $char->{int} >= 18;
+  $general{'Gambling'} = 0;
+  $general{'Intimidation'} = 0;
+  $general{'Intimidation'} = 1 if $char->{cha} > 13;
+  $general{'Knowledge'} = 0;
+  $general{'Knowledge'} = 3 if $char->{int} >= 18;
+  $general{'Labor'} = 0;
+  $general{'Language'} = 0;
+  $general{'Leadership'} = 0;
+  $general{'Lip Reading'} = 0;
+  $general{'Lip Reading'} = 3 if $char->{class} eq T('thief');
+  $general{'Manual of Arms'} = 0;
+  $general{'Mapping'} = 0;
+  $general{'Military Strategy'} = 0;
+  $general{'Military Strategy'} = 1 if $char->{int} > 13 and $char->{wis} > 13;
+  $general{'Mimicry'} = 0;
+  $general{'Naturalism'} = 0;
+  $general{'Navigation'} = 0;
+  $general{'Performance'} = 0;
+  $general{'Performance'} = 3 if $char->{class} eq T('bard');
+  $general{'Profession'} = 0;
+  $general{'Profession'} = 1 if $char->{str} < 9 or $char->{dex} < 9;
+  $general{'Riding'} = 0;
+  $general{'Riding'} = 1 if member($char->{class}, T('fighter'), T('explorer'), T('barbarian'));
+  $general{'Seafaring'} = 0;
+  $general{'Seduction'} = 0;
+  $general{'Seduction'} = 1 if $char->{cha} > 13;
+  $general{'Siege Engineering'} = 0;
+  $general{'Seduction'} = 0;
+  $general{'Signaling'} = 0 if $char->{ac} < 3;
+  $general{'Survival'} = 0;
+  $general{'Survival'} = 2 if member($char->{class}, T('explorer'), T('barbarian'));
+  $general{'Theology'} = 0;
+  $general{'Theology'} = 2 if member($char->{class}, T('cleric'), T('elven bladedancer'));
+  $general{'Tracking'} = 0;
+  $general{'Tracking'} = 1 if member($char->{class}, T('assassin'), T('explorer'));
+  $general{'Trapping'} = 0;
+  $general{'Trapping'} = 1 if $char->{class} eq T('explorer');
+
+  # set up lists
+  my @proficiencies = distribution(\%proficiencies);
+  my @general = distribution(\%general);
+  my @result = ('Adventuring');
+  push(@result, one(@proficiencies));
+  my $proficiency;
+  my $m = 1;
+  $m += $char->{"int-bonus"} if $char->{"int-bonus"} > 0;
+  for (my $i = 0; $i < $m; $i++) {
+    $proficiency = one(@general);
+    # do { $proficiency = one(@general) } until not member($proficiency, @result);
+    push(@result, $proficiency);
+  }
+  return join(", ", map { T($_) } @result);
+}
+
+sub distribution {
+  # Given a hash ref mapping keys to numbers between -2 and +2, returns an array with an appropriate number of keys. Use
+  # one() to pick a random key.
+  my $hashref = shift;
+  my @result = ();
+  my $default = 3; # this means the ratio between -- and ++ is 1:5
+  for my $key (keys %$hashref) {
+    my $n = $default + $hashref->{$key};
+    for (my $i = 0; $i < $n; $i++) {
+      push(@result, $key);
+    }
+  }
+  return @result;
 }
 
 sub portrait {
