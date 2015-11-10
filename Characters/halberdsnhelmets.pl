@@ -770,7 +770,7 @@ sub freebooters {
   }
   my $charsheet = "Maezar-Freebooters-" . ucfirst($char->{"class"}) . ".svg";
   warn $charsheet;
-  if (not $char->{"charsheet"} and -f $charsheet) {
+  if (not $char->{"charsheet"} and -f "$home/$charsheet") {
     $char->{"charsheet"} = $charsheet;
   }
 }
