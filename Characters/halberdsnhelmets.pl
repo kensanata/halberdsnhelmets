@@ -2273,7 +2273,7 @@ sub random_freebooters {
     provide($char, "hd-type", "10");
     provide($char, "hp", d10());
     heritage($char, 7, 8, 11, 12, qw/str dex con/);
-    alignment($char, 2, 4, 8, 10, 10);
+    alignment($char, 2, 4, 8, 10, 12);
   } elsif ($char->{class} eq T('thief')) {
     provide($char, "hd-type", "6");
     provide($char, "hp", d6());
