@@ -2525,11 +2525,19 @@ sub distribution {
 sub portrait {
   my $char = shift;
   my $gender = $names{$char->{name}};
-  if ($char->{class} eq T('elf')) { $gender = "elf" }
-  elsif ($char->{class} eq T('dwarf')) { $gender = "dwarf" }
-  elsif ($gender eq "F") { $gender = "woman" }
-  elsif ($gender eq "M") { $gender = "man" }
-  else { $gender = one("woman", "man") }
+  if ($char->{class} eq T('elf')
+      or $char->{race} eq T('elf')) {
+    $gender = "elf";
+  } elsif ($char->{class} eq T('dwarf')
+      or $char->{race} eq T('dwarf')) {
+    $gender = "dwarf";
+  } elsif ($gender eq "F") {
+    $gender = "woman";
+  } elsif ($gender eq "M") {
+    $gender = "man";
+  } else {
+    $gender = one("woman", "man");
+  }
   my $url = Mojo::URL->new("https://campaignwiki.org/face/redirect/alex/$gender");
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->get($url);
