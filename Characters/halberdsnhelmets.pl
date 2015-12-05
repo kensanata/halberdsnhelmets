@@ -1367,6 +1367,25 @@ sub member {
   }
 }
 
+sub wrap {
+  my ($text, $width) = @_;
+  my $result;
+  while (length($text) > $width) {
+    my $n = $width;
+    while ($n > 0) {
+      if (substr($text, $n, 1) eq " ") {
+	$result .= substr($text, 0, $n) . "\\\\";
+	$text = substr($text, $n + 1);
+	last;
+      } else {
+	$n--;
+      }
+    }
+  }
+  $result .= $text;
+  return $result;
+}
+
 # http://www.stadt-zuerich.ch/content/prd/de/index/statistik/publikationsdatenbank/Vornamen-Verzeichnis/VVZ_2012.html
 
 my %names = qw{Aadhya F Aaliyah F Aanya F Aarna F Aarusha F Abiha F
@@ -2270,25 +2289,27 @@ sub random_freebooters {
     provide($char, "hd-type", "10");
     provide($char, "hp", d10());
     heritage($char, 7, 8, 11, 12, qw/str dex con/);
-    alignment($char, 2, 4, 8, 10, 12);
+    freebooters_alignment($char, 2, 4, 8, 10, 12);
   } elsif ($char->{class} eq T('thief')) {
     provide($char, "hd-type", "6");
     provide($char, "hp", d6());
     heritage($char, 7, 10, 11, 12, qw/dex int cha/);
-    alignment($char, 2, 6, 10, 10, 12);
+    freebooters_alignment($char, 2, 6, 10, 10, 12);
   } elsif ($char->{class} eq T('cleric')) {
     provide($char, "hd-type", "8");
     provide($char, "hp", d8());
     heritage($char, 7, 8, 11, 12, qw/cha wis con/);
-    alignment($char, 3, 5, 7, 9, 12);
+    freebooters_alignment($char, 3, 5, 7, 9, 12);
   } elsif ($char->{class} eq T('magic-user')) {
     provide($char, "hd-type", "4");
     provide($char, "hp", d4());
     heritage($char, 8, 9, 10, 12, qw/int dex cha/);
-    alignment($char, 3, 8, 8, 8, 12);
+    freebooters_alignment($char, 3, 8, 8, 8, 12);
   }
 
   provide($char, "name", freebooters_name($char)) unless $char->{name};
+  provide($char, "appearance", freebooters_appearance($char))
+      if $char->{portrait} eq "no";
   provide($char, "level",  "1");
   provide($char, "xp",  "0");
 }
@@ -2401,7 +2422,73 @@ sub human_bonus {
   }
 }
 
-sub alignment {
+sub freebooters_appearance {
+  my $char = shift;
+  my @phrases;
+  # The descriptions in this list are from the book Freebooters on the Frontier
+  # by Jason Lutes. The text of that book is released under a Creative Commons
+  # Attribution-ShareAlike 3.0 Unported license.
+  # https://creativecommons.org/licenses/by-sa/3.0/
+  for (1..3) {
+    my $phrase;
+    if ($char->{class} eq T('cleric')) {
+      $phrase = one("big feet", "blazing eyes", "bushy eyebrows", "circlet",
+      "clean-shaven", "clear-eyed", "cleft chin", "crooked teeth", "curly hair",
+      "dandruff", "dark skin", "dirty", "earrings", "gaunt", "goatee",
+      "gray hair", "headband", "heavyset", "high forehead", "hirsute", "hooded",
+      "large hands", "long beard", "missing teeth", "miter", "notable helmet",
+      "notable nose", "notable garb", "pale skin", "perfect posture",
+      "perfumed", "piercing gaze", "pockmarked", "rosy cheeks", "scarred",
+      "shaved head", "shining eyes", "smelly", "smiling", "square chin",
+      "square-shouldered", "strange marks", "stubble", "tattoos",
+      "thundering voice", "tonsure", "unwashed", "warty", "well-scrubbed",
+      "roll on Fighter");
+    } elsif ($char->{class} eq T('fighter')
+	     or $phrase eq "roll on Fighter") {
+      $phrase = one("big feet", "big mouth", "big mustache", "notable nose",
+      "braided hair", "broken nose", "chiseled", "clear-eyed", "cleft chin",
+      "crooked teeth", "curly hair", "dark skin", "deep voice", "dirty",
+      "earrings", "gap-toothed", "goatee", "headband", "high cheekbones",
+      "hirsute", "lantern jaw", "large ears", "large hands", "large head",
+      "long-legged", "matted hair", "missing ear", "missing eye",
+      "missing finger", "missing teeth", "notable boots", "notable helmet",
+      "perfect posture", "pockmarked", "raspy voice", "rosy cheeks", "sandals",
+      "scarred", "tattoos", "shaved head", "smelly", "smiling", "squint",
+      "steely gaze", "stubble", "tattoos", "unsmiling", "well-scrubbed",
+      "youthful", "roll on Thief");
+    } elsif ($char->{class} eq T('thief')
+	     or $phrase eq "roll on Thief") {
+      $phrase = one("broken nose", "chin whiskers", "clean-shaven",
+      "clear-eyed", "crooked teeth", "curly hair", "dark skin", "deep voice",
+      "disfigured", "disheveled", "gap-toothed", "gaunt", "goatee", "hirsute",
+      "hooded", "limp", "little mouth", "long fingers", "matted hair",
+      "missing eye", "missing finger", "missing teeth", "narrowed eyes",
+      "notable footwear", "notable gloves", "notable cap/hat", "notable nose",
+      "overbite", "pale skin", "pencil", "mustache", "perfect posture",
+      "pockmarked", "pointy chin", "poor posture", "raspy voice", "ratty
+      clothes", "red-rimmed eyes", "scarred", "shifty eyes", "small hands",
+      "smelly", "squint", "stubble", "tattoos", "unsmiling", "unwashed",
+      "well-groomed", "whispery voice", "widow’s peak", "roll on Magic-User");
+    } elsif ($char->{class} eq T('magic-user')
+	     or $phrase eq "roll on Magic-User") {
+      $phrase = one("acid scars", "aged", "bald", "black teeth",
+      "booming voice", "burn scars", "bushy eyebrows", "chin whiskers",
+       "crooked teeth", "curly hair", "dark skin", "disfigured", "forked tongue",
+      "gaunt", "glowing eyes", "gnarled hands", "goatee", "gray hair", "haggard",
+      "hairless", "headband", "high cheekbones", "high forehead", "hooded",
+      "limp", "long beard", "long fingernails", "long hair", "mismatched eyes",
+      "missing teeth", "no eyebrows", "notable nose", "notable robes",
+      "oily skin", "pale skin", "pockmarked", "pointy hat", "poor posture",
+      "raspy voice", "scarred", "skeletal hands", "skullcap", "smelly",
+      "strange marks", "sunken eyes", "tattoos", "unwashed", "warty",
+      "white hair", "widow’s peak");
+    }
+    push(@phrases, $phrase) if $phrase and not member($phrase, @phrases);
+  }
+  return wrap(join(', ', @phrases), 27);
+}
+
+sub freebooters_alignment {
   my ($char, $evil, $chaotic, $neutral, $lawful, $good) = @_;
   my $roll = d12();
   if ($roll <= $evil) {
@@ -3015,6 +3102,7 @@ Str Dex Con Int Wis Cha HP AC Class
 <li><a href="#labyrinth_lord">Labyrinth Lord</a>
 <li><a href="#pendragon">Pendragon</a>
 <li><a href="#crypts_n_things">Crypts & Things</a>
+<li><a href="#freebooters">Freebooters on the Frontier</a>
 <li><a href="#ACKS">Adventure Conqueror King System</a>
 </ul>
 
@@ -3132,6 +3220,20 @@ angegeben wurden:
 <li>wis → sanity
 </ul>
 
+<h2 id="freebooters">Freebooters on the Frontier</h2>
+
+<p>
+Das Skript kann für
+<a href="http://www.drivethrurpg.com/product/157011/Freebooters-on-the-Frontier">Freebooters on the Frontier</a>
+verwendet werden. Leider wurde hierfür noch keine Übersetzungsarbeit geleistet. Wenn man weiss,
+<%= link_to url_for("show")->query(charsheet => "Maezar-Freebooters.svg") => begin %>welche Parameter wo erscheinen<% end %>,
+ist es einfach, einen Charakter zu <%= link_to url_for("edit" => {lang => "en"})->query(rules => "freebooters") => begin %>erstellen<% end %>.
+
+<p>
+Das Skript kann
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "freebooters", portrait => "no") => begin %>zufällige Charaktere erstellen<% end %>.
+Statt einer Beschreibung kann das Charakterblatt auch <%= link_to url_for("random" => {lang => "en"})->query(rules => "freebooters") => begin %>mit einem Bild<% end %> erstellt werden.
+
 <h2 id="ACKS">Adventure Conqueror King System</h2>
 
 <p>
@@ -3177,6 +3279,7 @@ generieren.
 <li><a href="#labyrinth_lord">Labyrinth Lord</a>
 <li><a href="#pendragon">Pendragon</a>
 <li><a href="#crypts_n_things">Crypts & Things</a>
+<li><a href="#freebooters">Freebooters on the Frontier</a>
 <li><a href="#ACKS">Adventure Conqueror King System</a>
 </ul>
 
@@ -3290,6 +3393,21 @@ In addition to that, some parameters are computed unless provided:
 <li>cha → hirelings
 <li>wis → sanity
 </ul>
+
+<h2 id="freebooters">Freebooters on the Frontier</h2>
+
+<p>
+The script also supports
+<a href="http://www.drivethrurpg.com/product/157011/Freebooters-on-the-Frontier">Freebooters on the Frontier</a>
+characters: Get started with an
+<%= link_to url_for("edit" => {lang => "en"})->query(rules => "freebooters") => begin %>Freebooter character<% end %>.
+The script can also show
+<%= link_to url_for("show")->query(charsheet => "Maezar-Freebooters.svg") => begin %>which parameters go where<% end %>.
+
+<p>
+The script can also generate a
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "freebooters", portrait => "no") => begin %>random character<% end %>.
+If you prefer, it can <%= link_to url_for("random" => {lang => "en"})->query(rules => "freebooters") => begin %>use a portrait<% end %> instead of generating an appearance.
 
 <h2 id="ACKS">Adventure Conqueror King System</h2>
 
