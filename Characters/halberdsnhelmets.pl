@@ -2244,12 +2244,9 @@ sub random_acks {
 sub random_freebooters {
   my $char = shift;
   # keys that can be provided: name, class, charsheet
-  
-  provide($char, "name", name()) unless $char->{name};
 
   if (not $char->{gender}) {
-    my $gender = $names{$char->{name}};
-    $gender = one("M", "F") if $gender eq "?" and d6 > 1;
+    my $gender = one("M", "F");
     provide($char, "gender", $gender);
   }
 
@@ -2291,10 +2288,79 @@ sub random_freebooters {
     alignment($char, 3, 8, 8, 8, 12);
   }
 
+  provide($char, "name", freebooters_name($char)) unless $char->{name};
   provide($char, "level",  "1");
   provide($char, "xp",  "0");
 }
 
+sub freebooters_name {
+  my $char = shift;
+  my $name;
+  # The names in this list are from the book Freebooters on the Frontier by
+  # Jason Lutes. The text of that book is released under a Creative Commons
+  # Attribution-ShareAlike 3.0 Unported license.
+  # https://creativecommons.org/licenses/by-sa/3.0/
+  if ($char->{race} eq T('human') and $char->{gender} eq 'M') {
+    $name = one(qw(Athelan Aldred Alger Archard Astyrian Bowden Brogan Caden
+    Cerdic Devan Druce Dugal Edlyn Ebis Esward Firman Framar Fugol Garret Gidwin
+    Gord Govannon Greme Grindan Halwen Holt Iden Irbend Kendrik Leor Lufian Nyle
+    Odel Ord Orleg Radan Reged Rowe Scrydan Seaver Shepard Snell Stedman Swift
+    Teon Tobrec Tredan Ware Warian Wulf));
+  } elsif ($char->{race} eq T('human') and $char->{gender} eq 'F') {
+    $name = one(qw(Acca Alodia Andessa Anlis Ara Ardith Berroc Bernia Bodica
+    Brigantia Brimlid Caro Cwen Darel Dawn Diera Dotor Eda Elene Elga Elswyth
+    Elva Elvina Erlina Esma Faradan Freya Garmang Gloris Harmilla Hunnar Juliana
+    Kandara Laralan Lorn Maida Megdas Mercia Mora Ogethas Ossia Pallas Rathet
+    Sibley Sunnivar Tate Udela Viradeca Wilona Zora));
+  } elsif ($char->{race} eq T('halfling') and $char->{gender} eq 'M') {
+    $name = one(qw(Adaman Adelard Adred Agilward Arnest Balbas Barton Bell Banco
+    Bowman Cal Emmet Erling Fastman Foda Freebern Frid Gerd Hadred Hagar Halbert
+    Hamfast Hildred Huge Isen Jaco Jungo Helm Konner Lambert Leon Linus Marko
+    Matti Mekel Melchior Lesser Nenko Nob Olo Ortwin Otto Paladin Pasco Quintus
+    Sifro Ted Tolman Wilber Wiseman));
+  } elsif ($char->{race} eq T('halfling') and $char->{gender} eq 'F') {
+    $name = one(qw(Adelle Agilward Alfreda Amalinde Balba Bella Beryl Bess
+    Camelia Cordelia Daisy Demona Drogga Elanor Ella Elsbeth Elsina Emerly Foda
+    Gilda Gilly Hanna Hilda Hildred Janna Jilly Kat Klare Lily Lobelia Lorna
+    Lucie Magda Marga Mari Marigold Marka Marlyn Mina Noba Olga Ottillia Pansy
+    Pervinca Poppy Rose Rowan Salina Tella Ulrica));
+  } elsif ($char->{race} eq T('dwarf') and $char->{gender} eq 'M') {
+    $name = one(qw(Bagan Banar Belir Besil Boran Darin Dirin Doibur Doigan Fagan
+    Fignus Firin Gesil Glagan Glasil Glenus Goirin Gosil Hanar Heran Hoibur
+    Hoili Hoinar Holir Homli Kimli Koisin Lasin Legan Loilir Mirin Moli Nasil
+    Nefur Neli Nignar Noifur Ramli Regnar Safur Sali Saran Segnar Serin Simli
+    Tasil Teli Tisin Toilin Toinus));
+  } elsif ($char->{race} eq T('dwarf') and $char->{gender} eq 'F') {
+    $name = one(qw(Berin Bibura Bisil Dagna Delinia Deris Dira Disia Dorinda
+    Faran Fasina Fignis Foifur Foimli Gerda Gestis Ginus Glegna Glelia Glelis
+    Glemlia Gloigas Gloigna Glonara Hegna Hignara Hoimlis Kana Kemlir Keri Keris
+    Kilina Kolina Korana Lifur Loilis Loilina Mamli Milina Moibur Moli Noris
+    Nosi Rana Ribura Sasilia Soirina Soran Toigna Tomlis));
+  } elsif ($char->{race} eq T('elf') and $char->{gender} eq 'M') {
+    $name = one(qw(Amánd Amioril Analad Anin Anumir Calithrambor Calóng Calór
+    Cebrin Cóldor Corfindil Delithran Elithranduil Elverion Eowóril Galithrar
+    Gelith Gladriendil Glamir Glarang Glil-Gang Glundil Gorfilas Góriand Hal
+    Harang Isil-Galith Isilith Isónd Isorfildur Legaraldur Lómebrildur Mil-Gan
+    Náldur Nelith Niol Porfindel Ráldur Silmandil Tand Taralad Tararion Tendil
+    Téril Tildur Tiniomir Unálad Unebrin Unéndil Uriong));
+  } elsif ($char->{race} eq T('elf') and $char->{gender} eq 'F') {
+    $name = one(qw(Amidë Anadriedia Anarania Anebriwien Anilmadith Beliniel
+    Calararith Cebridith Celénia Celil-Gathiel Cidien Eäróndra Eärorfindra
+    Eláthien Eláviel Eleniel Elorfindra Elváwien Eoweclya Eowodia Fórith
+    Gilmadith Gladrieclya Glélindë Gorfinia Hadrieviel Haniel Hebriclya
+    Legithralia Lómithrania Meclya Mélith Módien Paclya Paradien Pedith
+    Pil-Gandra Pirith Porficlya Sithralindë Thrédith Thrilmadith Thrithien
+    Throrfindra Tilmaclya Tilmawen Tinilmania Uradriethiel Urithrarith
+    Urorfiviel));
+  } else {
+    # If race or gender is not supported, pick a random name and assign gender
+    # accordingly.
+    $name = name();
+    provide($char, "gender", $names{$name});
+  }
+  provide($char, "name", $name);
+}
+    
 sub heritage {
   my ($char, $human, $halfling, $dwarf, $elf, @preferred) = @_;
   my $roll = d12();
