@@ -2431,6 +2431,8 @@ sub freebooters_appearance {
   # https://creativecommons.org/licenses/by-sa/3.0/
   for (1..3) {
     my $phrase;
+    # Note that some of the results make you roll on the next table, so don't
+    # use elsif!
     if ($char->{class} eq T('cleric')) {
       $phrase = one("big feet", "blazing eyes", "bushy eyebrows", "circlet",
       "clean-shaven", "clear-eyed", "cleft chin", "crooked teeth", "curly hair",
@@ -2443,8 +2445,9 @@ sub freebooters_appearance {
       "square-shouldered", "strange marks", "stubble", "tattoos",
       "thundering voice", "tonsure", "unwashed", "warty", "well-scrubbed",
       "roll on Fighter");
-    } elsif ($char->{class} eq T('fighter')
-	     or $phrase eq "roll on Fighter") {
+    }
+    if ($char->{class} eq T('fighter')
+	or $phrase eq "roll on Fighter") {
       $phrase = one("big feet", "big mouth", "big mustache", "notable nose",
       "braided hair", "broken nose", "chiseled", "clear-eyed", "cleft chin",
       "crooked teeth", "curly hair", "dark skin", "deep voice", "dirty",
@@ -2456,8 +2459,9 @@ sub freebooters_appearance {
       "scarred", "tattoos", "shaved head", "smelly", "smiling", "squint",
       "steely gaze", "stubble", "tattoos", "unsmiling", "well-scrubbed",
       "youthful", "roll on Thief");
-    } elsif ($char->{class} eq T('thief')
-	     or $phrase eq "roll on Thief") {
+    }
+    if ($char->{class} eq T('thief')
+	or $phrase eq "roll on Thief") {
       $phrase = one("broken nose", "chin whiskers", "clean-shaven",
       "clear-eyed", "crooked teeth", "curly hair", "dark skin", "deep voice",
       "disfigured", "disheveled", "gap-toothed", "gaunt", "goatee", "hirsute",
@@ -2469,8 +2473,9 @@ sub freebooters_appearance {
       clothes", "red-rimmed eyes", "scarred", "shifty eyes", "small hands",
       "smelly", "squint", "stubble", "tattoos", "unsmiling", "unwashed",
       "well-groomed", "whispery voice", "widow’s peak", "roll on Magic-User");
-    } elsif ($char->{class} eq T('magic-user')
-	     or $phrase eq "roll on Magic-User") {
+    }
+    if ($char->{class} eq T('magic-user')
+	or $phrase eq "roll on Magic-User") {
       $phrase = one("acid scars", "aged", "bald", "black teeth",
       "booming voice", "burn scars", "bushy eyebrows", "chin whiskers",
       "crooked teeth", "curly hair", "dark skin", "disfigured", "forked tongue",
