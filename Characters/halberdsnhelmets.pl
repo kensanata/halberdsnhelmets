@@ -761,13 +761,30 @@ sub acks {
   acks_saves($char);
 }
 
+# This function computes the values that are shown but that don't need to be
+# stored.
 sub freebooters {
   my $char = shift;
+
+  # attribute bonus
   for my $id (qw(str dex con int wis cha luc)) {
     if ($char->{$id} and not $char->{"$id-bonus"}) {
       $char->{"$id-bonus"} = bonus($char->{$id});
     }
   }
+
+  # HD type
+  if ($char->{class} eq T('fighter')) {
+    $char->{"hd-type"} = "10";
+  } elsif ($char->{class} eq T('thief')) {
+    $char->{"hd-type"} = "6";
+  } elsif ($char->{class} eq T('cleric')) {
+    $char->{"hd-type"} = "8";
+  } elsif ($char->{class} eq T('magic-user')) {
+    $char->{"hd-type"} = "4";
+  }
+
+  # character sheet
   my $charsheet = "Maezar-Freebooters.svg";
   if (not $char->{"charsheet"} and -f "$home/$charsheet") {
     $char->{"charsheet"} = $charsheet;
@@ -2286,22 +2303,18 @@ sub random_freebooters {
   }
   
   if ($char->{class} eq T('fighter')) {
-    provide($char, "hd-type", "10");
     provide($char, "hp", d10());
     heritage($char, 7, 8, 11, 12, qw/str dex con/);
     freebooters_alignment($char, 2, 4, 8, 10, 12);
   } elsif ($char->{class} eq T('thief')) {
-    provide($char, "hd-type", "6");
     provide($char, "hp", d6());
     heritage($char, 7, 10, 11, 12, qw/dex int cha/);
     freebooters_alignment($char, 2, 6, 10, 10, 12);
   } elsif ($char->{class} eq T('cleric')) {
-    provide($char, "hd-type", "8");
     provide($char, "hp", d8());
     heritage($char, 7, 8, 11, 12, qw/cha wis con/);
     freebooters_alignment($char, 3, 5, 7, 9, 12);
   } elsif ($char->{class} eq T('magic-user')) {
-    provide($char, "hd-type", "4");
     provide($char, "hp", d4());
     heritage($char, 8, 9, 10, 12, qw/int dex cha/);
     freebooters_alignment($char, 3, 8, 8, 8, 12);
