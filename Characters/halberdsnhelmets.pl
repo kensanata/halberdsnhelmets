@@ -2279,18 +2279,16 @@ sub random_acks {
 
 sub random_freebooters {
   my $char = shift;
-  # keys that can be provided: name, class, charsheet
-
-  provide($char, "class", freebooters_playbook($char));
+  # keys that can be provided: gender, name, class, charsheet
+  provide($char, "class", freebooters_playbook($char)) unless $char->{class};
   freebooters_abilities($char);
   freebooters_heritage($char);
-  # gender is required to pick the right name
-  provide($char, "gender", gender($char)) unless $char->{gender} or $char->{name};
-  provide($char, "name", freebooters_name($char)) unless $char->{name};
+  freebooters_name($char) unless $char->{name};
   provide($char, "appearance", freebooters_appearance($char)) if $char->{portrait} eq "no";
   provide($char, "hp", freebooters_hit_points($char));
   provide($char, "alignment", freebooters_alignment($char));
   provide($char, "traits", freebooters_traits($char));
+  freebooters_gear($char);
   provide($char, "level",  "1");
   provide($char, "xp",  "0");
 }
@@ -2370,62 +2368,58 @@ sub human_bonus {
   }
 }
 
-sub gender {
-  my $char = shift;
-  return one("M", "F");
-}
-
 sub freebooters_name {
   my $char = shift;
+  my $gender = one("M", "F");
   my $name;
   # The names in this list are from the book Freebooters on the Frontier by
   # Jason Lutes. The text of that book is released under a Creative Commons
   # Attribution-ShareAlike 3.0 Unported license.
   # https://creativecommons.org/licenses/by-sa/3.0/
-  if ($char->{race} eq T('human') and $char->{gender} eq 'M') {
+  if ($char->{race} eq T('human') and $gender eq 'M') {
     $name = one(qw(Athelan Aldred Alger Archard Astyrian Bowden Brogan Caden
     Cerdic Devan Druce Dugal Edlyn Ebis Esward Firman Framar Fugol Garret Gidwin
     Gord Govannon Greme Grindan Halwen Holt Iden Irbend Kendrik Leor Lufian Nyle
     Odel Ord Orleg Radan Reged Rowe Scrydan Seaver Shepard Snell Stedman Swift
     Teon Tobrec Tredan Ware Warian Wulf));
-  } elsif ($char->{race} eq T('human') and $char->{gender} eq 'F') {
+  } elsif ($char->{race} eq T('human') and $gender eq 'F') {
     $name = one(qw(Acca Alodia Andessa Anlis Ara Ardith Berroc Bernia Bodica
     Brigantia Brimlid Caro Cwen Darel Dawn Diera Dotor Eda Elene Elga Elswyth
     Elva Elvina Erlina Esma Faradan Freya Garmang Gloris Harmilla Hunnar Juliana
     Kandara Laralan Lorn Maida Megdas Mercia Mora Ogethas Ossia Pallas Rathet
     Sibley Sunnivar Tate Udela Viradeca Wilona Zora));
-  } elsif ($char->{race} eq T('halfling') and $char->{gender} eq 'M') {
+  } elsif ($char->{race} eq T('halfling') and $gender eq 'M') {
     $name = one(qw(Adaman Adelard Adred Agilward Arnest Balbas Barton Bell Banco
     Bowman Cal Emmet Erling Fastman Foda Freebern Frid Gerd Hadred Hagar Halbert
     Hamfast Hildred Huge Isen Jaco Jungo Helm Konner Lambert Leon Linus Marko
     Matti Mekel Melchior Lesser Nenko Nob Olo Ortwin Otto Paladin Pasco Quintus
     Sifro Ted Tolman Wilber Wiseman));
-  } elsif ($char->{race} eq T('halfling') and $char->{gender} eq 'F') {
+  } elsif ($char->{race} eq T('halfling') and $gender eq 'F') {
     $name = one(qw(Adelle Agilward Alfreda Amalinde Balba Bella Beryl Bess
     Camelia Cordelia Daisy Demona Drogga Elanor Ella Elsbeth Elsina Emerly Foda
     Gilda Gilly Hanna Hilda Hildred Janna Jilly Kat Klare Lily Lobelia Lorna
     Lucie Magda Marga Mari Marigold Marka Marlyn Mina Noba Olga Ottillia Pansy
     Pervinca Poppy Rose Rowan Salina Tella Ulrica));
-  } elsif ($char->{race} eq T('dwarf') and $char->{gender} eq 'M') {
+  } elsif ($char->{race} eq T('dwarf') and $gender eq 'M') {
     $name = one(qw(Bagan Banar Belir Besil Boran Darin Dirin Doibur Doigan Fagan
     Fignus Firin Gesil Glagan Glasil Glenus Goirin Gosil Hanar Heran Hoibur
     Hoili Hoinar Holir Homli Kimli Koisin Lasin Legan Loilir Mirin Moli Nasil
     Nefur Neli Nignar Noifur Ramli Regnar Safur Sali Saran Segnar Serin Simli
     Tasil Teli Tisin Toilin Toinus));
-  } elsif ($char->{race} eq T('dwarf') and $char->{gender} eq 'F') {
+  } elsif ($char->{race} eq T('dwarf') and $gender eq 'F') {
     $name = one(qw(Berin Bibura Bisil Dagna Delinia Deris Dira Disia Dorinda
     Faran Fasina Fignis Foifur Foimli Gerda Gestis Ginus Glegna Glelia Glelis
     Glemlia Gloigas Gloigna Glonara Hegna Hignara Hoimlis Kana Kemlir Keri Keris
     Kilina Kolina Korana Lifur Loilis Loilina Mamli Milina Moibur Moli Noris
     Nosi Rana Ribura Sasilia Soirina Soran Toigna Tomlis));
-  } elsif ($char->{race} eq T('elf') and $char->{gender} eq 'M') {
+  } elsif ($char->{race} eq T('elf') and $gender eq 'M') {
     $name = one(qw(Amánd Amioril Analad Anin Anumir Calithrambor Calóng Calór
     Cebrin Cóldor Corfindil Delithran Elithranduil Elverion Eowóril Galithrar
     Gelith Gladriendil Glamir Glarang Glil-Gang Glundil Gorfilas Góriand Hal
     Harang Isil-Galith Isilith Isónd Isorfildur Legaraldur Lómebrildur Mil-Gan
     Náldur Nelith Niol Porfindel Ráldur Silmandil Tand Taralad Tararion Tendil
     Téril Tildur Tiniomir Unálad Unebrin Unéndil Uriong));
-  } elsif ($char->{race} eq T('elf') and $char->{gender} eq 'F') {
+  } elsif ($char->{race} eq T('elf') and $gender eq 'F') {
     $name = one(qw(Amidë Anadriedia Anarania Anebriwien Anilmadith Beliniel
     Calararith Cebridith Celénia Celil-Gathiel Cidien Eäróndra Eärorfindra
     Eláthien Eláviel Eleniel Elorfindra Elváwien Eoweclya Eowodia Fórith
@@ -2436,11 +2430,13 @@ sub freebooters_name {
     Urorfiviel));
   } else {
     # If race or gender is not supported, pick a random name and assign gender
-    # accordingly.
+    # accordingly. This should not happen unless you introduce a new race
+    # without providing names for its members.
     $name = name();
-    provide($char, "gender", $names{$name});
+    $gender = $names{$name} if member($names{$name}, 'M', 'F');
   }
   provide($char, "name", $name);
+  provide($char, "gender", $gender);
 }
 
 sub freebooters_appearance {
@@ -2585,6 +2581,100 @@ sub freebooters_traits {
     push(@traits, $trait);
   }
   return wrap(join(', ', @traits), 25);
+}
+
+sub freebooters_gear {
+  my $char = shift;
+  my $wt = 0;
+
+  my %weapons = 
+      (T('axe') => ['1d8', 'close', 2],
+       T('club') => ['1d6', 'close', 1],
+       T('dagger') => ['1d4', '1 pierce, precise, hand', 0],
+       T('flail') => ['1d8', 'close, forceful', 2],
+       T('great axe') => ['1d10', 'close, rare, 2-handed', 3],
+       T('great hammer') => ['1d10', 'close, forceful, rare, 2-handed', 4],
+       T('great sword') => ['1d10', 'close, reach, rare, 2-handed', 3],
+       T('hatchet') => ['1d4', 'throw, close, near', 1],
+       T('knife') => ['1d4', 'precise, hand', 0],
+       T('mace') => ['1d6', 'close, forceful', 1],
+       T('pick') => ['1d6', '2 pierce, close, awkward', 1],
+       T('polearm') => ['1d10', 'reach, 2-handed', 3],
+       T('shortsword') => ['1d6', 'close', 1],
+       T('spear') => ['1d8', 'throw, reach, near', 2],
+       T('staff') => ['1d4', 'close, 2-handed', 1],
+       T('sword') => ['1d8', 'close', 2],
+       T('warhammer') => ['1d6', '1 pierce, close', 1],
+       T('throwing knife') => ['1d4', 'hand, close, reach, near, precise', 0],
+       T('sling') => ['1d4', 'near, far, reload', 0],
+       T('shortbow') => ['1d6', 'near, far, 2-handed', 1],
+       T('longbow') => ['1d8', 'near, far, 2-handed', 1],
+       T('light crossbow') => ['1d6', '1 pierce, near, far, 2-handed, reload', 1],
+       T('heavy crossbow') => ['1d6', '2 pierce, near, far, 2-handed, reload', 2]);
+  
+  if ($char->{class} eq T('fighter')) {
+    my $weapon = one(keys %weapons);
+    provide($char, "weapon1", $weapon);
+    provide($char, "dmg1", $weapons{$weapon}->[0]);
+    provide($char, "weapon1-wt", $weapons{$weapon}->[2]);
+    my $roll = d6();
+    if ($roll == 1) {
+      provide($char, "item1", T('leather armor'));
+      provide($char, "armor", 1);
+      provide($char, "item1-wt", 1);
+      $wt += 1;
+    } elsif ($roll <= 5) {
+      provide($char, "item1", T('chain mail'));
+      provide($char, "armor", 2);
+      provide($char, "item1-wt", 3);
+      $wt += 3;
+    } else {
+      provide($char, "item1", T('scale armor') . " (" . T('awkward') . ")");
+      provide($char, "armor", 3);
+      provide($char, "item1-wt", 4);
+      $wt += 4;
+    }
+  } elsif ($char->{class} eq T('thief')) {
+
+    my $weapon = one(T('knife'), T('dagger'), T('shortsword'));
+    provide($char, "weapon1", $weapon);
+    provide($char, "dmg1", $weapons{$weapon}->[0]);
+    provide($char, "weapon1-wt", $weapons{$weapon}->[2]);
+    $wt += $weapons{$weapon}->[2];
+    
+    provide($char, "item1", T('leather armor'));
+    provide($char, "armor", 1);
+    provide($char, "item1-wt", 1);
+    $wt += 1;
+    
+  } elsif ($char->{class} eq T('cleric')) {
+
+    my $weapon = one(T('staff'), T('mace'), T('warhammer'));
+    provide($char, "weapon1", $weapon);
+    provide($char, "dmg1", $weapons{$weapon}->[0]);
+    provide($char, "weapon1-wt", $weapons{$weapon}->[2]);
+    $wt += $weapons{$weapon}->[2];
+    
+    my $roll = d6();
+    if ($roll <= 2) {
+      provide($char, "item1", T('shield'));
+      provide($char, "armor", 1);
+      provide($char, "item1-wt", 2);
+      $wt += 3;
+    } elsif ($roll <= 4) {
+      provide($char, "item1", T('leather armor'));
+      provide($char, "armor", 1);
+      provide($char, "item1-wt", 1);
+      $wt += 1;
+    } else {
+      provide($char, "item1", T('chain mail'));
+      provide($char, "armor", 2);
+      provide($char, "item1-wt", 3);
+      $wt += 3;
+    }
+  } elsif ($char->{class} eq T('magic-user')) {
+  }
+  provide($char, "total-wt", $wt);
 }
 
 sub random_parameters {
