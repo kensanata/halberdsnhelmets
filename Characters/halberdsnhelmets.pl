@@ -2306,10 +2306,10 @@ sub random_freebooters {
     heritage($char, 8, 9, 10, 12, qw/int dex cha/);
     freebooters_alignment($char, 3, 8, 8, 8, 12);
   }
-
   provide($char, "name", freebooters_name($char)) unless $char->{name};
   provide($char, "appearance", freebooters_appearance($char))
       if $char->{portrait} eq "no";
+  provide($char, "traits", freebooters_traits($char));
   provide($char, "level",  "1");
   provide($char, "xp",  "0");
 }
@@ -2473,7 +2473,7 @@ sub freebooters_appearance {
 	     or $phrase eq "roll on Magic-User") {
       $phrase = one("acid scars", "aged", "bald", "black teeth",
       "booming voice", "burn scars", "bushy eyebrows", "chin whiskers",
-       "crooked teeth", "curly hair", "dark skin", "disfigured", "forked tongue",
+      "crooked teeth", "curly hair", "dark skin", "disfigured", "forked tongue",
       "gaunt", "glowing eyes", "gnarled hands", "goatee", "gray hair", "haggard",
       "hairless", "headband", "high cheekbones", "high forehead", "hooded",
       "limp", "long beard", "long fingernails", "long hair", "mismatched eyes",
@@ -2502,6 +2502,49 @@ sub freebooters_alignment {
   } elsif ($roll <= $good) {
     provide($char, "alignment", T('good'));
   }
+}
+
+sub freebooters_traits {
+  my $char = shift;
+  my $alignment = $char->{alignment};
+  my ($virtues, $vices);
+  if ($alignment eq T('evil')) {
+    ($virtues, $vices) = (0, 3);
+  } elsif ($alignment eq T('chaotic')) {
+    ($virtues, $vices) = (1, 2);
+  } elsif ($alignment eq T('neutral')) {
+    ($virtues, $vices) = (1, 1);
+  } elsif ($alignment eq T('lawful')) {
+    ($virtues, $vices) = (2, 1);
+  } elsif ($alignment eq T('good')) {
+    ($virtues, $vices) = (3, 0);
+  }
+  my (@traits, $trait);
+  for (1..$virtues) {
+    do {
+      $trait = one(qw(ambitious benevolent bold brave charitable chaste cautious
+      compassionate confident considerate cooperative courteous creative curious
+      daring defiant dependable determined disciplined enthusiastic fair focused
+      forgiving friendly frugal funny generous gregarious helpful honest
+      honorable hopeful humble idealistic just kind loving loyal merciful
+      orderly patient persistent pious resourceful respectful responsible
+      selfless steadfast tactful tolerant));
+    } until not member($trait, @traits);
+    push(@traits, $trait);
+  }
+  for (1..$vices) {
+    do {
+      $trait = one(qw(addict aggressive alcoholic antagonistic arrogant boastful
+      cheater covetous cowardly cruel decadent deceitful disloyal doubtful
+      egotistical envious gluttonous greedy hasty hedonist impatient inflexible
+      irritable lazy lewd liar lustful mad malicious manipulative merciless
+      moody murderous obsessive petulant prejudiced reckless resentful rude
+      ruthless self-pitying selfish snobbish stingy stubborn vain vengeful
+      wasteful wrathful zealous));
+    } until not member($trait, @traits);
+    push(@traits, $trait);
+  }
+  return wrap(join(', ', @traits), 25);
 }
 
 sub random_parameters {
