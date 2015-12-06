@@ -2281,11 +2281,33 @@ sub random_freebooters {
   my $char = shift;
   # keys that can be provided: name, class, charsheet
 
-  if (not $char->{gender}) {
-    my $gender = one("M", "F");
-    provide($char, "gender", $gender);
-  }
+  provide($char, "class", freebooters_playbook($char));
+  freebooters_abilities($char);
+  freebooters_heritage($char);
+  # gender is required to pick the right name
+  provide($char, "gender", gender($char)) unless $char->{gender} or $char->{name};
+  provide($char, "name", freebooters_name($char)) unless $char->{name};
+  provide($char, "appearance", freebooters_appearance($char)) if $char->{portrait} eq "no";
+  provide($char, "hp", freebooters_hit_points($char));
+  provide($char, "alignment", freebooters_alignment($char));
+  provide($char, "traits", freebooters_traits($char));
+  provide($char, "level",  "1");
+  provide($char, "xp",  "0");
+}
 
+sub freebooters_playbook {
+  my $char = shift;
+  if (not $char->{class}) {
+    my $roll = d12();
+    if ($roll <=  6)    { return T('fighter')    }
+    elsif ($roll <=  9) { return T('thief')      }
+    elsif ($roll <= 11) { return T('cleric')     }
+    else                { return T('magic-user') }
+  }
+}
+
+sub freebooters_abilities {
+  my $char = shift;
   provide($char, "str", roll_3d6());
   provide($char, "dex", roll_3d6());
   provide($char, "con", roll_3d6());
@@ -2293,38 +2315,64 @@ sub random_freebooters {
   provide($char, "wis", roll_3d6());
   provide($char, "cha", roll_3d6());
   provide($char, "luc", roll_3d6());
+}
 
-  if (not $char->{class}) {
-    my $roll = d12();
-    if ($roll <=  6)    { provide($char, "class", T('fighter'))    }
-    elsif ($roll <=  9) { provide($char, "class", T('thief'))      }
-    elsif ($roll <= 11) { provide($char, "class", T('cleric'))     }
-    else                { provide($char, "class", T('magic-user')) }
-  }
-  
+sub freebooters_heritage {
+  my $char = shift;
   if ($char->{class} eq T('fighter')) {
-    provide($char, "hp", d10());
-    heritage($char, 7, 8, 11, 12, qw/str dex con/);
-    freebooters_alignment($char, 2, 4, 8, 10, 12);
+    roll_heritage($char, 7, 8, 11, 12, qw/str dex con/);
   } elsif ($char->{class} eq T('thief')) {
-    provide($char, "hp", d6());
-    heritage($char, 7, 10, 11, 12, qw/dex int cha/);
-    freebooters_alignment($char, 2, 6, 10, 10, 12);
+    roll_heritage($char, 7, 10, 11, 12, qw/dex int cha/);
   } elsif ($char->{class} eq T('cleric')) {
-    provide($char, "hp", d8());
-    heritage($char, 7, 8, 11, 12, qw/cha wis con/);
-    freebooters_alignment($char, 3, 5, 7, 9, 12);
+    roll_heritage($char, 7, 8, 11, 12, qw/cha wis con/);
   } elsif ($char->{class} eq T('magic-user')) {
-    provide($char, "hp", d4());
-    heritage($char, 8, 9, 10, 12, qw/int dex cha/);
-    freebooters_alignment($char, 3, 8, 8, 8, 12);
+    roll_heritage($char, 8, 9, 10, 12, qw/int dex cha/);
   }
-  provide($char, "name", freebooters_name($char)) unless $char->{name};
-  provide($char, "appearance", freebooters_appearance($char))
-      if $char->{portrait} eq "no";
-  provide($char, "traits", freebooters_traits($char));
-  provide($char, "level",  "1");
-  provide($char, "xp",  "0");
+}
+
+sub roll_heritage {
+  my ($char, $human, $halfling, $dwarf, $elf, @preferred) = @_;
+  my $roll = d12();
+  if ($roll <= $human) {
+    provide($char, "race", T('human'));
+    human_bonus($char, @preferred);
+  } elsif ($roll <= $halfling) {
+    provide($char, "race", T('halfling'));
+    $char->{luc} += 2;
+  } elsif ($roll <= $dwarf) {
+    provide($char, "race", T('dwarf'));
+    # increase the better value
+    $char->{best($char->{str}, 0, $char->{con}, 0, 0, 0)} += 2;
+  } elsif ($roll <= $elf) {
+    provide($char, "race", T('elf'));
+    # increase the better value
+    $char->{best(0, $char->{dex}, 0, 0, $char->{wis}, $char->{cha})} += 2;
+  }
+}
+
+sub human_bonus {
+  my ($char, @preferred) = @_;
+  my $picked;
+  for (1..2) {
+    my $choice;
+    for my $attr (@preferred) {
+      if ($char->{$attr} =~ /^(3|5|8|12|15|17)$/ and $attr ne $picked) {
+	$char->{$attr}++;
+	$picked = $choice = $attr;
+	last;
+      }
+      if (not $choice) {
+	my $attr = one(grep { $_ ne $picked } @preferred);
+	$char->{$attr}++;
+	$picked = $choice = $attr;
+      }
+    }
+  }
+}
+
+sub gender {
+  my $char = shift;
+  return one("M", "F");
 }
 
 sub freebooters_name {
@@ -2393,46 +2441,6 @@ sub freebooters_name {
     provide($char, "gender", $names{$name});
   }
   provide($char, "name", $name);
-}
-    
-sub heritage {
-  my ($char, $human, $halfling, $dwarf, $elf, @preferred) = @_;
-  my $roll = d12();
-  if ($roll <= $human) {
-    provide($char, "race", T('human'));
-    human_bonus($char, @preferred);
-  } elsif ($roll <= $halfling) {
-    provide($char, "race", T('halfling'));
-    $char->{luc} += 2;
-  } elsif ($roll <= $dwarf) {
-    provide($char, "race", T('dwarf'));
-    # increase the better value
-    $char->{best($char->{str}, 0, $char->{con}, 0, 0, 0)} += 2;
-  } elsif ($roll <= $elf) {
-    provide($char, "race", T('elf'));
-    # increase the better value
-    $char->{best(0, $char->{dex}, 0, 0, $char->{wis}, $char->{cha})} += 2;
-  }
-}
-    
-sub human_bonus {
-  my ($char, @preferred) = @_;
-  my $picked;
-  for (1..2) {
-    my $choice;
-    for my $attr (@preferred) {
-      if ($char->{$attr} =~ /^(3|5|8|12|15|17)$/ and $attr ne $picked) {
-	$char->{$attr}++;
-	$picked = $choice = $attr;
-	last;
-      }
-      if (not $choice) {
-	my $attr = one(grep { $_ ne $picked } @preferred);
-	$char->{$attr}++;
-	$picked = $choice = $attr;
-      }
-    }
-  }
 }
 
 sub freebooters_appearance {
@@ -2506,20 +2514,34 @@ sub freebooters_appearance {
   return wrap(join(', ', @phrases), 27);
 }
 
+sub freebooters_hit_points {
+  my $char = shift;
+  if    ($char->{class} eq T('fighter'))    { return d10() }
+  elsif ($char->{class} eq T('thief'))      { return  d6() }
+  elsif ($char->{class} eq T('cleric'))     { return  d8() }
+  elsif ($char->{class} eq T('magic-user')) { return  d4() };
+}
+
 sub freebooters_alignment {
-  my ($char, $evil, $chaotic, $neutral, $lawful, $good) = @_;
-  my $roll = d12();
-  if ($roll <= $evil) {
-    provide($char, "alignment", T('evil'));
-  } elsif ($roll <= $chaotic) {
-    provide($char, "alignment", T('chaotic'));
-  } elsif ($roll <= $neutral) {
-    provide($char, "alignment", T('neutral'));
-  } elsif ($roll <= $lawful) {
-    provide($char, "alignment", T('lawful'));
-  } elsif ($roll <= $good) {
-    provide($char, "alignment", T('good'));
+  my $char = shift;
+  my ($evil, $chaotic, $neutral, $lawful, $good);
+  
+  if ($char->{class} eq T('fighter')) {
+    ($evil, $chaotic, $neutral, $lawful, $good) = (2, 4, 8, 10, 12);
+  } elsif ($char->{class} eq T('thief')) {
+    ($evil, $chaotic, $neutral, $lawful, $good) = (2, 6, 10, 10, 12);
+  } elsif ($char->{class} eq T('cleric')) {
+    ($evil, $chaotic, $neutral, $lawful, $good) = (3, 5, 7, 9, 12);
+  } elsif ($char->{class} eq T('magic-user')) {
+    ($evil, $chaotic, $neutral, $lawful, $good) = (3, 8, 8, 8, 12);
   }
+  
+  my $roll = d12();
+  if    ($roll <= $evil)    { return T('evil') }
+  elsif ($roll <= $chaotic) { return T('chaotic') }
+  elsif ($roll <= $neutral) { return T('neutral') }
+  elsif ($roll <= $lawful)  { return T('lawful') }
+  elsif ($roll <= $good)    { return T('good') }
 }
 
 sub freebooters_traits {
