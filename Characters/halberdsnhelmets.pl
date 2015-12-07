@@ -2627,7 +2627,7 @@ sub freebooters_gear {
        T('heavy crossbow') => ['1d6', '2 pierce, near, far, 2-handed, reload', 2]);
   
   if ($char->{class} eq T('fighter')) {
-    my $weapon = one(keys %weapons);
+    my $weapon = freebooters_fighter_weapon($char, \%weapons);
     provide($char, "weapon1", $weapon);
     provide($char, "dmg1", $weapons{$weapon}->[0]);
     provide($char, "weapon1-wt", $weapons{$weapon}->[2]);
@@ -2690,6 +2690,42 @@ sub freebooters_gear {
   } elsif ($char->{class} eq T('magic-user')) {
   }
   provide($char, "total-wt", $wt);
+}
+
+sub freebooters_fighter_weapon {
+  my ($char, $weapons) = @_;
+  if ($char->{dex} >= 13 and $char->{str} >= 13
+      and $char->{race} ne T('halfling')) {
+    # no great weapons for halflings
+    return one(freeboters_filter_weapons($weapons, ["1d10", "2-handed"]));
+  } elsif ($char->{dex} >= 13
+	   and $char->{race} ne T('halfling')) {
+    # no longbows for halflings
+    return one(freeboters_filter_weapons($weapons, ["1d8", "far"]));
+  } elsif ($char->{str} <= 8) {
+    return one(freeboters_filter_weapons($weapons, ["1d6", "close", "1"]));
+  } elsif ($char->{str} >= 13) {
+    return one(freeboters_filter_weapons($weapons, ["1d8", "close"]));
+  } else {
+    one(keys %$weapons);
+  }
+}
+
+sub freeboters_filter_weapons {
+  my ($weapons, $with, $without) = @_;
+  return grep {
+    my @tags = ($weapons->{$_}->[0],
+		split(/, /, $weapons->{$_}->[1]),
+		$weapons->{$_}->[2]);
+    my $ok = 1;
+    foreach (@$with) {
+      $ok = 0 unless member($_, @tags);
+    }
+    foreach (@$without) {
+      $ok = 0 if member($_, @tags);
+    }
+    $ok;
+  } keys %$weapons;
 }
 
 sub random_parameters {
