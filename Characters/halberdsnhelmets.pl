@@ -772,6 +772,7 @@ sub freebooters {
       $char->{"$id-bonus"} = bonus($char->{$id});
     }
   }
+  $char->{"max-load"} = $char->{"str-bonus"} + 8 unless $char->{"max-load"};
 
   # HD type
   if ($char->{class} eq T('fighter')) {
@@ -2617,6 +2618,7 @@ sub freebooters_gear {
     provide($char, "weapon1", $weapon);
     provide($char, "dmg1", $weapons{$weapon}->[0]);
     provide($char, "weapon1-wt", $weapons{$weapon}->[2]);
+    $wt += $weapons{$weapon}->[2];
     my $roll = d6();
     if ($roll == 1) {
       provide($char, "item1", T('leather armor'));
