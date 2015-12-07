@@ -772,7 +772,20 @@ sub freebooters {
       $char->{"$id-bonus"} = bonus($char->{$id});
     }
   }
-  $char->{"max-load"} = $char->{"str-bonus"} + 8 unless $char->{"max-load"};
+
+  # Max Load
+  if (not $char->{"max-load"}) {
+    if ($char->{class} eq T('fighter')) {
+      $char->{"load-bonus"} = 10;
+    } elsif ($char->{class} eq T('thief')) {
+      $char->{"load-bonus"} = 6;
+    } elsif ($char->{class} eq T('cleric')) {
+      $char->{"load-bonus"} = 8;
+    } elsif ($char->{class} eq T('magic-user')) {
+      $char->{"load-bonus"} = 4;
+    }
+    $char->{"max-load"} = $char->{"str-bonus"} + $char->{"load-bonus"};
+  }
 
   # HD type
   if ($char->{class} eq T('fighter')) {
