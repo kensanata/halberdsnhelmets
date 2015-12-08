@@ -2327,6 +2327,56 @@ sub freebooters_abilities {
   provide($char, "wis", roll_3d6());
   provide($char, "cha", roll_3d6());
   provide($char, "luc", roll_3d6());
+  
+  # and swap one
+  if ($char->{class} eq T('fighter')) {
+    swap_for_highest($char, ['str', 'con', 'dex'], ['wis', 'int', 'cha']);
+  } elsif ($char->{class} eq T('thief')) {
+    swap_for_highest($char, ['dex'], ['wis', 'str', 'int']);
+  } elsif ($char->{class} eq T('cleric')) {
+    swap_for_highest($char, ['cha'], ['wis', 'int', 'dex']);
+  } elsif ($char->{class} eq T('magic-user')) {
+    swap_for_highest($char, ['int'], ['str', 'wis', 'con', 'dex', 'cha']);
+  }
+}
+
+sub swap_for_highest {
+  my ($char, $to, $from) = @_;
+  my $highest_from = highest($char, @$from);
+  my $lowest_to = lowest($char, @$to);
+  if ($char->{$highest_from} > $char->{$lowest_to}) {
+    swap($char, $highest_from, $lowest_to);
+    $char->{notes} .= "Swapped $highest_from and $lowest_to.\\\\"
+  }
+}
+
+sub highest {
+  my ($char, @abilities) = @_;
+  my $best = shift(@abilities);
+  for my $ability (@abilities) {
+    if ($char->{$ability} > $char->{$best}) {
+      $best = $ability;
+    }
+  }
+  return $best;
+}
+
+sub lowest {
+  my ($char, @abilities) = @_;
+  my $worst = shift(@abilities);
+  for my $ability (@abilities) {
+    if ($char->{$ability} < $char->{$worst}) {
+      $worst = $ability;
+    }
+  }
+  return $worst;
+}
+
+sub swap {
+  my ($char, $a, $b) = @_;
+  my $temp = $char->{$a};
+  $char->{$a} = $char->{$b};
+  $char->{$b} = $temp;
 }
 
 sub freebooters_heritage {
@@ -2697,16 +2747,21 @@ sub freebooters_fighter_weapon {
   if ($char->{dex} >= 13 and $char->{str} >= 13
       and $char->{race} ne T('halfling')) {
     # no great weapons for halflings
+    $char->{notes} .= "High dex and str and not a halfling: pick a 2-handed weapon doing 1d10.\\\\";
     return one(freeboters_filter_weapons($weapons, ["1d10", "2-handed"]));
   } elsif ($char->{dex} >= 13
 	   and $char->{race} ne T('halfling')) {
     # no longbows for halflings
+    $char->{notes} .= "High dex and not a halfling: pick a ranged weapon doing 1d8.\\\\";
     return one(freeboters_filter_weapons($weapons, ["1d8", "far"]));
   } elsif ($char->{str} <= 8) {
+    $char->{notes} .= "Low str: pick a light (wt 1) melee weapon doing 1d6.\\\\";
     return one(freeboters_filter_weapons($weapons, ["1d6", "close", "1"]));
   } elsif ($char->{str} >= 13) {
+    $char->{notes} .= "High str: pick a melee weapon doing 1d8.\\\\";
     return one(freeboters_filter_weapons($weapons, ["1d8", "close"]));
   } else {
+    $char->{notes} .= "Picked a random weapon.\\\\";
     one(keys %$weapons);
   }
 }
