@@ -2956,7 +2956,7 @@ sub distribution {
 
 sub portrait {
   my $char = shift;
-  my $gender = $names{$char->{name}};
+  my $gender = $char->{gender} || $names{$char->{name}};
   if ($char->{class} eq T('elf')
       or $char->{race} eq T('elf')) {
     $gender = "elf";
