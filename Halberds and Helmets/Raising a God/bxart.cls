@@ -1,8 +1,9 @@
 % bxart.cls
 %  Layout reminiscent of B/X Dungeons & Dragons
-% 2015-Dec-31 Peter H. Froehlich phf (at) acm.org
+% 2016-Jan-01 Peter H. Froehlich phf (at) acm.org
+% This file is dedicated to the public domain.
 
-\ProvidesClass{bxart}[2015/12/31 version 0.1 Layout reminiscent of B/X D&D]
+\ProvidesClass{bxart}[2016/01/01 version 0.2 Layout reminiscent of B/X D&D]
 \NeedsTeXFormat{LaTeX2e}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -50,7 +51,7 @@
 \fancypagestyle{plain}{%
   \fancyhead{}
   \fancyhead[LO,RE]{\bfseries\slshape \thetitle}
-  \fancyhead[RO,LE]{\bfseries\slshape \leftmark}
+  \fancyhead[RO,LE]{\bfseries\slshape \nouppercase{\leftmark}}
   \fancyfoot{}
   \fancyfoot[C]{\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
