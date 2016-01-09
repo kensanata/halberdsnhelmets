@@ -3,5 +3,5 @@
 
 # 2000px wide should be good enough for printing on A4?
 
-%.png: %.svg
+%.jpg: %.svg
 	convert -resize 2000x "$<" "$@"
