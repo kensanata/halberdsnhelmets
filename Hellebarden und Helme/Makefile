@@ -4,6 +4,8 @@ MAKEINDEX=makeindex
 
 all: Hellebarden-und-Helme.pdf
 
+kleriker: Kleriker.pdf
+
 %.pdf: %.ltx ${GRAPHICS}
 	${LATEX} $<
 	${MAKEINDEX} `basename "$<" ".ltx"`.idx
@@ -18,10 +20,4 @@ once: Hellebarden-und-Helme.ltx
 	${LATEX} $<
 
 clean:
-	rm Hellebarden-und-Helme.aux \
-	    Hellebarden-und-Helme.idx \
-	    Hellebarden-und-Helme.ilg \
-	    Hellebarden-und-Helme.ind \
-	    Hellebarden-und-Helme.log \
-	    Hellebarden-und-Helme.out \
-	    Hellebarden-und-Helme.pdf
+	rm *.aux *.idx *.ilg *.ind *.log *.out

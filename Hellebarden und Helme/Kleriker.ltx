@@ -1,8 +1,52 @@
-\hyperref[sec:kleriker]{Kleriker}: Du kannst kämpfen (aber nicht so
-gut wie ein Krieger) und du kannst \hyperref[sec:wunder]{Wunder}
-wirken (aber deine Zaubersprüche sind nicht so mächtig wie die Sprüche
-eines Magiers). \marginnote[-3em]{\emph{Welche Häresie ärgert dich
-    besonders? Wann hast du die Götterboten erstmals gehört?}}
+\documentclass[a4paper,twoside,notitlepage,openany]{tufte-handout}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+% Set up index
+\usepackage{makeidx}
+\makeindex
+
+% The following package makes prettier tables. We're all about the
+% bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better
+% spacing for units.
+\usepackage{units}
+
+% Bold and index keywords
+\newcommand{\key}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}
+  {\label{key:#2}\textbf{\index{#2}#2}}
+  {\label{key:#1}\textbf{\index{#1}#2}}}
+
+% Clickable hyperlinks
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+
+\renewcommand{\labelitemi}{$-$} % use dash for items
+
+\title{Hellebarden \& Helme: Kleriker}
+\author{Alex Schroeder}
+% \date{}
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent Kleriker sind eine Klasse, die im Normalfall nicht zur
+Verfügung steht.\marginnote[-1em]{Eine längere Diskussion findet man
+  \href{https://alexschroeder.ch/wiki/2016-01-17_Keine_Kleriker}{auf
+    meinem Blog}}
+\end{abstract}
+
+\noindent\hyperref[sec:kleriker]{Kleriker}: Du kannst kämpfen (aber
+nicht so gut wie ein Krieger) und du kannst
+\hyperref[sec:wunder]{Wunder} wirken (aber deine Zaubersprüche sind
+nicht so mächtig wie die Sprüche eines Magiers).
+\marginnote[-3em]{\emph{Welche Häresie ärgert dich besonders? Wann
+    hast du die Götterboten erstmals gehört?}}
 
 \subsection{\index{Kleriker}Kleriker}
 \label{sec:kleriker}
@@ -92,7 +136,6 @@ Vampir   & -- & -- & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ \\
 
 
 
-
 \section{Die \index{Wunder}Wunder der Kleriker}
 \label{sec:wunder}
 
@@ -149,10 +192,11 @@ Lähmung auf. Das Gegenteil davon ist \textbf{Schmerz} und verursacht
 Orte innerhalb von \emph{\unit[60]{Fuss}} für \emph{\unit[20]{min}}
 aufleuchten.\marginnote{Dieses Leuchten ist für alle sichtbar.}
 
-\newpage
+
 
 \section{Wunder der Freya}
 \label{sec:wunder:freya}
+
 
 \subsection{1.~Zirkel}
 
@@ -193,10 +237,6 @@ Kälteangriffen um einen Punkt.
 
 
 \subsection{2.~Zirkel}
-
-\begin{marginfigure}[1cm]
-  \includegraphics{Arragonien.jpg}
-\end{marginfigure}
 
 \textbf{Fallen entdecken} warnt den Kleriker während
 \emph{\unit[20]{min}} vor allen Fallen im Umkreis von
@@ -242,6 +282,7 @@ Sprüche zu. Gelingt dieser, wirkt das Wunder auf den Boden und die
 Kreatur kann den Wirkungsbereich problemlos
 verlassen.\marginnote[-4em]{Innerhalb der Kugel kann man selber auch weder
   reden noch zaubern.}
+
 
 \subsection{3.~Zirkel}
 
@@ -331,7 +372,7 @@ wirklich ist. Dunkelheit jeglicher Art, geheime Türen, unsichtbare
 Wesen und Gegenstände, eine Verwandlung derselben und alle Sorten von
 Illusionen -- alles wird durchschaut.
 
-\newpage
+
 
 \section{Wunder des Tsathoggua}
 \label{sec:wunder:tsathoggua}
@@ -568,39 +609,12 @@ Benötigt eine lebende Kröte. Wen die Kröte selber schleckt, wird von
 aller Lähmung geheilt.
 
 
-\newpage
 
-\medskip\noindent Eine andere Erklärung:
+\section{Die Stützen der Gesellschaft}
+\label{sec:wunder:standard}
 
-\begin{margintable}[2cm]
-  Die Stufe der Untoten:
-
-\medskip
-\begin{tabular}{lc}
-Skelette & 1 \\
-Zombies  & 2 \\
-Ghule    & 3 \\
-Wiedergänger & 3 \\
-Todesalb & 4 \\
-Mumie & 5 \\
-Schreckgespenst & 6 \\
-Vampir & 7–9 \\
-\end{tabular}
-\end{margintable}
-
-\begin{tabular}{ll}
-Deine Stufe ist … & Die Untoten … \\
-um 5 grösser & werden zerstört! \\
-um 3 grösser & werden vertrieben \\
-um 2 grösser & vertrieben, bei 3 oder mehr mit 2W6 \\
-um 1 grösser & vertrieben, bei 5 oder mehr mit 2W6 \\
-gleich       & vertrieben, bei 7 oder mehr mit 2W6 \\
-um 1 kleiner & vertrieben, bei 9 oder mehr mit 2W6 \\
-um 2 kleiner & vertrieben, bei 11 oder mehr mit 2W6 \\
-noch kleiner & lassen sich nicht beeindrucken! \\
-\end{tabular}
-\medskip
-
+Dies sind die Standardsprüche der Kleriker.\marginnote{Hiervon wollte
+  ich eigentlich weg!}
 
 
 \subsection{1.~Zirkel}
@@ -647,10 +661,6 @@ Kälteangriffen um einen Punkt.
 
 
 \subsection{2.~Zirkel}
-
-\begin{marginfigure}[1cm]
-  \includegraphics{Arragonien.jpg}
-\end{marginfigure}
 
 \medskip\noindent\textbf{Fallen entdecken} warnt den Kleriker während
 \emph{\unit[20]{min}} vor allen Fallen im Umkreis von
@@ -749,3 +759,197 @@ dem Kleriker aufs Wort gehorchen.\marginnote{Skelette haben so viele
 bestimmten Gebiet bleiben und dort entweder alle oder nur eine
 bestimmte \emph{Art} von Kreatur angreifen. Es können so viele Stufen
 an Untoten erschaffen werden, wie der Kleriker Stufen hat.
+
+\clearpage
+
+\section*{Lizenz: Open Game License Version 1.0a}
+
+\begin{fullwidth}
+
+\fontsize{6.5pt}{7pt}\selectfont
+
+\textbf{Designation of Open Game Content}: The entire document is open
+game content. \textbf{Designation of Product Identity}: The names of
+contributors, the name of the website (``Campaign Wiki'') and the name
+of this site (``Halberds and Helmets'' as well as ``Hellebarden und
+Helme'') are product identity. The following text is the property of
+Wizards of the Coast, Inc. and is Copyright 2000 Wizards of the Coast,
+Inc (``Wizards''). All Rights Reserved.
+
+\begin{enumerate}
+
+\item Definitions: (a) ``Contributors'' means the copyright and/or
+  trademark owners who have contributed Open Game Content; (b)
+  ``Derivative Material'' means copyrighted material including
+  derivative works and translations (including into other computer
+  languages), potation, modification, correction, addition, extension,
+  upgrade, improvement, compilation, abridgment or other form in which
+  an existing work may be recast, transformed or adapted; (c)
+  ``Distribute'' means to reproduce, license, rent, lease, sell,
+  broadcast, publicly display, transmit or otherwise distribute; (d)
+  ``Open Game Content'' means the game mechanic and includes the
+  methods, procedures, processes and routines to the extent such
+  content does not embody the Product Identity and is an enhancement
+  over the prior art and any additional content clearly identified as
+  Open Game Content by the Contributor, and means any work covered by
+  this License, including translations and derivative works under
+  copyright law, but specifically excludes Product Identity. (e)
+  ``Product Identity'' means product and product line names, logos and
+  identifying marks including trade dress; artifacts; creatures
+  characters; stories, storylines, plots, thematic elements, dialogue,
+  incidents, language, artwork, symbols, designs, depictions,
+  likenesses, formats, poses, concepts, themes and graphic,
+  photographic and other visual or audio representations; names and
+  descriptions of characters, spells, enchantments, personalities,
+  teams, personas, likenesses and special abilities; places,
+  locations, environments, creatures, equipment, magical or
+  supernatural abilities or effects, logos, symbols, or graphic
+  designs; and any other trademark or registered trademark clearly
+  identified as Product identity by the owner of the Product Identity,
+  and which specifically excludes the Open Game Content; (f)
+  ``Trademark'' means the logos, names, mark, sign, motto, designs
+  that are used by a Contributor to identify itself or its products or
+  the associated products contributed to the Open Game License by the
+  Contributor (g) ``Use'', ``Used'' or ``Using'' means to use,
+  Distribute, copy, edit, format, modify, translate and otherwise
+  create Derivative Material of Open Game Content. (h) ``You'' or
+  ``Your'' means the licensee in terms of this agreement.
+
+\item The License: This License applies to any Open Game Content that
+  contains a notice indicating that the Open Game Content may only be
+  Used under and in terms of this License. You must affix such a
+  notice to any Open Game Content that you Use. No terms may be added
+  to or subtracted from this License except as described by the
+  License itself. No other terms or conditions may be applied to any
+  Open Game Content distributed using this License.
+
+\item Offer and Acceptance: By Using the Open Game Content You
+  indicate Your acceptance of the terms of this License.
+
+\item Grant and Consideration: In consideration for agreeing to use
+  this License, the Contributors grant You a perpetual, worldwide,
+  royalty-free, non-exclusive license with the exact terms of this
+  License to Use, the Open Game Content.
+
+\item Representation of Authority to Contribute: If You are
+  contributing original material as Open Game Content, You represent
+  that Your Contributions are Your original creation and/or You have
+  sufficient rights to grant the rights conveyed by this License.
+
+\item Notice of License Copyright: You must update the COPYRIGHT
+  NOTICE portion of this License to include the exact text of the
+  COPYRIGHT NOTICE of any Open Game Content You are copying, modifying
+  or distributing, and You must add the title, the copyright date,
+  and the copyright holder's name to the COPYRIGHT NOTICE of any
+  original Open Game Content you Distribute.
+
+\item Use of Product Identity: You agree not to Use any Product
+  Identity, including as an indication as to compatibility, except as
+  expressly licensed in another, independent Agreement with the owner
+  of each element of that Product Identity. You agree not to indicate
+  compatibility or co-adaptability with any Trademark or Registered
+  Trademark in conjunction with a work containing Open Game Content
+  except as expressly licensed in another, independent Agreement with
+  the owner of such Trademark or Registered Trademark. The use of any
+  Product Identity in Open Game Content does not constitute a
+  challenge to the ownership of that Product Identity. The owner of
+  any Product Identity used in Open Game Content shall retain all
+  rights, title and interest in and to that Product Identity.
+
+\item Identification: If you distribute Open Game Content You must
+  clearly indicate which portions of the work that you are
+  distributing are Open Game Content.
+
+\item Updating the License: Wizards or its designated Agents may
+  publish updated versions of this License. You may use any authorized
+  version of this License to copy, modify and distribute any Open Game
+  Content originally distributed under any version of this License.
+
+\item Copy of this License: You MUST include a copy of this License
+  with every copy of the Open Game Content You Distribute.
+
+\item Use of Contributor Credits: You may not market or advertise the
+  Open Game Content using the name of any Contributor unless You have
+  written permission from the Contributor to do so.
+
+\item Inability to Comply: If it is impossible for You to comply with
+  any of the terms of this License with respect to some or all of the
+  Open Game Content due to statute, judicial order, or governmental
+  regulation then You may not Use any Open Game Material so affected.
+
+\item Termination: This License will terminate automatically if You
+  fail to comply with all terms herein and fail to cure such breach
+  within 30 days of becoming aware of the breach. All sublicenses
+  shall survive the termination of this License.
+
+\item Reformation: If any provision of this License is held to be
+  unenforceable, such provision shall be reformed only to the extent
+  necessary to make it enforceable.
+
+\item COPYRIGHT NOTICE
+\newline
+Open Game License v 1.0 © 2000, Wizards of the Coast, Inc.
+\newline
+System Reference Document Copyright 2000, Wizards of the Coast, Inc.;
+Authors Jonathon Tweet, Monte Cook, Skip Williams, based on original
+material by E. Gary Gygax and Dave Arneson.
+\newline
+System Reference Document Copyright 2000-2003, Wizards of the Coast,
+Inc.; Authors Jonathan Tweet, Monte Cook, Skip Williams, Rich Baker,
+Andy Collins, David Noonan, Rich Redman, Bruce R. Cordell, John D.
+Rateliff, Thomas Reid, James Wyatt, based on original material by E.
+Gary Gygax and Dave Arneson.
+\newline
+Modern System Reference Document Copyright 2002-2004, Wizards of the
+Coast, Inc.; Authors Bill Slavicsek, Jeff Grubb, Rich Redman, Charles
+Ryan, Eric Cagle, David Noonan, Stan!, Christopher Perkins, Rodney
+Thompson, and JD Wiker, based on material by Jonathan Tweet, Monte
+Cook, Skip Williams, Richard Baker, Peter Adkison, Bruce R. Cordell,
+John Tynes, Andy Collins, and JD Wiker.
+\newline
+Castles \& Crusades: Players Handbook, Copyright 2004, Troll Lord
+Games; Authors Davis Chenault and Mac Golden.
+\newline
+Cave Cricket from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Authors Scott Greene and Clark Peterson, based on
+original material by Gary Gygax.
+\newline
+Crab, Monstrous from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Author Scott Greene, based on original material by Gary
+Gygax.
+\newline
+Fly, Giant from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Author Scott Greene, based on original material by Gary
+Gygax.
+\newline
+Golem, Wood from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Authors Scott Greene and Patrick Lawinger.
+\newline
+Kamadan from the Tome of Horrors, copyright 2002, Necromancer Games,
+Inc.; Author Scott Greene, based on original material by Nick Louth.
+\newline
+Rot Grub from the Tome of Horrors, Copyright 2002, Necromancer Games,
+Inc.; Authors Scott Greene and Clark Peterson, based on original
+material by Gary Gygax
+\newline
+\href{http://www.goblinoidgames.com/labyrinthlord.html}{Labyrinth
+  Lord}\textsuperscript{\texttrademark} Copyright 2007-2009, Daniel
+Proctor. Author Daniel Proctor.
+\newline
+\href{https://github.com/kensanata/halberdsnhelmets/tree/master/Hellebarden\%20und\%20Helme}{Hellebarden
+  und Helme} Copyright 2012--2014, Alex Schroeder. Author Alex
+Schroeder, Samuel Dennler.
+
+\end{enumerate}
+
+\noindent For purposes of this license, nothing is considered to be
+Product Identity in addition to anything covered in section 1, above.
+
+\end{fullwidth}
+
+
+\end{document}
+
+% Local Variables:
+% ispell-local-dictionary: "swiss"
+% End:
