@@ -1,0 +1,391 @@
+\documentclass[a4paper,twoside,notitlepage,openany]{tufte-handout}
+\usepackage[utf8]{inputenc}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+% Set up index
+\usepackage{makeidx}
+\makeindex
+
+% The following package makes prettier tables. We're all about the
+% bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better
+% spacing for units.
+\usepackage{units}
+
+% Bold and index keywords
+\newcommand{\key}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}
+  {\label{key:#2}\textbf{\index{#2}#2}}
+  {\label{key:#1}\textbf{\index{#1}#2}}}
+
+% Ordinals: This is the 2\nd of December. Or the 4\nth of July. Or
+% 3\rd place in a race.
+\usepackage{xspace}
+\newcommand\st{\textsuperscript{st}\xspace}
+\newcommand\nd{\textsuperscript{nd}\xspace}
+\newcommand\rd{\textsuperscript{rd}\xspace}
+\renewcommand\th{\textsuperscript{th}\xspace} % override þ
+
+% Clickable hyperlinks
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+
+\renewcommand{\labelitemi}{$-$} % use dash for items
+
+\title{Halberds \& Helmets: Clerics}
+\author{Alex Schroeder}
+% \date{}
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{abstract}
+\noindent Clerics are generally not available in my
+games.\marginnote[-1em]{There's a long discussion in German
+  \href{https://alexschroeder.ch/wiki/2016-01-17_Keine_Kleriker}{on my
+    blog}.}
+\end{abstract}
+
+\noindent\hyperref[sec:cleric]{Cleric}: you can fight (but not as well
+as a fighter) and you can work miracles granted to you by the gods
+(but your spells are not as powerful as a wizard’s spells)
+\marginnote[-3em]{\emph{What heresy infuriates you the most? When did
+    you first hear the divine messengers?}}
+
+\subsection{\index{Clerics}Clerics}
+\label{sec:cleric}
+
+\marginnote{
+\begin{tabular}{cc}
+Level & Experience Points \\
+1 & 0\\
+2 & 1'565\\
+3 & 3'125\\
+4 & 6'251\\
+5 & 12'501\\
+6 & 25'001\\
+7 & 50'001\\
+8 & 100'001\\
+9 & 200'001\\
+10 & 300'001\\
+\end{tabular}
+} You can fight (but not as well as a fighter) and you can work
+\hyperref[sec:miracles]{miracles} (but your miracles are not as
+powerfull as a magic user's spells).
+
+\smallskip
+\begin{tabular}{lcccccccccc}
+Armor Class & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+Level 1--3  & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+Level 4--5  & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 \\
+Level 6--8  & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 \\
+Level 9--10 & 16 & 15 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 
+\end{tabular}
+
+\medskip\noindent 
+
+\medskip
+\begin{tabular}{lcccccccccc}
+Saving      & Dragon Breath & Paralysis    & Death  & Rays  & Spells \\
+Throws      & Explosions   & Petrification & Poison & Wands & Miracles \\
+Level 1--4  & 16 & 14 & 11 & 12 & 15 \\
+Level 5--8  & 14 & 12 &  9 & 10 & 12 \\
+Level 9--10 & 12 & 10 &  7 &  8 &  9 \\
+\end{tabular}
+
+\medskip\noindent You may only use simple, bludgeoning wepons -- or the
+weapon ascribed to your god. This means: no magic swords!
+\marginnote[-1em]{Some clerics favor the weapon ascribed to their god.
+  This is optional. Here are some examples:
+
+\medskip
+\begin{tabular}{ll}
+\index{Orcus}Orcus & mace \\
+\index{Ishtar}Ishtar & sickle sword (kopesh) \\
+\index{Nergal}Nergal & battle axe \\
+\index{Freya}Freya & spear \\
+\index{Marduk}Marduk & club \\
+\index{Mitra}Mitra & hand axe \\
+\index{Set}Set & dagger \\
+\index{Hekate}Hekate & whip 
+\end{tabular}
+}
+
+\newthought{You can turn undead!}\index{Turn Undead}\index{Undead} You
+must raise your holy symbol so they may see it and loudly invoke your
+god. Each round, 2d6 hit dice worth of undead will be turned or
+destroyed. Your success depends on your level and luck.
+
+The following table shows, what number you need to roll using 2d6 in
+order to turn undead. ``D'' means the undead will be ``destroyed''
+instead of turned.
+
+\medskip
+\begin{tabular}{lcccccccccc}
+Cleric Level & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+Skeletons & 7+ & 5+ & 3+ & D & D & D & D & D & D & D \\
+Zombies   & 9+ & 7+ & 5+ & 3+ & D & D & D & D & D & D \\
+Ghouls    & 11+ & 9+ & 7+ & 5+ & 3+ & D & D & D & D & D \\
+Draugr    & -- & 11+ & 9+ & 7+ & 5+ & 3+ & D & D & D & D \\
+Wraiths   & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ & D & D & D \\
+Mummies   & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ & D & D \\
+Spectres  & -- & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ & D \\
+Vampires  & -- & -- & -- & -- & -- & 11+ & 9+ & 7+ & 5+ & 3+ \\
+\end{tabular}
+
+\newpage
+
+
+
+\section{\index{Miracles}Miracles}
+\label{sec:miracles}
+
+You can beg the gods for a \textbf{miracle} by raising your hands and
+praying or singing. The following table shows how your miracle working
+improves as you gain levels. You need no spell book. The following
+table shows you many miracles you can work per day, depending on your
+level.\marginnote{As you can see, miracles are very similar to spells
+  for magic users and elves. The key difference is that a cleric's
+  \key[Repertoire!Clerics]{repertoire} is determined by the god they
+  serve.}
+
+\medskip
+\begin{tabular}{cccccc}
+Level & 1\st circle & 2\nd circle & 3\rd circle & 4\th circle & 5\th circle \\
+1 & 1 & - & - & - & - \\
+2 & 2 & - & - & - & - \\
+3 & 2 & 1 & - & - & - \\
+4 & 3 & 2 & - & - & - \\
+5 & 3 & 2 & 1 & - & - \\
+6 & 3 & 3 & 2 & - & - \\
+7 & 4 & 3 & 2 & 1 & - \\
+8 & 4 & 3 & 3 & 2 & - \\
+9 & 4 & 4 & 3 & 2 & 1 \\
+10 & 5 & 4 & 3 & 3 & 2 \\
+\end{tabular}
+\marginnote{If you \textbf{anger the gods}, they may deprive you of
+  miracles. \emph{Pay attention to dreams and visions} and promise to
+  do better in order to regain your full power.}
+
+\medskip Your \textbf{reputation} with the gods determines the highest
+circle of miracles granted to you. As you begin the game with no
+reputation, you will not be able to work any miracles on your first
+adventure!
+
+Miracles \textbf{from the 4\th circle and up} are granted to you
+\emph{in person} by agents of your god -- a valkyrie, an angel, a
+devil, and so on.
+
+\newthought{Typical miracles} of the 1\st circle would be:
+
+\textbf{Detect Evil} will indicate which visible creatures within
+\emph{\unit[60]{ft}} are wishing you ill for
+\emph{\unit[1]{h}}.\marginnote{A trap is no creature and doesn't
+  ``wish you ill.''}
+
+\textbf{Lay on Hands} heals 1d6+1 damage \emph{or} removes paralysis.
+The opposite of that is \textbf{Pain} which causes 1d6+1 damage. In
+either case, the target needs to be touched. This does not require a
+roll to hit.
+
+\textbf{Detect Magic } makes all enchanted items, creatures and
+locations within \emph{\unit[60]{ft}} shine with a pale blue light for
+\emph{\unit[20]{min}}.\marginnote[-1em]{The pale blue light is visible
+  to all.}
+
+
+\clearpage
+
+\section*{License: Open Game License Version 1.0a}
+
+\begin{fullwidth}
+
+\fontsize{6.5pt}{7pt}\selectfont
+
+\textbf{Designation of Open Game Content}: The entire document is open
+game content. \textbf{Designation of Product Identity}: The names of
+contributors, the name of the website (``Campaign Wiki'') and the name
+of this site (``Halberds and Helmets'' as well as ``Hellebarden und
+Helme'') are product identity. The following text is the property of
+Wizards of the Coast, Inc. and is Copyright 2000 Wizards of the Coast,
+Inc (``Wizards''). All Rights Reserved.
+
+\begin{enumerate}
+
+\item Definitions: (a) ``Contributors'' means the copyright and/or
+  trademark owners who have contributed Open Game Content; (b)
+  ``Derivative Material'' means copyrighted material including
+  derivative works and translations (including into other computer
+  languages), potation, modification, correction, addition, extension,
+  upgrade, improvement, compilation, abridgment or other form in which
+  an existing work may be recast, transformed or adapted; (c)
+  ``Distribute'' means to reproduce, license, rent, lease, sell,
+  broadcast, publicly display, transmit or otherwise distribute; (d)
+  ``Open Game Content'' means the game mechanic and includes the
+  methods, procedures, processes and routines to the extent such
+  content does not embody the Product Identity and is an enhancement
+  over the prior art and any additional content clearly identified as
+  Open Game Content by the Contributor, and means any work covered by
+  this License, including translations and derivative works under
+  copyright law, but specifically excludes Product Identity. (e)
+  ``Product Identity'' means product and product line names, logos and
+  identifying marks including trade dress; artifacts; creatures
+  characters; stories, storylines, plots, thematic elements, dialogue,
+  incidents, language, artwork, symbols, designs, depictions,
+  likenesses, formats, poses, concepts, themes and graphic,
+  photographic and other visual or audio representations; names and
+  descriptions of characters, spells, enchantments, personalities,
+  teams, personas, likenesses and special abilities; places,
+  locations, environments, creatures, equipment, magical or
+  supernatural abilities or effects, logos, symbols, or graphic
+  designs; and any other trademark or registered trademark clearly
+  identified as Product identity by the owner of the Product Identity,
+  and which specifically excludes the Open Game Content; (f)
+  ``Trademark'' means the logos, names, mark, sign, motto, designs
+  that are used by a Contributor to identify itself or its products or
+  the associated products contributed to the Open Game License by the
+  Contributor (g) ``Use'', ``Used'' or ``Using'' means to use,
+  Distribute, copy, edit, format, modify, translate and otherwise
+  create Derivative Material of Open Game Content. (h) ``You'' or
+  ``Your'' means the licensee in terms of this agreement.
+
+\item The License: This License applies to any Open Game Content that
+  contains a notice indicating that the Open Game Content may only be
+  Used under and in terms of this License. You must affix such a
+  notice to any Open Game Content that you Use. No terms may be added
+  to or subtracted from this License except as described by the
+  License itself. No other terms or conditions may be applied to any
+  Open Game Content distributed using this License.
+
+\item Offer and Acceptance: By Using the Open Game Content You
+  indicate Your acceptance of the terms of this License.
+
+\item Grant and Consideration: In consideration for agreeing to use
+  this License, the Contributors grant You a perpetual, worldwide,
+  royalty-free, non-exclusive license with the exact terms of this
+  License to Use, the Open Game Content.
+
+\item Representation of Authority to Contribute: If You are
+  contributing original material as Open Game Content, You represent
+  that Your Contributions are Your original creation and/or You have
+  sufficient rights to grant the rights conveyed by this License.
+
+\item Notice of License Copyright: You must update the COPYRIGHT
+  NOTICE portion of this License to include the exact text of the
+  COPYRIGHT NOTICE of any Open Game Content You are copying, modifying
+  or distributing, and You must add the title, the copyright date,
+  and the copyright holder's name to the COPYRIGHT NOTICE of any
+  original Open Game Content you Distribute.
+
+\item Use of Product Identity: You agree not to Use any Product
+  Identity, including as an indication as to compatibility, except as
+  expressly licensed in another, independent Agreement with the owner
+  of each element of that Product Identity. You agree not to indicate
+  compatibility or co-adaptability with any Trademark or Registered
+  Trademark in conjunction with a work containing Open Game Content
+  except as expressly licensed in another, independent Agreement with
+  the owner of such Trademark or Registered Trademark. The use of any
+  Product Identity in Open Game Content does not constitute a
+  challenge to the ownership of that Product Identity. The owner of
+  any Product Identity used in Open Game Content shall retain all
+  rights, title and interest in and to that Product Identity.
+
+\item Identification: If you distribute Open Game Content You must
+  clearly indicate which portions of the work that you are
+  distributing are Open Game Content.
+
+\item Updating the License: Wizards or its designated Agents may
+  publish updated versions of this License. You may use any authorized
+  version of this License to copy, modify and distribute any Open Game
+  Content originally distributed under any version of this License.
+
+\item Copy of this License: You MUST include a copy of this License
+  with every copy of the Open Game Content You Distribute.
+
+\item Use of Contributor Credits: You may not market or advertise the
+  Open Game Content using the name of any Contributor unless You have
+  written permission from the Contributor to do so.
+
+\item Inability to Comply: If it is impossible for You to comply with
+  any of the terms of this License with respect to some or all of the
+  Open Game Content due to statute, judicial order, or governmental
+  regulation then You may not Use any Open Game Material so affected.
+
+\item Termination: This License will terminate automatically if You
+  fail to comply with all terms herein and fail to cure such breach
+  within 30 days of becoming aware of the breach. All sublicenses
+  shall survive the termination of this License.
+
+\item Reformation: If any provision of this License is held to be
+  unenforceable, such provision shall be reformed only to the extent
+  necessary to make it enforceable.
+
+\item COPYRIGHT NOTICE
+\newline
+Open Game License v 1.0 © 2000, Wizards of the Coast, Inc.
+\newline
+System Reference Document Copyright 2000, Wizards of the Coast, Inc.;
+Authors Jonathon Tweet, Monte Cook, Skip Williams, based on original
+material by E. Gary Gygax and Dave Arneson.
+\newline
+System Reference Document Copyright 2000-2003, Wizards of the Coast,
+Inc.; Authors Jonathan Tweet, Monte Cook, Skip Williams, Rich Baker,
+Andy Collins, David Noonan, Rich Redman, Bruce R. Cordell, John D.
+Rateliff, Thomas Reid, James Wyatt, based on original material by E.
+Gary Gygax and Dave Arneson.
+\newline
+Modern System Reference Document Copyright 2002-2004, Wizards of the
+Coast, Inc.; Authors Bill Slavicsek, Jeff Grubb, Rich Redman, Charles
+Ryan, Eric Cagle, David Noonan, Stan!, Christopher Perkins, Rodney
+Thompson, and JD Wiker, based on material by Jonathan Tweet, Monte
+Cook, Skip Williams, Richard Baker, Peter Adkison, Bruce R. Cordell,
+John Tynes, Andy Collins, and JD Wiker.
+\newline
+Castles \& Crusades: Players Handbook, Copyright 2004, Troll Lord
+Games; Authors Davis Chenault and Mac Golden.
+\newline
+Cave Cricket from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Authors Scott Greene and Clark Peterson, based on
+original material by Gary Gygax.
+\newline
+Crab, Monstrous from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Author Scott Greene, based on original material by Gary
+Gygax.
+\newline
+Fly, Giant from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Author Scott Greene, based on original material by Gary
+Gygax.
+\newline
+Golem, Wood from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Authors Scott Greene and Patrick Lawinger.
+\newline
+Kamadan from the Tome of Horrors, copyright 2002, Necromancer Games,
+Inc.; Author Scott Greene, based on original material by Nick Louth.
+\newline
+Rot Grub from the Tome of Horrors, Copyright 2002, Necromancer Games,
+Inc.; Authors Scott Greene and Clark Peterson, based on original
+material by Gary Gygax
+\newline
+\href{http://www.goblinoidgames.com/labyrinthlord.html}{Labyrinth
+  Lord}\textsuperscript{\texttrademark} Copyright 2007-2009, Daniel
+Proctor. Author Daniel Proctor.
+\newline
+\href{https://github.com/kensanata/halberdsnhelmets/tree/master/Hellebarden\%20und\%20Helme}{Hellebarden
+  und Helme} Copyright 2012--2014, Alex Schroeder. Author Alex
+Schroeder, Samuel Dennler.
+
+\end{enumerate}
+
+\noindent For purposes of this license, nothing is considered to be
+Product Identity in addition to anything covered in section 1, above.
+
+\end{fullwidth}
+
+
+\end{document}
+
+% Local Variables:
+% ispell-local-dictionary: "swiss"
+% End:
