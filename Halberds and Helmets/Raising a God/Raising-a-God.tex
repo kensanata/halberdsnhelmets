@@ -4,6 +4,7 @@
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{units}
 
 % list only sections for the table of contents
 \setcounter{tocdepth}{1}
@@ -20,9 +21,17 @@
   \tableofcontents
 \end{titlepage} 
 
+% (query-replace-regexp "\\b\\([A-Z][A-Z]\\) \\b" "\\1~")
+% AC 5
+% (query-replace-regexp "\\([0-9]+\\)\\(h\\|min\\|s\\|ft\\)" "\\\\unit[\\1]{\\2}")
+% 1h 30ft
+
 \section{Introduction}
 
-This is a mini-campaign for players in their mid levels, levels five to ten. Player characters start looking for a place to build their castles and tower, thieves look to expand their network of spies and thieves, clerics start meddling in the affairs of the gods.
+This is a mini-campaign for players in their mid levels, levels five
+to ten. Player characters start looking for a place to build their
+castles and tower, thieves look to expand their network of spies and
+thieves, clerics start meddling in the affairs of the gods.
 
 Here are some of long term goals for your players:
 
@@ -35,35 +44,88 @@ Here are some of long term goals for your players:
 
 \section{Gods}
 
-There is a chance that the gods will send one of their agents to help if their name is called. In order to succeed, players need to keep track of \textbf{a score for each god} they care about. As characters do things to honor or spite the various gods, their score goes up. This could be about saving or killing their followers, building altars and temple in their name, defiling their altars or acting on visions sent by them. This score is the percent chance that the god will act when their name is called. Whether the agents appearing will in fact help the characters depends on their past actions. An evil demon lord like Set might still send a naga to help a paladin of Mitra, hoping to mess with them.
+There is a chance that the gods will send one of their agents to help
+if their name is called. In order to succeed, players need to keep
+track of \textbf{a score for each god} they care about. As characters
+do things to honor or spite the various gods, their score goes up.
+This could be about saving or killing their followers, building altars
+and temple in their name, defiling their altars or acting on visions
+sent by them. This score is the percent chance that the god will act
+when their name is called. Whether the agents appearing will in fact
+help the characters depends on their past actions. An evil demon lord
+like Set might still send a naga to help a paladin of Mitra, hoping to
+mess with them.
 
-When paladins and clerics cast \textbf{spells of level four and higher}, the spell effect usually involves the appearance of such an agent, and an opportunity for some discourse.
+When paladins and clerics cast \textbf{spells of level four and
+  higher}, the spell effect usually involves the appearance of such an
+agent, and an opportunity for some discourse.
 
-\textbf{Freya} is the goddess of winter, of spring, of fertility, of grain, of war, of cats and boars, of magic. She leads the valkyries and collects half the slain in battle. These dine with her in Sessrúmnir, her hall in Asgard.
+\textbf{Freya} is the goddess of winter, of spring, of fertility, of
+grain, of war, of cats and boars, of magic. She leads the valkyries
+and collects half the slain in battle. These dine with her in
+Sessrúmnir, her hall in Asgard.
 
-\textbf{Odin} is the god of wisdom, of magic and poetry, of war, of eagles and ravens, of runes, of wanderers. He wields a magic spear, he raises the dead, he rides an eight legged horse called Draupnir. The other half of the slain in battle dine with him in Valhalla, his hall in Asgard.
+\textbf{Odin} is the god of wisdom, of magic and poetry, of war, of
+eagles and ravens, of runes, of wanderers. He wields a magic spear, he
+raises the dead, he rides an eight legged horse called Draupnir. The
+other half of the slain in battle dine with him in Valhalla, his hall
+in Asgard.
 
-In times of need, both of them will send a \textbf{valkyrie} named \textit{War}, \textit{Mercy} \textit{Spear}, \textit{Cruel} or \textit{Fight}: HD 6 AC 2 1d8 \textit{sword+3} MV 18 ML 12 XP 820, flying, only harmed by magic or magic weapons. The swords of valkyries are bright swords of light. When swinging such a sword, the wielder is compelled to shout for blood and glory at the top of their voice. Also, when allies are fighting, the owner of such a sword is compelled to draw it and join this melee. When resisting such a compel for the third time, the sword looses its magic. The owner is considered unfit to wield it.
+In times of need, both of them will send a \textbf{valkyrie} named
+\textit{War}, \textit{Mercy} \textit{Spear}, \textit{Cruel} or
+\textit{Fight}: HD~6 AC~2 1d8 \textit{sword+3} MV~18 ML~12 XP~820,
+flying, only harmed by magic or magic weapons. The swords of valkyries
+are bright swords of light. When swinging such a sword, the wielder is
+compelled to shout for blood and glory at the top of their voice.
+Also, when allies are fighting, the owner of such a sword is compelled
+to draw it and join this melee. When resisting such a compel for the
+third time, the sword looses its magic. The owner is considered unfit
+to wield it.
 
-\textbf{Loki} is the god of lies, of deceit, of misdeeds, of excuses and explanations, of looking the other way, of tricksters, thieves and shape changers, a friend of giants, the innocently accused, the misunderstood and the innocent.
+\textbf{Loki} is the god of lies, of deceit, of misdeeds, of excuses
+and explanations, of looking the other way, of tricksters, thieves and
+shape changers, a friend of giants, the innocently accused, the
+misunderstood and the innocent.
 
-In times of need, he might send a nameless \textbf{shape changer}: HD 4 AC 5 1d12 MV 9 ML 10 XP 190, \textit{polymorph} at will, immune to \textit{sleep} and \textit{charms}. Clearly, mostly useful when in need of deception.
+In times of need, he might send a nameless \textbf{shape changer}: HD
+4 AC~5 1d12 MV~9 ML~10 XP~190, \textit{polymorph} at will, immune to
+\textit{sleep} and \textit{charms}. Clearly, mostly useful when in
+need of deception.
 
-\textbf{Mitra} is the goddess of law, of fire, of bulls, of contracts, of bonds, the swearing of oaths, of honesty and truth, of loyalty and sacrifice for the community. 
+\textbf{Mitra} is the goddess of law, of fire, of bulls, of contracts,
+of bonds, the swearing of oaths, of honesty and truth, of loyalty and
+sacrifice for the community.
 
-In times of need, she might send a \textbf{minotaur} named \textit{Silence}, \textit{Calm}, \textit{Truth Teller} or \textit{Spirit Guide}: HD 6 AC 6 1d6/1d6 MV 12 ML 12 XP 820, \textit{mesmerize} any listeners at will (listeners must save vs. spells or stop hostilities speak nothing but the truth), immune to \textit{sleep} and \textit{charms}.
+In times of need, she might send a \textbf{minotaur} named
+\textit{Silence}, \textit{Calm}, \textit{Truth Teller} or
+\textit{Spirit Guide}: HD~6 AC~6 1d6/1d6 MV~12 ML~12 XP~820,
+\textit{mesmerize} any listeners at will (listeners must save vs.
+spells or stop hostilities speak nothing but the truth), immune to
+\textit{sleep} and \textit{charms}.
 
-\textbf{Set} is the demon lord of snakes and crocodiles, of assassins, of revenge, of spies and diplomats, of poison makers, of death traps, of hypnotists and mind benders.
+\textbf{Set} is the demon lord of snakes and crocodiles, of assassins,
+of revenge, of spies and diplomats, of poison makers, of death traps,
+of hypnotists and mind benders.
 
-In times of need he will send a \textbf{naga} named \textit{Sweet Stab}, \textit{Revenge}, \textit{Crocodile Tears} or \textit{Coral Death}: HD 9 AC 7 1d8 \textit{poison} MV 6 ML 12 XP 2400, \textit{fireball} (7d6) 3/day, \textit{charm person} at will, only harmed by magic or magic weapons.
+In times of need he will send a \textbf{naga} named \textit{Sweet
+  Stab}, \textit{Revenge}, \textit{Crocodile Tears} or \textit{Coral
+  Death}: HD~9 AC~7 1d8 \textit{poison} MV~6 ML~12 XP~2400,
+\textit{fireball} (7d6) 3/day, \textit{charm person} at will, only
+harmed by magic or magic weapons.
 
-\textbf{Pazuzu} is the demon lord of pestilence, of miscarriage, of famine and disease, of crows and vultures, of temptation and betrayal.
+\textbf{Pazuzu} is the demon lord of pestilence, of miscarriage, of
+famine and disease, of crows and vultures, of temptation and betrayal.
 
-In times of need he will send a \textbf{vulture demon} named \textit{Gangrene}, \textit{Pestilence}, \textit{Corpse Eater} or \textit{Baby Killer}: HD 8+1 AC 5 1d4/1d4/1d6/1d6/1d8 MV 18 ML 11 XP 2420, flying, only harmed by magic or magic weapons.
+In times of need he will send a \textbf{vulture demon} named
+\textit{Gangrene}, \textit{Pestilence}, \textit{Corpse Eater} or
+\textit{Baby Killer}: HD~8+1 AC~5 1d4/1d4/1d6/1d6/1d8 MV~18 ML~11 XP
+2420, flying, only harmed by magic or magic weapons.
 
 \section{Astral Sea}
 
-The Astral Sea is an air filled plane, black and silent. It can be sailed by flying ships. There are many \textit{gates} in the Astral Sea, connecting it to many other planes.
+The Astral Sea is an air filled plane, black and silent. It can be
+sailed by flying ships. There are many \textit{gates} in the Astral
+Sea, connecting it to many other planes.
 
 \begin{figure*}
   \centering
@@ -73,27 +135,32 @@ The Astral Sea is an air filled plane, black and silent. It can be sailed by fly
 \subsection{Rumors}
 
 \begin{itemize}
-\item Asteroids fly through the darkness, their caverns and craters filled with vampires and ghouls
+\item Asteroids fly through the darkness, their caverns and craters
+  filled with vampires and ghouls
 \item There are islands bearing life floating in the Astral Sea
 \item All life clings to \textit{portals} of one sort or another
-\item Perhaps light and warmth spills over from a plane of eternal fire such as Muspelheim, or from glowing plants or stones
-\item There are people who can summon and control \textit{astral whales} and \textit{sky squids}
+\item Perhaps light and warmth spills over from a plane of eternal
+  fire such as Muspelheim, or from glowing plants or stones
+\item There are people who can summon and control \textit{astral
+  whales} and \textit{sky squids}
 \end{itemize}
 
 \subsection{Encounters}
 
-With a flying ship, travel from one hex to the next takes about a day. There's a 1 in 6 chance per day of random ship encounters. Roll 1d6:
+With a flying ship, travel from one hex to the next takes about a day.
+There's a 1 in 6 chance per day of random ship encounters. Roll 1d6:
 
 \begin{enumerate}
 \item monkeyman caravel
 \item squidman nautilus
 \item eelman centipede
-\item vampire deathrock 
 \item void pirate pike
+\item vampire deathrock 
 \item sharkman hammer
 \end{enumerate}
 
-If there is no random encounter, there are still harmless natural encounters. Roll 1d4:
+If there is no random encounter, there are still harmless natural
+encounters. Roll 1d4:
 
 \begin{enumerate}
 \item astral whales
@@ -106,62 +173,150 @@ If there is no random encounter, there are still harmless natural encounters. Ro
 
 \subsection{Ship Combat}
 
-The \textit{Labyrinth Lord} rules cover ship combat. The \textit{Spelljammer} rules have even more ship combat rules. Here's a simple alternative. Ships have hit points and armor class. When a \textbf{catapult} is manned by 4 crew, it takes four rounds to reload (\textit{rate of fire} is 5), it attacks as a fighter level 4 and it does 3d6 damage. Use one roll to attack the ship and a target person visible on deck, if any. If the roll hits, apply damage. If there is a second target person nearby, it is automatically targeted as well.
+The \textit{Labyrinth Lord} rules cover ship combat. The
+\textit{Spelljammer} rules have even more ship combat rules. Here's a
+simple alternative. Ships have hit points and armor class. When a
+\textbf{catapult} is manned by 4 crew, it takes four rounds to reload
+(\textit{rate of fire} is 5), it attacks as a fighter level 4 and it
+does 3d6 damage. Use one roll to attack the ship and a target person
+visible on deck, if any. If the roll hits, apply damage. If there is a
+second target person nearby, it is automatically targeted as well.
 
-When a ship is brought to zero hit points and every time it is hit thereafter it takes critical damage. Roll 1d8:
+When a ship is brought to zero hit points and every time it is hit
+thereafter it takes critical damage. Roll 1d8:
 
 \begin{enumerate}
 \item spectacular explosion, all is gone, everybody takes an extra 5d6
-\item slow motion breaking up of the ship, everything is gone but the crew is unharmed
-\item ship breaks into several pieces, everything is broken but lifeboats or the like can be fixed an hour
-\item a disabling hit, immobilizing the ship, all infrastructure breaks down, no more catapult use
-\item fire breaks out and spreads unless five crew deal with it for half an hour
-\item a gaping hole in the hull immobilizes the ship and provides a extra ingress for boarders
-\item a crippling shot immobilizes the ship, taking down mast and rigging, destroying oars and the like
-\item the hit reduces the ship's speed as a mast, sail or some oars are taken out; no fleeing from the scene
+\item slow motion breaking up of the ship, everything is gone but the
+  crew is unharmed
+\item ship breaks into several pieces, everything is broken but
+  lifeboats or the like can be fixed an hour
+\item a disabling hit, immobilizing the ship, all infrastructure
+  breaks down, no more catapult use
+\item fire breaks out and spreads unless five crew deal with it for
+  half an hour
+\item a gaping hole in the hull immobilizes the ship and provides a
+  extra ingress for boarders
+\item a crippling shot immobilizes the ship, taking down mast and
+  rigging, destroying oars and the like
+\item the hit reduces the ship's speed as a mast, sail or some oars
+  are taken out; no fleeing from the scene
 \end{enumerate}
 
-\textbf{When a ship tries to run}, roll 2d6, +1 if the fleeing ship is significantly smaller than the pursuing ship. On a 10+, you get away because of some lucky shots discouraging your enemies, or because you dove into an asteroid field, or because you managed to make it into a nebula. On a 7--9, you get away but the ship takes damage necessitating a lengthy overhaul in a shipyard. Perhaps you smashed into some asteroids or you took a few hits from parting shots. On a 6+, you did not make it. Fight to the bitter end or surrender now.
+\textbf{When a ship tries to run}, roll 2d6, +1 if the fleeing ship is
+significantly smaller than the pursuing ship. On a 10+, you get away
+because of some lucky shots discouraging your enemies, or because you
+dove into an asteroid field, or because you managed to make it into a
+nebula. On a 7--9, you get away but the ship takes damage
+necessitating a lengthy overhaul in a shipyard. Perhaps you smashed
+into some asteroids or you took a few hits from parting shots. On a
+6+, you did not make it. Fight to the bitter end or surrender now.
 
 \subsection{Monkeyman Caravel}
 
-"Monkeymen" is what other people call humans – humanoids with monkey heads. A caravel is a small trading ship made of wood with a single catapult and 10 crew. HP 20 AC 9 3d8.
+"Monkeymen" is what other people call humans – humanoids with monkey
+heads. A caravel is a small trading ship made of wood with a single
+catapult and 10 crew. HP~20 AC~9 3d8.
 
-The prize usually consists of ten tons of pickled lotus flesh, wooden planks, grains and wine barrels, cactus figs, fungus lanterns, or some other produce worth 1d4 × 10,000 gold and the ship itself is worth another 10,000 gold. Clearly, being a pirate is lucrative.
+The prize usually consists of ten tons of pickled lotus flesh, wooden
+planks, grains and wine barrels, cactus figs, fungus lanterns, or some
+other produce worth 1d4 × 10,000 gold and the ship itself is worth
+another 10,000 gold. Clearly, being a pirate is lucrative.
 
 \subsection{Squidman Nautilus}
 
-This is a slaver ship built atop a trained nautilus with two mounted catapults. The crew consists of squidmen, charmed slaves manning two catapults and intelligent giant spiders. The shell provides excellent protection. HP 35 AC 2 3d8/3d8.
+This is a slaver ship built atop a trained nautilus with two mounted
+catapults. The crew consists of squidmen, charmed slaves manning two
+catapults and intelligent giant spiders. The shell provides excellent
+protection. HP~35 AC~2 3d8/3d8.
 
-The nautilus' ten \textbf{tentacles} are used to pick up victims and deliver them into the slave hold. Each tentacle acts as a separate creature. HD 1 AC 2 1d4 MV 3 ML 10 XP 13; when hit, save vs. poison or be \textit{paralyzed} for 10min.
+The nautilus' ten \textbf{tentacles} are used to pick up victims and
+deliver them into the slave hold. Each tentacle acts as a separate
+creature. HD~1 AC~2 1d4 MV~3 ML~10 XP~13; when hit, save vs. poison or
+be \textit{paralyzed} for \unit[10]{min}.
 
-The five \textbf{squidmen} have terrible psi powers but they are cowards. HD 7+1 AC 8 1d6 F7 MV 12 ML 6 XP 1300; \textit{mind blast} at will stuns anybody in a cone 60ft long unless they save vs. paralysis; \textit{charm person} at will to make less intelligent slaves docile and cooperative for many weeks unless they save vs. spells; \textit{read thoughts} lets them read any thoughts within 60ft.
+The five \textbf{squidmen} have terrible psi powers but they are
+cowards. HD~7+1 AC~8 1d6 F7 MV~12 ML~6 XP~1300; \textit{mind blast} at
+will stuns anybody they can see within \unit[60]{ft} unless they save
+vs. paralysis; \textit{charm person} at will to make slaves docile
+unless they save vs. spells; \textit{read thoughts} lets them read any
+thoughts within \unit[60]{ft}.
 
-The fifteen \textbf{slaves} are humans manning the catapults and repairing damage. HD 1 AC 9 1d6 F1 MV 12 ML 6 XP 10.
+The fifteen \textbf{slaves} are humans manning the catapults and
+repairing damage. HD~1 AC~9 1d6 F1 MV~12 ML~6 XP~10.
 
-The ten \textbf{giant spiders} trained to paralyze victims and drag them back to their masters. HD 4+1 AC 5 1d8 F2 MV 12 ML 8 XP 215; when bitten, save vs. paralysis or drop into a death-like trance for 6h; they can jump for 20ft and get +1 to hit when they do. They speak of hunting and feeding.
+The ten \textbf{giant spiders} trained to paralyze victims and drag
+them back to their masters. HD~4+1 AC~5 1d8 F2 MV~12 ML~8 XP~215; when
+bitten, save vs. paralysis or drop into a death-like trance for \unit[6]{h};
+they can jump for \unit[20]{ft} and get +1 to hit when they do. They speak of
+hunting and feeding.
 
-There is a 1 in 6 chance that this slaver ship is actually on the way back to Hinia Oot and its hold is filled with fifty \textbf{slaves}. As these would be sold for 25,000 gold, freeing them would be worth as many XP. The ship itself is worth 35,000 gold.
+There is a 1 in 6 chance that this slaver ship is actually on the way
+back to Hinia Oot and its hold is filled with fifty \textbf{slaves}.
+As these would be sold for 25,000 gold, freeing them would be worth as
+many XP. The ship itself is worth 35,000 gold.
 
 \subsubsection{Eelman Centipede}
 
-This is also a slaver ship built into what looks like a gargantuan centipede. The crew consists of eelmen manning three catapults or riding their giant dream beetles. The centipede's exoskeleton provides good protection. HP 50 AC 3 3d8/3d8/3d8.
+This is also a slaver ship built into what looks like a gargantuan
+centipede. The crew consists of eelmen manning three catapults or
+riding their giant dream beetles. The centipede's exoskeleton provides
+good protection. HP~50 AC~3 3d8/3d8/3d8.
 
-The twenty \textbf{eelmen} are a bit like plum colored, eight legged morays with two skinny arms and a huge teeth filled mouth, armed with a spear: HD~4 AC~7 1d6 F4 MV~9 ML~10 XP~135.
+The twenty \textbf{eelmen} are a bit like plum colored, eight legged
+morays with two skinny arms and a huge teeth filled mouth, armed with
+a spear: HD~4 AC~7 1d6 F4 MV~9 ML~10 XP~135.
 
-The eel men are cowards and fear combat, but they have each tamed ten \textbf{giant dream beetles} with iridescent cobalt blue wings: HD~4 AC~3 2d6 F2 MV~6 ML~9 XP~135. Whenever the beetles move, their wings \textit{bedazzle} anybody who sees them: save vs. paralysis or spend your next round standing and drooling. The eel men have a \textit{poison stinger} they'll use on bedazzled foes: it causes paralysis for 1h, no save. Closing your eyes avoids bedazzlement gives -4 to hit.
+The eel men are cowards and fear combat, but they have each tamed ten
+\textbf{giant dream beetles} with iridescent cobalt blue wings: HD~4
+AC~3 2d6 F2 MV~6 ML~9 XP~135. Whenever the beetles move, their wings
+\textit{bedazzle} anybody who sees them: save vs. paralysis or spend
+your next round standing and drooling. The eel men have a
+\textit{poison stinger} they'll use on bedazzled foes: it causes
+paralysis for \unit[1]{h}, no save. Closing your eyes avoids bedazzlement gives
+-4 to hit.
 
-There are special polarized goggles made by sharkmen that prevent bedazzlement without giving you penalties, but they keep this secret to themselves. It's why the sharkmen are never attacked by eelmen, though.
+There are special polarized goggles made by sharkmen that prevent
+bedazzlement without giving you penalties, but they keep this secret
+to themselves. It's why the sharkmen are never attacked by eelmen,
+though.
 
-There is a 1 in 6 chance that this slaver ship is actually on the way to Hinia Oot and its hold is filled with fifty \textbf{slaves}. As these would be sold for 25,000 gold, freeing them would be worth as many XP. The ship itself is worth 50,000 gold.
-
-\subsubsection{Deathrock with Vampires}
-
-...
+There is a 1 in 6 chance that this slaver ship is actually on the way
+to Hinia Oot and its hold is filled with fifty \textbf{slaves}. As
+these would be sold for 25,000 gold, freeing them would be worth as
+many XP. The ship itself is worth 50,000 gold.
 
 \subsubsection{Void Pirate Pike}
 
-...
+A ship shaped like a fish with an open deck, no catapults and twenty
+greedy pirate \textbf{gray elves} eager to surprise you with their
+spells: hp~1d6 AC~5 1d6 E1 MV~12 ML~8 XP~6; \emph{magic missile}
+1/day. Their \textbf{invisible captain}: hp~3d6 AC~5 1d6 E3 MV~12 ML~8
+XP~65; \emph{magic missile}, \emph{detect magic}, \emph{invisible}.
+
+They usually kill the crew or let them run. They're not really
+involved in the slave trade. They're interested in bringing powerful
+characters to their ruler who'll try to set them up against Susrael.
+
+The gray elves are out for loot. The ship is worth 20,000 gold.
+
+\subsubsection{Deathrock with Vampires}
+
+Hurtling through the Astral Sea at slow speeds, the undead wait,
+immobile. Should the deathrock ever crash on to a living world,
+undeath grows. These black planets are easy to avoid if you're on a
+ship and using a spy glass. By the time the unaided eye sees the
+packed ghouls eager to launch themselves at you from the rock tumbling
+towards you with their catapults, it is already too late.
+
+A typical deathrock has about 500 *ghouls*. HD~2 AC~6 1d4/1d4/1d4 F2
+ML~9 MV~9 XP~47; when they hit, save vs.~paralysis unless you're an
+elf or be paralyed for \unit[1]{h}; the slain will rise as ghouls.
+These are often ruled by about a dozen \textbf{vampires}. HD~9 AC~2
+1d10 MV~18 ML~11 XP~7,300; immune to immune to \textit{sleep},
+\textit{hold}, \textit{charms} and normal weapons; their hit trains
+\emph{two} levels; gaseous form at will; shape change into a large bat
+at will; charming gaze at will; the slain will rise as vampire slaves.
 
 \subsubsection{Sharkman Hammer}
 
@@ -175,21 +330,80 @@ There is a 1 in 6 chance that this slaver ship is actually on the way to Hinia O
 
 \subsubsection{Astral Whales}
 
-Astral whales are dream singers the size of cities. Their thoughts overwhelm all others. Their bodies are like cliffs a thousand feet high. To hunt them is to use harpoons forged in hell according to plans devised by titans of war. When you're too close, it's like a religious experience. If you need to expand the campaign in an unexpected direction, roll 1d6 and be prepared to spend some time developing the idea for next session:
+Astral whales are dream singers the size of cities. Their thoughts
+overwhelm all others. Their bodies are like cliffs a thousand feet
+high. To hunt them is to use harpoons forged in hell according to
+plans devised by titans of war. When you're too close, it's like a
+religious experience. If you need to expand the campaign in an
+unexpected direction, roll 1d6 and be prepared to spend some time
+developing the idea for next session:
 
 \begin{enumerate}
-\item your ship is swallowed by the whale; there is a \textbf{city full of snail people} bathed in mauve light in here but their queen \textit{Patient Seer of the Seven Directions} is weak and a triumvirate of martial snail men is trying to change the course of the whale's dive in order to swallow and assimilate a large city like Genova; these three powerful snails are called \textit{Acid of Perfection}, \textit{Eternal Radula of the Mind} and \textit{To Crawl Is To Fly}
+\item your ship is swallowed by the whale; there is a \textbf{city
+  full of snail people} bathed in mauve light in here but their queen
+  \textit{Patient Seer of the Seven Directions} is weak and a
+  triumvirate of martial snail men is trying to change the course of
+  the whale's dive in order to swallow and assimilate a large city
+  like Genova; these three powerful snails are called \textit{Acid of
+    Perfection}, \textit{Eternal Radula of the Mind} and \textit{To
+    Crawl Is To Fly}
 
 
-\item as you gape in wonder, the eddies of the whale dream take hold of your ship and pull you over \textbf{to the other side}, a parallel \textit{Purple Sea}, much like a \textit{Shadow Land}, but colorful, of lonely pink skies and atomic tangerine desert worlds, where sorcerer kings have drained all life and nothing but their dreams remain, and if you want you can find them still, their pyramids and mummies, their desiccated servants and buried boats, and if you bring them peace their dreams will end and the Purple Sea will fade, the whale will die and you might return to where you came from
+\item as you gape in wonder, the eddies of the whale dream take hold
+  of your ship and pull you over \textbf{to the other side}, a
+  parallel \textit{Purple Sea}, much like a \textit{Shadow Land}, but
+  colorful, of lonely pink skies and atomic tangerine desert worlds,
+  where sorcerer kings have drained all life and nothing but their
+  dreams remain, and if you want you can find them still, their
+  pyramids and mummies, their desiccated servants and buried boats,
+  and if you bring them peace their dreams will end and the Purple Sea
+  will fade, the whale will die and you might return to where you came
+  from
 
-\item a trail of colors erupt behind the whale, miles and miles of chartreuse, of mandarine, of isabelline, of turquoise, of carmine, an \textbf{explosion of colors}, of plants gushing forth, a strip of land being drawn here from the whale's dream, the \textit{Bridge of Dreams} and giving birth to the \textit{Bean People}, green humanoids that grow out of your ship's wooden planks over the coming hours, \textit{charming} you and all the crew unless they save vs. spells, spreading from your ship to others, a tireless appearance of messengers of peace and understanding for the next two months with names like \textit{Harmless}, \textit{Peace}, \textit{Happiness} or \textit{Soft Words}, friendly and caring, no matter how often you kill them
+\item a trail of colors erupt behind the whale, miles and miles of
+  chartreuse, of mandarine, of isabelline, of turquoise, of carmine,
+  an \textbf{explosion of colors}, of plants gushing forth, a strip of
+  land being drawn here from the whale's dream, the \textit{Bridge of
+    Dreams} and giving birth to the \textit{Bean People}, green
+  humanoids that grow out of your ship's wooden planks over the coming
+  hours, \textit{charming} you and all the crew unless they save vs.
+  spells, spreading from your ship to others, a tireless appearance of
+  messengers of peace and understanding for the next two months with
+  names like \textit{Harmless}, \textit{Peace}, \textit{Happiness} or
+  \textit{Soft Words}, friendly and caring, no matter how often you
+  kill them
 
-\item a \textbf{titan of war} about 200ft high is using his \textit{sun lance} to kill the whale as you watch; the pain and fear of the dying whale transport you into the titan's nightmare of fire where rivers of lava rain down from above and glowing ghost giants with spears a mile long destroy cities and their dread gaze vaporizes all life—and you know that one of them is the titan of war you just saw and if only you could speak to it, to the war titan \textit{Rain of Fire}, this madness could end; the alternative is to die with the whale, unable to leave his dream maelstrom
+\item a \textbf{titan of war} about \unit[200]{ft} high is using his
+  \textit{sun lance} to kill the whale as you watch; the pain and fear
+  of the dying whale transport you into the titan's nightmare of fire
+  where rivers of lava rain down from above and glowing ghost giants
+  with spears a mile long destroy cities and their dread gaze
+  vaporizes all life—and you know that one of them is the titan of war
+  you just saw and if only you could speak to it, to the war titan
+  \textit{Rain of Fire}, this madness could end; the alternative is to
+  die with the whale, unable to leave his dream maelstrom
 
-\item this whale has been used by a \textbf{lich lord} for a ritual of divine transcendence; the entire back of the whale is a gaping wound, a flesh pit 500ft wide, trailing black fumes boiling up from burning cauldrons of whale fat extracted from the living flesh by brass pipes and rusty iron needles, wraith fragments of whale soul screaming in madness and pain, going after any living being, begging for help, demanding help, spreading madness; and what god is being cursed by \textit{Father Bone Forest}? who is being consumed and killed by this dread ritual?
+\item this whale has been used by a \textbf{lich lord} for a ritual of
+  divine transcendence; the entire back of the whale is a gaping
+  wound, a flesh pit \unit[500]{ft} wide, trailing black fumes boiling up from
+  burning cauldrons of whale fat extracted from the living flesh by
+  brass pipes and rusty iron needles, wraith fragments of whale soul
+  screaming in madness and pain, going after any living being, begging
+  for help, demanding help, spreading madness; and what god is being
+  cursed by \textit{Father Bone Forest}? who is being consumed and
+  killed by this dread ritual?
 
-\item waves of intense hate and love and fear and joy wash over you and suddenly you \textit{understand} and you \textit{know}, for this whale is a \textbf{god} and you have been chosen, all of you, this ship of yours, you are the chosen ones, the \textit{whale people}, followers of \textit{Deep Thought}, no save; if you decide to abandon your new faith, you'll be a heretic and you know it; and the people need you—the whale will use you to transform society and right all the wrongs, create a brotherhood of sophonts, a society of friends; boons granted include an \textit{aura of peace}, a strong \textit{empathy} for all living things and \textit{words of wisdom} to calm all angry spirits
+\item waves of intense hate and love and fear and joy wash over you
+  and suddenly you \textit{understand} and you \textit{know}, for this
+  whale is a \textbf{god} and you have been chosen, all of you, this
+  ship of yours, you are the chosen ones, the \textit{whale people},
+  followers of \textit{Deep Thought}, no save; if you decide to
+  abandon your new faith, you'll be a heretic and you know it; and the
+  people need you—the whale will use you to transform society and
+  right all the wrongs, create a brotherhood of sophonts, a society of
+  friends; boons granted include an \textit{aura of peace}, a strong
+  \textit{empathy} for all living things and \textit{words of wisdom}
+  to calm all angry spirits
 \end{enumerate}
 
 \begin{figure}[h]
@@ -198,3 +412,8 @@ Astral whales are dream singers the size of cities. Their thoughts overwhelm all
 \end{figure}
 
 \end{document}
+
+% Local Variables:
+%   eval: (flyspell-mode 1)
+%   ispell-local-dictionary: "american"
+% End:
