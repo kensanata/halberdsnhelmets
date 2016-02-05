@@ -9,6 +9,8 @@ Hellebarden und Helme/wiki/
 *.log
 *.out
 *.toc
+*.bbl
+*.blg
 *~
 sample-*
 Halberds and Helmets/To Rob A Witch/To Rob A Witch.pdf
