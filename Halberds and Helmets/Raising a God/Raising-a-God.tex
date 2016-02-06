@@ -23,8 +23,10 @@
 
 % (query-replace-regexp "\\b\\([A-Z][A-Z]\\) \\b" "\\1~")
 % AC 5
-% (query-replace-regexp "\\([0-9]+\\)\\(h\\|min\\|s\\|ft\\)" "\\\\unit[\\1]{\\2}")
-% 1h 30ft
+% (query-replace-regexp "\\([0-9,]+\\) ?\\(h\\|min\\|s\\|ft\\|gold\\)\\b" "\\\\unit[\\1]{\\2}")
+% 1h 30ft 10 gold
+% (query-replace-regexp "\\([0-9]\\{1,3\\}\\)\\([0-9]\\{3\\}\\)\\b" "\\1,\\2")
+% 100 1000 10000 100000 but these require multiple calls: 1000000 10000000 
 
 \section{Introduction}
 
@@ -109,7 +111,7 @@ of hypnotists and mind benders.
 
 In times of need he will send a \textbf{naga} named \textit{Sweet
   Stab}, \textit{Revenge}, \textit{Crocodile Tears} or \textit{Coral
-  Death}: HD~9 AC~7 1d8 \textit{poison} MV~6 ML~12 XP~2400,
+  Death}: HD~9 AC~7 1d8 \textit{poison} MV~6 ML~12 XP~2,400,
 \textit{fireball} (7d6) 3/day, \textit{charm person} at will, only
 harmed by magic or magic weapons.
 
@@ -119,7 +121,7 @@ famine and disease, of crows and vultures, of temptation and betrayal.
 In times of need he will send a \textbf{vulture demon} named
 \textit{Gangrene}, \textit{Pestilence}, \textit{Corpse Eater} or
 \textit{Baby Killer}: HD~8+1 AC~5 1d4/1d4/1d6/1d6/1d8 MV~18 ML~11 XP
-2420, flying, only harmed by magic or magic weapons.
+2,420, flying, only harmed by magic or magic weapons.
 
 \section{Astral Sea}
 
@@ -220,8 +222,8 @@ catapult and 10 crew. HP~20 AC~9 3d8.
 
 The prize usually consists of ten tons of pickled lotus flesh, wooden
 planks, grains and wine barrels, cactus figs, fungus lanterns, or some
-other produce worth 1d4 × 10,000 gold and the ship itself is worth
-another 10,000 gold. Clearly, being a pirate is lucrative.
+other produce worth 1d4 × \unit[10,000]{gold} and the ship itself is worth
+another \unit[10,000]{gold}. Clearly, being a pirate is lucrative.
 
 \subsection{Squidman Nautilus}
 
@@ -236,7 +238,7 @@ creature. HD~1 AC~2 1d4 MV~3 ML~10 XP~13; when hit, save vs. poison or
 be \textit{paralyzed} for \unit[10]{min}.
 
 The five \textbf{squidmen} have terrible psi powers but they are
-cowards. HD~7+1 AC~8 1d6 F7 MV~12 ML~6 XP~1300; \textit{mind blast} at
+cowards. HD~7+1 AC~8 1d6 F7 MV~12 ML~6 XP~1,300; \textit{mind blast} at
 will stuns anybody they can see within \unit[60]{ft} unless they save
 vs. paralysis; \textit{charm person} at will to make slaves docile
 unless they save vs. spells; \textit{read thoughts} lets them read any
@@ -253,8 +255,8 @@ hunting and feeding.
 
 There is a 1 in 6 chance that this slaver ship is actually on the way
 back to Hinia Oot and its hold is filled with fifty \textbf{slaves}.
-As these would be sold for 25,000 gold, freeing them would be worth as
-many XP. The ship itself is worth 35,000 gold.
+As these would be sold for \unit[25,000]{gold}, freeing them would be worth as
+many XP. The ship itself is worth \unit[35,000]{gold}.
 
 \subsubsection{Eelman Centipede}
 
@@ -283,8 +285,8 @@ though.
 
 There is a 1 in 6 chance that this slaver ship is actually on the way
 to Hinia Oot and its hold is filled with fifty \textbf{slaves}. As
-these would be sold for 25,000 gold, freeing them would be worth as
-many XP. The ship itself is worth 50,000 gold.
+these would be sold for \unit[25,000]{gold}, freeing them would be worth as
+many XP. The ship itself is worth \unit[50,000]{gold}.
 
 \subsubsection{Void Pirate Pike}
 
@@ -298,7 +300,7 @@ They usually kill the crew or let them run. They're not really
 involved in the slave trade. They're interested in bringing powerful
 characters to their ruler who'll try to set them up against Susrael.
 
-The gray elves are out for loot. The ship is worth 20,000 gold.
+The gray elves are out for loot. The ship is worth \unit[20,000]{gold}.
 
 \subsubsection{Deathrock with Vampires}
 
@@ -309,14 +311,24 @@ ship and using a spy glass. By the time the unaided eye sees the
 packed ghouls eager to launch themselves at you from the rock tumbling
 towards you with their catapults, it is already too late.
 
-A typical deathrock has about 500 *ghouls*. HD~2 AC~6 1d4/1d4/1d4 F2
-ML~9 MV~9 XP~47; when they hit, save vs.~paralysis unless you're an
-elf or be paralyed for \unit[1]{h}; the slain will rise as ghouls.
-These are often ruled by about a dozen \textbf{vampires}. HD~9 AC~2
-1d10 MV~18 ML~11 XP~7,300; immune to immune to \textit{sleep},
-\textit{hold}, \textit{charms} and normal weapons; their hit trains
-\emph{two} levels; gaseous form at will; shape change into a large bat
-at will; charming gaze at will; the slain will rise as vampire slaves.
+A typical deathrock has about 500 \textbf{ghouls}. HD~2 AC~6
+1d4/1d4/1d4 F2 ML~9 MV~9 XP~47; when they hit, save vs.~paralysis
+unless you're an elf or be paralyed for \unit[1]{h}; the slain will
+rise as ghouls. These are often ruled by about a dozen
+\textbf{vampires}. HD~9 AC~2 1d10 MV~18 ML~11 XP~7,300; immune to
+immune to \textit{sleep}, \textit{hold}, \textit{charms} and normal
+weapons; their hit trains \emph{two} levels; gaseous form at will;
+shape change into a large bat at will; charming gaze at will; the
+slain will rise as vampire slaves. When reduced to zero hit points,
+they'll turn gaseous and retreat to the central crypt within the
+deathrock.
+
+The vampires each wear a crown set with gems and necklaces and
+bracelets to match, each set being worth \unit[10,000]{gold}. The
+central crypt can only be reached by tiny bats flying through small
+tunnels. The coffins stand at the bottom of a cathedral pit
+\unit[100]{ft} deep filled with poisonous gas. The vampires, being
+already dead, are unaffected.
 
 \subsubsection{Sharkman Hammer}
 
