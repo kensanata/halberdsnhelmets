@@ -2041,7 +2041,7 @@ wishy washy withdrawn witty worldly worried worthless wretched
 xenophobic youthful zany zealous}], };
 
 # one way to test this on the command-line:
-# perl halberdsnhelmets.pl "/characters?" | tail -n +3 | w3m -T text/html
+# perl halberdsnhelmets.pl get --redirect /characters | w3m -T text/html
 
 sub traits {
   my $lang = shift;
@@ -2983,7 +2983,7 @@ sub characters {
   for (my $i = 0; $i < 50; $i++) {
     my %one = %$char; # defaults
     random_parameters(\%one, $lang);
-    $one{traits} = traits();
+    $one{traits} = traits($lang);
     push(@characters, \%one);
   }
   return \@characters;
