@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# Copyright (C) 2012-2015  Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2012-2016  Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -808,14 +808,14 @@ sub freebooters {
 # This function is called when preparing data for display in SVG.
 sub compute_data {
   my $char = shift;
-  if (not exists $char->{rules} or not defined $char->{rules}) {
+  if (not exists $char->{rules}
+      or not defined $char->{rules}
+      or $char->{rules} eq "moldvay"
+      or $char->{rules} eq "halberds-n-helmets"
+      or $char->{rules} eq "labyrinth lord") {
     moldvay($char);
   } elsif ($char->{rules} eq "pendragon") {
     pendragon($char);
-  } elsif ($char->{rules} eq "moldvay") {
-    moldvay($char);
-  } elsif ($char->{rules} eq "labyrinth lord") {
-    moldvay($char);
   } elsif ($char->{rules} eq "crypts-n-things") {
     crypts_n_things($char);
   } elsif ($char->{rules} eq "acks") {
@@ -2135,12 +2135,15 @@ sub random_moldvay {
     } elsif ($best eq "int") {
       $class = T('magic-user');
     } elsif (($best eq "wis" or $best eq "cha")
-	     and d6() > 2) {
+	     and d6() > 2
+	     and $char->{rules} ne "halberds-n-helmets") {
       $class = T('cleric');
     } elsif ($best eq "dex") {
       $class = T('thief');
     } else {
-      $class = one(T('cleric'), T('magic-user'), T('fighter'), T('thief'));
+      my @candidates = (T('thief'), T('magic-user'), T('fighter'));
+      push(@candidates, T('cleric')) if $char->{rules} ne "halberds-n-helmets";
+      $class = one(@candidates);
     }
   }
 
@@ -2786,14 +2789,14 @@ sub freeboters_filter_weapons {
 sub random_parameters {
   my ($char, $language) = @_;
   local $lang = $language; # make sure T works as intended
-  if (not exists $char->{rules} or not defined $char->{rules}) {
+  if (not exists $char->{rules}
+      or not defined $char->{rules}
+      or $char->{rules} eq "moldvay"
+      or $char->{rules} eq "halberds-n-helmets"
+      or $char->{rules} eq "labyrinth lord") {
     random_moldvay($char);
   } elsif ($char->{rules} eq "pendragon") {
     random_pendragon($char);
-  } elsif ($char->{rules} eq "moldvay") {
-    random_moldvay($char);
-  } elsif ($char->{rules} eq "labyrinth lord") {
-    random_moldvay($char);
   } elsif ($char->{rules} eq "crypts-n-things") {
     random_crypts_n_things($char);
   } elsif ($char->{rules} eq "acks") {
@@ -3379,6 +3382,7 @@ Str Dex Con Int Wis Cha HP AC Class
 <ul>
 <li><a href="#moldvay">Basic D&D</a>
 <li><a href="#labyrinth_lord">Labyrinth Lord</a>
+<li><a href="#hellebarden">Hellebarden und Helme</a>
 <li><a href="#pendragon">Pendragon</a>
 <li><a href="#crypts_n_things">Crypts & Things</a>
 <li><a href="#freebooters">Freebooters on the Frontier</a>
@@ -3436,6 +3440,14 @@ etwas unterscheidet, kann man auch
 <%= link_to url_for("characters" => {lang => "de"})->query(rules => "labyrinth lord") => begin %>einige Charaktere<% end %>
 oder <%= link_to  url_for("stats" => {lang => "de"})->query(rules => "labyrinth lord") => begin %>Statistiken<% end %>
 mit <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a>
+Regeln generieren.
+
+<p id="hellebarden">
+Da es für Hellebarden und Helme keine Kleriker gibt, kann man auch
+<%= link_to url_for("random" => {lang => "de"})->query(rules => "halberds-n-helmets") => begin %>einen zufälligen Charakter<% end %>,
+<%= link_to url_for("characters" => {lang => "de"})->query(rules => "halberds-n-helmets") => begin %>einige Charaktere<% end %>
+oder <%= link_to  url_for("stats" => {lang => "de"})->query(rules => "halberds-n-helmets") => begin %>Statistiken<% end %>
+mit <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Hellebarden%20und%20Helme">Hellebarden und Helme</a>
 Regeln generieren.
 
 <h2 id="pendragon">Pendragon</h2>
@@ -3556,6 +3568,7 @@ generieren.
 <ul>
 <li><a href="#moldvay">Basic D&D</a>
 <li><a href="#labyrinth_lord">Labyrinth Lord</a>
+<li><a href="#halberds">Halberds and Helmets</a>
 <li><a href="#pendragon">Pendragon</a>
 <li><a href="#crypts_n_things">Crypts & Things</a>
 <li><a href="#freebooters">Freebooters on the Frontier</a>
@@ -3611,6 +3624,14 @@ price list, you can also generate a
 <%= link_to url_for("characters" => {lang => "en"})->query(rules => "labyrinth lord") => begin %>bunch of characters<% end %>
 or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "labyrinth lord") => begin %>some statistics<% end %>
 using <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a>
+rules.
+
+<p id="labyrinth_lord">
+As Halberds and Helmets has no clerics, you can also generate a
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>random character<% end %>,
+<%= link_to url_for("characters" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>bunch of characters<% end %>
+or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>some statistics<% end %>
+using <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Halberds%20and%20Helmets">Halberds and Helmets</a>
 rules.
 
 <h2 id="pendragon">Pendragon</h2>
