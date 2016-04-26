@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# Copyright (C) 2015 Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2015-2016 Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -48,7 +48,8 @@ $t->get_ok('/random/de?name=Alex')
     ->status_is(200)
     ->header_is('Content-Type' => 'image/svg+xml')
     ->text_is('text#name tspan' => 'Alex')
-    ->text_is('a#link text tspan' => 'Link');
+    ->text_is('a#link text tspan' => 'Link')
+    ->text_like('text#breath tspan' => qr'\d+');
 
 my $url = $t->tx->res->dom->at('a#link')->attr('xlink:href');
 my $str = $t->tx->res->dom->at('text#str tspan')->text;
