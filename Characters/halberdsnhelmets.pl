@@ -394,6 +394,84 @@ young man
 junger Mann
 young woman
 junge Frau
+1d10
+1W10
+1d4
+1W4
+1d6
+1W6
+1d8
+1W6
+2-handed
+zweihänder
+awkward
+sperrig
+axe
+Axt
+chaotic
+chaotisch
+close
+sehr nah
+evil
+böse
+far
+fern
+flail
+Flegel
+forceful
+schwer
+good
+gut
+great axe
+Grossaxt
+great hammer
+Grosshammer
+great sword
+Zweihänder
+hand
+Hand
+hatchet
+Beil
+heavy crossbow
+Arbalest
+human
+Mensch
+knife
+Messer
+lawful
+rechtschaffen
+light crossbow
+Armbrust
+near
+nah
+neutral
+neutral
+pick
+Pickel
+pierce
+Stich
+polearm
+Stangenwaffe
+precise
+präzis
+rare
+selten
+reach
+Reichweite
+reload
+Nachladen
+scale armor
+Schuppenpanzer
+shortbow
+Kurzbogen
+shortsword
+Kurzschwert
+sword
+Schwert
+throw
+werfen
+throwing knife
+Wurfmesser
 });
 
   return \%translations;
@@ -807,7 +885,8 @@ sub freebooters {
 
 # This function is called when preparing data for display in SVG.
 sub compute_data {
-  my $char = shift;
+  my ($char, $language) = @_;
+  local $lang = $language; # make sure T works as intended
   if (not exists $char->{rules}
       or not defined $char->{rules}
       or $char->{rules} eq "moldvay"
@@ -2333,13 +2412,13 @@ sub freebooters_abilities {
   
   # and swap one
   if ($char->{class} eq T('fighter')) {
-    swap_for_highest($char, ['str', 'con', 'dex'], ['wis', 'int', 'cha']);
+    swap_for_highest($char, ["str", "con", "dex"], ["wis", "int", "cha"]);
   } elsif ($char->{class} eq T('thief')) {
-    swap_for_highest($char, ['dex'], ['wis', 'str', 'int']);
+    swap_for_highest($char, ["dex"], ["wis", "str", "int"]);
   } elsif ($char->{class} eq T('cleric')) {
-    swap_for_highest($char, ['cha'], ['wis', 'int', 'dex']);
+    swap_for_highest($char, ["cha"], ["wis", "int", "dex"]);
   } elsif ($char->{class} eq T('magic-user')) {
-    swap_for_highest($char, ['int'], ['str', 'wis', 'con', 'dex', 'cha']);
+    swap_for_highest($char, ["int"], ["str", "wis", "con", "dex", "cha"]);
   }
 }
 
@@ -2443,50 +2522,50 @@ sub freebooters_name {
   # Jason Lutes. The text of that book is released under a Creative Commons
   # Attribution-ShareAlike 3.0 Unported license.
   # https://creativecommons.org/licenses/by-sa/3.0/
-  if ($char->{race} eq T('human') and $gender eq 'M') {
+  if ($char->{race} eq T('human') and $gender eq "M") {
     $name = one(qw(Athelan Aldred Alger Archard Astyrian Bowden Brogan Caden
     Cerdic Devan Druce Dugal Edlyn Ebis Esward Firman Framar Fugol Garret Gidwin
     Gord Govannon Greme Grindan Halwen Holt Iden Irbend Kendrik Leor Lufian Nyle
     Odel Ord Orleg Radan Reged Rowe Scrydan Seaver Shepard Snell Stedman Swift
     Teon Tobrec Tredan Ware Warian Wulf));
-  } elsif ($char->{race} eq T('human') and $gender eq 'F') {
+  } elsif ($char->{race} eq T('human') and $gender eq "F") {
     $name = one(qw(Acca Alodia Andessa Anlis Ara Ardith Berroc Bernia Bodica
     Brigantia Brimlid Caro Cwen Darel Dawn Diera Dotor Eda Elene Elga Elswyth
     Elva Elvina Erlina Esma Faradan Freya Garmang Gloris Harmilla Hunnar Juliana
     Kandara Laralan Lorn Maida Megdas Mercia Mora Ogethas Ossia Pallas Rathet
     Sibley Sunnivar Tate Udela Viradeca Wilona Zora));
-  } elsif ($char->{race} eq T('halfling') and $gender eq 'M') {
+  } elsif ($char->{race} eq T('halfling') and $gender eq "M") {
     $name = one(qw(Adaman Adelard Adred Agilward Arnest Balbas Barton Bell Banco
     Bowman Cal Emmet Erling Fastman Foda Freebern Frid Gerd Hadred Hagar Halbert
     Hamfast Hildred Huge Isen Jaco Jungo Helm Konner Lambert Leon Linus Marko
     Matti Mekel Melchior Lesser Nenko Nob Olo Ortwin Otto Paladin Pasco Quintus
     Sifro Ted Tolman Wilber Wiseman));
-  } elsif ($char->{race} eq T('halfling') and $gender eq 'F') {
+  } elsif ($char->{race} eq T('halfling') and $gender eq "F") {
     $name = one(qw(Adelle Agilward Alfreda Amalinde Balba Bella Beryl Bess
     Camelia Cordelia Daisy Demona Drogga Elanor Ella Elsbeth Elsina Emerly Foda
     Gilda Gilly Hanna Hilda Hildred Janna Jilly Kat Klare Lily Lobelia Lorna
     Lucie Magda Marga Mari Marigold Marka Marlyn Mina Noba Olga Ottillia Pansy
     Pervinca Poppy Rose Rowan Salina Tella Ulrica));
-  } elsif ($char->{race} eq T('dwarf') and $gender eq 'M') {
+  } elsif ($char->{race} eq T('dwarf') and $gender eq "M") {
     $name = one(qw(Bagan Banar Belir Besil Boran Darin Dirin Doibur Doigan Fagan
     Fignus Firin Gesil Glagan Glasil Glenus Goirin Gosil Hanar Heran Hoibur
     Hoili Hoinar Holir Homli Kimli Koisin Lasin Legan Loilir Mirin Moli Nasil
     Nefur Neli Nignar Noifur Ramli Regnar Safur Sali Saran Segnar Serin Simli
     Tasil Teli Tisin Toilin Toinus));
-  } elsif ($char->{race} eq T('dwarf') and $gender eq 'F') {
+  } elsif ($char->{race} eq T('dwarf') and $gender eq "F") {
     $name = one(qw(Berin Bibura Bisil Dagna Delinia Deris Dira Disia Dorinda
     Faran Fasina Fignis Foifur Foimli Gerda Gestis Ginus Glegna Glelia Glelis
     Glemlia Gloigas Gloigna Glonara Hegna Hignara Hoimlis Kana Kemlir Keri Keris
     Kilina Kolina Korana Lifur Loilis Loilina Mamli Milina Moibur Moli Noris
     Nosi Rana Ribura Sasilia Soirina Soran Toigna Tomlis));
-  } elsif ($char->{race} eq T('elf') and $gender eq 'M') {
+  } elsif ($char->{race} eq T('elf') and $gender eq "M") {
     $name = one(qw(Amánd Amioril Analad Anin Anumir Calithrambor Calóng Calór
     Cebrin Cóldor Corfindil Delithran Elithranduil Elverion Eowóril Galithrar
     Gelith Gladriendil Glamir Glarang Glil-Gang Glundil Gorfilas Góriand Hal
     Harang Isil-Galith Isilith Isónd Isorfildur Legaraldur Lómebrildur Mil-Gan
     Náldur Nelith Niol Porfindel Ráldur Silmandil Tand Taralad Tararion Tendil
     Téril Tildur Tiniomir Unálad Unebrin Unéndil Uriong));
-  } elsif ($char->{race} eq T('elf') and $gender eq 'F') {
+  } elsif ($char->{race} eq T('elf') and $gender eq "F") {
     $name = one(qw(Amidë Anadriedia Anarania Anebriwien Anilmadith Beliniel
     Calararith Cebridith Celénia Celil-Gathiel Cidien Eäróndra Eärorfindra
     Eláthien Eláviel Eleniel Elorfindra Elváwien Eoweclya Eowodia Fórith
@@ -2500,7 +2579,7 @@ sub freebooters_name {
     # accordingly. This should not happen unless you introduce a new race
     # without providing names for its members.
     $name = name();
-    $gender = $names{$name} if member($names{$name}, 'M', 'F');
+    $gender = $names{$name} if member($names{$name}, "M", "F");
   }
   provide($char, "name", $name);
   provide($char, "gender", $gender);
@@ -2574,7 +2653,7 @@ sub freebooters_appearance {
     }
     push(@phrases, $phrase) if $phrase and not member($phrase, @phrases);
   }
-  return wrap(join(', ', @phrases), 27);
+  return wrap(join(", ", @phrases), 27);
 }
 
 sub freebooters_hit_points {
@@ -2647,7 +2726,7 @@ sub freebooters_traits {
     } until not member($trait, @traits);
     push(@traits, $trait);
   }
-  return wrap(join(', ', @traits), 25);
+  return wrap(join(", ", @traits), 25);
 }
 
 sub freebooters_gear {
@@ -2657,27 +2736,27 @@ sub freebooters_gear {
   my %weapons = 
       (T('axe') => ['1d8', 'close', 2],
        T('club') => ['1d6', 'close', 1],
-       T('dagger') => ['1d4', '1 pierce, precise, hand', 0],
-       T('flail') => ['1d8', 'close, forceful', 2],
-       T('great axe') => ['1d10', 'close, rare, 2-handed', 3],
-       T('great hammer') => ['1d10', 'close, forceful, rare, 2-handed', 4],
-       T('great sword') => ['1d10', 'close, reach, rare, 2-handed', 3],
-       T('hatchet') => ['1d4', 'throw, close, near', 1],
-       T('knife') => ['1d4', 'precise, hand', 0],
-       T('mace') => ['1d6', 'close, forceful', 1],
-       T('pick') => ['1d6', '2 pierce, close, awkward', 1],
-       T('polearm') => ['1d10', 'reach, 2-handed', 3],
-       T('shortsword') => ['1d6', 'close', 1],
-       T('spear') => ['1d8', 'throw, reach, near', 2],
-       T('staff') => ['1d4', 'close, 2-handed', 1],
-       T('sword') => ['1d8', 'close', 2],
-       T('warhammer') => ['1d6', '1 pierce, close', 1],
-       T('throwing knife') => ['1d4', 'hand, close, reach, near, precise', 0],
-       T('sling') => ['1d4', 'near, far, reload', 0],
-       T('shortbow') => ['1d6', 'near, far, 2-handed', 1],
-       T('longbow') => ['1d8', 'near, far, 2-handed', 1],
-       T('light crossbow') => ['1d6', '1 pierce, near, far, 2-handed, reload', 1],
-       T('heavy crossbow') => ['1d6', '2 pierce, near, far, 2-handed, reload', 2]);
+       T('dagger') => ['1d4', "1 " . join(", ", T('pierce'), T('precise'), T('hand')), 0],
+       T('flail') => ['1d8', join(", ", T('close'), T('forceful')), 2],
+       T('great axe') => ['1d10', join(", ", T('close'), T('rare'), T('2-handed')), 3],
+       T('great hammer') => ['1d10', join(", ", T('close'), T('forceful'), T('rare'), T('2-handed')), 4],
+       T('great sword') => ['1d10', join(", ", T('close'), T('reach'), T('rare'), T('2-handed')), 3],
+       T('hatchet') => ['1d4', join(", ", T('throw'), T('close'), T('near')), 1],
+       T('knife') => ['1d4', join(", ", T('precise'), T('hand')), 0],
+       T('mace') => ['1d6', join(", ", T('close'), T('forceful')), 1],
+       T('pick') => ['1d6', "2 " . join(", ", T('pierce'), T('close'), T('awkward')), 1],
+       T('polearm') => ['1d10', join(", ", T('reach'), T('2-handed')), 3],
+       T('shortsword') => ['1d6', "!" . T('close'), 1],
+       T('spear') => ['1d8', join(", ", T('throw'), T('reach'), T('near')), 2],
+       T('staff') => ['1d4', join(", ", T('close'), T('2-handed')), 1],
+       T('sword') => ['1d8', "!" . T('close'), 2],
+       T('war hammer') => ['1d6', "1 " . join(", ", T('pierce'), T('close')), 1],
+       T('throwing knife') => ['1d4', join(", ", T('hand'), T('close'), T('reach'), T('near'), T('precise')), 0],
+       T('sling') => ['1d4', join(", ", T('near'), T('far'), T('reload')), 0],
+       T('shortbow') => ['1d6', join(", ", T('near'), T('far'), T('2-handed')), 1],
+       T('long bow') => ['1d8', join(", ", T('near'), T('far'), T('2-handed')), 1],
+       T('light crossbow') => ['1d6', "1 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 1],
+       T('heavy crossbow') => ['1d6', "2 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 2]);
   
   if ($char->{class} eq T('fighter')) {
     my $weapon = freebooters_fighter_weapon($char, \%weapons);
@@ -2717,7 +2796,7 @@ sub freebooters_gear {
     
   } elsif ($char->{class} eq T('cleric')) {
 
-    my $weapon = one(T('staff'), T('mace'), T('warhammer'));
+    my $weapon = one(T('staff'), T('mace'), T('war hammer'));
     provide($char, "weapon1", $weapon);
     provide($char, "dmg1", $weapons{$weapon}->[0]);
     provide($char, "weapon1-wt", $weapons{$weapon}->[2]);
@@ -3089,7 +3168,7 @@ get "/random/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $char = init($self);
   my $lang = $self->param("lang");
   random_parameters($char, $lang, "portrait");
-  compute_data($char);
+  compute_data($char, $lang);
   my $svg = svg_transform($self, svg_read($char));
   $self->render(format => "svg",
 		data => $svg->toString());
@@ -3103,8 +3182,9 @@ get "/char" => sub {
 get "/char/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
+  my $lang = $self->param("lang");
   # no random parameters
-  compute_data($char);
+  compute_data($char, $lang);
   my $svg = svg_transform($self, svg_read($char));
   $self->render(format => "svg",
 		data => $svg->toString());
