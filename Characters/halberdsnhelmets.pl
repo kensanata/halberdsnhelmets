@@ -16,7 +16,6 @@
 
 package HH;
 use Mojolicious::Lite;
-use Mojo::Home;
 use Mojo::UserAgent;
 use HTTP::AcceptLanguage;
 use XML::LibXML;
@@ -24,8 +23,7 @@ use List::Util qw(shuffle);
 use POSIX qw(floor ceil);
 no warnings qw(uninitialized numeric);
 
-my $home = Mojo::Home->new;
-$home->detect;
+my $home = '/home/alex/farm/halberdsnhelmets';
 
 sub translations {
   # strings in sinqle quotes are translated into German if necessary
