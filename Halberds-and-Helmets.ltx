@@ -4,10 +4,11 @@
 % \usepackage{showkeys}% debugging \keys
 % \usepackage{multirow}
 
-%\geometry{showframe}% for debugging purposes -- displays the margins
+% for debugging purposes -- displays the margins
+% \geometry{showframe}
 
-% Provides \CheckedBox and \Square
-% \usepackage{wasysym}
+% Provides \sun, \rightmoon
+\usepackage{wasysym}
 
 % Set up index
 \usepackage{makeidx}
@@ -778,16 +779,19 @@ carpenters and so on for maintenance.\marginnote[-1em]{The wages paid
   for these servants also turn gold into experience points.}
 
 
+
 \section{\index{Wages}Wages}
 \label{sec:wages}
 
-\newthought{\index{Mercenaries}Mercenaries and
-  \index{Servants}servants} live in the houses, caves, towers and
-keeps assigned to them. They don't go on
+\index{Mercenaries}Mercenaries and \index{Servants}servants live in
+the houses, caves, towers and keeps assigned to them. They don't go on
 adventures.\marginnote[-3em]{Light infantry could be robbers with
   sword, shield and leather armor; heavy infantry could be city guards
   with sword, shield and chain mail. All off them might have to make
-  \hyperref[key:Morale]{morale checks} in combat.}
+  \hyperref[key:Morale]{morale checks} in combat.
+
+  \bigskip\noindent Important people earn far more than that. Spies
+  earn 500gp/month. Sages earn 2000gp/month.}
 
 \medskip
 \begin{tabular}{llc}
@@ -798,11 +802,11 @@ heavy infantry & 4~gold/month & 8 \\
 \end{tabular}
 \medskip
 
-\newthought{\index{Retainers}Retainers} accompany their employers on
-adventure. \marginnote[-2em]{You'll have to decide at the table
-  whether players get to bring all their retainers to an adventure. If
-  there are too many characters to run, fights will take longer and
-  treasure shares will be smaller.} Your charisma limits the number of
+\noindent\index{Retainers}Retainers accompany their employers on
+adventure. \marginnote{You'll have to decide at the table whether
+  players get to bring all their retainers to an adventure. If there
+  are too many characters to run, fights will take longer and treasure
+  shares will be smaller.} Your charisma limits the number of
 \hyperref[key:Retainers]{retainers} (and pets) you may have!
 
 \medskip
@@ -995,8 +999,9 @@ Some key terms, first.
 
 \key{Player}: The people sitting at the table, you, me, our friends.
 
-\key{Character}: The people we’re playing. My name is Alex and I live
-in Zürich. My character is called Edrig and hails from Einaheim.
+\key{Player Character}: The people we’re playing. My name is Alex and
+I live in Zürich. My character is called Edrig and hails from
+Einaheim.
 
 \key{Experience Points} (\key{xp}): Tricking and defeating oponents
 grants experience points. Spending money nets you \emph{one experience
@@ -1035,7 +1040,7 @@ it, roll a d20 and add your wisdom bonus. You must get number
 indicated or higher.
 
 \key{Circle}: As magic-users and elves gain levels, they get access to
-higher spell circles -- more powerful spells and miracles:
+higher spell circles---more powerful spells and miracles:
 
 \medskip
 \begin{tabular}{lcccccccccc}
@@ -1355,12 +1360,12 @@ getting up prevents you from moving in the same round.
 \section{\index{Movement}Movement}
 \label{sec:movement}
 
-\key{Movement Rate}: Humans have a movement rate (\key{MV}) of 12 --
-that's \unit[120]{ft} per round (\unit[10]{s}) when \emph{running} or
-\emph{fighting}. \marginnote[-1em]{Typical movement rates of other
-  creatures: dwarf 6, halfling 9, elf 12, giant weasel 15, dog or wolf
-  18, panther 21, galloping horse 24, flying hippogryph 36, flying
-  pegasus 48.}
+\key{Movement Rate}: Humans have a movement rate (\key{MV}) of
+12---that's \unit[120]{ft} per round (\unit[10]{s}) when
+\emph{running} or \emph{fighting}. \marginnote[-1em]{Typical movement
+  rates of other creatures: dwarf 6, halfling 9, elf 12, giant weasel
+  15, dog or wolf 18, panther 21, galloping horse 24, flying
+  hippogryph 36, flying pegasus 48.}
 
 Proceeding slowly and methodically in the underworld slows you down
 dramatically. MV~12 is only \unit[120]{ft} per turn (\unit[10]{min}).
@@ -1683,6 +1688,473 @@ years. This is her spell book. These are very traditional spells.
 \end{tabular}
 \end{table}
 
+
+
+\newpage
+
+\section{Running the Game}
+\label{sec:running}
+
+This section is for the \key{referee} of the game, the person that
+runs everything that is not a player character. It is an instruction
+manual on how to to run the games the way I do. My advice is obviously
+\textbf{colored by my preferences}:
+
+\begin{enumerate}
+\item \textbf{No Skills}: This challenges players. They need to
+  roleplay to be diplomatic, intimidating, bluffing, and the referee
+  needs to roleplay the non-player characters accordingly. Players
+  need to guess where hidden treasure and secret doors are and the
+  referee has to provide the right amount of clues.
+
+\item \textbf{Fewer Classes}: This provides less mechanical
+  differentiation between characters. Players need to roleplay in
+  order to differentiate characters.
+
+\item \textbf{Quick Character Generation}: Easy character generation
+  with few actual choices speeds things up. A high attrition rate is
+  more acceptable as you can bring multiple characters to the table
+  and make extras in a minute or two.
+
+\item \textbf{Random Character Generation}: Random character
+  generation may surprise players and provide interesting party
+  dynamics.
+
+\item \textbf{Rare Healing}: Players need to avoid wandering monsters
+  and avoid unnecessary fighting. This makes strategic decisions (when
+  to fight) more important than tactical decisions (how to fight).
+
+\item \textbf{Simple Combat}: No explicit rules for combat maneuvers
+  and battle grids result in quicker combat rounds, less waiting for
+  your turn, and more time to do other stuff---or more fights per
+  session, if desired.
+
+\item \textbf{Little Damage, Few Hit-Points}: Fewer attacks and
+  smaller damage bonuses simplify the math and speed things up.
+
+\item \textbf{Smaller Bonuses}: The smaller bonuses due to abilities
+  reduce the math and produce far less trickle down effects. This also
+  makes the initial ability rolls less important (without actually
+  resorting to point-buy).
+
+\item \textbf{Treasure is Experience}: This encourages players to
+  research their goals, picking their fights carefully. It also
+  provides for an easy and quick reason for the party to form and go
+  adventuring.
+
+\item \textbf{No Buying or Selling of Magic Item }: Getting them
+  should always involve adventuring.
+
+\item \textbf{Random Encounters, Random Monsters}: This forces the
+  referee to improvise and adapt the story on the fly.
+
+\end{enumerate}
+
+\newpage
+
+\textbf{Keep it short}: My main problem is that I don't want to spend
+a lot of time in preparation for a session. Half an hour for a three
+hour slot is all I'm prepared to invest.
+
+\textbf{Campaign Map}: When I
+\href{https://alexschroeder.ch/wiki/2011-01-13_Campaign_Start}{start a
+  new campaign}, I create
+\href{https://alexschroeder.ch/wiki/2009-12-02_Hexcrawl}{a small hex
+  map}. You could use my
+\href{https://campaignwiki.org/text-mapper}{random hexmap generator},
+for example. I only start worrying about the ruins and lairs in the
+various hexes once players actually explore the region. This is going
+to be an \href{https://alexschroeder.ch/wiki/2007-02-14 DM Advice –
+  Organic Campaigns}{organic campaign}. I like to start with a
+wilderness surrounding a small village. In the wilderness, travelling
+a hex takes a day. That keeps things simple. See below for more on
+traveling. I work on the map, adding more locations as players push
+forward.
+
+\textbf{Use every idea} as soon as possible. Do not save good ideas
+for later! Use them now. You will have more good ideas in the future.
+
+\textbf{Settlements}: Every settlement has two or three interesting,
+named people. These are the people of authority the characters are
+likely to talk to. Every settlement should have a building or two
+where you can find said named people, and an inn, or an exaplanation
+for the missing inn. Don't bother with a map for the settlement.
+
+\textbf{People}: Most of civilization consists of neutral, egoistical,
+normal humans and appropriate demihumans from the monster manual.
+Don't bother assigning levels unless these people are important.
+
+\medskip
+\index{Level!Others}
+\begin{tabular}{cp{9cm}}
+Level & Role \\
+ 0 & ordinary people \\
+ 1 & veterans, trained guards \\
+ 3 & a boss of one or two dozen people, captain of the watch, bandit boss \\
+ 5 & lord over a small settlement, a contested five mile hex, a tower, a small fortress, a sheriff, two of these might be the assistants of a level 9 lord \\
+ 7 & a captain of a small army, the most powerful chieftain of a tribe, a second in command to a level 9 lord \\
+ 9 & lord over a town, a castle plus a town or two, multiple villages, a region up to thirty miles in diameter, known up to a hundred miles away \\
+ 11 & great heroes, the favorites of the gods \\
+ 13 & prophets, avatars and holy men \\
+ 15 & demigods and immortals \\
+ 17 & god-like, granting wishes! \\
+\end{tabular}
+\medskip
+
+\textbf{Names}: Keep lists of names to assign to non-player
+characters. I like names to depend on gender and culture, so I usually
+have multiple lists.
+
+\textbf{News}: Spies and Sages allow you to feed setting information
+to your players. Get into the habit of preparing a little something to
+report for spies and sages in the employ of player characters.
+Actionable information is preferred. Activities of rivals that can be
+stopped. Rumors of treasures that can be sought. Let players know
+where to go next if they want to pursue a certain goal.
+
+\newpage
+
+\textbf{Dungeons}: I like to prepare a number of small
+dungeons\marginnote{If you need some inspiration, check out the
+  \href{http://www.dungeoncontest.com/}{One Page Dungeon Contest}
+  submissions. When the party explores one dungeon, use the time to
+  make up some events surrounding the other dungeons. Giant frog
+  plague? Cultists spreading? Rival party found some treasure?} and
+place them on the campaign map. I make note of a few rumors that would
+lead the party to the various dungeons and warnings they might hear in
+order to prepare them for it. This is a sandbox campaign and the
+encounters do not depend on the power level of the party. Instead, the
+party gets to choose the risk they are willing to face by choosing
+areas that are more or less dangerous based on the rumors they hear.
+
+\textbf{Treasure}: I just roll for random treasure. Treasure spent
+earns experience: 1 gp is worth 1 XP.\marginnote[-2em]{Expand on the
+  list of \hyperref[sec:buildings]{buildings} and add cathedrals,
+  tempels, hippodromes and the like as your players will need things
+  to spend their gold on.}
+
+\textbf{Magic Items}: I like magic weapons. If I roll up a simple +1
+weapon I often pimp it with some extra gimmick.\marginnote{Talking,
+  gnawing, cursing, trailing smoke, oozing strange liquids, …} Magic
+items are not for sale. Potions can be bought from alchemists. Every
+alchemist has a handful of potions they know how to make. They cost
+around 500 gold.
+
+\textbf{Stocking the dungeon}: Use a d20.\marginnote{This is easier
+  than rolling two d6 which is what
+  \href{https://alexschroeder.ch/wiki/2013-08-21_One_Roll_Dungeon_Stocking}{Moldvay
+    uses}.}
+
+\medskip
+\index{Stocking}
+\begin{tabular}{cl}
+ d20 & Contents and Treasure \\
+ 1–5 & Empty \\
+ 6 & Unguarded treasure \\
+ 7 & Trap and unguarded treasure \\
+ 8–9 & Trap \\
+ 10–12 & Monster \\
+ 13–15 & Monster and treasure \\
+ 16–20 & Special \\
+\end{tabular}
+\medskip
+
+\index{Random Encounters}\textbf{Random Wilderness Encounters}: Based on the current
+area\marginnote{Keep using the same table while the player characters
+  are in the same region: the same valley, the same forest, the same
+  mountain range---basically a bunch of hexes that seem to belong
+  together. } the party is in, jot down a little random encounter
+table. Consider the critters in the surrounding dungeons, think of a
+theme, browse the monster manuals and look at the pictures. If you
+like beholders, maybe add a dwarf merchant with an extra eye stalk or
+two to the encounter table. He's a spy for the beholder! If you like
+frogs, go for an amphibian theme and pick psionic frog men, giant
+frogs, toads, froglings, and so on. If you have a theme, consider
+antagonists. Is the frog faction competing with the gnomes? Add a
+gnome entry!
+
+\medskip
+\marginnote{Add one or more entries for \textbf{peaceful folk} from
+  the neighborhood or named people from nearby settlements. Two of
+  these is a good number. Add these at the top of the list. During the
+  night, add this number as you roll. This is how you get slightly
+  different results for day time and night time encounters. In this
+  example, merchants and soldiers are only encountered during the day.
+  At night, add +2 to your roll. Thus, psionic frog men and frog demons are only
+  encountered during the night.}
+\begin{tabular}{rl}
+d6 & Encounter \\
+\sun~1 & merchants (1d6) \\
+\sun~2 & soldiers  (1d6+3) \\
+  3 & gnomes (1d6+2) \\
+  4 & giant frogs (1d4) \\
+  5 & froglings (2d6) \\
+  6 & giant dragonfly \\
+\rightmoon~7 & psionic frog men (2d6) \\
+\rightmoon~8 & frog demons (1d4) \\
+\end{tabular}
+\medskip
+
+\newpage
+
+\key{Exploration}: Typically travel is initiated by a non-player
+characters telling the player characters about a location. Usually
+directions are accurate and the location and any landmarks on the way
+get placed on the player map. When traveling, player characters cannot
+get lost. A hex is usually big enough for multiple locations (a hill,
+a lake, a castle, a village, a dungeon). Unknown locations are not be
+easy to find. Use the typical \emph{search} abilities: 1/6 per day for
+humans, 2/6 per day for demi-humans. Known locations can always be
+found.
+
+\key{Travel}: The default is one hex traveled per day unless there
+are trails or roads (two per day; no bonus for riding or flying) or
+they are traveling by ship along a coast (in which case it'll be eight
+hexes per day). As it stands, this ignores movement speeds and hex
+size. You travel one hex per day, that's it. I usually think that one
+hex is five miles, but players don't need to know that.
+
+Thus the actual \emph{procedure} at the gaming table is simple:
+
+\begin{enumerate}
+\item Players tell me where they want to go. There is a 1 in 6 chance
+  for a daylight encounter and a 1 in 6 chance for a nighttime
+  encounter for every hex traveled. Combine encounters if that spices
+  things up.
+\end{enumerate}
+\marginnote{That's it.}
+
+\key{Lairs}: Many hexes have a building of some sort. I place stuff
+I got from the net or from books I bought. I add lairs for all the
+intelligent monsters on my encounter tables. As time passes, I might
+add more locations and lairs to known hexes. It's simply not possible
+to \emph{completely} map a hex.\marginnote{If you use five mile hexes,
+  that's an area of about \unit[22]{mi²}.} There's always more stuff
+to discover. Don't be afraid to add new stuff to existing hexes.
+
+If you have some monsters on your random encounter table and haven't
+decided where the lairs of these creatures are, there's a 1 in 6
+chance when encountering them that you have found their lair. Let
+players find the secret gnome village, the slaad temple, the frogling
+pond. These improvised lairs will necessarily be simple one, two or
+three room affairs. No problem.
+
+\textbf{Monsters}: It's easier if monsters announce themselves: let
+players find, smell or hear something.\marginnote{Use the \hyperref[key:Reaction
+    Roll]{reaction roll}. Not all encounters need to end in a fight.
+  Use \hyperref[key:Morale]{morale checks} ins combat. Not all fights
+  are to the death. Here are some typical morale scores:
+
+  \medskip
+  \index{Morale!Others}
+  \begin{tabular}{cl}
+    2 & animals that will always run \\
+    3 & animals when cornered \\
+    4 & herbivores \\
+    5 & carnivores and cowards \\
+    6 & cautious people \\
+    7 & normal men \\
+    8 & well led humanoids \\
+    9 & disciplined troops \\
+    10 & fanatics \\
+    11 & lunatics \\
+    12 & unnatural creatures \\
+  \end{tabular}} This allows them to choose
+their approach. Determine encounters before the game starts or have a
+procedure to determine the number of monsters encountered ready. Use
+1d8 if you're at a loss. This makes sure that you're not scaling the
+encounter to the players. Let the \emph{players decide} whether to
+engage or not.
+
+\textbf{Adapt the encounter} as it happens. If your players are bored,
+let the monsters fight. If your players need guidance, have the
+monsters talk. If your players are afraid, make it easy to avoid the
+encounter. The entertainment of your friends at the table takes
+priority. A \emph{total party kill} can be part of it. Know your
+players.
+
+\newpage
+
+\textbf{Keep Adding}: In order add life to the world, you need to have two or
+three events or changes happen between sessions if time passes
+in-game. A lot of it should relate to what the party did. If their dog
+was killed by a giant crab and they didn't rescue it, then there will
+be a rumor of a ghost dog haunting the beaches. If they discovered
+skeletons in a crypt and fled, they have released undead that will be
+roaming the neighborhood. If they had hirelings with them, those will
+be spreading rumors of a necromancer. Use these rumors to add big and
+small adventure options for the players to focus on.
+
+\textbf{Focus Follows Players}: As time passes, you should see a
+constant trickle of little ideas to add to your campaign. Prepare for
+3-7 of these potential adventures and keep a list of open plots to
+remind players of ongoing issues. More adventures develop wherever the
+party shows up. If the party fights a mammoth and decides to track it
+back to the forest, then maybe there will be neanderthals living
+there. If the players try to contact them, maybe there will be a
+sabre-toothed cat and a velociraptor in the area. If they investigate
+the velociraptor, they might find a valley full of dinosaurs.
+
+Essentially players express their interest in the campaign by spending
+time. If players never leave town, then they want urban adventures. If
+they keep returning to your megadungeon, then that's what they want.
+Giving players real options will make sure the game adapts to their
+preferences (and yours, given that you are providing the options).
+
+\key{Contacts}: Keep a list of contacts. These provide easy plot
+hooks. Magic-users provide new spells in exchange for quests. Sages
+provide information about items found in exchange for quests. Rulers
+provide men-at-arms in exchange for quests. They can provide rumors
+and gossip that hint at things to get involved in. Provide enough to
+allow choice but not too much in order to save preparation time and
+avoid decision paralysis. Keep it somewhere between three and seven. I
+also like to play up alignment. A drug abusing alchemist hands out
+chaotic quests, a curious insect trainer hands out lawful quests.
+
+\textbf{Living World}: Keep a list of a handful in addition to your
+list of contacts. Between sessions, check whether any of the entries
+need to be removed or changed. Consider adding new entries. It's best
+to do this soon after the session when recent events are still fresh.
+Let your players know about these changes during the next session.
+"You notice a new bard in the Yellow Straightjacket. She is called
+Miela, newly arrived from Halgorn. Ilaria appears to have left for
+Tlan."
+
+\key{Maps}: Maps are inspiring. They provide a sense of place, every
+landmark they contain is a potential exploration goal, yet another
+option for players to pursue. Keep a campaign map, hand out treasure
+maps, let other characters draw maps for the party.
+
+Players need options, and maps are like option tokens. Maps are also
+props that are very easy to make.
+
+\textbf{Goals}: Talk to your players about their character goals every
+now and then. Identify the players that have interesting goals you'd
+like to pursue, and start providing rumors that lead to adventures on
+the way to achieving those goals.
+
+Two or three players pushing their own agendas can be a lot of fun.
+There will be a little rivalry because each character needs to pursue
+their own quests. There will be some cooperation: "I'll help you
+retrieve ice from that glacier for your frost rapier if you will help
+me find Xu-Li the fire sage."
+
+Not everybody needs to have goals! You just need enough player goals
+to add adventure seeds to your campaign. If all the players have
+divergent goals, they end up not having a reason to adventure
+together. In that case you might be better off adding a traditional
+villain to the mix: A powerful nemesis that sends minions after the
+characters, builds an army to attack their home base, coordinates the
+bad guys in the region such that the party absolutely needs to fight.
+Just increase the pressure whenever the players are starting to
+squabble again.
+
+\key{Spotlight}: I like to give enemies the opportunity to shine every
+now and then. Don't overdo it. I find that providing a single
+non-player character the opportunity to shine in a session is about
+right.
+
+The same is true for player characters. I'll try to emphasize
+situations where a player character specifically did something
+awesome. It lets players know that I appreciated their character being
+there and the things they did. Everybody likes this.
+
+If a player is very entertaining in the game, I like to encourage
+them. Non-player characters will go along with a lot of silliness as
+long as it doesn't strain my credulity.
+
+Even quiet players like to shine. Sometimes you just have to guess
+what makes them tick. Perhaps they'd like romantic success? As the
+extroverts grab the spotlight, make sure to interrupt the action once
+or twice per session and offer a scene to an introverted player. The
+leader is charmed by their presence, the enemy wants to talk to nobody
+else but them, the farmers ask them for advice. Don't overdo it.
+Sometimes shy players don't want to make big decisions. A public
+display of respect or admiration might be enough.
+
+\key{Planning}: If players invest a lot of time into a particular
+plan, I like to join in and provide advice---my commentary stands in
+for their character's knowledge of the world.\marginnote{If you feel
+  that they over-planned it, make sure you use words like "boring
+  wait" and "endless hours pouring over your preparations" as you
+  remind them of the time wasted in-game.} I also like to reward
+players for the effort by having their plans succeed. Be sure to
+recapitulate the successful execution of the plan, coloring it
+appropriately. Avoid the evil feedback loop of foiling their
+plans.\marginnote{Avoid boring "it doesn't work" results. Succeed or
+  fail spectacularly.} They'll counter it by spending even more time
+planning or by trying to keep you out of the planning phase. This
+makes the session boring.
+
+If players don't want to plan a lot, then that's even more awesome,
+because it gives you the opportunity to improvise some action scene.
+Roll for wandering monsters or the like and go for it.
+
+\key{Background}: I tend to prefer character accomplishments to
+character abilities. Thus, player characters in my games are
+mechanically simple. If a player wants to do something that I think is
+out of the ordinary, I ask for an explanation: "Do you think your
+character can do this?" If the player says yes, then we think of an
+explanation and have the player write it down on the character sheet.
+That's how we learn that the dwarf has in fact served as a scout and
+an ensign in the dwarven army.
+
+\key{Development}: Hopefully the events at the table shape the
+characters. Was the character generous or avaricious? Was the
+character diplomatic or rude? Was the character honest or deceitful?
+That's what we need all the social encounters for. By interacting with
+other characters, players can develop their own character. Therefore,
+they need to meet people that can be cheated or dealt with honestly.
+They need to meet people that can be robbed and people that beg. It
+forces players to make choices regarding their characters. It's how
+they grow to be more real.
+
+Avoid situations where there is only one course of action. If you can
+only rescue the baron's child, then there's no choice involved. You
+should add temptation at every single step. Slavers will be interested
+in the child. Enemies of the baron will be interested.
+
+Sometimes there are no obvious choices, and none of the choices will
+help define the character. The baron's child might not want to return
+back home, preferring to go on adventure instead. The character's
+choice will define what they see as filial duty and family integrity.
+Hardly heroic decisions to be made! Use these situations rarely.
+
+\textbf{Influence and Reputation}: Find a way to let characters gain
+influence and a reputation through adventuring. This anchors them in
+the campaign world and encourages character development instead of
+character ability gain. It's a different sort of
+\href{https://alexschroeder.ch/wiki/2009-11-24 Rewards}{reward}.
+
+\textbf{Announce consequences} before players commit to
+actions.\marginnote{The following list is from
+  \href{https://hackslashmaster.blogspot.com/2011/09/on-ressurecting-quantum-ogre-and-having.html}{the
+    Hack \& Slash blog}.} There can only be meaningful choice if
+players know what to expect. ("If you fail the roll, you'll […]. Do
+you want to risk it?")
+
+\textbf{Provide information} if players are unsure. You can wrap it in
+vague language, but be sure to provide the necessary information.
+("It's hard to say, but you feel a nagging suspicion that he's
+probably hiding something.")
+
+In the same vein, \textbf{provide warnings} if players are putting
+themselves in danger. You're aiming for "I knew it!" when something
+bad befalls player characters. ("You notice that the hanging bridge
+above the tar pits seems frail. Just make sure nobody cuts those
+ropes!")
+
+\textbf{Provide alternatives} if you think that what players want
+should be impossible. ("You can't just buy a magic weapon but they say
+there's a hidden entrance to a goblin market in the Smoke Forest.")
+
+\textbf{Add obstacles} whenever players are getting what they want.
+("The insect trainer will teach your lizard how to spy ahead if you
+provide her with a living giant wasp.")
+
+% prevent an empty page
+% http://tex.stackexchange.com/questions/109625/avoiding-empty-page-between-a-very-full-page-and-the-index
+\enlargethispage{50pt}
 
 \printindex
 
