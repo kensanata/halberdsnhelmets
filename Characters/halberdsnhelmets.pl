@@ -2732,29 +2732,29 @@ sub freebooters_gear {
   my $wt = 0;
 
   my %weapons = 
-      (T('axe') => ['1d8', 'close', 2],
-       T('club') => ['1d6', 'close', 1],
-       T('dagger') => ['1d4', "1 " . join(", ", T('pierce'), T('precise'), T('hand')), 0],
-       T('flail') => ['1d8', join(", ", T('close'), T('forceful')), 2],
-       T('great axe') => ['1d10', join(", ", T('close'), T('rare'), T('2-handed')), 3],
-       T('great hammer') => ['1d10', join(", ", T('close'), T('forceful'), T('rare'), T('2-handed')), 4],
-       T('great sword') => ['1d10', join(", ", T('close'), T('reach'), T('rare'), T('2-handed')), 3],
-       T('hatchet') => ['1d4', join(", ", T('throw'), T('close'), T('near')), 1],
-       T('knife') => ['1d4', join(", ", T('precise'), T('hand')), 0],
-       T('mace') => ['1d6', join(", ", T('close'), T('forceful')), 1],
-       T('pick') => ['1d6', "2 " . join(", ", T('pierce'), T('close'), T('awkward')), 1],
-       T('polearm') => ['1d10', join(", ", T('reach'), T('2-handed')), 3],
-       T('shortsword') => ['1d6', "!" . T('close'), 1],
-       T('spear') => ['1d8', join(", ", T('throw'), T('reach'), T('near')), 2],
-       T('staff') => ['1d4', join(", ", T('close'), T('2-handed')), 1],
-       T('sword') => ['1d8', "!" . T('close'), 2],
-       T('war hammer') => ['1d6', "1 " . join(", ", T('pierce'), T('close')), 1],
-       T('throwing knife') => ['1d4', join(", ", T('hand'), T('close'), T('reach'), T('near'), T('precise')), 0],
-       T('sling') => ['1d4', join(", ", T('near'), T('far'), T('reload')), 0],
-       T('shortbow') => ['1d6', join(", ", T('near'), T('far'), T('2-handed')), 1],
-       T('long bow') => ['1d8', join(", ", T('near'), T('far'), T('2-handed')), 1],
-       T('light crossbow') => ['1d6', "1 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 1],
-       T('heavy crossbow') => ['1d6', "2 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 2]);
+      (T('axe') => [T('1d8'), 'close', 2],
+       T('club') => [T('1d6'), 'close', 1],
+       T('dagger') => [T('1d4'), "1 " . join(", ", T('pierce'), T('precise'), T('hand')), 0],
+       T('flail') => [T('1d8'), join(", ", T('close'), T('forceful')), 2],
+       T('great axe') => [T('1d10'), join(", ", T('close'), T('rare'), T('2-handed')), 3],
+       T('great hammer') => [T('1d10'), join(", ", T('close'), T('forceful'), T('rare'), T('2-handed')), 4],
+       T('great sword') => [T('1d10'), join(", ", T('close'), T('reach'), T('rare'), T('2-handed')), 3],
+       T('hatchet') => [T('1d4'), join(", ", T('throw'), T('close'), T('near')), 1],
+       T('knife') => [T('1d4'), join(", ", T('precise'), T('hand')), 0],
+       T('mace') => [T('1d6'), join(", ", T('close'), T('forceful')), 1],
+       T('pick') => [T('1d6'), "2 " . join(", ", T('pierce'), T('close'), T('awkward')), 1],
+       T('polearm') => [T('1d10'), join(", ", T('reach'), T('2-handed')), 3],
+       T('shortsword') => [T('1d6'), "!" . T('close'), 1],
+       T('spear') => [T('1d8'), join(", ", T('throw'), T('reach'), T('near')), 2],
+       T('staff') => [T('1d4'), join(", ", T('close'), T('2-handed')), 1],
+       T('sword') => [T('1d8'), "!" . T('close'), 2],
+       T('war hammer') => [T('1d6'), "1 " . join(", ", T('pierce'), T('close')), 1],
+       T('throwing knife') => [T('1d4'), join(", ", T('hand'), T('close'), T('reach'), T('near'), T('precise')), 0],
+       T('sling') => [T('1d4'), join(", ", T('near'), T('far'), T('reload')), 0],
+       T('shortbow') => [T('1d6'), join(", ", T('near'), T('far'), T('2-handed')), 1],
+       T('long bow') => [T('1d8'), join(", ", T('near'), T('far'), T('2-handed')), 1],
+       T('light crossbow') => [T('1d6'), "1 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 1],
+       T('heavy crossbow') => [T('1d6'), "2 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 2]);
   
   if ($char->{class} eq T('fighter')) {
     my $weapon = freebooters_fighter_weapon($char, \%weapons);
@@ -2818,6 +2818,62 @@ sub freebooters_gear {
       $wt += 3;
     }
   } elsif ($char->{class} eq T('magic-user')) {
+
+    provide($char, "item1", T('spell book'));
+    provide($char, "item1-wt", 1);
+    provide($char, "item2", T('rations'));
+    provide($char, "item2-wt", 1);
+    provide($char, "silver", d6() + d6() + $char->{luc});
+    $wt += 2;
+
+    my $wp = 1; # next weapon
+    my $it = 3; # next item
+
+    my $roll = d6();
+    # $char->{notes} .= "magic-user focus: $roll\\\\";
+    if ($roll <= 2) {
+      provide($char, "item$it", T('magic wand (+1 power)'));
+      provide($char, "item$it-wt", 0);
+      $it++;
+    } elsif ($roll <= 5) {
+      provide($char, "weapon$wp", T('magic staff (+1 power)'));
+      provide($char, "dmg$wp", T('1d4'));
+      provide($char, "weapon$wp-wt", 1);
+      $wt += 1;
+      $wp++;
+    } else {
+      provide($char, "item$it", T('magic orb'));
+      provide($char, "item$it-wt", 1);
+      $wt += 1;
+      $it++;
+    }
+
+    for (1 .. 2) {
+
+      $roll = d6();
+      # $char->{notes} .= "magic-user equipment: $roll\\\\";
+      if ($roll <= 2) {
+	provide($char, "item$it", T('bag of books (○○○○○)'));
+	provide($char, "item$it-wt", 2);
+	$wt += 2;
+	$it++;
+      } elsif ($roll <= 3) {
+	my $weapon = T('dagger');
+	provide($char, "weapon$wp", $weapon);
+	provide($char, "dmg$wp", $weapons{$weapon}->[0]);
+	provide($char, "weapon$wp-wt", $weapons{$weapon}->[2]);
+	$wt += $weapons{$weapon}->[2];
+	$wp++;
+      } elsif ($roll <= 4) {
+	provide($char, "item$it", T('healing potion (heal 1d8 HP)'));
+	provide($char, "item$it-wt", 0);
+	$it++;
+      } else {
+	provide($char, "item$it", T('spell components (+1 power, ○○○)'));
+	provide($char, "item$it-wt", 0);
+	$it++;
+      }
+    }
   }
   provide($char, "total-wt", $wt);
 }
