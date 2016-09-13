@@ -23,7 +23,7 @@ use List::Util qw(shuffle);
 use POSIX qw(floor ceil);
 no warnings qw(uninitialized numeric);
 
-my $home = '/home/alex/farm/halberdsnhelmets';
+my $home = $ENV{MOJO_HOME} || "/home/alex/farm/halberdsnhelmets";
 
 sub translations {
   # strings in sinqle quotes are translated into German if necessary
