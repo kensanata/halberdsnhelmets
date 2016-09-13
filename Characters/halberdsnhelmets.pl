@@ -470,6 +470,20 @@ throw
 werfen
 throwing knife
 Wurfmesser
+bag of books (○○○○○)
+Büchertasche (○○○○○)
+healing potion (heal 1d8 HP)
+Heiltrank (für 1W8 LP)
+magic orb
+Kristallkugel
+magic staff (+1 power)
+Langer Zauberstab (+1 Macht)
+magic wand (+1 power)
+Zauberstab (+1 Macht)
+rations
+Wegzehrung
+spell components (+1 power, ○○○)
+Zauberzutaten (+1 Macht, ○○○)
 });
 
   return \%translations;

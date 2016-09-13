@@ -33,6 +33,8 @@ while ($source =~ /'(.+?)'/g) {
   $data{$1} = $translations->{$1};
 }
 
+binmode(STDOUT, ':encoding(UTF-8)');
+
 ok(%data, (keys %data) . " strings where found");
 ok(%$translations, (keys %$translations) . " translations where found");
 

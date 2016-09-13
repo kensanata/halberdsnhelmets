@@ -3,6 +3,3 @@
 
 test:
 	prove t
-
-translations:
-	perl halberdsnhelmets.pl '/translation?'
