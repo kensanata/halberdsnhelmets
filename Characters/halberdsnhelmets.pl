@@ -1464,7 +1464,9 @@ sub average {
   return above(8, @_);
 }
 
-sub provide {
+# use prototype so that Perl knows that there are only three arguments, which
+# allows wrap to use wantarray when used to wrap $value, see freebooters_appearance
+sub provide ($$$) {
   my ($char, $key, $value) = @_;
   push(@{$char->{provided}}, $key) unless $char->{$key};
   $char->{$key} = $value;
@@ -1491,12 +1493,12 @@ sub member {
 
 sub wrap {
   my ($text, $width) = @_;
-  my $result;
+  my @result;
   while (length($text) > $width) {
     my $n = $width;
     while ($n > 0) {
       if (substr($text, $n, 1) eq " ") {
-	$result .= substr($text, 0, $n) . "\\\\";
+	push(@result, substr($text, 0, $n));
 	$text = substr($text, $n + 1);
 	last;
       } else {
@@ -1504,8 +1506,9 @@ sub wrap {
       }
     }
   }
-  $result .= $text;
-  return $result;
+  push(@result, $text);
+  return @result if wantarray;
+  return join("\\\\", @result);
 }
 
 # http://www.stadt-zuerich.ch/content/prd/de/index/statistik/publikationsdatenbank/Vornamen-Verzeichnis/VVZ_2012.html
@@ -2620,6 +2623,7 @@ sub freebooters_appearance {
       "square-shouldered", "strange marks", "stubble", "tattoos",
       "thundering voice", "tonsure", "unwashed", "warty", "well-scrubbed",
       "roll on Fighter");
+      # $char->{notes} .= "appearance, rolled on the $char->{class} table: $phrase\\\\";
     }
     if ($char->{class} eq T('fighter')
 	or $phrase eq "roll on Fighter") {
@@ -2634,6 +2638,7 @@ sub freebooters_appearance {
       "scarred", "tattoos", "shaved head", "smelly", "smiling", "squint",
       "steely gaze", "stubble", "tattoos", "unsmiling", "well-scrubbed",
       "youthful", "roll on Thief");
+      # $char->{notes} .= "appearance, rolled on the $char->{class} table: $phrase\\\\";
     }
     if ($char->{class} eq T('thief')
 	or $phrase eq "roll on Thief") {
@@ -2648,6 +2653,7 @@ sub freebooters_appearance {
       clothes", "red-rimmed eyes", "scarred", "shifty eyes", "small hands",
       "smelly", "squint", "stubble", "tattoos", "unsmiling", "unwashed",
       "well-groomed", "whispery voice", "widow’s peak", "roll on Magic-User");
+      # $char->{notes} .= "appearance, rolled on the $char->{class} table: $phrase\\\\";
     }
     if ($char->{class} eq T('magic-user')
 	or $phrase eq "roll on Magic-User") {
@@ -2662,6 +2668,7 @@ sub freebooters_appearance {
       "raspy voice", "scarred", "skeletal hands", "skullcap", "smelly",
       "strange marks", "sunken eyes", "tattoos", "unwashed", "warty",
       "white hair", "widow’s peak");
+      # $char->{notes} .= "appearance, rolled on the $char->{class} table: $phrase\\\\";
     }
     push(@phrases, $phrase) if $phrase and not member($phrase, @phrases);
   }
@@ -2771,11 +2778,9 @@ sub freebooters_gear {
        T('heavy crossbow') => [T('1d6'), "2 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 2]);
   
   if ($char->{class} eq T('fighter')) {
-    my $weapon = freebooters_fighter_weapon($char, \%weapons);
-    provide($char, "weapon1", $weapon);
-    provide($char, "dmg1", $weapons{$weapon}->[0]);
-    provide($char, "weapon1-wt", $weapons{$weapon}->[2]);
-    $wt += $weapons{$weapon}->[2];
+
+    $wt += freebooter_weapon($char, \%weapons, freebooters_fighter_weapon($char, \%weapons));
+
     my $roll = d6();
     if ($roll == 1) {
       provide($char, "item1", T('leather armor'));
@@ -2795,11 +2800,7 @@ sub freebooters_gear {
     }
   } elsif ($char->{class} eq T('thief')) {
 
-    my $weapon = one(T('knife'), T('dagger'), T('shortsword'));
-    provide($char, "weapon1", $weapon);
-    provide($char, "dmg1", $weapons{$weapon}->[0]);
-    provide($char, "weapon1-wt", $weapons{$weapon}->[2]);
-    $wt += $weapons{$weapon}->[2];
+    $wt += freebooter_weapon($char, \%weapons, one(T('knife'), T('dagger'), T('shortsword')));
     
     provide($char, "item1", T('leather armor'));
     provide($char, "armor", 1);
@@ -2808,11 +2809,7 @@ sub freebooters_gear {
     
   } elsif ($char->{class} eq T('cleric')) {
 
-    my $weapon = one(T('staff'), T('mace'), T('war hammer'));
-    provide($char, "weapon1", $weapon);
-    provide($char, "dmg1", $weapons{$weapon}->[0]);
-    provide($char, "weapon1-wt", $weapons{$weapon}->[2]);
-    $wt += $weapons{$weapon}->[2];
+    $wt += freebooter_weapon($char, \%weapons, one(T('staff'), T('mace'), T('war hammer')));
     
     my $roll = d6();
     if ($roll <= 2) {
@@ -2846,17 +2843,17 @@ sub freebooters_gear {
     my $roll = d6();
     # $char->{notes} .= "magic-user focus: $roll\\\\";
     if ($roll <= 2) {
-      provide($char, "item$it", T('magic wand (+1 power)'));
+      provide($char, "item$it", T('magic wand') . " (+1 " . T('power') . ")");
       provide($char, "item$it-wt", 0);
       $it++;
     } elsif ($roll <= 5) {
-      provide($char, "weapon$wp", T('magic staff (+1 power)'));
+      provide($char, "weapon$wp", T('magic staff') . "\\\\(" . join(", ", T('close'), T('2-handed'), '+1 ' . T('power')) . ")");
       provide($char, "dmg$wp", T('1d4'));
       provide($char, "weapon$wp-wt", 1);
       $wt += 1;
-      $wp++;
+      $wp += 2;
     } else {
-      provide($char, "item$it", T('magic orb'));
+      provide($char, "item$it", T('magic orb') . " (+2 " . T('power') . ")");
       provide($char, "item$it-wt", 1);
       $wt += 1;
       $it++;
@@ -2872,12 +2869,13 @@ sub freebooters_gear {
 	$wt += 2;
 	$it++;
       } elsif ($roll <= 3) {
-	my $weapon = T('dagger');
-	provide($char, "weapon$wp", $weapon);
-	provide($char, "dmg$wp", $weapons{$weapon}->[0]);
-	provide($char, "weapon$wp-wt", $weapons{$weapon}->[2]);
-	$wt += $weapons{$weapon}->[2];
-	$wp++;
+	# check if we already rolled a dagger
+	if ($char->{"weapon$wp"} =~ /^dagger/) {
+	  $char->{"weapon$wp"} =~ s/^dagger/dagger (2)/;
+	} else {
+	  $wt += freebooter_weapon($char, \%weapons, T('dagger'), $wp);
+	  # don't increase $wp because a second dagger will just add (2)
+	}
       } elsif ($roll <= 4) {
 	provide($char, "item$it", T('healing potion (heal 1d8 HP)'));
 	provide($char, "item$it-wt", 0);
@@ -2890,6 +2888,21 @@ sub freebooters_gear {
     }
   }
   provide($char, "total-wt", $wt);
+}
+
+sub freebooter_weapon {
+  my ($char, $weapons, $weapon, $wp) = @_;
+  $wp ||= 1; # position
+  if (length($weapon . ' (' . $weapons->{$weapon}->[1] . ')') > 23) {
+    provide($char, "weapon$wp", $weapon . '\\\\'
+	    # the second line has more space
+	    . wrap('(' . $weapons->{$weapon}->[1] . ')', 33));
+  } else {
+    provide($char, "weapon$wp", $weapon . ' (' . $weapons->{$weapon}->[1] . ')');
+  }
+  provide($char, "dmg$wp", $weapons->{$weapon}->[0]);
+  provide($char, "weapon$wp-wt", $weapons->{$weapon}->[2]);
+  return $weapons->{$weapon}->[2];
 }
 
 sub freebooters_fighter_weapon {
