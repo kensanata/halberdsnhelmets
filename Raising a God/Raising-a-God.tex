@@ -1,15 +1,16 @@
-\documentclass[11pt]{bxart}
+\documentclass[a4paper,serif]{rpg-module}
 \usepackage[utf8]{inputenc}
-\usepackage[widespace]{fourier}
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{units}
 \usepackage{booktabs}
-\usepackage[bf]{caption}
+\usepackage[labelfont=bf]{caption}
+% allow non-hyphenating dashes like in AC~\=/1 (AC -1)
+\usepackage[shortcuts]{extdash}
 
 % list only sections for the table of contents
-\setcounter{tocdepth}{1}
+% \setcounter{tocdepth}{1}
 
 % Clickable hyperlinks
 \usepackage{hyperref}
@@ -23,12 +24,42 @@
 
 \begin{document}
 
-\begin{titlepage}
-  \maketitle
-  \centering
-  \includegraphics[width=10cm]{Floating-Island.jpg}
-  \tableofcontents
-\end{titlepage} 
+\title{Raising a God}
+\author{Alex Schroeder}
+\titlerunning{Raising a God}
+\subtitle{A campaign setting for character levels 5--10}
+\coverimage{Floating-Island.jpg}
+
+\abstract{This is a mini-campaign for players in their mid levels,
+  levels five to ten. Player characters start looking for a place to
+  build their castles and tower, thieves look to expand their network
+  of spies and thieves, clerics start meddling in the affairs of the
+  gods. Some of long term goals players might have: end the slave
+  trade on Hinia Oot; raise the dead god of light, Arden; topple the
+  reign of the grey elf witch Susrael; prevent the rise of the demon
+  lord Tsathoggua.}
+
+\copyrightblock{This module is
+  \href{https://creativecommons.org/publicdomain/zero/1.0/deed}{dedicated
+    to the public domain}.}
+
+\contactblock{% column 1: logo
+  \begin{center}
+    \includegraphics[width=2cm]{OSR.png}
+  \end{center}
+}{
+  \vspace{0.5cm}
+  This module provides stats compatible with any classic role-playing
+  game by the \emph{Old School Renaissance} (OSR).
+}{
+  \vspace{0.4cm}
+  \begin{flushright}
+    Alex Schroeder can be reached by email:
+    \href{mailto:kensanata@gmail.com}{kensanata@gmail.com}
+  \end{flushright}
+}
+
+\maketitle
 
 % (query-replace-regexp "\\b\\([A-Z][A-Z]\\) \\b" "\\1~")
 % AC 5
@@ -38,23 +69,12 @@
 % 100 1000 10000 100000 but these require multiple calls: 1000000 10000000 
 % (while (re-search-forward ".\\{71\\}" nil t) (fill-paragraph))
 
-\section{Introduction}
+\part{Gods \& Demons}
 
-This is a mini-campaign for players in their mid levels, levels five
-to ten. Player characters start looking for a place to build their
-castles and tower, thieves look to expand their network of spies and
-thieves, clerics start meddling in the affairs of the gods.
-
-Here are some of long term goals for your players:
-
-\begin{itemize}
-\item End the slave trade on Hinia Oot
-\item Raise the dead god of light, Arden
-\item Topple the reign of the grey elf witch Susrael
-\item Prevent the rise of the demon lord Tsathoggua
-\end{itemize}
-
-\section{Gods}
+The gods and demons are important because characters will able to
+visit their \emph{halls}. These can be reached by secret \emph{gates}
+when sailing the \emph{Astral Sea} when climbing the branches of the
+\emph{World Tree} connecting all the planes of existence.
 
 There is a chance that the gods will send one of their agents to help
 if their name is called. In order to succeed, players need to keep
@@ -72,16 +92,18 @@ When paladins and clerics cast \textbf{spells of level four and
   higher}, the spell effect usually involves the appearance of such an
 agent, and an opportunity for some discourse.
 
-\textbf{Freya} is the goddess of winter, of spring, of fertility, of
-grain, of war, of cats and boars, of magic. She leads the valkyries
-and collects half the slain in battle. These dine with her in
-Sessrúmnir, her hall in Asgard.
+\section{Freya and Odin}
 
-\textbf{Odin} is the god of wisdom, of magic and poetry, of war, of
-eagles and ravens, of runes, of wanderers. He wields a magic spear, he
-raises the dead, he rides an eight legged horse called Draupnir. The
-other half of the slain in battle dine with him in Valhalla, his hall
-in Asgard.
+Freya is the goddess of winter, of spring, of fertility, of grain, of
+war, of cats and boars, of magic. She leads the valkyries and collects
+half the slain in battle. These dine with her in \emph{Sessrúmnir},
+her hall in Asgard.
+
+Odin is the god of wisdom, of magic and poetry, of war, of eagles and
+ravens, of runes, of wanderers. He wields a magic spear, he raises the
+dead, he rides an eight legged horse called Draupnir. The other half
+of the slain in battle dine with him in \emph{Valhalla}, his hall in
+Asgard.
 
 In times of need, both of them will send a \textbf{valkyrie} named
 \textit{War}, \textit{Mercy} \textit{Spear}, \textit{Cruel} or
@@ -94,19 +116,25 @@ to draw it and join this melee. When resisting such a compel for the
 third time, the sword looses its magic. The owner is considered unfit
 to wield it.
 
-\textbf{Loki} is the god of lies, of deceit, of misdeeds, of excuses
-and explanations, of looking the other way, of tricksters, thieves and
+\section{Loki}
+
+Loki is the god of lies, of deceit, of misdeeds, of excuses and
+explanations, of looking the other way, of tricksters, thieves and
 shape changers, a friend of giants, the innocently accused, the
-misunderstood and the innocent.
+misunderstood and the innocent. He can be found brooding in his hall
+\emph{Ethrahell} in Utgard.
 
 In times of need, he might send a nameless \textbf{shape changer}: HD
 4 AC~5 1d12 MV~9 ML~10 XP~190, \textit{polymorph} at will, immune to
 \textit{sleep} and \textit{charms}. Clearly, mostly useful when in
 need of deception.
 
-\textbf{Mitra} is the goddess of law, of fire, of bulls, of contracts,
-of bonds, the swearing of oaths, of honesty and truth, of loyalty and
-sacrifice for the community.
+\section{Mitra}
+
+Mitra is the goddess of law, of fire, of bulls, of contracts, of
+bonds, the swearing of oaths, of honesty and truth, of loyalty and
+sacrifice for the community. Her hall is built atop a lake of fire
+deep underground in Muspelheim and called \emph{Eldivatn}.
 
 In times of need, she might send a \textbf{minotaur} named
 \textit{Silence}, \textit{Calm}, \textit{Truth Teller} or
@@ -115,9 +143,12 @@ In times of need, she might send a \textbf{minotaur} named
 spells or stop hostilities speak nothing but the truth), immune to
 \textit{sleep} and \textit{charms}.
 
-\textbf{Set} is the demon lord of snakes and crocodiles, of assassins,
-of revenge, of spies and diplomats, of poison makers, of death traps,
-of hypnotists and mind benders.
+\section{Set}
+
+Set is the demon lord of snakes and crocodiles, of assassins, of
+revenge, of spies and diplomats, of poison makers, of death traps, of
+hypnotists and mind benders. His hall is the subterranean
+\emph{Eiterhorg} in Svartalfheim.
 
 In times of need he will send a \textbf{naga} named \textit{Sweet
   Stab}, \textit{Revenge}, \textit{Crocodile Tears} or \textit{Coral
@@ -125,27 +156,45 @@ In times of need he will send a \textbf{naga} named \textit{Sweet
 \textit{fireball} (7d6) 3/day, \textit{charm person} at will, only
 harmed by magic or magic weapons.
 
-\textbf{Pazuzu} is the demon lord of pestilence, of miscarriage, of
-famine and disease, of crows and vultures, of temptation and betrayal.
+\section{Pazuzu}
+
+Pazuzu is the demon lord of pestilence, of miscarriage, of famine and
+disease, of crows and vultures, of temptation and betrayal. His tower
+\emph{Sandstein} was built in Vanaheim.
 
 In times of need he will send a \textbf{vulture demon} named
 \textit{Gangrene}, \textit{Pestilence}, \textit{Corpse Eater} or
 \textit{Baby Killer}: HD~8+1 AC~5 1d4/1d4/1d6/1d6/1d8 MV~18 ML~11 XP
 2,420, flying, only harmed by magic or magic weapons.
 
-\section{Astral Sea}
+\section{Marduk}
+
+Marduk is the god of war and monster slaying, of armies, of generals,
+of brute force. His castle \emph{Unugal} is built in Midgard, the
+world of men.
+
+In times of need he will send a \textbf{hunter general} named
+\textit{Death}, \textit{Strength}, \textit{Smasher} or \textit{Taker
+  of Heads}: HD~6+1 AC~7 1d6 MV~12 ML~12 XP 380, leading a
+\emph{hundertschaft}, one hundred \textbf{light infantery}: HD~1 AC~7
+1d6 MV~12 ML~10 XP 15. Since there are so many of them, do not forget
+to roll a morale check when indicated!
+
+\newpage
+
+\part{Astral Sea}
 
 The Astral Sea is an air filled plane, black and silent. It can be
 sailed by flying ships. There are many \textit{gates} in the Astral
 Sea, connecting it to many other planes.
 
-\begin{figure*}
-  \centering
-  \includegraphics[height=10cm]{Astral-Sea.jpg}
-  \caption{The Astral Sea can be sailed by flying ships.}
-\end{figure*}
+%% \begin{figure*}[ht]
+%%   \centering
+%%   \includegraphics[height=10cm]{Astral-Sea.jpg}
+%%   \caption{The Astral Sea can be sailed by flying ships.}
+%% \end{figure*}
 
-\subsection{Rumors}
+\section{Rumors}
 
 \begin{itemize}
 \item Asteroids fly through the darkness, their caverns and craters
@@ -158,31 +207,28 @@ Sea, connecting it to many other planes.
   whales} and \textit{sky squids}
 \end{itemize}
 
-\subsection{Encounters}
+\section{Encounters}
 
 With a flying ship, travel from one hex to the next takes about a day.
-There's a 1 in 6 chance per day of random ship encounters. Roll 1d6:
+Roll once per day.
 
-\begin{enumerate}
-\item monkeyman caravel
-\item squidman nautilus
-\item eelman centipede
-\item void pirate pike
-\item vampire deathrock 
-\item sharkman hammer
-\end{enumerate}
+\begin{center}
+\begin{tabular}{cl}
+\tableheader[b]{1d6 & Ship Encounter}
+1 & \hyperref[sec:monkeyman-caravel]{monkeyman caravel}, see p.~\pageref{sec:monkeyman-caravel} \\
+2 & \hyperref[sec:squidman-nautilus]{squidman nautilus}, see p.~\pageref{sec:squidman-nautilus} \\
+3 & \hyperref[sec:eelman-centipede]{eelman centipede}, see p.~\pageref{sec:eelman-centipede}    \\
+4 & \hyperref[sec:void-pirate-pike]{void pirate pike}, see p.~\pageref{sec:void-pirate-pike}    \\
+5 & \hyperref[sec:vampire-deathrock]{vampire deathrock}, see p.~\pageref{sec:vampire-deathrock} \\
+6 & \hyperref[sec:sharkman-hammer]{sharkman hammer}, see p.~\pageref{sec:sharkman-hammer}       \\
+7 & \hyperref[sec:astral-whales]{astral whales}, see p.~\pageref{sec:astral-whales}    \\
+8 & \hyperref[sec:sky-squids]{sky squids}, see p.~\pageref{sec:sky-squids}             \\
+9 & \hyperref[sec:asteroid-field]{asteroid field}, see p.~\pageref{sec:asteroid-field} \\
+10 & \hyperref[sec:rainbow-nebula]{rainbow nebula}, see p.~\pageref{sec:rainbow-nebula} \\
+\end{tabular}
+\end{center}
 
-If there is no random encounter, there are still harmless natural
-encounters. Roll 1d4:
-
-\begin{enumerate}
-\item astral whales
-\item sky squids
-\item asteroid field
-\item rainbow nebula
-\end{enumerate}
-
-\subsection{Ship Combat}
+\section{Ship Combat}
 \label{sec:ship-combat}
 
 The \textit{Labyrinth Lord} rules cover ship combat. The
@@ -226,6 +272,7 @@ into some asteroids or you took a few hits from parting shots. On a
 6+, you did not make it. Fight to the bitter end or surrender now.
 
 \subsection{Monkeyman Caravel}
+\label{sec:monkeyman-caravel}
 
 "Monkeymen" is what other people call humans – humanoids with monkey
 heads. A caravel is a small trading ship made of wood with a single
@@ -238,6 +285,7 @@ worth another \unit[10,000]{gold}. Clearly, being a pirate is
 lucrative.
 
 \subsection{Squidman Nautilus}
+\label{sec:squidman-nautilus}
 
 This is a slaver ship built atop a trained nautilus with two mounted
 catapults. The crew consists of squidmen, charmed slaves manning two
@@ -254,7 +302,9 @@ cowards. HD~7+1 AC~8 1d6 F7 MV~12 ML~6 XP~1,300; \textit{mind blast}
 at will stuns anybody they can see within \unit[60]{ft} unless they
 save vs. paralysis; \textit{charm person} at will to make slaves
 docile unless they save vs. spells; \textit{read thoughts} lets them
-read any thoughts within \unit[60]{ft}.
+read any thoughts within \unit[60]{ft}. If they sing their song of
+summoning into the void for \unit[10]{min}, they will call forth a
+\hyperref[sec:sky-squids]{sky squid}, see p.~\pageref{sec:sky-squids}.
 
 The fifteen \textbf{slaves} are humans manning the catapults and
 repairing damage. HD~1 AC~9 1d6 F1 MV~12 ML~6 XP~10.
@@ -271,6 +321,7 @@ As these would be sold for \unit[25,000]{gold}, freeing them would be
 worth as many XP. The ship itself is worth \unit[35,000]{gold}.
 
 \subsection{Eelman Centipede}
+\label{sec:eelman-centipede}
 
 This is also a slaver ship built into what looks like a gargantuan
 centipede. The crew consists of eelmen manning three catapults or
@@ -301,6 +352,7 @@ these would be sold for \unit[25,000]{gold}, freeing them would be
 worth as many XP. The ship itself is worth \unit[50,000]{gold}.
 
 \subsection{Void Pirate Pike}
+\label{sec:void-pirate-pike}
 
 A ship shaped like a fish with an open deck, no catapults and twenty
 elven pirates. The deck is protected by a row of mounted shields.
@@ -316,6 +368,7 @@ ruler is trying to find allies against Susrael. The ship is worth
 \unit[20,000]{gold}.
 
 \subsection{Deathrock with Vampires}
+\label{sec:vampire-deathrock}
 
 Deathrocks are hurtling through the Astral Sea at slow speeds. They
 are densely packed with ghouls, waiting for it to make contact with
@@ -345,6 +398,7 @@ tunnels. The coffins stand at the bottom of a cathedral pit
 already dead, are unaffected.
 
 \subsection{Sharkman Hammer}
+\label{sec:sharkman-hammer}
 
 A white ship shaped like a giant shark, no catapults and 
 greedy pirate \textbf{gray elves} eager to surprise you with their
@@ -360,6 +414,7 @@ The gray elves are out for loot. The ship is worth
 \unit[20,000]{gold}.
 
 \subsection{Astral Whales}
+\label{sec:astral-whales}
 
 Astral whales are dream singers the size of cities. Their thoughts
 overwhelm all others. Their bodies are like cliffs a thousand feet
@@ -436,27 +491,25 @@ developing the idea for next session:
   to calm all angry spirits
 \end{enumerate}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[draft,width=8cm,height=4cm]{Astral-Whale.jpg}
-\end{figure}
-
 \subsection{Sky Squids}
+\label{sec:sky-squids}
 
-The squidmen know the songs to summon and anger these god-like
-creatures that live between the stars. HD~20 AC~7 8×3d6 4d8 F20 MV~15
-ML~10 XP~3,250. When angered, they will happily smash a ship and
-proceed to eat the survivors. When found on their own, these sky
+The \textbf{squidmen} know the songs to summon and anger these
+god-like creatures that live between the stars. HD~20 AC~7 8×3d6 4d8
+F20 MV~15 ML~10 XP~3,250. When angered, they will happily smash a ship
+and proceed to eat the survivors. When found on their own, these sky
 squids will only attack if your ship looks like a giant fish.
 
 To learn this song, you must befriend a squidman. To sing the song,
-you need to wear a \textit{crown of thought}.
+you need to wear a \textit{crown of thought} or you need to have
+terrible psi powers.
 
 \subsection{Asteroid Field}
+\label{sec:asteroid-field}
 
-Asteroid fields are perfect hideouts for pirates. When flying into an
-asteroid field, one flies very slowly or risks loosing a ship. Giving
-chase is a dangerous proposition.
+Asteroid fields are perfect hideouts for \textbf{pirates}. When flying
+into an asteroid field, one flies very slowly or risks loosing a ship.
+Giving chase is a dangerous proposition.
 
 \begin{enumerate}
 \item The one fleeing starts by announcing a number of risky maneuvers
@@ -471,8 +524,8 @@ chase is a dangerous proposition.
   combat to resume or returns to step \#1.
 \end{enumerate}
  
-A typical pirate stone fortress has two catapults and two large
-longships which are used to raid other settlements. HP~100 AC~2
+A typical \textbf{pirate stone fortress} has two catapults and two
+large longships which are used to raid other settlements. HP~100 AC~2
 3d8/3d8 for the fortress and HP~20 AC~8 for the longships.
 
 There will be around 200 \textbf{pirates} in the fortress itself. HD~1
@@ -486,6 +539,7 @@ A typical longship is worth 20,000~gold, a fortress with a fortified
 harbor is worth 100,000~gold (but harder to sell than a ship).
 
 \subsection{Rainbow Nebula}
+\label{sec:rainbow-nebula}
 
 Occasionally, there will be 
 
@@ -547,7 +601,7 @@ resist), can only be hurt by magic weapons +1 and spells, being able
 to cloud reality in an \emph{illusion} at will (save vs. spells to
 disbelieve if and only if touching it), to \emph{read thoughts} and
 speak in \emph{tongues}, able to change into a giant flying black
-boar-headed snake dripping caustic green vapors when angered (AC -1,
+boar-headed snake dripping caustic green vapors when angered (AC~\=/1,
 tail slap 2d8, bite 4d8, suffer 1d8 damage by the gas when inside the
 darkness surrounding the demon).
 
@@ -564,7 +618,7 @@ The foul forest has been taken over by a gang of \textbf{werewolves}.
 Lady Geradana has ruled the coastal elves of Lagnabadalë for over 250
 years. This is her spell book. These are very traditional spells.
 
-\begin{table*}[!h]
+\begin{table*}[!ht]
   \small
   \centering
   \begin{tabular}{cll}
@@ -591,7 +645,7 @@ When \emph{water breathing}, you can speak the language of whales.
 
 As is typical for elves, her favorite shape to \emph{polymorph} into
 is a blue dragon. At level 9, its stats are AC~0 1d6+1/1d6+1/3d10
-MV~24; at level 10 its stats are AC~-1 1d8/1d8/4d8 MV~24.
+MV~24; at level 10 its stats are AC~\=/1 1d8/1d8/4d8 MV~24.
 
 A \emph{flash flood} will create a sudden flood from a body of water
 within \unit[30]{ft}. Anybody caught by it must save vs.~death or be
@@ -604,6 +658,9 @@ elemental called \emph{Flying Debris}, HD~16 AC~-2 3d8 F16 MV~36; plus
 immune to non-magical weapons; will attack summoner and remain on this
 plane if the conjurer's concentration fails.
 
+\newpage
+
+\tableofcontents
 
 \end{document}
 
