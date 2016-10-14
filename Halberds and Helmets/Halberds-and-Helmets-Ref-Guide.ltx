@@ -1,0 +1,1129 @@
+\documentclass[a4paper,twoside,notitlepage,openany]{tufte-book}
+\usepackage[utf8]{inputenc}
+
+% \usepackage{showkeys}% debugging \keys
+% \usepackage{multirow}
+
+% for debugging purposes -- displays the margins
+% \geometry{showframe}
+
+% Provides \sun, \rightmoon
+\usepackage{wasysym}
+
+% Set up index
+\usepackage{makeidx}
+\makeindex
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\usepackage[space]{grffile}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{../Hellebarden und Helme/graphics/}}
+
+% The following package makes prettier tables. We're all about the
+% bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better
+% spacing for units.
+\usepackage{units}
+
+% Bold and index keywords
+\newcommand{\key}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}
+  {\label{key:#2}\textbf{\index{#2}#2}}
+  {\label{key:#1}\textbf{\index{#1}#2}}}
+
+% Ordinals: This is the 2\nd of December. Or the 4\nth of July. Or
+% 3\rd place in a race.
+\usepackage{xspace}
+\newcommand\st{\textsuperscript{st}\xspace}
+\newcommand\nd{\textsuperscript{nd}\xspace}
+\newcommand\rd{\textsuperscript{rd}\xspace}
+\renewcommand\th{\textsuperscript{th}\xspace} % override þ
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments. We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Clickable hyperlinks
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+
+\renewcommand{\labelitemi}{$-$} % use dash for items
+
+\title{Halberds \& Helmets -- Running the Game}
+\author{Alex Schroeder}
+% \date{}
+\begin{document}
+
+\maketitle% this prints the handout title, author, and date
+
+\begin{marginfigure}
+  \includegraphics{Schaller.jpg}
+\end{marginfigure}
+
+\newthought{This book is for} the \key{referee} of the game, the
+person that runs everything that is not a player character. It is an
+instruction manual on how to to run the games the way I do and my
+advice is obviously \textbf{colored by my
+  preferences}.
+ 
+\begin{enumerate}
+\item \textbf{No Skills}: This challenges players. They need to
+  roleplay to be diplomatic, intimidating, bluffing, and the referee
+  needs to roleplay the non-player characters accordingly. Players
+  need to guess where hidden treasure and secret doors are and the
+  referee has to provide the right amount of clues.
+
+\item \textbf{Fewer Classes}: This provides less mechanical
+  differentiation between characters. Players need to roleplay in
+  order to differentiate characters.
+
+\item \textbf{Quick Character Generation}: Easy character generation
+  with few actual choices speeds things up. A high attrition rate is
+  more acceptable as you can bring multiple characters to the table
+  and make extras in a minute or two.
+
+\item \textbf{Random Character Generation}: Random character
+  generation may surprise players and provide interesting party
+  dynamics.
+
+\item \textbf{Rare Healing}: Players need to avoid wandering monsters
+  and avoid unnecessary fighting. This makes strategic decisions (when
+  to fight) more important than tactical decisions (how to fight).
+
+\item \textbf{Simple Combat}: No explicit rules for combat maneuvers
+  and battle grids result in quicker combat rounds, less waiting for
+  your turn, and more time to do other stuff---or more fights per
+  session, if desired.
+
+\item \textbf{Little Damage, Few Hit Points}: Fewer attacks and
+  smaller damage bonuses simplify the math and speed things up.
+
+\item \textbf{Smaller Bonuses}: The smaller bonuses due to abilities
+  reduce the math and produce far less trickle down effects. This also
+  makes the initial ability rolls less important (without actually
+  resorting to point-buy).
+
+\item \textbf{Treasure is Experience}: This encourages players to
+  research their goals, picking their fights carefully. It also
+  provides for an easy and quick reason for the party to form and go
+  adventuring.
+
+\item \textbf{No Buying or Selling of Magic Item }: Getting them
+  should always involve adventuring.
+
+\item \textbf{Random Encounters, Random Monsters}: This forces the
+  referee to improvise and adapt the story on the fly.
+
+\end{enumerate}
+
+\newpage
+
+\textbf{Keep it short}: My main problem is that I don't want to spend
+a lot of time in preparation for a session. Half an hour for a three
+hour slot is all I'm prepared to invest.
+
+\textbf{Campaign Map}: When I
+\href{https://alexschroeder.ch/wiki/2011-01-13_Campaign_Start}{start a
+  new campaign}, I create
+\href{https://alexschroeder.ch/wiki/2009-12-02_Hexcrawl}{a small hex
+  map}. You could use my
+\href{https://campaignwiki.org/text-mapper}{random hexmap generator},
+for example. I only start worrying about the ruins and lairs in the
+various hexes once players actually explore the region. This is going
+to be an
+\href{https://alexschroeder.ch/wiki/2007-02-14_DM_Advice_–_Organic_Campaigns}{organic
+  campaign}. I like to start with a wilderness surrounding a small
+village. In the wilderness, travelling a hex takes a day. That keeps
+things simple. See below for more on traveling. I work on the map,
+adding more locations as players push forward.
+
+\textbf{Use every idea} as soon as possible. Do not save good ideas
+for later! Use them now. You will have more good ideas in the future.
+
+\textbf{Settlements}: Every settlement has two or three interesting,
+named people. These are the people of authority the characters are
+likely to talk to. Every settlement should have a building or two
+where you can find said named people, and an inn, or an exaplanation
+for the missing inn. Don't bother with a map for the settlement.
+
+\textbf{People}: Most of civilization consists of neutral, egoistical,
+normal humans and appropriate demihumans from the monster manual.
+Don't bother assigning levels unless these people are important.
+
+\medskip
+\index{Level!Others}
+\begin{tabular}{cp{9cm}}
+Level & Role \\
+ 0 & ordinary people \\
+ 1 & veterans, trained guards \\
+ 3 & a boss of one or two dozen people, captain of the watch, bandit boss \\
+ 5 & lord over a small settlement, a contested five mile hex, a tower, a small fortress, a sheriff, two of these might be the assistants of a level 9 lord \\
+ 7 & a captain of a small army, the most powerful chieftain of a tribe, a second in command to a level 9 lord \\
+ 9 & lord over a town, a castle plus a town or two, multiple villages, a region up to thirty miles in diameter, known up to a hundred miles away \\
+ 11 & great heroes, the favorites of the gods \\
+ 13 & prophets, avatars and holy men \\
+ 15 & demigods and immortals \\
+ 17 & god-like, granting wishes! \\
+\end{tabular}
+\medskip
+
+\textbf{Names}: Keep lists of names to assign to non-player
+characters. I like names to depend on gender and culture, so I usually
+have multiple lists.
+
+\textbf{News}: Spies and Sages allow you to feed setting information
+to your players. Get into the habit of preparing a little something to
+report for spies and sages in the employ of player characters.
+Actionable information is preferred. Activities of rivals that can be
+stopped. Rumors of treasures that can be sought. Let players know
+where to go next if they want to pursue a certain goal.
+
+\newpage
+
+\textbf{Dungeons}: I like to prepare a number of small
+dungeons\marginnote{If you need some inspiration, check out the
+  \href{http://www.dungeoncontest.com/}{One Page Dungeon Contest}
+  submissions. When the party explores one dungeon, use the time to
+  make up some events surrounding the other dungeons. Giant frog
+  plague? Cultists spreading? Rival party found some treasure?} and
+place them on the campaign map. I make note of a few rumors that would
+lead the party to the various dungeons and warnings they might hear in
+order to prepare them for it. This is a sandbox campaign and the
+encounters do not depend on the power level of the party. Instead, the
+party gets to choose the risk they are willing to face by choosing
+areas that are more or less dangerous based on the rumors they hear.
+
+\textbf{Treasure}: I just roll for random treasure. Treasure spent
+earns experience: 1 gp is worth 1 XP.\marginnote[-2em]{Expand on the
+  list of \emph{buildings} and add cathedrals, tempels, hippodromes
+  and the like as your players will need things to spend their gold
+  on.}
+
+\textbf{Magic Items}: I like magic weapons. If I roll up a simple +1
+weapon I often pimp it with some extra gimmick.\marginnote{Talking,
+  gnawing, cursing, trailing smoke, oozing strange liquids, …} Magic
+items are not for sale. Potions can be bought from alchemists. Every
+alchemist has a handful of potions they know how to make. They cost
+around 500 gold.
+
+\textbf{Stocking the dungeon}: Use a d20.\marginnote{This is easier
+  than rolling two d6 which is what
+  \href{https://alexschroeder.ch/wiki/2013-08-21_One_Roll_Dungeon_Stocking}{Moldvay
+    uses}.}
+
+\medskip
+\index{Stocking}
+\begin{tabular}{cl}
+ d20 & Contents and Treasure \\
+ 1–5 & Empty \\
+ 6 & Unguarded treasure \\
+ 7 & Trap and unguarded treasure \\
+ 8–9 & Trap \\
+ 10–12 & Monster \\
+ 13–15 & Monster and treasure \\
+ 16–20 & Special \\
+\end{tabular}
+\medskip
+
+\index{Random Encounters}\textbf{Random Wilderness Encounters}: Based on the current
+area\marginnote{Keep using the same table while the player characters
+  are in the same region: the same valley, the same forest, the same
+  mountain range---basically a bunch of hexes that seem to belong
+  together. } the party is in, jot down a little random encounter
+table. Consider the critters in the surrounding dungeons, think of a
+theme, browse the monster manuals and look at the pictures. If you
+like beholders, maybe add a dwarf merchant with an extra eye stalk or
+two to the encounter table. He's a spy for the beholder! If you like
+frogs, go for an amphibian theme and pick psionic frog men, giant
+frogs, toads, froglings, and so on. If you have a theme, consider
+antagonists. Is the frog faction competing with the gnomes? Add a
+gnome entry!
+
+\medskip
+\marginnote{Add one or more entries for \textbf{peaceful folk} from
+  the neighborhood or named people from nearby settlements. Two of
+  these is a good number. Add these at the top of the list. During the
+  night, add this number as you roll. This is how you get slightly
+  different results for day time and night time encounters. In this
+  example, merchants and soldiers are only encountered during the day.
+  At night, add +2 to your roll. Thus, psionic frog men and frog demons are only
+  encountered during the night.}
+\begin{tabular}{rl}
+d6 & Encounter \\
+\sun~1 & merchants (1d6) \\
+\sun~2 & soldiers  (1d6+3) \\
+  3 & gnomes (1d6+2) \\
+  4 & giant frogs (1d4) \\
+  5 & froglings (2d6) \\
+  6 & giant dragonfly \\
+\rightmoon~7 & psionic frog men (2d6) \\
+\rightmoon~8 & frog demons (1d4) \\
+\end{tabular}
+\medskip
+
+\newpage
+
+\key{Exploration}: Typically travel is initiated by a non-player
+characters telling the player characters about a location. Usually
+directions are accurate and the location and any landmarks on the way
+get placed on the player map. When traveling, player characters cannot
+get lost. A hex is usually big enough for multiple locations (a hill,
+a lake, a castle, a village, a dungeon). Unknown locations are not be
+easy to find. Use the typical \emph{search} abilities: 1/6 per day for
+humans, 2/6 per day for demi-humans. Known locations can always be
+found.
+
+\key{Travel}: The default is one hex traveled per day unless there
+are trails or roads (two per day; no bonus for riding or flying) or
+they are traveling by ship along a coast (in which case it'll be eight
+hexes per day). As it stands, this ignores movement speeds and hex
+size. You travel one hex per day, that's it. I usually think that one
+hex is five miles, but players don't need to know that.
+
+Thus the actual \emph{procedure} at the gaming table is simple:
+
+\begin{enumerate}
+\item Players tell me where they want to go. There is a 1 in 6 chance
+  for a daylight encounter and a 1 in 6 chance for a nighttime
+  encounter for every hex traveled. Combine encounters if that spices
+  things up.
+\end{enumerate}
+\marginnote{That's it.}
+
+\key{Lairs}: Many hexes have a building of some sort. I place stuff
+I got from the net or from books I bought. I add lairs for all the
+intelligent monsters on my encounter tables. As time passes, I might
+add more locations and lairs to known hexes. It's simply not possible
+to \emph{completely} map a hex.\marginnote{If you use five mile hexes,
+  that's an area of about \unit[22]{mi²}.} There's always more stuff
+to discover. Don't be afraid to add new stuff to existing hexes.
+
+If you have some monsters on your random encounter table and haven't
+decided where the lairs of these creatures are, there's a 1 in 6
+chance when encountering them that you have found their lair. Let
+players find the secret gnome village, the slaad temple, the frogling
+pond. These improvised lairs will necessarily be simple one, two or
+three room affairs. No problem.
+
+\textbf{Monsters}: It's easier if monsters announce themselves: let
+players find, smell or hear something.\marginnote{Use the
+  \emph{reaction roll}. Not all encounters need to end in a fight. Use
+  \emph{morale checks} ins combat. Not all fights are to the death.
+  Here are some typical morale scores:
+
+  \medskip
+  \index{Morale!Others}
+  \begin{tabular}{cl}
+    2 & animals that will always run \\
+    3 & animals when cornered \\
+    4 & herbivores \\
+    5 & carnivores and cowards \\
+    6 & cautious people \\
+    7 & normal men \\
+    8 & well led humanoids \\
+    9 & disciplined troops \\
+    10 & fanatics \\
+    11 & lunatics \\
+    12 & unnatural creatures \\
+  \end{tabular}} This allows them to choose
+their approach. Determine encounters before the game starts or have a
+procedure to determine the number of monsters encountered ready. Use
+1d8 if you're at a loss. This makes sure that you're not scaling the
+encounter to the players. Let the \emph{players decide} whether to
+engage or not.
+
+\textbf{Adapt the encounter} as it happens. If your players are bored,
+let the monsters fight. If your players need guidance, have the
+monsters talk. If your players are afraid, make it easy to avoid the
+encounter. The entertainment of your friends at the table takes
+priority. A \emph{total party kill} can be part of it. Know your
+players.
+
+\newpage
+
+\textbf{Keep Adding}: In order add life to the world, you need to have two or
+three events or changes happen between sessions if time passes
+in-game. A lot of it should relate to what the party did. If their dog
+was killed by a giant crab and they didn't rescue it, then there will
+be a rumor of a ghost dog haunting the beaches. If they discovered
+skeletons in a crypt and fled, they have released undead that will be
+roaming the neighborhood. If they had hirelings with them, those will
+be spreading rumors of a necromancer. Use these rumors to add big and
+small adventure options for the players to focus on.
+
+\textbf{Focus Follows Players}: As time passes, you should see a
+constant trickle of little ideas to add to your campaign. Prepare for
+3-7 of these potential adventures and keep a list of open plots to
+remind players of ongoing issues. More adventures develop wherever the
+party shows up. If the party fights a mammoth and decides to track it
+back to the forest, then maybe there will be neanderthals living
+there. If the players try to contact them, maybe there will be a
+sabre-toothed cat and a velociraptor in the area. If they investigate
+the velociraptor, they might find a valley full of dinosaurs.
+
+Essentially players express their interest in the campaign by spending
+time. If players never leave town, then they want urban adventures. If
+they keep returning to your megadungeon, then that's what they want.
+Giving players real options will make sure the game adapts to their
+preferences (and yours, given that you are providing the options).
+
+\key{Contacts}: Keep a list of contacts. These provide easy plot
+hooks. Magic-users provide new spells in exchange for quests. Sages
+provide information about items found in exchange for quests. Rulers
+provide men-at-arms in exchange for quests. They can provide rumors
+and gossip that hint at things to get involved in. Provide enough to
+allow choice but not too much in order to save preparation time and
+avoid decision paralysis. Keep it somewhere between three and seven. I
+also like to play up alignment. A drug abusing alchemist hands out
+chaotic quests, a curious insect trainer hands out lawful quests.
+
+\textbf{Living World}: Keep a list of a handful in addition to your
+list of contacts. Between sessions, check whether any of the entries
+need to be removed or changed. Consider adding new entries. It's best
+to do this soon after the session when recent events are still fresh.
+Let your players know about these changes during the next session.
+"You notice a new bard in the Yellow Straightjacket. She is called
+Miela, newly arrived from Halgorn. Ilaria appears to have left for
+Tlan."
+
+\key{Maps}: Maps are inspiring. They provide a sense of place, every
+landmark they contain is a potential exploration goal, yet another
+option for players to pursue. Keep a campaign map, hand out treasure
+maps, let other characters draw maps for the party.
+
+Players need options, and maps are like option tokens. Maps are also
+props that are very easy to make.
+
+\textbf{Goals}: Talk to your players about their character goals every
+now and then. Identify the players that have interesting goals you'd
+like to pursue, and start providing rumors that lead to adventures on
+the way to achieving those goals.
+
+Two or three players pushing their own agendas can be a lot of fun.
+There will be a little rivalry because each character needs to pursue
+their own quests. There will be some cooperation: "I'll help you
+retrieve ice from that glacier for your frost rapier if you will help
+me find Xu-Li the fire sage."
+
+Not everybody needs to have goals! You just need enough player goals
+to add adventure seeds to your campaign. If all the players have
+divergent goals, they end up not having a reason to adventure
+together. In that case you might be better off adding a traditional
+villain to the mix: A powerful nemesis that sends minions after the
+characters, builds an army to attack their home base, coordinates the
+bad guys in the region such that the party absolutely needs to fight.
+Just increase the pressure whenever the players are starting to
+squabble again.
+
+\key{Spotlight}: I like to give enemies the opportunity to shine every
+now and then. Don't overdo it. I find that providing a single
+non-player character the opportunity to shine in a session is about
+right.
+
+The same is true for player characters. I'll try to emphasize
+situations where a player character specifically did something
+awesome. It lets players know that I appreciated their character being
+there and the things they did. Everybody likes this.
+
+If a player is very entertaining in the game, I like to encourage
+them. Non-player characters will go along with a lot of silliness as
+long as it doesn't strain my credulity.
+
+Even quiet players like to shine. Sometimes you just have to guess
+what makes them tick. Perhaps they'd like romantic success? As the
+extroverts grab the spotlight, make sure to interrupt the action once
+or twice per session and offer a scene to an introverted player. The
+leader is charmed by their presence, the enemy wants to talk to nobody
+else but them, the farmers ask them for advice. Don't overdo it.
+Sometimes shy players don't want to make big decisions. A public
+display of respect or admiration might be enough.
+
+\key{Planning}: If players invest a lot of time into a particular
+plan, I like to join in and provide advice---my commentary stands in
+for their character's knowledge of the world.\marginnote{If you feel
+  that they over-planned it, make sure you use words like "boring
+  wait" and "endless hours pouring over your preparations" as you
+  remind them of the time wasted in-game.} I also like to reward
+players for the effort by having their plans succeed. Be sure to
+recapitulate the successful execution of the plan, coloring it
+appropriately. Avoid the evil feedback loop of foiling their
+plans.\marginnote{Avoid boring "it doesn't work" results. Succeed or
+  fail spectacularly.} They'll counter it by spending even more time
+planning or by trying to keep you out of the planning phase. This
+makes the session boring.
+
+If players don't want to plan a lot, then that's even more awesome,
+because it gives you the opportunity to improvise some action scene.
+Roll for wandering monsters or the like and go for it.
+
+\newpage
+
+\key{Background}: I tend to prefer character accomplishments to
+character abilities. Thus, player characters in my games are
+mechanically simple. If a player wants to do something that I think is
+out of the ordinary, I ask for an explanation: "Do you think your
+character can do this?" If the player says yes, then we think of an
+explanation and have the player write it down on the character sheet.
+That's how we learn that the dwarf has in fact served as a scout and
+an ensign in the dwarven army.
+
+\key{Development}: Hopefully the events at the table shape the
+characters. Was the character generous or avaricious? Was the
+character diplomatic or rude? Was the character honest or deceitful?
+That's what we need all the social encounters for. By interacting with
+other characters, players can develop their own character. Therefore,
+they need to meet people that can be cheated or dealt with honestly.
+They need to meet people that can be robbed and people that beg. It
+forces players to make choices regarding their characters. It's how
+they grow to be more real.
+
+Avoid situations where there is only one course of action. If you can
+only rescue the baron's child, then there's no choice involved. You
+should add temptation at every single step. Slavers will be interested
+in the child. Enemies of the baron will be interested.
+
+Sometimes there are no obvious choices, and none of the choices will
+help define the character. The baron's child might not want to return
+back home, preferring to go on adventure instead. The character's
+choice will define what they see as filial duty and family integrity.
+Hardly heroic decisions to be made! Use these situations rarely.
+
+\textbf{Influence and Reputation}: Find a way to let characters gain
+influence and a reputation through adventuring. This anchors them in
+the campaign world and encourages character development instead of
+character ability gain. It's a different sort of
+\href{https://alexschroeder.ch/wiki/2009-11-24 Rewards}{reward}.
+
+\textbf{Announce consequences} before players commit to
+actions.\marginnote{The following list is from
+  \href{https://hackslashmaster.blogspot.com/2011/09/on-ressurecting-quantum-ogre-and-having.html}{the
+    Hack \& Slash blog}.} There can only be meaningful choice if
+players know what to expect. ("If you fail the roll, you'll […]. Do
+you want to risk it?")
+
+\textbf{Provide information} if players are unsure. You can wrap it in
+vague language, but be sure to provide the necessary information.
+("It's hard to say, but you feel a nagging suspicion that he's
+probably hiding something.")
+
+In the same vein, \textbf{provide warnings} if players are putting
+themselves in danger. You're aiming for "I knew it!" when something
+bad befalls player characters. ("You notice that the hanging bridge
+above the tar pits seems frail. Just make sure nobody cuts those
+ropes!")
+
+\textbf{Provide alternatives} if you think that what players want
+should be impossible. ("You can't just buy a magic weapon but they say
+there's a hidden entrance to a goblin market in the Smoke Forest.")
+
+\textbf{Add obstacles} whenever players are getting what they want.
+("The insect trainer will teach your lizard how to spy ahead if you
+provide her with a living giant wasp.")
+
+
+
+\chapter{Monsters}
+
+This is what a typical stat block looks like:
+\marginnote{
+\begin{tabular}{cl}
+HD & Example \\
+ 1 & human \\
+ 2+2 & wolf \\
+ 4+1 & worg \\
+ 6 & minotaur \\
+ 10 & dragon \\
+ 15 & semi-divine \\
+\end{tabular}
+
+\bigskip
+\begin{tabular}{cl}
+AC & Example \\
+ 9 & naked man \\
+ 8 & zombie \\
+ 7 & leather armor \\
+ 6 & orcs, goblins \\
+ 5 & chain mail, spiders \\
+ 4 & lizards, giant ants \\
+ 3 & plate mail \\
+\end{tabular}
+
+\bigskip
+\begin{tabular}{cl}
+MV & Example \\
+ 48 & pegasus \\
+ 24 & dragon, horse \\
+ 21 & panther \\
+ 18 & wolf \\
+ 15 & boar, tiger, \\
+ 12 & clothes, leather armor, orc \\
+ 9 & chain mail, bugbear, ogre \\
+ 6 & plate mail, basilisk, dwarf \\
+ 3 & plate mail and loot \\
+\end{tabular}
+
+\bigskip
+\begin{tabular}{cl}
+ML & Example \\
+ 2 & animals that will always run \\
+ 3 & will fight when cornered \\
+ 4 & will defend their young \\
+ 5 & carnivores, cowards \\
+ 6 & cautious people \\
+ 7 & normal men \\
+ 8 & well led humanoids \\
+ 9 & disciplined troops \\
+ 10 & fanatics \\
+ 11 & lunatics \\
+ 12 & unnatural creatures \\
+\end{tabular}
+}
+
+\begin{quote}
+  \emph{Bel, Slayer of Men} HD 10 AC 2 2d6+1d6 \emph{fire} F10 MV 9
+  ML 12 XP 3100; flaming aura deals an extra 1d6 to everybody nearby;
+  immune to non-magic weapons; immune to fire
+\end{quote}
+
+\key{HD} are hit-dice; roll as many d8 to determine hit-points. A +1
+or +2 means that the monster attacks as if it had a HD more, so it is
+relatively ferocious.
+
+\key{AC} is armor class and determines how hard it is to hit.
+
+What follows are all the \emph{attacks} that require a to-hit roll.
+Special abilities and spells are listed at the end.
+
+\key{Saving Throw} is next, the letter indicating the class to use (F
+stands for fighter and it's the default). The level is usually the
+same as the number of hit dice. Animals usually save at half their hit
+dice.
+
+\key{MV} is the movement rate. Often a note is added to explain
+unusual values, eg. MV 15 (fly).
+
+\key{ML} is the morale score.
+
+\key{Animals} fear fire and aren’t intelligent, even if trained. A
+trained war dog, for example, will attack when commanded and it will
+defend itself when attacked, but it will not defend others use
+interesting tactics.
+
+\key{Mounts} are creatures that can carry somebody on their back. A
+mount takes a \emph{retainer} slot. Unlike ordinary retainers, mounts
+will not gain levels and they are usually not intelligent. They prefer
+not to fight and will only attack somebody that is attacking them in
+melee. If their owner dies in combat, mounts are \emph{free} and will
+try to flee. If anybody manages to take their rider's place, either by
+killing them or otherwise dismounting them, they can \emph{take over}.
+Anybody can jump onto a horse and ride it! Note: if a mount is also a
+\emph{pet}, then their loyalty is not as easy to command.
+
+\key{Pets} also takes a \emph{retainer slot}. Unlike ordinary
+retainers, pets will not gain levels and they are usually not
+intelligent. A pet is a \emph{friend}. Thus, they will attack anybody
+attacking you in melee, but they won't take a blow for you, nor will
+they get involved if you're not being attacked. If their owner dies in
+combat, pets will go \emph{feral}. They defend their owner's corpse
+against both friends and enemies until the fight is over. Then they
+leave, if they can. Taking over a pet requires you to make them your
+friend.
+
+\newpage
+
+
+
+\section{Alphabetical List}
+
+
+
+\subsection{Ape, Giant}
+\index{Ape}
+\begin{marginfigure}
+  \includegraphics{Ape.jpg}
+\end{marginfigure}
+
+The giant ape fur is usually white, brown or black. Some of the tribes
+are more intelligent than others, mastering a language and the art of
+hunting with spears. From such tribes, retainers and future player
+characters can be recruited.
+
+\begin{quote}
+  HD 3 AC 7 1d6/1d6 F3 MV 12 ML 5 XP 50
+\end{quote}
+
+\textbf{Numbers}: 1d20. They live in jungles, some of them solitary,
+others in larger tribes. Larger groups may live together with smaller
+monkeys, but these never fight. They just make a lot of noise, if you
+try to sneak up to the giant apes.
+
+\textbf{Treasure}: When encountered in a ruined temple, they might
+have collected some shiny stuff. 20\% for 1d4x1000 silver, 30\% for
+1d6×1000 gold, 10\% for 1d6×100 platinum, 10\% for 1d6
+\href{https://campaignwiki.org/gems}{gems}, 10\% for 1d6
+\href{https://campaignwiki.org/jewelry}{jewelry}.
+
+\textbf{Terrain}: jungles, ruins.
+
+As \textbf{player characters} they play as follows:
+\marginnote{
+  \begin{tabular}{cl}
+    Level & Experience \\
+    1 & 0 \\
+    2 & 2'000 \\
+    3 & 4'000 \\
+    4 & 8'000 \\
+    5 & 16'000 \\
+    6 & 32'000 \\
+    7 & 64'000 \\
+    8 & 128'000 \\
+  \end{tabular}}
+they speak their own language (like the Wookie Chewbacca); they wear
+no armor and wield no melee weapons; they can throw bamboo spears;
+they have a natural armor class of 7; they can only use a limited set
+of magic items: amulets, necklaces, ioun stones, earrings -- anything
+requiring neither arms nor feet nor anything worn like clothes; they
+attack twice per round; minimum strength is 9; maximum level is 8
+because they are not very ambitious; they use a d8 for their hit dice;
+ordinary giant apes start at level 3 when hired.
+
+They attack like fighters:
+
+\smallskip
+\begin{tabular}{lrrrrrrrrrr}
+  Armor Class &  0 &  1 &  2 &  3 &  4 &  5 &  6 &  7 &  8 &  9 \\
+  Level 1     & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
+  Level 2     & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 &  9 \\
+  Level 3     & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 &  9 &  8 \\
+  Level 4     & 16 & 15 & 14 & 13 & 12 & 11 & 10 &  9 &  8 &  7 \\
+  Level 5     & 15 & 14 & 13 & 12 & 11 & 10 &  9 &  8 &  7 &  6 \\
+  Level 6     & 14 & 13 & 12 & 11 & 10 &  9 &  8 &  7 &  6 &  5 \\
+  Level 7     & 13 & 12 & 11 & 10 &  9 &  8 &  7 &  6 &  5 &  4 \\
+  Level 8     & 12 & 11 & 10 &  9 &  8 &  7 &  6 &  5 &  4 &  3 \\
+\end{tabular}
+
+
+
+\subsection{Basilisk}
+\index{Basilisk}
+\index{Cockatrice}
+\begin{marginfigure}
+  \includegraphics{Basilisk.jpg}
+\end{marginfigure}
+
+The basilisk is the "little king of serpents" -- it's a monstrous
+snake ten paces long and nearly chest high at its thickest. The
+basilisk's scales are usually green or brown, and upon it's head it
+wears a crown of gold. It's lair is filled with toxic fumes, a deadly
+poison to all. It's breath poisons the air for 30 ft. around it.
+\textbf{When you breathe in these fumes}, save vs. poison or die. You
+can hold your breath for one round and fight. If you keep fighting,
+save vs. death or faint. Once you faint, your body will start
+breathing again. At which point you'll need to save vs. poison or die.
+It's gaze will also kill, such is the power of it's poisonous spirit.
+\textbf{If it sees you}, and you did not have to save vs. poison this
+round, do so now or die. And finally, if you manage to approach the
+basilisk without being slain by it's stench or gaze, you still have to
+survive it poisonous fangs. \textbf{If you are hit}, and you did not
+have to save vs. poison this round, do so now or die.
+
+\begin{quote}
+  HD 6+1 AC 4 1d10 + \emph{poison} F6 MV 6 ML 9 XP 680
+\end{quote}
+
+\textbf{Numbers}: 1. The basilisk lives alone. The general area where
+a basilisk rules might feature a lot of snakes, but none will approach
+a basilisks lair and none will fight intruders. The basilisk hatches
+from a cursed egg lain by a cock and is thus also known as a
+cockatrice. It never mates.
+
+\textbf{Treasures}: A basilisk's lair usually contains the remainders
+of many a dead villager and soldier foolish enough to try and kill it.
+20\% for 1d4x1000 silver, 50\% for 1d6×1000 gold, 10\% for 1d4×100
+platinum, 50\% for 2d6 \href{https://campaignwiki.org/gems}{gems},
+50\% for 1d6 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\%
+each for four magic items. Also, a golden diadem worth 500 gold.
+
+\textbf{Terrain}: deserts, ruins.
+
+
+
+\subsection{Bear}
+\index{Bear}
+\begin{marginfigure}
+  \includegraphics{Bear.jpg}
+\end{marginfigure}
+
+Bears may stand up in combat, attacking with both claws and a
+bite---and \textbf{if both their claws hit}, the bear will
+\textbf{hug} you for an additional 2d8 damage. When encountered in
+their natural habitat, bears will usually ignore you unless you come
+closer than 30 ft. or if they are hurt in any way.
+
+\begin{quote}
+  HD 4 AC 6 1d4/1d4/1d6 + \emph{hug} F2 MV 12 ML 5 XP 135
+\end{quote}
+
+\textbf{Numbers}: 1d4. They live as small families or they are angry,
+male loners.
+
+\textbf{Treasure}: none.
+
+\textbf{Terrain}: forests, mountains.
+
+\textbf{War Bears}: Trained bears are sometimes used by dwarves as
+\textbf{pets}. These can wear a metal back plate and skull cap giving
+them AC 4 instead of 6. A trained war bear will cost 500 gold and the
+armor that goes along with it will cost you another 500 gold. They'll
+only sell it to you if you are a \emph{dwarf friend}. You must have
+performed some valuable service for the clan before they sell you
+their precious war bears. War bears can be used as \textbf{mounts} by
+small creatures (usually dwarves, elves and halflings).
+
+\textbf{Larger} bears are possible. Usually these \emph{dire bears}
+are the result of \emph{Ursomancy}---bear magic.
+
+\begin{quote}
+  HD 6 AC 6 1d6/1d6/1d10 + \emph{hug} F3 MV 12 ML 11 XP 570
+\end{quote}
+
+
+
+\subsection{Bee, Giant}
+\index{Bee}
+\index{Wasp}
+\index{Ant}
+\begin{marginfigure}
+  \includegraphics{Bee.jpg}
+\end{marginfigure}
+
+Giant bees are the result of earth magic leaking into the environment.
+They are as big as cows, their wingspan is as wide as a house and when
+they fly it sounds like war drums.
+
+Don't be fooled by their name. These bees are omnivorous and kill
+sheep and halflings for food. \textbf{When stung}, save vs. poison or
+die. These stings are solid. The bee will not die after having stung
+its victim.
+
+Their nest is ruled by a \textbf{queen}. If she dies, the entire nest
+will disperse and die sooner or later. The queen itself is huge,
+practically immobile and does nothing but lay eggs. She does not
+fight.
+
+\begin{quote}
+  HD 4+1 AC 5 1d6 + \emph{poison} MV 15 ML 9 XP 47
+\end{quote}
+
+\textbf{Number}: 1 scout, 2d4 feeding party (and their victim), or a
+nest with 2d4×10 including a queen.
+
+\textbf{Treasure}: \emph{gelée royale} (royal jelly) is what the bees
+use to feed larvae destined to become new queens. It is said to be the
+most potent cure for old age, wasting diseases and lack of virility.
+That is why the jelly of one nest is worth 5000 gold to the old and
+the dying.
+
+\textbf{Terrain}: jungles, forests.
+
+\textbf{Giant Wasps} and \textbf{Giant Ants} are just like giant bees,
+except ants only fly when they are about to mate.
+
+Certain savage tribes of lizard people have learned the pheromone
+secrets allowing them to use giant wasps as \textbf{mounts}.
+
+
+
+\subsection{Beetle, Giant}
+\index{Beetle}
+\begin{marginfigure}
+  \includegraphics{Beetle.jpg}
+\end{marginfigure}
+
+These giant, horned and armored beetles are as big as a wagon. They
+love the humid underground, always hungry for meat.
+
+Giant beetles are sometimes used as \textbf{mounts} by those
+underground creatures that know how direct them with magic glow
+sticks. The key is to keep them well fed. This can be tricky on long
+underground voyages.
+
+\begin{quote}
+  HD 4 AC 3 2d6 F1 MV 15 ML 9 XP 80
+\end{quote}
+
+\textbf{Numbers}: 1d6.
+
+\textbf{Treasure}: none.
+
+\textbf{Terrain}: caves.
+
+
+
+\subsection{Boar}
+\index{Boar}
+\begin{marginfigure}
+  \includegraphics{Boar.jpg}
+\end{marginfigure}
+
+Wild pigs are dangerous and hard to kill for simple folks. Pigs are
+said to very intelligent but nobody cares---except for orcs. Orcs keep
+pigs as \textbf{pets} like humans keep dogs.
+
+\begin{quote}
+  HD 3+1 AC 6 1d8 F1 MV 15 ML 9 XP 65
+\end{quote}
+
+\textbf{Numbers}: 1d4. Most of the time there will be only one or two
+wild pigs, possibly with some young piglets which won't fight. If more
+are encountered, these are mostly aggressive young males.
+
+\textbf{Treasure}: none.
+
+\textbf{Terrain}: forests.
+
+\textbf{Giant Boars} do exist. They are bred as \textbf{mounts} by
+dwarves and halflings.
+
+\begin{quote}
+  HD 5+1 AC 6 1d12 F2 MV 15 ML 9 XP 260
+\end{quote}
+
+
+
+\subsection{Bugbear}
+\index{Bugbear}
+\begin{marginfigure}
+  \includegraphics{Bugbear.jpg}
+\end{marginfigure}
+
+Bugbears are lynx-people, often a bit taller than humans. They live in
+the woods, naked and wild unless they have entered the service of a
+dark elf queen in which case they're busy stealing you babies leaving
+ugly psychopath changelings for you to raise instead---or spying for
+the raiding party soon to follow.
+
+They will \textbf{surprise} you on 1–5 in 6. This makes them natural
+thieves and assassins in the service of dark elves.
+
+\begin{quote}
+  HD 3+1 AC 5 1d10 F3 MV 9 ML 9 XP 100
+\end{quote}
+
+\textbf{Numbers}: 1d12. Typically you will encounter small Commando or
+scouts. Where they are found, their elven masters are not far behind.
+If they are not in the service of anybody, they are elusive and hard
+to find.
+
+\textbf{Treasure}: If they carry any treasure then it is money earned
+serving their elven masters. 20\% for 1d4x1000 silver, 30\% for
+1d4×1000 gold, 30\% for 1d8
+\href{https://campaignwiki.org/gems}{gems}, 20\% for 1d4
+\href{https://campaignwiki.org/jewelry}{jewelry}, 10\% for a magic
+item useful on their current mission.
+
+\textbf{Terrain}: forests, caves.
+
+
+% prevent an empty page
+% http://tex.stackexchange.com/questions/109625/avoiding-empty-page-between-a-very-full-page-and-the-index
+\enlargethispage{50pt}
+
+\printindex
+
+\clearpage
+
+\section*{Open Game License Version 1.0a}
+
+\begin{fullwidth}
+
+\fontsize{6.5pt}{7pt}\selectfont
+
+\textbf{Designation of Open Game Content}: The entire document is open
+game content. \textbf{Designation of Product Identity}: The names of
+contributors, the name of the website (``Campaign Wiki'') and the name
+of this site (``Halberds and Helmets'' as well as ``Hellebarden und
+Helme'') are product identity. The following text is the property of
+Wizards of the Coast, Inc. and is Copyright 2000 Wizards of the Coast,
+Inc (``Wizards''). All Rights Reserved.
+
+\begin{enumerate}
+
+\item Definitions: (a) ``Contributors'' means the copyright and/or
+  trademark owners who have contributed Open Game Content; (b)
+  ``Derivative Material'' means copyrighted material including
+  derivative works and translations (including into other computer
+  languages), potation, modification, correction, addition, extension,
+  upgrade, improvement, compilation, abridgment or other form in which
+  an existing work may be recast, transformed or adapted; (c)
+  ``Distribute'' means to reproduce, license, rent, lease, sell,
+  broadcast, publicly display, transmit or otherwise distribute; (d)
+  ``Open Game Content'' means the game mechanic and includes the
+  methods, procedures, processes and routines to the extent such
+  content does not embody the Product Identity and is an enhancement
+  over the prior art and any additional content clearly identified as
+  Open Game Content by the Contributor, and means any work covered by
+  this License, including translations and derivative works under
+  copyright law, but specifically excludes Product Identity. (e)
+  ``Product Identity'' means product and product line names, logos and
+  identifying marks including trade dress; artifacts; creatures
+  characters; stories, storylines, plots, thematic elements, dialogue,
+  incidents, language, artwork, symbols, designs, depictions,
+  likenesses, formats, poses, concepts, themes and graphic,
+  photographic and other visual or audio representations; names and
+  descriptions of characters, spells, enchantments, personalities,
+  teams, personas, likenesses and special abilities; places,
+  locations, environments, creatures, equipment, magical or
+  supernatural abilities or effects, logos, symbols, or graphic
+  designs; and any other trademark or registered trademark clearly
+  identified as Product identity by the owner of the Product Identity,
+  and which specifically excludes the Open Game Content; (f)
+  ``Trademark'' means the logos, names, mark, sign, motto, designs
+  that are used by a Contributor to identify itself or its products or
+  the associated products contributed to the Open Game License by the
+  Contributor (g) ``Use'', ``Used'' or ``Using'' means to use,
+  Distribute, copy, edit, format, modify, translate and otherwise
+  create Derivative Material of Open Game Content. (h) ``You'' or
+  ``Your'' means the licensee in terms of this agreement.
+
+\item The License: This License applies to any Open Game Content that
+  contains a notice indicating that the Open Game Content may only be
+  Used under and in terms of this License. You must affix such a
+  notice to any Open Game Content that you Use. No terms may be added
+  to or subtracted from this License except as described by the
+  License itself. No other terms or conditions may be applied to any
+  Open Game Content distributed using this License.
+
+\item Offer and Acceptance: By Using the Open Game Content You
+  indicate Your acceptance of the terms of this License.
+
+\item Grant and Consideration: In consideration for agreeing to use
+  this License, the Contributors grant You a perpetual, worldwide,
+  royalty-free, non-exclusive license with the exact terms of this
+  License to Use, the Open Game Content.
+
+\item Representation of Authority to Contribute: If You are
+  contributing original material as Open Game Content, You represent
+  that Your Contributions are Your original creation and/or You have
+  sufficient rights to grant the rights conveyed by this License.
+
+\item Notice of License Copyright: You must update the COPYRIGHT
+  NOTICE portion of this License to include the exact text of the
+  COPYRIGHT NOTICE of any Open Game Content You are copying, modifying
+  or distributing, and You must add the title, the copyright date,
+  and the copyright holder's name to the COPYRIGHT NOTICE of any
+  original Open Game Content you Distribute.
+
+\item Use of Product Identity: You agree not to Use any Product
+  Identity, including as an indication as to compatibility, except as
+  expressly licensed in another, independent Agreement with the owner
+  of each element of that Product Identity. You agree not to indicate
+  compatibility or co-adaptability with any Trademark or Registered
+  Trademark in conjunction with a work containing Open Game Content
+  except as expressly licensed in another, independent Agreement with
+  the owner of such Trademark or Registered Trademark. The use of any
+  Product Identity in Open Game Content does not constitute a
+  challenge to the ownership of that Product Identity. The owner of
+  any Product Identity used in Open Game Content shall retain all
+  rights, title and interest in and to that Product Identity.
+
+\item Identification: If you distribute Open Game Content You must
+  clearly indicate which portions of the work that you are
+  distributing are Open Game Content.
+
+\item Updating the License: Wizards or its designated Agents may
+  publish updated versions of this License. You may use any authorized
+  version of this License to copy, modify and distribute any Open Game
+  Content originally distributed under any version of this License.
+
+\item Copy of this License: You MUST include a copy of this License
+  with every copy of the Open Game Content You Distribute.
+
+\item Use of Contributor Credits: You may not market or advertise the
+  Open Game Content using the name of any Contributor unless You have
+  written permission from the Contributor to do so.
+
+\item Inability to Comply: If it is impossible for You to comply with
+  any of the terms of this License with respect to some or all of the
+  Open Game Content due to statute, judicial order, or governmental
+  regulation then You may not Use any Open Game Material so affected.
+
+\item Termination: This License will terminate automatically if You
+  fail to comply with all terms herein and fail to cure such breach
+  within 30 days of becoming aware of the breach. All sublicenses
+  shall survive the termination of this License.
+
+\item Reformation: If any provision of this License is held to be
+  unenforceable, such provision shall be reformed only to the extent
+  necessary to make it enforceable.
+
+\item COPYRIGHT NOTICE
+\newline
+Open Game License v 1.0 © 2000, Wizards of the Coast, Inc.
+\newline
+System Reference Document Copyright 2000, Wizards of the Coast, Inc.;
+Authors Jonathon Tweet, Monte Cook, Skip Williams, based on original
+material by E. Gary Gygax and Dave Arneson.
+\newline
+System Reference Document Copyright 2000-2003, Wizards of the Coast,
+Inc.; Authors Jonathan Tweet, Monte Cook, Skip Williams, Rich Baker,
+Andy Collins, David Noonan, Rich Redman, Bruce R. Cordell, John D.
+Rateliff, Thomas Reid, James Wyatt, based on original material by E.
+Gary Gygax and Dave Arneson.
+\newline
+Modern System Reference Document Copyright 2002-2004, Wizards of the
+Coast, Inc.; Authors Bill Slavicsek, Jeff Grubb, Rich Redman, Charles
+Ryan, Eric Cagle, David Noonan, Stan!, Christopher Perkins, Rodney
+Thompson, and JD Wiker, based on material by Jonathan Tweet, Monte
+Cook, Skip Williams, Richard Baker, Peter Adkison, Bruce R. Cordell,
+John Tynes, Andy Collins, and JD Wiker.
+\newline
+Castles \& Crusades: Players Handbook, Copyright 2004, Troll Lord
+Games; Authors Davis Chenault and Mac Golden.
+\newline
+Cave Cricket from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Authors Scott Greene and Clark Peterson, based on
+original material by Gary Gygax.
+\newline
+Crab, Monstrous from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Author Scott Greene, based on original material by Gary
+Gygax.
+\newline
+Fly, Giant from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Author Scott Greene, based on original material by Gary
+Gygax.
+\newline
+Golem, Wood from the Tome of Horrors, copyright 2002, Necromancer
+Games, Inc.; Authors Scott Greene and Patrick Lawinger.
+\newline
+Kamadan from the Tome of Horrors, copyright 2002, Necromancer Games,
+Inc.; Author Scott Greene, based on original material by Nick Louth.
+\newline
+Rot Grub from the Tome of Horrors, Copyright 2002, Necromancer Games,
+Inc.; Authors Scott Greene and Clark Peterson, based on original
+material by Gary Gygax
+\newline
+\href{http://www.goblinoidgames.com/labyrinthlord.html}{Labyrinth
+  Lord}\textsuperscript{\texttrademark} Copyright 2007-2009, Daniel
+Proctor. Author Daniel Proctor.
+\newline
+\href{https://github.com/kensanata/halberdsnhelmets/tree/master/Halberds\%20and\%20Helmets}{Halberds
+  and Helmets} Copyright 2012--2015, Alex Schroeder. Authors Alex
+Schroeder, Samuel Dennler, Telecanter, Brian Murphy, Judd Karlman.
+
+\end{enumerate}
+
+\noindent For purposes of this license, nothing is considered to be
+Product Identity in addition to anything covered in section 1, above.
+
+\end{fullwidth}
+
+
+\end{document}
+
+% Local Variables:
+% ispell-local-dictionary: "english"
+% End:
