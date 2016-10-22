@@ -10,8 +10,9 @@
 % Provides \sun, \rightmoon
 \usepackage{wasysym}
 
-% Set up index
-\usepackage{makeidx}
+% Set up multiple indexes
+\usepackage{index}
+% \newindex{animal}{adx}{and}{Animals}
 \makeindex
 
 % Set up the images/graphics package
@@ -32,6 +33,8 @@
 \newcommand{\key}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}
   {\label{key:#2}\textbf{\index{#2}#2}}
   {\label{key:#1}\textbf{\index{#1}#2}}}
+\newcommand{\mount}[1]{\index[mount]{#1}}
+\newcommand{\pet}[1]{\index[pet]{#1}}
 
 % Ordinals: This is the 2\nd of December. Or the 4\nth of July. Or
 % 3\rd place in a race.
@@ -612,10 +615,10 @@ unusual values, eg. MV 15 (fly).
 
 \key{ML} is the morale score.
 
-\key{Animals} fear fire and aren’t intelligent, even if trained. A
-trained war dog, for example, will attack when commanded and it will
-defend itself when attacked, but it will not defend others use
-interesting tactics.
+\key{Animals} fear fire and aren’t intelligent, even if giant sized or
+trained for war. A trained war dog, for example, will attack when
+commanded and it will defend itself when attacked, but it will not
+defend others use interesting tactics.
 
 \key{Mounts} are creatures that can carry somebody on their back. A
 mount takes a \emph{retainer} slot. Unlike ordinary retainers, mounts
@@ -692,8 +695,7 @@ have collected some shiny stuff. 20\% for 1d4×1000 silver, 30\% for
 
 \textbf{Terrain}: jungles, ruins.
 
-As \textbf{player characters} they play as follows:
-\marginnote{
+As \textbf{player characters}:\marginnote{
   \begin{tabular}{cl}
     Level & Experience \\
     1 & 0 \\
@@ -778,6 +780,7 @@ each for four magic items. Also, a golden diadem worth 500 gold.\marginnote{Aver
 
 \section{Bear}
 \index{Bear}
+% \index[animal]{Bear}
 \begin{marginfigure}
   \includegraphics{Bear.jpg}
 \end{marginfigure}
@@ -1123,6 +1126,8 @@ carapace growing on their back.\marginnote{These mutants will be able
 % prevent an empty page
 % http://tex.stackexchange.com/questions/109625/avoiding-empty-page-between-a-very-full-page-and-the-index
 \enlargethispage{50pt}
+
+% \printindex[animal]
 
 \printindex
 
