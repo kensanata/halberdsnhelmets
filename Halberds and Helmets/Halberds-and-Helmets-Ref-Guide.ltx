@@ -13,9 +13,7 @@
 % Provides \sun, \rightmoon
 \usepackage{wasysym}
 
-% Set up multiple indexes
-% \usepackage{index}
-% \newindex{animal}{adx}{and}{Animals}
+% Set index
 \usepackage{makeidx}
 \makeindex
 
@@ -53,20 +51,32 @@
 \usepackage{fancyvrb}
 \fvset{fontsize=\normalsize}
 
+% List of things
+\usepackage{tocloft}
+\newcommand{\listanimals}{Animals}
+\newlistof{animal}{an}{\listanimals}
+\newcommand{\animal}[1]{%
+  \addcontentsline{an}{animal}
+  {\protect#1}\par}
+\renewcommand{\cftantitlefont}{\Large\itshape}
+
 \renewcommand{\labelitemi}{$-$} % use dash for items
 
-\title{Halberds \& Helmets: Running the Game}
+\newsavebox{\titleimage}
+\savebox{\titleimage}{\includegraphics[width=7cm]{Schaller.jpg}}
+
+\title[Halberds \& Helmets: Running the Game]{%
+  Halberds \& Helmets \par Running the Game \par \vspace{3cm}
+  \hfill\usebox{\titleimage}\hspace*{\fill}}
 \author{Alex Schroeder}
 % \date{}
 \begin{document}
 
 \maketitle% this prints the handout title, author, and date
 
+% \tableofcontents
 
 \chapter{Principles}
-\begin{marginfigure}
-  \includegraphics{Schaller.jpg}
-\end{marginfigure}
 
 This book is for the \key{referee} of the game. It is based on the
 following principles:
@@ -766,7 +776,7 @@ each for four magic items. Also, a golden diadem worth 500 gold.\marginnote{Aver
 
 \section{Bear}
 \index{Bear}
-% \index[animal]{Bear}
+\animal{Bear}
 \begin{marginfigure}
   \includegraphics{Bear.jpg}
 \end{marginfigure}
@@ -810,9 +820,9 @@ are the result of \emph{Ursomancy}---bear magic.
 \index{Bee}
 \index{Wasp}
 \index{Ant}
-% \index[animal]{Bee}
-% \index[animal]{Wasp}
-% \index[animal]{Ant}
+\animal{Bee}
+\animal{Wasp}
+\animal{Ant}
 \begin{marginfigure}
   \includegraphics{Bee.jpg}
 \end{marginfigure}
@@ -856,7 +866,7 @@ secrets allowing them to use giant wasps as \textbf{mounts}.
 
 \section{Beetle, Giant}
 \index{Beetle}
-% \index[animal]{Beetle}
+\animal{Beetle}
 \begin{marginfigure}
   \includegraphics{Beetle.jpg}
 \end{marginfigure}
@@ -883,7 +893,7 @@ underground voyages.
 
 \section{Boar}
 \index{Boar}
-% \index[animal]{Boar}
+\animal{Boar}
 \begin{marginfigure}
   \includegraphics{Boar.jpg}
 \end{marginfigure}
@@ -993,12 +1003,12 @@ item.\marginnote{Average value: 1956
 \index{Jaguar}
 \index{Lion}
 \index{Tiger}
-% \index[animal]{Cat}
-% \index[animal]{Puma}
-% \index[animal]{Cheetah}
-% \index[animal]{Jaguar}
-% \index[animal]{Lion}
-% \index[animal]{Tiger}
+\animal{Cat}
+\animal{Puma}
+\animal{Cheetah}
+\animal{Jaguar}
+\animal{Lion}
+\animal{Tiger}
 \begin{marginfigure}
   \includegraphics{Cat.jpg}
 \end{marginfigure}
@@ -1067,7 +1077,7 @@ magic items.\marginnote{Average value: 8074 gold.}
 
 \section{Centipede, Giant}
 \index{Centipede}
-% \index[animal]{Centipede}
+\animal{Centipede}
 \begin{marginfigure}
   \includegraphics{Centipede.jpg}
 \end{marginfigure}
@@ -1129,7 +1139,7 @@ item.
 
 \section{Crab, Giant}
 \index{Crab}
-% \index[animal]{Crab}
+\animal{Crab}
 \begin{marginfigure}
   \includegraphics{Crab.jpg}
 \end{marginfigure}
@@ -1161,7 +1171,7 @@ carapace growing on their back.\marginnote{These mutants will be able
 
 \section{Crocodile}
 \index{Crocodile}
-% \index[animal]{Crocodile}
+\animal{Crocodile}
 \begin{marginfigure}
   \includegraphics{Crocodile.jpg}
 \end{marginfigure}
@@ -1181,11 +1191,15 @@ hunts alone.
 
 \textbf{Terrain}: water, swamps, jungles, savannas.
 
+
+
+\chapter{Categories}
+
+\listofanimal
+
 % prevent an empty page
 % http://tex.stackexchange.com/questions/109625/avoiding-empty-page-between-a-very-full-page-and-the-index
-\enlargethispage{50pt}
-
-% \printindex[animal]
+% \enlargethispage{50pt}
 
 \printindex
 
@@ -1371,7 +1385,11 @@ Proctor. Author Daniel Proctor.
 \end{enumerate}
 
 \noindent Nothing in this document is declared to be Product Identity.
-It is all Open Game Content.
+It is all Open Game Content. In addition to that, Alex Schroeder also
+dedicates anything he wrote and drew in this document to the
+\href{https://creativecommons.org/publicdomain/zero/1.0/}{Public
+  Domain}. Hopefully that covers everything except for the stats and
+perhaps it even covers the stats if they are not covered by copyright.
 
 \end{fullwidth}
 
