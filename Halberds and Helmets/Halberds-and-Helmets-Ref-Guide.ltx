@@ -1,5 +1,8 @@
-\documentclass[a4paper,twoside,notitlepage,openany]{tufte-book}
+\documentclass[a4paper,twoside,openany]{tufte-book}
 \usepackage[utf8]{inputenc}
+
+% For the PDF
+\hypersetup{colorlinks}
 
 % \usepackage{showkeys}% debugging \keys
 % \usepackage{multirow}
@@ -11,8 +14,9 @@
 \usepackage{wasysym}
 
 % Set up multiple indexes
-\usepackage{index}
+% \usepackage{index}
 % \newindex{animal}{adx}{and}{Animals}
+\usepackage{makeidx}
 \makeindex
 
 % Set up the images/graphics package
@@ -49,56 +53,50 @@
 \usepackage{fancyvrb}
 \fvset{fontsize=\normalsize}
 
-% Clickable hyperlinks
-\usepackage{hyperref}
-\hypersetup{colorlinks}
-
 \renewcommand{\labelitemi}{$-$} % use dash for items
 
-\title{Halberds \& Helmets -- Running the Game}
+\title{Halberds \& Helmets: Running the Game}
 \author{Alex Schroeder}
 % \date{}
 \begin{document}
 
 \maketitle% this prints the handout title, author, and date
 
+
+\chapter{Principles}
 \begin{marginfigure}
   \includegraphics{Schaller.jpg}
 \end{marginfigure}
 
-
-\section{Principles}
-
-This book is for the \key{referee} of the game, the person that runs
-everything that is not a player character.
+This book is for the \key{referee} of the game. It is based on the
+following principles:
  
 \begin{enumerate}
-\item \textbf{No Skills}: This challenges players. They need to
-  roleplay to be diplomatic, intimidating, bluffing, and the referee
-  needs to roleplay the non-player characters accordingly. Players
-  need to guess where hidden treasure and secret doors are and the
-  referee has to provide the right amount of clues.
+\item \textbf{No Skills}: Be diplomatic or intimidating at the table
+  and entertain the other players. Guess where hidden treasure and
+  secret doors are based on the clues given.
 
-\item \textbf{Fewer Classes}: This provides less mechanical
-  differentiation between characters. Players need to roleplay in
-  order to differentiate characters.
+\item \textbf{Fewer Classes}: There is little mechanical
+  differentiation between characters. What matters is personality,
+  goals, experiences.\marginnote{We can always add more classes later
+    in the game, no problem.}
 
 \item \textbf{Quick Character Generation}: Easy character generation
   with few actual choices speeds things up. A high attrition rate is
-  more acceptable as you can bring multiple characters to the table
+  more acceptable if you can bring multiple characters to the table
   and make extras in a minute or two.
 
 \item \textbf{Smaller Bonuses}: The smaller bonuses simplify the math
   and produce far less trickle down effects. This also makes the
-  initial ability rolls less important (without actually resorting to
-  point-buy).
+  initial ability rolls less important.
 
 \item \textbf{Random Character Generation}: Random character
   generation may surprise players and provide interesting party
-  dynamics.
+  dynamics.\marginnote{Playing with the cards fate has dealt you is
+    part of the entertainment.}
 
 \item \textbf{Rare Healing}: Players need to avoid wandering monsters
-  and avoid unnecessary fighting. This makes strategic decisions (when
+  and avoid unnecessary fights. This makes strategic decisions (when
   to fight) more important than tactical decisions (how to fight).
 
 \item \textbf{Simple Combat}: No explicit rules for combat maneuvers
@@ -110,11 +108,11 @@ everything that is not a player character.
   smaller damage bonuses simplify the math and speed things up.
 
 \item \textbf{Treasure is Experience}: This encourages players to
-  research their goals, picking their fights carefully. It also
+  research their goals and picking their fights carefully. It also
   provides for an easy and quick reason for the party to form and go
   adventuring.
 
-\item \textbf{No Buying or Selling of Magic Item }: Getting them
+\item \textbf{No Buying or Selling of Magic Item}: Getting them
   should always involve adventuring.
 
 \item \textbf{Random Encounters, Random Monsters}: This forces the
@@ -122,7 +120,9 @@ everything that is not a player character.
 
 \end{enumerate}
 
-\newpage
+
+
+\chapter{Running the Game}
 
 \textbf{Keep it short}: My main problem is that I don't want to spend
 a lot of time in preparation for a session. Half an hour for a three
@@ -184,8 +184,6 @@ Actionable information is preferred. Activities of rivals that can be
 stopped. Rumors of treasures that can be sought. Let players know
 where to go next if they want to pursue a certain goal.
 
-\newpage
-
 \textbf{Dungeons}: I like to prepare a number of small
 dungeons\marginnote{If you need some inspiration, check out the
   \href{http://www.dungeoncontest.com/}{One Page Dungeon Contest}
@@ -212,8 +210,8 @@ items are not for sale. Potions can be bought from alchemists. Every
 alchemist has a handful of potions they know how to make. They cost
 around 500 gold.
 
-\textbf{Stocking the dungeon}: Use a d20.\marginnote{This is easier
-  than rolling two d6 which is what
+\textbf{Stocking the dungeon}: Use a d20 and roll on the following
+table.\marginnote{This is easier than rolling two d6 which is what
   \href{https://alexschroeder.ch/wiki/2013-08-21_One_Roll_Dungeon_Stocking}{Moldvay
     uses}.}
 
@@ -231,29 +229,32 @@ around 500 gold.
 \end{tabular}
 \medskip
 
-\index{Random Encounters}\textbf{Random Wilderness Encounters}: Based on the current
-area\marginnote{Keep using the same table while the player characters
-  are in the same region: the same valley, the same forest, the same
-  mountain range---basically a bunch of hexes that seem to belong
-  together. } the party is in, jot down a little random encounter
-table. Consider the critters in the surrounding dungeons, think of a
-theme, browse the monster manuals and look at the pictures. If you
-like beholders, maybe add a dwarf merchant with an extra eye stalk or
-two to the encounter table. He's a spy for the beholder! If you like
-frogs, go for an amphibian theme and pick psionic frog men, giant
-frogs, toads, froglings, and so on. If you have a theme, consider
-antagonists. Is the frog faction competing with the gnomes? Add a
-gnome entry!
+\newpage
 
-\medskip
-\marginnote{Add one or more entries for \textbf{peaceful folk} from
-  the neighborhood or named people from nearby settlements. Two of
-  these is a good number. Add these at the top of the list. During the
-  night, add this number as you roll. This is how you get slightly
+\index{Random Encounters}\textbf{Random Wilderness Encounters}: Based
+on the current area\marginnote{Keep using the same table while the
+  player characters are in the same region: the same valley, the same
+  forest, the same mountain range---basically a bunch of hexes that
+  seem to belong together. } the party is in, jot down a little random
+encounter table. Consider the critters in the surrounding dungeons,
+think of a theme, browse the monster manuals and look at the pictures.
+If you like beholders, maybe add a dwarf merchant with an extra eye
+stalk or two to the encounter table. He's a spy for the beholder! If
+you like frogs, go for an amphibian theme and pick psionic frog men,
+giant frogs, toads, froglings, and so on. If you have a theme,
+consider antagonists. Is the frog faction competing with the gnomes?
+Add a gnome entry!
+
+Add one or more entries for \textbf{peaceful folk} from the
+neighborhood or named people from nearby settlements. Two of these is
+a good number. Add these at the top of the list. During the night, add
+this number as you roll.\marginnote{This is how you get slightly
   different results for day time and night time encounters. In this
   example, merchants and soldiers are only encountered during the day.
   At night, add +2 to your roll. Thus, psionic frog men and frog
   demons are only encountered during the night.}
+
+\medskip
 \begin{tabular}{rl}
 d6 & Encounter \\
 \sun~1 & merchants (1d6) \\
@@ -267,8 +268,6 @@ d6 & Encounter \\
 \end{tabular}
 \medskip
 
-\newpage
-
 \key{Exploration}: Typically travel is initiated by a non-player
 characters telling the player characters about a location. Usually
 directions are accurate and the location and any landmarks on the way
@@ -279,36 +278,32 @@ easy to find. Use the typical \emph{search} abilities: 1/6 per day for
 humans, 2/6 per day for demi-humans. Known locations can always be
 found.
 
-\key{Travel}: The default is one hex traveled per day unless there
-are trails or roads (two per day; no bonus for riding or flying) or
-they are traveling by ship along a coast (in which case it'll be eight
-hexes per day). As it stands, this ignores movement speeds and hex
-size. You travel one hex per day, that's it. I usually think that one
-hex is five miles, but players don't need to know that.
+\key{Travel}: The default is one hex traveled per day\marginnote{The
+  actual \emph{procedure} at the gaming table is simple: players tell
+  me where they want to go. There is a 1 in 6 chance for a daylight
+  encounter and a 1 in 6 chance for a nighttime encounter for every
+  hex traveled. That's it.} unless there are trails or roads (two per
+day; no bonus for riding or flying) or they are traveling by ship
+along a coast (in which case it'll be eight hexes per day). As it
+stands, this ignores movement speeds and hex size. You travel one hex
+per day, that's it. I usually think that one hex is five miles, but
+players don't need to know that.\marginnote{If you use five mile
+  hexes, that's an area of about \unit[22]{mi²}.}
 
-Thus the actual \emph{procedure} at the gaming table is simple:
-
-\begin{enumerate}
-\item Players tell me where they want to go. There is a 1 in 6 chance
-  for a daylight encounter and a 1 in 6 chance for a nighttime
-  encounter for every hex traveled.
-\end{enumerate}
-\marginnote{That's it.}
-
-\key{Lairs}: Many hexes have a building of some sort. I place stuff
-I got from the net or from books I bought. I add lairs for all the
+\key{Lairs}: Many hexes have a building of some sort. I place stuff I
+got from the net or from books I bought. I add lairs for all the
 intelligent monsters on my encounter tables. As time passes, I might
 add more locations and lairs to known hexes. It's simply not possible
-to \emph{completely} map a hex.\marginnote{If you use five mile hexes,
-  that's an area of about \unit[22]{mi²}.} There's always more stuff
-to discover. Don't be afraid to add new stuff to existing hexes.
+to \emph{completely} map a hex. There's always more stuff to discover.
+Don't be afraid to add new stuff to existing hexes.
 
-If you have some monsters on your random encounter table and haven't
-decided where the lairs of these creatures are, there's a 1 in 6
-chance when encountering them that you have found their lair. Let
-players find the secret gnome village, the slaad temple, the frogling
-pond. These improvised lairs will necessarily be simple one, two or
-three room affairs. No problem.
+If you have some monsters on your random encounter
+table\marginnote{These improvised lairs will necessarily be simple
+  one, two or three room affairs. No problem.} and haven't decided
+where the lairs of these creatures are, there's a 1 in 6 chance when
+encountering them that you have found their lair.
+
+\newpage
 
 \textbf{Monsters}: It's easier if monsters announce themselves: let
 players find, smell or hear something.\marginnote{Use the
@@ -349,8 +344,6 @@ monsters talk. If your players are afraid, make it easy to avoid the
 encounter. The entertainment of your friends at the table takes
 priority. A \emph{total party kill} can be part of it. Know your
 players.
-
-\newpage
 
 \textbf{Keep Adding}: In order add life to the world, you need to have two or
 three events or changes happen between sessions if time passes
@@ -467,8 +460,6 @@ If players don't want to plan a lot, then that's even more awesome,
 because it gives you the opportunity to improvise some action scene.
 Roll for wandering monsters or the like and go for it.
 
-\newpage
-
 \key{Background}: I tend to prefer character accomplishments to
 character abilities. Thus, player characters in my games are
 mechanically simple. If a player wants to do something that I think is
@@ -517,11 +508,10 @@ vague language, but be sure to provide the necessary information.
 ("It's hard to say, but you feel a nagging suspicion that he's
 probably hiding something.")
 
-In the same vein, \textbf{provide warnings} if players are putting
-themselves in danger. You're aiming for "I knew it!" when something
-bad befalls player characters. ("You notice that the hanging bridge
-above the tar pits seems frail. Just make sure nobody cuts those
-ropes!")
+\textbf{Provide warnings} if players are putting themselves in danger.
+You're aiming for "I knew it!" when something bad befalls player
+characters. ("You notice that the hanging bridge above the tar pits
+seems frail. Just make sure nobody cuts those ropes!")
 
 \textbf{Provide alternatives} if you think that what players want
 should be impossible. ("You can't just buy a magic weapon but they say
@@ -618,7 +608,7 @@ unusual values, eg. MV 15 (fly).
 \key{Animals} fear fire and aren’t intelligent, even if giant sized or
 trained for war. A trained war dog, for example, will attack when
 commanded and it will defend itself when attacked, but it will not
-defend others use interesting tactics.
+defend others or use interesting tactics.
 
 \key{Mounts} are creatures that can carry somebody on their back. A
 mount takes a \emph{retainer} slot. Unlike ordinary retainers, mounts
@@ -627,7 +617,7 @@ not to fight and will only attack somebody that is attacking them in
 melee. If their owner dies in combat, mounts are \emph{free} and will
 try to flee. If anybody manages to take their rider's place, either by
 killing them or otherwise dismounting them, they can \emph{take over}.
-Anybody can jump onto a horse and ride it! Note: if a mount is also a
+Anybody can jump onto a horse and ride it! If a mount is also a
 \emph{pet}, then their loyalty is not as easy to command.
 
 \key{Pets} also takes a \emph{retainer slot}. Unlike ordinary
@@ -637,12 +627,11 @@ attacking you in melee, but they won't take a blow for you, nor will
 they get involved if you're not being attacked. If their owner dies in
 combat, pets will go \emph{feral}. They defend their owner's corpse
 against both friends and enemies until the fight is over. Then they
-leave, if they can. Taking over a pet requires you to make them your
-friend.
+leave, if they can. Taking over a pet requires you to befriend them.
 
 \key{Gems} are all sorts of previous stones. Their value is
-determined using a table.\marginnote[-1em]{
-  \begin{tabular}{cl}
+determined using the table on the right.\marginnote[-1em]{
+  \begin{tabular}{cr}
     1d20   & Value \\
     1--3   &  10 \\
     4--6   &  20 \\
@@ -652,13 +641,11 @@ determined using a table.\marginnote[-1em]{
     16--17 & 250 \\
     18--19 & 750 \\
     20     & 1000 \\
-  \end{tabular}
-
-  \medskip\noindent Average value per gem: 176 gold.}
+  \end{tabular}} The average value of a gem is 176 gold.
 
 \key{Jewelry} is rings, necklaces, bracelets, diadems, crowns,
-scepters and the like. Each piece is worth 3d6×100
-gold.\marginnote{Average value for each piece of jewelry: 1050 gold.}
+scepters and the like. Each piece is worth 3d6×100 gold. The average
+value for each piece of jewelry is 1050 gold.
 
 
 
@@ -677,10 +664,9 @@ characters can be recruited.
   HD 3 AC 7 1d6/1d6 F3 MV 12 ML 5 XP 50
 \end{quote}
 
-\textbf{Numbers}: 1d20. They live in jungles, some of them solitary,
-others in larger tribes. Larger groups may live together with smaller
-monkeys, but these never fight. They just make a lot of noise, if you
-try to sneak up to the giant apes.
+\textbf{Numbers}: 1d20. Larger groups may live together with smaller
+monkeys, but these never fight. They just make a lot of noise if they
+spot you sneaking up to the giant apes.
 
 \textbf{Names}: Buttkick, Roundkick, Ironfist, Doublefist,
 Breakthrough.
@@ -824,6 +810,9 @@ are the result of \emph{Ursomancy}---bear magic.
 \index{Bee}
 \index{Wasp}
 \index{Ant}
+% \index[animal]{Bee}
+% \index[animal]{Wasp}
+% \index[animal]{Ant}
 \begin{marginfigure}
   \includegraphics{Bee.jpg}
 \end{marginfigure}
@@ -867,6 +856,7 @@ secrets allowing them to use giant wasps as \textbf{mounts}.
 
 \section{Beetle, Giant}
 \index{Beetle}
+% \index[animal]{Beetle}
 \begin{marginfigure}
   \includegraphics{Beetle.jpg}
 \end{marginfigure}
@@ -893,6 +883,7 @@ underground voyages.
 
 \section{Boar}
 \index{Boar}
+% \index[animal]{Boar}
 \begin{marginfigure}
   \includegraphics{Boar.jpg}
 \end{marginfigure}
@@ -996,10 +987,18 @@ item.\marginnote{Average value: 1956
 
 
 \section{Cat, Large}
-\index{Cat, Large}
-\index{Panther}
+\index{Cat}
+\index{Puma}
+\index{Cheetah}
+\index{Jaguar}
 \index{Lion}
 \index{Tiger}
+% \index[animal]{Cat}
+% \index[animal]{Puma}
+% \index[animal]{Cheetah}
+% \index[animal]{Jaguar}
+% \index[animal]{Lion}
+% \index[animal]{Tiger}
 \begin{marginfigure}
   \includegraphics{Cat.jpg}
 \end{marginfigure}
@@ -1028,7 +1027,7 @@ encountering a pride of cheetahs or lions, 1d12. Otherwise, just 1.
 
 \textbf{Treasure}: none.
 
-\textbf{Terrain}: forest, jungle, savanna.
+\textbf{Terrain}: forests, jungles, savannas.
 
 
 
@@ -1063,11 +1062,12 @@ silver, 50\% for 1d8×1000 gold, 30\% for 1d6×100 platinum, 50\% for
 magic items.\marginnote{Average value: 8074 gold.}
 % 0.5*3.5*100 + 0.5*4.5*1000 + 0.3*3.5*1000 + 0.5*10.5*176 + 0.5*7*1050
 
-\textbf{Terrain}: forest.
+\textbf{Terrain}: forests.
 
 
 \section{Centipede, Giant}
-\index{Centipede, Giant}
+\index{Centipede}
+% \index[animal]{Centipede}
 \begin{marginfigure}
   \includegraphics{Centipede.jpg}
 \end{marginfigure}
@@ -1128,7 +1128,8 @@ item.
 
 
 \section{Crab, Giant}
-\index{Crab, Giant}
+\index{Crab}
+% \index[animal]{Crab}
 \begin{marginfigure}
   \includegraphics{Crab.jpg}
 \end{marginfigure}
@@ -1160,6 +1161,7 @@ carapace growing on their back.\marginnote{These mutants will be able
 
 \section{Crocodile}
 \index{Crocodile}
+% \index[animal]{Crocodile}
 \begin{marginfigure}
   \includegraphics{Crocodile.jpg}
 \end{marginfigure}
@@ -1177,7 +1179,7 @@ hunts alone.
 
 \textbf{Treasure}: none.
 
-\textbf{Terrain}: water, swamps, jungle, savanna.
+\textbf{Terrain}: water, swamps, jungles, savannas.
 
 % prevent an empty page
 % http://tex.stackexchange.com/questions/109625/avoiding-empty-page-between-a-very-full-page-and-the-index
