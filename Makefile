@@ -11,10 +11,11 @@ all: ${FILES}
 	${LATEX} $<
 
 clean:
-	rm *.aux \
-	    *.idx \
-	    *.ilg \
-	    *.ind \
-	    *.log \
-	    *.out \
-	    ${FILES}
+	rm *.an \
+	   *.aux \
+	   *.idx \
+	   *.ilg \
+	   *.ind \
+	   *.log \
+	   *.out \
+	   ${FILES}
