@@ -1,8 +1,5 @@
-\documentclass[a4paper,twoside,openany]{tufte-book}
+\documentclass[a4paper,twoside,openany,nohyper]{tufte-book}
 \usepackage[utf8]{inputenc}
-
-% For the PDF
-\hypersetup{colorlinks}
 
 % \usepackage{showkeys}% debugging \keys
 % \usepackage{multirow}
@@ -13,9 +10,42 @@
 % Provides \sun, \rightmoon
 \usepackage{wasysym}
 
-% Set index
-\usepackage{makeidx}
-\makeindex
+% Indices
+\usepackage{imakeidx}
+\indexsetup{level=\section*,toclevel=section,noclearpage}
+\makeindex[intoc,columns=4]
+\makeindex[name=animal,title=Animals,intoc,columns=4]
+\newcommand{\animal}[1]{\index{#1}\index[animal]{#1}\label{animal:#1}}
+\makeindex[name=ruins,title=Ruins,intoc,columns=4]
+\newcommand{\ruins}[1]{\index[ruins]{#1}}
+\makeindex[name=jungles,title=Jungles,intoc,columns=4]
+\newcommand{\jungles}[1]{\index[jungles]{#1}}
+\makeindex[name=deserts,title=Deserts,intoc,columns=4]
+\newcommand{\deserts}[1]{\index[deserts]{#1}}
+\makeindex[name=forests,title=Forests,intoc,columns=4]
+\newcommand{\forests}[1]{\index[forests]{#1}}
+\makeindex[name=mountains,title=Mountains,intoc,columns=4]
+\newcommand{\mountains}[1]{\index[mountains]{#1}}
+\makeindex[name=caves,title=Caves,intoc,columns=4]
+\newcommand{\caves}[1]{\index[caves]{#1}}
+\makeindex[name=savannas,title=Savannas,intoc,columns=4]
+\newcommand{\savannas}[1]{\index[savannas]{#1}}
+\makeindex[name=swamps,title=Swamps,intoc,columns=4]
+\newcommand{\swamps}[1]{\index[swamps]{#1}}
+% when adding to this list, don't forget to add a \printindex at the end!
+
+% Hyperref after imakeidx (notice nohyper option!)
+% http://tex.stackexchange.com/questions/22012/hyperref-and-imakeidx-do-not-work-together
+\usepackage{hyperref}
+% Settings copied from tufte-common.def
+\hypersetup{
+  colorlinks,
+  pdfborder = {0 0 0},
+  bookmarksdepth = section,
+  citecolor = DarkGreen,
+  linkcolor = DarkBlue,
+  urlcolor = DarkGreen,
+}
 
 % Set up the images/graphics package
 \usepackage{graphicx}
@@ -50,15 +80,6 @@
 % environments. We use a slightly smaller font.
 \usepackage{fancyvrb}
 \fvset{fontsize=\normalsize}
-
-% List of things
-\usepackage{tocloft}
-\newcommand{\listanimals}{Animals}
-\newlistof{animal}{an}{\listanimals}
-\newcommand{\animal}[1]{%
-  \addcontentsline{an}{animal}
-  {\protect#1}\par}
-\renewcommand{\cftantitlefont}{\Large\itshape}
 
 \renewcommand{\labelitemi}{$-$} % use dash for items
 
@@ -241,7 +262,7 @@ table.\marginnote{This is easier than rolling two d6 which is what
 
 \newpage
 
-\index{Random Encounters}\textbf{Random Wilderness Encounters}: Based
+\index{Encounters}\textbf{Random Wilderness Encounters}: Based
 on the current area\marginnote{Keep using the same table while the
   player characters are in the same region: the same valley, the same
   forest, the same mountain range---basically a bunch of hexes that
@@ -538,7 +559,17 @@ provide her with a living giant wasp.")
 The gods and demons are important because characters will able to
 visit their \emph{halls}. These can be reached by secret \emph{gates}
 when sailing the \emph{Astral Sea} when climbing the branches of the
-\emph{World Tree} connecting all the planes of existence.
+\emph{World Tree}\marginnote{The World Tree is \emph{Yggdrasil}. In
+  certain locations, the planar boundaries are weakened and it is
+  possible to enter a sacred grove or push through a thorny hedge and
+  find yourself on one of the branches of the World Tree. The ground
+  is made of living wood. Most often it is steep. There are leaves and
+  branches everywhere, secondary growth, birds, insects, anything that
+  flies. If you are pushed off the branch and you can't fly, you're
+  dead. If the gate is popular, people will have added ropes, ladders,
+  stairs, bridges. Soon enough it is a confusing, living labyrinth of
+  passages. Unless you know where the gates are it will take you a
+  week to find a random gate.} connecting all the planes of existence.
 
 There is a chance that the gods will send one of their agents to help
 if their name is called. In order to succeed, players need to keep
@@ -550,18 +581,22 @@ sent by them. This score is the percent chance that the god will act
 when their name is called. Whether the agents appearing will in fact
 help the characters depends on their past actions. An evil demon lord
 like Set might still send a naga to help a paladin of Mitra, hoping to
-mess with them.
+mess with them. The score only goes down if you ignore the gods.
 
 When paladins and clerics cast \textbf{spells of level four and
   higher}, the spell effect usually involves the appearance of such an
-agent, and an opportunity for some discourse.
+agent and an opportunity for some discourse arises.
 
 \section{Freya and Odin}
+\label{sec:odin}
+\label{sec:freya}
+\index{Freya}
+\index{Odin}
 
 Freya is the goddess of winter, of spring, of fertility, of grain, of
-war, of cats and boars, of magic. She leads the valkyries and collects
-half the slain in battle. These dine with her in \emph{Sessrúmnir},
-her hall in Asgard.
+war, of cats and \hyperref[animal:Boar]{boars}, of magic. She leads
+the valkyries and collects half the slain in battle. These dine with
+her in \emph{Sessrúmnir}, her hall in Asgard.
 
 Odin is the god of wisdom, of magic and poetry, of war, of eagles and
 ravens, of runes, of wanderers. He wields a magic spear, he raises the
@@ -581,7 +616,8 @@ third time, the sword looses its magic. The owner is considered unfit
 to wield it.
 
 \section{Loki}
-
+\label{sec:loki}
+\index{Loki}
 Loki is the god of lies, of deceit, of misdeeds, of excuses and
 explanations, of looking the other way, of tricksters, thieves and
 shape changers, a friend of giants, the innocently accused, the
@@ -594,7 +630,8 @@ In times of need, he might send a nameless \textbf{shape changer}: HD
 need of deception.
 
 \section{Mitra}
-
+\label{sec:mitra}
+\index{Mitra}
 Mitra is the goddess of law, of fire, of bulls, of contracts, of
 bonds, the swearing of oaths, of honesty and truth, of loyalty and
 sacrifice for the community. Her hall is built atop a lake of fire
@@ -608,7 +645,8 @@ spells or stop hostilities speak nothing but the truth), immune to
 \textit{sleep} and \textit{charms}.
 
 \section{Set}
-
+\label{sec:set}
+\index{Set}
 Set is the demon lord of snakes and crocodiles, of assassins, of
 revenge, of spies and diplomats, of poison makers, of death traps, of
 hypnotists and mind benders. His hall is the subterranean
@@ -621,7 +659,8 @@ In times of need he will send a \textbf{naga} named \textit{Sweet
 harmed by magic or magic weapons.
 
 \section{Pazuzu}
-
+\label{sec:pazuzu}
+\index{Pazuzu}
 Pazuzu is the demon lord of pestilence, of miscarriage, of famine and
 disease, of crows and vultures, of temptation and betrayal. His tower
 \emph{Sandstein} was built in Vanaheim.
@@ -632,7 +671,8 @@ In times of need he will send a \textbf{vulture demon} named
 2,420, flying, only harmed by magic or magic weapons.
 
 \section{Marduk}
-
+\label{sec:marduk}
+\index{Marduk}
 Marduk is the god of war and monster slaying, of armies, of generals,
 of brute force. His castle \emph{Unugal} is built in Midgard, the
 world of men.
@@ -774,6 +814,8 @@ value for each piece of jewelry is 1050 gold.
 
 \section{Ape, Giant}
 \index{Ape}
+\jungles{Ape}
+\ruins{Ape}
 \begin{marginfigure}
   \includegraphics{Ape.jpg}
 \end{marginfigure}
@@ -843,7 +885,9 @@ giant apes start at level 3 when hired as retainers.
 
 \section{Basilisk}
 \index{Basilisk}
-\index{Cockatrice}
+\index{Cockatrice|see {Basilisk}}
+\deserts{Basilisk}
+\ruins{Basilisk}
 \begin{marginfigure}
   \includegraphics{Basilisk.jpg}
 \end{marginfigure}
@@ -888,8 +932,9 @@ each for four magic items. Also, a golden diadem worth 500 gold.\marginnote{Aver
 
 
 \section{Bear}
-\index{Bear}
 \animal{Bear}
+\forests{Bear}
+\mountains{Bear}
 \begin{marginfigure}
   \includegraphics{Bear.jpg}
 \end{marginfigure}
@@ -930,12 +975,11 @@ are the result of \emph{Ursomancy}---bear magic.
 
 
 \section{Bee, Giant}
-\index{Bee}
-\index{Wasp}
-\index{Ant}
 \animal{Bee}
-\animal{Wasp}
-\animal{Ant}
+\index{Wasp|see {Bee}}
+\index{Ant|see {Bee}}
+\jungles{Bee}
+\forests{Bee}
 \begin{marginfigure}
   \includegraphics{Bee.jpg}
 \end{marginfigure}
@@ -967,9 +1011,9 @@ most potent cure for old age, wasting diseases and lack of virility.
 That is why the jelly of one nest is worth 5000 gold to the old and
 the dying.
 
-\textbf{Terrain}: jungles, forests.
+\textbf{Terrain}: forests, jungles.
 
-\textbf{Giant Wasps} and \textbf{Giant Ants} are just like giant bees,
+\textbf{Giant wasps} and \textbf{giant ants} are just like giant bees,
 except ants only fly when they are about to mate.
 
 Certain savage tribes of lizard people have learned the pheromone
@@ -978,8 +1022,8 @@ secrets allowing them to use giant wasps as \textbf{mounts}.
 
 
 \section{Beetle, Giant}
-\index{Beetle}
 \animal{Beetle}
+\caves{Beetle}
 \begin{marginfigure}
   \includegraphics{Beetle.jpg}
 \end{marginfigure}
@@ -1005,8 +1049,9 @@ underground voyages.
 
 
 \section{Boar}
-\index{Boar}
 \animal{Boar}
+\forests{Boar}
+\savannas{Boar}
 \begin{marginfigure}
   \includegraphics{Boar.jpg}
 \end{marginfigure}
@@ -1025,7 +1070,7 @@ are encountered, these are mostly aggressive young males.
 
 \textbf{Treasure}: none.
 
-\textbf{Terrain}: forests, savanna.
+\textbf{Terrain}: forests, savannas.
 
 \textbf{Giant Boars} do exist. They are bred as \textbf{mounts} by
 dwarves and halflings.
@@ -1038,6 +1083,8 @@ dwarves and halflings.
 
 \section{Bugbear}
 \index{Bugbear}
+\forests{Bugbear}
+\caves{Bugbear}
 \begin{marginfigure}
   \includegraphics{Bugbear.jpg}
 \end{marginfigure}
@@ -1076,6 +1123,7 @@ item useful on their current mission.\marginnote{Average value: 1563
 
 \section{Creeper}
 \index{Creeper}
+\caves{Creeper}
 \begin{marginfigure}
   \includegraphics{Creeper.jpg}
 \end{marginfigure}
@@ -1110,18 +1158,16 @@ item.\marginnote{Average value: 1956
 
 
 \section{Cat, Large}
-\index{Cat}
-\index{Puma}
-\index{Cheetah}
-\index{Jaguar}
-\index{Lion}
-\index{Tiger}
 \animal{Cat}
-\animal{Puma}
-\animal{Cheetah}
-\animal{Jaguar}
-\animal{Lion}
-\animal{Tiger}
+\index{Puma, see {Cat}}
+\index{Cheetah, see {Cat}}
+\index{Jaguar, see {Cat}}
+\index{Lion, see {Cat}}
+\index{Tiger, see {Cat}}
+\forests{Cat}
+\jungles{Cat}
+\savannas{Cat}
+\mountains{Cat}
 \begin{marginfigure}
   \includegraphics{Cat.jpg}
 \end{marginfigure}
@@ -1150,12 +1196,13 @@ encountering a pride of cheetahs or lions, 1d12. Otherwise, just 1.
 
 \textbf{Treasure}: none.
 
-\textbf{Terrain}: forests, jungles, savannas.
+\textbf{Terrain}: forests, jungles, savannas, mountains.
 
 
 
 \section{Centaur}
 \index{Centaur}
+\forests{Centaur}
 \begin{marginfigure}
   \includegraphics{Centaur.jpg}
 \end{marginfigure}
@@ -1189,8 +1236,8 @@ magic items.\marginnote{Average value: 8074 gold.}
 
 
 \section{Centipede, Giant}
-\index{Centipede}
 \animal{Centipede}
+\caves{Centipede}
 \begin{marginfigure}
   \includegraphics{Centipede.jpg}
 \end{marginfigure}
@@ -1217,6 +1264,7 @@ you are \emph{helpless}.\marginnote{Being helpless means that anybody
 
 \section{Chimera}
 \index{Chimera}
+\caves{Chimera}
 \begin{marginfigure}
   \includegraphics{Chimera.jpg}
 \end{marginfigure}
@@ -1251,8 +1299,8 @@ item.
 
 
 \section{Crab, Giant}
-\index{Crab}
 \animal{Crab}
+\caves{Crab}
 \begin{marginfigure}
   \includegraphics{Crab.jpg}
 \end{marginfigure}
@@ -1283,8 +1331,10 @@ carapace growing on their back.\marginnote{These mutants will be able
 
 
 \section{Crocodile}
-\index{Crocodile}
 \animal{Crocodile}
+\swamps{Crocodile}
+\jungles{Crocodile}
+\savannas{Crocodile}
 \begin{marginfigure}
   \includegraphics{Crocodile.jpg}
 \end{marginfigure}
@@ -1302,25 +1352,41 @@ hunts alone.
 
 \textbf{Treasure}: none.
 
-\textbf{Terrain}: water, swamps, jungles, savannas.
+\textbf{Terrain}: swamps, jungles, savannas.
 
 
 
-\chapter{Categories}
+\begin{fullwidth}
 
-\listofanimal
+\chapter{Indices}
 
 % prevent an empty page
 % http://tex.stackexchange.com/questions/109625/avoiding-empty-page-between-a-very-full-page-and-the-index
 % \enlargethispage{50pt}
+
+\printindex[animal]
+
+\printindex[caves]
+
+\printindex[deserts]
+
+\printindex[forests]
+
+\printindex[jungles]
+
+\printindex[mountains]
+
+\printindex[ruins]
+
+\printindex[savannas]
+
+\printindex[swamps]
 
 \printindex
 
 \clearpage
 
 \section*{Open Game License Version 1.0a}
-
-\begin{fullwidth}
 
 \fontsize{6.5pt}{7pt}\selectfont
 
