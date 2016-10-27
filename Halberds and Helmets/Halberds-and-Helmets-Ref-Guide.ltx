@@ -34,6 +34,8 @@
 \newcommand{\swamps}[1]{\index[swamps]{#1}}
 % when adding to this list, don't forget to add a \printindex at the end!
 
+\newcommand{\hiref}[2]{\index{#2}\href{#1}{#2}}
+
 % Hyperref after imakeidx (notice nohyper option!)
 % http://tex.stackexchange.com/questions/22012/hyperref-and-imakeidx-do-not-work-together
 \usepackage{hyperref}
@@ -559,7 +561,8 @@ provide her with a living giant wasp.")
 The gods and demons are important because characters will able to
 visit their \emph{halls}. These can be reached by secret \emph{gates}
 when sailing the \key{Astral Sea} when climbing the branches of the
-\emph{World Tree}\marginnote{The World Tree is \key{Yggdrasil}. In
+\emph{World Tree}\marginnote{The World Tree is
+  \hiref{https://en.wikipedia.org/wiki/Yggdrasil}{Yggradsil}. In
   certain locations, the planar boundaries are weakened and it is
   possible to enter a sacred grove or push through a thorny hedge and
   find yourself on one of the branches of the World Tree. The ground
@@ -569,7 +572,11 @@ when sailing the \key{Astral Sea} when climbing the branches of the
   dead. If the gate is popular, people will have added ropes, ladders,
   stairs, bridges. Soon enough it is a confusing, living labyrinth of
   passages. Unless you know where the gates are it will take you a
-  week to find a random gate.} connecting all the planes of existence.
+  week to find a random gate.
+
+  To learn more, start with the Wikipedia article on
+  \href{https://en.wikipedia.org/wiki/Norse_cosmology}{Norse
+    cosmology}.} connecting all the planes of existence.
 
 There is a chance that the gods will send one of their agents to help
 if their name is called. In order to succeed, players need to keep
@@ -596,14 +603,12 @@ agent and an opportunity for some discourse arises.
 Freya is the goddess of winter, of spring, of fertility, of grain, of
 war, of cats and \hyperref[animal:Boar]{boars}, of magic. She leads
 the valkyries and collects half the slain in battle. These dine with
-her in \key{Sessrúmnir}, her hall in Asgard.\marginnote{\key{Asgard}
+her in \key{Sessrúmnir}, her hall in
+Asgard.\marginnote{\hiref{https://en.wikipedia.org/wiki/Asgard}{Asgard}
   is a plane consisting of nothing but the divine city where many of
   the gods have their halls, surrounded by a gargantuan wall. Outside
   is the \emph{Astral Sea}. It can be reached by sailing that very sea
-  or by climbing the World Tree, \emph{Yggdrasil}. To learn more,
-  start with the Wikipedia article on
-  \href{https://en.wikipedia.org/wiki/Norse_cosmology}{Norse
-    cosmology}.}
+  or by climbing the World Tree, \emph{Yggdrasil}.}
 
 Odin is the god of wisdom, of magic and poetry, of war, of eagles and
 ravens, of runes, of wanderers. He wields a magic spear, he raises the
@@ -635,12 +640,14 @@ Loki is the god of lies, of deceit, of misdeeds, of excuses and
 explanations, of looking the other way, of tricksters, thieves and
 shape changers, a friend of giants, the innocently accused, the
 misunderstood and the innocent. He can be found brooding in his hall
-\key{Utgard} in Jotunheim.\marginnote{\key{Jotunheim} is a plane of
-  frost and giants. It can be reached by sailing the river \key{Ifing}
-  from Asgard.}
+\key{Utgard} in
+Jotunheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/J\%C3\%B6tunheimr}{Jotunheim}
+  is a plane of frost and giants. It can be reached by sailing the
+  river \key{Ifing} from Asgard.}
 
-In times of need, he might send a nameless \textbf{shape changer}.
-Clearly, this mostly useful when in need of deception.
+In times of need, he might send a nameless \textbf{shape changer}
+named \emph{Quiet}, \emph{Face}, \emph{Melt} or \emph{Mom}. Clearly,
+this is mostly useful when in need of deception.
 
 \begin{quote}
   HD~4 AC~5 1d12 MV~9 ML~10 XP~190; \textit{polymorph} at will; immune
@@ -655,15 +662,17 @@ Mitra is the goddess of law, of fire, of bulls, of contracts, of
 bonds, the swearing of oaths, of honesty and truth, of loyalty and
 sacrifice for the community. Her hall is built atop a lake of fire
 deep underground in Muspelheim and called
-\emph{Eldivatn}.\marginnote{\key{Muspelheim} is a plane of fire and
-  giants. It can be reached by descending into the depths of the earth
-  from Midgard, the realm of humans. There is a Wikipedia article on
-  the Indo-Iranian divinity
-  \href{https://en.wikipedia.org/wiki/Mitra}{Mitra}. Because I had
-  used a lot of
+\emph{Eldivatn}.\marginnote{\hiref{https://en.wikipedia.org/wiki/Muspelheim}{Muspelheim}
+  is a plane of fire and giants. It can be reached by descending into
+  the depths of the earth from Midgard, the realm of humans.
+  Originally, \href{https://en.wikipedia.org/wiki/Mitra}{Mitra} was
+  based on the Indo-Iranian divinity but because I had used a lot of
   \href{http://batintheattic.blogspot.ch/2009/03/from-attic-majestic-wilderlands-part-2.html}{lore
     by Rob Conley} in one of my campaigns, Mitra ended up being a
-  female god in my games.}
+  female god in my games. I was also inspired by the James Vibert
+  statues of three
+  \href{https://en.wikipedia.org/wiki/R\%C3\%BCtlischwur}{oath
+    takers}.}
 
 In times of need, she might send a \textbf{minotaur} named
 \textit{Silence}, \textit{Calm}, \textit{Truth Teller} or
@@ -683,11 +692,11 @@ In times of need, she might send a \textbf{minotaur} named
 Set is the demon lord of snakes and crocodiles, of assassins, of
 revenge, of spies and diplomats, of poison makers, of death traps, of
 hypnotists and mind benders. His hall is the subterranean
-\emph{Eiterhorg} in Svartalfheim.\marginnote{This is Robert E. Howard’s
-  god appearing in his Conan the Barbarian stories, mixing the
-  Egyptian god Set, the serpent Apophis and the Hydra. As always,
-  Wikipedia has a good starting point for your research,
-  \href{https://en.wikipedia.org/wiki/Father_Set}{Father Set}.}
+\emph{Eiterhorg} in Svartalfheim.\marginnote{This is Robert E.
+  Howard’s god appearing in his Conan the Barbarian stories, using
+  elements of the Egyptian god Set, the serpent Apophis and the Hydra.
+  As always, Wikipedia has a good starting point for your research,
+  see \href{https://en.wikipedia.org/wiki/Father_Set}{Father Set}.}
 
 In times of need he will send a \textbf{naga} named \textit{Sweet
   Stab}, \textit{Revenge}, \textit{Crocodile Tears} or \textit{Coral
@@ -705,10 +714,15 @@ In times of need he will send a \textbf{naga} named \textit{Sweet
 
 Pazuzu is the demon lord of pestilence, of miscarriage, of famine and
 disease, of crows and vultures, of temptation and betrayal. His tower
-\key{Sandstein} was built in Vanaheim.\marginnote{\key{Vanaheim} is
-  the realm of all the vanquished demon lords of old. To learn more,
-  start with the Wikipedia article on the Assyro-Babylonian god
-  \href{https://en.wikipedia.org/wiki/Pazuzu}{Pazuzu}.}
+\key{Sandstein} was built in
+Vanaheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/Vanaheimr}{Vanaheim}
+  is a an underground realm where the vanquished demon lords of old
+  eek out their existence before fading away. It is a realm of
+  violence and madness, its caves plagued by flash floods and locust
+  storms.\hiref{https://en.wikipedia.org/wiki/Vanaheimr}{Vanaheim}
+
+  \href{https://en.wikipedia.org/wiki/Pazuzu}{Pazuzu} is based on the
+  Assyro-Babylonian god.}
 
 In times of need he will send a \textbf{vulture demon} named
 \textit{Gangrene}, \textit{Pestilence}, \textit{Corpse Eater} or
@@ -725,10 +739,12 @@ In times of need he will send a \textbf{vulture demon} named
 
 Marduk is the god of war and monster slaying, of armies, of generals,
 of brute force. His castle \emph{Unugal} is built in Midgard, the
-world of humans.\marginnote{\key{Midgard} is the realm of all the
-  vanquished demon lords of old. To learn more, start with the
-  Wikipedia article on the Babylonian god
-  \href{https://en.wikipedia.org/wiki/Marduk}{Marduk}.}
+world of humans.\marginnote{\key{Midgard} is the realm of humans. This
+  is the Middle Earth, the world connecting to all the other realms of
+  the cosmos.
+
+  \href{https://en.wikipedia.org/wiki/Marduk}{Marduk} is based on the
+  Babylonian god.}
 
 In times of need he will send a \textbf{hunter general} named
 \textit{Death}, \textit{Strength}, \textit{Smasher} or \textit{Taker
