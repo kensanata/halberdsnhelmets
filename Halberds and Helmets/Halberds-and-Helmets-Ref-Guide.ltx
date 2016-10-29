@@ -59,9 +59,8 @@
 % bling!
 \usepackage{booktabs}
 
-% The units package provides nice, non-stacked fractions and better
-% spacing for units.
-\usepackage{units}
+% Units with group separators
+\usepackage{siunitx}
 
 % Bold and index keywords
 \newcommand{\key}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}
@@ -231,7 +230,7 @@ party gets to choose the risk they are willing to face by choosing
 areas that are more or less dangerous based on the rumors they hear.
 
 \textbf{Treasure}: I just roll for random treasure. Treasure spent
-earns experience: 1 gold is worth 1 XP.\marginnote[-2em]{Expand on the
+earns experience: \SI{1}{gp} is worth 1 XP.\marginnote[-2em]{Expand on the
   list of \emph{buildings} and add cathedrals, tempels, hippodromes
   and the like as your players will need things to spend their gold
   on.}
@@ -241,7 +240,7 @@ weapon I often pimp it with some extra gimmick.\marginnote{Talking,
   gnawing, cursing, trailing smoke, oozing strange liquids, …} Magic
 items are not for sale. Potions can be bought from alchemists. Every
 alchemist has a handful of potions they know how to make. They cost
-around 500 gold.
+around \SI{500}{gp}.
 
 \textbf{Stocking the dungeon}: Use a d20 and roll on the following
 table.\marginnote{This is easier than rolling two d6 which is what
@@ -321,7 +320,7 @@ along a coast (in which case it'll be eight hexes per day). As it
 stands, this ignores movement speeds and hex size. You travel one hex
 per day, that's it. I usually think that one hex is five miles, but
 players don't need to know that.\marginnote{If you use five mile
-  hexes, that's an area of about \unit[22]{mi²}.}
+  hexes, that's an area of about \SI{22}{mi²}.}
 
 \key{Lairs}: Many hexes have a building of some sort. I place stuff I
 got from the net or from books I bought. I add lairs for all the
@@ -876,11 +875,11 @@ determined using the table on the right.\marginnote[-1em]{
     16--17 & 250 \\
     18--19 & 750 \\
     20     & 1000 \\
-  \end{tabular}} The average value of a gem is 176 gold.
+  \end{tabular}} The average value of a gem is \SI{176}{gp}.
 
 \key{Jewelry} is rings, necklaces, bracelets, diadems, crowns,
-scepters and the like. Each piece is worth 3d6×100 gold. The average
-value for each piece of jewelry is 1050 gold.
+scepters and the like. Each piece is worth 3d6×\SI{100}{gp}. The average
+value for each piece of jewelry is \SI{1050}{gp}.
 
 
 
@@ -909,11 +908,11 @@ spot you sneaking up to the giant apes.
 Breakthrough.
 
 \textbf{Treasure}: When encountered in a ruined temple, they might
-have collected some shiny stuff. 20\% for 1d4×1000 silver, 30\% for
-1d6×1000 gold, 10\% for 1d6×100 platinum, 10\% for 1d6
+have collected some shiny stuff. 20\% for 1d4×\SI{1000}{sp}, 30\% for
+1d6×\SI{1000}{gp}, 10\% for 1d6×\SI{100}{pp}, 10\% for 1d6
 \href{https://campaignwiki.org/gems}{gems}, 10\% for 1d6
 \href{https://campaignwiki.org/jewelry}{jewelry}.\marginnote{Average
-  value: 1879 gold.}
+  value: \SI{1879}{gp}.}
 % 0.2*2.5*100 + 0.3*3.5*1000 + 0.1*3.5*1000 + 0.1*3.5*176 + 0.1*3.5*1050
 
 \textbf{Terrain}: jungles, ruins.
@@ -968,7 +967,7 @@ The basilisk is the "little king of serpents" -- it's a monstrous
 snake ten paces long and nearly chest high at its thickest. The
 basilisk's scales are usually green or brown, and upon it's head it
 wears a crown of gold. It's lair is filled with toxic fumes, a deadly
-poison to all. It's breath poisons the air for \unit[30]{ft.} around it.
+poison to all. It's breath poisons the air for \SI{30}{ft} around it.
 \textbf{When you breathe in these fumes}, save vs.~poison or die. You
 can hold your breath for one round and fight. If you keep fighting,
 save vs.~death or faint. Once you faint, your body will start
@@ -992,11 +991,12 @@ cockatrice. It never mates.
 
 \textbf{Treasures}: A basilisk's lair usually contains the remainders
 of many a dead villager and soldier foolish enough to try and kill it.
-20\% for 1d4×1000 silver, 50\% for 1d6×1000 gold, 10\% for 1d4×100
-platinum, 50\% for 2d6 \href{https://campaignwiki.org/gems}{gems},
-50\% for 1d6 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\%
-each for four magic items. Also, a golden diadem worth 500 gold.\marginnote{Average
-  value: 5004 gold.}
+20\% for 1d4×\SI{1000}{sp}, 50\% for 1d6×\SI{1000}{gp}, 10\% for
+1d4×\SI{100}{pp}, 50\% for 2d6
+\href{https://campaignwiki.org/gems}{gems}, 50\% for 1d6
+\href{https://campaignwiki.org/jewelry}{jewelry}, 20\% each for four
+magic items. Also, a golden diadem worth
+\SI{500}{gp}.\marginnote{Average value: \SI{5004}{gp}.}
 % 0.2*2.5*100 + 0.5*3.5*1000 + 0.1*2.5*1000 + 0.5*7*176 + 0.5*3.5*1050 + 500
 
 \textbf{Terrain}: deserts, ruins.
@@ -1015,7 +1015,7 @@ Bears may stand up in combat, attacking with both claws and a
 bite---and \textbf{if both their claws hit}, the bear will
 \textbf{hug} you for an additional 2d8 damage. When encountered in
 their natural habitat, bears will usually ignore you unless you come
-closer than \unit[30]{ft.} or if they are hurt in any way.
+closer than \SI{30}{ft} or if they are hurt in any way.
 
 \begin{quote}
   HD 4 AC 6 1d4/1d4/1d6 + \emph{hug} F2 MV 12 ML 5 XP 135
@@ -1028,14 +1028,15 @@ male loners.
 
 \textbf{Terrain}: forests, mountains.
 
-\textbf{War Bears}: Trained bears are sometimes used by dwarves as
-\textbf{pets}. These can wear a metal back plate and skull cap giving
-them AC 4 instead of 6. A trained war bear will cost 500 gold and the
-armor that goes along with it will cost you another 500 gold. They'll
-only sell it to you if you are a \emph{dwarf friend}. You must have
-performed some valuable service for the clan before they sell you
-their precious war bears. War bears can be used as \textbf{mounts} by
-small creatures (usually dwarves, elves and halflings).
+\key{War Bear}: Trained bears are sometimes used by
+\hyperref[sec:dwarf]{dwarves} as \textbf{pets}. These can wear a metal
+back plate and skull cap giving them AC 4 instead of 6. A trained war
+bear will cost \SI{500}{gp} and the armor that goes along with it will
+cost you another \SI{500}{gp}. They'll only sell it to you if you are a
+\emph{dwarf friend}. You must have performed some valuable service for
+the clan before they sell you their precious war bears. War bears can
+be used as \textbf{mounts} by small creatures (usually dwarves, elves
+and halflings).
 
 \textbf{Larger} bears are possible. Usually these \emph{dire bears}
 are the result of \emph{Ursomancy}---bear magic.
@@ -1080,7 +1081,7 @@ nest with 2d4×10 including a queen.
 \textbf{Treasure}: \emph{gelée royale} (royal jelly) is what the bees
 use to feed larvae destined to become new queens. It is said to be the
 most potent cure for old age, wasting diseases and lack of virility.
-That is why the jelly of one nest is worth 5000 gold to the old and
+That is why the jelly of one nest is worth \SI{5000}{gp} to the old and
 the dying.
 
 \textbf{Terrain}: forests, jungles.
@@ -1162,10 +1163,11 @@ forest suffers, these spirits can be corrupted.
 
 \textbf{Treasure}: A guardian spirit will usually have a dedicated
 temple in a holy grove within its forest. 50\% for 1d6×1000 copper,
-50\% for 1d4×1000 silver, 30\% for 1d6×1000 gold, 10\% for 1d4×100
-platinum, 50\% for 2d6 \href{https://campaignwiki.org/gems}{gems},
-50\% for 1d6 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\%
-for a magic items.\marginnote{Average value: 3896 gold.}
+50\% for 1d4×\SI{1000}{sp}, 30\% for 1d6×\SI{1000}{gp}, 10\% for
+1d4×\SI{100}{pp}, 50\% for 2d6
+\href{https://campaignwiki.org/gems}{gems}, 50\% for 1d6
+\href{https://campaignwiki.org/jewelry}{jewelry}, 20\% for a magic
+items.\marginnote{Average value: \SI{3896}{gp}.}
 % 0.5*3.5*10 + 0.5*2.5*100 + 0.3*3.5*1000 + 0.1*2.5*1000 + 0.5*7*176 + 0.5*3.5*1050
 
 \section{Bugbear}
@@ -1197,12 +1199,12 @@ and hard to find.
 \textbf{Names}: Silentfoot, Silverpaws, Deathlicker, Piercingeyes.
 
 \textbf{Treasure}: If they carry any treasure then it is money earned
-serving their elven masters. 20\% for 1d4×1000 silver, 30\% for
-1d4×1000 gold, 30\% for 1d8
+serving their elven masters. 20\% for 1d4×\SI{1000}{sp}, 30\% for
+1d4×\SI{1000}{gp}, 30\% for 1d8
 \href{https://campaignwiki.org/gems}{gems}, 20\% for 1d4
 \href{https://campaignwiki.org/jewelry}{jewelry}, 10\% for a magic
-item useful on their current mission.\marginnote{Average value: 1563
-  gold.}
+item useful on their current mission.\marginnote{Average value:
+  \SI{1563}{gp}.}
 % 0.2*2.5*100 + 0.3*2.5*1000 + 0.3*4.5*176 + 0.2*2.5*1050
 
 \textbf{Terrain}: forests, caves.
@@ -1276,11 +1278,12 @@ strike out with two hooves and a spear.
 
 \textbf{Names}: Fleetfoot, Staggering Stag, Prancing Horny, Old Man.
 
-\textbf{Treasure}: Sages get many gifts, they say. 50\% for 1d6x1000
-silver, 50\% for 1d8×1000 gold, 30\% for 1d6×100 platinum, 50\% for
-3d6 \href{https://campaignwiki.org/gems}{gems}, 50\% for 2d6
+\textbf{Treasure}: Sages get many gifts, they say. 50\% for
+1d6x\SI{1000}{sp}, 50\% for 1d8×\SI{1000}{gp}, 30\% for
+1d6×\SI{100}{pp}, 50\% for 3d6
+\href{https://campaignwiki.org/gems}{gems}, 50\% for 2d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% each for four
-magic items.\marginnote{Average value: 8074 gold.}
+magic items.\marginnote{Average value: \SI{8074}{gp}.}
 % 0.5*3.5*100 + 0.5*4.5*1000 + 0.3*3.5*1000 + 0.5*10.5*176 + 0.5*7*1050
 
 \textbf{Terrain}: forests.
@@ -1340,11 +1343,12 @@ left. Save vs.~dragon breath for half damage.
 
 \textbf{Treasure}: Older chimeras will often have amassed quite some
 wealth, for they they do not only prey on those who wish to enter but
-also on those who wish to leave the netherworld. 50\% for 1d8x1000
-silver, 50\% for 1d8×1000 gold, 20\% for 1d6×100 platinum, 30\% for
-3d6 \href{https://campaignwiki.org/gems}{gems}, 20\% for 1d6
+also on those who wish to leave the netherworld. 50\% for
+1d8x\SI{1000}{sp}, 50\% for 1d8×\SI{1000}{gp}, 20\% for
+1d6×\SI{100}{pp}, 30\% for 3d6
+\href{https://campaignwiki.org/gems}{gems}, 20\% for 1d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% for a magic
-item.\marginnote{Average value: 4464 gold.}
+item.\marginnote{Average value: \SI{4464}{gp}.}
 % 0.5*4.5*100 + 0.5*4.5*1000 + 0.2*3.5*1000 + 0.3*10.5*176 + 0.2*3.5*1050
 
 \textbf{Terrain}: caves.
@@ -1407,12 +1411,11 @@ damage is dealt.
 \textbf{Numbers}: 1d4.
 
 \textbf{Treasure}: Sometimes you'll find the remains of a dead cave
-explorer nearby. 10\% for 1d4×1000 silver, 20\% for 1d6×1000 gold,
-10\% for 1d4×100 platinum, 20\% for 2d6
+explorer nearby. 10\% for 1d4×\SI{1000}{sp}, 20\% for 1d6×\SI{1000}{gp},
+10\% for 1d4×\SI{100}{pp}, 20\% for 2d6
 \href{https://campaignwiki.org/gems}{gems}, 20\% for 1d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% for a magic
-item.\marginnote{Average value: 1956
-  gold.}
+item.\marginnote{Average value: \SI{1956}{gp}.}
 % 0.1*2.5*100 + 0.2*3.5*1000 + 0.1*2.5*1000 + 0.2*7*176 + 0.2*3.5*1050
 
 \textbf{Terrain}: caves.
@@ -1556,10 +1559,10 @@ shapes. We don't know of doppelgängers in non-human societies.
 will be more than one.
 
 \textbf{Treasure}: Whatever their former victim used to own. 20\% for
-1d4x1000 silver, 20\% for 1d4×1000 gold, 10\% for 1d4×100 platinum,
+1d4x\SI{1000}{sp}, 20\% for 1d4×\SI{1000}{gp}, 10\% for 1d4×\SI{100}{pp},
 20\% for 1d6 \href{https://campaignwiki.org/gems}{gems}, 10\% for 1d4
 \href{https://campaignwiki.org/jewelry}{jewelry}, 5\% for a magic
-item.\marginnote{Average value: 1185 gold.}
+item.\marginnote{Average value: \SI{1185}{gp}.}
 % 0.2*2.5*100 + 0.2*2.5*1000 + 0.1*2.5*1000 + 0.2*3.5*176 + 0.1*2.5*1050
 
 \textbf{Terrain}: any.
@@ -1596,7 +1599,7 @@ reconstruction.
   the 4\th circle, this means that most elves will pick the blue
   dragon form when they first master the spell and the red dragon form
   when they reach the apex of their power.} Dragons can use
-\textbf{dragon breath} (3×/day): a cone about \unit[100]{ft.} of ice,
+\textbf{dragon breath} (3×/day): a cone about \SI{100}{ft} of ice,
 acid, poisonous gas, lightning bolts or fire, depending on the color of
 the dragon. Take as much damage as the dragon still has hit points
 left. Save vs.~dragon breath for half damage. Dragons are themselves
@@ -1611,8 +1614,8 @@ weapons. All dragons can \emph{fly}.
   \emph{fire ball} and \emph{snow storm} (3\rd circle) all deal 6d6
   damage of the appropriate kind, save vs.~spells for half.
   \emph{Poison gas} (5\th circle) will kill any creature with up to
-  \unit[4]{HD} unless they save vs.~poison. Those that save and any
-  creature above \unit[4]{HD} simply suffer 1 damage/round.}
+  \SI{4}{HD} unless they save vs.~poison. Those that save and any
+  creature above \SI{4}{HD} simply suffer 1 damage/round.}
 \begin{quote}
   White: HD 6 AC 3 1d4/1d4/2d8 F6 ML 8 MV 24 XP 1070; \emph{ice}\\
   Black: HD 7 AC 2 1d6/1d6/2d10 F7 ML 8 MV 24 XP 1490; \emph{acid}\\
@@ -1623,10 +1626,10 @@ weapons. All dragons can \emph{fly}.
 
 \textbf{Numbers}: 1.
 
-\textbf{Treasure}: 50\% for 1d6×10000 gold, 30\% for 4d6×100 platinum,
+\textbf{Treasure}: 50\% for 1d6×\SI{10000}{gp}, 30\% for 4d6×\SI{100}{pp},
 50\% for 1d8×10 \href{https://campaignwiki.org/gems}{gems}, 50\% for
 1d8×10 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% each for
-eight magic items.\marginnote{Average value: 49285 gold.}
+eight magic items.\marginnote{Average value: \SI{49285}{gp}.}
 % 0.5*3.5*10000 + 0.3*14*1000 + 0.5*45*176 + 0.5*45*1050
 
 \textbf{Terrain}: caves, deserts, forests, jungles, mountains, ruins,
@@ -1635,6 +1638,7 @@ swamps.
 
 
 \section{Dwarf}
+\label{sec:dwarf}
 \index{Dwarf}
 \caves{Dwarf}
 \forests{Dwarf}
@@ -1643,7 +1647,7 @@ swamps.
   \includegraphics{Dwarf.png}
 \end{marginfigure}
 
-Dwarves are small, maybe \unit[4]{ft.} tall. They all have a beard.
+Dwarves are small, maybe \SI{4}{ft} tall. They all have a beard.
 Whether dwarven women actually exist or whether they just look like
 men is a dwarven secret. They consider such talk
 inappropriate.\marginnote{Need character portraits for dwarves? Check
@@ -1662,27 +1666,29 @@ these items were made just for dwarves.
 \end{quote}
 
 \textbf{Numbers}: a clan with 5d8 merchants, led by a dwarf with level
-1d6+2.
+1d6+2 and accompanied by 1d6-1 \hyperref[key:War Bear]{war bears}
+(possibly none).
 
 \textbf{Treasure}: they carry an enormous amount of gold in order to
-purchase things for their underground strongholds. 50\% for 1d6×10000
-gold, 50\% for 1d4×100 platinum, 30\% for 2d8
+purchase things for their underground strongholds. 50\% for
+1d6×\SI{10000}{gp}, 50\% for 1d4×\SI{100}{pp}, 30\% for 2d8
 \href{https://campaignwiki.org/gems}{gems}, 20\% for 1d10
 \href{https://campaignwiki.org/jewelry}{jewelry}, 30\% each for six
-magic items.\marginnote{Average value: 20380 gold.}
+magic items.\marginnote{Average value: \SI{20380}{gp}.}
 % 0.5*3.5*10000 + 0.5*2.5*1000 + 0.3*9*176 + 0.2*5.5*1050
 
 \textbf{Terrain}: caves, forests, mountains.
 
-A dwarven stronghold will usually have ten times the number of dwarves
-and even more treasure: 1d6×100000 gold, 1d4×1000 platinum, 12d8 gems,
-4d10 jewelry, 8d8 magic items. The magic items will including many
-potions, warding scrolls and treasure maps, as well as some ancient
-golem armor and weapons---all of them precious family heirlooms with
-their clan insignia and lists of owners going back centuries. The most
-powerful dwarf will be level 9--12, depending on the size of the
-population, surrounded by a circle of trustworthy clan heads, all of
-them with level 1d6+2, each of them responsible for 20--25 dwarves.
+\textbf{Stronghold}: A dwarven stronghold will usually have ten times
+the number of dwarves and even more treasure: 1d6×\SI{100000}{gp},
+1d4×\SI{1000}{pp}, 12d8 gems, 4d10 jewelry, 8d8 magic items. The magic
+items will including many potions, warding scrolls and treasure maps,
+as well as some ancient golem armor and weapons---all of them precious
+family heirlooms with their clan insignia and lists of owners going
+back centuries. The most powerful dwarf will be level 9--12, depending
+on the size of the population, surrounded by a circle of trustworthy
+clan heads, all of them with level 1d6+2, each of them responsible for
+20--25 dwarves.
 
 
 
