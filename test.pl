@@ -3,8 +3,16 @@ use Modern::Perl '2015';
 use Test::More;
 open(my $fh, '<:encoding(UTF-8)', 'Halberds-and-Helmets-Ref-Guide.ltx')
     or die "Cannot read file: $!";
-my @lines = <$fh>;
+
+undef $/;
+my $text = <$fh>;
+
+ok($text =~ s/^\\textbf\{Terrain\}: (.*),\n/\\textbf\{Terrain\}: ($1), /mg > 0, "fixed continuation lines");
+
+my @lines = split(/\n/, $text);
 ok(@lines > 0, "file was read");
+
+ok($text =~ m/\d(st|nd|rd|th)/ == 0, "ordinals are all correct");
 
 my %index;
 for (@lines) {
@@ -22,7 +30,7 @@ for my $index (keys %index) {
 my $section;
 my %h;
 for (@lines) {
-  if (/^\\section\{([a-zA-Z, ]+)\}/) { $section = $1; %h = () };
+  if (/^\\section\{([[:alpha:], ]+)\}/) { $section = $1; %h = () };
   if (/^\\([a-z]+)\{([^\}]+)\}/) {
     if($index{$1}) {
       like($section, qr/^$2/, "$section starts with $2 in the $1 index"); 
