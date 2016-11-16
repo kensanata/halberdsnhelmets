@@ -12,7 +12,10 @@ ok($text =~ s/^\\textbf\{Terrain\}: (.*),\n/\\textbf\{Terrain\}: ($1), /mg > 0, 
 my @lines = split(/\n/, $text);
 ok(@lines > 0, "file was read");
 
-ok($text =~ m/\d(st|nd|rd|th)/ == 0, "ordinals are all correct");
+$" = ', '; # interpolating arrays in strings
+my @ords = $text =~ m/(\d(?:st|nd|rd|th))/g;
+ok(@ords == 0, "ordinals are all correct"
+   . (@ords == 0 ? "" : " (@ords)"));
 
 my %index;
 for (@lines) {
