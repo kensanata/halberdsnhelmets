@@ -34,7 +34,10 @@
 \newcommand{\swamps}[1]{\index[swamps]{#1}}
 % when adding to this list, don't forget to add a \printindex at the end!
 
-\newcommand{\hiref}[2]{\index{#2}\href{#1}{#2}}
+% Other shortcuts
+\newcommand{\spells}[1]{\marginnote{#1}}
+\newcommand{\averagevalue}[1]{\marginnote{Average value: \SI{#1}{gp}.}}
+\newcommand{\hiref}[2]{\index{#2}\href{#1}{#2}}% index and link
 
 % Hyperref after imakeidx (notice nohyper option!)
 % http://tex.stackexchange.com/questions/22012/hyperref-and-imakeidx-do-not-work-together
@@ -999,7 +1002,7 @@ of many a dead villager and soldier foolish enough to try and kill it.
 \href{https://campaignwiki.org/gems}{gems}, 50\% for 1d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% each for four
 magic items. Also, a golden diadem worth
-\SI{500}{gp}.\marginnote{Average value: \SI{5004}{gp}.}
+\SI{500}{gp}.\averagevalue{5004}
 % 0.2*2.5*100 + 0.5*3.5*1000 + 0.1*2.5*1000 + 0.5*7*176 + 0.5*3.5*1050 + 500
 
 \textbf{Terrain}: deserts, ruins.
@@ -1171,7 +1174,7 @@ temple in a holy grove within its forest. 50\% for 1d6×1000 copper,
 1d4×\SI{100}{pp}, 50\% for 2d6
 \href{https://campaignwiki.org/gems}{gems}, 50\% for 1d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% for a magic
-items.\marginnote{Average value: \SI{3896}{gp}.}
+items.\averagevalue{3896}
 % 0.5*3.5*10 + 0.5*2.5*100 + 0.3*3.5*1000 + 0.1*2.5*1000 + 0.5*7*176 + 0.5*3.5*1050
 
 \section{Bugbear}
@@ -1292,7 +1295,7 @@ strike out with two hooves and a spear.
 1d6×\SI{100}{pp}, 50\% for 3d6
 \href{https://campaignwiki.org/gems}{gems}, 50\% for 2d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% each for four
-magic items.\marginnote{Average value: \SI{8074}{gp}.}
+magic items.\averagevalue{8074}
 % 0.5*3.5*100 + 0.5*4.5*1000 + 0.3*3.5*1000 + 0.5*10.5*176 + 0.5*7*1050
 
 \textbf{Terrain}: forests.
@@ -1357,7 +1360,7 @@ also on those who wish to leave the netherworld. 50\% for
 1d6×\SI{100}{pp}, 30\% for 3d6
 \href{https://campaignwiki.org/gems}{gems}, 20\% for 1d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% for a magic
-item.\marginnote{Average value: \SI{4464}{gp}.}
+item.\averagevalue{4464}
 % 0.5*4.5*100 + 0.5*4.5*1000 + 0.2*3.5*1000 + 0.3*10.5*176 + 0.2*3.5*1050
 
 \textbf{Terrain}: caves.
@@ -1424,7 +1427,7 @@ explorer nearby. 10\% for 1d4×\SI{1000}{sp}, 20\% for 1d6×\SI{1000}{gp},
 10\% for 1d4×\SI{100}{pp}, 20\% for 2d6
 \href{https://campaignwiki.org/gems}{gems}, 20\% for 1d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% for a magic
-item.\marginnote{Average value: \SI{1956}{gp}.}
+item.\averagevalue{1956}
 % 0.1*2.5*100 + 0.2*3.5*1000 + 0.1*2.5*1000 + 0.2*7*176 + 0.2*3.5*1050
 
 \textbf{Terrain}: caves.
@@ -1485,7 +1488,7 @@ have never seen whole communities taken over. They prefer to spread,
 spending years in the wilderness, living as rangers, charcoal burners,
 wandering monks and hermits.
 
-The entire magic school of body alteration\marginnote{\emph{Disguise}
+The entire magic school of body alteration\spells{\emph{Disguise}
   (2\nd circle) allows you to change your face as you please.
   \emph{Shape change} (3\rd circle) allows you to change the rest of
   your body as well, as long as your shape remains roughly human. The
@@ -1506,7 +1509,7 @@ will be more than one.
 1d4x\SI{1000}{sp}, 20\% for 1d4×\SI{1000}{gp}, 10\% for 1d4×\SI{100}{pp},
 20\% for 1d6 \href{https://campaignwiki.org/gems}{gems}, 10\% for 1d4
 \href{https://campaignwiki.org/jewelry}{jewelry}, 5\% for a magic
-item.\marginnote{Average value: \SI{1185}{gp}.}
+item.\averagevalue{1185}
 % 0.2*2.5*100 + 0.2*2.5*1000 + 0.1*2.5*1000 + 0.2*3.5*176 + 0.1*2.5*1050
 
 % any terrain!
@@ -1555,7 +1558,7 @@ such an effect (\emph{lightning bolt}, \emph{fire ball}, \emph{snow
 quarter damage. In addition to that, they are immune to non-magic
 weapons. All dragons can \emph{fly}.
 
-\marginnote{Dragons can teach you an appropriate destructive spell, if
+\spells{Dragons can teach you an appropriate destructive spell, if
   you befriend them: \emph{acid rain}, \emph{lightning bolt},
   \emph{fire ball} and \emph{snow storm} (3\rd circle) all deal 6d6
   damage of the appropriate kind, save vs.~spells for half.
@@ -1575,7 +1578,7 @@ weapons. All dragons can \emph{fly}.
 \textbf{Treasure}: 50\% for 1d6×\SI{10000}{gp}, 30\% for 4d6×\SI{100}{pp},
 50\% for 1d8×10 \href{https://campaignwiki.org/gems}{gems}, 50\% for
 1d8×10 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% each for
-eight magic items.\marginnote{Average value: \SI{49285}{gp}.}
+eight magic items.\averagevalue{49285}
 % 0.5*3.5*10000 + 0.3*14*1000 + 0.5*45*176 + 0.5*45*1050
 
 \textbf{Terrain}: caves, deserts, forests, jungles, mountains, ruins,
@@ -1629,7 +1632,7 @@ purchase things for their underground strongholds. 50\% for
 1d6×\SI{10000}{gp}, 50\% for 1d4×\SI{100}{pp}, 30\% for 2d8
 \href{https://campaignwiki.org/gems}{gems}, 20\% for 1d10
 \href{https://campaignwiki.org/jewelry}{jewelry}, 30\% each for six
-magic items.\marginnote{Average value: \SI{20380}{gp}.}
+magic items.\averagevalue{20380}
 % 0.5*3.5*10000 + 0.5*2.5*1000 + 0.3*9*176 + 0.2*5.5*1050
 Their leader may own more magic items: 5\% per level per item type
 usable by people that cannot cast spells
@@ -1639,7 +1642,7 @@ usable by people that cannot cast spells
 \textbf{Stronghold}: A dwarven stronghold will usually have ten times
 the number of dwarves and even more treasure: 1d6×\SI{100000}{gp},
 1d4×\SI{1000}{pp}, 12d8 gems, 4d10 jewelry, 8d8 magic
-items.\marginnote{Average value: \SI{407604}{gp}.}
+items.\averagevalue{407604}
 % 3.5*100000 + 2.5*10000 + 12*4.5*176 + 4*5.5*1050
 The magic items will including many potions, warding scrolls and
 treasure maps, as well as some ancient golem armor and weapons---all
@@ -1744,7 +1747,7 @@ Lushvalley.\marginnote{If you want elvish names, check out
 
 \textbf{Treasure}: they don't carry a lot with them. 30\% for 1d6×1000
 gp, 30\% for 1d4×100 pp, 15\% for 1d8 gems, 10\% for 1d8 jewelry, 30\%
-each for five magic items.\marginnote{Average value: \SI{2391}{gp}.}
+each for five magic items.\averagevalue{2391}
 % 0.3*3.5*1000 + 0.3*2.5*1000 + 0.15*4.5*176 + 0.1*4.5*1050
 Their leader may own more magic items: 5\%
 per level per item type.
@@ -1790,7 +1793,7 @@ years. 50\% for 1d8×\SI{1000}{sp}, 50\% for 2d6×\SI{1000}{gp}, 20\%
 for 1d6×\SI{100}{pp}, 30\% for 1d6
 \href{https://campaignwiki.org/gems}{gems}, 10\% for 1d4
 \href{https://campaignwiki.org/jewelry}{jewelry}, 10\% for a magic
-item.\marginnote{Average value: \SI{4872}{gp}.}
+item.\averagevalue{4872}
 % 0.5*4.5*100 + 0.5*7*1000 + 0.2*3.5*1000 + 0.3*3.5*176 + 0.1*2.5*1050
 
 \textbf{Terrain}: caves, forests, jungles, ruins, swamps.
@@ -1824,7 +1827,7 @@ HD 4 AC 5 1d4/1d4/1d4/1d6 F8 MV 15 ML 11 XP 190; magic required to hit
 of valuable treasure. 50\% for 1d8x\SI{1000}{sp}, 20\% for 1d6
 \href{https://campaignwiki.org/gems}{gems}, 20\% for 1d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% each for two
-magic items.\marginnote{Average value: \SI{948}{gp}.}
+magic items.\averagevalue{948}
 % 0.2*4.5*100 + 0.2*3.5*176 + 0.2*3.5*1050
 
 \textbf{Terrain}: caves, ruins.
@@ -1842,7 +1845,7 @@ magic items.\marginnote{Average value: \SI{948}{gp}.}
   \includegraphics{Ghoul.jpg}
 \end{marginfigure}
 
-\marginnote{\emph{Aura of fear} (1\st~circle) allows you to focus on
+\spells{\emph{Aura of fear} (1\st~circle) allows you to focus on
   one person within \SI{30}{ft} and cause such fear that they have to
   save vs.~spell or turn and flee in a random direction away from you
   for as many rounds as you have levels (ghouls: 2). \emph{Paralysis}
@@ -1883,7 +1886,7 @@ the paralyzed victim is killed and the feasting begins.
 things. 30\% for 1d6x\SI{1000}{sp}, 20\% for 1d6x\SI{1000}{gp}, 30\%
 for 1d8 \href{https://campaignwiki.org/gems}{gems}, 20\% for 1d6
 \href{https://campaignwiki.org/jewelry}{jewelry}, 20\% for a magic
-item.\marginnote{Average value: \SI{1778}{gp}.}
+item.\averagevalue{1778}
 % 0.3*3.5*100 + 0.2*3.5*1000 + 0.3*4.5*176 + 0.2*3.5*1050
 
 \textbf{Terrain}: caves, deserts, ruins, savannas.
@@ -1926,7 +1929,7 @@ volcano or a glacier. The larger giants can \textbf{throw stones}
 doing 3d6 damage for over \SI{200}{ft}.
 
 Both stone and frost giants cast spells and can teach them to you, for
-a price.\marginnote{\emph{Stone shape} (5\th circle) allows you to
+a price.\spells{\emph{Stone shape} (5\th circle) allows you to
   shape earth and stone with your hands for half an hour, allowing you
   to dig tunnels for \SI{10}{ft/min}. \emph{Control weather} (5\th
   circle) allows you to change the weather for the next \SI{24}{h}.}
@@ -1970,7 +1973,7 @@ Flame.\marginnote{If you want Norse names, check out the
 treasure. 30\% for 1d10×1000 sp, 2d6×\SI{1000}{gp}, 20\% for 1d8
 \href{https://campaignwiki.org/gems}{gems}, 10\% for 1d8
 \href{https://campaignwiki.org/jewelry}{jewelry}, 30\% each for four
-magic items.\marginnote{Average value: \SI{7796}{gp}.}
+magic items.\averagevalue{7796}
 % 0.3*5.5*100 + 7000 + 0.2*4.5*176 + 0.1*4.5*1050
 
 \textbf{Terrain}: caves, mountains.
@@ -2008,7 +2011,7 @@ HD 2+1 AC 5 1d10 MV 9 ML 8 XP 47
 
 \textbf{Treasure}: they don't carry a lot with them. 30\% for 1d6×1000
 gp, 30\% for 1d4×100 pp, 15\% for 1d8 gems, 10\% for 1d8 jewelry, 30\%
-each for five magic items.\marginnote{Average value: \SI{2391}{gp}.}
+each for five magic items.\averagevalue{2391}
 % 0.3*3.5*1000 + 0.3*2.5*1000 + 0.15*4.5*176 + 0.1*4.5*1050
 Their leader may own more magic items: 5\%
 per level per item type.
@@ -2016,7 +2019,7 @@ per level per item type.
 \textbf{Terrain}: mountains, savannas, swamps.
 
 \textbf{Player characters}: gnolls gain levels like fighters; their
-minimum strength is 9; 6th level is their maximum---they’ll never be
+minimum strength is 9; 6\th level is their maximum---they’ll never be
 ``a captain of a small army'' (see \hyperref[key:People]{People}).
 
 \section{Gnome}
@@ -2035,10 +2038,10 @@ wearing red caps! Gnome women appear not to exist. All couples are
 formed by two bearded, white haired gnomes. When asked about their
 children, they'll say that they "found" them deep underground. Gnomes
 cast spells and can teach them to you, for a
-price.\marginnote{\emph{Speak with animals} (1st circle) allows you to
-  speak with all the animals for 20min. \emph{Stone talk} (2nd circle)
+price.\spells{\emph{Speak with animals} (1\st circle) allows you to
+  speak with all the animals for 20min. \emph{Stone talk} (2\nd circle)
   allows you to speak with all the animals for 20min. \emph{Earth
-    swim} (4th circle) allows you to glide through the earth like a
+    swim} (4\th circle) allows you to glide through the earth like a
   fish through water for two hours. If the spell ends and you are not
   back on the surface, you will slowly suffocate underground,
   immobilized, and nobody will hear you scream.}
@@ -2050,8 +2053,7 @@ discovered, it will attract a hundred desperadoes looking for riches.
 Sometimes the gnomes manage to prevent this by causing cave-ins and
 elevator failures as soon as they fear discovery.
 
-All gnomes found on the surface, in forests and hills, love animals
-and speak the language.
+All gnomes love animals and speak their language.
 
 \begin{quote}
   HD 1 AC 5 1d6 MV 6 ML 8 XP 10; \emph{speak with animals},
@@ -2066,7 +2068,8 @@ none).
 Happy, Lore Beard, Gift Giver.
 
 \textbf{Treasure}: they love gems. 30\% for 1d6×1000 gp, 80\% for 5d10
-gems, 30\% for 2d10 jewelry, 30\% each for three magic items.
+gems, 30\% for 2d10 jewelry, 30\% each for three magic items.\averagevalue{8387}
+% 0.3*3.5*1000 + 0.8*5*5.5*176 + 0.3*11*1050
 
 \textbf{Terrain}: caves, forests.
 
@@ -2205,7 +2208,7 @@ road, or bandits.
   \includegraphics{Ifrit.jpg}
 \end{marginfigure}
 
-\marginnote{\emph{Illusion} (2\nd~circle) allows you to create and
+\spells{\emph{Illusion} (2\nd~circle) allows you to create and
   maintain an illusion as large as a house for as long as you
   concentrate on it. Anybody touching it may save vs.~spells in order
   to see through the illusion. An illusion attacks like the caster but
@@ -2283,7 +2286,7 @@ the demon lord of fire, \key{Surtr}.
   \includegraphics{Jinni.jpg}
 \end{marginfigure}
 
-\marginnote{\emph{Illusion} (2\nd~circle) allows you to create and
+\spells{\emph{Illusion} (2\nd~circle) allows you to create and
   maintain an illusion as large as a house for as long as you
   concentrate on it. Anybody touching it may save vs.~spells in order
   to see through the illusion. An illusion attacks like the caster but
