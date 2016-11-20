@@ -37,7 +37,7 @@
 % Other shortcuts
 \newcommand{\spells}[1]{\marginnote{#1}}
 \newcommand{\averagevalue}[1]{\marginnote{Average value: \SI{#1}{gp}.}}
-\newcommand{\hiref}[2]{\index{#2}\href{#1}{#2}}% index and link
+\newcommand{\hiref}[2]{\index{#2}\href{#1}{#2}\label{key:#2}}% index and link
 
 % Hyperref after imakeidx (notice nohyper option!)
 % http://tex.stackexchange.com/questions/22012/hyperref-and-imakeidx-do-not-work-together
@@ -563,7 +563,7 @@ provide her with a living giant wasp.")
 
 The gods and demons are important because characters will able to
 visit their \emph{halls}. These can be reached by secret \emph{gates}
-when sailing the \key{Astral Sea} when climbing the branches of the
+when sailing the \key{Astral Sea} or when climbing the branches of the
 \emph{World Tree}\marginnote{The World Tree is
   \hiref{https://en.wikipedia.org/wiki/Yggdrasil}{Yggradsil}. In
   certain locations, the planar boundaries are weakened and it is
@@ -644,7 +644,7 @@ explanations, of looking the other way, of tricksters, thieves and
 shape changers, a friend of giants, the innocently accused, the
 misunderstood and the innocent. He can be found brooding in his hall
 \key{Utgard} in
-Jotunheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/J\%C3\%B6tunheimr}{Jotunheim}\label{key:jotunheim}
+Jotunheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/J\%C3\%B6tunheimr}{Jotunheim}
   is a plane of frost and giants. It can be reached by sailing the
   river \key{Ifing} from Asgard.}
 
@@ -657,6 +657,36 @@ this is mostly useful when in need of deception.
   to \textit{sleep} and \textit{charms}
 \end{quote}
 
+
+
+\section{Hel}
+\label{sec:hel}
+\index{Hel}
+
+Hel is the goddess of the weak, the frail, the sick and the old, the
+protector of witchcraft and of crossroads. Her hall \key{Eljudnir} is
+built in Niflheim under one of the roots of
+Yggdrasil.\marginnote{\hiref{https://en.wikipedia.org/wiki/Niflheim}{Niflheim}
+  is a realm ice and cold, of dark forests and thick mist. This world
+  can only be reached by crossing \key{Gjallarbrú}, the golden bridge
+  over the river of death, \key{Gjöll}. Here, trolls roam freely,
+  never fearing the sun. This is also where the greatest dragon of all
+  gnaws at the roots of the world tree,
+  \hiref{https://en.wikipedia.org/wiki/N\%C3\%AD\%C3\%B0h\%C3\%B6ggr}{Nídhöggr}.}
+It's gate is guarded by the hell hound \key{Garm} who makes sure only
+those who died of sickness and old age may pass.
+
+Hel is one of the giants of old, also called \emph{troll-woman}. In
+times of need she will send 1d4 \textbf{trolls} named \textit{Hunger},
+\textit{Famine}, \textit{Misery} or \textit{Sickness}.
+
+\begin{quote}
+  HD~6+3 AC~4 1d6/1d6/1d10 F6 MV~12 ML~10 XP~680; will regenerate
+  \SI{1}{hp} per round unless burnt
+\end{quote}
+
+
+
 \section{Mitra}
 \label{sec:mitra}
 \index{Mitra}
@@ -665,7 +695,7 @@ Mitra is the goddess of law, of fire, of bulls, of contracts, of
 bonds, the swearing of oaths, of honesty and truth, of loyalty and
 sacrifice for the community. Her hall is built atop a lake of fire
 deep underground in Muspelheim and called
-\emph{Eldivatn}.\marginnote{\hiref{https://en.wikipedia.org/wiki/Muspelheim}{Muspelheim}\label{key:muspelheim}
+\emph{Eldivatn}.\marginnote{\hiref{https://en.wikipedia.org/wiki/Muspelheim}{Muspelheim}
   is a plane of fire and giants. It can be reached by descending into
   the depths of the earth from Midgard, the realm of humans.
   Originally, \href{https://en.wikipedia.org/wiki/Mitra}{Mitra} was
@@ -718,11 +748,11 @@ In times of need he will send a \textbf{naga} named \textit{Sweet
 Pazuzu is the demon lord of pestilence, of miscarriage, of famine and
 disease, of crows and vultures, of temptation and betrayal. His tower
 \key{Sandstein} was built in
-Vanaheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/Vanaheimr}{Vanaheim}\label{key:vanaheim}
+Vanaheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/Vanaheimr}{Vanaheim}
   is a an underground realm where the vanquished demon lords of old
   eek out their existence before fading away. It is a realm of
   violence and madness, its caves plagued by flash floods and locust
-  storms.\hiref{https://en.wikipedia.org/wiki/Vanaheimr}{Vanaheim}
+  storms.
 
   \href{https://en.wikipedia.org/wiki/Pazuzu}{Pazuzu} is based on the
   Assyro-Babylonian god.}
@@ -759,6 +789,7 @@ morale check when indicated!
   one hundred \textbf{light infantery}: HD~1 AC~7 1d6 MV~12 ML~10 XP
   15
 \end{quote}
+
 
 
 \chapter{Monsters}
@@ -1942,7 +1973,7 @@ passes remain closed.
   \emph{stone shape} and \emph{control weather} at will
 \end{quote}
 
-The \textbf{frost giants} live in \hyperref[key:jotunheim]{Jotunheim},
+The \textbf{frost giants} live in \hyperref[key:Jotunheim]{Jotunheim},
 a realm of snow storms and glaciers. Entrances to their gargantuan
 palaces of ice and darkness can sometimes be found even further up,
 under towering glaciers and on mountain tops.
@@ -1953,7 +1984,7 @@ under towering glaciers and on mountain tops.
 \end{quote}
 
 The noblest of them all are the \textbf{fire giants}. They live in
-\hyperref[key:jotunheim]{Muspelheim}, an underground realm of lava
+\hyperref[key:Muspelheim]{Muspelheim}, an underground realm of lava
 lakes and fire. Sometimes their underground lairs and strongholds can
 be reached by descending into volcanoes. There, they forge the flaming
 swords and enchanted suits of armor for the armies down below.
@@ -2281,7 +2312,7 @@ cast by an ifrit require no concentration to uphold.
   hit
 \end{quote}
 
-An ifrit can be summoned from \hyperref[key:muspelheim]{Muspelheim}
+An ifrit can be summoned from \hyperref[key:Muspelheim]{Muspelheim}
 using the spell \emph{summoning a lord of fire} (4\th circle). When
 first cast, it creates a link between the caster and a random ifrit.
 Subsequent castings will keep summoning the same ifrit until one of
@@ -2358,7 +2389,7 @@ price.
   \emph{creation} at will; magic required to hit
 \end{quote}
 
-A jinni can be summoned from \hyperref[key:vanaheim]{Vanaheim} using
+A jinni can be summoned from \hyperref[key:Vanaheim]{Vanaheim} using
 the spell \emph{summoning of an aerial lord} (4\th~circle). When first
 cast, it creates a link between the caster and a random jinni.
 Subsequent castings will keep summoning the same jinni until one of
