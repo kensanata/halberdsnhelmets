@@ -56,12 +56,14 @@ deploy it. There is a
 [Cookbook](http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook#DEPLOYMENT)
 with a section on deployment. The following is a quick summary.
 
-This runs the script as a server on
-[localhost:3000](http://localhost:3000/):
+You probably want to set the `MOJO_HOME` environment variable.
+Example:
 
 ```
-perl halberdsnhelmets.pl daemon
+MOJO_HOME=. morbo halberdsnhelmets.pl 
 ```
+
+### Development
 
 This runs the script as a server on
 [localhost:3000](http://localhost:3000/) and reloads it every time you
@@ -70,6 +72,10 @@ change it:
 ```
 morbo halberdsnhelmets.pl
 ```
+
+Morbo will reload the application if you change it.
+
+### Production
 
 This runs the script as a server on port 8080, writing a pid file:
 
@@ -90,6 +96,21 @@ an example:
 }
 ```
 
+This is great for production. If you have multiple Mojolicious
+applications, you can either run them all with their own Hypnotoad, or
+you can use [Toadfarm](https://metacpan.org/pod/Toadfarm).
+
+### Simple Daemon
+
+This runs the script as a server on
+[localhost:3000](http://localhost:3000/):
+
+```
+perl halberdsnhelmets.pl daemon
+```
+
+I have never had a use for this. Usually I want to use Hypnotoad or
+Toadfarm for production. See above.
 
 ## Images
 
