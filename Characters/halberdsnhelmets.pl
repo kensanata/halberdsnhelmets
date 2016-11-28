@@ -3244,6 +3244,17 @@ get "/random" => sub {
   $self->redirect_to($self->url_with("random" => {lang => lang($self)}));
 };
 
+get "/random/text/:lang" => sub {
+  my $self = shift;
+  my $char = init($self);
+  my $lang = $self->param("lang");
+  random_parameters($char, $lang, "portrait");
+  compute_data($char, $lang);
+  $self->render(template => "text.$lang",
+		format => "txt",
+		char => $char);
+} => "text";
+
 get "/random/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $char = init($self);
@@ -3498,6 +3509,21 @@ Wiki</a> Seite verwenden, um das Charakterblatt einzufügen.
 %= submit_button
 % end
 
+@@ text.en.txt.ep
+Character:
+<% for my $key (@{$char->{provided}}) { %>\
+<%   for my $value (split(/\\\\/, $char->{$key})) { =%>\
+<%= $key =%>: <%= $value %>
+<%   } %>\
+<% } %>\
+
+@@ text.de.txt.ep
+Charakter:
+<% for my $key (@{$char->{provided}}) { %>\
+<%   for my $value (split(/\\\\/, $char->{$key})) { =%>\
+<%= $key =%>: <%= $value %>
+<%   } %>\
+<% } %>\
 
 @@ characters.html.ep
 <% for my $char (@{$characters}) { %>
