@@ -476,10 +476,12 @@ healing potion (heal 1d8 HP)
 Heiltrank (für 1W8 LP)
 magic orb
 Kristallkugel
-magic staff (+1 power)
-Langer Zauberstab (+1 Macht)
-magic wand (+1 power)
-Zauberstab (+1 Macht)
+magic staff
+Langer Zauberstab
+magic wand
+Zauberstab
+power
+Macht
 rations
 Wegzehrung
 spell components (+1 power, ○○○)
@@ -2847,7 +2849,7 @@ sub freebooters_gear {
       provide($char, "item$it-wt", 0);
       $it++;
     } elsif ($roll <= 5) {
-      provide($char, "weapon$wp", T('magic staff') . "\\\\(" . join(", ", T('close'), T('2-handed'), '+1 ' . T('power')) . ")");
+      provide($char, "weapon$wp", T('magic staff') . "\\\\(" . join(", ", T('close'), T('2-handed'), "+1 " . T('power')) . ")");
       provide($char, "dmg$wp", T('1d4'));
       provide($char, "weapon$wp-wt", 1);
       $wt += 1;
@@ -2893,12 +2895,12 @@ sub freebooters_gear {
 sub freebooter_weapon {
   my ($char, $weapons, $weapon, $wp) = @_;
   $wp ||= 1; # position
-  if (length($weapon . ' (' . $weapons->{$weapon}->[1] . ')') > 23) {
-    provide($char, "weapon$wp", $weapon . '\\\\'
+  if (length($weapon . " (" . $weapons->{$weapon}->[1] . ")") > 23) {
+    provide($char, "weapon$wp", $weapon . "\\\\"
 	    # the second line has more space
-	    . wrap('(' . $weapons->{$weapon}->[1] . ')', 33));
+	    . wrap("(" . $weapons->{$weapon}->[1] . ")", 33));
   } else {
-    provide($char, "weapon$wp", $weapon . ' (' . $weapons->{$weapon}->[1] . ')');
+    provide($char, "weapon$wp", $weapon . " (" . $weapons->{$weapon}->[1] . ")");
   }
   provide($char, "dmg$wp", $weapons->{$weapon}->[0]);
   provide($char, "weapon$wp-wt", $weapons->{$weapon}->[2]);
