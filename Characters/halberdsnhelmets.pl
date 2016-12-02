@@ -2264,6 +2264,19 @@ sub random_moldvay {
 
   equipment($char);
 
+  my $abilities = abilities($class);
+  # spellbook
+  if ($class eq T('magic-user') or $class eq T('elf')) {
+    $abilities .= "\\\\" . spellbook();
+  }
+  # code
+  $abilities .= "\\\\" . encode_char($char);
+  provide($char, "abilities", $abilities);
+  provide($char, "charsheet", T('Charactersheet.svg')) unless $char->{charsheet};
+}
+
+sub abilities {
+  my $class = shift;
   my $abilities = T('1/6 for normal tasks');
   if ($class eq T('elf')) {
     $abilities .= "\\\\" . T('2/6 to hear noise');
@@ -2281,12 +2294,106 @@ sub random_moldvay {
     $abilities .= "\\\\" . T('2/6 to hear noise');
     $abilities .= "\\\\" . T('+4 to hit and double damage backstabbing');
   }
-  # spellbook
-  if ($class eq T('magic-user') or $class eq T('elf')) {
-    $abilities .= "\\\\" . spellbook();
+  return $abilities;
+}
+
+sub encode_char {
+  my $char = shift;
+  return join("", "Code: ",
+	      map {
+		if (member($_, "name", "xp", "level", "thac0")) {
+		  "";
+		} elsif ($char->{$_} =~ /^\d+$/) {
+		  if ($char->{$_} >= 10) {
+		    chr($char->{$_} + 55); # 65 is A
+		  } else {
+		    $char->{$_};
+		  };
+		} elsif ($_ eq "class") {
+		  classes()->{$char->{$_}} or "?";
+		} elsif ($_ eq "property") {
+		  my $h = unique(sort keys %price_cache);
+		  my %h = map { $h->{$_} => $_ } keys %$h;
+		  join ("", "-", map { $h{$_} } split(/\\\\/, $char->{$_}));
+		} else {
+		  "?";
+		};
+	      } @{$char->{provided}});
+}
+
+sub classes {
+  return {
+    T('dwarf') => "D",
+	T('elf') => "E",
+	T('halfling') => "H",
+	T('fighter') => "F",
+	T('magic-user') => "M",
+	T('cleric') => "C",
+	T('thief') => "T",
+  };
+}
+
+sub decode_char {
+  my ($code, $language) = @_;
+  local $lang = $language; # make sure T works as intended
+  my $char = {};
+  provide($char, 'name', '?');
+  my @abilities = map { number($_) } split(//, substr($code, 0, 6));
+  for my $ability (qw(str dex con int wis cha)) {
+    provide($char, $ability, shift(@abilities));
   }
-  provide($char, "abilities", $abilities);
-  provide($char, "charsheet", T('Charactersheet.svg')) unless $char->{charsheet};
+  provide($char, 'level', 1);
+  provide($char, 'xp', 0);
+  provide($char, 'thac0', 19);
+  # provide($char, 'code', $code);
+  my $h = classes();
+  my %h = map { $h->{$_} => $_ } keys %$h;
+  my $class = $h{substr($code, 6, 1)};
+  provide($char, "class", $class);
+  provide($char, "hp", number(substr($code, 7, 1)));
+  my ($ac) = (substr($code, 8) =~ /^(-?[0-9A-Z]+)/);
+  provide($char, "ac", number($ac));
+  get_price_cache(); # sets global %price_cache
+  $h = unique(sort keys %price_cache);
+  # match longest codes first ("Se" before "S" and "e")
+  my $re = "(" . join("|", sort { length($b) <=> length($a) } keys %$h) . ")";
+  warn $re;
+  my ($s) = (substr($code, 9) =~ /-(.+)/);
+  my $property = join("\\\\", map { $h->{$_} } $s =~ /$re/g);
+  provide($char, "property", $property);
+  provide($char, "abilities", abilities($class));
+  moldvay_saves($char);
+  return $char;
+}
+
+# convert a single digit to a number as if it were base 36, eg. A is 10
+sub number {
+  my $s = shift;
+  return $s =~ /[A-Z]/ ? ord($s) - 55 : $s;
+}
+
+# Given a list of items, return a list mapping them to very short but unique
+# strings to encode them. Example: A => Armbrust, D => Diebeswerkzeug, o =>
+# Dolch, E=> Eisenhut, i => Eisenkeil. We're just going to implement two letter
+# codes. The order is important!
+sub unique {
+  my @source = @_;
+  my %seen;
+  for my $item (@source) {
+    my $candidate = substr($item, 0, 1);
+    my $i = 0;
+    while ($seen{$candidate} and $i < length($item)) {
+      $candidate = substr($item, ++$i, 1);
+    }
+    $candidate = substr($item, 0, 1) unless $candidate;
+    $i = 0;
+    while ($seen{$candidate} and $i < length($item)) {
+      $candidate = substr($item, 0, 1) . substr($item, ++$i, 1);
+    }
+    $seen{$candidate} = $item;
+    # warn "$candidate => $item";
+  }
+  return \%seen;
 }
 
 sub random_acks {
@@ -3307,6 +3414,15 @@ get "/edit/:lang" => [lang => qr/(?:en|de)/] => sub {
 		char => $char);
 } => "edit";
 
+get "/decode/:lang" => [lang => qr/(?:en|de)/] => sub {
+  my $self = shift;
+  my $lang = $self->param("lang");
+  my $code = $self->param("code");
+  my $char = decode_char($code, $lang);
+  $self->render(template => "edit.$lang",
+		char => $char);
+} => "decode";
+
 get "/redirect" => sub {
   my $self = shift;
   $self->redirect_to($self->url_with("redirect" => {lang => lang($self)}));
@@ -3412,6 +3528,16 @@ The character sheet contains a link in the bottom right corner which allows you
 to bookmark and edit your character. <%= link_to "Learn more…" => "help" %>
 
 <p>
+If you got a printed character sheet and want to recreate it, you can type in
+the code right here:
+
+%= form_for decode => begin
+%= label_for name => "Code:"
+%= text_field "code"
+%= submit_button
+% end
+
+<p>
 If you're looking for an alternative, check out the
 <a href="http://character.totalpartykill.ca/">Random D&D Character Generator</a>
 by <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a>.
@@ -3441,6 +3567,17 @@ Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man
 sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 <%= link_to "Weiterlesen…" => "hilfe" %>
+
+<p>
+
+Hat man ein Charakterblatt ausgedruckt und vergessen, sich den Link zu speicher,
+kann man dies mit dem Code zum Teil wieder herstellen.
+
+%= form_for decode => begin
+%= label_for name => "Code:"
+%= text_field "code"
+%= submit_button
+% end
 
 <p>
 Eine englische Alternative wäre der
