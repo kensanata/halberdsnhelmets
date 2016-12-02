@@ -2314,7 +2314,14 @@ sub encode_char {
 		} elsif ($_ eq "property") {
 		  my $h = unique(sort keys %price_cache);
 		  my %h = map { $h->{$_} => $_ } keys %$h;
-		  join ("", "-", map { $h{$_} } split(/\\\\/, $char->{$_}));
+		  join ("", "-",
+			map {
+			  my $item = $_;
+			  my $n = 1;
+			  $item = $1, $n = $2 if $item =~ /(.*) \((\d+)\)$/;
+			  warn "$item, $n, $h{$item}" if $n > 1;
+			  $h{$item} x $n;
+			} split(/\\\\/, $char->{$_}));
 		} else {
 		  "?";
 		};
@@ -2360,7 +2367,8 @@ sub decode_char {
   my @property;
   while ($i++ < length($code) - 1) {
     # warn substr($code, $i, 1);
-    push(@property, $h->{substr($code, $i, 1)});
+    my $item = $h->{substr($code, $i, 1)};
+    add($item, \@property);
   }
   provide($char, "property", join("\\\\", @property));
   provide($char, "abilities", abilities($class));
