@@ -2362,11 +2362,9 @@ sub decode_char {
   provide($char, "ac", number($ac));
   get_price_cache(); # sets global %price_cache
   $h = unique(sort keys %price_cache);
-  # warn keys %$h;
   my $i = index($code, "-", 9);
   my @property;
   while ($i++ < length($code) - 1) {
-    # warn substr($code, $i, 1);
     my $item = $h->{substr($code, $i, 1)};
     add($item, \@property);
   }
@@ -2397,6 +2395,7 @@ sub unique {
       $i = "a";
     }
   }
+  # warn join(', ', map { "$_: $h{$_}" } keys %h);
   return \%h;
 }
 
