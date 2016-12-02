@@ -2355,12 +2355,14 @@ sub decode_char {
   provide($char, "ac", number($ac));
   get_price_cache(); # sets global %price_cache
   $h = unique(sort keys %price_cache);
-  # match longest codes first ("Se" before "S" and "e")
-  my $re = "(" . join("|", sort { length($b) <=> length($a) } keys %$h) . ")";
-  warn $re;
-  my ($s) = (substr($code, 9) =~ /-(.+)/);
-  my $property = join("\\\\", map { $h->{$_} } $s =~ /$re/g);
-  provide($char, "property", $property);
+  # warn keys %$h;
+  my $i = index($code, "-", 9);
+  my @property;
+  while ($i++ < length($code) - 1) {
+    # warn substr($code, $i, 1);
+    push(@property, $h->{substr($code, $i, 1)});
+  }
+  provide($char, "property", join("\\\\", @property));
   provide($char, "abilities", abilities($class));
   moldvay_saves($char);
   return $char;
@@ -2373,27 +2375,21 @@ sub number {
 }
 
 # Given a list of items, return a list mapping them to very short but unique
-# strings to encode them. Example: A => Armbrust, D => Diebeswerkzeug, o =>
-# Dolch, E=> Eisenhut, i => Eisenkeil. We're just going to implement two letter
-# codes. The order is important!
+# strings to encode them. Actually, we'll just assume up to 36 items in the list
+# and return the index. The order is important!
 sub unique {
   my @source = @_;
-  my %seen;
-  for my $item (@source) {
-    my $candidate = substr($item, 0, 1);
-    my $i = 0;
-    while ($seen{$candidate} and $i < length($item)) {
-      $candidate = substr($item, ++$i, 1);
+  my %h;
+  my $i = 1;
+  while (@source) {
+    $h{$i++} = shift(@source);
+    if ($i eq '10') {
+      $i = "A"; # $i++ will still work
+    } elsif ($i eq 'AA') {
+      $i = "a";
     }
-    $candidate = substr($item, 0, 1) unless $candidate;
-    $i = 0;
-    while ($seen{$candidate} and $i < length($item)) {
-      $candidate = substr($item, 0, 1) . substr($item, ++$i, 1);
-    }
-    $seen{$candidate} = $item;
-    # warn "$candidate => $item";
   }
-  return \%seen;
+  return \%h;
 }
 
 sub random_acks {
