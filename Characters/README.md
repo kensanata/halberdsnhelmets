@@ -69,40 +69,49 @@ done
 
 ## Dependencies
 
-The CGI script depends on [Mojolicious](http://mojolicio.us/) (perhaps
-this is too old: `sudo apt-get install libmojolicious-perl` – I used
-`cpan Mojolicious` instead). We also require `XML::LibXML` and
-`HTTP::AcceptLanguage`.
+The CGI script depends on [Mojolicious](http://mojolicio.us/) and some
+other Perl modules. You can install everything via `cpan` or `cpanm`,
+or if you're on a Debian system, try the following:
 
+```
+sudo apt-get install git libmojolicious-perl \
+  libi18n-acceptlanguage-perl libxml-libxml-perl
+```
 
 ## Installation
 
-You can simply install it as a CGI script on your web server.
+### Home Use
 
-As the [script](halberdsnhelmets.pl) is a
-[Mojolicious](http://mojolicio.us/) app, there are many other ways to
-deploy it. There is a
-[Cookbook](http://mojolicio.us/perldoc/Mojolicious/Guides/Cookbook#DEPLOYMENT)
-with a section on deployment. The following is a quick summary.
-
-You probably want to set the `MOJO_HOME` environment variable.
-Example:
+If you just want to tinker with it at home, here's what I suggest:
 
 ```
-MOJO_HOME=. morbo halberdsnhelmets.pl 
+mkdir ~/src
+cd ~/src
+git clone https://github.com/kensanata/halberdsnhelmets.git
+cd ~/src/halberdsnhelmets/Characters
+MOJO_HOME=. perl halberdsnhelmets.pl daemon
 ```
 
-### Development
-
-This runs the script as a server on
-[localhost:3000](http://localhost:3000/) and reloads it every time you
-change it:
+If everything went according to plan, you should see output like the
+following:
 
 ```
-morbo halberdsnhelmets.pl
+[Thu Dec  8 14:38:59 2016] [info] Listening at "http://*:3000"
+Server available at http://127.0.0.1:3000
 ```
 
-Morbo will reload the application if you change it.
+Visit the link and you should see the application. If you do not,
+contact me and we'll figure it out.
+
+### Tinkering at Home
+
+If you want to tinker with the code, use `morbo` to run the
+application because that will restart the application every time you
+make a change.
+
+```
+MOJO_HOME=. morbo halberdsnhelmets.pl daemon
+```
 
 ### Production
 
@@ -129,19 +138,11 @@ This is great for production. If you have multiple Mojolicious
 applications, you can either run them all with their own Hypnotoad, or
 you can use [Toadfarm](https://metacpan.org/pod/Toadfarm).
 
-### Simple Daemon
-
-This runs the script as a server on
-[localhost:3000](http://localhost:3000/):
-
-```
-perl halberdsnhelmets.pl daemon
-```
-
-I have never had a use for this. Usually I want to use Hypnotoad or
-Toadfarm for production. See above.
-
 ## Images
 
-The character portraits are made by the
-[face generator](https://campaignwiki.org/face).
+The character portraits are made by
+the [face generator](https://campaignwiki.org/face). If you install
+the character generator on a website using HTTPS, then you will have
+to install the face generator in the same domain, because browsers
+will refuse to download images from a different domain when using
+HTTPS.
