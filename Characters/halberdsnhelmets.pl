@@ -17,7 +17,7 @@
 package HH;
 use Mojolicious::Lite;
 use Mojo::UserAgent;
-use HTTP::AcceptLanguage;
+use I18N::AcceptLanguage;
 use XML::LibXML;
 use List::Util qw(shuffle);
 use POSIX qw(floor ceil);
@@ -3323,8 +3323,8 @@ sub init {
 
 sub lang {
   my $self = shift;
-  my $p = HTTP::AcceptLanguage->new($self->req->headers->accept_language);
-  return $p->match(qw(en de));
+  my $acceptor = I18N::AcceptLanguage->new();
+  return $acceptor->accepts($self->req->headers->accept_language, [qw(en de)]);
 }
 
 plugin "Config" => {default => {}};
