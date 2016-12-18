@@ -43,6 +43,7 @@ for (@lines) {
   if (/^\\textbf\{Terrain\}: ([a-z, ]+)/) {
     my @tags = split(/, /, $1);
     for my $tag (@tags) {
+      next if $tag eq "none";
       ok($h{$tag}, "\\$tag exists for $section");
     }
     for my $key (keys %h) {
@@ -50,6 +51,16 @@ for (@lines) {
       ok(grep(/^$key/, @tags), "terrain $key is listed in $section (@tags)");
     }
   }
+}
+
+for (@lines) {
+  $section = $1 if /^\\section\{([[:alpha:], ]+)\}/;
+  next unless /^ *HD \d/;
+  like($_, qr/ AC \d+ /, "ac for $section is provided");
+  like($_, qr/ [FEHD]\d+ /, "save for $section is provided") unless $section eq "Hydra";
+  like($_, qr/ MV \d+ /, "move for $section is provided");
+  like($_, qr/ ML \d+ /, "morale for $section is provided");
+  like($_, qr/ XP \d+/, "xp for $section is provided") unless $section eq "Hydra";
 }
 
 done_testing;
