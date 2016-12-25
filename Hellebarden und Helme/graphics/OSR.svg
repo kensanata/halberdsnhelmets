@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="1105.6833333969116"
+   height="640"
+   id="svg4330"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="OSR.svg"
+   inkscape:export-filename="/Users/alex/src/halberdsnhelmets/Hellebarden und Helme/graphics/OSR.png"
+   inkscape:export-xdpi="323.26999"
+   inkscape:export-ydpi="323.26999">
+  <metadata
+     id="metadata5268">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1177"
+     inkscape:window-height="663"
+     id="namedview5266"
+     showgrid="false"
+     inkscape:zoom="0.60686452"
+     inkscape:cx="298.13475"
+     inkscape:cy="320"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="level0" />
+  <defs
+     id="defs4336">
+    <rect
+       id="cursor"
+       width="10"
+       height="10"
+       fill="forestgreen"
+       opacity="0.2"
+       transform="scale(2,2)" />
+    <rect
+       id="empty"
+       width="10"
+       height="10"
+       fill="white"
+       stroke="black"
+       stroke-width="1"
+       transform="scale(2,2)" />
+    <rect
+       id="void"
+       width="10"
+       height="10"
+       fill="none"
+       stroke="black"
+       stroke-width="1"
+       transform="scale(2,2)" />
+    <g
+       id="water"
+       width="20">
+      <rect
+         width="20"
+         height="20"
+         fill="white"
+         stroke="black"
+         stroke-width="2"
+         id="rect4342" />
+      <path
+         id="waves"
+         fill="none"
+         stroke="black"
+         stroke-width="1"
+         d="M3,5 v-1 A1,1 0 0,1 5,4 A1,1 0 1,0 7,4 A1,1 0 0,1 9,4 A1,1 0 1,0 11,4 A1,1 0 0,1 13,4 A1,1 0 1,0 15,4 A1,1 0 0,1 17,4 v1" />
+      <use
+         xlink:href="#waves"
+         transform="translate(0,6)"
+         id="use4345" />
+      <use
+         xlink:href="#waves"
+         transform="translate(0,12)"
+         id="use4347" />
+    </g>
+    <g
+       id="wall"
+       width="10"
+       transform="scale(2,2)">
+      <line
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="10"
+         stroke="black"
+         stroke-width="3"
+         stroke-linecap="round"
+         id="line4350" />
+    </g>
+    <g
+       id="curtain"
+       width="20">
+      <path
+         fill="none"
+         stroke="black"
+         stroke-width="1"
+         d="M5,3 h-1 A1,1 0 0,0 4,5 A1,1 0 0,1 4,7 A1,1 0 0,0 4,9 A1,1 0 0,1 4,11 A1,1 0 0,0 4,13 A1,1 0 0,1 4,15 A1,1 0 0,0 4,17 h1"
+         id="path4353" />
+    </g>
+    <g
+       id="portcullis"
+       width="10"
+       transform="scale(2,2)">
+      <circle
+         cx="2"
+         cy="2"
+         r="1"
+         fill="black"
+         id="circle4356" />
+      <circle
+         cx="2"
+         cy="5"
+         r="1"
+         fill="black"
+         id="circle4358" />
+      <circle
+         cx="2"
+         cy="8"
+         r="1"
+         fill="black"
+         id="circle4360" />
+    </g>
+    <g
+       id="window"
+       width="10"
+       transform="scale(2,2)">
+      <line
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="2"
+         stroke="black"
+         stroke-width="3"
+         id="line4363" />
+      <line
+         x1="0"
+         y1="8"
+         x2="0"
+         y2="10"
+         stroke="black"
+         stroke-width="3"
+         id="line4365" />
+      <rect
+         x="-0.75"
+         y="2"
+         width="1.5"
+         height="6"
+         fill="white"
+         stroke="black"
+         stroke-width="0.5"
+         id="rect4367" />
+    </g>
+    <g
+       id="door"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         x="-1.5"
+         y="2"
+         width="3"
+         height="6"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4370" />
+    </g>
+    <g
+       id="secret"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         fill="none"
+         stroke="black"
+         stroke-width="1"
+         d="M 2,3 C -2,1 -3,5 0,5 S 2,9 -2,7"
+         id="path4373" />
+    </g>
+    <g
+       id="concealed"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         fill="none"
+         stroke="black"
+         stroke-width="1"
+         d="M 2,3 C -3,1 -3,9 2,7"
+         id="path4376" />
+    </g>
+    <g
+       id="gate"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         x="-2"
+         y="4"
+         width="4"
+         height="12"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4379" />
+    </g>
+    <g
+       id="archway"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         fill="black"
+         stroke="black"
+         stroke-width="1"
+         d="M -1 0 A 1 1 0 0 0 1 0"
+         id="path4382" />
+      <path
+         fill="black"
+         stroke="black"
+         stroke-width="1"
+         d="M -1 10 A 1 1 0 0 1 1 10"
+         id="path4384" />
+      <line
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="2.5"
+         stroke="black"
+         stroke-width="1.5"
+         id="line4386" />
+      <line
+         x1="-1.5"
+         y1="2.5"
+         x2="1.5"
+         y2="2.5"
+         stroke="black"
+         stroke-width="1"
+         id="line4388" />
+      <line
+         x1="0"
+         y1="7.5"
+         x2="0"
+         y2="10"
+         stroke="black"
+         stroke-width="1.5"
+         id="line4390" />
+      <line
+         x1="-1.5"
+         y1="7.5"
+         x2="1.5"
+         y2="7.5"
+         stroke="black"
+         stroke-width="1"
+         id="line4392" />
+    </g>
+    <g
+       id="pillar"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4395" />
+      <circle
+         cx="5"
+         cy="5"
+         r="2"
+         fill="black"
+         id="circle4397" />
+    </g>
+    <g
+       id="altar"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4400" />
+      <rect
+         x="2"
+         y="3"
+         width="6"
+         height="4"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="rect4402" />
+      <circle
+         cx="3.5"
+         cy="5"
+         r="0.5"
+         id="circle4404" />
+      <circle
+         cx="6.5"
+         cy="5"
+         r="0.5"
+         id="circle4406" />
+    </g>
+    <g
+       id="dais"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4409" />
+      <rect
+         x="2"
+         y="2"
+         width="6"
+         height="6"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="rect4411" />
+      <rect
+         x="3"
+         y="3"
+         width="4"
+         height="4"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="rect4413" />
+      <rect
+         x="4"
+         y="4"
+         width="2"
+         height="2"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="rect4415" />
+    </g>
+    <g
+       id="dais-round"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4418" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="circle4420" />
+      <circle
+         cx="5"
+         cy="5"
+         r="2"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="circle4422" />
+      <circle
+         cx="5"
+         cy="5"
+         r="1"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="circle4424" />
+    </g>
+    <g
+       id="statue"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4427" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3.5"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="circle4429" />
+      <path
+         fill="black"
+         d="M 2,4 H 8 L 3,7.5 5,2 7,7.5 Z"
+         id="path4431" />
+    </g>
+    <g
+       id="well"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4434" />
+      <circle
+         cx="5"
+         cy="5"
+         r="2.5"
+         fill="black"
+         id="circle4436" />
+      <circle
+         cx="5"
+         cy="5"
+         r="1.5"
+         fill="black"
+         stroke="white"
+         stroke-width="1"
+         id="circle4438" />
+    </g>
+    <g
+       id="fountain"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4441" />
+      <circle
+         cx="5"
+         cy="5"
+         r="2.5"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="circle4443" />
+      <circle
+         cx="5"
+         cy="4"
+         r="1.5"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="circle4445" />
+    </g>
+    <g
+       id="trap"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4448" />
+      <rect
+         x="2"
+         y="2"
+         width="6"
+         height="6"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4450" />
+      <line
+         x1="2"
+         y1="2"
+         x2="8"
+         y2="8"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4452" />
+      <line
+         x1="2"
+         y1="8"
+         x2="8"
+         y2="2"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4454" />
+    </g>
+    <g
+       id="pit"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4457" />
+      <rect
+         x="2"
+         y="2"
+         width="6"
+         height="6"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4459" />
+      <line
+         x1="2"
+         y1="2"
+         x2="8"
+         y2="8"
+         stroke="black"
+         stroke-width="0.5"
+         id="line4461" />
+      <line
+         x1="2"
+         y1="8"
+         x2="8"
+         y2="2"
+         stroke="black"
+         stroke-width="0.5"
+         id="line4463" />
+      <rect
+         x="3.2"
+         y="3.2"
+         width="3.6"
+         height="3.6"
+         fill="black"
+         id="rect4465" />
+    </g>
+    <g
+       id="trap-door-ceiling"
+       width="10"
+       class="labels"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4468" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3.5"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="circle4470" />
+      <text
+         x="8.3"
+         y="12"
+         transform="scale(0.6,0.6)"
+         id="text4472">C</text>
+    </g>
+    <g
+       id="trap-door-floor"
+       width="10"
+       class="labels"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4475" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3.5"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="circle4477" />
+      <text
+         x="8.3"
+         y="12"
+         transform="scale(0.6,0.6)"
+         id="text4479">F</text>
+    </g>
+    <g
+       id="trap-door-secret"
+       width="10"
+       class="labels"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4482" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3.5"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="circle4484" />
+      <text
+         x="8.3"
+         y="12"
+         transform="scale(0.6,0.6)"
+         id="text4486">S</text>
+    </g>
+    <g
+       id="chest"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4489" />
+      <rect
+         x="2"
+         y="3"
+         width="6"
+         height="4"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="rect4491" />
+      <line
+         x1="3.5"
+         y1="2"
+         x2="3.5"
+         y2="8"
+         stroke="black"
+         stroke-width="0.5"
+         id="line4493" />
+      <line
+         x1="6.5"
+         y1="2"
+         x2="6.5"
+         y2="8"
+         stroke="black"
+         stroke-width="0.5"
+         id="line4495" />
+    </g>
+    <g
+       id="bed"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4498" />
+      <rect
+         x="2"
+         y="3"
+         width="6"
+         height="4"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="rect4500" />
+      <line
+         x1="4"
+         y1="3"
+         x2="4"
+         y2="7"
+         stroke="black"
+         stroke-width="0.5"
+         id="line4502" />
+    </g>
+    <g
+       id="table"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4505" />
+      <rect
+         x="2"
+         y="3"
+         width="6"
+         height="4"
+         fill="none"
+         stroke="black"
+         stroke-width="0.5"
+         id="rect4507" />
+      <circle
+         cx="3.5"
+         cy="4"
+         r="0.5"
+         id="circle4509" />
+      <circle
+         cx="3.5"
+         cy="6"
+         r="0.5"
+         id="circle4511" />
+      <circle
+         cx="6.5"
+         cy="4"
+         r="0.5"
+         id="circle4513" />
+      <circle
+         cx="6.5"
+         cy="6"
+         r="0.5"
+         id="circle4515" />
+    </g>
+    <g
+       id="diagonal"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4518" />
+      <path
+         fill="black"
+         d="M0,10 V0 H10 Z"
+         id="path4520" />
+    </g>
+    <g
+       id="arc"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         fill="white"
+         d="M0,10 A10,10 0 0,1 10,0 V10 Z"
+         stroke="black"
+         stroke-width="1"
+         id="path4523" />
+    </g>
+    <g
+       id="arc2"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         fill="white"
+         d="M-10,10 A20,20 0 0,1 10,-10 V10 Z"
+         stroke="black"
+         stroke-width="1"
+         id="path4526" />
+      <line
+         x1="-7.3"
+         y1="0"
+         x2="10"
+         y2="0"
+         stroke="black"
+         stroke-width="1"
+         id="line4528" />
+      <line
+         x1="0"
+         y1="-7.3"
+         x2="0"
+         y2="10"
+         stroke="black"
+         stroke-width="1"
+         id="line4530" />
+    </g>
+    <g
+       id="arc3"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         fill="white"
+         d="M-20,10 A30,30 0 0,1 10,-20 V10 Z"
+         stroke="black"
+         stroke-width="1"
+         id="path4533" />
+      <line
+         x1="-12.4"
+         y1="-10"
+         x2="10"
+         y2="-10"
+         stroke="black"
+         stroke-width="1"
+         id="line4535" />
+      <line
+         x1="-18.3"
+         y1="0"
+         x2="10"
+         y2="0"
+         stroke="black"
+         stroke-width="1"
+         id="line4537" />
+      <line
+         x1="-10"
+         y1="-12.4"
+         x2="-10"
+         y2="10"
+         stroke="black"
+         stroke-width="1"
+         id="line4539" />
+      <line
+         x1="0"
+         y1="-18.3"
+         x2="0"
+         y2="10"
+         stroke="black"
+         stroke-width="1"
+         id="line4541" />
+    </g>
+    <g
+       id="stair"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="20"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4544" />
+      <line
+         x1="0"
+         y1="3"
+         x2="10"
+         y2="3"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4546" />
+      <line
+         x1="1"
+         y1="6"
+         x2="9"
+         y2="6"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4548" />
+      <line
+         x1="2"
+         y1="9"
+         x2="8"
+         y2="9"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4550" />
+      <line
+         x1="3"
+         y1="12"
+         x2="7"
+         y2="12"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4552" />
+      <line
+         x1="4"
+         y1="15"
+         x2="6"
+         y2="15"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4554" />
+    </g>
+    <g
+       id="stair-small"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4557" />
+      <line
+         x1="1"
+         y1="2"
+         x2="9"
+         y2="2"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4559" />
+      <line
+         x1="2"
+         y1="4"
+         x2="8"
+         y2="4"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4561" />
+      <line
+         x1="3"
+         y1="6"
+         x2="7"
+         y2="6"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4563" />
+      <line
+         x1="4"
+         y1="8"
+         x2="6"
+         y2="8"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4565" />
+    </g>
+    <g
+       id="stair-big"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="20"
+         height="20"
+         fill="white"
+         stroke="black"
+         stroke-width="1"
+         id="rect4568" />
+      <line
+         x1="1"
+         y1="3"
+         x2="19"
+         y2="3"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4570" />
+      <line
+         x1="2"
+         y1="6"
+         x2="18"
+         y2="6"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4572" />
+      <line
+         x1="3"
+         y1="9"
+         x2="17"
+         y2="9"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4574" />
+      <line
+         x1="4"
+         y1="12"
+         x2="16"
+         y2="12"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4576" />
+      <line
+         x1="5"
+         y1="15"
+         x2="15"
+         y2="15"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4578" />
+      <line
+         x1="6"
+         y1="18"
+         x2="14"
+         y2="18"
+         stroke="black"
+         stroke-width="0.8"
+         id="line4580" />
+    </g>
+    <g
+       id="stair-big-spiral"
+       width="50"
+       transform="scale(0.4,0.4)">
+      <rect
+         width="100"
+         height="100"
+         fill="white"
+         stroke="black"
+         stroke-width="5"
+         id="rect4583" />
+      <circle
+         cx="50"
+         cy="50"
+         r="40"
+         fill="none"
+         stroke="black"
+         stroke-width="5"
+         id="circle4585" />
+      <line
+         x1="0"
+         y1="50"
+         x2="99"
+         y2="50"
+         stroke="black"
+         stroke-width="5"
+         id="line4587" />
+      <line
+         x1="50"
+         y1="0"
+         x2="50"
+         y2="100"
+         stroke="black"
+         stroke-width="5"
+         id="line4589" />
+      <line
+         x1="15"
+         y1="30"
+         x2="85"
+         y2="70"
+         stroke="black"
+         stroke-width="5"
+         id="line4591" />
+      <line
+         x1="15"
+         y1="70"
+         x2="85"
+         y2="30"
+         stroke="black"
+         stroke-width="5"
+         id="line4593" />
+      <line
+         x1="30"
+         y1="15"
+         x2="70"
+         y2="85"
+         stroke="black"
+         stroke-width="5"
+         id="line4595" />
+      <line
+         x1="30"
+         y1="85"
+         x2="70"
+         y2="15"
+         stroke="black"
+         stroke-width="5"
+         id="line4597" />
+      <circle
+         cx="50"
+         cy="50"
+         r="10"
+         fill="white"
+         stroke="black"
+         stroke-width="5"
+         id="circle4599" />
+    </g>
+    <g
+       id="stair-spiral"
+       width="100"
+       transform="scale(0.2,0.2)">
+      <rect
+         width="100"
+         height="100"
+         fill="white"
+         stroke="black"
+         stroke-width="10"
+         id="rect4602" />
+      <circle
+         cx="50"
+         cy="50"
+         r="40"
+         fill="none"
+         stroke="black"
+         stroke-width="7"
+         id="circle4604" />
+      <line
+         x1="10"
+         y1="50"
+         x2="90"
+         y2="50"
+         stroke="black"
+         stroke-width="7"
+         id="line4606" />
+      <line
+         x1="50"
+         y1="10"
+         x2="50"
+         y2="90"
+         stroke="black"
+         stroke-width="7"
+         id="line4608" />
+      <line
+         x1="22"
+         y1="22"
+         x2="78"
+         y2="78"
+         stroke="black"
+         stroke-width="7"
+         id="line4610" />
+      <line
+         x1="22"
+         y1="78"
+         x2="78"
+         y2="22"
+         stroke="black"
+         stroke-width="7"
+         id="line4612" />
+      <circle
+         cx="50"
+         cy="50"
+         r="10"
+         fill="white"
+         stroke="black"
+         stroke-width="7"
+         id="circle4614" />
+    </g>
+  </defs>
+  <g
+     id="levels"
+     inkscape:groupmode="layer"
+     inkscape:label="Levels">
+    <g
+       id="level0"
+       inkscape:groupmode="layer"
+       inkscape:label="Level 1">
+      <g
+         id="floor0">
+        <use
+           id="empty_1_1"
+           x="40"
+           y="40"
+           xlink:href="#empty" />
+        <use
+           id="empty_2_1"
+           x="60"
+           y="40"
+           xlink:href="#empty" />
+        <use
+           id="empty_3_1"
+           x="80"
+           y="40"
+           xlink:href="#empty" />
+        <use
+           id="empty_1_2"
+           x="40"
+           y="60"
+           xlink:href="#empty" />
+        <use
+           id="pit_2_2"
+           x="60"
+           y="60"
+           xlink:href="#pit" />
+        <use
+           id="empty_3_2"
+           x="80"
+           y="60"
+           xlink:href="#empty" />
+        <use
+           id="empty_4_2"
+           x="100"
+           y="60"
+           xlink:href="#empty" />
+        <use
+           id="empty_5_2"
+           x="120"
+           y="60"
+           xlink:href="#empty" />
+        <use
+           id="empty_6_2"
+           x="140"
+           y="60"
+           xlink:href="#empty" />
+        <use
+           id="empty_1_3"
+           x="40"
+           y="80"
+           xlink:href="#empty" />
+        <use
+           id="empty_2_3"
+           x="60"
+           y="80"
+           xlink:href="#empty" />
+        <use
+           id="empty_3_3"
+           x="80"
+           y="80"
+           xlink:href="#empty" />
+        <use
+           id="diagonal_4_3"
+           x="100"
+           y="80"
+           xlink:href="#diagonal"
+           rotate="270"
+           transform="rotate(270,110,90)" />
+        <use
+           id="diagonal_5_3"
+           x="120"
+           y="80"
+           xlink:href="#diagonal"
+           rotate="90"
+           transform="rotate(90,130,90)" />
+        <use
+           id="empty_6_3"
+           x="140"
+           y="80"
+           xlink:href="#empty" />
+        <use
+           id="empty_7_3"
+           x="160"
+           y="80"
+           xlink:href="#empty" />
+        <use
+           id="empty_8_3"
+           x="180"
+           y="80"
+           xlink:href="#empty" />
+        <use
+           id="empty_3_4"
+           x="80"
+           y="100"
+           xlink:href="#empty" />
+        <use
+           id="empty_4_4"
+           x="100"
+           y="100"
+           xlink:href="#empty" />
+        <use
+           id="empty_5_4"
+           x="120"
+           y="100"
+           xlink:href="#empty" />
+        <use
+           id="empty_6_4"
+           x="140"
+           y="100"
+           xlink:href="#empty" />
+        <use
+           id="diagonal_7_4"
+           x="160"
+           y="100"
+           xlink:href="#diagonal"
+           rotate="0" />
+        <use
+           id="diagonal_8_4"
+           x="180"
+           y="100"
+           xlink:href="#diagonal"
+           rotate="180"
+           transform="rotate(180,190,110)" />
+        <use
+           id="empty_6_5"
+           x="140"
+           y="120"
+           xlink:href="#empty" />
+        <use
+           id="diagonal_7_5"
+           x="160"
+           y="120"
+           xlink:href="#diagonal"
+           rotate="270"
+           transform="rotate(270,170,130)" />
+        <use
+           id="empty_8_5"
+           x="180"
+           y="120"
+           xlink:href="#empty" />
+      </g>
+      <g
+         id="walls0">
+        <use
+           id="wall_1_1"
+           x="40"
+           y="40"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="door_1_1"
+           x="40"
+           y="40"
+           xlink:href="#door"
+           rotate="90"
+           transform="rotate(90,50,50)" />
+        <use
+           id="wall_2_1"
+           x="60"
+           y="40"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,70,50)" />
+        <use
+           id="wall_3_1"
+           x="80"
+           y="40"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,90,50)" />
+        <use
+           id="wall_4_1"
+           x="100"
+           y="40"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="wall_1_2"
+           x="40"
+           y="60"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="wall_4_2"
+           x="100"
+           y="60"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="use4658"
+           x="100"
+           y="60"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,110,70)" />
+        <use
+           id="wall_5_2"
+           x="120"
+           y="60"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,130,70)" />
+        <use
+           id="wall_6_2"
+           x="140"
+           y="60"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,150,70)" />
+        <use
+           id="door_6_2"
+           x="140"
+           y="60"
+           xlink:href="#door"
+           rotate="270"
+           transform="rotate(270,150,70)" />
+        <use
+           id="wall_7_2"
+           x="160"
+           y="60"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="wall_1_3"
+           x="40"
+           y="80"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="wall_4_3"
+           x="100"
+           y="80"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="wall_6_3"
+           x="140"
+           y="80"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="wall_7_3"
+           x="160"
+           y="80"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,170,90)" />
+        <use
+           id="wall_8_3"
+           x="180"
+           y="80"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,190,90)" />
+        <use
+           id="wall_9_3"
+           x="200"
+           y="80"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="wall_1_4"
+           x="40"
+           y="100"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,50,110)" />
+        <use
+           id="wall_2_4"
+           x="60"
+           y="100"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,70,110)" />
+        <use
+           id="wall_3_4"
+           x="80"
+           y="100"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="door_3_4"
+           x="80"
+           y="100"
+           xlink:href="#door"
+           rotate="90"
+           transform="rotate(90,90,110)" />
+        <use
+           id="wall_6_4"
+           x="140"
+           y="100"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="wall_9_4"
+           x="200"
+           y="100"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="wall_3_5"
+           x="80"
+           y="120"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,90,130)" />
+        <use
+           id="wall_4_5"
+           x="100"
+           y="120"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,110,130)" />
+        <use
+           id="wall_5_5"
+           x="120"
+           y="120"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,130,130)" />
+        <use
+           id="wall_6_5"
+           x="140"
+           y="120"
+           xlink:href="#wall"
+           rotate="0" />
+        <use
+           id="door_9_5"
+           x="200"
+           y="120"
+           xlink:href="#door"
+           rotate="0" />
+        <use
+           id="wall_6_6"
+           x="140"
+           y="140"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,150,150)" />
+        <use
+           id="wall_7_6"
+           x="160"
+           y="140"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,170,150)" />
+        <use
+           id="wall_8_6"
+           x="180"
+           y="140"
+           xlink:href="#wall"
+           rotate="90"
+           transform="rotate(90,190,150)" />
+      </g>
+    </g>
+  </g>
+</svg>
