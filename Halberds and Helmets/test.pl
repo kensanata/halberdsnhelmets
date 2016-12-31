@@ -1,6 +1,7 @@
 #!/bin/env perl
 use Modern::Perl '2015';
 use Test::More;
+use List::Compare;
 open(my $fh, '<:encoding(UTF-8)', 'Halberds-and-Helmets-Ref-Guide.ltx')
     or die "Cannot read file: $!";
 
@@ -45,14 +46,18 @@ for (@lines) {
     }
   }
   if (/^\\textbf\{Terrain\}: ([a-z, ]+)/) {
-    my @tags = split(/, /, $1);
-    for my $tag (@tags) {
-      next if $tag eq "none";
-      ok($h{$tag}, "\\$tag exists for $section");
-    }
-    for my $key (keys %h) {
-      next if $key eq 'animal';
-      ok(grep(/^$key/, @tags), "terrain $key is listed in $section (@tags)");
+    if ($1 ne "none") {
+      my @tags = split(/, /, $1);
+      delete $h{animal}; # not a terrain
+      my @keys = keys %h;
+      my $lc = List::Compare->new(\@tags, \@keys);
+      ok($lc->get_unique == 0,
+	 "$section: all terrain tags appear in the respective index (@tags)");
+      ok($lc->get_complement == 0,
+	 "$section: all terrain indexes appear as tags (@keys)");
+      my @sorted = sort(@tags);
+      ok((grep{ $tags[$_] ne $sorted[$_] } 0 .. $#tags) == 0,
+	 "terrains for $section are listed in order (@sorted)");
     }
   }
 }
