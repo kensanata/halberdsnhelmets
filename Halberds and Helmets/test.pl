@@ -7,7 +7,7 @@ open(my $fh, '<:encoding(UTF-8)', 'Halberds-and-Helmets-Ref-Guide.ltx')
 undef $/;
 my $text = <$fh>;
 
-ok($text =~ s/^\\textbf\{Terrain\}: (.*),\n/\\textbf\{Terrain\}: ($1), /mg > 0, "fixed continuation lines");
+ok($text =~ s/(.)\n([^\n\\])/$1 $2/mg > 0, "fixed all continuation lines");
 
 my @lines = split(/\n/, $text);
 ok(@lines > 0, "file was read");
@@ -34,7 +34,7 @@ my $section;
 my %h;
 for (@lines) {
   if (/^\\section\{([[:alpha:], ]+)\}/) { $section = $1; %h = () };
-  if (/^\\([a-z]+)\{([^\}]+)\}/) {
+  if (/^\\([a-z]+)\{([^\}!]+)(![^\}]*)?\}/) {
     if($index{$1}) {
       like($section, qr/^$2/, "$section starts with $2 in the $1 index"); 
       $h{$1} = 1;
