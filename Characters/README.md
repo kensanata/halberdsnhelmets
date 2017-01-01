@@ -78,6 +78,27 @@ sudo apt-get install git libmojolicious-perl \
   libi18n-acceptlanguage-perl libxml-libxml-perl
 ```
 
+I fear the default Mojolicious package might be too old, though. The
+last time these lines were checked, I used 7.09. Here's how to check
+the version you have installed:
+
+```
+perl -mMojolicious -e 'print "$Mojolicious::VERSION\n";'
+```
+
+If you you want to upgrade and you have never developed Perl code, you
+might want to do the following:
+
+```
+apt-get install liblocal-lib-perl cpanminus
+echo 'eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' >>~/.bashrc
+cpanm Mojolicious
+```
+
+This should install the lastest Mojolicious in you `~/perl5` directory
+without requiring root permissions, and it should have added the
+necessary environment variable settings to your shell init script.
+
 ## Installation
 
 ### Home Use
