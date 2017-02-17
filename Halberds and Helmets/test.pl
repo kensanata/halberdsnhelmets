@@ -18,7 +18,7 @@ my @ords = $text =~ m/(\d+(?:st|nd|rd|th))/g;
 ok(@ords == 0, "ordinals are all correct"
    . (@ords == 0 ? "" : " (@ords)"));
 
-my @broken_units = $text =~ /(\b\d+\s*(?:m|ft|s|min|h|cp|sp|gp|gp)\b)/g;
+my @broken_units = $text =~ /(\b\d+\s*(?:m|ft|s|min|h|cp|sp|gp|gp|silver|gold|electrum|platinum)\b)/g;
 ok(@broken_units == 0, "units are all correct"
    . (@broken_units == 0 ? "" : " (@broken_units)"));
 
