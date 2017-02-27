@@ -22,6 +22,10 @@ my @broken_units = $text =~ /(\b\d+\s*(?:m|ft|s|min|h|cp|sp|gp|gp|silver|gold|el
 ok(@broken_units == 0, "units are all correct"
    . (@broken_units == 0 ? "" : " (@broken_units)"));
 
+my @broken_saves = $text =~ /(\bsave\s+vs\.\s+\w+\b)/g;
+ok(@broken_saves == 0, "saves are all correct"
+   . (@broken_saves == 0 ? "" : " (@broken_saves)"));
+
 my %index;
 for (@lines) {
   if (/^\\makeindex.name=([a-z]+)/) { $index{$1}++; }
@@ -64,9 +68,9 @@ for (@lines) {
 
 for (@lines) {
   $section = $1 if /^\\section\{([[:alpha:], ]+)\}/;
-  next unless /^ *HD \d/;
+  next unless / *HD \d/;
   like($_, qr/ AC \d+ /, "ac for $section is provided");
-  like($_, qr/ [FEHD]\d+ /, "save for $section is provided") unless $section eq "Hydra";
+  like($_, qr/ [FEHD]\d+ /, "save for $section is provided") unless $section eq "Hydra" or $section eq "Golem";
   like($_, qr/ MV \d+ /, "move for $section is provided");
   like($_, qr/ ML \d+ /, "morale for $section is provided");
   like($_, qr/ XP \d+/, "xp for $section is provided") unless $section eq "Hydra";
