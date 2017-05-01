@@ -1,0 +1,1750 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="242"
+   height="62"
+   class="white"
+   id="svg1397"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Darkloch-3.svg"
+   style="overflow:visible">
+  <metadata
+     id="metadata2090">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="691"
+     inkscape:window-height="480"
+     id="namedview2088"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.36875"
+     inkscape:cx="66.001793"
+     inkscape:cy="10.983051"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="level2" />
+  <defs
+     id="defs1399">
+    <pattern
+       id="grid"
+       width="20"
+       height="20"
+       patternUnits="userSpaceOnUse">
+      <rect
+         width="20"
+         height="20"
+         fill="none"
+         stroke="lightgrey"
+         stroke-width="1"
+         id="rect1402" />
+    </pattern>
+    <rect
+       id="cursor"
+       width="10"
+       height="10"
+       transform="scale(2,2)"
+       x="0"
+       y="0"
+       style="opacity:0.2;fill:#228b22" />
+    <rect
+       id="others"
+       width="10"
+       height="10"
+       transform="scale(2,2)"
+       x="0"
+       y="0"
+       style="opacity:0.2;fill:#0000ff" />
+    <rect
+       id="empty"
+       width="10"
+       height="10"
+       class="background"
+       transform="scale(2,2)"
+       x="0"
+       y="0"
+       style="stroke:#000000;stroke-width:1" />
+    <rect
+       id="void"
+       width="10"
+       height="10"
+       transform="scale(2,2)"
+       x="0"
+       y="0"
+       style="fill:none;stroke:#000000;stroke-width:1" />
+    <g
+       id="water"
+       width="20">
+      <rect
+         width="20"
+         height="20"
+         class="background"
+         id="rect1409"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:2" />
+      <path
+         id="waves"
+         d="M 3,5 3,4 a 1,1 0 0 1 2,0 1,1 0 1 0 2,0 1,1 0 0 1 2,0 1,1 0 1 0 2,0 1,1 0 0 1 2,0 1,1 0 1 0 2,0 1,1 0 0 1 2,0 l 0,1"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:1" />
+      <use
+         xlink:href="#waves"
+         transform="translate(0,6)"
+         id="use1412"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#waves"
+         transform="translate(0,12)"
+         id="use1414"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <g
+       id="wall"
+       width="10"
+       transform="scale(2,2)">
+      <line
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="10"
+         id="line1417"
+         style="stroke:#000000;stroke-width:3;stroke-linecap:round" />
+    </g>
+    <g
+       id="curtain"
+       width="20">
+      <path
+         d="M 5,3 4,3 a 1,1 0 0 0 0,2 1,1 0 0 1 0,2 1,1 0 0 0 0,2 1,1 0 0 1 0,2 1,1 0 0 0 0,2 1,1 0 0 1 0,2 1,1 0 0 0 0,2 l 1,0"
+         id="path1420"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:1" />
+    </g>
+    <g
+       id="portcullis"
+       width="10"
+       transform="scale(2,2)">
+      <circle
+         cx="2"
+         cy="2"
+         r="1"
+         id="circle1423"
+         style="fill:#000000" />
+      <circle
+         cx="2"
+         cy="5"
+         r="1"
+         id="circle1425"
+         style="fill:#000000" />
+      <circle
+         cx="2"
+         cy="8"
+         r="1"
+         id="circle1427"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="window"
+       width="10"
+       transform="scale(2,2)">
+      <line
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="2"
+         id="line1430"
+         style="stroke:#000000;stroke-width:3" />
+      <line
+         x1="0"
+         y1="8"
+         x2="0"
+         y2="10"
+         id="line1432"
+         style="stroke:#000000;stroke-width:3" />
+      <rect
+         x="-0.75"
+         y="2"
+         width="1.5"
+         height="6"
+         class="background"
+         id="rect1434"
+         style="stroke:#000000;stroke-width:0.5" />
+    </g>
+    <g
+       id="gap"
+       width="10"
+       transform="scale(2,2)">
+      <line
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="2"
+         id="line1437"
+         style="stroke:#000000;stroke-width:3;stroke-linecap:round" />
+      <line
+         x1="0"
+         y1="8"
+         x2="0"
+         y2="10"
+         id="line1439"
+         style="stroke:#000000;stroke-width:3;stroke-linecap:round" />
+      <circle
+         cx="2.5"
+         cy="2"
+         r="0.5"
+         id="circle1441"
+         style="fill:#000000" />
+      <circle
+         cx="-3"
+         cy="3"
+         r="0.5"
+         id="circle1443"
+         style="fill:#000000" />
+      <circle
+         cx="3"
+         cy="4"
+         r="0.60000002"
+         id="circle1445"
+         style="fill:#000000" />
+      <circle
+         cx="1.5"
+         cy="4.5"
+         r="0.5"
+         id="circle1447"
+         style="fill:#000000" />
+      <circle
+         cx="-1.5"
+         cy="5"
+         r="0.5"
+         id="circle1449"
+         style="fill:#000000" />
+      <circle
+         cx="2"
+         cy="6"
+         r="0.5"
+         id="circle1451"
+         style="fill:#000000" />
+      <circle
+         cx="5"
+         cy="6"
+         r="0.5"
+         id="circle1453"
+         style="fill:#000000" />
+      <circle
+         cx="-2"
+         cy="6.5"
+         r="0.5"
+         id="circle1455"
+         style="fill:#000000" />
+      <circle
+         cx="3"
+         cy="8"
+         r="0.5"
+         id="circle1457"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="corner-pillar"
+       width="10"
+       transform="scale(2,2)">
+      <circle
+         cx="0"
+         cy="0"
+         r="2"
+         id="circle1460"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="door"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         x="-1.5"
+         y="2"
+         width="3"
+         height="6"
+         class="background"
+         id="rect1463"
+         style="stroke:#000000;stroke-width:1" />
+    </g>
+    <g
+       id="secret"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         d="M 2,3 C -2,1 -3,5 0,5 3,5 2,9 -2,7"
+         id="path1466"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:1" />
+    </g>
+    <g
+       id="concealed"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         d="M 2,3 C -3,1 -3,9 2,7"
+         id="path1469"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:1" />
+    </g>
+    <g
+       id="gate"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         x="-2"
+         y="4"
+         width="4"
+         height="12"
+         class="background"
+         id="rect1472"
+         style="stroke:#000000;stroke-width:1" />
+    </g>
+    <g
+       id="archway"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         d="M -1,0 A 1,1 0 0 0 1,0"
+         id="path1475"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;stroke:#000000;stroke-width:1" />
+      <path
+         d="m -1,10 a 1,1 0 0 1 2,0"
+         id="path1477"
+         inkscape:connector-curvature="0"
+         style="fill:#000000;stroke:#000000;stroke-width:1" />
+      <line
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="2.5"
+         id="line1479"
+         style="stroke:#000000;stroke-width:1.5" />
+      <line
+         x1="-1.5"
+         y1="2.5"
+         x2="1.5"
+         y2="2.5"
+         id="line1481"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="0"
+         y1="7.5"
+         x2="0"
+         y2="10"
+         id="line1483"
+         style="stroke:#000000;stroke-width:1.5" />
+      <line
+         x1="-1.5"
+         y1="7.5"
+         x2="1.5"
+         y2="7.5"
+         id="line1485"
+         style="stroke:#000000;stroke-width:1" />
+    </g>
+    <g
+       id="pillar"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1488"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         cx="5"
+         cy="5"
+         r="2"
+         id="circle1490"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="altar"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1493"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <rect
+         x="2"
+         y="3"
+         width="6"
+         height="4"
+         id="rect1495"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <circle
+         cx="3.5"
+         cy="5"
+         r="0.5"
+         id="circle1497"
+         style="fill:#000000" />
+      <circle
+         cx="6.5"
+         cy="5"
+         r="0.5"
+         id="circle1499"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="dais"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1502"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <rect
+         x="2"
+         y="2"
+         width="6"
+         height="6"
+         id="rect1504"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <rect
+         x="3"
+         y="3"
+         width="4"
+         height="4"
+         id="rect1506"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <rect
+         x="4"
+         y="4"
+         width="2"
+         height="2"
+         id="rect1508"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+    </g>
+    <g
+       id="dais-round"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1511"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3"
+         id="circle1513"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <circle
+         cx="5"
+         cy="5"
+         r="2"
+         id="circle1515"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <circle
+         cx="5"
+         cy="5"
+         r="1"
+         id="circle1517"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+    </g>
+    <g
+       id="rubble"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1520"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         cx="7"
+         cy="2"
+         r="0.5"
+         id="circle1522"
+         style="fill:#000000" />
+      <circle
+         cx="2"
+         cy="3"
+         r="0.5"
+         id="circle1524"
+         style="fill:#000000" />
+      <circle
+         cx="4"
+         cy="3"
+         r="0.69999999"
+         id="circle1526"
+         style="fill:#000000" />
+      <circle
+         cx="8"
+         cy="4"
+         r="0.60000002"
+         id="circle1528"
+         style="fill:#000000" />
+      <circle
+         cx="6"
+         cy="4"
+         r="0.5"
+         id="circle1530"
+         style="fill:#000000" />
+      <circle
+         cx="3"
+         cy="5"
+         r="0.69999999"
+         id="circle1532"
+         style="fill:#000000" />
+      <circle
+         cx="5"
+         cy="6"
+         r="0.5"
+         id="circle1534"
+         style="fill:#000000" />
+      <circle
+         cx="7"
+         cy="6"
+         r="0.69999999"
+         id="circle1536"
+         style="fill:#000000" />
+      <circle
+         cx="4"
+         cy="7"
+         r="0.5"
+         id="circle1538"
+         style="fill:#000000" />
+      <circle
+         cx="8"
+         cy="8"
+         r="0.5"
+         id="circle1540"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="statue"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1543"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3.5"
+         id="circle1545"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <path
+         d="M 2,4 8,4 3,7.5 5,2 7,7.5 Z"
+         id="path1547"
+         inkscape:connector-curvature="0"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="well"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1550"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         cx="5"
+         cy="5"
+         r="2.25"
+         id="circle1552"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <circle
+         cx="5"
+         cy="5"
+         r="1"
+         id="circle1554"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="fountain"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1557"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         cx="5"
+         cy="5"
+         r="2.5"
+         id="circle1559"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <circle
+         cx="5"
+         cy="4"
+         r="1.5"
+         id="circle1561"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+    </g>
+    <g
+       id="trap"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1564"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <rect
+         x="2"
+         y="2"
+         width="6"
+         height="6"
+         id="rect1566"
+         style="fill:none;stroke:#000000;stroke-width:1" />
+      <line
+         x1="2"
+         y1="2"
+         x2="8"
+         y2="8"
+         id="line1568"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="2"
+         y1="8"
+         x2="8"
+         y2="2"
+         id="line1570"
+         style="stroke:#000000;stroke-width:0.80000001" />
+    </g>
+    <g
+       id="pit"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1573"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <rect
+         x="2"
+         y="2"
+         width="6"
+         height="6"
+         id="rect1575"
+         style="fill:none;stroke:#000000;stroke-width:1" />
+      <line
+         x1="2"
+         y1="2"
+         x2="8"
+         y2="8"
+         id="line1577"
+         style="stroke:#000000;stroke-width:0.5" />
+      <line
+         x1="2"
+         y1="8"
+         x2="8"
+         y2="2"
+         id="line1579"
+         style="stroke:#000000;stroke-width:0.5" />
+      <rect
+         x="3.5"
+         y="3.5"
+         width="3"
+         height="3"
+         id="rect1581"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="trap-door-ceiling"
+       width="10"
+       class="labels"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1584"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3.5"
+         id="circle1586"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <text
+         x="8.3000002"
+         y="12"
+         transform="scale(0.6,0.6)"
+         id="text1588"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:normal;font-family:'Arial Narrow', sans-serif;text-anchor:middle;fill:#000000">C</text>
+    </g>
+    <g
+       id="trap-door-floor"
+       width="10"
+       class="labels"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1591"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3.5"
+         id="circle1593"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <text
+         x="8.3000002"
+         y="12"
+         transform="scale(0.6,0.6)"
+         id="text1595"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:normal;font-family:'Arial Narrow', sans-serif;text-anchor:middle;fill:#000000">F</text>
+    </g>
+    <g
+       id="trap-door-secret"
+       width="10"
+       class="labels"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1598"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         cx="5"
+         cy="5"
+         r="3.5"
+         id="circle1600"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <text
+         x="8.3000002"
+         y="12"
+         transform="scale(0.6,0.6)"
+         id="text1602"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:normal;font-family:'Arial Narrow', sans-serif;text-anchor:middle;fill:#000000">S</text>
+    </g>
+    <g
+       id="chest"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1605"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <rect
+         x="2"
+         y="3"
+         width="6"
+         height="4"
+         id="rect1607"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <line
+         x1="3.5"
+         y1="2"
+         x2="3.5"
+         y2="8"
+         id="line1609"
+         style="stroke:#000000;stroke-width:0.5" />
+      <line
+         x1="6.5"
+         y1="2"
+         x2="6.5"
+         y2="8"
+         id="line1611"
+         style="stroke:#000000;stroke-width:0.5" />
+    </g>
+    <g
+       id="bed"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1614"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <rect
+         x="2"
+         y="3"
+         width="6"
+         height="4"
+         id="rect1616"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <line
+         x1="4"
+         y1="3"
+         x2="4"
+         y2="7"
+         id="line1618"
+         style="stroke:#000000;stroke-width:0.5" />
+    </g>
+    <g
+       id="table"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1621"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <rect
+         x="2"
+         y="3"
+         width="6"
+         height="4"
+         id="rect1623"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <circle
+         cx="3.5"
+         cy="4"
+         r="0.5"
+         id="circle1625"
+         style="fill:#000000" />
+      <circle
+         cx="3.5"
+         cy="6"
+         r="0.5"
+         id="circle1627"
+         style="fill:#000000" />
+      <circle
+         cx="6.5"
+         cy="4"
+         r="0.5"
+         id="circle1629"
+         style="fill:#000000" />
+      <circle
+         cx="6.5"
+         cy="6"
+         r="0.5"
+         id="circle1631"
+         style="fill:#000000" />
+    </g>
+    <g
+       id="chair"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1634"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <rect
+         x="2.5"
+         y="3.5"
+         width="5"
+         height="3.5"
+         id="rect1636"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+      <rect
+         x="3.5"
+         y="3.5"
+         width="3"
+         height="2.5"
+         id="rect1638"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+    </g>
+    <g
+       id="screen"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1641"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <rect
+         x="2"
+         y="3"
+         width="6"
+         height="4"
+         id="rect1643"
+         style="fill:none;stroke:#000000;stroke-width:0.5" />
+    </g>
+    <g
+       id="diagonal"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         class="background"
+         d="M 0,10 10,10 10,0 Z"
+         id="path1646"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000;stroke-width:1;stroke-linejoin:bevel" />
+    </g>
+    <g
+       id="walled-diagonal"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         class="background"
+         d="M 0,10 10,10 10,0 Z"
+         id="path1649"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000;stroke-width:1;stroke-linejoin:bevel" />
+      <line
+         x1="0"
+         y1="10"
+         x2="10"
+         y2="0"
+         id="line1651"
+         style="stroke:#000000;stroke-width:3;stroke-linecap:round" />
+    </g>
+    <g
+       id="diagonal-wall"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1654"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="0"
+         y1="10"
+         x2="10"
+         y2="0"
+         id="line1656"
+         style="stroke:#000000;stroke-width:3;stroke-linecap:round" />
+    </g>
+    <g
+       id="arc"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         class="background"
+         d="M 0,10 A 10,10 0 0 1 10,0 l 0,10 z"
+         id="path1659"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000;stroke-width:1" />
+    </g>
+    <g
+       id="arc2"
+       class="center"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         class="background"
+         d="M 0,20 A 20,20 0 0 1 20,0 l 0,20 z"
+         id="path1662"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="2.7"
+         y1="10"
+         x2="20"
+         y2="10"
+         id="line1664"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="10"
+         y1="2.7"
+         x2="10"
+         y2="20"
+         id="line1666"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         class="dot"
+         cx="5"
+         cy="5"
+         r="1"
+         id="circle1668"
+         style="opacity:0;fill:#ff0000" />
+    </g>
+    <g
+       id="arc3"
+       class="center"
+       width="10"
+       transform="scale(2,2)">
+      <path
+         class="background"
+         d="M 0,30 A 30,30 0 0 1 30,0 l 0,30 z"
+         id="path1671"
+         inkscape:connector-curvature="0"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="7.5999999"
+         y1="10"
+         x2="30"
+         y2="10"
+         id="line1673"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="1.7"
+         y1="20"
+         x2="30"
+         y2="20"
+         id="line1675"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="10"
+         y1="7.5999999"
+         x2="10"
+         y2="30"
+         id="line1677"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="20"
+         y1="1.7"
+         x2="20"
+         y2="30"
+         id="line1679"
+         style="stroke:#000000;stroke-width:1" />
+      <circle
+         class="dot"
+         cx="5"
+         cy="5"
+         r="1"
+         id="circle1681"
+         style="opacity:0;fill:#ff0000" />
+    </g>
+    <g
+       id="stair"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="20"
+         class="background"
+         id="rect1684"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="0"
+         y1="3"
+         x2="10"
+         y2="3"
+         id="line1686"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="1"
+         y1="6"
+         x2="9"
+         y2="6"
+         id="line1688"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="2"
+         y1="9"
+         x2="8"
+         y2="9"
+         id="line1690"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="3"
+         y1="12"
+         x2="7"
+         y2="12"
+         id="line1692"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="4"
+         y1="15"
+         x2="6"
+         y2="15"
+         id="line1694"
+         style="stroke:#000000;stroke-width:0.80000001" />
+    </g>
+    <g
+       id="stair-small"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="10"
+         height="10"
+         class="background"
+         id="rect1697"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="1"
+         y1="2"
+         x2="9"
+         y2="2"
+         id="line1699"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="2"
+         y1="4"
+         x2="8"
+         y2="4"
+         id="line1701"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="3"
+         y1="6"
+         x2="7"
+         y2="6"
+         id="line1703"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="4"
+         y1="8"
+         x2="6"
+         y2="8"
+         id="line1705"
+         style="stroke:#000000;stroke-width:0.80000001" />
+    </g>
+    <g
+       id="stair-big"
+       width="10"
+       transform="scale(2,2)">
+      <rect
+         width="20"
+         height="20"
+         class="background"
+         id="rect1708"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:1" />
+      <line
+         x1="1"
+         y1="3"
+         x2="19"
+         y2="3"
+         id="line1710"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="2"
+         y1="6"
+         x2="18"
+         y2="6"
+         id="line1712"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="3"
+         y1="9"
+         x2="17"
+         y2="9"
+         id="line1714"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="4"
+         y1="12"
+         x2="16"
+         y2="12"
+         id="line1716"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="5"
+         y1="15"
+         x2="15"
+         y2="15"
+         id="line1718"
+         style="stroke:#000000;stroke-width:0.80000001" />
+      <line
+         x1="6"
+         y1="18"
+         x2="14"
+         y2="18"
+         id="line1720"
+         style="stroke:#000000;stroke-width:0.80000001" />
+    </g>
+    <g
+       id="stair-big-spiral"
+       width="50"
+       transform="scale(0.4,0.4)">
+      <rect
+         width="100"
+         height="100"
+         class="background"
+         id="rect1723"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:5" />
+      <circle
+         cx="50"
+         cy="50"
+         r="40"
+         id="circle1725"
+         style="fill:none;stroke:#000000;stroke-width:5" />
+      <line
+         x1="0"
+         y1="50"
+         x2="99"
+         y2="50"
+         id="line1727"
+         style="stroke:#000000;stroke-width:5" />
+      <line
+         x1="50"
+         y1="0"
+         x2="50"
+         y2="100"
+         id="line1729"
+         style="stroke:#000000;stroke-width:5" />
+      <line
+         x1="15"
+         y1="30"
+         x2="85"
+         y2="70"
+         id="line1731"
+         style="stroke:#000000;stroke-width:5" />
+      <line
+         x1="15"
+         y1="70"
+         x2="85"
+         y2="30"
+         id="line1733"
+         style="stroke:#000000;stroke-width:5" />
+      <line
+         x1="30"
+         y1="15"
+         x2="70"
+         y2="85"
+         id="line1735"
+         style="stroke:#000000;stroke-width:5" />
+      <line
+         x1="30"
+         y1="85"
+         x2="70"
+         y2="15"
+         id="line1737"
+         style="stroke:#000000;stroke-width:5" />
+      <circle
+         cx="50"
+         cy="50"
+         r="10"
+         class="background"
+         id="circle1739"
+         style="stroke:#000000;stroke-width:5" />
+    </g>
+    <g
+       id="stair-spiral"
+       width="100"
+       transform="scale(0.2,0.2)">
+      <rect
+         width="100"
+         height="100"
+         class="background"
+         id="rect1742"
+         x="0"
+         y="0"
+         style="stroke:#000000;stroke-width:10" />
+      <circle
+         cx="50"
+         cy="50"
+         r="40"
+         id="circle1744"
+         style="fill:none;stroke:#000000;stroke-width:7" />
+      <line
+         x1="10"
+         y1="50"
+         x2="90"
+         y2="50"
+         id="line1746"
+         style="stroke:#000000;stroke-width:7" />
+      <line
+         x1="50"
+         y1="10"
+         x2="50"
+         y2="90"
+         id="line1748"
+         style="stroke:#000000;stroke-width:7" />
+      <line
+         x1="22"
+         y1="22"
+         x2="78"
+         y2="78"
+         id="line1750"
+         style="stroke:#000000;stroke-width:7" />
+      <line
+         x1="22"
+         y1="78"
+         x2="78"
+         y2="22"
+         id="line1752"
+         style="stroke:#000000;stroke-width:7" />
+      <circle
+         cx="50"
+         cy="50"
+         r="10"
+         class="background"
+         id="circle1754"
+         style="stroke:#000000;stroke-width:7" />
+    </g>
+    <path
+       id="rock1"
+       width="10"
+       class="background"
+       d="M 0,10 0,9 1,8 0,6 0,5 1,4 1,2 0,1 0,0 10,0 10,10 Z"
+       stroke-miterlimit="1"
+       transform="scale(2,2)"
+       inkscape:connector-curvature="0"
+       style="stroke:#000000;stroke-width:1;stroke-miterlimit:1" />
+    <path
+       id="rock2a"
+       width="10"
+       class="background"
+       d="M 0,10 0,9 1,8 1,7 2,5 1,4 2,2 4,1 5,2 7,2 10,0 10,10 Z"
+       stroke-miterlimit="1"
+       transform="scale(2,2)"
+       inkscape:connector-curvature="0"
+       style="stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:1" />
+    <path
+       id="rock2b"
+       width="10"
+       class="background"
+       d="M 0,10 0,9 1,8 1,7 2,5 2,4 3,3 4,3 5,2 7,2 10,0 10,10 Z"
+       stroke-miterlimit="1"
+       transform="scale(2,2)"
+       inkscape:connector-curvature="0"
+       style="stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:1" />
+    <path
+       id="rock3"
+       width="10"
+       class="background"
+       d="M 0,10 0,9 1,7 1,6 2,5 2,4 2,2 4,1 5,2 7,2 9,1 l 1,2 -2,3 0,1 2,3 z"
+       stroke-miterlimit="1"
+       transform="scale(2,2)"
+       inkscape:connector-curvature="0"
+       style="stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:1" />
+    <path
+       id="rock4"
+       width="10"
+       class="background"
+       d="M 3,3 5,2 7,3 8,5 7,7 7,8 6,8 4,9 2,7 2,5 Z"
+       transform="scale(2,2)"
+       inkscape:connector-curvature="0"
+       style="stroke:#000000;stroke-width:1;stroke-linecap:round" />
+    <path
+       id="rockd"
+       width="10"
+       class="background"
+       d="M 0,10 0,9 1,8 0,6 0,5 1,4 1,2 0,1 0,0 10,0 10,1 9,2 9,3 8,6 l 1,1 0,1 1,2 z"
+       stroke-miterlimit="1"
+       transform="scale(2,2)"
+       inkscape:connector-curvature="0"
+       style="stroke:#000000;stroke-width:1;stroke-miterlimit:1" />
+  </defs>
+  <style
+     id="style1762"><![CDATA[
+svg { overflow: visible }
+text { font: 14px 'Courier New', Courier, monospace }
+textarea { font: 10px 'Courier New', Courier, monospace }
+p { margin: 0 0 10px 0; padding: 0; }
+.line {  }
+.line svg { display: inline; vertical-align: middle }
+.labels text, #levels text, #label { text-anchor: middle; font: 10px 'Arial Narrow', sans-serif; font-weight: bold; }
+.labels text.left, #levels text.left { text-anchor: start; font-size: 14px; }
+a { color: black; text-decoration: none; }
+.blue { fill: blue; }
+/* http://paletton.com/palette.php?uid=30f0u0kk8qbaaFtfwuQo4mgswhv */
+.background { fill: inherit; }
+use.red { fill: #F6A17F; }
+use.green { fill: #A1DB71; }
+use.blue { fill: #88A9C2; }
+use { fill: white; }
+.key { color: forestgreen; fill: forestgreen; font-weight: bold; }
+.invisible { display: none; }
+.center:hover .dot { opacity: 1; }
+#ui { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+#background { transition: fill 500ms linear; }
+#help { transition: fill 500ms linear; }
+text { fill: black; }
+
+#help { fill: #fffff0; } /* ivory and light grey */
+#background { fill: #d3d3d3; }
+
+svg.black #background { fill: black; }
+
+svg.white #background { fill: white; }
+
+svg.grid  #background { fill: url(#grid); }
+
+/* http://www.color-hex.com/color/01b0f1
+   https://de.wikipedia.org/wiki/Non-Photo_Blue */
+svg.blue * { stroke: #005878; }
+svg.blue *[fill=black],
+svg.blue a,
+svg.blue text,
+svg.blue tspan { stroke: none; fill: #005878; }
+svg.blue .key { fill: white; }
+svg.blue .blue { text-decoration: underline; fill: inherit; }
+svg.blue #background,
+svg.blue #help { fill: #01b0f1; }
+
+.menu div {
+    background: white;
+    padding: 10px;
+    overflow: scroll;
+    font: 14px 'Courier New', Courier, monospace
+}
+.menu span { display: inline-block; width: 32ex }
+.menu a { color: blue }
+  ]]></style>
+  <g
+     id="background"
+     inkscape:groupmode="layer"
+     inkscape:label="Background"
+     style="fill:#ffffff"
+     transform="translate(-204.08474,-293.57627)" />
+  <g
+     id="levels"
+     inkscape:groupmode="layer"
+     inkscape:label="Levels"
+     transform="translate(-204.08474,-293.57627)">
+    <g
+       id="level2"
+       inkscape:groupmode="layer"
+       inkscape:label="Level 3">
+      <g
+         id="arcs2" />
+      <g
+         id="g5490"
+         transform="translate(65.084745,-5.4237291)">
+        <g
+           id="floor2">
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(0,1,-1,0,460,160)"
+             rotate="90"
+             xlink:href="#chest"
+             y="300"
+             x="140"
+             id="chest_6_14" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#empty"
+             y="300"
+             x="160"
+             id="empty_7_14" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#empty"
+             y="300"
+             x="180"
+             id="empty_8_14" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(0,1,-1,0,480,180)"
+             rotate="90"
+             xlink:href="#chest"
+             y="320"
+             x="140"
+             id="chest_6_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#statue"
+             y="320"
+             x="160"
+             id="statue_7_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#empty"
+             y="320"
+             x="180"
+             id="empty_8_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#empty"
+             y="320"
+             x="200"
+             id="empty_9_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(0,1,-1,0,580,80)"
+             rotate="90"
+             xlink:href="#stair"
+             y="320"
+             x="240"
+             id="stair_11_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#empty"
+             y="320"
+             x="260"
+             id="empty_12_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(0,-1,1,0,-40,620)"
+             rotate="270"
+             xlink:href="#rockd"
+             y="320"
+             x="280"
+             id="rockd_13_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#empty"
+             y="320"
+             x="320"
+             id="empty_15_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(0,1,-1,0,640,20)"
+             rotate="90"
+             xlink:href="#rockd"
+             y="320"
+             x="300"
+             id="rockd_14_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             rotate="0"
+             xlink:href="#rock2a"
+             y="300"
+             x="320"
+             id="rock2a_15_14" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#trap-door-ceiling"
+             y="320"
+             x="340"
+             id="trap-door-ceiling_16_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#pillar"
+             y="320"
+             x="360"
+             id="pillar_17_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#empty"
+             y="340"
+             x="140"
+             id="empty_6_16" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#empty"
+             y="340"
+             x="160"
+             id="empty_7_16" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             xlink:href="#empty"
+             y="340"
+             x="180"
+             id="empty_8_16" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(0,-1,1,0,-20,680)"
+             rotate="270"
+             xlink:href="#rock2a"
+             y="340"
+             x="320"
+             id="rock2a_15_16" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(-1,0,0,-1,740,700)"
+             rotate="180"
+             xlink:href="#rock2a"
+             y="340"
+             x="360"
+             id="rock2a_17_16" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(0,-1,1,0,0,700)"
+             rotate="270"
+             xlink:href="#rock1"
+             y="340"
+             x="340"
+             id="rock1_16_16" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(0,1,-1,0,680,-60)"
+             rotate="90"
+             xlink:href="#rock2a"
+             y="300"
+             x="360"
+             id="rock2a_17_14" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             transform="matrix(0,1,-1,0,660,-40)"
+             rotate="90"
+             xlink:href="#rock1"
+             y="300"
+             x="340"
+             id="rock1_16_14" />
+        </g>
+        <g
+           id="labels2">
+          <text
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:normal;font-family:'Arial Narrow', sans-serif;text-anchor:middle;fill:#000000"
+             y="334"
+             x="270"
+             id="label_12_15">21</text>
+          <text
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:normal;font-family:'Arial Narrow', sans-serif;text-anchor:middle;fill:#000000"
+             y="334"
+             x="330"
+             id="label_15_15">20</text>
+          <text
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:normal;font-family:'Arial Narrow', sans-serif;text-anchor:middle;fill:#000000"
+             y="354"
+             x="170"
+             id="label_7_16">22</text>
+        </g>
+        <g
+           id="walls2">
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             rotate="0"
+             xlink:href="#door"
+             y="320"
+             x="200"
+             id="door_9_15" />
+          <use
+             height="100%"
+             width="100%"
+             style="fill:#ffffff"
+             rotate="0"
+             xlink:href="#door"
+             y="320"
+             x="280"
+             id="door_13_15" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="level1"
+       inkscape:groupmode="layer"
+       inkscape:label="Level 2"
+       style="opacity:0">
+      <g
+         id="arcs1" />
+    </g>
+    <g
+       id="level0"
+       inkscape:groupmode="layer"
+       inkscape:label="Level 1"
+       style="opacity:0">
+      <g
+         id="arcs0" />
+    </g>
+  </g>
+</svg>
