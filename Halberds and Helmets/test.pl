@@ -73,7 +73,7 @@ for (@lines) {
   $section = $1 if /^\\section\{([[:alpha:], ]+)\}/;
   next unless / *HD \d/;
   like($_, qr/ AC \d+ /, "ac for $section is provided");
-  like($_, qr/ [FEHD]\d+ /, "save for $section is provided") unless $section eq "Hydra" or $section eq "Golem";
+  like($_, qr/ [FEHDT]\d+ /, "save for $section is provided") unless $section eq "Hydra" or $section eq "Golem";
   like($_, qr/ MV \d+ /, "move for $section is provided");
   like($_, qr/ ML \d+ /, "morale for $section is provided");
   like($_, qr/ XP \d+/, "xp for $section is provided") unless $section eq "Hydra";
