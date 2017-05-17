@@ -42,14 +42,11 @@ for my $index (keys %index) {
 my $section;
 my %h;
 for (@lines) {
-  if (/^\\section\{([[:alpha:], ]+)\}/) { $section = $1; %h = () };
-  if (/^\\([a-z]+)\{([^\}!]+)(![^\}]*)?\}/) {
-    if($index{$1}) {
-      like($section, qr/^$2/, "$section starts with $2 in the $1 index"); 
-      $h{$1} = 1;
-    }
-  }
-  if (/^\\textbf\{Terrain\}: ([a-z, ]+)/) {
+  if (/^\\section\{([[:alpha:], ]+)\}/) {
+    is(scalar(keys %h), 0, "$section has a terrain line") if $section;
+    $section = $1;
+    %h = ();
+  } elsif (/^\\textbf\{Terrain\}: ([a-z, ]+)/) {
     if ($1 ne "none") {
       my @tags = split(/, /, $1);
       delete $h{animal}; # not a terrain
@@ -62,6 +59,12 @@ for (@lines) {
       my @sorted = sort(@tags);
       ok((grep{ $tags[$_] ne $sorted[$_] } 0 .. $#tags) == 0,
 	 "terrains for $section are listed in order (@sorted)");
+    }
+    %h = ();
+  } elsif (/^\\([a-z]+)\{([^\}!]+)(![^\}]*)?\}/) {
+    if($index{$1}) {
+      like($section, qr/^$2/, "$section starts with $2 in the $1 index"); 
+      $h{$1} = 1;
     }
   }
 }
