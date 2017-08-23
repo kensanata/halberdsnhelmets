@@ -73,12 +73,12 @@ my $hd;
 for (@lines) {
   $section = $1 if /^\\section\{([[:alpha:], ]+)\}/;
   next unless ($hd) = / *HD (\d+)/;
-  like($_, qr/ AC \d+ /, "ac for $section is provided");
-  like($_, qr/ [FEHDT]\d+ /, "save for $section is provided") unless $section eq "Hydra" or $section eq "Golem";
-  like($_, qr/ MV \d+ /, "move for $section is provided");
-  like($_, qr/ ML \d+ /, "morale for $section is provided");
-  like($_, qr/ XP \d+/, "xp for $section is provided") unless $section eq "Hydra";
-  like($_, qr/ XP ${hd}00/, "xp for $section is HD×100") unless $section eq "Hydra";
+  like($_, qr/\bAC\s+\d+\b/, "ac for $section is provided");
+  like($_, qr/\b[FMEHDT]\d+\b/, "save for $section is provided") unless $section eq "Hydra" or $section eq "Golem";
+  like($_, qr/\bMV\s+\d+\b/, "move for $section is provided");
+  like($_, qr/\bML\s+\d+\b/, "morale for $section is provided");
+  like($_, qr/\bXP\s+\d+\b/, "xp for $section is provided") unless $section eq "Hydra";
+  like($_, qr/\bXP\s+${hd}00\b/, "xp for $section is HD×100") unless $section eq "Hydra";
 }
 
 done_testing;

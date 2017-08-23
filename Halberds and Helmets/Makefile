@@ -19,3 +19,6 @@ clean:
 	   *.log \
 	   *.out \
 	   ${FILES}
+
+test:
+	perl test.pl
