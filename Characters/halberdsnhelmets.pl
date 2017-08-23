@@ -3669,22 +3669,23 @@ Charakter:
 
 @@ characters.html.ep
 <% for my $char (@{$characters}) { %>
-<pre style="display: block; float: left; height: 25em; width: 30em; font-size: 6pt">
-<%= $char->{traits} %>
-Str Dex Con Int Wis Cha HP AC Class
-<%= sprintf "%3d", $char->{str} %> \
-<%= sprintf "%3d", $char->{dex} %> \
-<%= sprintf "%3d", $char->{con} %> \
-<%= sprintf "%3d", $char->{int} %> \
-<%= sprintf "%3d", $char->{wis} %> \
-<%= sprintf "%3d", $char->{cha} %> \
-<%= sprintf "%2d", $char->{hp} %> \
-<%= sprintf "%2d", $char->{ac} %> \
-<%= $char->{class} %>
-<% for my $property (split(/\\\\/, $char->{property})) { =%>
-<%= $property %>
-<% } %>\
-</pre>
+<div class="char">
+<p><%= $char->{traits} %><br/></p>
+<table>
+<tr><th>Str</th><th>Dex</th><th>Con</th><th>Int</th><th>Wis</th><th>Cha</th><th>HP</th><th>AC</th><th>Class</th></tr>
+<tr>\
+<td class="num"><%= $char->{str} %></td>\
+<td class="num"><%= $char->{dex} %></td>\
+<td class="num"><%= $char->{con} %></td>\
+<td class="num"><%= $char->{int} %></td>\
+<td class="num"><%= $char->{wis} %></td>\
+<td class="num"><%= $char->{cha} %></td>\
+<td class="num"><%= $char->{hp} %></td>\
+<td class="num"><%= $char->{ac} %></td>\
+<td><%= $char->{class} %></td></tr>
+</table>
+<p><%= join(', ', split(/\\\\/, $char->{property})) %></p>
+</div>
 <% } %>
 <div style="clear: both"></div>
 
@@ -4078,6 +4079,10 @@ or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "acks") => be
 %= stylesheet begin
 body { padding: 1em; width: <%= $self->stash("width")||"80ex" %>; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif }
 textarea { width: 100% }
+.char { page-break-inside: avoid; display: block; float: left; height: 13em; width: 20em; margin-bottom: 1em; margin-right: 1em; }
+.num { text-align: center; }
+.char th { font-weight: normal; text-align: left; }
+.char p { margin: 0; }
 % end
 <meta name="viewport" content="width=device-width">
 </head>
