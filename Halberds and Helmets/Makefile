@@ -22,10 +22,7 @@ clean:
 
 test:
 	perl test.pl
-	lacheck Halberds-and-Helmets.ltx
-	lacheck Halberds-and-Helmets-Ref-Guide.ltx
-	CHkTex Halberds-and-Helmets.ltx
-	ChkTex Halberds-and-Helmets-Ref-Guide.ltx
-
-bisect:
-	git bisect -halt-on-error -draft-mode Halberds-and-Helmets-Ref-Guide.ltx
+	# lacheck Halberds-and-Helmets.ltx
+	# lacheck Halberds-and-Helmets-Ref-Guide.ltx
+	# CHkTex -n24n1 Halberds-and-Helmets.ltx
+	# ChkTex -n24n1 Halberds-and-Helmets-Ref-Guide.ltx
