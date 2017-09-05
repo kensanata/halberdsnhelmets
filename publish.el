@@ -35,13 +35,20 @@
 		  (re-search-backward "^\\\\\\(section\\|chapter\\){\\(.*\\)}")
 		  (line-beginning-position)))
 	 (text (buffer-substring-no-properties start end))
-	 (title (match-string 2)))
+	 (title (match-string 2))
+	 (indexes (publish-indexes)))
     (with-current-buffer (get-buffer-create "*Oddmuse Publish")
       (erase-buffer)
       (insert text)
+      (setq tags (publish-tags indexes))
       (latex-to-oddmuse (point-min) (point-max))
+      (goto-char (point-max))
       (skip-syntax-backward "-")
       (delete-region (point) (point-max))
+      (insert "\n\nTags: "
+	      (mapconcat (lambda (s) (format "[[tag:%s]]" s))
+			 tags
+			 " "))
       (goto-char (point-min))
       (skip-syntax-forward "-")
       (delete-region (point-min) (point))
@@ -51,3 +58,24 @@
       (oddmuse-mode)
       (setq oddmuse-wiki publish-wiki
 	    oddmuse-page-name title))))
+
+(defun publish-indexes ()
+  "Find index definitions and parse indexes for this section."
+  (let (indexes)
+    (save-excursion
+      (goto-char (point-min))
+      (while (re-search-forward "\\\\makeindex\\[name=\\([a-z]*\\)" nil t)
+	(setq indexes (cons (match-string 1) indexes))))
+    indexes))
+
+(defun publish-tags (indexes)
+  "Find index entries for this section and generate tags."
+  (let ((tags '("Monster")))
+    (dolist (index indexes)
+      (goto-char (point-min))
+      (when (re-search-forward (concat "\\\\" index) nil t)
+	(setq tags (cons (capitalize index) tags))))
+    (setq tags (cons "Public Domain" tags))
+    (reverse tags)))
+
+      
