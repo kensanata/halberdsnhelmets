@@ -70,7 +70,7 @@
 
 (defun publish-tags (indexes)
   "Find index entries for this section and generate tags."
-  (let ((tags '("Monster")))
+  (let ((tags '("Monsters")))
     (dolist (index indexes)
       (goto-char (point-min))
       (when (re-search-forward (concat "\\\\" index) nil t)
