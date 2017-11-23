@@ -9,15 +9,19 @@ all: ${FILES}
 	${LATEX} $<
 	${MAKEINDEX} `basename "$<" ".ltx"`.idx
 	${LATEX} $<
+	mv $@ big-$@
+	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$@ big-$@
 
 clean:
-	rm *.an \
+	rm -f \
+	   *.an \
 	   *.aux \
 	   *.idx \
 	   *.ilg \
 	   *.ind \
 	   *.log \
 	   *.out \
+	   big-*.pdf \
 	   ${FILES}
 
 test:
