@@ -1513,8 +1513,6 @@ sub wrap {
   return join("\\\\", @result);
 }
 
-# http://www.stadt-zuerich.ch/content/prd/de/index/statistik/publikationsdatenbank/Vornamen-Verzeichnis/VVZ_2012.html
-
 my %names = qw{Aadhya F Aaliyah F Aanya F Aarna F Aarusha F Abiha F
 Abira F Abisana F Abishana F Abisheya F Ada F Adalia F Adelheid F
 Adelia F Adina F Adira F Adisa F Adisha F Adriana F Adriane F Adrijana
