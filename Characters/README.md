@@ -18,7 +18,28 @@ with links to examples of what this web application can do.
 ## Purisa
 
 You can get the Purisa font for free from the
-[linux.thai.net (LTN) Thai Linux FTP archive](ftp://linux.thai.net/pub/thailinux/software/thai-ttf/).
+[linux.thai.net (LTN) Thai Linux FTP archive](ftp://linux.thai.net/pub/thailinux/software/thai-ttf/),
+or from your package manager. It was called `fonts-tlwg-purisa` on my
+system.
+
+
+## Running it locally
+
+Generate SVG files locally:
+
+```
+MOJO_HOME=. ./halberdsnhelmets.pl get /random/en > test.svg
+```
+
+Run a web service at localhost:3000:
+
+```
+MOJO_HOME=. ./halberdsnhelmets.pl daemon
+```
+
+Your browser will probably prevent you from downloading the portrait
+from campaignwiki.org while you're looking at localhost, but other
+than that, it would work.
 
 
 ## Posting 20 Characters to Campaign Wiki
