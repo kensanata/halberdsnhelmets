@@ -1,0 +1,11 @@
+\#*
+*.bbl
+*.blg
+*.aux
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+big*.pdf
+*.mw
