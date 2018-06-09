@@ -1,4 +1,4 @@
-GRAPHICS=$(wildcard ../Hellebarden und Helme/graphics/*.jpg)
+GRAPHICS=$(wildcard graphics/*.jpg)
 LATEX=pdflatex
 MAKEINDEX=makeindex
 FILES=Halberds-and-Helmets.pdf Halberds-and-Helmets-Ref-Guide.pdf
