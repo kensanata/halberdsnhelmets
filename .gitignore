@@ -9,3 +9,5 @@
 *.out
 big*.pdf
 *.mw
+*.fdb_latexmk
+*.fls
