@@ -50,6 +50,7 @@ for (@lines) {
     if ($1 ne "none") {
       my @tags = split(/, /, $1);
       delete $h{animal}; # not a terrain
+      delete $h{undead}; # not a terrain
       my @keys = keys %h;
       my $lc = List::Compare->new(\@tags, \@keys);
       ok($lc->get_unique == 0,
