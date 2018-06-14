@@ -1,10 +1,11 @@
 # Halberds & Helmets
 
 This repository contains the source files for the English copy of my
-house rules for the role playing games at my table. There are two PDFs
-in the main directory: the
-[Player Handbook](Halberds-and-Helmets.pdf) and the
-[Referee Guide](Halberds-and-Helmets-Ref-Guide.pdf).
+house rules for the role playing games at my table.
+
+The generated PDF files are hosted on my website:
+[Player Handbook](https://alexschroeder.ch/pdfs/Halberds-and-Helmets.pdf) and the
+[Referee Guide](https://alexschroeder.ch/pdfs/Halberds-and-Helmets-Ref-Guide.pdf).
 
 The subdirectories contain adventures.
 

@@ -10,7 +10,15 @@ all: ${FILES}
 	${MAKEINDEX} `basename "$<" ".ltx"`.idx
 	${LATEX} $<
 	mv $@ big-$@
-	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$@ big-$@
+	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+		-dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET \
+		-dBATCH -sOutputFile=$@ big-$@
+
+shrink: Halberds-and-Helmets-Ref-Guide.pdf
+	mv $@ big-$@
+	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+		-dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET \
+		-dBATCH -sOutputFile=$@ big-$@
 
 clean:
 	rm -f \
@@ -30,3 +38,6 @@ test:
 	# lacheck Halberds-and-Helmets-Ref-Guide.ltx
 	# CHkTex -n24n1 Halberds-and-Helmets.ltx
 	# ChkTex -n24n1 Halberds-and-Helmets-Ref-Guide.ltx
+
+upload: $(FILES)
+	scp -P 882 $^ alexschroeder.ch:alexschroeder.ch/pdfs/
