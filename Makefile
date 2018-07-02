@@ -15,10 +15,10 @@ all: ${FILES}
 		-dBATCH -sOutputFile=$@ big-$@
 
 shrink: Halberds-and-Helmets-Ref-Guide.pdf
-	mv $@ big-$@
+	mv $< big-$<
 	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
 		-dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET \
-		-dBATCH -sOutputFile=$@ big-$@
+		-dBATCH -sOutputFile=$< big-$<
 
 clean:
 	rm -f \
