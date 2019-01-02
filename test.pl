@@ -64,7 +64,7 @@ for (@lines) {
     %h = ();
   } elsif (/^\\([a-z]+)\{([^\}!]+)(![^\}]*)?\}/) {
     if($index{$1}) {
-      like($section, qr/^$2/, "$section starts with $2 in the $1 index"); 
+      like($section, qr/^$2/, "$section starts with $2 in the $1 index");
       $h{$1} = 1;
     }
   }
@@ -80,6 +80,55 @@ for (@lines) {
   like($_, qr/\bML\s+\d+\b/, "morale for $section is provided");
   like($_, qr/\bXP\s+\d+\b/, "xp for $section is provided") unless $section eq "Hydra";
   like($_, qr/\bXP\s+${hd}00\b/, "xp for $section is HD×100") unless $section eq "Hydra";
+}
+
+my %treasure;
+my $in;
+my @monsters;
+my $monster;
+for (@lines) {
+  $in = 0 if $in and (/^\\chapter/);
+  $in = 1 if !$in and (/^\\chapter\{Monsters\}/);
+  next unless $in;
+  if (/^\\section\{([[:alpha:], ]+)\}/) {
+    $monster = $1;
+    push(@monsters, $monster);
+  }
+  next unless /\\(notreasure|poor|average|rich|robber|ancient|scout|terror|dead|dragon|dwarf|stronghold)\b/;
+  my $type = $1;
+  ok(!$treasure{$monster}, "just one treasure for $monster is provided ($type)");
+  $treasure{$monster} = $type;
+}
+
+for my $monster (@monsters) {
+  ok($treasure{$monster}, "treasure for $monster is provided");
+}
+
+my %types; # the lines per treasure type listing the monsters
+for (@lines) {
+  $in = 0 if $in and (/^\\chapter/);
+  $in = 1 if !$in and (/^\\chapter\{Treasure\}/);
+  next unless $in;
+  if (/^\\textbf\{([[:alpha:], ]+)\}/) {
+    my $type = lc($1);
+    $type = "notreasure" if $type eq "none";
+    if ($type eq "dragon") {
+      $types{$type} = "dragon";
+    } elsif ($type eq "dwarf") {
+      $types{$type} = "dwarf";
+    } else {
+      $types{$type} = $_;
+    }
+  }
+}
+
+# check that every monster's treasure type is listed appropriately
+for my $monster (keys %treasure) {
+  my $type = $treasure{$monster};
+  $monster =~ s/(.*), (Large|Giant)/$2 $1/;
+  $monster =~ s/(.*), People/$1 people/;
+  $monster = lc($monster);
+  like($types{$type}, qr($monster), "$monster is listed under $type in the appendix");
 }
 
 done_testing;
