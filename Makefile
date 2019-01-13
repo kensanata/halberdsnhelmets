@@ -1,24 +1,23 @@
-GRAPHICS=$(wildcard graphics/*.jpg)
+JPGS=$(wildcard graphics-src/*.jpg)
+PNGS=$(wildcard graphics-src/*.png)
+SMALL=$(patsubst graphics-src/%.jpg,graphics/%.jpg,$(JPGS)) $(patsubst graphics-src/%.png,graphics/%.png,$(PNGS))
 LATEX=pdflatex
 MAKEINDEX=makeindex
 FILES=Halberds-and-Helmets.pdf Halberds-and-Helmets-Ref-Guide.pdf
 
-all: ${FILES}
+all: ${SMALL} ${FILES}
+
+graphics/%.jpg: graphics-src/%.jpg
+	convert -resize 300 "$<" "$@"
+
+graphics/%.png: graphics-src/%.png
+	convert -resize 300 "$<" "$@"
 
 %.pdf: %.ltx
 	${LATEX} $<
 	${MAKEINDEX} `basename "$<" ".ltx"`.idx
 	${LATEX} $<
-	mv $@ big-$@
-	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
-		-dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET \
-		-dBATCH -sOutputFile=$@ big-$@
-
-shrink: Halberds-and-Helmets-Ref-Guide.pdf
-	mv $< big-$<
-	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
-		-dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET \
-		-dBATCH -sOutputFile=$< big-$<
+	grep reference.*undefined $(basename Halberds-and-Helmets).log || echo "References OK"
 
 clean:
 	rm -f \
