@@ -1,6 +1,6 @@
 JPGS=$(wildcard graphics-src/*.jpg)
 PNGS=$(wildcard graphics-src/*.png)
-SMALL=$(patsubst graphics-src/%.jpg,graphics/%.jpg,$(JPGS)) $(patsubst graphics-src/%.png,graphics/%.png,$(PNGS))
+SMALL=$(patsubst graphics-src/%.jpg,graphics-small/%.jpg,$(JPGS)) $(patsubst graphics-src/%.png,graphics-small/%.png,$(PNGS))
 LATEX=pdflatex
 MAKEINDEX=makeindex
 FILES=Halberds-and-Helmets.pdf Halberds-and-Helmets-Ref-Guide.pdf
@@ -12,6 +12,19 @@ graphics/%.jpg: graphics-src/%.jpg
 
 graphics/%.png: graphics-src/%.png
 	convert -resize 300 "$<" "$@"
+
+.PHONY: print online
+print:
+	rm graphics
+	ln -sf graphics-src graphics
+	rm ${FILES}
+	make ${FILES}
+
+online:
+	rm graphics
+	ln -sf graphics-small graphics
+	rm ${FILES}
+	make ${FILES}
 
 %.pdf: %.ltx
 	${LATEX} $<
@@ -28,7 +41,6 @@ clean:
 	   *.ind \
 	   *.log \
 	   *.out \
-	   big-*.pdf \
 	   ${FILES}
 
 test:
