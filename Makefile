@@ -7,21 +7,21 @@ FILES=Halberds-and-Helmets.pdf Halberds-and-Helmets-Ref-Guide.pdf
 
 all: ${SMALL} ${FILES}
 
-graphics/%.jpg: graphics-src/%.jpg
+graphics-small/%.jpg: graphics-src/%.jpg
 	convert -resize 300 "$<" "$@"
 
-graphics/%.png: graphics-src/%.png
+graphics-small/%.png: graphics-src/%.png
 	convert -resize 300 "$<" "$@"
 
 .PHONY: print online
-print:
-	rm graphics
+print: ${JPGS} ${PNGS}
+	rm -f graphics
 	ln -sf graphics-src graphics
 	rm ${FILES}
 	make ${FILES}
 
-online:
-	rm graphics
+online: ${SMALL}
+	rm -f graphics
 	ln -sf graphics-small graphics
 	rm ${FILES}
 	make ${FILES}
@@ -30,7 +30,7 @@ online:
 	${LATEX} $<
 	${MAKEINDEX} `basename "$<" ".ltx"`.idx
 	${LATEX} $<
-	grep reference.*undefined $(basename Halberds-and-Helmets).log || echo "References OK"
+	grep reference.*undefined $(basename $<).log || echo "References OK"
 
 clean:
 	rm -f \
