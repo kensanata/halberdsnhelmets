@@ -131,4 +131,11 @@ for my $monster (keys %treasure) {
   like($types{$type}, qr($monster), "$monster is listed under $type in the appendix");
 }
 
+# Check that we're not using the wrong quote as an apostrophe.
+my $n = grep(/’/, @lines);
+is($n, 0, "U+2019 (RIGHT SINGLE QUOTATION MARK) isn't used");
+# Use ' instead. We cannot U+02BC as recommended in
+# https://tedclancy.wordpress.com/2015/06/03/which-unicode-character-should-represent-the-english-apostrophe-and-why-the-unicode-committee-is-very-wrong/
+# because we're going to get "not set up for use with LaTeX."
+
 done_testing;
