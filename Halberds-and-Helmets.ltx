@@ -143,7 +143,7 @@ rolling dice, it's already too late.
 
 \clearpage
 
-\section{\index{Character Creation}Character Creation}
+\section{\index{Character}Character Creation}
 \label{sec:charactercreation}
 
 \marginnote{A short summary for players:
@@ -203,14 +203,14 @@ Add the bonus to your to-hit roll when using \emph{ranged weapons}
 \hyperref[key:Hit Points]{hit die} (but never reduce a hit die below 1).
 
 \key{Intelligence} determines your education. If you have a positive
-bonus, it indicates how many \emph{extra languages} you
-speak.\marginnote{Everybody speaks their local language and a few
-  words of the common tongue, the trade tongue.}
+bonus, it indicates how many \hyperref[key:Languages]{languages} you
+speak.
 
-\key{Wisdom} determines how much in tune with the world you are. Add
-the bonus to your \hyperref[key:Saving Throw]{saving throws}.
+\key{Wisdom} determines how much in tune with the world you are, and
+how well immortals \hyperref[key:Reaction Roll]{react} to you. Add the
+bonus to your \hyperref[key:Saving Throw]{saving throws}.
 
-\key{Charisma} determines how well others \hyperref[key:Reaction
+\key{Charisma} determines how well other mortals \hyperref[key:Reaction
   Roll]{react} to you, how many \hyperref[sec:retainers]{retainers and
   pets} will follow you (4 + your bonus) and their
 \hyperref[key:Morale Check]{morale} (7 + your bonus).
@@ -404,6 +404,11 @@ Since thieves don't cast spells and don't wear a lot of armor, playing
 a thief is a bit like playing on skill level \textsc{Hurt Me Plenty}.
 You have been warned.
 
+\begin{marginfigure}[1cm]
+  \centering
+  \includegraphics[height=4cm]{Seusenhofer.jpg}
+\end{marginfigure}
+
 \medskip
 \begin{tabular}{lcccccccccc}
 Saving      & Dragon Breath & Paralysis    & Death  & Rays  & \\
@@ -490,8 +495,8 @@ Level 10   & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3
 \medskip
 
 \noindent Elves speak the common tongue and elvish; they are also
-somewhat familiar with the languages of gnolls (hyena men), hobgoblins
-and orcs (pig men).
+somewhat familiar with the \index{Languages!Elves}languages of gnolls
+(hyena men), hobgoblins and orcs (pig men).
 
 \medskip
 \begin{tabular}{lcccccccccc}
@@ -505,7 +510,7 @@ Level 10   &  7 &  7 &  6 &  7 &  9 \\
 
 
 
-\subsection{\index{Halflings}Halflings}
+\subsection{\index{Halfling}Halfling}
 \label{sec:halfling}
 
 \marginnote{
@@ -557,7 +562,7 @@ Level 7–8 &  7 &  6 &  4 &  5 &  8 \\
 
 
 
-\subsection{\index{Dwarf}Dwarves}
+\subsection{\index{Dwarf}Dwarf}
 \label{sec:dwarf}
 
 \marginnote{
@@ -601,8 +606,8 @@ Level 10   & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3
 \end{marginfigure}
 
 \noindent
-Dwarves are somewhat familiar with the languages of goblins, gnomes
-and kobolds.
+Dwarves are somewhat familiar with the
+\index{Languages!Dwarves}languages of goblins, gnomes and kobolds.
 
 \medskip
 \begin{tabular}{lcccccccccc}
@@ -627,8 +632,8 @@ magic users and thieves roll 1d4, elves and halflings roll 1d6.
   below 1. Keep your old hit points if the new result is lower.}
 
 \newthought{Roll 3d6 \texttimes 10~gold}. Buy some
-\hyperref[sec:equipment]{equipment} using this \index{Gold!Character
-  Creation}gold. For example:\marginnote{This is how the
+\hyperref[sec:equipment]{equipment} using this
+\index{Gold!Initial}gold. For example:\marginnote{This is how the
   \href{https://campaignwiki.org/halberdsnhelmets/random/en?rules=halberds-n-helmets}{online
     character generator} buys equipment, more or less.}
 
@@ -701,19 +706,6 @@ Sling & 2 & requires years of training \\
 
 Spear & 3 & can be thrown \\
 \end{tabular}
-
-\vskip 1cm
-\hspace{2cm}\includegraphics[width=4cm]{Maximilian.jpg}
-\vskip 1cm
-
-\begin{tabular}{lccl}
-  \key{Armor} & Class & Gold & Notes \\
-  \index{Leather} Leather & 7 & 20 & sneaking and swimming are no problem \\
-  \index{Chain} Chain & 5 & 40 & no sneaking and no swimming \\
-  \index{Plate} Plate & 3 & 60 & no sneaking and no swimming \\
-  \index{Shield} Shield & -1 & 10 & can be sacrificed in order to evade an attack \\
-  \index{Helmet} Helmet  & – & 10 & helps against \hyperref[key:death]{death and dismemberment} \\
-\end{tabular}
 \end{minipage}
 \begin{minipage}[t]{0.47\linewidth}
 \begin{tabular}[t]{lcp{4cm}}
@@ -734,9 +726,45 @@ Thieves' tools & 25 & required by thieves to open locks \\
 Torches (6) & 1 & burn for \unit[1]{h}; may scare animals \\
 Wolfsbane & 10 & keeps werewolves away \\
 \end{tabular}
+
+\vspace{1cm}
+\centering
+\includegraphics[width=4cm]{Maximilian.jpg}
+
+\end{minipage}
+\begin{minipage}[t]{0.47\linewidth}
+  \bigskip
+  \begin{tabular}{lccl}
+    \key{Armor} & Class & Gold & Notes \\
+    \index{Leather} Leather & 7 & 20 & sneaking and swimming are no problem \\
+    \index{Chain} Chain & 5 & 40 & no sneaking and no swimming \\
+    \index{Plate} Plate & 3 & 60 & no sneaking and no swimming \\
+    \index{Shield} Shield & -1 & 10 & can be sacrificed in order to evade an attack \\
+    \index{Helmet} Helmet  & – & 10 & helps against \hyperref[key:death]{death and dismemberment} \\
+  \end{tabular}
 \end{minipage}
 \end{fullwidth}
 }
+
+\bigskip
+\key{Movement Rate} (\key{MV}): Humans\marginnote{Typical movement
+  rates of other creatures: dwarf 6, halfling 9, elf 12, giant weasel
+  15, dog or wolf 18, panther 21, galloping horse 24, flying
+  hippogriff 36, flying pegasus 48.} have a movement rate of 12—that's
+\unit[120]{ft} per round when \emph{running} or \emph{fighting}, or
+\unit[120]{ft} per turn drawing a map and checking for traps.
+
+\key{Encumbrance}: You can carry as many significant
+items\marginnote{Significant item are: armor, shield, weapon, book,
+  potion, torch, quiver, scroll. A hundred gold coins, gems, rings,
+  amulets and the like count as one item. There's no difference
+  between light and heavy items. Clothing, bags or backpacks don't
+  count.} as your {strength}. If you carry more, each extra item adds
+-1 to hit, saving throws and movement rate.
+
+\key{Rule of Cool}: Alternatively, when somebody doubts you can carry
+all the stuff on your inventory, read it out loud. When somebody at
+the table laughs, you're carrying too much.
 
 \newpage
 
@@ -815,10 +843,10 @@ heavy infantry & 4~gold/month & 8 \\
 \medskip
 
 \noindent\key{Mercenaries} accompany their employers on adventure.
-\marginnote{\index{Experience Points!Defeating Opponents}Note that
-  \hyperref[key:Experience Points]{experience points} for opponents
-  defeated are distributed amongst \emph{all} the people surviving the
-  fight.} In return, they expect much higher payment.
+\marginnote{\index{XP!Monsters}Note that \hyperref[key:Experience
+    Points]{experience points} for opponents defeated are distributed
+  amongst \emph{all} the people surviving the fight.} In return, they
+expect much higher payment.
 
 \medskip
 \begin{tabular}{ll}
@@ -972,13 +1000,14 @@ Level  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
 Circle & 1 & 1 & 2 & 2 & 3 & 3 & 4 & 4 & 5 &  5 \\
 \end{tabular}
 
-\marginnote[-3em]{\key{Reaction Bonus}: This bonus is a bit smaller
-  than the charisma bonus because the \emph{reaction roll} uses 2d6
-  instead of a d20.
+\marginnote[-4em]{\key{Reaction Bonus}: This bonus is a bit smaller
+  than the usual bonus because the \emph{reaction roll} uses 2d6
+  instead of a d20. Use \emph{charisma} when speaking with mortals,
+  use \emph{wisdom} when speaking to immortals.
 
   \medskip
   \begin{tabular}{cccl}
-    Charisma & Bonus \\
+    Score & Bonus \\
     3      & -2 \\
     4–8   & -1 \\
     9–12  &    \\
@@ -1005,9 +1034,9 @@ Circle & 1 & 1 & 2 & 2 & 3 & 3 & 4 & 4 & 5 &  5 \\
 \medskip\key{Reaction Roll}: The referee will make a reaction roll for
 almost all creatures characters talk to. Roll 2d6 and add the
 \emph{reaction bonus} of the person doing the talking. If you don't
-share a common \index{Language} language, apply a -2 penalty.
-Typically a result of 5 or lower is considered a negative outcome and
-a result of 9 and higher is considered a positive outcome.
+share a common \index{Languages!Reaction Roll}language, apply a -2
+penalty. Typically a result of 5 or lower is considered a negative
+outcome and a result of 9 and higher is considered a positive outcome.
 
 \key{Morale Check}: Player characters must never check morale.
 Everybody else must make a morale check when losing the first member
@@ -1070,14 +1099,12 @@ attract 1d6 candidates.\marginnote[-2em]{The referee should have a
 The big table of d6:\marginnote{In most cases, no dice need to be
   rolled. If there is a secret lever behind the statue and the player
   said their character was looking behind the statue, then said lever
-  will be found. We usually roll dice when there's some risk involved.
-  When rolling to kick in doors, disarm traps, listen for noise,
-  looking for secret doors, this will take some time and the referee
-  will usually roll for a random encounter at the same time.
+  is found.
 
-  \bigskip\noindent Thieves improve over time. They'll be faster at
-  opening locks, disarming traps, finding secret doors, moving
-  silently, hiding, hearing, and so on.}
+  Roll dice when there's some risk involved. When rolling to kick in
+  doors, disarm traps, or listen for noise, looking for secret doors,
+  this takes time and the referee rolls for a random encounter at the
+  same time.}
 
 \medskip
 \begin{tabular}{lc}
@@ -1097,6 +1124,27 @@ Thieves from 6\th level onwards & 1–4 \\
 Thieves from 9\th level onwards & 1–5 \\
 \end{tabular}
 
+\medskip
+
+\key{Background}: There's no need to roll dice for activity covered
+by your background. At any time, if you haven't determined your
+background, you may tell us how and where you grew up.
+
+\key{Languages}: Everybody speaks their local
+language\marginnote[-1em]{The number of additional languages depends
+  on your intelligence.
+  
+  \smallskip
+  \begin{tabular}{cc}
+    Score & Languages \\
+    13–15 & +1 \\
+    16–17 & +2 \\
+    18 & +3
+  \end{tabular}
+} and a few words of the common tongue, the trade tongue. At any time,
+if you haven't determined all the languages you speak, you may tell us
+how and where you learned a language.
+
 \newpage
 
 
@@ -1109,7 +1157,7 @@ roll a 1 or a 2. If you're surprised, you'll have to skip the first
 round. If the \index{Distance}distance between the two sides isn't
 obvious, add the two dice and multiply the sum with \unit[10]{ft}. The
 result is a distance of 20–\emph{\unit[120]{ft}}.
-\marginnote[-4em]{Your \hyperref[sec:movement]{movement rate}
+\marginnote[-4em]{Your \hyperref[key:Movement Rate]{movement rate}
   determines whether surprised opponents can be attacked in the first
   round.}
 
@@ -1134,7 +1182,7 @@ strength bonus when making a \index{Melee Attack}melee attack. Add
 your dexterity bonus when making a \index{Ranged Attack}ranged attack.
 Don't forget to add any magic bonuses, if you have a magic weapon!
 
-\key[20 when attacking]{20}: If you roll a 20, you score a critical
+\key[20, natural]{20}: If you roll a 20, you score a critical
 hit which always hits and does max damage.
 
 \key[30-sided die]{30}: Every player may use the thirty-sided die
@@ -1308,88 +1356,6 @@ must still roll to hit.
 getting up prevents you from moving in the same round.
 
 \newpage
-
-
-
-\section{\index{Movement}Movement}
-\label{sec:movement}
-
-\key{Movement Rate} (\key{MV}): Humans have a movement rate of
-12—that's \unit[120]{ft} per round (\unit[10]{s}) when \emph{running}
-or \emph{fighting}. \marginnote[-1em]{Typical movement rates of other
-  creatures: dwarf 6, halfling 9, elf 12, giant weasel 15, dog or wolf
-  18, panther 21, galloping horse 24, flying hippogryph 36, flying
-  pegasus 48.}
-
-Proceeding slowly and methodically in the underworld slows you down
-dramatically. MV~12 is only \unit[120]{ft} per turn (\unit[10]{min}).
-That's the only way to have a fair chance of drawing maps and avoiding
-traps.
-
-\key{Carrying Capacity}: You can carry as many significant items as
-your \emph{strength}.\marginnote{Typical items: armor, a weapon, a
-  book, a potion, a torch, a quiver, a scroll. There's no difference
-  between light and heavy items. Clothing, bags or backpacks don't
-  count.} If you carry more, each extra item adds -1 to hit and to
-saving throws.
-
-\key{Stuff}: It takes a lot of small things to count as an item: a
-hundred gold coins, gems, rings, amulets and the like count as a
-single item.
-
-\section{Reputation}
-\label{sec:reputation}
-
-\key{Reputation}: Fame and honor can be earned everywhere. Even the
-\index{Gods!Reputation}gods are interested in the deeds of mortals.
-Reputation is tracked separately for all the gods, towns and
-factions.\marginnote{The referee maintains a list of gods, towns and
-  factions and the respective reputation for each character.} The
-higher your reputation, the harder it is to increase it. In order to
-gain reputation, roll higher than your current reputation. The
-starting reputation is 0. Thus, the first time reputation increases,
-no roll is required. Reputation can be good or bad. The gods take an
-interest in blasphemers, too!\marginnote{The higher your reputation,
-  the harder it will be to increase.} Usually, reputation will not
-change for more than ±1 per session.
-
-\begin{marginfigure}[1cm]
-  \centering
-  \includegraphics[height=4cm]{Seusenhofer.jpg}
-\end{marginfigure}
-
-Roll an appropriate die depending on the deeds you have done:
-
-\medskip
-\begin{tabular}{cp{9.8cm}}
-  Roll & Deeds \\
-
-  d4 & Finding and returning or stealing and destroying items of
-  religious significance; saving or sacrificing animals; dedicating or
-  desecrating altars and shrines \\
-
-  d6 & Saving or sacrificing humans, dedicating or desecrating temples
-  \\
-
-  d8 & rescuing or sacrifice villages and whole communities, found
-  cults or eradicate heresies \\
-
-  d10 & convert, save or sacrifice nations and entire tribes \\
-
-  d12 & render a service to the gods \\
-\end{tabular}
-\medskip
-
-\key{Help}: The help of towns and factions may depend on your
-reputation. Roll 2d6 and compare it to your reputation. If you rolled
-\emph{higher}, help is not forthcoming.
-
-\key[Intervention]{Intervention}: In an emergency, reputation also
-acts as the percentage chance for divine
-intervention.\marginnote[-0.5cm]{A divine intervention could mean the
-  appearance of an angel, a devil, demon, a naga, or the like.}
-
-\clearpage
 
 
 
