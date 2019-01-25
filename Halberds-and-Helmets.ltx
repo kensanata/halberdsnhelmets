@@ -1,4 +1,4 @@
-\documentclass[a4paper,twoside,notitlepage,openany]{tufte-book}
+\documentclass[a4paper,twoside,notitlepage,openany,nohyperref]{tufte-book}
 \usepackage[utf8]{inputenc}
 
 % \usepackage{showkeys}% debugging \keys
@@ -11,8 +11,8 @@
 \usepackage{wasysym}
 
 % Set up index
-\usepackage{makeidx}
-\makeindex
+\usepackage{imakeidx}
+\makeindex[columns=4]
 
 % Set up the images/graphics package
 \usepackage{graphicx}
@@ -1619,7 +1619,7 @@ years. This is her spell book.
 \end{table}
 
 
-\newpage
+\begin{fullwidth}
 
 % prevent an empty page
 % http://tex.stackexchange.com/questions/109625/avoiding-empty-page-between-a-very-full-page-and-the-index
@@ -1631,7 +1631,6 @@ years. This is her spell book.
 
 \section*{Open Game License Version 1.0a}
 
-\begin{fullwidth}
 
 \fontsize{6.5pt}{7pt}\selectfont
 
