@@ -51,4 +51,4 @@ test:
 	# ChkTex -n24n1 Halberds-and-Helmets-Ref-Guide.ltx
 
 upload: $(FILES)
-	scp -P 882 $^ alexschroeder.ch:alexschroeder.ch/pdfs/
+	rsync --archive --rsh='ssh -p 882' $^ alexschroeder.ch:alexschroeder.ch/pdfs/
