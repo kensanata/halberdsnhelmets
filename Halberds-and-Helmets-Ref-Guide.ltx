@@ -715,69 +715,80 @@ provide her with a living giant wasp.'')
 one or two units in addition to their player character and retainers
 is a good start.
 
-\textbf{Compute total hit points for all units}. Just multiply the
-average hit points with the number of individuals.\marginnote{40
-  thieves means 40×3.5=\SI{140}{HP}, for example.}
+\textbf{Compute total hit points for all units}.\marginnote{40 bandits
+  means 40×4.5=\SI{180}{HP}, for example. See the table below for
+  quick lookup!} Just multiply the average hit points with the number
+of individuals.
 
-Combat starts as usual. Roll for initiative, move, attack, and so on.
-AC, movement rate, morale and saves don't change.
+Combat starts as usual. Roll for initiative, move, attack, and so
+on.\marginnote{With one important change: in melee, a unit facing
+  multiple opponents attacks them \emph{all} at the same time!} AC,
+movement rate, morale and saves don't change.
 
 \textbf{Damage dealt is multiplied by the combat scale}. This
 simulates the fact that not everybody gets to attack in larger
 skirmishes. There are corridors, corners, trees, cover, the press of
-bodies, whatever. \marginnote{Don't worry about players changing the
-  sizes of their units once they learn of this table as they try and
-  maximize their combat scale for the first attack.
-
-  40 thieves have a combat scale of ×6. With just one more thief, the
-  combat scale would go up to ×7. Bad luck, thieves!}
+bodies, and so on. Conversely, if in contact on multiple sides, the
+unit can attack them all as people in the back or on the flanks also
+get to act. \marginnote{Don't worry about players changing the sizes
+  of their units once they learn of this table as they try and
+  maximize their combat scale for the first
+  attack.}\marginnote[3em]{40 bandits have a combat scale of ×6. With
+  just one more bandit, the combat scale would go up to ×7. Bad luck,
+  bandits!}
 
 \medskip
-\begin{tabular}{cl}
-Number & Scale \\
- 2--5 & ×3 \\
- 6--10 & ×4 \\
- 11--20 & ×5 \\
- 21--40 & ×6 \\
- 41--80 & ×7 \\
- 81--160 & ×8 \\
- 161--320 & ×9 \\
- 321--640 & ×10
+\begin{tabular}{ccccccc}
+Number & Scale & HD 1 & HD 2 & HD 3  & HD 4 & HD 5 \\
+2--5   & ×3    &   22 &   45 &    90 &   180 &   360 \\
+6--10  & ×4    &   45 &   90 &   180 &   360 &   720 \\
+11--20 & ×5    &   90 &  180 &   360 &   720 &  1440 \\
+21--40 & ×6    &  180 &  360 &   720 &  1440 &  2880 \\
+41--80 & ×7    &  360 &  720 &  1440 &  2880 &  5760 \\
+81--160 & ×8   &  720 & 1440 &  2880 &  5760 & 11520 \\
+161--320 & ×9  & 1440 & 2880 &  5760 & 11520 & 23040 \\
+321--640 & ×10 & 2880 & 5760 & 11520 & 23040 & 46080 
 \end{tabular}
 \medskip
 
-\textbf{When you're hit, adjust your combat scale}. Divide the
-remaining hit points by the average hit points per individual (round
-up) to see how many are still alive.\marginnote{If 40 thieves have 53
-  hit points left, then there are $53 / 3.5 \approx 16$ thieves left (rounding
-  up). The combat scale of these thieves drops to ×5.}
+\textbf{When you're hit, adjust your combat scale}.\marginnote{If 40
+  bandits have 53 hit points left, then there are $53 / 4.5 \approx
+  12$ thieves left (round up). The combat scale of these thieves drops
+  to ×5. To speed things up, refer to the table above: For HD 1
+  bandits, 53 is more than 45, so there are 11–20 bandits left and
+  their combat scale is ×5.} Divide the remaining hit points by the
+average hit points per individual (round up) to see how many are still
+alive.
 
 \textbf{Player characters can ``hide'' within a unit}, granting them
 their charisma bonus for morale checks. When the unit takes damage,
 the player and their retainers are the last ones to actually take
-damage. The still attack as usual, with separate attack rolls and
+damage. They still attack as usual, with separate attack rolls and
 separate spell casting actions.
 
-\textbf{Spells works as they usually do}. A \emph{sleep} or
-\emph{charm person} spell is no problem. A \emph{lightning bolt} or
-\emph{fireball} is trickier to adjudicate. One quick rule of thumb is
-to use the number of dice as the number of human sized targets. When
-targeting giants, use a quarter of this number; when targeting goblins,
-quadruple the number.
+\textbf{Spells works as they usually do}.\marginnote{Ten HD 1 bandit
+  falling asleep is thus the equivalent of 10×4.5 damage.} Convert
+\emph{sleep} or \emph{charm person} spells to damage such as to
+simulate how it takes out unit members. For a \emph{lightning bolt} or
+\emph{fireball}, just apply the damage\marginnote{If a fireball hits
+  goblins, more of them are hit but each goblin can only take as much
+  damage as it has hit-points so we're assuming it all evens out. Roll
+  just one saving throw for the unit.} to the unit and ignore how many
+unit members would actually get caught in the area of effect.
 
 \textbf{Every unit must make a morale check when it looses its first
   member, and another when it loses half its members}. This is
-important! Such a unit is considered \emph{broken}. They will hunker
-down and disengage.
+important! Such a unit is considered \emph{broken}. They hunker down
+and disengage.
 
 \textbf{A player character or retainer within a broken unit may
   attempt to rally the unit}. Only one character per round may try
-this. If this succeeds, the unit will have skipped a round, no
-problem. If this fails, try again next round.
+this. If rallying fails, try again next round. Either way, the unit
+does not get to act this round.
 
 \textbf{If a broken unit suffers any damage, it will rout.} A routed
-unit must flee the battle field and any other unit in melee range will
-get a free extra attack with a +2 bonus.
+unit must flee the battle field and any other unit in melee range gets
+a free extra attack with a +2 bonus.
 
 
 
