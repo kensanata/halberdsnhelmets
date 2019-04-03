@@ -134,6 +134,12 @@
 \newcommand{\averagevalue}[1]{\marginnote{Average value: \SI{#1}{gp}.}}
 \newcommand{\hiref}[2]{\index{#2}\href{#1}{#2}\label{key:#2}}% index and link
 
+% For packed lists
+\newenvironment{packed}{
+\begin{enumerate}
+  \setlength{\itemsep}{-3pt}
+}{\end{enumerate}}
+
 % Hyperref after imakeidx (notice nohyper option!)
 % http://tex.stackexchange.com/questions/22012/hyperref-and-imakeidx-do-not-work-together
 \usepackage{hyperref}
@@ -840,15 +846,15 @@ agent and an opportunity for some discourse arises.
 \index{Freya}
 \index{Odin}
 
-Freya is the goddess of winter, of spring, of fertility, of grain, of
-war, of cats and \hyperref[animal:Boar]{boars}, of magic. She leads
-the valkyries and collects half the slain in battle. These dine with
-her in \key{Sessrúmnir}, her hall in
-Asgard.\marginnote{\hiref{https://en.wikipedia.org/wiki/Asgard}{Asgard}
+Freya\marginnote{\hiref{https://en.wikipedia.org/wiki/Asgard}{Asgard}
   is a plane consisting of nothing but the divine city where many of
   the gods have their halls, surrounded by a gargantuan wall. Outside
   is the \emph{Astral Sea}. It can be reached by sailing that very sea
-  or by climbing the World Tree, \emph{Yggdrasil}.}
+  or by climbing the World Tree, \emph{Yggdrasil}.} is the goddess of
+winter, of spring, of fertility, of grain, of war, of cats and
+\hyperref[animal:Boar]{boars}, of magic. Her valkyries and collects
+half the slain in battle. These dine with her in \key{Sessrúmnir}, her
+hall in Asgard.
 
 Odin is the god of wisdom, of magic and poetry, of war, of eagles and
 ravens, of runes, of wanderers. He wields a magic spear, he raises the
@@ -856,7 +862,7 @@ dead, he rides an eight legged horse called Sleipnir. The other half
 of the slain in battle dine with him in \key{Valhalla}, his hall in
 Asgard.
 
-In times of need, both of them will send a
+In times of need, both of them send a
 \hyperref[sec:valkyrie]{valkyrie}.
 
 
@@ -865,27 +871,20 @@ In times of need, both of them will send a
 \label{sec:hel}
 \index{Hel}
 
-Hel is the goddess of the weak, the frail, the sick and the old, the
-protector of witchcraft and of crossroads. Her hall \key{Eljudnir} is
-built in Niflheim under one of the roots of
-Yggdrasil.\marginnote{\hiref{https://en.wikipedia.org/wiki/Niflheim}{Niflheim}
+Hel\marginnote{\hiref{https://en.wikipedia.org/wiki/Niflheim}{Niflheim}
   is a realm ice and cold, of dark forests and thick mist. This world
   can only be reached by crossing \key{Gjallarbrú}, the golden bridge
   over the river of death, \key{Gjöll}. Here, trolls roam freely,
   never fearing the sun. This is also where the greatest dragon of all
   gnaws at the roots of the world tree,
   \hiref{https://en.wikipedia.org/wiki/N\%C3\%AD\%C3\%B0h\%C3\%B6ggr}{Nídhöggr}.}
-Its gate is guarded by the hellhound \key{Garm} who makes sure only
-those who died of sickness and old age may pass.
+is the goddess of the weak, the frail, the sick and the old, the
+protector of witchcraft and of crossroads. Her hall \key{Eljudnir} is
+built in Niflheim under one of the roots of Yggdrasil. Its gate is
+guarded by the hellhound \key{Garm} who makes sure only those who died
+of sickness and old age may pass.
 
-Hel is one of the giants of old, also called \emph{troll-woman}. In
-times of need she will send 1d4 \hyperref[sec:troll]{trolls} named
-\emph{Hunger}, \emph{Famine}, \emph{Misery} or \emph{Sickness}.
-
-\begin{quote}
-  HD~6+1 AC~4 1d6/1d6/1d10 F6 MV~12 ML~10 XP~600; regenerate to full
-  health within a few minutes unless burned or dissolved in acid
-\end{quote}
+In times of need she sends 1d4 \hyperref[sec:troll]{trolls}.
 
 
 
@@ -893,24 +892,16 @@ times of need she will send 1d4 \hyperref[sec:troll]{trolls} named
 \label{sec:loki}
 \index{Loki}
 
-Loki is the god of lies, of deceit, of misdeeds, of excuses and
-explanations, of looking the other way, of tricksters, thieves and
-shape changers, a friend of giants, the innocently accused, the
-misunderstood and the innocent. He can be found brooding in his hall
-\key{Utgard} in
-Jötunheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/J\%C3\%B6tunheimr}{Jötunheim}
+Loki\marginnote{\hiref{https://en.wikipedia.org/wiki/J\%C3\%B6tunheimr}{Jötunheim}
   is a plane of frost and giants. It can be reached by sailing the
-  river \key{Ifing} from \hyperref[key:Asgard]{Asgard}.}
+  river \key{Ifing} from \hyperref[key:Asgard]{Asgard}.} is the god of
+lies, of deceit, of misdeeds, of excuses and explanations, of looking
+the other way, of tricksters, thieves and shape changers, a friend of
+giants, the innocently accused, the misunderstood and the innocent. He
+can be found brooding in his hall \key{Utgard} in Jötunheim.
 
-In times of need, he might send a \textbf{shape changer} named
-\emph{Quiet}, \emph{Face}, \emph{Melt}, \emph{mother} or
-\emph{father}. Clearly, this is mostly useful when in need of
-deception.
-
-\begin{quote}
-  HD~4 AC~5 1d12 MV~9 ML~10 XP~400; \emph{polymorph} at will; immune
-  to \emph{sleep} and \emph{charms}
-\end{quote}
+In times of need, he might send \hyperref[sec:doppelgänger]{shape
+  changer}. Clearly, this is mostly useful when in need of deception.
 
 
 
@@ -936,12 +927,13 @@ save vs.~death for half.
 \label{sec:marduk}
 \index{Marduk}
 
-Marduk is the god of war and monster slaying, of armies, of generals,
-of brute force. His castle \emph{Unugal} is built in
-Midgard,\marginnote{\key{Midgard} is the realm of humans. This is the
-  Middle Earth, the world connecting to all the other realms of the
-  cosmos. \href{https://en.wikipedia.org/wiki/Marduk}{Marduk} is based
-  on the Babylonian god.} the world of humans.
+Marduk\marginnote{\hiref{https://en.wikipedia.org/wiki/Midgard}{Midgard}
+  is the realm of humans. This is the Middle Earth, the world
+  connecting to all the other realms of the cosmos.
+  \href{https://en.wikipedia.org/wiki/Marduk}{Marduk} is based on the
+  Babylonian god.} is the god of war and monster slaying, of armies,
+of generals, of brute force. His castle \emph{Unugal} is built in
+Midgard, the world of humans.
 
 In times of need he will send a \textbf{hunter general} named
 \emph{Death}, \emph{Strength}, \emph{Smasher} or \emph{Taker of
@@ -962,11 +954,7 @@ morale check when indicated!\marginnote{Morale checks are indicated
 \label{sec:mitra}
 \index{Mitra}
 
-Mitra is the goddess of law, of fire, of bulls, of contracts, of
-bonds, the swearing of oaths, of honesty and truth, of loyalty and
-sacrifice for the community. Her hall is built atop a lake of fire
-deep underground in Muspelheim and called
-\emph{Eldivatn}.\marginnote[-3em]{\hiref{https://en.wikipedia.org/wiki/Muspelheim}{Muspelheim}
+Mitra\marginnote{\hiref{https://en.wikipedia.org/wiki/Muspelheim}{Muspelheim}
   is a plane of fire and giants. It can be reached by descending into
   the depths of the earth from Midgard, the realm of humans.
   \href{https://en.wikipedia.org/wiki/Mitra}{Mitra} is inspired by
@@ -974,18 +962,12 @@ deep underground in Muspelheim and called
     Conley's take} on the Indo-Iranian divinity and by the James
   Vibert statues of the three
   \href{https://en.wikipedia.org/wiki/R\%C3\%BCtlischwur}{oath
-    takers}.}
+    takers}.} is the goddess of law, of fire, of bulls, of contracts,
+of bonds, the swearing of oaths, of honesty and truth, of loyalty and
+sacrifice for the community. Her hall is built atop a lake of fire
+deep underground in Muspelheim and called \emph{Eldivatn}.
 
-In times of need, she might send a \textbf{minotaur} named
-\emph{Silence}, \emph{Calm}, \emph{Truth Teller} or
-\emph{Spirit Guide}.
-
-\begin{quote}
-  HD~6 AC~6 2d6 MV~12 ML~11 XP~600; \emph{mesmerize} any listeners at
-  will (listeners must save vs.~spells or cease all hostilities and
-  speak nothing but the truth); immune to \emph{sleep} and
-  \emph{charms}
-\end{quote}
+In times of need, she might send a \hyperref[sec:minotaur]{minotaur}.
 
 
 
@@ -993,24 +975,17 @@ In times of need, she might send a \textbf{minotaur} named
 \label{sec:pazuzu}
 \index{Pazuzu}
 
-Pazuzu is the demon lord of pestilence, of miscarriage, of famine and
-disease, of crows and vultures, of temptation and betrayal. His tower
-\key{Sandstein} was built in
-Vanaheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/Vanaheimr}{Vanaheim}
-  is an underground realm where the vanquished demon lords of old
-  eek out their existence before fading away. It is a realm of
-  violence and madness, its caves plagued by flash floods and locust
-  storms. \href{https://en.wikipedia.org/wiki/Pazuzu}{Pazuzu} is based on the
-  Assyro-Babylonian god.}
+Pazuzu\marginnote{\hiref{https://en.wikipedia.org/wiki/Vanaheimr}{Vanaheim}
+  is an underground realm where the vanquished demon lords of old eek
+  out their existence before fading away. It is a realm of violence
+  and madness. \href{https://en.wikipedia.org/wiki/Pazuzu}{Pazuzu} is
+  based on the Assyro-Babylonian god.} is the demon lord of
+pestilence, of miscarriage, of famine and disease, of crows and
+vultures, of temptation and betrayal. His tower \key{Sandstein} was
+built in Vanaheim.
 
-In times of need he will send a \textbf{vulture demon} named
-\emph{Gangrene}, \emph{Pestilence}, \emph{Corpse Eater} or
-\emph{Baby Killer}.
-
-\begin{quote}
-  HD~8+1 AC~5 1d4/1d4/1d6/1d6/1d8 MV~18 ML~11 XP~800; flying; only
-  harmed by magic.
-\end{quote}
+In times of need he will send a \hyperref[sec:vulturedemon]{vulture
+  demon}.
 
 
 
@@ -1018,27 +993,18 @@ In times of need he will send a \textbf{vulture demon} named
 \label{sec:set}
 \index{Set}
 
-Set is the demon lord of snakes and crocodiles, of assassins, of
-revenge, of spies and diplomats, of poison makers, of death traps, of
-hypnotists and mind benders. His hall is the subterranean
-\emph{Eiterhorg} in
-Svartalfheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/Svartalfheim}{Svartalfheim}
+Set\marginnote{\hiref{https://en.wikipedia.org/wiki/Svartalfheim}{Svartalfheim}
   is a plane of dark elves and dwarves, reachable by tunnels under
   hills and behind waterfalls in Midgard.
   \href{https://en.wikipedia.org/wiki/Father_Set}{Set} is Robert E.
   Howard's god appearing in his Conan the Barbarian stories, using
   elements of the Egyptian god Set, the serpent Apophis and the
-  Hydra.}
+  Hydra.} is the demon lord of snakes and crocodiles, of assassins, of
+revenge, of spies and diplomats, of poison makers, of death traps, of
+hypnotists and mind benders. His hall is the subterranean
+\emph{Eiterhorg} in Svartalfheim.
 
-In times of need he will send a \hyperref[sec:naga]{naga} named
-\emph{Sweet Stab}, \emph{Revenge}, \emph{Crocodile Tears} or
-\emph{Coral Death}.
-
-\begin{quote}
-  HD 7 AC 7 1d8 + \emph{poison} F14 MV 6 ML 12 XP 700; \emph{fireball}
-  (7d6) 3×/day; \emph{charm person} and \emph{sleep} (2d8 HD total, HD
-  4 max at will; only harmed by magic or magic weapons
-\end{quote}
+In times of need he will send a \hyperref[sec:naga]{naga}.
 
 
 
@@ -1046,15 +1012,15 @@ In times of need he will send a \hyperref[sec:naga]{naga} named
 \label{sec:tsathoggua}
 \index{Tsathoggua}
 
-Tsathoggua is the demon lord of frogs and merchants, gluttony and
-greed, sloth and rent-seeking. His hall is the squat \emph{Myrrhorg}
-built of basalt blocks rising out of the endless swamps in
-Myrkheim.\marginnote{\hiref{https://en.wikipedia.org/wiki/Myrkheim}{Myrkheim}
+Tsathoggua\marginnote{\hiref{https://en.wikipedia.org/wiki/Myrkheim}{Myrkheim}
   is a world of tepid swamps, eternal night and nothing but the light
   of the moon to illuminate it. All who have reached it found it when
   they were lost in the fenns.
   \href{https://en.wikipedia.org/wiki/Tsathoggua}{Tsathoggua} is Clark
-  Ashton Smith's god from his Hyperborean cycle.}
+  Ashton Smith's god from his Hyperborean cycle.} is the demon lord of
+frogs and merchants, gluttony and greed, sloth and rent-seeking. His
+hall is the squat \emph{Myrrhorg} built of basalt blocks rising out of
+the endless swamps in Myrkheim.
 
 In times of need he will curse the land with a plague of
 \textbf{poisonous frogs} bubbling up from lakes and ponds or raining
@@ -1803,6 +1769,8 @@ number of your limbs and your mass remain unchanged.
 
 \textbf{Numbers}: 1d4.
 
+\textbf{Names}: Face, Father, Melt, Mother, Quiet.
+
 \poor The just have what their former victims used to own.
 
 % any terrain!
@@ -2029,8 +1997,7 @@ HD 1 HP 1d6 AC 5 1d6 or \emph{spell} E1 MV 12 ML 10 XP 100
 their leader with level 1d6+1 and accompanied by 1d6-3
 \hyperref[sec:weasel]{giant weasels} (possibly none).
 
-\textbf{Names}: Longevity, Sleepyflower, Forestflute, Waspheart,
-Lushvalley.\marginnote{If you want elvish names, check out
+\textbf{Names}: Cemil, Ndîsil, Achadion, Coruor, Mûlon, Rîneth.\marginnote{If you want elvish names, check out
   \href{http://www.tolkiendil.com/langues/english/i-lam_arth/compound_sindarin_names}{Compound
     Sindarin Names in Middle-earth}, which is part of
   \href{https://www.elfdict.com/about.page}{Parf Edhellen}, or the
@@ -3504,7 +3471,7 @@ stones will remain and cannot be dispelled. The stone walls are
 
 \textbf{Numbers}: 1d8.
 
-\textbf{Names}: Silence, Patience, Rage, Axe, Gore.
+\textbf{Names}: Silence, Calm, Patience, Rage, Axe, Gore.
 
 \poor This is the plunder of their roving years, if any.
 
@@ -3627,7 +3594,7 @@ Their bite is \textbf{poisonous} and leads to death in \SI{10}{min}.
 \begin{quote}
   HD 7 AC 7 1d8 + \emph{poison} F14 MV 6 ML 12 XP 700; \emph{fireball}
   (7d6) 3×/day; \emph{charm person} and \emph{sleep} (2d8 HD total, HD
-  4 max at will; only harmed by magic or magic weapons
+  4 max) at will; only harmed by magic or magic weapons
 \end{quote}
 
 \textbf{Numbers}: 1.
@@ -4679,6 +4646,35 @@ lives.
 
 
 
+\section{Vulture Demon}
+\label{sec:vulturedemon}
+\index{Vulture Demon}
+\index{Demon|see {Vulture Demon}}
+\air{Vulture Demon}
+
+Vulture demons are the winged demons of pestilence sent out by
+\hyperref[sec:pazuzu]{Pazuzu}. They bring misery and sickness wherever
+they go.
+
+\begin{quote}
+  HD 8+1 AC 5 1d6/1d6/1d6/1d6/1d8 F16 MV 18 ML 11 XP 800;
+  \emph{planeshift}; flying; only harmed by magic or magic weapons
+\end{quote}
+
+With their clawed hands and feet they are fearsome opponents in
+battle.
+
+\textbf{Numbers}: 1d6.
+
+\textbf{Names}: Gangrene, Pestilence, Black Bile, Corpse Eater, Baby
+Killer
+
+\notreasure
+
+\textbf{Terrain}: air.
+
+
+
 \section{Warlock}
 \label{sec:warlock}
 \index{Warlock}
@@ -4980,20 +4976,17 @@ means it took them about five sessions per level. Instead of handing
 out more treasure than provided for in these tables, consider
 providing more treasure in a different form:
 
-\begin{enumerate}
-\item stealing a ship that is worth \SI{50000}{gp} would provide as
-  much XP when it is lost (given away, sunk, stolen)
-
+\begin{packed}
+\item stealing a ship\marginnote{This sort of treasure isn't listed in
+  the treasure tables below!} that is worth \SI{50000}{gp} would
+  provide as much XP when it is lost (given away, sunk, stolen)
 \item conquering a well maintained keep worth \SI{75000}{gp} would
   provide as much XP when it is lost (given away, lost in a siege)
-\end{enumerate}
+\end{packed}
 
-This sort of treasure isn't listed in the treasure tables below!
-\bigskip
-
-\textbf{Treasure is distribution is not fair}. If treasure isn't
-parceled out in small chunks and isn't gained in regular intervals,
-but found rarely and in big chunks, then it works a bit like a slot
+\textbf{Treasure distribution is not fair}. If treasure isn't parceled
+out in small chunks and isn't gained in regular intervals, but found
+rarely and in big chunks, then it works a bit like a slot
 machine:\marginnote{When such design patterns are abused, they are
   addictive. Signs of addiction are the inability to stop even though
   you want to, abandoning friends and family, the inability to
@@ -5010,108 +5003,209 @@ guarantee of a rich reward. Players need to determine whether the
 particular dragon they are targeting does in fact have a big
 hoard.\marginnote{If it doesn't, I hope the players are at least doing
   it for the right reasons and not for material gain and personal
-  advancement.} This encourages players to look gather information and
-to scout, both of which make the game more interesting and the
-decision to risk a fight a strategic one.
+  advancement.} This encourages players to gather information and to
+scout, both of which make the game more interesting and the decision
+to risk a fight a strategic one.
 
-\textbf{Magic items come in various types}: weapons, armour, scrolls,
-wands, potions, rings, and other items, as well as treasure maps.
+\textbf{Magic items come in various types}:\marginnote{If a monster
+  description says ``5\% per level per item type,'' then this means a
+  level 3 leader would have a 15\% chance each for a magic weapon, a
+  magic armour, a scroll, a potion, a wondrous item, as well as a
+  treasure map.} magic weapons, magic armour, scrolls, potions,
+wondrous items, as well as treasure maps -- six categories.
 
-\section{Names}
+\textbf{Personalize magic items}. Where possible, a few names are
+given in the sidebar. If an elven \emph{dagger} +1 is found, you might
+describe it as ``a beautiful dagger, the hilt is a piece of wood
+shaped like a small treant and the blade is engraved with an oak leaf
+patterns and the name of its maker: Maeglin.''
 
-Many treasure items were created by legendary magic users, elves and
-dwarves. That is why it's important to have lots of names of for these
-legendary elves and dwarves. Surely their names can still be found
-inscribed into the magic items they created.
-
-\subsection{100 Magic User Names}
-\label{sec:humannames}\marginnote{These are Welsh names.}
-
-Einion, Dwynwen, Nest, Amranwen, Lowri, Carys, Brengwain, Elystan,
-Bledri, Branwen, Merfyn, Rhonwen, Teleri, Canaid, Clwyd, Bedaws, Enid,
-Ffraid, Cynfrig, Berwyn, Mair, Ceridwen, Blodwen, Rheinallt, Aelwen,
-Anhun, Arthgen, Seirian, Daron, Selwyn, Siwan, Rhoslyn, Auron, Deryth,
-Rhodri, Nudd, Awena, Sionyn, Hywel, Gwawr, Ynyr, Auryn, Iago, Cynedda,
-Llian, Dogmael, Elen, Elliw, Aeron, Efa, Elidir, Gwynonwen, Tegfedd,
-Alun, Generys, Siencyn, Taliesin, Boreugwyn, Blodwedd, Maelorwen,
-Owain, Eilonwy, Blwchfardd, Aedd, Eluned, Medi, Eirwen, Cei,
-Cadwaladr, Gwennan, Rhiannon, Heledd, Cyfeiliog, Derwena, Brynllyn,
-Peredur, Eurwen, Deilwen, Gwennol, Seren, Madlen, Celyn, Bryn, Aldyth,
-Sidan, Tangwystl, Gwernfyl, Ieuan, Teilo, Cospatrick, Maelmadog,
-Glanmor, Arthen, Enfys, Mona, Ceri, Gwenllian, Brisen, Cynfarch, Rhun.
-
-\subsection{100 Elf Names}
-\label{sec:elfnames}
-
-Eagle Melody, Sleepy Friend, Lush Melody, Tree Anger, Beautiful
-Harmony, Wasp Anger, Fox Love, Sleepy Light, Long Calling, Lush Sea,
-Wasp Life, Owl Harmony, Owl Flower, Sleepy Calling, Sun Sea, Snow
-Anger, Snow Love, Fox Song, Moon Song, Forest Life, Fox Flower, Tree
-Life, Eagle Love, Lush Flower, Lush Heart, Eagle Heart, Beautiful
-Light, Beautiful Valley, Forest Melody, Snow Song, Long Harmony, Ice
-Friend, Lush Valley, Star Song, Sleepy Sea, Fox Heart, Forest Love,
-Moon Friend, Long Anger, Lush Love, Long Flute, Owl Valley, Owl Love,
-Forest Calling, Moon Harmony, Beautiful Flute, Owl Calling, Star Life,
-Long Melody, Wasp Valley, Wasp Light, Long Valley, Owl Life, Sleepy
-Love, Wasp Sea, Tree Light, Fox Harmony, Long Heart, Tree Flower, Ice
-Song Eagle Friend, Star Valley, Snow Life, Moon Calling, Ice Love,
-Star Flower, Tree Flute, Sun Flute, Beautiful Love, Forest Light, Sun
-Friend, Moon Light, Eagle Valley, Sun Flower, Tree Harmony, Tree
-Calling, Sleepy Valley, Moon Anger, Beautiful Life, Star Love, Sun
-Anger, Eagle Calling, Eagle Sea, Snow Sea, Long Flower, Snow Harmony,
-Moon Flower, Beautiful Anger, Sun Melody, Beautiful Friend, Ice Life,
-Ice Melody, Wasp Flute, Forest Harmony, Long Love, Forest Flower,
-Beautiful Flower, Sun Light, Snow Friend, Tree Love
-
-\subsection{100 Dwarf names}
-\label{sec:dwarfnames}
-
-Motin Swordbearer, Oddrún Steelmaker, Tóroddur Swordfriend, Bina
-Steelbearer, Ásleivur Shieldsmasher, Njálur Stonesmasher, Róin
-Eartheater, Fróthi Hammersmasher, Frótha Stonemaker, Roda Swordmaster,
-Gróa Steelsmasher, Duri Shieldbearer, Magga Hammerfriend, Rodleivur
-Eartheater, Sigga Earthmaster, Herolvur Stonefriend, Arnvór
-Platemaster, Minna Ironsmasher, Unn Swordeater, Gunni Earthsmasher,
-Dwalvari Axemaster, Barba Earthmaker, Ingvór Shieldfriend, Anní
-Steelbearer, Baldur Shieldfriend, Dufi Ironbearer, Vilhjálmur
-Shieldmaster, Billthrasir Platemaster, Marna Platesmasher, Hjalma
-Hammerbearer, Kára Axebearer, Motspori Shieldmaker, Bettí Stoneeater,
-Óluva Eartheater, Norin Steelsmasher, Thekk Ironfriend, Sevrin
-Stoneeater, Bombvari Ironsmasher, Dagur Swordbearer, Borgní
-Stonesmasher, Billskjald Axemaker, Ester Shieldbearer, Skeggi
-Shieldfriend, Ithunn Ironmaster, Íthgrímur Ironfriend, Havdís
-Stonesmasher, Heimurin Swordmaker, Ingrún Steelmaker, Dolgskjald
-Swordbearer, Píl Shieldfriend, Merrí Stonebearer, Alrún Ironbearer,
-Vísi Hammerfriend, Flemmingur Stonemaker, Haugthrasir Swordmaker,
-Tróndur Earthfriend, Sólvór Ironeater, Ginnskjald Shieldsmasher, Vesti
-Shieldfriend, Lona Shieldeater, Jaspur Earthfriend, Ingileivur
-Axemaker, Enna Swordmaster, Bráli Ironmaker, Embla Platemaker,
-Ásvaldur Stonefriend, Thrárin Hammerfriend, Thorar Platesmasher, Urtha
-Swordsmasher, Sigbjartur Hammersmasher, Althskjald Swordbearer, Ormur
-Stonebearer, Íthunn Eartheater, Poli Ironeater, Hlevang Shieldfriend,
-Nomi Swordmaster, Trygvi Shieldsmasher, Eilin Ironbearer, Gunnlígur
-Shieldfriend, Rakul Swordfriend, Olivur Stonesmasher, Alrún
-Ironmaster, Bifi Platebearer, Eilin Shieldmaster, Talita Earthmaker,
-Suthvari Shieldmaker, Ingi Swordsmasher, Motsognir Steeleater, Róaldur
-Swordmaster, Fís Swordmaster, Thorvari Stonefriend, Dufvari
-Earthmaster, Njálur Platesmasher, Gani Ironmaker, Jórunn Earthmaker,
-Fravari Steelfriend, Bettí Steelsmasher, Nomi Swordmaker, Vár
-Plateeater, Gudvór Platebearer.
-
-\subsection{30 Dwarven Forges}
-\label{sec:forgenames}
-
-Thunder, High Star, Skyfather, Grimmlight, Skyeater, Old Star, High
-Hammer, Sky, Old Sky, Grind, Anvileater, Great Anvil, Old Hammer,
-Grindlight, Grimmfather, Skylight, Hammereater, Grimm, Star, Old Moon,
-Anvil, High Grind, Hammer, Great Grind, High Thunder, Moonlight,
-Grindeater, Hammerlight, High Anvil, Anvilfather
-
+\newpage
 
 \section{Magic Weapons}
 
+The magic bonus applies to both to hit and damage rolls.
+
+\begin{packed}
+\item An elven \emph{dagger} +1\marginnote{Elf names: Nguruion,
+  Buiaeth, Teril, Ereth, Cadwariel, Gornor, Ngolloriel, Gellil,
+  Tolthaion, Landil}
+\item An elven \emph{long sword} +1
+\item An elven \emph{long bow} +1
+\item An elven \emph{silver dagger} +1/+3 vs. devils
+\item The long sword \emph{Meteorstrike} +1/+3 vs.
+  dragons,\marginnote{Dragon names: Verdant Despair, Poison Tooth,
+    Forest End, Piercing Bone, Jade Agony, Screaming Fire} an old
+  elven sword forged in the dragon wars
+\item The long sword \emph{Dragonslayer} +1/+3 vs. dragons, blessed by
+  \emph{Marduk}
+
+\item A dwarven \emph{dagger} +2\marginnote{Dwarf names: Marna
+  Platesmasher, Hjalma Hammerbearer, Kára Axebearer, Motspori
+  Shieldmaker, Bettí Stoneeater, Norin Steelborn, Óluva Earthhammer,
+  Thekk Ironfriend, Sevrin Rockbore, Bombvari Deepdelver}
+\item A dwarven \emph{short sword} +2
+\item A dwarven \emph{crossbow} +2
+\item The holy long sword \emph{Angelfire} +1/+3 vs. undead, forged in
+  Asgard by the dwarves
+\item The dwarven hammer \emph{Ironslayer} +1/+3 vs. armoured foes
+
+\item A \emph{dagger} +1 consecrated to a power\marginnote{To limit
+  the results to evil powers, just roll 1d5. To limit the result to
+  good powers, use 1d5+5.
+
+  \medskip
+  \begin{tabular}{clcl}
+      & Evil    &    & Good     \\
+    1 & Set     &  6 & Marduk   \\
+    2 & Orcus   &  7 & Freya    \\
+    3 & Nergal  &  8 & Odin     \\
+    4 & Pazuzu  &  9 & Thor     \\
+    5 & Hel     & 10 & Mitra    \\
+  \end{tabular}}
+\item A \emph{dagger} +1 with the pommel being a small talking head of
+  a power always there to recommend a violent course of action
+\item A \emph{dagger} +1 consecrated to an evil power poisoning your
+  thoughts with images of you stabbing anybody you talk to
+\item The dagger \emph{Lifeblood} +1 which allows you to transfer the
+  power of life by cutting somebody and having somebody else drink it
+\item The dagger \emph{Stonecutter} +1 which allows you to slowly cut
+  through stone
+\item A magic \emph{tongue dagger} +1 with a sticky tongue wrapped
+  around its grip which can pick up unguarded items within 2m,
+  consecrated to \emph{Tsathoggua}
+\item The dagger \emph{Tin Opener} +1/+3 vs. armoured foes, with
+  etchings on its blade showing a peasant stabbing a knight into the
+  visor
+\item The black dagger \emph{Kingslayer} +1, blessed by \emph{Set}: a
+  target hit in the surprise round must save vs. poison or die
+\item The dagger \emph{Heart Eater} +1/+3 vs. humans, with etchings on
+  its blade showing a human sacrifice
+
+\item A goblin\marginnote{Goblin names: Death Needle, Eye Taker, Wolf
+  Rider, Beetle Biter, Rat King, Poison Snake, Black Bile} assassin’s
+  \emph{dagger} +1 with grip covered by rats’ teeth and lizard skin
+\item A goblin assassin’s black iron \emph{crossbow} +1, decorated
+  with the seven heads of \emph{Set}
+\item A goblin assassin’s \emph{short bow} +1 with plenty of notches
+  along its side
+  
+\item An orcish \emph{zweihänder} +1/+3 vs. city
+  dwellers\marginnote{Orc sword traditions: Long Horse Biter, Toothed
+    Killer, Barbed Back Ripper, Crooked Slicer, Wicked Monkey Chopper,
+    etc.}
+\item An orcish \emph{mace} +1
+\item An orcish \emph{mace} +1 marked with the runes of an evil power
+\item The ancient war hammer \emph{Earth Hammer} +3, made by the orcs
+  in the Wars of the Landgrab: it can smash any structure built by man
+  in three blows
+
+\item A magic \emph{silver rune dagger} +1/+3 vs. were-creatures
+\item The ancient spear \emph{Fur Hunter} +1/+3 vs. mammals, a relic
+  of the Old Lizard Wars, blessed by \emph{Set}
+\item The long sword \emph{Moonfire} +1/+3 vs. lycanthropes, inscribed
+  with silver runes of death and banishment, forged by the high
+  inquisitors of an old realm\marginnote{Old realms: Abilard,
+    Erlechai, Farlazzan, Merlen, Ouria, Pichuhiatl, Quddu, Rajana,
+    Silah, Trazadan, Yzarria, Zerrin}
+\item The long sword \emph{Razorblade} +1/+3 vs. spell casters, forged
+  by ancient machines in the Philosophers’ War
+\item A \emph{long sword of light} +3 (60ft), made in Asgard
+\item The \emph{club of the slayer} +1/+3 vs. giants, blessed by
+  \emph{Marduk}
+\item A smoking, quivering \emph{black arrow of death} +2, carrying
+  the curse of \emph{Nergal}, ready to take root in a target: if hit,
+  save vs. death or die; the arrow’s curse is lost when shot whether
+  it hits or misses
+\item The two handed \emph{Icekiller} +3, forged by the frost
+  giants\marginnote{Frost giants: Winter’s Bone, Snow, Ice, Cold,
+    Glacier, Storm, Darkness, Tooth} in Jötunheim; when the blade is
+  drawn, snow flakes form; when it is stuck into water, a layer of ice
+  forms (10ft in an hour); when left unsheathed, a glacier eventually
+  forms
+\item The long sword \emph{Swampfire} +1/+3 vs. runners, forged in the
+  depths of Myrkheim by frogling priests of \emph{Tsathoggua}; it eeks
+  a phosphorous glowing liquid and smells of rotten eggs; when left
+  unsheathed, everything around it becomes water logged and eventually
+  turns into a swamp
+\item The \emph{trident of fishes} +1 gives you long, webbed toes and
+  the ability to breathe under water when you step into it, and you
+  can speak the language of fishes
+\end{packed}
+
 
 \section{Magic Armour}
+
+The magic bonus applies to both armour class and saving throws.
+
+\begin{packed}
+\item A pair of \emph{silver armlets} +1 dedicated to a
+  power\marginnote{To limit the results to evil powers, just roll 1d5.
+    To limit the result to good powers, use 1d5+5.
+    
+    \medskip
+    \begin{tabular}{clcl}
+        & Evil    &    & Good     \\
+      1 & Set     &  6 & Marduk   \\
+      2 & Orcus   &  7 & Freya    \\
+      3 & Nergal  &  8 & Odin     \\
+      4 & Pazuzu  &  9 & Thor     \\
+      5 & Hel     & 10 & Mitra    \\
+  \end{tabular}}
+\item A pair of \emph{golden armlets} +2 dedicated to a good power
+\item A pair of \emph{black iron broken manacles} +2 with fiendish
+  runes dedicating its wearer to an evil power
+\item Two sets of \emph{black iron chains} +2 to wrap around your
+  arms, with the runes of an evil power on every link
+\item A \emph{silver diadem} +1 dedicated to a power
+\item A \emph{silver crown} +1 commemorating an elf
+\item A \emph{golden diadem} +2 dedicated to a good power
+\item A \emph{black iron crown} +2 proclaiming the wearer to be loyal
+  slave of an evil power
+\item A \emph{silver necklace} +1 dedicated to a power
+\item A \emph{golden necklace} +2 dedicated to a good power
+\item A \emph{black iron slave collar} +2 dedicating its wearer to an
+  evil power
+\item A \emph{living silver tatoo} +1 dedicated to a good power
+\item A \emph{living black tatoo} +1 dedicating its wearer to an evil
+  power
+\item A black \emph{plate armour of an evil power} +3, inscribed with
+  runes of fire spelling doom and despair
+
+\item The \emph{shield of the lion} +2: when you hit your opponent, it
+  bites for an extra 1d6 damage
+
+\item A \emph{golden crown} +2 commemorating the ascension of a
+  dwarf\marginnote{Dwarf names: Vilhjálmur Shieldmaster, Billthrasir
+    Platemaster, Marna Platesmasher, Hjalma Hammerbearer} to the
+  throne of a dwarf forge
+\item A suit of dwarven \emph{plate armour cold resistance} +1 made
+  with scales of a white dragon\marginnote{Dragon names: White Fang of
+    the Glacier, Deep Death the Eternal, Snow Tooth of the Thin Air,
+    White Despair of the Glacier, Frost Tooth of the Top}
+\item A suit of dwarven \emph{plate armour} +2
+\item A suit of dwarven \emph{golem armour} +3
+\item A suit of dwarven \emph{power armour} +3, strength
+  18\marginnote{Strength 18 grants you +3 to hit and +3 to damage!}
+\item A dwarven \emph{shield} +2
+
+\item A \emph{black iron crown} +2 proclaiming the wearer to be a
+  famous orc\marginnote{Orc names: Club Thrower, Root Finder, Pie
+    Eater, Strong Fang, Loud Face, Mushroom Friend, Long Face, Spear
+    Maker, Monkey Killer} and king of kings
+
+\item A black \emph{plate armour of the dark lord} + 2, giving your
+  voice a magical force, if you are not attacking: the person
+  addressed must save vs. spells or obey a one-word command, if they
+  can\marginnote{They must be able to understand you.}
+
+\item A suit of elven \emph{plate armour} +1\marginnote{Elf names:
+  Tarlancor, Naron, Aluil, Gwathrenor, Iandil, Halthaon, Peniel}
+\item An elven \emph{shield} +1
+\item A suit of elven \emph{plate armour of fire resistance} +1 made
+  with scales\marginnote{Dragon names: Black Agony, Fire Fang, Red
+    Mountain, Ash Despair, Flaming Rain} of a red dragon
+\end{packed}
 
 
 \section{Scrolls}
@@ -5121,7 +5215,7 @@ speak.\marginnote{A scroll can be identified by reading it silently!}
 The magic is embedded in the writing. Reading the words out loud
 releases the magic and destroys the scroll.
 
-\begin{enumerate}
+\begin{packed}
 \item \emph{protection of the moon} (8h, prevents were-creatures from
   approaching)
 \item \emph{safety} (transports the reader and up to ten targets back
@@ -5139,74 +5233,56 @@ releases the magic and destroys the scroll.
   existing snow or ice)
 \item \emph{piercing steel} (sudden growth of a permanent iron spike
   5m high, 4d6, save vs. spells for half)
-\item \emph{unlocking doors} (unlocks and unbars a door up to 2m wide)
-\item \emph{summoning of a hunter general}:\marginnote{Death,
-  Strength, Smasher, Taker of Heads; from Unugal (Marduk’s hall) in
-  Midgard} HD 6+1 AC 7 1d6 F6 MV 12; leading a \emph{hundertschaft},
-  one hundred \textbf{light infantery}: HD 1 AC 7 1d6 F1 MV 12 ML 10
+\item \emph{unlocking doors} (unlocks and unbars a door up to 2m
+  wide)
+\item \emph{summoning} 100 \hyperref[sec:human]{humans} from Unugal (Marduk’s hall) in Midgard
 \item \emph{summoning} a \hyperref[sec:minotaur]{minotaur} from
   Eldivatn, Mitra’s hall in Muspelheim
-\item \emph{summoning} a \hyperref[sec:naga]{naga} from Eiterhorg, Set’s hall in
-  Svartalfheim
-\item \emph{summoning} a \hyperref[sec:doppelgänger]{doppelgänger} from Utgard, Loki’s
-  hall in Jotunheim
-\item \emph{summoning} a \hyperref[sec:troll]{troll} from Ejudnir, Hel’s hall in
-  Niflheim
-\item \emph{summoning} a \hyperref[sec:valkyrie]{valkyrie} from Sessrúmnir, Freya’s
-  hall in Asgard, or from Valhalla, Odin’s hall in Asgard
-\item \emph{summoning} a \textbf{vulture demon}:\marginnote{Gangrene,
-  Pestilence, Black Bile, Corpse Eater, Baby Killer} HD 8+1 AC 5
-  1d4/1d4/1d6/1d6/1d8 F16 MV 18 ML 11; flying; only harmed by magic or
-  magic weapons
+\item \emph{summoning} a \hyperref[sec:naga]{naga} from Eiterhorg,
+  Set’s hall in Svartalfheim
+\item \emph{summoning} a \hyperref[sec:doppelgänger]{doppelgänger}
+  from Utgard, Loki’s hall in Jotunheim
+\item \emph{summoning} a \hyperref[sec:troll]{troll} from Ejudnir,
+  Hel’s hall in Niflheim
+\item \emph{summoning} a \hyperref[sec:valkyrie]{valkyrie} from
+  Sessrúmnir, Freya’s hall in Asgard, or from Valhalla, Odin’s hall in
+  Asgard
+\item \emph{summoning} a \hyperref[sec:vulture demon]{vulture demon}
+  from Sandstein, Pazuzu’s tower in Vanaheim
 \item \emph{summoning a plague of poisonous frogs} boiling up from
   lakes and ponds or raining down from the heavens; anybody caught out
   in the open during this storm of poisonous frogs must save
   vs. poison or die
-\end{enumerate}
+\end{packed}
 
 
 \section{Potions}
 
-A potion can only affect the one imbibing it.q If your players enjoy
+A potion can only affect the one imbibing it. If your players enjoy
 discovering the effects of potions through trial and error, keep a
 table where you assign each effect a particular look and smell by
 rolling multiple dice on the following table!
 
 \bigskip
-\begin{tabular}{rlll}
-1d10 & It's… & colour & and smells like…              \\
-   1 & deep         & red         & oranges           \\
-   2 & dark         & orange      & apples            \\
-   3 & light        & yellow      & dung              \\
-   4 & foamy        & green       & vomit             \\
-   5 & sparkly      & indigo      & the sea           \\
-   6 & cloudy       & purple      & earth             \\
-   7 & flaky        & blue        & wet dog           \\
-   8 & viscous      & rose        & rotten eggs       \\
-   9 & bubbly       & brown       & cut grass         \\
-  10 & chunky       & white       & smoke             \\
-\end{tabular}
-
-\bigskip
-
-\begin{enumerate}
-\item \emph{cold resistance} (1h)
-\item \emph{fire belching} (20min, 3d6, save vs. dragon
-  breath for half)
-\item \emph{fire resistance} (1h)
-\item \emph{flying} (1h)
-\item \emph{healing} (1d6+1)
-\item \emph{invisibility} (20min, no attacks)
-\item \emph{shape changing} (20min, suspicious behaviour
-  grants observers a save vs. spells to see that something's amiss)
-\item \emph{silver tongue} (1h, everybody who hears your
-  voice must save vs. spells or be \emph{charmed})
-\item \emph{strength} (20min, strength 18)
-\end{enumerate}
+\begin{fullwidth}
+  \begin{tabular}{clllp{9cm}}
+    1d10 & It's… & colour & smells like… & and does… \\
+    1 & light   & blue    & the sea      & \emph{flying} (1h) \\
+    2 & cloudy  & orange  & oranges      & \emph{healing} (1d6+1) \\
+    3 & flaky   & yellow  & wet dog      & \emph{fire resistance} (1h) \\
+    4 & foamy   & green   & vomit        & \emph{cold resistance} (1h) \\
+    5 & chunky  & white   & apples       & \emph{strength} (20min, strength 18) \\
+    6 & sparkly & purple  & earth        & \emph{invisibility} (20min, no attacks) \\
+    7 & deep    & indigo  & cut grass    & \emph{speed} (two actions per round for 10min) \\
+    8 & viscous & rose    & rotten eggs  & \emph{shape changing} (20min, suspicious behaviour grants observers a save vs. spells to see that something's amiss) \\
+    9 & dark    & brown   & dung         & \emph{silver tongue} (1h, everybody who hears your voice must save vs. spells or be \emph{charmed}) \\
+    10 & bubbly & red     & smoke        & \emph{fire belching} (20min, 3d6, save vs. dragon breath for half) \\
+  \end{tabular}
+\end{fullwidth}
 
 \section{Wondrous Items}
 
-\begin{enumerate}
+\begin{packed}
 \item \emph{nightvision goggles} (60ft)
 \item \emph{gloves of strength} (strength 18)
 \item \emph{ring of invisibility} which turns you invisible until you
@@ -5227,42 +5303,38 @@ rolling multiple dice on the following table!
   future self: when rolling a d20, roll 2d20 and take the higher
   result, but before doing it again you need to pay your debt in a
   similar situation and roll 2d20 and take the lower result
-\item \emph{necklace of dharma} allows you to borrow actions from your
-  future self: act twice this round to do what needs to be done but
-  skip the next round
 \item \emph{amulet of the luck stealer} allows you to borrow luck from
   a willing person near you: when rolling a d20, roll 2d20 and take
   the higher result, but the next time they need to roll a d20 in a
   similar situation, they roll 2d20 and take the lower result
+\item \emph{necklace of dharma} allows you to borrow actions from your
+  future self: act twice this round to do what needs to be done but
+  skip the next round
+\item \emph{diadem of the slaver}, when targeted by a spell, it is
+  redirected to a person within 10ft if you save vs. spells; the new
+  target may still save vs. spells
 \item \emph{elven cloak} (5 in 6 chance of hiding in the wilderness
   using magic camouflage when standing still)
 \item \emph{crystal of starlight} (60ft)
-\item \emph{compass of hell}, blessed by Hel (it has two pointers: one
-  points to the nearest danger, the other to the nearest safe place)
-\item \emph{amulet of shape changing}, blessed by Loki\marginnote{Roll
-  1d4: 1. sea lion, allows you to swim; 2. vulture, allows you to fly;
-  3. horse, allows you to ride; 4. black cat, allows you to sneak}
-\item \emph{horn of the barbarians} (summons 3d6 random, battle crazy
+\item \emph{compass of hell}, blessed by \emph{Hel} (it has two
+  pointers: one points to the nearest danger, the other to the nearest
+  safe place)
+\item \emph{amulet of shape changing}, blessed by
+  \emph{Loki}\marginnote{Roll 1d4: 1. sea lion, allows you to swim; 2.
+    vulture, allows you to fly; 3. horse, allows you to ride; 4. black
+    cat, allows you to sneak}
+\item \emph{horn of the barbarians}, summons 3d6 random, battle crazy
   barbarians: HD 2 AC 7 1d8 F2 MV 12 ML 12; when they are all killed
-  in the same fight they are released from their bond to the horn)
-\item \emph{horn of the ancients} (summons 1d8 wights: HD 3 AC 5
-  *drain* F3 MV 9 ML 12 XP 300; only harmed by magic or magic weapons;
-  immune to \emph{sleep} and \emph{charm}; when killed, they are
-  released from their bond to the horn)
-\item \emph{horn of the tengus} (summons 1d6 tengus: HD 5+1 AC 6 1d8
-  F10 MV 15 ML 8; flying; when killed, they are released from their
-  bond to the horn)
-\item \emph{horn of the demon}\marginnote{The Inner Blade of Sky, The
-  Last Directive of Giants, The Shining Banner of the Underworld, The
-  Subtle Glories of Vanaheim, The Iron Heart of the Netherworld, The
-  Cruel Depth of Hell, The Dying Altars, The Prophesied Fists of the
-  Seven Wings, The Fiery Terror of Air, The Dismal Plain of the Five
-  Winds} (summons a vulture demon from Vanaheim: HD 8+1 AC 5
-  1d4/1d4/1d6/1d6/1d8 F16 MV 18 ML 11; flying; only harmed by magic or
-  magic weapons; when killed, they are released from their bond to the
-  horn)
-\item \emph{diadem of the slaver} (when targeted by a spell, it is
-  redirected to a person within 10ft if you save vs. spells)
+  in the same fight they are released from their bond to the horn
+\item \emph{horn of the ancients}, summons 1d8
+  \hyperref[sec:wight]{wights}; when killed, they are released from
+  their bond to the horn
+\item \emph{horn of the tengus}, summons 1d6
+  \hyperref[sec:tengu]{tengus}; when killed, they are released from
+  their bond to the horn
+\item \emph{horn of the demon}, summons a
+  \hyperref[sec:vulturedemon]{vulture demon}; when killed, they are
+  released from their bond to the horn
 \item \emph{ring of the tengu}, summons a \hyperref[sec:tengu]{tengu}
   always willing to talk and offer advice; the ring’s magic is lost
   when the tengu is killed
@@ -5272,14 +5344,14 @@ rolling multiple dice on the following table!
 \item \emph{flute of the naga}, summons a \hyperref[sec:naga]{naga}
   always ready to whisper and corrupt in your name; the flute’s magic
   is lost when the naga is killed
-\item \emph{flying carpet} (four people)
+\item \emph{flying carpet} with space for four people
 \item a silver necklace with a big gem containing the elemental prison
   of a \hyperref[sec:jinni]{jinn}
 \item a jar containing the elemental prison of a
   \hyperref[sec:marid]{marid}
 \item an oil lamp containing the elemental prison of an
   \hyperref[sec:ifrit]{ifrit}
-\end{enumerate}
+\end{packed}
 
 
 \section{Treasure Maps}
@@ -5287,20 +5359,19 @@ rolling multiple dice on the following table!
 Maps point to a location nearby where more \emph{unguarded} treasure
 can be found (although the location itself might very well be unsafe).
 
-\begin{enumerate}
-\item map to the hidden crypt of an old magic user\marginnote{See page
-  \pageref{sec:humannames} for magic user names} with the promise of
-  1d12×1000 gold coins to be found
-\item map to the hidden ancestral shrine of an elf\marginnote{See
-  page \pageref{sec:elfnames} for elf names} with the promise of
-  1d6×1000 gold coins to be found
-\item map to the hidden ancestral shrine of a dwarf\marginnote{See
-  page \pageref{sec:dwarfnames} for dwarf names} with the promise of
-  1d10×1000 gold coins to be found
-\item map to 2d6 jewels hidden in a secret compartment in a nearby
-  dwarven forge\marginnote{See page \pageref{sec:forgenames} for
-    dwarven forge names}
-\end{enumerate}
+\begin{packed}
+\item map to the hidden crypt of an old magic user\marginnote{Names:
+  Glanmor, Arthen, Enfys, Mona, Gwenllian, Brisen, Cynfarch}
+  with the promise of 1d12×1000 gold coins to be found
+\item map to the hidden ancestral shrine of an elf\marginnote{Elf
+  names: Padiel, Nellaor, Gladiel, Rosseth, Ngolwenor, Draugeth,
+  Lhûgil} with the promise of 1d6×1000 gold coins to be found
+\item map to the hidden ancestral shrine of a dwarf\marginnote{Dwarf
+  names: Kára Axebearer, Motspori Shieldmaker, Bettí Stoneeater} with
+  the promise of 1d10×1000 gold coins to be found
+\item map to 2d6 jewels hidden in a dwarven forge\marginnote{Forge
+  names: Moonlight, Grindeater, Hammer, High Anvil, Skyfather}
+\end{packed}
 
 \section{Treasure Types}
 
@@ -5358,6 +5429,95 @@ gifts. They have everything.
 \textbf{Dwarf}: They actively seek out treasure, digging deep and
 plundering as they go. They also have everything.
 
+
+
+\chapter{Names}
+
+Many treasure items were created by legendary magic users, elves and
+dwarves. That is why it's important to have lots of names of for these
+legendary elves and dwarves. Surely their names can still be found
+inscribed into the magic items they created.
+
+I also like to use different lists to pick all the names of ancient
+magic users, devils, dwarves, elves, halflings and humans, and so on.
+
+\subsection{Welsh names}
+
+Einion, Dwynwen, Nest, Amranwen, Lowri, Carys, Brengwain, Elystan,
+Bledri, Branwen, Merfyn, Rhonwen, Teleri, Canaid, Clwyd, Bedaws, Enid,
+Ffraid, Cynfrig, Berwyn, Mair, Ceridwen, Blodwen, Rheinallt, Aelwen,
+Anhun, Arthgen, Seirian, Daron, Selwyn, Siwan, Rhoslyn, Auron, Deryth,
+Rhodri, Nudd, Awena, Sionyn, Hywel, Gwawr, Ynyr, Auryn, Iago, Cynedda,
+Llian, Dogmael, Elen, Elliw, Aeron, Efa, Elidir, Gwynonwen, Tegfedd,
+Alun, Generys, Siencyn, Taliesin, Boreugwyn, Blodwedd, Maelorwen,
+Owain, Eilonwy, Blwchfardd, Aedd, Eluned, Medi, Eirwen, Cei,
+Cadwaladr, Gwennan, Rhiannon, Heledd, Cyfeiliog, Derwena, Brynllyn,
+Peredur, Eurwen, Deilwen, Gwennol, Seren, Madlen, Celyn, Bryn, Aldyth,
+Sidan, Tangwystl, Gwernfyl, Ieuan, Teilo, Cospatrick, Maelmadog, Ceri
+
+\subsection{Hungarian names}
+
+Gergõ, Egyed, Kolos, Jóska, Fülöp, Adorján, Illés, Sándor, Géza,
+Bertalan, Imre, János, Barnabás, Gábor, Bertók, Virág, Lajos, Tibor,
+Pista, Jenci, Donát, Gyula, Dezsö, Bátor, Bernát, Kálmán, Sanyi,
+Imrus, Bence, Tivadar, Levi, Sami, Ákos, Benedek, Tiborc, Elek, Vili,
+Domonkos, Árpád, Jani, Fredek, Kázmér, Ödi, Levente, Gazsi, Barna,
+Fabó, Antal, Enre, Ferenc, Béla, Zsiga, Bartal, Jenõ, Bartó, Nándor,
+Lörinc, Dénes, Lázár, Vida, Feri, Ferkó, Ferka, Bartos, László,
+Kelemen, Gyõzõ, Zoltán, Andris, Gergely, Gyuri, Jancsi, Ignác, Andor,
+Ernö, Orbán, Balázs, Laci, Lecso, Bandi, Zsolt, Miksa, Frygyes,
+Vilmos, Karcsi, Józsi, Álmos, Mózes, Bálint, Boldizsár, Tódor
+
+\subsection{Dwarf names}
+
+Motin Swordbearer, Oddrún Steelmaker, Tóroddur Swordfriend, Bina
+Steelbearer, Ásleivur Shieldsmasher, Njálur Stonesmasher, Róin
+Eartheater, Fróthi Hammersmasher, Frótha Stonemaker, Roda Swordmaster,
+Gróa Steelsmasher, Duri Shieldbearer, Magga Hammerfriend, Rodleivur
+Eartheater, Sigga Earthmaster, Herolvur Stonefriend, Arnvór
+Platemaster, Minna Ironsmasher, Unn Swordeater, Gunni Earthsmasher,
+Dwalvari Axemaster, Barba Earthmaker, Ingvór Shieldfriend, Anní
+Steelbearer, Baldur Shieldfriend, Dufi Ironbearer, Óluva Eartheater,
+Norin Steelsmasher, Thekk Ironfriend, Sevrin Stoneeater, Bombvari
+Ironsmasher
+
+\subsection{Dwarven forges}
+
+Thunder, High Star, Grimmlight, Skyeater, Old Star, High
+Hammer, Sky, Old Sky, Grind, Anvileater, Old Hammer,
+Grindlight, Grimmfather, Skylight, Hammereater, Grimm, Star, Old Moon,
+Anvil, High Grind, Hammerlight, Great Grind, High Thunder,
+Anvilfather
+
+\subsection{Elf names}
+
+Andrethion, Rhosgeth, Nindeth, Minaieth, Pathiel, Mundiel, Fanthaion,
+Tuiaiel, Eithail, Nallaiel, Medliniel, Amonil, Tauriel, Rîor, Meweth,
+Harneth, Galaor, Tolthaor, Rîiel, Hwandon, Avornil, Minaon, Glamrenil,
+Medlïel, Mbaradon, Theriail, Gornil, Pedeth, Nîdon, Galenaseth,
+Mellonil, Adaniel, Megiliel, Tulusor, Maidhiel, Fairion, Ngarafon,
+Ndeil, Agarwenil, Rosciel, Muiliel, Narchil, Eruior, Feliel, Roscil,
+Lumon, Pîneth, Arason, Lomor, Teithail, Bathail, Felor, Thancil,
+Neniel, Hûion, Aitheth, Osgariel, Cinnogion, Laugon, Tanil, Cuineth,
+Dringon, Gemon, Sainion, Nautheth, Balchon, Ndîsiel, Norothiel,
+Mereneth, Gûriel, Lammail, Gwerenil, Achador, Serion, Îdhor, Aglaril,
+Nenuil, Cûil, Sogor, Agoril, Thandon, Tarlanceth, Tongeth, Torthail,
+Nestadreniel, Geareth, Gereth, Haradeth, Taraion, Goeolil, Delueth,
+Cŷrion, Calion, Firenon, Angolon, Tarchiel, Ndagil, Cornor, Anoror
+
+\subsection{Demon names}
+
+The Incorruptible, The Orb of the Gods, The Wandering Society of
+Assassins, The Star of Hell, The Purgatory Ceremonies of the Dead
+Wind, The Forgotten Vortex of the Sky, The Faceless Dream of Vultures,
+The Dormant Aurora, The Might of the Desert, The Flaming Corpse of
+Vanaheim, The Stygian Cloud, The Ruby Orbs, The Metamorphic Turmoil of
+the Gods, The Omnipotent Understanding of the Netherworld, The Fiery
+Terror of Air, The Last Directive of Giants, The Subtle Glories of
+Vanaheim, The Cruel Depth of Hell, The Archaic Sun of the Old Sky, The
+Dismal Plain of the Five Winds, The Ambassador of the Exalted
+Brotherhood of the Underworld, The Crippled Meditation of the Vanir,
+The Frozen Raven of Death
 
 
 \begin{fullwidth}
