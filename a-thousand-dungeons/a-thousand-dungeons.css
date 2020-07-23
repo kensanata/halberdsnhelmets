@@ -1,0 +1,44 @@
+html { hyphens: auto }
+
+body {
+    font-family: "Iosevka Light";
+    font-size: 10pt;
+    line-height: 12pt;
+    text-align: justify;
+    /* columns: 2 */
+}
+
+code {
+    font-family: "Iosevka Extralight";
+}
+
+/* title page */
+
+h1 {
+    font-size: 24pt;
+    line-height: 30pt;
+    font-style: normal;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+h2 {
+    font-size: 14pt;
+    line-height: 18pt;
+}
+
+@media screen {
+    body { max-width: 80ex }
+}
+
+@page {
+    @bottom-center {
+	content: counter(page);
+    }
+}
+
+/* bookmarks, table of contents */
+h1, h3 { bookmark-level: none }
+
+.wide { width: 80%; margin: 0 auto }
