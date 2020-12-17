@@ -1,0 +1,52 @@
+html { hyphens: auto }
+body {
+    font-family: "fbb", "Palatino";
+    font-size: 12pt;
+    line-height: 16pt;
+    text-align: justify;
+}
+p {
+    margin: 0.5ex 0;
+    padding-left: 2ex;
+    text-indent: -2ex;
+} 
+@media screen {
+  body {
+    max-width: 80ex;
+  }
+}
+.title {
+    position: relative;
+    left: 50px;
+    top: -100px;
+    z-index: -10;
+}
+.title img {
+    width: 80%;
+}
+h1 {
+    font-family: "Gill Sans", "Gillus ADF", "Helvetica";
+    font-size: 32pt;
+    line-height: 40pt;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    margin-top: 10%;
+    margin-right: 15%;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/* page numbers: set it to zero on the first page and don't show it,
+   thus the second page has the page number 1. */
+@page :first {
+    counter-reset: page;
+    @bottom-center {
+	content: "";
+    }
+}
+@page {
+    @bottom-center {
+	content: counter(page);
+    }
+}

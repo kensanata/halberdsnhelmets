@@ -52,3 +52,12 @@ test:
 
 upload: $(FILES)
 	rsync --archive --rsh='ssh -p 882' $^ alexschroeder.ch:alexschroeder.ch/pdfs/
+
+%.pdf: %.html %.css
+	weasyprint $< $@
+
+%.html: %-prefix %.html.tmp suffix
+	cat $^ | sed 's/YYYY-MM-DD/$(shell date -I)/' > $@
+
+%.html.tmp: %.md
+	python3 -m markdown --file=$@ $<
