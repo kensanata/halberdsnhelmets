@@ -51,7 +51,7 @@ test:
 	# ChkTex -n24n1 Halberds-and-Helmets-Ref-Guide.ltx
 
 upload: $(FILES)
-	rsync --archive --rsh='ssh -p 882' $^ alexschroeder.ch:alexschroeder.ch/pdfs/
+	rsync --archive --itemize-changes --rsh='ssh -p 882' $^ alexschroeder.ch:alexschroeder.ch/pdfs/
 
 %.pdf: %.html %.css
 	weasyprint $< $@
