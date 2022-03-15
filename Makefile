@@ -1,3 +1,4 @@
+SHELL=/bin/bash
 JPGS=$(wildcard graphics-src/*.jpg)
 PNGS=$(wildcard graphics-src/*.png)
 SMALL=$(patsubst graphics-src/%.jpg,graphics-small/%.jpg,$(JPGS)) $(patsubst graphics-src/%.png,graphics-small/%.png,$(PNGS))
@@ -61,3 +62,12 @@ upload: $(FILES)
 
 %.html.tmp: %.md
 	python3 -m markdown --file=$@ $<
+
+watch:
+	@echo Regenerating PDFs whenever the .ltx files get saved...
+	@inotifywait -q -e close_write -m . | \
+	while read -r d e f; do \
+	  if [[ "$${f,,}" == *\.ltx ]]; then \
+	    make; \
+	  fi; \
+        done
