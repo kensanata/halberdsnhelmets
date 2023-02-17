@@ -1,0 +1,169 @@
+(9,0)b      ff fff    17
+         25f   fdf20ffdff19fffdfffdvfdvff
+ 27fcv    fbvv tv ddf   f        f18ffws wf16f
+ ddfwwfdfffdf24ffffffdff fcvv ffcvv    fw wff
+ cvv 26f f  f     f23ffdffcvv f21fffffwwfddf
+ wwfddf f        ddf  fcvv fcvv f     f
+ c 28f f   cv cv cv cv cv f           cv ddfcv
+    f ffdvvfffff22f      "d"fdfdtvvvv "h"  cv fcv
+    f s  cv cv cv cv cv pv       ww"c"fdfd.w"g"f  cv 15fcv
+    f          fff  ww"b"fdfd.w"f"f  cv fcv
+    f          f4ff  ww"a"fdfd.w"e"f  cv fcv
+    f           f    f    ddf
+ ff f        fffddfdvfwvvfdvf14ffwvvfffff
+ f29ffdfffffffffdf3ff   f "asylum"   f
+ wwvfwwvf      f   fff  "p"fdfd"i"f   f
+ pvv 30f  b pv b  f    f   ww"o"fdfd.w"j"f   f
+  ddf  f32ff f  fv fv ddffv fv  ww"n"fdfd.w"k"f fff
+  f  fbvv f f  fv "pit"fv ffv fv  ww"m"fdfd.w"l"f f
+ fddff fff f  fv fv 2ffv fv      f fff
+ ft f  f  f  fv fv ffv fv  5ff  fff6ff
+ f31ff fddff f    ddf   f"dog"f  f ffsvv
+  s   ffffdfffffffffddfww"!"ffff    "Temple of Maftet"   tv
+         f    f           p bvv p  13f
+        33fddf    f   ffffffffdf9ffdvvfddvfcvv
+        ff   fff  f       p fp  12fcv
+      ss fwwfwwfffff1fffffd8ffdffdfsssvv  p fp
+             fff ddf ff      f
+              f  f wwfddvf c 11fdvp p p wwvfnn
+                 ff7ff   b ff10fpvv
+              sss          p p p fnnnz
+   5ff  6ffdv7f
+   ffffdftvv wc      cv fwfc       s
+    ddf          f12fwf11f
+    f     14ffdff wwfddfwwfddfwfdvfff  f
+    s      ff f fcvv cvv fd9f  f  f
+          s   f ff10ff   8f  f
+            fddf f      tvv   f
+      s      f13fff c cvv cv     f27ff
+                 f29ffwvf28fd"T"fffbvv f
+   sss   f    wwb          f  fff
+  f4ff f   wwfpv wwf sss    pvv f f   f
+  fff f   fff f  b pv 30fwvff   f
+  f f fffdddff15ffdvff   pvv f     f25ff
+  ddf f    f               fpvvv f
+  fwvvf3ff   f    wwwwvvf   21ff fffffffd26f
+  f ff   f  fffff wwwwvvfwwwwvvf t 24f     s
+  f      ffwwwvvffft ffwvvffffddf
+  ffdfff     f16ffff wwvvfwwvvf ddf22f fff
+    f2ffdfff  fffff 20ff cv fdvff23ff
+    fff  f    wwvvf         ffsvv
+  s  ddf    f    f               tv
+    f1ff  s    wwwvv"a"f17fwvv"f"f      fff     31
+  f ffsvv       ww.wwvv"b"ffwvv.w"g"f      f19ff
+  f f        ww.wwvv"c"ffwvv.w"h"f      f
+  ffddf ss       ww.wwvv"d"ffwvv.w"i"f fffdffddffsvv
+             ww.wwvv"e"ffwvv.w"j"f f18ff
+              ddf   wwvvf
+              fffffz
+ fff    svvv
+ f20ffdff21ff        avv     aavv
+ fff                    av   aav
+  f
+  f s  sss
+ffdd19f   fff s          26    aaaav 27f aaav
+cvv cvv fdf18ffdf22ff       aaaavv    faaavv    f
+fffwf  fff f         ddfffffddf
+          2fwwwwffdv1ft      25f  f
+   sss       ddv3ftvv wf        ssvvv  fffdf28ff
+           ww4ff sss           f c cv
+         n fddvfnn            c dd29f
+       ffdf5fffdff   f24f    cv f
+       f p bvv bvv p  f   cv fdf23f
+       f      f      f
+       f f6ftv  cv dd9ff     ddvtvv       s
+       f f   cv ff fff
+       fdffd7ff cv ffdvf10fff   fffdfff
+     fff  ff     ffffffdf11ff
+     f    fcv    ffdvfff   fffdvff
+     f         f        ddf  ff12ftvv
+    fdd8ff  s      f       a 13faa
+    ffsvv         fffffffffb f
+         f    ff       aaaa faaa
+         fff  f15f        dd14f
+         f17ffdffdffdf16fssss      bv
+         fffz(8,1)svvv            fff
+   fff10f        fff  ff"c"fb
+   f  f 11f    fffffft ffcvv
+   s     f    ft f12ffft "b"ff"d"f
+      sss  fffffft "a"ffffffft c
+               ffffffff  a aa
+                  fff    9faaa
+   f30ffff          ff     f  a aa
+   c cv cv  f  "a"fw"b"fw"c"fw"d"fdvfvv    "e"f      ffffaaa
+       ddffd31fddfddfddfddf    ddvvf svvv  6ffff f
+       f  dd"h"fw.d"g"fw.d"f"fw.d"e"f    f    f   7faa
+  fff  f          f   av f aav  aaaa aaa
+  fbvv 26f  ddff fcv      fff
+    ddfffd25fffd28ff  f14ffdf13ff     5ffssss
+  fbvv dd27f  ff  ddv29f  ff fff  aaaav   aaav
+  fff  ddf   tvv    ddvf
+       f       f  fff16ffdvft f17ff
+c c wfcvv cv   f "a"fw"b"fw"c"fw"d"fw"e"f f  f cv cv cv   c c c
+f22fdff21fdfffd20fddfddfddfddfddfdvf15ffff
+   ddf     dd"j"fw.d"i"fw.d"h"fw.d"g"fw.d"f"f    f
+ "a"fw"b"fwf              fff18ff sss
+ ddfddf23fd24fssss         cv cv cv  f cv cv cv  f
+              f19ffff     f
+                      ff2fff
+                      f 4  f  c fcv
+                  ssss  ff1f bv  fdvffwvf3fcv
+                      f   f  c fcv
+                      fffffz(16,0)fffffffffff
+                "c"f    f    "d"f
+                b  pv p p fp p pv  b
+                  "a"fff11fff"b"f     ss f
+   s                  f    a aa    f
+                     f    aaaa ff16fff
+   f    a p p p wp p p p aa    n ddffnn    nnnn ffff
+   f    p f"c"ffssssv fffp   n p ffp nn       f
+  fff  "a" b fpv ffffffdvvvffffffsvvv     a 15fff
+  fp f  "b" b fpv fssssvvvv  f12ffffff10ff     aaaa fff
+  fp f   p f"d"ffssssv fffp   nnnn p ffp nnn  a nn    ddf
+  f1ff   aaaa p p p wp p p p aaa    nnnn ffnnn   nnnn f14fffdf
+  b fb                 ddf     aaaa aaa   f
+   ddf   ffffffv fv        f         f
+   f   ffffffv  "tunnel below"       f     ssss  fff
+   s    ffffff      ff9ff      f
+     ffdf2fffff      fbvv bvv f      f
+     f          ff sssv b b f fffff13f
+     f       fffdv7ffdffwvv.wvvfwwvv8fwwvvf f
+     f       sv           f
+     ffssss      f            ffpvv
+             6f          sss  f23ff
+     ssss  f     f   a aa        f   cvv c
+       f ffwffddvc   a pvvv pv faa      ddfb pv fd22fcv
+       3ffd4ffd5ffcv   aaaa pvvv pv 18ffdvff   "L"f21fff
+       f         aaaa aaa  f f   f
+       f   fff      f fftvv  wwvvf
+       fffff17fffffffff     ddfff
+           fff      ddf     fbv f
+                    fff19f"L"ffwvvf20ffz(18,1)fffff
+              ffft 10fffffff"d"fb
+           gggf       b "a"ffffff ss
+          gg  f  c c   b "b"fff"e"fb
+          g   f p t t p  pv "c"ff12ffff13fff
+         gg   ffff15ffffffffffvv fvv fvv f
+         g      p t t p    fddvvv14f fffff
+         g       c c     svvv    ddf ddf
+         ggg              f16f 17ff
+           g   c c          ff ff
+          ggdvg  c c 21fffdvff     ddft ddf
+         gg g       c 20fff19ff  f
+        gg  9gg          b fdvf18fddf
+        g "hall above"  g             fpv f
+   s     gg    ggg
+         8gggggfffg
+   f        gffvv fvv fvv fgggg
+   f       gffvv fvv fvv fvv fvv fvv fvv fg
+  f1ff     gffvv fvv fvv fvv fvv fvv fvv fvv fvv fg
+  fb f  ssss  ff4ffvv fvv fvv ffvv fvv fvv fvv fvv fg t ft
+ffwvffwwwvf     gffvv fvv fvv f"c"f"d"ffvv fvv fg  f6 f
+f          gfvv fvv fvv fvv c b fvv fvv g  b ddfdft
+f          gffvv fvv t fffvv fvv fg f5f
+fd2ffdff      gg"a"gfvv fvv ffvv fvv fvv fvv g ddvfw.dvf
+ ff f          fvv fvv fvv fvv fvv fg fwf
+    3f          "b"gfvv fvv fvv fvv "f"g  fwf
+   "a"fdfd"f"f         ggfvv fvv  ddvf  fwf
+   ww"b"fdfd.w"e"f              ffffwf7ffdvtvv
+   ww"c"fdfd.w"d"f(31,11,9)

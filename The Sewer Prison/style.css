@@ -1,0 +1,128 @@
+html { hyphens: auto }
+body {
+    font-family: "fbb", "Palatino";
+    font-size: 10pt;
+    line-height: 12pt;
+    text-align: justify;
+    /* columns: 2 */
+}
+
+/* title page */
+
+address {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    font-family: "Gill Sans", "Gillus ADF", "Helvetica";
+    font-size: 16pt;
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+}
+
+h1 {
+    margin-top: 40%;
+    font-family: "Gill Sans", "Gillus ADF", "Helvetica";
+    font-size: 32pt;
+    line-height: 40pt;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.playtest {
+    font-family: "Gill Sans", "Gillus ADF", "Helvetica";
+    font-size: 16pt;
+    text-align: center;
+    margin: 0.5em;
+    letter-spacing: 0.15em;
+    font-variant: small-caps;
+}
+
+.subtitle {
+    font-family: "Gill Sans", "Gillus ADF", "Helvetica";
+    font-size: 12pt;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.timestamp {
+    font-family: "Gill Sans", "Gillus ADF", "Helvetica";
+    font-size: 12pt;
+    letter-spacing: 0.3em;
+    margin-top: 3em;
+}
+
+.title {
+    text-align: center;
+}
+
+.title img {
+    float: none;
+    max-width: 80%;
+    max-height: 50%;
+}
+
+/* levels */
+
+h2 {
+    font-size: 24pt;
+    font-weight: normal;
+    font-style: italic;
+}
+h3 {
+    font-size: inherit;
+    font-weight: normal;
+    font-style: italic;
+    margin: 1em 0;
+}
+sup {
+    font-size: 70%;
+}
+/* dungeon maps */
+img { float: left; margin-left: 0; margin-right: 1ex; margin-bottom: 0.5ex; padding: 0; width: 60% }
+/* image in the foreword */
+.fit img { float: right; margin-right: 0; margin-left: 1ex; padding: 0; width: 45% }
+/* room key */
+ol, li, p, b, blockquote { margin: 0; padding: 0 }
+/* magic item quote */
+blockquote { padding-left: 1ex; border-left: 5px solid lightgrey; }
+/* no indenting for multiple magic items */
+blockquote p + p { text-indent: 0 }
+/* footnotes */
+.footnotes { font-size: 90% }
+p .footnotes { display: block; margin-top: 1em }
+@media print {
+    /* https://www.w3.org/Style/Examples/007/indent.en.html */
+    p { margin-bottom: 0 }
+    p + p { text-indent: 1.5em; margin-top: 0 }
+}
+@media screen {
+    body { max-width: 80ex }
+}
+/* page numbers: set it to zero on the first page and don't show it,
+   thus the second page has the page number 1. */
+@page :first {
+    counter-reset: page;
+    @bottom-center {
+	content: "";
+    }
+}
+@page {
+    @bottom-center {
+	content: counter(page);
+    }
+}
+/* bookmarks, table of contents */
+h1, h3 { bookmark-level: none }
+/* page breaks */
+h2 { break-before : always }
+/* fix tables */
+table { margin: 0.5ex 0; }
+td[align=center] { text-align: center }
+
+/* @page { border-bottom: 1px solid green } */
