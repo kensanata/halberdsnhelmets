@@ -1111,57 +1111,39 @@ determine hit points (\index{Hit Points|see {HP}}\key{HP}) unless
 those are indicated. A +1 or +2 means that you should add this many HP
 and that the monster attacks as if it had one HD more.
 
-\index{Armor|see {AC}}\key{AC} is armor class and determines how hard
-it is to hit (lower is better).
+\index{Armor|see {AC}}\key{AC} is armour class and determines how hard
+it is to hit (lower is better). The target number is 20 - armour class.
+For an orc with armour class 6, the target number is 14.
 
-Their \key[Attack]{attacks} and the \key[Damage]{damage} they do are
+For monsters to hit, roll a d20 and add their hit dice. For an orc
+with 1 hit die to hit another orc with armour class 6, roll 1d20+1; on
+a 14 or more, this is a hit.
+
+The \key[Attack]{attacks} and the \key[Damage]{damage} they do are
 listed next, e.g.~1d6/1d6 means the creature has two attacks, each
 dealing 1d6 damage.
 
-The to-hit table shows what you need to roll on a d20 for a creature
-to hit a particular armor class.
-
-\medskip
-\begin{tabular}{lcccccccccc}
-Armor Class & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
-HD 1-    & 19 & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 \\
-HD 2     & 18 & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 &  9 \\
-HD 3     & 17 & 16 & 15 & 14 & 13 & 12 & 11 & 10 &  9 &  8 \\
-HD 4     & 16 & 15 & 14 & 13 & 12 & 11 & 10 &  9 &  8 &  7 \\
-HD 5     & 15 & 14 & 13 & 12 & 11 & 10 &  9 &  8 &  7 &  6 \\
-HD 6     & 14 & 13 & 12 & 11 & 10 &  9 &  8 &  7 &  6 &  5 \\
-HD 7     & 13 & 12 & 11 & 10 &  9 &  8 &  7 &  6 &  5 &  4 \\
-HD 8–9   & 12 & 11 & 10 &  9 &  8 &  7 &  6 &  5 &  4 &  3 \\
-HD 10–11 & 11 & 10 &  9 &  8 &  7 &  6 &  5 &  4 &  3 &  2 \\
-HD 12–13 & 10 &  9 &  8 &  7 &  6 &  5 &  4 &  3 &  2 &  2 \\
-HD 14–15 &  9 &  8 &  7 &  6 &  5 &  4 &  3 &  2 &  2 &  2 \\
-HD 16–17 &  8 &  7 &  6 &  5 &  4 &  3 &  2 &  2 &  2 &  2 \\
-HD 18–19 &  7 &  6 &  5 &  4 &  3 &  2 &  2 &  2 &  2 &  2 \\
-HD 20–21 &  6 &  5 &  4 &  3 &  2 &  2 &  2 &  2 &  2 &  2 \\
-HD 22+   &  5 &  4 &  3 &  2 &  2 &  2 &  2 &  2 &  2 &  2 \\
-\end{tabular}
-\medskip
-
 \key{Saving Throw} is a letter indicating the class to use (F is the
 default: fighter) and the level to use. This is usually the same as
-their hit dice. Animals usually save at half their hit dice, magical
-creatures at double their hit dice (max 19).
+their hit dice.\marginnote{In fact, in a pinch just use the creature's
+  hit dice as their saving throw.} Animals usually save at half their
+hit dice, magical creatures at double their hit dice (max 19).
 
 \medskip
 \begin{tabular}{lcccccccccc}
 Saving     & Dragon Breath & Paralysis    & Death  & Rays  & \\
 Throws     & Explosions   & Petrification & Poison & Wands & Spells \\
-F1–F3   & 15 & 14 & 12 & 13 & 16 \\
-F4–F6   & 13 & 12 & 10 & 11 & 14 \\
-F7–F9   &  9 & 10 &  8 &  9 & 12 \\
-10–F12  &  7 &  8 &  6 &  7 & 10 \\
-F13–F15 &  5 &  6 &  4 &  5 &  8 \\
-F16–F18 &  4 &  5 &  4 &  4 &  7 \\
-F19+    &  4 &  4 &  3 &  3 &  6 \\
+F1–F3   & +5 & +6 & +8 & +7 & +4 \\
+F4–F6   & +7 & +8 & +10 & +9 & +6 \\
+F7–F9   & +9 & +10 & +12 & +11 & +8 \\
+F10–F12 & +11 & +12 & +14 & +13 & +10 \\
+F13–F15 & +13 & +14 & +16 & +16 & +12 \\
+F16–F18 & +15 & +16 & +18 & +19 & +14 \\
+F19+    & +17 & +18 & +20 & +22 & +16 \\
 \end{tabular}
 \medskip
 
-\marginnote{
+\marginnote[-5em]{
 \begin{tabular}{cl}
 MV & Example \\
  48 & pegasus \\
@@ -1211,20 +1193,21 @@ gained upon slaying this creature. This is simply HD × 100.
 
 \key{Animals} fear fire and aren't intelligent.
 
-\key{Mounts} are creatures that can carry somebody on their back
-whereas \key[Pets]{pets} are \emph{friends}. Both take a
-\emph{retainer slot}. Unlike ordinary retainers, they do not gain
-levels. Mounts attack somebody that is attacking them in melee. They
-prefer not to fight. Pets will attack anybody you are attacking and
-they will attack anybody attacking you. Neither will take a blow for
-you, nor will they spare their victims. They always go for the kill.
-If their owner dies in combat, a mount is \emph{free} and tries to
-flee. You can \emph{take over} a mount by taking their rider's place.
-Anybody can jump onto a horse and ride it! The loyalty of \emph{pets}
-is not as easy to command. If a pet's owner dies, they go
-\emph{feral}. They defend their owner's corpse against both friends
-and enemies. Taking over a pet requires you to befriend them (make a
-reaction roll, feed them for a +1 on the roll).
+\key{Mounts} are creatures that can carry somebody on their back.
+Mounts attack somebody that is attacking them in melee. They prefer
+not to fight. If their owner dies in combat, a mount is \emph{free}
+and tries to flee. You can \emph{take over} a mount by taking their
+rider's place. Anybody can jump onto a horse and ride it!
+
+\key{Pets} are \emph{friends}. Pets will attack anybody you are
+attacking and they will attack anybody attacking you. If a pet's owner
+dies, they go \emph{feral}. They defend their owner's corpse against
+both friends and enemies. Taking over a pet requires you to befriend
+them (make a reaction roll, feed them for a +1 on the roll).
+
+Both mounts and pets take a \emph{retainer slot}. Unlike ordinary
+retainers, they do not gain levels. Neither will take a blow for you,
+nor will they spare their victims. They always go for the kill.
 
 Dogs and horses are often available for sale at villages.
 \marginnote{
