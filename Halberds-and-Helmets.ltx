@@ -193,8 +193,8 @@ bonus to your \hyperref[key:To-Hit]{to-hit} rolls and to your
 
 \key{Dexterity} allows you to aim better and to better avoid attacks.
 Add the bonus to your \hyperref[key:To-Hit]{to-hit} roll when using
-\emph{ranged weapons} (but not to your damage rolls) and subtract the
-bonus from your \hyperref[key:AC]{armour class} (lower is better).
+\emph{ranged weapons} (but not to your damage rolls) and to your
+\hyperref[key:AC]{armour class}.
 
 \key{Constitution} determines your health. Add the bonus to every
 \hyperref[key:Hit Points]{hit die} (but never reduce a hit die below 1).
@@ -508,7 +508,7 @@ To-hit & +1 & +2 & +3 & +4 & +5 & +6 & +7 & +8 & +9 & +10 \\
 
 \noindent
 You get an additional +1 bonus for ranged weapons. Your own
-\hyperref[key:AC]{armour class} improves by -2 when fighting opponents
+\hyperref[key:AC]{armour class} improves by +2 when fighting opponents
 larger than humans. You cannot use any large weapons.
 
 \medskip
@@ -680,7 +680,7 @@ Torches (6) & 1 & burn for \unit[1]{h}; may scare animals \\
 Wolfsbane & 10 & keeps werewolves away
 \end{tabular}
 
-\vspace{2cm}
+\vspace{5em}
 
 \key{Large Weapons}: battle axe, long bow, long sword, zweihänder,
 pole arm and spear cannot be used by halflings and dwarves.
@@ -690,11 +690,11 @@ pole arm and spear cannot be used by halflings and dwarves.
   \bigskip
   \begin{tabular}{lccl}
     Armour & Class & Gold & Notes \\
-    \index{Leather} Leather & 7 & 20 & sneaking and swimming are no problem \\
-    \index{Chain} Chain & 5 & 40 & no sneaking and no swimming \\
-    \index{Plate} Plate & 3 & 60 & no sneaking and no swimming \\
-    \index{Shield} Shield & -1 & 10 & can be sacrificed in order to evade an attack \\
-    \index{Helmet} Helmet  & – & 10 & helps against \hyperref[sec:injury]{death and dismemberment} \\
+    \index{Leather} Leather & +3 & 20 & sneaking and swimming are no problem \\
+    \index{Chain} Chain & +5 & 40 & no sneaking and no swimming \\
+    \index{Plate} Plate & +7 & 60 & no sneaking and no swimming \\
+    \index{Shield} Shield & +1 & 10 & can be \hyperref[key:Shield]{sacrificed} \\
+    \index{Helmet} Helmet & – & 10 & helps against \hyperref[sec:injury]{death and dismemberment} \\
   \end{tabular}
 \end{minipage}
 \end{fullwidth}
@@ -702,9 +702,8 @@ pole arm and spear cannot be used by halflings and dwarves.
 
 \bigskip
 
-\key{Armour Class} (\key{AC}): This rates your armour, lower is better
-as it makes you harder \hyperref[key:To-Hit]{to hit}. Without armour,
-your armour class is 9.
+\key{Armour Class} (\key{AC}): You armour class is 10 plus your
+dexterity bonus plus the bonuses granted by your armour.
 
 \key{Encumbrance}: You can carry as many significant
 items\marginnote{Significant item are: armour, shield, weapon, book,
@@ -1164,12 +1163,8 @@ level.\marginnote{The description of your class comes with a table
   with the to-hit bonus depending on your level.} Add your strength
 bonus when making a \index{Melee Attack}melee attack. Add your
 dexterity bonus when making a \index{Ranged Attack}ranged attack. Add
-any magic bonuses, if you have a magic weapon. Add the armour class of
-your opponent. If the sum is 20 or more,\marginnote{This is Delta's
-  \href{http://www.oedgames.com/target20/}{Target 20} system. If the
-  referee instead provides 20 - armour class as the target number,
-  players have one thing less to add. To hit an orc with AC 6, the
-  target number is $20 - 6 = 14$.} you hit.
+any magic bonuses, if you have a magic weapon. You must get the
+opponent's armour class or better.
 
 \key[20, natural]{20}: If you roll a 20, you always hit and you do max
 damage.
@@ -1436,7 +1431,7 @@ war, of cats, of magic. She leads the valkyries and collects half the
 slain in battle. They dine with her in Sessrúmnir.
 
 \marginnote[5cm]{\noindent Limited \emph{polymorph self}: You can only
-  turn into a white wolf: AC~6 2d4 MV~15}
+  turn into a white wolf: AC~14 2d4 MV~15}
 \begin{table}
 \begin{tabular}{cll}
   Circle & Spell Name & Traditional Name \\
@@ -1518,7 +1513,7 @@ innocents, caves and hellfire.
   immune to non-magical weapons. Their touch drains a level. To
   simplify things at the table, their attacks deal damage as
   indicated, steal the victim's best spell and reduce saving throws as
-  appropriate. HD 4 AC 3 2d8 F4 ML 12 MV 12}
+  appropriate. HD~4 AC~17 2d8 F4 ML~12 MV~12}
 \begin{table}
 \begin{tabular}{cll}
   Circle & Spell Name & Traditional Name \\
@@ -1552,7 +1547,7 @@ years. This is her spell book.
 
   \medskip\noindent As is typical for elves, her favorite shape to
   \emph{polymorph} into is a blue dragon. At level 9, its stats are
-  AC~0 1d6+1/1d6+1/3d10 MV~24; at level 10 its stats are AC~-1
+  AC~20 1d6+1/1d6+1/3d10 MV~24; at level 10 its stats are AC~21
   1d8/1d8/4d8 MV~24.
 
   \medskip\noindent A \emph{flash flood} will create a sudden flood
@@ -1561,7 +1556,7 @@ years. This is her spell book.
   vs.~death again or drown within a minute or two.
 
   \medskip\noindent When \emph{conjuring an elemental}, she prefers to
-  summon an air elemental called \emph{Flying Debris}, HD~16 AC~-2 3d8
+  summon an air elemental called \emph{Flying Debris}, HD~16 AC~22 3d8
   F16 MV~36; plus 1d8 vs.~flying creatures; requires a save vs.~death
   to approach; immune to non-magical weapons; will attack summoner and
   remain on this plane if the conjurer's concentration fails.}
