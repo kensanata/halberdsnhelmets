@@ -19,11 +19,11 @@ ok(@ords == 0, "ordinals are all correct"
    . (@ords == 0 ? "" : " (@ords)"));
 
 my @broken_units = $text =~ /(\b\d+\s*(?:m|ft|s|min|h|cp|sp|gp|gp|silver|gold|electrum|platinum)\b)/g;
-ok(@broken_units == 0, "units are all correct"
+ok(@broken_units == 0, 'units use \SI{number}{unit}'
    . (@broken_units == 0 ? "" : " (@broken_units)"));
 
 my @broken_saves = $text =~ /(\bsave\s+vs\.\s+\w+\b)/g;
-ok(@broken_saves == 0, "saves are all correct"
+ok(@broken_saves == 0, "saves use ~"
    . (@broken_saves == 0 ? "" : " (@broken_saves)"));
 
 my %index;
