@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>{{.Title}}</title>
+    <style>
+@page { size: a4; margin: 10mm }
+html { font-family: "Iosevka Aile"; font-size: 10pt }
+body { hyphens: auto; columns: 2; column-gap: 10mm }
+@media print  { body { margin:  0mm }}
+@media screen { body { margin: 10mm }}
+h1 { font-size: 20pt; margin: 0 0 3mm 0; column-span: all }
+h2 { font-size: 10pt; margin: 3mm 0 3mm 0 }
+img { width: 100% }
+.map { width: auto; max-height: 100mm }
+figure { margin: 5mm 0 5mm 0 }
+figcaption { font-size: 8pt }
+footer { margin-top: 5mm; border-top: 1px solid #ddd }
+@media print { .stats { display: none } p { display: inline } }
+@media screen { .printed { display: none }}
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>{{.Title}}</h1>
+      {{.Html}}
+    </main>
+    <footer>
+      <address>
+        <a href="https://alexschroeder.ch/">Alex Schroeder</a> (2025), under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+      </address>
+      <p class="printed">
+        https://creativecommons.org/licenses/by-sa/4.0/
+      </p>
+    </footer>
+  </body>
+</html>

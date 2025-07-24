@@ -1,0 +1,83 @@
+0101 empty
+0102 empty
+0103 statue wall-n
+0104 empty door-w "1"
+0105 statue
+0201 empty "2"
+0202 empty wall-s
+0203 empty
+0204 chair-w
+0205 empty
+0301 empty
+0302 stair-spiral
+0303 empty wall-w wall-s
+0304 empty wall-w
+0305 empty wall-w
+0401 empty
+0402 empty
+0403 empty 
+0404 empty door-n
+0405 empty door-s "T"
+0501 statue wall-w door-n
+0502 chair-n wall-w wall-n
+0503 empty door-n
+0504 empty wall-n "3"
+0505 empty
+0601 "5  "
+0602 "4  "
+
+0701 bed-n
+0702 bed-n wall-n
+0703 bed-n wall-n
+0704 statue wall-n
+0705 empty
+0801 empty door-w "7"
+0802 empty door-w "8"
+0803 empty door-w "9"
+0804 empty wall-n
+0805 empty
+0901 stair-spiral
+0902 empty "6"
+0903 empty
+0904 empty door-n "13"
+0905 statue
+1001 empty "10"
+1002 empty "11"
+1003 empty "12"
+1004 empty wall-n
+1005 empty
+1101 bed-n door-w
+1102 bed-n door-w wall-n
+1103 bed-n door-w wall-n
+1104 statue wall-n
+1105 empty
+
+1301 empty
+1302 table
+1303 empty
+1401 stair-spiral
+1402 empty "14"
+1403 table-rotated
+1501 empty
+1502 table
+1503 empty
+
+1701 chair-w
+1702 chair-w
+1703 chair-w
+1801 stair-spiral
+1802 dais-round
+1803 empty "15"
+1901 chair-e
+1902 chair-e
+1903 chair-e
+
+2101 stair-spiral
+2102 empty "16"
+2103 empty
+2104 empty door-n
+2105 portcullis-n
+2004 portcullis-e
+2204 portcullis-w
+
+include gridmapper.txt

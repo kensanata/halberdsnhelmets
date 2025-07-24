@@ -1,0 +1,11 @@
+0101 tundra fort "start"
+0201 tundra
+0301 volcano "devil land"
+0102 jungle
+0202 jungle
+0302 swamp
+0103 hill ruin "rocket men"
+0203 mountain
+0303 swamp cave "dragon"
+0002-0202-0402 river
+include apocalypse.txt

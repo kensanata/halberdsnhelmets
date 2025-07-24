@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink" width="640" height="640"><defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="none" stroke="lightgrey" stroke-width="1"/>
+    </pattern>
+    <rect id="cursor" width="10" height="10" fill="forestgreen" opacity="0.2" transform="scale(2,2)"/>
+    <rect id="others" width="10" height="10" fill="blue" opacity="0.2" transform="scale(2,2)"/>
+    <rect id="empty" width="10" height="10" class="background" stroke="black" stroke-width="1" transform="scale(2,2)"/>
+    <rect id="void" width="10" height="10" fill="none" stroke="black" stroke-width="1" transform="scale(2,2)"/>
+    <g id="water" width="20">
+      <rect width="20" height="20" class="background" stroke="black" stroke-width="2"/>
+      <path id="waves" fill="none" stroke="black" stroke-width="1" d="M3,5 v-1 A1,1 0 0,1 5,4 A1,1 0 1,0 7,4 A1,1 0 0,1 9,4 A1,1 0 1,0 11,4 A1,1 0 0,1 13,4 A1,1 0 1,0 15,4 A1,1 0 0,1 17,4 v1"/>
+      <use xlink:href="#waves" transform="translate(0,6)"/>
+      <use xlink:href="#waves" transform="translate(0,12)"/>
+    </g>
+    <g id="wall" width="10" transform="scale(2,2)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="curtain" width="20">
+      <path fill="none" stroke="black" stroke-width="1" d="M5,3 h-1 A1,1 0 0,0 4,5 A1,1 0 0,1 4,7 A1,1 0 0,0 4,9 A1,1 0 0,1 4,11 A1,1 0 0,0 4,13 A1,1 0 0,1 4,15 A1,1 0 0,0 4,17 h1"/>
+    </g>
+    <g id="portcullis" width="10" transform="scale(2,2)">
+      <circle cx="2" cy="2" r="1" fill="black"/>
+      <circle cx="2" cy="5" r="1" fill="black"/>
+      <circle cx="2" cy="8" r="1" fill="black"/>
+    </g>
+    <g id="window" width="10" transform="scale(2,2)">
+      <line x1="0" y1="0" x2="0" y2="2" stroke="black" stroke-width="3"/>
+      <line x1="0" y1="8" x2="0" y2="10" stroke="black" stroke-width="3"/>
+      <rect x="-0.75" y="2" width="1.5" height="6" class="background" stroke="black" stroke-width="0.5"/>
+    </g>
+    <g id="gap" width="10" transform="scale(2,2)">
+      <line x1="0" y1="0" x2="0" y2="2" stroke="black" stroke-width="3" stroke-linecap="round"/>
+      <line x1="0" y1="8" x2="0" y2="10" stroke="black" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="2.5" cy="2" r="0.5" fill="black"/>
+      <circle cx="-3" cy="3" r="0.5" fill="black"/>
+      <circle cx="3" cy="4" r="0.6" fill="black"/>
+      <circle cx="1.5" cy="4.5" r="0.5" fill="black"/>
+      <circle cx="-1.5" cy="5" r="0.5" fill="black"/>
+      <circle cx="2" cy="6" r="0.5" fill="black"/>
+      <circle cx="5" cy="6" r="0.5" fill="black"/>
+      <circle cx="-2" cy="6.5" r="0.5" fill="black"/>
+      <circle cx="3" cy="8" r="0.5" fill="black"/>
+    </g>
+    <g id="corner-pillar" width="10" transform="scale(2,2)">
+      <circle cx="0" cy="0" r="2" fill="black"/>
+    </g>
+    <g id="arrow-slit" width="10" transform="scale(2,2)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="black" stroke-width="3"/>
+      <polygon points="-1.5,5 3,2 3,8" stroke="none" stroke-width="0" fill="white"/>
+    </g>
+    <g id="ledge" width="100" transform="scale(0.2,0.2)">
+      <path fill="none" stroke="black" stroke-width="15" d="         M 0 0 C 0 20 9 27 11 47 C 10 80 0 80 0 100 M 6 27 L 38 21 M 11 49 L 46 50 M 8 71 L 32 86         "/>
+    </g>
+    <g id="ledge-r" width="100" transform="scale(0.2,0.2)">
+      <path fill="none" stroke="black" stroke-width="15" d="         M 0 0 C 2 18 -8 34 6 48 C 19 70 -1 83 0 100 M -2 20 L -34 14 M 6 48 L -31 47 M -22 74 L 8 75         "/>
+    </g>
+    <g id="door" width="10" transform="scale(2,2)">
+      <rect x="-1.5" y="2" width="3" height="6" class="background" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="secret" width="10" transform="scale(2,2)">
+      <path fill="none" stroke="black" stroke-width="1" d="M 2,3 C -2,1 -3,5 0,5 S 2,9 -2,7"/>
+    </g>
+    <g id="secret-dm-shown" width="10" transform="scale(2,2)">
+      <path fill="none" stroke="black" stroke-width="1" d="M 2,3 C -2,1 -3,5 0,5 S 2,9 -2,7"/>
+    </g>
+    <g id="secret-p-hidden" width="10" transform="scale(2,2)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="concealed" width="10" transform="scale(2,2)">
+      <path fill="none" stroke="black" stroke-width="1" d="M 2,3 C -3,1 -3,9 2,7"/>
+    </g>
+    <g id="concealed-dm-shown" width="10" transform="scale(2,2)">
+      <path fill="none" stroke="black" stroke-width="1" d="M 2,3 C -3,1 -3,9 2,7"/>
+    </g>
+    <g id="concealed-p-hidden" width="10" transform="scale(2,2)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="gate" width="10" transform="scale(2,2)">
+      <rect x="-2" y="4" width="4" height="12" class="background" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="archway" width="10" transform="scale(2,2)">
+      <path fill="black" stroke="black" stroke-width="1" d="M -1 0 A 1 1 0 0 0 1 0"/>
+      <path fill="black" stroke="black" stroke-width="1" d="M -1 10 A 1 1 0 0 1 1 10"/>
+      <line x1="0" y1="0" x2="0" y2="2.5" stroke="black" stroke-width="1.5"/>
+      <line x1="-1.5" y1="2.5" x2="1.5" y2="2.5" stroke="black" stroke-width="1"/>
+      <line x1="0" y1="7.5" x2="0" y2="10" stroke="black" stroke-width="1.5"/>
+      <line x1="-1.5" y1="7.5" x2="1.5" y2="7.5" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="one-way-door" width="10" transform="scale(2,2)">
+      <rect x="0" y="2" width="2" height="6" class="background" stroke="black" stroke-width="1"/>
+      <line x1="0" y1="5" x2="-3" y2="5" stroke="black" stroke-width="1"/>
+      <line x1="-3" y1="5" x2="-1.5" y2="3" stroke="black" stroke-width="1"/>
+      <line x1="-3" y1="5" x2="-1.5" y2="7" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="one-way-door-dm-shown" width="10" transform="scale(2,2)">
+      <rect x="0" y="2" width="2" height="6" class="background" stroke="black" stroke-width="1"/>
+      <line x1="0" y1="5" x2="-3" y2="5" stroke="black" stroke-width="1"/>
+      <line x1="-3" y1="5" x2="-1.5" y2="3" stroke="black" stroke-width="1"/>
+      <line x1="-3" y1="5" x2="-1.5" y2="7" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="one-way-door-p-hidden" width="10" transform="scale(2,2)">
+      <rect x="0" y="2" width="2" height="6" class="background" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="pillar" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="5" cy="5" r="2" fill="black"/>
+    </g>
+    <g id="altar" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2" y="3" width="6" height="4" fill="none" stroke="black" stroke-width="0.5"/>
+      <circle cx="3.5" cy="5" r="0.5" fill="black"/>
+      <circle cx="6.5" cy="5" r="0.5" fill="black"/>
+    </g>
+    <g id="dais" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2" y="2" width="6" height="6" fill="none" stroke="black" stroke-width="0.5"/>
+      <rect x="3" y="3" width="4" height="4" fill="none" stroke="black" stroke-width="0.5"/>
+      <rect x="4" y="4" width="2" height="2" fill="none" stroke="black" stroke-width="0.5"/>
+    </g>
+    <g id="dais-round" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="5" cy="5" r="3" fill="none" stroke="black" stroke-width="0.5"/>
+      <circle cx="5" cy="5" r="2" fill="none" stroke="black" stroke-width="0.5"/>
+      <circle cx="5" cy="5" r="1" fill="none" stroke="black" stroke-width="0.5"/>
+    </g>
+    <g id="rubble" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="7" cy="2" r="0.5" fill="black"/>
+      <circle cx="2" cy="3" r="0.5" fill="black"/>
+      <circle cx="4" cy="3" r="0.7" fill="black"/>
+      <circle cx="8" cy="4" r="0.6" fill="black"/>
+      <circle cx="6" cy="4" r="0.5" fill="black"/>
+      <circle cx="3" cy="5" r="0.7" fill="black"/>
+      <circle cx="5" cy="6" r="0.5" fill="black"/>
+      <circle cx="7" cy="6" r="0.7" fill="black"/>
+      <circle cx="4" cy="7" r="0.5" fill="black"/>
+      <circle cx="8" cy="8" r="0.5" fill="black"/>
+    </g>
+    <g id="statue" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="5" cy="5" r="3.5" fill="none" stroke="black" stroke-width="0.5"/>
+      <path fill="black" d="M 2,4 H 8 L 3,7.5 5,2 7,7.5 Z"/>
+    </g>
+    <g id="well" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="5" cy="5" r="2.25" fill="none" stroke="black" stroke-width="0.5"/>
+      <circle cx="5" cy="5" r="1" fill="black"/>
+    </g>
+    <g id="fountain" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="5" cy="5" r="2.5" fill="none" stroke="black" stroke-width="0.5"/>
+      <circle cx="5" cy="4" r="1.5" fill="none" stroke="black" stroke-width="0.5"/>
+    </g>
+    <g id="trap" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2" y="2" width="6" height="6" fill="none" stroke="black" stroke-width="1"/>
+      <line x1="2" y1="2" x2="8" y2="8" stroke="black" stroke-width="0.8"/>
+      <line x1="2" y1="8" x2="8" y2="2" stroke="black" stroke-width="0.8"/>
+    </g>
+    <g id="trap-dm-shown" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2" y="2" width="6" height="6" fill="none" stroke="black" stroke-width="1"/>
+      <line x1="2" y1="2" x2="8" y2="8" stroke="black" stroke-width="0.8"/>
+      <line x1="2" y1="8" x2="8" y2="2" stroke="black" stroke-width="0.8"/>
+    </g>
+    <g id="trap-p-hidden" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="pit" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2" y="2" width="6" height="6" fill="none" stroke="black" stroke-width="1"/>
+      <line x1="2" y1="2" x2="8" y2="8" stroke="black" stroke-width="0.5"/>
+      <line x1="2" y1="8" x2="8" y2="2" stroke="black" stroke-width="0.5"/>
+      <rect x="3.5" y="3.5" width="3" height="3" fill="black"/>
+    </g>
+    <g id="trap-door-ceiling" width="10" class="labels" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="5" cy="5" r="3.5" fill="none" stroke="black" stroke-width="0.5"/>
+      <text x="8.3" y="12" fill="black" transform="scale(0.6,0.6)">C</text>
+    </g>
+    <g id="trap-door-floor" width="10" class="labels" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="5" cy="5" r="3.5" fill="none" stroke="black" stroke-width="0.5"/>
+      <text x="8.3" y="12" fill="black" transform="scale(0.6,0.6)">F</text>
+    </g>
+    <g id="trap-door-secret" width="10" class="labels" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="5" cy="5" r="3.5" fill="none" stroke="black" stroke-width="0.5"/>
+      <text x="8.3" y="12" fill="black" transform="scale(0.6,0.6)">S</text>
+    </g>
+    <g id="trap-door-secret-dm-shown" width="10" class="labels" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <circle cx="5" cy="5" r="3.5" fill="none" stroke="black" stroke-width="0.5"/>
+      <text x="8.3" y="12" fill="black" transform="scale(0.6,0.6)">S</text>
+    </g>
+    <g id="trap-door-secret-p-hidden" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="generic-trap" width="10" class="labels" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <text x="8.3" y="12" fill="black" transform="scale(0.6,0.6)">T</text>
+    </g>
+    <g id="generic-trap-dm-shown" width="10" class="labels" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <text x="8.3" y="12" fill="black" transform="scale(0.6,0.6)">T</text>
+    </g>
+    <g id="generic-trap-p-hidden" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="chest" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2" y="3" width="6" height="4" fill="none" stroke="black" stroke-width="0.5"/>
+      <line x1="3.5" y1="2" x2="3.5" y2="8" stroke="black" stroke-width="0.5"/>
+      <line x1="6.5" y1="2" x2="6.5" y2="8" stroke="black" stroke-width="0.5"/>
+    </g>
+    <g id="bed" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2" y="3" width="6" height="4" fill="none" stroke="black" stroke-width="0.5"/>
+      <line x1="4" y1="3" x2="4" y2="7" stroke="black" stroke-width="0.5"/>
+    </g>
+    <g id="table" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2" y="3" width="6" height="4" fill="none" stroke="black" stroke-width="0.5"/>
+      <circle cx="3.5" cy="4" r="0.5" fill="black"/>
+      <circle cx="3.5" cy="6" r="0.5" fill="black"/>
+      <circle cx="6.5" cy="4" r="0.5" fill="black"/>
+      <circle cx="6.5" cy="6" r="0.5" fill="black"/>
+    </g>
+    <g id="chair" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2.5" y="3.5" width="5" height="3.5" fill="none" stroke="black" stroke-width="0.5"/>
+      <rect x="3.5" y="3.5" width="3" height="2.5" fill="none" stroke="black" stroke-width="0.5"/>
+    </g>
+    <g id="screen" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <rect x="2" y="3" width="6" height="4" fill="none" stroke="black" stroke-width="0.5"/>
+    </g>
+    <g id="diagonal" width="10" transform="scale(2,2)">
+      <path class="background" stroke="black" stroke-width="1" stroke-linejoin="bevel" d="M0,10 H10 V0 Z"/>
+    </g>
+    <g id="walled-diagonal" width="10" transform="scale(2,2)">
+      <path class="background" stroke="black" stroke-width="1" stroke-linejoin="bevel" d="M0,10 H10 V0 Z"/>
+      <line x1="0" y1="10" x2="10" y2="0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="diagonal-wall" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <line x1="0" y1="10" x2="10" y2="0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="diagonal-line" width="10" transform="scale(2,2)">
+      <line x1="0" y1="10" x2="10" y2="0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="diagonal-door" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <line x1="0" y1="10" x2="10" y2="0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+      <rect x="-1.5" y="2" width="3" height="6" class="background" stroke="black" stroke-width="1" transform="translate(10,3) rotate(45) translate(-2.05,0)"/>
+    </g>
+    <g id="diagonal-ledge" width="100" transform="scale(0.2,0.2)">
+      <rect width="100" height="100" class="background" stroke="black" stroke-width="10"/>
+      <path fill="none" stroke="black" stroke-width="15" d="         M 100 0 C 93 8 88 30 73 45 C 53 56 79 81 1 100 M 43 33 L 65 52 M 43 84 L 22 65 M 85 29 L 64 12         "/>
+    </g>
+    <g id="arc" width="10" transform="scale(2,2)">
+      <path class="background" d="M0,10 A10,10 0 0,1 10,0 v10 Z" stroke="black" stroke-width="1"/>
+    </g>
+    <g id="arc2" class="center" width="10" transform="scale(2,2)">
+      <path class="background" d="M0,20 A20,20 0 0,1 20,0 v20 Z" stroke="black" stroke-width="1"/>
+      <line x1="2.7" y1="10" x2="20" y2="10" stroke="black" stroke-width="1"/>
+      <line x1="10" y1="2.7" x2="10" y2="20" stroke="black" stroke-width="1"/>
+      <circle class="dot" cx="5" cy="5" r="1" fill="red" opacity="0"/>
+    </g>
+    <g id="arc3" class="center" width="10" transform="scale(2,2)">
+      <path class="background" d="M0,30 A30,30 0 0,1 30,0 v30 Z" stroke="black" stroke-width="1"/>
+      <line x1="7.6" y1="10" x2="30" y2="10" stroke="black" stroke-width="1"/>
+      <line x1="1.7" y1="20" x2="30" y2="20" stroke="black" stroke-width="1"/>
+      <line x1="10" y1="7.6" x2="10" y2="30" stroke="black" stroke-width="1"/>
+      <line x1="20" y1="1.7" x2="20" y2="30" stroke="black" stroke-width="1"/>
+      <circle class="dot" cx="5" cy="5" r="1" fill="red" opacity="0"/>
+    </g>
+    <g id="arc4" class="center" width="10" transform="scale(2,2)">
+      <path class="background" d="M0,40 A40,40 0 0,1 40,0 v40 Z" stroke="black" stroke-width="1"/>
+      <line x1="13.5" y1="10" x2="40" y2="10" stroke="black" stroke-width="1"/>
+      <line x1="5" y1="20" x2="40" y2="20" stroke="black" stroke-width="1"/>
+      <line x1="1.7" y1="30" x2="40" y2="30" stroke="black" stroke-width="1"/>
+      <line x1="10" y1="13.5" x2="10" y2="40" stroke="black" stroke-width="1"/>
+      <line x1="20" y1="5" x2="20" y2="40" stroke="black" stroke-width="1"/>
+      <line x1="30" y1="1.7" x2="30" y2="40" stroke="black" stroke-width="1"/>
+      <circle class="dot" cx="5" cy="5" r="1" fill="red" opacity="0"/>
+    </g>
+    <g id="arcw" width="10" transform="scale(2,2)">
+      <path class="background" d="M0,10 A10,10 0 0,1 10,0 v10 z" stroke="black" stroke-width="1"/>
+      <path class="background" d="M0,10 A10,10 0 0,1 10,0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g id="arcw2" class="center" width="10" transform="scale(2,2)">
+      <path class="background" d="M0,20 A20,20 0 0,1 20,0 v20 Z" stroke="black" stroke-width="1"/>
+      <path class="background" d="M0,20 A20,20 0 0,1 20,0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+      <line x1="2.7" y1="10" x2="20" y2="10" stroke="black" stroke-width="1"/>
+      <line x1="10" y1="2.7" x2="10" y2="20" stroke="black" stroke-width="1"/>
+      <circle class="dot" cx="5" cy="5" r="1" fill="red" opacity="0"/>
+    </g>
+    <g id="arcw3" class="center" width="10" transform="scale(2,2)">
+      <path class="background" d="M0,30 A30,30 0 0,1 30,0 v30 Z" stroke="black" stroke-width="1"/>
+      <path class="background" d="M0,30 A30,30 0 0,1 30,0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+      <line x1="7.6" y1="10" x2="30" y2="10" stroke="black" stroke-width="1"/>
+      <line x1="1.7" y1="20" x2="30" y2="20" stroke="black" stroke-width="1"/>
+      <line x1="10" y1="7.6" x2="10" y2="30" stroke="black" stroke-width="1"/>
+      <line x1="20" y1="1.7" x2="20" y2="30" stroke="black" stroke-width="1"/>
+      <circle class="dot" cx="5" cy="5" r="1" fill="red" opacity="0"/>
+    </g>
+    <g id="arcw4" class="center" width="10" transform="scale(2,2)">
+      <path class="background" d="M0,40 A40,40 0 0,1 40,0 v40 Z" stroke="black" stroke-width="1"/>
+      <path class="background" d="M0,40 A40,40 0 0,1 40,0" stroke="black" stroke-width="3" stroke-linecap="round"/>
+      <line x1="13.5" y1="10" x2="40" y2="10" stroke="black" stroke-width="1"/>
+      <line x1="5" y1="20" x2="40" y2="20" stroke="black" stroke-width="1"/>
+      <line x1="1.7" y1="30" x2="40" y2="30" stroke="black" stroke-width="1"/>
+      <line x1="10" y1="13.5" x2="10" y2="40" stroke="black" stroke-width="1"/>
+      <line x1="20" y1="5" x2="20" y2="40" stroke="black" stroke-width="1"/>
+      <line x1="30" y1="1.7" x2="30" y2="40" stroke="black" stroke-width="1"/>
+      <circle class="dot" cx="5" cy="5" r="1" fill="red" opacity="0"/>
+    </g>
+    <g id="stair" width="10" transform="scale(2,2)">
+      <rect width="10" height="20" class="background" stroke="black" stroke-width="1"/>
+      <line x1="0" y1="3" x2="10" y2="3" stroke="black" stroke-width="0.8"/>
+      <line x1="1" y1="6" x2="9" y2="6" stroke="black" stroke-width="0.8"/>
+      <line x1="2" y1="9" x2="8" y2="9" stroke="black" stroke-width="0.8"/>
+      <line x1="3" y1="12" x2="7" y2="12" stroke="black" stroke-width="0.8"/>
+      <line x1="4" y1="15" x2="6" y2="15" stroke="black" stroke-width="0.8"/>
+    </g>
+    <g id="stair-small" width="10" transform="scale(2,2)">
+      <rect width="10" height="10" class="background" stroke="black" stroke-width="1"/>
+      <line x1="1" y1="2" x2="9" y2="2" stroke="black" stroke-width="0.8"/>
+      <line x1="2" y1="4" x2="8" y2="4" stroke="black" stroke-width="0.8"/>
+      <line x1="3" y1="6" x2="7" y2="6" stroke="black" stroke-width="0.8"/>
+      <line x1="4" y1="8" x2="6" y2="8" stroke="black" stroke-width="0.8"/>
+    </g>
+    <g id="stair-big" width="10" transform="scale(2,2)">
+      <rect width="20" height="20" class="background" stroke="black" stroke-width="1"/>
+      <line x1="1" y1="3" x2="19" y2="3" stroke="black" stroke-width="0.8"/>
+      <line x1="2" y1="6" x2="18" y2="6" stroke="black" stroke-width="0.8"/>
+      <line x1="3" y1="9" x2="17" y2="9" stroke="black" stroke-width="0.8"/>
+      <line x1="4" y1="12" x2="16" y2="12" stroke="black" stroke-width="0.8"/>
+      <line x1="5" y1="15" x2="15" y2="15" stroke="black" stroke-width="0.8"/>
+      <line x1="6" y1="18" x2="14" y2="18" stroke="black" stroke-width="0.8"/>
+    </g>
+    <g id="stair-big-spiral" width="50" transform="scale(0.4,0.4)">
+      <rect width="100" height="100" class="background" stroke="black" stroke-width="5"/>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="5"/>
+      <line x1="0" y1="50" x2="99" y2="50" stroke="black" stroke-width="5"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="black" stroke-width="5"/>
+      <line x1="15" y1="30" x2="85" y2="70" stroke="black" stroke-width="5"/>
+      <line x1="15" y1="70" x2="85" y2="30" stroke="black" stroke-width="5"/>
+      <line x1="30" y1="15" x2="70" y2="85" stroke="black" stroke-width="5"/>
+      <line x1="30" y1="85" x2="70" y2="15" stroke="black" stroke-width="5"/>
+      <circle cx="50" cy="50" r="10" class="background" stroke="black" stroke-width="5"/>
+    </g>
+    <g id="stair-spiral" width="100" transform="scale(0.2,0.2)">
+      <rect width="100" height="100" class="background" stroke="black" stroke-width="10"/>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="7"/>
+      <line x1="10" y1="50" x2="90" y2="50" stroke="black" stroke-width="7"/>
+      <line x1="50" y1="10" x2="50" y2="90" stroke="black" stroke-width="7"/>
+      <line x1="22" y1="22" x2="78" y2="78" stroke="black" stroke-width="7"/>
+      <line x1="22" y1="78" x2="78" y2="22" stroke="black" stroke-width="7"/>
+      <circle cx="50" cy="50" r="10" class="background" stroke="black" stroke-width="7"/>
+    </g>
+    <g id="ladder" width="100" transform="scale(0.2,0.2)">
+      <rect width="100" height="100" class="background" stroke="black" stroke-width="10"/>
+      <circle cx="30" cy="25" r="12" fill="black"/>
+      <line x1="30" y1="25" x2="30" y2="75" stroke="black" stroke-width="10"/>
+      <circle cx="30" cy="75" r="12" fill="black"/>
+    </g>
+    <g id="stair-spiral-down" width="100" class="labels" transform="scale(0.2,0.2)">
+      <rect width="100" height="100" class="background" stroke="black" stroke-width="10"/>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="7"/>
+      <line x1="10" y1="50" x2="90" y2="50" stroke="black" stroke-width="7"/>
+      <line x1="50" y1="10" x2="50" y2="90" stroke="black" stroke-width="7"/>
+      <line x1="22" y1="22" x2="78" y2="78" stroke="black" stroke-width="7"/>
+      <line x1="22" y1="78" x2="78" y2="22" stroke="black" stroke-width="7"/>
+      <circle cx="50" cy="50" r="10" class="background" stroke="black" stroke-width="7"/>
+      <rect x="2" y="2" width="46" height="46" stroke="none" stroke-width="0" fill="white"/>
+      <text x="6" y="10" fill="black" transform="scale(4,4)">D</text>
+    </g>
+    <g id="stair-spiral-up" width="100" class="labels" transform="scale(0.2,0.2)">
+      <rect width="100" height="100" class="background" stroke="black" stroke-width="10"/>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="7"/>
+      <line x1="10" y1="50" x2="90" y2="50" stroke="black" stroke-width="7"/>
+      <line x1="50" y1="10" x2="50" y2="90" stroke="black" stroke-width="7"/>
+      <line x1="22" y1="22" x2="78" y2="78" stroke="black" stroke-width="7"/>
+      <line x1="22" y1="78" x2="78" y2="22" stroke="black" stroke-width="7"/>
+      <circle cx="50" cy="50" r="10" class="background" stroke="black" stroke-width="7"/>
+      <rect x="2" y="2" width="46" height="46" stroke="none" stroke-width="0" fill="white"/>
+      <text x="6" y="10" fill="black" transform="scale(4,4)">U</text>
+    </g>
+    <g id="stair-big-spiral-down" width="50" class="labels" transform="scale(0.4,0.4)">
+      <rect width="100" height="100" class="background" stroke="black" stroke-width="5"/>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="5"/>
+      <line x1="0" y1="50" x2="99" y2="50" stroke="black" stroke-width="5"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="black" stroke-width="5"/>
+      <line x1="15" y1="30" x2="85" y2="70" stroke="black" stroke-width="5"/>
+      <line x1="15" y1="70" x2="85" y2="30" stroke="black" stroke-width="5"/>
+      <line x1="30" y1="15" x2="70" y2="85" stroke="black" stroke-width="5"/>
+      <line x1="30" y1="85" x2="70" y2="15" stroke="black" stroke-width="5"/>
+      <circle cx="50" cy="50" r="10" class="background" stroke="black" stroke-width="5"/>
+      <rect x="2" y="2" width="46" height="46" stroke="none" stroke-width="0" fill="white"/>
+      <text x="6" y="10" fill="black" transform="scale(4,4)">D</text>
+    </g>
+    <g id="stair-big-spiral-up" width="50" class="labels" transform="scale(0.4,0.4)">
+      <rect width="100" height="100" class="background" stroke="black" stroke-width="5"/>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="5"/>
+      <line x1="0" y1="50" x2="99" y2="50" stroke="black" stroke-width="5"/>
+      <line x1="50" y1="0" x2="50" y2="100" stroke="black" stroke-width="5"/>
+      <line x1="15" y1="30" x2="85" y2="70" stroke="black" stroke-width="5"/>
+      <line x1="15" y1="70" x2="85" y2="30" stroke="black" stroke-width="5"/>
+      <line x1="30" y1="15" x2="70" y2="85" stroke="black" stroke-width="5"/>
+      <line x1="30" y1="85" x2="70" y2="15" stroke="black" stroke-width="5"/>
+      <circle cx="50" cy="50" r="10" class="background" stroke="black" stroke-width="5"/>
+      <rect x="2" y="2" width="46" height="46" stroke="none" stroke-width="0" fill="white"/>
+      <text x="6" y="10" fill="black" transform="scale(4,4)">U</text>
+    </g>
+  <g id="rock1" width="10" transform="scale(2,2)">
+    <path width="10" class="background" d="M0,10 v-1 L1,8 L0,6 v-1 L1,4 v-2 L0,1 L0,0 H10 V10 Z" stroke-miterlimit="1" stroke="black" stroke-width="1"/>
+    <path width="10" class="rockWall" d="M 0 10 v -1 L 1 8 L 0 6 v -1 L 1 4 v -2 L 0 1 L 0 0" stroke-miterlimit="1" stroke="black" stroke-width="3" style="display: none;"/>
+  </g>
+  <g id="rock2a" width="10" transform="scale(2,2)">
+    <path width="10" class="background" d="M0,10 v-1 L1,8 L1,7 L2,5 L1,4 L2,2 L4,1 L5,2 L7,2 L10,0 V10 Z" stroke-miterlimit="1" stroke-linecap="round" stroke="black" stroke-width="1"/>
+    <path width="10" class="rockWall" d="M 0 10 v -1 L 1 8 L 1 7 L 2 5 L 1 4 L 2 2 L 4 1 L 5 2 L 7 2 L 10 0" stroke-miterlimit="1" stroke-linecap="round" stroke="black" stroke-width="3" style="display: none;"/>
+  </g>
+  <g id="rock2b" width="10" transform="scale(2,2)">
+    <path width="10" class="background" d="M0,10 v-1 L1,8 L1,7 L2,5 v-1 L3,3 h1 L5,2 L7,2 L10,0 V10 Z" stroke-miterlimit="1" stroke-linecap="round" stroke="black" stroke-width="1"/>
+    <path width="10" class="rockWall" d="M 0 10 v -1 L 1 8 L 1 7 L 2 5 v -1 L 3 3 h 1 L 5 2 L 7 2 L 10 0" stroke-miterlimit="1" stroke-linecap="round" stroke="black" stroke-width="3" style="display: none;"/>
+  </g>
+  <g id="rock3" width="10" transform="scale(2,2)">
+    <path width="10" class="background" d="M0,10 v-1 L1,7 v-1 L2,5 v-1 L2,2 L4,1 L5,2 L7,2 L9,1 L10,3 L8,6 L8,7 L10,10 Z" stroke-miterlimit="1" stroke-linecap="round" stroke="black" stroke-width="1"/>
+    <path width="10" class="rockWall" d="M0,10 v-1 L1,7 v-1 L2,5 v-1 L2,2 L4,1 L5,2 L7,2 L9,1 L10,3 L8,6 L8,7 L10,10" stroke-miterlimit="1" stroke-linecap="round" stroke="black" stroke-width="3" style="display: none;"/>
+  </g>
+  <g id="rock4" width="10" transform="scale(2,2)">
+    <path width="10" class="background" d="M3,3 L5,2 L7,3 L8,5 L7,7 v1 h-1 L4,9 L2,7 L2,5 Z" stroke-linecap="round" stroke="black" stroke-width="1"/>
+    <path width="10" class="rockWall" d="M3,3 L5,2 L7,3 L8,5 L7,7 v1 h-1 L4,9 L2,7 L2,5 Z" stroke-linecap="round" stroke="black" stroke-width="3" style="display: none;"/>
+  </g>
+  <g id="rockd" width="10" transform="scale(2,2)">
+    <path width="10" class="background" d="M0,10 v-1 L1,8 L0,6 v-1 L1,4 v-2 L0,1 L0,0 H10 v1 L9,2 v1 L8,6 L9,7 v1 L10,10 Z" stroke-miterlimit="1" stroke="black" stroke-width="1"/>
+    <path width="10" class="rockWall" d="M 0 10 v -1 L 1 8 L 0 6 v -1 L 1 4 v -2 L 0 1 L 0 0 M 10 0 v 1 L 9 2 v 1 L 8 6 L 9 7 v 1 L 10 10" stroke-miterlimit="1" stroke="black" stroke-width="3" style="display: none;"/>
+  </g>
+  </defs><style><![CDATA[
+svg { overflow: visible }
+text { font: 14px 'Courier New', Courier, monospace }
+textarea { font: 10px 'Courier New', Courier, monospace }
+p { margin: 0 0 10px 0; padding: 0; }
+.line {  }
+.line svg { display: inline; vertical-align: middle }
+.labels text, #levels text, #label { text-anchor: middle; font: 10px 'Arial Narrow', sans-serif; font-weight: bold; }
+.labels text.left, #levels text.left { text-anchor: start; font-size: 14px; }
+a { color: black; text-decoration: none; }
+.link { fill: blue; text-decoration: underline }
+/* http://paletton.com/palette.php?uid=30f0u0kk8qbaaFtfwuQo4mgswhv */
+.background { fill: inherit; }
+use.red { fill: #F6A17F; }
+use.green { fill: #A1DB71; }
+use.blue { fill: #88A9C2; }
+use.colorQ { fill: #A9A9A9; }
+use.colorE { fill: #FF5733; }
+use.colorA { fill: #FFD700; }
+use.colorS { fill: #FF8C00; }
+use.colorS { fill: #A0522D; }
+use.colorD { fill: #1E90FF; }
+use.colorF { fill: #008000; }
+use { fill: white; }
+.key { color: forestgreen; fill: forestgreen; font-weight: bold; }
+.invisible { display: none; }
+.center:hover .dot { opacity: 1; }
+#ui { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+#background { transition: fill 500ms linear; }
+#help { transition: fill 500ms linear; }
+text { fill: black; }
+
+#help { fill: #fffff0; } /* ivory and light grey */
+#background { fill: #d3d3d3; }
+
+svg.black #background { fill: black; }
+
+svg.white #background { fill: white; }
+
+svg.grid  #background { fill: url(#grid); }
+
+/* http://www.color-hex.com/color/01b0f1
+   https://de.wikipedia.org/wiki/Non-Photo_Blue */
+svg.blue * { stroke: #005878; }
+svg.blue *[fill=black],
+svg.blue a,
+svg.blue text,
+svg.blue tspan { stroke: none; fill: #005878; }
+svg.blue .key { fill: white; }
+svg.blue #background,
+svg.blue #help { fill: #01b0f1; }
+
+.menu div {
+    background: white;
+    padding: 10px;
+    overflow: scroll;
+    font: 14px 'Courier New', Courier, monospace
+}
+.menu span { display: inline-block; width: 32ex }
+.menu a { color: blue }
+
+/* thick rock walls to be displayed only when autoWaller is on*/
+.rockWall { display:none }
+  ]]></style><g id="background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect x="20" y="20" width="600" height="600" stroke="black" stroke-width="1"/>
+  </g><g id="levels" inkscape:groupmode="layer" inkscape:label="Levels"><g id="level0" inkscape:groupmode="layer" inkscape:label="Level 1"><g id="arcs0"/><g id="floor0"><use id="stair-spiral-up_4_2" x="100" y="60" xlink:href="#stair-spiral-up"/><use id="stair-spiral_10_2" x="220" y="60" xlink:href="#stair-spiral" rotate="0"/><use id="empty_4_1" x="100" y="40" xlink:href="#empty"/><use id="empty_3_1" x="80" y="40" xlink:href="#empty"/><use id="empty_3_2" x="80" y="60" xlink:href="#empty"/><use id="empty_3_3" x="80" y="80" xlink:href="#empty"/><use id="empty_4_3" x="100" y="80" xlink:href="#empty"/><use id="empty_5_3" x="120" y="80" xlink:href="#empty"/><use id="empty_5_2" x="120" y="60" xlink:href="#empty"/><use id="empty_5_1" x="120" y="40" xlink:href="#empty"/><use id="empty_6_3" x="140" y="80" xlink:href="#empty"/><use id="empty_6_4" x="140" y="100" xlink:href="#empty"/><use id="empty_5_4" x="120" y="100" xlink:href="#empty"/><use id="empty_4_4" x="100" y="100" xlink:href="#empty"/><use id="empty_2_2" x="60" y="60" xlink:href="#empty"/><use id="empty_2_1" x="60" y="40" xlink:href="#empty"/><use id="empty_2_4" x="60" y="100" xlink:href="#empty"/><use id="empty_3_5" x="80" y="120" xlink:href="#empty"/><use id="empty_4_5" x="100" y="120" xlink:href="#empty"/><use id="empty_6_5" x="140" y="120" xlink:href="#empty"/><use id="empty_8_5" x="180" y="120" xlink:href="#empty"/><use id="empty_9_5" x="200" y="120" xlink:href="#empty"/><use id="empty_11_5" x="240" y="120" xlink:href="#empty"/><use id="empty_12_4" x="260" y="100" xlink:href="#empty"/><use id="empty_11_1" x="240" y="40" xlink:href="#empty"/><use id="empty_10_1" x="220" y="40" xlink:href="#empty"/><use id="empty_9_1" x="200" y="40" xlink:href="#empty"/><use id="empty_9_2" x="200" y="60" xlink:href="#empty"/><use id="empty_9_3" x="200" y="80" xlink:href="#empty"/><use id="empty_9_4" x="200" y="100" xlink:href="#empty"/><use id="empty_10_4" x="220" y="100" xlink:href="#empty"/><use id="empty_11_4" x="240" y="100" xlink:href="#empty"/><use id="empty_11_3" x="240" y="80" xlink:href="#empty"/><use id="empty_11_2" x="240" y="60" xlink:href="#empty"/><use id="empty_10_3" x="220" y="80" xlink:href="#empty"/><use id="empty_14_2" x="300" y="60" xlink:href="#empty"/><use id="empty_16_2" x="340" y="60" xlink:href="#empty"/><use id="empty_15_3" x="320" y="80" xlink:href="#empty"/><use id="empty_16_4" x="340" y="100" xlink:href="#empty"/><use id="empty_14_4" x="300" y="100" xlink:href="#empty"/><use id="stair-spiral_15_2" x="320" y="60" xlink:href="#stair-spiral" rotate="0"/><use id="stair-spiral_19_2" x="400" y="60" xlink:href="#stair-spiral" rotate="0"/><use id="empty_22_3" x="460" y="80" xlink:href="#empty"/><use id="empty_22_4" x="460" y="100" xlink:href="#empty"/><use id="stair-spiral-down_22_2" x="460" y="60" xlink:href="#stair-spiral-down"/><use id="empty_22_5" x="460" y="120" xlink:href="#empty"/><use id="chair_3_4" x="80" y="100" xlink:href="#chair" rotate="270" transform="rotate(270,90,110)"/><use id="statue_2_3" x="60" y="80" xlink:href="#statue"/><use id="statue_2_5" x="60" y="120" xlink:href="#statue"/><use id="generic-trap_5_5" x="120" y="120" xlink:href="#generic-trap"/><use id="statue_6_1" x="140" y="40" xlink:href="#statue"/><use id="chair_6_2" x="140" y="60" xlink:href="#chair" rotate="0"/><use id="statue_8_4" x="180" y="100" xlink:href="#statue"/><use id="statue_12_5" x="260" y="120" xlink:href="#statue"/><use id="statue_10_5" x="220" y="120" xlink:href="#statue"/><use id="screen_15_4" x="320" y="100" xlink:href="#screen" rotate="90" transform="rotate(90,330,110)"/><use id="bed_12_3" x="260" y="80" xlink:href="#bed" rotate="90" transform="rotate(90,270,90)"/><use id="bed_12_2" x="260" y="60" xlink:href="#bed" rotate="90" transform="rotate(90,270,70)"/><use id="bed_12_1" x="260" y="40" xlink:href="#bed" rotate="90" transform="rotate(90,270,50)"/><use id="bed_8_1" x="180" y="40" xlink:href="#bed" rotate="90" transform="rotate(90,190,50)"/><use id="bed_8_2" x="180" y="60" xlink:href="#bed" rotate="90" transform="rotate(90,190,70)"/><use id="bed_8_3" x="180" y="80" xlink:href="#bed" rotate="90" transform="rotate(90,190,90)"/><use id="screen_14_3" x="300" y="80" xlink:href="#screen" rotate="0"/><use id="screen_16_3" x="340" y="80" xlink:href="#screen" rotate="0"/><use id="chair_18_2" x="380" y="60" xlink:href="#chair" rotate="270" transform="rotate(270,390,70)"/><use id="chair_18_3" x="380" y="80" xlink:href="#chair" rotate="270" transform="rotate(270,390,90)"/><use id="chair_18_4" x="380" y="100" xlink:href="#chair" rotate="180" transform="rotate(180,390,110)"/><use id="chair_19_4" x="400" y="100" xlink:href="#chair" rotate="180" transform="rotate(180,410,110)"/><use id="chair_20_4" x="420" y="100" xlink:href="#chair" rotate="180" transform="rotate(180,430,110)"/><use id="chair_20_3" x="420" y="80" xlink:href="#chair" rotate="90" transform="rotate(90,430,90)"/><use id="chair_20_2" x="420" y="60" xlink:href="#chair" rotate="90" transform="rotate(90,430,70)"/><use id="dais-round_19_3" x="400" y="80" xlink:href="#dais-round"/></g><g id="labels0"><text id="label_2_4" x="70" y="114">1</text><text id="label_3_1" x="90" y="54">2</text><text id="label_6_4" x="150" y="114">3</text><text id="label_7_2" x="170" y="74">4</text><text id="label_7_1" x="170" y="54">5</text><text id="label_4_6" x="110" y="154">ground level</text><text id="label_10_6" x="230" y="154">1st floor</text><text id="label_15_5" x="330" y="134">2nd floor</text><text id="label_19_5" x="410" y="134">3rd floor</text><text id="label_22_6" x="470" y="154">top</text></g><g id="walls0"><use id="door_22_5" x="460" y="120" xlink:href="#door" rotate="90" transform="rotate(90,470,130)"/><use id="portcullis_23_5" x="480" y="120" xlink:href="#portcullis" rotate="0"/><use id="portcullis_21_5" x="440" y="120" xlink:href="#portcullis" rotate="180" transform="rotate(180,450,130)"/><use id="door_2_4" x="60" y="100" xlink:href="#door" rotate="0"/><use id="door_5_6" x="120" y="140" xlink:href="#door" rotate="90" transform="rotate(90,130,150)"/><use id="wall_4_4" x="100" y="100" xlink:href="#wall" rotate="0"/><use id="wall_4_5" x="100" y="120" xlink:href="#wall" rotate="0"/><use id="wall_4_4" x="100" y="100" xlink:href="#wall" rotate="90" transform="rotate(90,110,110)"/><use id="door_5_4" x="120" y="100" xlink:href="#door" rotate="90" transform="rotate(90,130,110)"/><use id="wall_6_4" x="140" y="100" xlink:href="#wall" rotate="90" transform="rotate(90,150,110)"/><use id="wall_2_3" x="60" y="80" xlink:href="#wall" rotate="90" transform="rotate(90,70,90)"/><use id="wall_3_3" x="80" y="80" xlink:href="#wall" rotate="90" transform="rotate(90,90,90)"/><use id="door_4_3" x="100" y="80" xlink:href="#door" rotate="0"/><use id="door_6_1" x="140" y="40" xlink:href="#door" rotate="90" transform="rotate(90,150,50)"/><use id="wall_6_1" x="140" y="40" xlink:href="#wall" rotate="0"/><use id="wall_6_2" x="140" y="60" xlink:href="#wall" rotate="90" transform="rotate(90,150,70)"/><use id="wall_6_2" x="140" y="60" xlink:href="#wall" rotate="0"/><use id="door_6_3" x="140" y="80" xlink:href="#door" rotate="90" transform="rotate(90,150,90)"/><use id="wall_8_2" x="180" y="60" xlink:href="#wall" rotate="90" transform="rotate(90,190,70)"/><use id="door_9_1" x="200" y="40" xlink:href="#door" rotate="0"/><use id="wall_8_3" x="180" y="80" xlink:href="#wall" rotate="90" transform="rotate(90,190,90)"/><use id="door_9_2" x="200" y="60" xlink:href="#door" rotate="0"/><use id="wall_8_4" x="180" y="100" xlink:href="#wall" rotate="90" transform="rotate(90,190,110)"/><use id="door_9_3" x="200" y="80" xlink:href="#door" rotate="0"/><use id="wall_12_2" x="260" y="60" xlink:href="#wall" rotate="90" transform="rotate(90,270,70)"/><use id="wall_12_3" x="260" y="80" xlink:href="#wall" rotate="90" transform="rotate(90,270,90)"/><use id="wall_12_4" x="260" y="100" xlink:href="#wall" rotate="90" transform="rotate(90,270,110)"/><use id="door_12_3" x="260" y="80" xlink:href="#door" rotate="0"/><use id="door_12_2" x="260" y="60" xlink:href="#door" rotate="0"/><use id="door_12_1" x="260" y="40" xlink:href="#door" rotate="0"/><use id="wall_9_4" x="200" y="100" xlink:href="#wall" rotate="90" transform="rotate(90,210,110)"/><use id="wall_11_4" x="240" y="100" xlink:href="#wall" rotate="90" transform="rotate(90,250,110)"/><use id="door_10_4" x="220" y="100" xlink:href="#door" rotate="90" transform="rotate(90,230,110)"/><use id="portcullis_22_6" x="460" y="140" xlink:href="#portcullis" rotate="90" transform="rotate(90,470,150)"/></g></g></g></svg>

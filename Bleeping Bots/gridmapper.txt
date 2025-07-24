@@ -1,0 +1,6 @@
+(2,1)f2fffw.db 5 ccv dfffdccv
+  ffov fw.wcvvv 4 wwccv dfsvv fd.wccv  fsvv f ccccvvv svv ccvvv  o
+  wwb wwfdffddf wwccv dfffd.wccv  cvvvv fcvvvv  ccccvvv pvvv ccvvv  f
+  d1fccccvvv w.wfddfww3f wwb wwfddfwwfwwf fccvvvv f cccvvv cccvvv cccvvv  f
+  b fwftvvvvv f ffb fb   "2nd floor"    "3rd floor"  wwwvv ddfwvv
+    "ground level" dd     "1st floor"            wwvv"top"(29,16,0)
